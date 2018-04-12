@@ -9,9 +9,31 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [
+//            JPUSH_PKGNAME     : applicationId,
+//            JPUSH_APPKEY      : "dd35eb272ea54587cc5461e9", //JPush上注册的包名对应的appkey.
+//            JPUSH_CHANNEL     : "developer-default", //暂时填写默认值即可.
+
+            //自己弄的框架配置
+            WHITE_PKGNAME     : applicationId,//包名
+            WHITE_FILEPROVIDER: "${applicationId}.fileprovider",//7.0文件Provider对应的authorities
+
+
+        ]
     }
+
     buildTypes {
+        debug {
+
+            buildConfigField("boolean", "DEBUG_ENV", "true")
+            buildConfigField("boolean", "IS_OPEN_LOG", "true")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+        }
         release {
+            buildConfigField("boolean", "DEBUG_ENV", "false")
+            buildConfigField("boolean", "IS_OPEN_LOG", "false")
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -31,5 +53,19 @@ dependencies {
     //网络请求框架
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-//    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.1.0'
+    //图片加载框架
+    compile 'com.facebook.fresco:fresco:1.4.0'
+    compile 'jp.wasabeef:fresco-processors:2.1.0'
+    compile 'com.github.florent37:viewanimator:1.0.5'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    //防止65537
+    compile 'com.android.support:multidex:1.0.0'
+    //工具类封装
+    compile 'com.white.app:mkcommon-core:1.1.20'
+    compile 'com.white.app:mkcommon-refresh-header:1.0.1'
+    compile 'com.white.app:mkcommon-refresh-footer:1.0.1'
+    compile 'com.white.app:mkcommon-refresh-layout:1.0.1'
+    //banner
+    compile 'cn.bingoogolapple:bga-banner:2.1.4@aar'
 }

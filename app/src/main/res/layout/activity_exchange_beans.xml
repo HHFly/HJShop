@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <include layout="@layout/include_titlebar" />
+
+    <RelativeLayout
+        android:id="@+id/bean_layout_recharge"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="@string/bean_换购申请" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/bean_layout_recharge_detail"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="@string/bean_换购记录" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+</LinearLayout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_titlebar" />
+    <RelativeLayout
+        android:id="@+id/certification_layout_user_name"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="@string/certificaton_姓名" />
+
+        <TextView
+            android:id="@+id/certification_tv_user_name"
+            style="@style/user_item_tv_content"
+            android:layout_marginRight="0px"
+            android:layout_toLeftOf="@+id/imageView4" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/imageView4" />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/certification_layout_user_city"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="@string/certification_现居地" />
+
+        <TextView
+            android:id="@+id/certification_tv_user_city"
+            style="@style/user_item_tv_content"
+            android:layout_marginRight="0px"
+            android:layout_toLeftOf="@+id/imageView" />
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/imageView" />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/certification_layout_user_address"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="@string/certification_详细地址" />
+
+        <TextView
+            android:id="@+id/certification_tv_user_address"
+            style="@style/user_item_tv_content"
+            android:layout_marginRight="0px"
+            android:layout_toLeftOf="@+id/imageView1" />
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/imageView1" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20px"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+
+
+        />
+    <RelativeLayout
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="@string/certification_审核状态" />
+
+        <TextView
+            android:id="@+id/certification_tv_user_ispass"
+            style="@style/user_item_tv_content"
+             />
+
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="@string/certification_推荐人" />
+
+        <TextView
+            android:id="@+id/certification_tv_user_invitation"
+            style="@style/user_item_tv_content"
+            />
+
+    </RelativeLayout>
+</LinearLayout>

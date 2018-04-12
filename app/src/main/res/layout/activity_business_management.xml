@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <include layout="@layout/include_titlebar" />
+    <RelativeLayout
+        android:id="@+id/spend_commit"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="@string/manage_线下消费提交" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/spend_commit_detail"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="@string/manage_线下报单记录" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/manage_exchange_bean"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="@string/bean_商家兑换金豆" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/vip_exchange_detail"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="@string/vip_会员换购记录" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/business_qrcode"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="@string/qrcode_商家收豆二维码" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/business_detail"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            style="@style/user_item_iv"
+            android:src="@mipmap/ic_phone" />
+        <TextView
+            style="@style/user_item_tv_bottom"
+            android:text="商户信息" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+</LinearLayout>

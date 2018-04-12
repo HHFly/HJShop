@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_titlebar_right" />
+
+    <LinearLayout style="@style/input_layout">
+
+
+        <LinearLayout
+            android:id="@+id/layout_phone_code"
+            style="@style/phonecode_layout">
+
+            <TextView
+                android:id="@+id/tv_phone_code"
+                style="@style/phonecode_tv" />
+
+            <!--<ImageView style="@style/phonecode_iv" />-->
+
+        </LinearLayout>
+
+        <mkle.app.haya.com.mkle.widget.PhoneEditText
+            android:id="@+id/login_et_username"
+            style="@style/login_input_et"
+            android:hint="@string/hint_请输入手机号"
+            android:inputType="number"
+            android:maxLength="15" />
+
+    </LinearLayout>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+
+    <LinearLayout style="@style/input_layout">
+
+        <TextView
+            android:id="@+id/login_tv_pwd"
+            style="@style/login_input_tv"
+            android:text="@string/login_msg_pwd" />
+
+        <EditText
+            android:id="@+id/login_et_pwd"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+            android:hint="@string/hint_请输入密码不少于6位"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <ImageView
+            android:id="@+id/login_iv_eye"
+            android:layout_width="100px"
+            android:layout_height="60px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:src="@drawable/select_password_eye" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/login_btn"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_width="match_parent"
+        android:layout_marginTop="57px"
+        android:text="@string/login_msg_login" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="40px"
+            android:src="@drawable/select_radio" />
+
+        <TextView
+            android:id="@+id/login_tv_forget_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90px"
+            android:paddingBottom="29px"
+            android:paddingTop="29px"
+            android:text="@string/login_msg_auto"
+            android:textColor="#999999"
+            android:textSize="24px" />
+
+        <TextView
+            android:id="@+id/login_tv_quick_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="60px"
+            android:paddingBottom="29px"
+            android:paddingTop="29px"
+            android:text="@string/login_msg_forget_pwd"
+            android:textColor="#999999"
+            android:textSize="24px"
+           />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120px"
+        android:visibility="gone">
+
+        <View
+            style="@style/BaseLine.Horizontal"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="@color/background"
+            android:paddingLeft="20px"
+            android:paddingRight="20px"
+            android:text="@string/login_msg_third_login" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/login_iv_third_wx"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="39px"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:src="@mipmap/ic_wx" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16px"
+            android:text="@string/login_msg_wx"
+            android:textColor="#666666"
+            android:textSize="22px" />
+    </LinearLayout>
+</LinearLayout>

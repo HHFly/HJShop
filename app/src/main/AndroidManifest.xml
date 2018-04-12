@@ -17,7 +17,26 @@
         <meta-data
             android:name="design_height"
             android:value="1334" />
+        <!--&lt;!&ndash; 7.0文件Uri &ndash;&gt;-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${WHITE_FILEPROVIDER}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+        <activity
+            android:name="com.mark.app.hjshop4a.ui.LoginActivity"
+            android:screenOrientation="portrait"
+           >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 </manifest>
