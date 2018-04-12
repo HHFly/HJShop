@@ -1,3 +1,161 @@
 <resources>
     <string name="app_name">HJShop4A</string>
+    <string name="strip_mkpay_btn_finish">完成</string>
+    <!-- 标题 -->
+    <string name="titlebar_确认收货地址">确认收货地址</string>
+    <string name="titlebar_登录">登录</string>
+    <string name="titlebar_选择收货地址">选择收货地址</string>
+    <string name="titlebar_取消">取消</string>
+    <string name="titlebar_退出">退出</string>
+    <string name="titlebar_注册">注册</string>
+    <string name="titlebar_积分商城">积分商城</string>
+    <string name="titlebar_积分兑换">积分兑换</string>
+    <string name="titlebar_收货地址">收货地址</string>
+    <string name="titlebar_账户信息">账户信息</string>
+    <string name="titlebar_我的">我的</string>
+    <string name="titlebar_我的收藏">我的收藏</string>
+    <string name="titlebar_服务中心">服务中心</string>
+    <string name="titlebar_兑换记录">兑换记录</string>
+    <string name="titlebar_消息中心">消息中心</string>
+    <string name="titlebar_订单详情">订单详情</string>
+    <string name="titlebar_换绑手机">换绑手机</string>
+    <string name="titlebar_在线支付">在线支付</string>
+    <string name="titlebar_评价商家">评价商家</string>
+    <string name="titlebar_新增地址">新增地址</string>
+    <string name="titlebar_修改地址">修改地址</string>
+    <string name="titlebar_积分详情">积分详情</string>
+    <string name="titlebar_我的积分">我的积分</string>
+    <string name="titlebar_设置密码">设置密码</string>
+    <string name="titlebar_订单">订单</string>
+    <string name="titlebar_关于">关于</string>
+    <string name="titlebar_店铺详情">店铺详情</string>
+    <string name="titlebar_订单备注">订单备注</string>
+    <string name="titlebar_投诉反馈">投诉反馈</string>
+    <string name="titlebar_密码登录">密码登录</string>
+    <string name="titlebar_找回密码">找回密码</string>
+    <string name="titlebar_选择信用卡">选择信用卡</string>
+    <!-- hint -->
+    <string name="hint_输入商家或商品名称">输入商家店铺名称或菜品</string>
+    <string name="hint_姓名">请输入姓名</string>
+    <string name="hint_手机号码">手机号码</string>
+    <string name="hint_选择收货地址">选择收货地址</string>
+    <string name="hint_楼层及房间号">详细街道名或门牌号</string>
+    <string name="hint_请输入邮编">请输入邮编</string>
+    <string name="hint_请输入新手机号">请输入新手机号</string>
+    <string name="hint_请输入手机号">请输入手机号</string>
+    <string name="hint_请输入密码">请输入密码</string>
+    <string name="hint_请输入密码不少于6位">请输入密码(不少于6位)</string>
+    <string name="hint_请输入验证码">请输入验证码</string>
+    <string name="hint_请输入邀请码">请输入邀请码(可选)</string>
+    <string name="hint_请输入关键词">请输入关键词</string>
+    <string name="hint_请输入邀请人手机号">请输入邀请人手机号</string>
+    <string name="hint_请输入新密码">请输入新密码</string>
+    <string name="hint_请再次输入新密码">请再次输入新密码</string>
+    <string name="hint_请输入要评价内容">请输入您的评价（200字以内）</string>
+    <string name="hint_输入您想交代的话吧">输入您想交代的话吧~</string>
+    <string name="hint_请输入您要投诉的内容">请输入您的反馈内容（200字以内）</string>
+    <string name="hint_请再次输入密码">请再次输入密码</string>
+    <string name="hint_请选择">请选择</string>
+   <!-- 内容信息-->
+    <!-- 默认信息 -->
+    <string name="normal_time">2017-9-12 09:21:00</string>
+    <string name="normal_title">title</string>
+    <string name="normal_content">content</string>
+    <string name="normal_state">state</string>
+    <string name="normal_name">name</string>
+    <string name="normal_address">address</string>
+    <string name="normal_ceshi">test</string>
+    <string name="normal_user_name">username</string>
+    <!-- 登陆、注册、找回密码、快捷登陆;相关文本 -->
+    <string name="login_msg_username">账&#160;&#160;&#160;号：</string>
+    <string name="login_msg_pwd">密&#160;&#160;&#160;码：</string>
+    <string name="login_msg_pwd_again">确认密码:</string>
+    <string name="login_msg_login">登录</string>
+    <string name="login_msg_forget_pwd">忘记密码？</string>
+    <string name="login_msg_auto">自动登录</string>
+    <string name="login_msg_quick_login">手机短信登录</string>
+    <string name="login_msg_third_login">使用第三方登录</string>
+    <string name="login_msg_agree">我已看过并接受</string>
+    <string name="用户协议">《用户协议》</string>
+    <string name="免责条款">《免责条款》</string>
+    <string name="login_msg_user">用户名</string>
+    <string name="login_msg_wx">微信</string>
+    <string name="login_msg_code">验证码：</string>
+    <string name="login_msg_invitation">邀请人：</string>
+    <string name="login_msg_region">区域：</string>
+    <!-- button-->
+    <string name="btn_msg_exchange">兑换</string>
+    <string name="btn_msg_select_ok">选好了</string>
+    <string name="btn_msg_ok">确定</string>
+    <string name="btn_msg_commit_eval">提交评价</string>
+    <string name="btn_msg_cancel">取消</string>
+    <string name="btn_msg_finish">完成</string>
+    <string name="btn_msg_goto_index">前往首页</string>
+    <string name="btn_去结算">去结算</string>
+    <string name="btn_msg_click_exchange">点击兑换</string>
+    <string name="btn_msg_come_exchange">立即兑换</string>
+    <string name="btn_msg_register">注册</string>
+    <string name="btn_msg_piece">来一份</string>
+    <string name="btn_msg_delete">删除</string>
+    <string name="btn_msg_eval">评价得积分</string>
+    <string name="btn_msg_commit">提交</string>
+    <string name="btn_msg_loading_again">重新加载</string>
+    <string name="btn_msg_getcode">获取验证码</string>
+    <string name="btn_msg_un_need">无特殊要求</string>
+    <string name="btn_确认修改">确认修改</string>
+    <!---->
+    <string name="系统繁忙请稍后再试">系统繁忙，请稍后再试</string>
+    <!-- 首页：我的 -->
+    <string name="user_msg_logo">头像</string>
+    <string name="user_msg_user_name">用户名</string>
+    <string name="user_msg_user_setting">账户设置</string>
+    <string name="user_msg_phone">手机</string>
+    <string name="user_msg_wx">微信</string>
+    <string name="user_msg_pwd_modify">密码修改</string>
+    <string name="user_msg_bind_wx">已绑定</string>
+    <string name="user_msg_un_bind_wx">未绑定</string>
+    <string name="user_msg_phone_num">手机号</string>
+    <string name="user_msg_code">验证码</string>
+    <string name="user_msg_pwd">密码</string>
+    <string name="user_msg_pwd_confirm">确认密码</string>
+    <string name="user_msg_getcode">获取验证码</string>
+    <string name="user_msg_getcode_again">重新获取</string>
+    <string name="user_msg_commit">确认修改</string>
+    <string name="user_msg_commit_bind_phone">验证后绑定手机</string>
+    <string name="user_msg_certification">实名认证</string>
+    <string name="user_msg_sex">性别</string>
+    <string name="user_msg_birthday">出生日期</string>
+    <string name="user_msg_性别">性别</string>
+    <string name="user_msg_实名认证">实名认证</string>
+    <string name="user_msg_出生日期">出生日期</string>
+    <!--实名认证-->
+    <string name="certificaton_姓名">姓名</string>
+    <string name="certification_现居地">现居地</string>
+    <string name="certification_详细地址">详细地址</string>
+    <string name="certification_审核状态">审核状态</string>
+    <string name="certification_推荐人">推荐人</string>
+    <!--我的资产-->
+    <string name="asset_在线充值">在线充值</string>
+    <string name="asset_提现">提现</string>
+    <string name="asset_资金明细">资金明细</string>
+    <string name="asset_申请记录">申请记录</string>
+    <string name="asset_银行卡管理">银行卡管理</string>
+    <!--金豆换购-->
+    <string name="bean_换购记录">换购记录</string>
+    <string name="bean_换购申请">换购申请</string>
+    <!--积分兑换-->
+    <string name="integral_换购积分">换购积分</string>
+    <string name="integral_积分记录">积分记录</string>
+    <!--线下商家消费-->
+    <string name="spend_线下商家消费记录">线下商家消费记录</string>
+    <string name="bean_金豆明细记录">金豆明细记录</string>
+    <string name="integral_积分明细记录">积分明细记录</string>
+    <!--商家管理-->
+    <string name="manage_线下消费提交">线下消费提交</string>
+    <string name="manage_线下报单记录">线下报单记录</string>
+    <string name="bean_商家兑换金豆">商家兑换金豆</string>
+    <string name="vip_会员换购记录">会员换购记录</string>
+    <string name="qrcode_商家收豆二维码">商家收豆二维码</string>
+
+
 </resources>

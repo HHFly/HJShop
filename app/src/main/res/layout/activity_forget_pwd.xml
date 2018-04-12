@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/include_titlebar" />
+
+    <LinearLayout style="@style/input_layout">
+
+        <LinearLayout
+            android:id="@+id/layout_phone_code"
+            style="@style/phonecode_layout">
+
+            <TextView
+                android:id="@+id/tv_phone_code"
+                style="@style/phonecode_tv" />
+
+            <!--<ImageView style="@style/phonecode_iv" />-->
+
+        </LinearLayout>
+
+        <mkle.app.haya.com.mkle.widget.PhoneEditText
+            android:id="@+id/et_username"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+            android:hint="@string/hint_请输入手机号"
+            android:inputType="number"
+            android:maxLength="15" />
+
+        <Button
+            android:id="@+id/btn_code"
+            style="@style/BaseBtn.Normal.Commonly"
+            android:layout_width="wrap_content"
+            android:layout_height="60px"
+            android:layout_marginRight="20px"
+            android:minWidth="170px"
+            android:text="@string/btn_msg_getcode"
+            android:textSize="24px" />
+    </LinearLayout>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+
+    <LinearLayout style="@style/input_layout">
+
+        <TextView
+            android:id="@+id/login_tv_code"
+            style="@style/login_input_tv"
+            android:text="@string/login_msg_code" />
+
+        <EditText
+            android:id="@+id/et_code"
+            style="@style/login_input_et"
+            android:hint="@string/hint_请输入验证码"
+            android:inputType="number"
+            android:maxLength="6" />
+    </LinearLayout>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+
+    <LinearLayout style="@style/input_layout">
+
+        <TextView
+            android:id="@+id/login_tv_pwd"
+            style="@style/login_input_tv"
+            android:text="@string/login_msg_pwd" />
+
+        <EditText
+            android:id="@+id/et_pwd"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+            android:hint="@string/hint_请输入密码不少于6位"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <ImageView
+            android:id="@+id/iv_eye"
+            android:layout_width="100px"
+            android:layout_height="60px"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:src="@drawable/select_password_eye"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+
+    <LinearLayout style="@style/input_layout"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/login_tv_pwd_again"
+            style="@style/login_input_tv"
+            android:text="@string/login_msg_pwd_again" />
+
+        <EditText
+            android:id="@+id/et_pwd_again"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+            android:hint="@string/hint_请再次输入密码"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <ImageView
+            android:id="@+id/iv_eye_again"
+            android:layout_width="100px"
+            android:layout_height="60px"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:src="@drawable/select_password_eye" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_width="match_parent"
+        android:layout_marginTop="30px"
+        android:text="@string/btn_确认修改" />
+
+</LinearLayout>

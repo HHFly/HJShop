@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.app;
 
+
 import android.app.Activity;
 import android.app.Application;
 import android.app.FragmentManager;
