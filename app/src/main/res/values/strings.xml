@@ -156,6 +156,11 @@
     <string name="bean_商家兑换金豆">商家兑换金豆</string>
     <string name="vip_会员换购记录">会员换购记录</string>
     <string name="qrcode_商家收豆二维码">商家收豆二维码</string>
+    <string name="home_首页">首页</string>
+    <string name="home_分类">分类</string>
+    <string name="home_客服">客服</string>
+    <string name="home_购物车">购物车</string>
+    <string name="home_我的">我的</string>
 
 
 </resources>
