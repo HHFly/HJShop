@@ -33,7 +33,7 @@
 
             <TextView
                 style="@style/home_pager_tab_tv"
-                android:text="@string/home_首页" />
+                android:text="" />
 
         </LinearLayout>
 
@@ -48,7 +48,7 @@
 
             <TextView
                 style="@style/home_pager_tab_tv"
-                android:text="@string/home_分类" />
+                android:text="" />
 
         </LinearLayout>
 
@@ -62,7 +62,7 @@
 
             <TextView
                 style="@style/home_pager_tab_tv"
-                android:text="@string/home_客服" />
+                android:text="" />
 
         </LinearLayout>
 
@@ -76,7 +76,7 @@
 
             <TextView
                 style="@style/home_pager_tab_tv"
-                android:text="@string/home_购物车" />
+                android:text="" />
 
         </LinearLayout>
         <LinearLayout
@@ -89,7 +89,7 @@
 
             <TextView
                 style="@style/home_pager_tab_tv"
-                android:text="@string/home_我的" />
+                android:text="" />
 
         </LinearLayout>
     </LinearLayout>

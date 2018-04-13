@@ -9,7 +9,8 @@ import com.google.gson.JsonParser;
 
 import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.app.App;
-import com.mark.app.hjshop4a.common.LogUtils;
+import com.mark.app.hjshop4a.app.AppContext;
+import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.login.model.LoginRepo;
 
 import java.io.IOException;
@@ -100,7 +101,21 @@ public interface PdMService {
                 }
 
 
+                public String refreshToken() {
+                    LoginRepo repo = App.get().getAppContext().getLoginRepo();
+                    if (repo == null) return "";
 
+
+                    String refreshToken = repo.getRefreshToken();
+                    long nowTime = repo.getNowTime();
+                    long expTime = repo.getExpiresIn();
+                    long currentTime = System.currentTimeMillis();
+                    long parseTime = (currentTime - nowTime) * 3 / 1000;
+                    if (parseTime > expTime && expTime > 0 && nowTime > 0) {
+                        return refreshToken;
+                    }
+                    return "";
+                }
                 /**
                  * 刷新Token
                  * @param chain
@@ -149,6 +164,7 @@ public interface PdMService {
             }).readTimeout(60, TimeUnit.SECONDS).writeTimeout(60, TimeUnit.SECONDS).connectTimeout(60, TimeUnit.SECONDS).build();
             return client;
         }
+
     }
 
 //    //后台日志

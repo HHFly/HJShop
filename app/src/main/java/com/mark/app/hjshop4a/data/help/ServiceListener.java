@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.data.help;
 
-import com.haya.app.pandam4a.data.entity.BaseResultEntity;
+
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 
 import io.reactivex.annotations.NonNull;
 

@@ -5,6 +5,10 @@ import android.app.Activity;
 import android.app.Application;
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.text.TextUtils;
+
+import com.mark.app.hjshop4a.common.PDLifecycleHandle;
+import com.mark.app.hjshop4a.login.model.LoginRepo;
 
 /**
  * Created by zhuwh on 2018/4/10.
@@ -24,7 +28,8 @@ App extends Application {
     public static AppService getServiceManager(){
         return s_service;
     }
-
+    private static AppContext mAppContext;
+    public AppContext getAppContext(){return mAppContext;}
     private Activity mCurActivity;
 
 
@@ -97,5 +102,51 @@ App extends Application {
         }
         return mCurActivity.getFragmentManager();
     }
+    /**
+     * 获取token
+     *
+     * @return
+     */
+    public static String getToken() {
+        return App.get().getAccToken();
+    }
+    /**
+     * 是否有token
+     *
+     * @return
+     */
+    public static boolean hasToken() {
+        return !TextUtils.isEmpty(getToken());
+    }
 
+    public String getAccToken() {
+        LoginRepo data = getAppContext().getLoginRepo();
+        return data == null ? "" : data.getAccessToken();
+    }
+    public void setLogin(LoginRepo login) {
+        setLogin(login, true);
+    }
+    public void setLogin(LoginRepo login, boolean isStartService) {
+        if (login != null) {
+            getAppContext().setLoginRepo(login);
+            //JPushUtils.setAlias(login.getUserPushToken());
+        } else {
+            //退出登录
+            //JPushUtils.clearAlias();
+
+            getAppContext().setLoginRepo(null);
+        }
+        if (isStartService) {
+           // PullService.startService(this, login);
+        }
+    }
+
+    /**
+     * 获取当前Activity
+     *
+     * @return
+     */
+    public Activity getCurActivity() {
+        return PDLifecycleHandle.currentActivity();
+    }
 }

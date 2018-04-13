@@ -5,16 +5,15 @@ import android.app.FragmentManager;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
 
-import com.haya.app.pandam4a.App;
-import com.haya.app.pandam4a.R;
-import com.haya.app.pandam4a.app.AppContext;
-import com.haya.app.pandam4a.common.androidenum.service.ServiceResultCode;
-import com.haya.app.pandam4a.common.dialog.factory.NormalDialogFactory;
-import com.haya.app.pandam4a.common.utils.ActJumpUtils;
-import com.haya.app.pandam4a.common.utils.JsonUtils;
-import com.haya.app.pandam4a.common.utils.LogUtils;
-import com.haya.app.pandam4a.common.utils.ToastUtils;
-import com.haya.app.pandam4a.data.entity.BaseResultEntity;
+
+import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
+import com.mark.app.hjshop4a.app.AppContext;
+import com.mark.app.hjshop4a.common.androidenum.service.ServiceResultCode;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
+import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.ui.factory.NormalDialogFactory;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
@@ -169,7 +168,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
             App.get().setLogin(null);
             Activity activity = App.get().getCurActivity();
             if (activity != null) {
-                ActJumpUtils.actLogin(activity);
+                //ActJumpUtils.actLogin(activity);
             }
         }
     }
@@ -181,7 +180,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
      */
     private void toast(String data) {
         if (isNeedShowSystemMsg) {
-            ToastUtils.show(data);
+            //ToastUtils.show(data);
         }
     }
 
@@ -192,7 +191,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
      */
     private void toast(@StringRes int data) {
         if (isNeedShowSystemMsg) {
-            ToastUtils.show(data);
+         //   ToastUtils.show(data);
         }
     }
 }

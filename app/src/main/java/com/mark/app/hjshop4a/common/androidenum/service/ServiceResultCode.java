@@ -17,6 +17,7 @@ import java.lang.annotation.RetentionPolicy;
         ServiceResultCode.DATA_EMPTY,
         ServiceResultCode.OLDUSER,
         ServiceResultCode.UN_REDPACKET,
+        ServiceResultCode.SUCCESS_NODATA,
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface ServiceResultCode {
@@ -43,4 +44,5 @@ public @interface ServiceResultCode {
     红包不存在
     * */
     int UN_REDPACKET =30005;
+    int SUCCESS_NODATA = 1012;
 }
