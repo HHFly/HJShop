@@ -17,14 +17,10 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
-import com.mark.app.hjshop4a.base.BaseActivity;
+import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.white.lib.utils.location.LocationManagerUtil;
-import com.white.lib.utils.location.SystemLocationUtil;
-import com.white.lib.utils.location.listener.DefLocationCallback;
-import com.white.lib.utils.location.listener.LocationCallback;
-import com.white.lib.utils.location.model.LocationModel;
 
 /**
  * fragment基类

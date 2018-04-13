@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.base;
+package com.mark.app.hjshop4a.base.Activity;
 
 import android.app.Activity;
 import android.net.Uri;
@@ -24,9 +24,14 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import com.mark.app.hjshop4a.app.App;
+import com.mark.app.hjshop4a.app.AppContext;
+import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.model.homepager.Lookup;
 import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
 import com.white.lib.utils.ToastUtil;
@@ -39,6 +44,9 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.io.File;
 import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * activity基类
@@ -540,7 +548,14 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
 //            }
 //        });
     }
-
+    /**
+     * 获取Activity
+     *
+     * @return
+     */
+    public AppCompatActivity getAppCompatActivity() {
+        return this;
+    }
     /**
      * 检测更新
      */
@@ -552,25 +567,24 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      * 请求更新数据
      */
     private void requestUpdate() {
-//        App.getService().getHayaService().forceUpdate(new DefaultServiceListener() {
-//            @Override
-//            public void onSuccess(int code, JsonElement o) {
-//                super.onSuccess(code, o);
-//                if (isDestroyed()) {
-//                    return;
-//                }
-//                Lookup data = JsonUtils.fromJson(o, Lookup.class);
-//               DownloadDialogUtils.updateVersion((AppCompatActivity) getActivity(), data);
-//            }
-//
-//            @Override
-//            public boolean onOther(int code, JsonElement o) {
-//                return true;
-//            }
-//        });
+        int versionCode = AppContext.versionCode();
 
-//        Lookup data = new Lookup();
-//        DownloadDialogUtils.updateVersion((AppCompatActivity) getActivity(), data);
+//        App.getServiceManager().forceUpdate(versionCode, 2, type)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new DefaultObserver<Lookup>(false, false) {
+//                    @Override
+//                    public void onSuccess(BaseResultEntity<Lookup> obj) {
+//                        Lookup data = obj.getResult();
+//                        DownloadDialogUtils.updateVersion(getAppCompatActivity(), data);
+//                    }
+//
+//                    @Override
+//                    public void onAllFinish() {
+//                        super.onAllFinish();
+//                        hideLoadingDialog();
+//                    }
+//                });
     }
 
     @Override

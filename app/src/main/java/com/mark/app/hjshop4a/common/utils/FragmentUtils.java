@@ -4,7 +4,7 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
-import com.mark.app.hjshop4a.base.BaseActivity;
+import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 
 
 /**
