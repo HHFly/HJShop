@@ -23,6 +23,32 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="home_pager_tab_layout" parent="BaseTab.Layout"></style>
+
+    <style name="home_pager_tab_iv" parent="BaseTab.Iv">
+        <item name="android:layout_width">50px</item>
+        <item name="android:layout_height">50px</item>
+    </style>
+
+    <style name="home_pager_tab_tv" parent="BaseTab.Tv">
+        <item name="android:textSize">18px</item>
+        <item name="android:layout_marginTop">7px</item>
+        <item name="android:textColor">@drawable/select_hp_tab_textcolor</item>
+    </style>
+
+
+    <style name="home_me_tab_layout" parent="BaseTab.Layout"></style>
+
+    <style name="home_me_tab_tv_top" parent="BaseTab.Tv">
+        <item name="android:textSize">28px</item>
+    </style>
+
+    <style name="home_me_tab_tv_bottom" parent="BaseTab.Tv">
+        <item name="android:textColor">#999999</item>
+        <item name="android:textSize">24px</item>
+        <item name="android:layout_marginTop">15px</item>
+
+    </style>
 
 
     <style name="user_item_tv_content">

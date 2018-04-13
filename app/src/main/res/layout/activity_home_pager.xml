@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <FrameLayout
+        android:id="@+id/hp_layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/hp_layout_bottom" />
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_above="@+id/hp_layout_bottom" />
+
+    <LinearLayout
+        android:id="@+id/hp_layout_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="90px"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/hp_layout_tab1"
+            style="@style/home_pager_tab_layout"
+            >
+
+            <ImageView
+                style="@style/home_pager_tab_iv"
+                android:src="@drawable/select_hp_tab_homepage" />
+
+            <TextView
+                style="@style/home_pager_tab_tv"
+                android:text="@string/home_首页" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/hp_layout_tab2"
+            style="@style/home_pager_tab_layout">
+
+            <ImageView
+                style="@style/home_pager_tab_iv"
+                android:src="@drawable/select_hp_tab_sort" />
+
+            <TextView
+                style="@style/home_pager_tab_tv"
+                android:text="@string/home_分类" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hp_layout_tab3"
+            style="@style/home_pager_tab_layout">
+
+            <ImageView
+                style="@style/home_pager_tab_iv"
+                android:src="@drawable/select_hp_tab_shopcar" />
+
+            <TextView
+                style="@style/home_pager_tab_tv"
+                android:text="@string/home_客服" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/hp_layout_tab4"
+            style="@style/home_pager_tab_layout">
+
+            <ImageView
+                style="@style/home_pager_tab_iv"
+                android:src="@drawable/select_hp_tab_me" />
+
+            <TextView
+                style="@style/home_pager_tab_tv"
+                android:text="@string/home_购物车" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/hp_layout_tab5"
+            style="@style/home_pager_tab_layout">
+
+            <ImageView
+                style="@style/home_pager_tab_iv"
+                android:src="@drawable/select_hp_tab_me" />
+
+            <TextView
+                style="@style/home_pager_tab_tv"
+                android:text="@string/home_我的" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
