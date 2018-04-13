@@ -2,25 +2,24 @@ package com.mark.app.hjshop4a.common.valid;
 
 import android.text.TextUtils;
 
+import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 
-import com.mark.app.hjshop4a.common.utils.NumberUtils;
-
-import java.util.List;
 
 /**
- * 检查数据工具类
+ * 数据检测工具列
  * true：通过；false：不通过
- * Created by lenovo on 2017/10/25.
+ * Created by lenovo on 2017/10/30.
  */
 
 public class CheckUtils {
     /**
-     * 检测列表是否有数据
+     * 检测字符串非空
      *
+     * @param data
      * @return
      */
-    public static boolean checkListNull(List data) {
-        return data != null && data.size() != 0;
+    public static boolean checkString(String data) {
+        return !TextUtils.isEmpty(data);
     }
 
     /**
@@ -30,26 +29,14 @@ public class CheckUtils {
      * @param data
      * @return
      */
-    public static boolean checkMoney(String data) {
+    public static boolean checkMoneyZero(String data) {
         if (!TextUtils.isEmpty(data)) {
             String after = data.replaceAll("[^0-9.]", "");
-            double d = NumberUtils.parseDouble(after);
+            double d = NumParseUtils.parseDouble(after);
             if (d != 0) {
                 return true;
             }
         }
         return false;
-    }
-
-    /**
-     * 检查数值
-     * 不位空且不为0才通过
-     *
-     * @param data
-     * @return
-     */
-    public static boolean checkNumber(String data) {
-        return !TextUtils.isEmpty(data)
-                && !"0".equals(data);
     }
 }

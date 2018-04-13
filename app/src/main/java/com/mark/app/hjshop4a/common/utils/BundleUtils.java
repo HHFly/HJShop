@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.common.utils;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -48,7 +49,18 @@ public class BundleUtils {
         }
         return def;
     }
-
+    public static int getInt(Activity activity, String key, int def) {
+        if (activity != null) {
+            Intent intent = activity.getIntent();
+            if (intent != null) {
+                Bundle bundle = intent.getExtras();
+                if (bundle != null) {
+                    return bundle.getInt(key, def);
+                }
+            }
+        }
+        return def;
+    }
     public static <T> T getSerializable(Intent intent, String key) {
         if (intent != null) {
             Bundle bundle = intent.getExtras();

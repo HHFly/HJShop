@@ -72,17 +72,21 @@
         android:layout_height="wrap_content">
 
         <ImageView
+
             android:layout_width="30px"
             android:layout_height="30px"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40px"
-            android:src="@drawable/select_radio" />
+            android:src="@drawable/select_radio"
+            android:id="@+id/login_tv_quick_login" />
 
         <TextView
-            android:id="@+id/login_tv_forget_pwd"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="90px"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="11dp"
+            android:layout_toEndOf="@+id/login_tv_quick_login"
             android:paddingBottom="29px"
             android:paddingTop="29px"
             android:text="@string/login_msg_auto"
@@ -90,7 +94,7 @@
             android:textSize="24px" />
 
         <TextView
-            android:id="@+id/login_tv_quick_login"
+            android:id="@+id/login_tv_forget_pwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

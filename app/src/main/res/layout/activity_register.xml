@@ -4,8 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/include_titlebar_right" />
-
+    <include layout="@layout/include_titlebar" />
     <LinearLayout style="@style/input_layout">
 
         <LinearLayout

@@ -17,7 +17,7 @@ import com.white.lib.utils.SPUtil;
 
 public class AppContext {
     final String KEY_SETTING = "setting";//设置
-    final String KEY_TOKEN = "token";//设置
+    final String KEY_TOKEN = "token";//
 
     Context mContext;//getApplicationContext
 

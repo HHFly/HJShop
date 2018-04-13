@@ -591,23 +591,9 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         DownloadDialogUtils.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
-        getLocationUtil().onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+
 
     }
 
-    /**
-     * 获取定位工具类
-     *
-     * @return
-     */
-    private LocationManagerUtil getLocationUtil() {
-        if (mLocationManagerUtil == null) {
-            mLocationManagerUtil = LocationManagerUtil.getInstance(SystemLocationUtil.getInstance(this));
-        }
-        return mLocationManagerUtil;
-    }
 
-    public void register(Activity activity, LocationCallback callback) {
-        getLocationUtil().register(activity, callback);
-    }
 }

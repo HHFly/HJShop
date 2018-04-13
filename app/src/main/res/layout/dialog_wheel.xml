@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80px">
+
+        <Button
+            android:id="@+id/wheel_btn_cancel"
+            android:layout_width="92px"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:text="@string/btn_msg_cancel"
+            android:textColor="#999999"
+            android:textSize="27px" />
+
+        <Button
+            android:id="@+id/wheel_btn_finish"
+            android:layout_width="92px"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@null"
+            android:text="@string/btn_msg_finish"
+            android:textColor="@color/color_main_blue"
+            android:textSize="27px" />
+
+    </RelativeLayout>
+
+    <View style="@style/BaseLine.Horizontal" />
+
+    <com.mark.app.hjshop4a.widget.PickerScrollView
+        android:id="@+id/co_psv"
+        android:layout_width="match_parent"
+        android:layout_height="390px" />
+
+</com.zhy.autolayout.AutoLinearLayout>

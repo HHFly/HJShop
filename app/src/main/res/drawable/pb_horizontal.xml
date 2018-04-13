@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--seekBar背景-->
+    <item android:id="@android:id/background">
+        <!--形状-->
+        <shape android:shape="rectangle">
+            <!--背景-->
+            <solid android:color="#ffffff" />
+        </shape>
+    </item>
+    <!--seekBar的进度条-->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <solid android:color="#158877" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

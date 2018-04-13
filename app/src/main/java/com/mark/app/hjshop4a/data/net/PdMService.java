@@ -47,16 +47,17 @@ import retrofit2.http.QueryMap;
 
 public interface PdMService {
     String baseUrl = BuildConfig.TEST_URL;
+
 //    String baseUrl = "http://192.168.0.6:8080";
 
     /******** Helper class that sets up a new services *******/
     class Creator {
 
-        public static PdMService newService() {
+        public static PdMService newService(String mBaseUrl) {
             Gson gson = new GsonBuilder().create();
             OkHttpClient client = getOkHttpClient();
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(PdMService.baseUrl)
+                    .baseUrl(mBaseUrl)
                     .client(client)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

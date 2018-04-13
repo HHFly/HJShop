@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="permissions">
+        <item>Reboot</item>
+        <item>Recovery</item>
+        <item>BootLoader</item>
+        <item>Reboot</item>
+        <item>Recovery</item>
+        <item>BootLoader</item>
+        <item>Reboot</item>
+        <item>Recovery</item>
+        <item>BootLoader</item>
+        <item>Reboot</item>
+        <item>Recovery</item>
+        <item>BootLoader</item>
+        <item>Reboot</item>
+        <item>Recovery</item>
+        <item>BootLoader</item>
+        <item>Reboot</item>
+        <item>Recovery</item>
+        <item>BootLoader</item>
+    </string-array>
+</resources>

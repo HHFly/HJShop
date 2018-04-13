@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.mark.app.hjshop4a.common.PDLifecycleHandle;
+import com.mark.app.hjshop4a.data.net.PdMService;
 import com.mark.app.hjshop4a.login.model.LoginRepo;
 
 /**
@@ -33,16 +34,16 @@ App extends Application {
     private Activity mCurActivity;
 
 
+
     @Override
     public void onCreate() {
         super.onCreate();
         s_app = this;
-        initData();
+        //初始化服务
+        s_service = new AppService(this);
     }
 
-    private void initData(){
 
-    }
 
     private void registerActivityListener() {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
