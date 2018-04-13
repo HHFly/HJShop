@@ -10,7 +10,8 @@ import android.os.Bundle;
  * Created by zhuwh on 2018/4/10.
  */
 
-public class App extends Application {
+public class
+App extends Application {
 
     private static App s_app;
 

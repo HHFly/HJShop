@@ -20,7 +20,7 @@
 
         </LinearLayout>
 
-        <mkle.app.haya.com.mkle.widget.PhoneEditText
+        <com.mark.app.hjshop4a.widget.PhoneEditText
             android:id="@+id/register_et_username"
             style="@style/login_input_et"
             android:layout_weight="1"

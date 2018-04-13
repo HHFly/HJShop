@@ -7,7 +7,9 @@
     android:orientation="vertical">
 
     <include layout="@layout/include_titlebar" />
-
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,58 +110,56 @@
                 android:id="@+id/imageView5" />
 
         </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="@color/background"
+
+            />
+        <RelativeLayout
+            android:id="@+id/user_layout_certification"
+            style="@style/user_item_layout"
+            android:background="@drawable/select_normal_bg">
+
+
+            <TextView
+                style="@style/user_item_tv"
+                android:text="@string/user_msg_实名认证" />
+
+
+
+            <ImageView
+                style="@style/BaseImg.Right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/imageView" />
+
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20px"
+            android:background="@color/background"
+            />
+        <RelativeLayout
+            android:id="@+id/user_layout_pwd_modify"
+            style="@style/user_item_layout"
+            android:background="@drawable/select_normal_bg">
+
+
+            <TextView
+                style="@style/user_item_tv"
+
+                android:text="@string/user_msg_pwd_modify" />
+
+            <ImageView
+                style="@style/BaseImg.Right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:id="@+id/imageView2" />
+
+        </RelativeLayout>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20px"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
 
-
-       />
-    <RelativeLayout
-        android:id="@+id/user_layout_certification"
-        style="@style/user_item_layout"
-        android:background="@drawable/select_normal_bg">
-
-
-        <TextView
-            style="@style/user_item_tv"
-            android:text="@string/user_msg_实名认证" />
-
-
-
-        <ImageView
-            style="@style/BaseImg.Right"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:id="@+id/imageView" />
-
-    </RelativeLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="20px"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        />
-    <RelativeLayout
-        android:id="@+id/user_layout_pwd_modify"
-        style="@style/user_item_layout"
-        android:background="@drawable/select_normal_bg">
-
-
-        <TextView
-            style="@style/user_item_tv"
-
-            android:text="@string/user_msg_pwd_modify" />
-
-        <ImageView
-            style="@style/BaseImg.Right"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:id="@+id/imageView2" />
-
-    </RelativeLayout>
-
+</ScrollView>
 </LinearLayout>

@@ -20,11 +20,14 @@ android {
 
 
         ]
+        buildConfigField("String", "PLATFORM", "\"ANDROID_USER\"")
+        buildConfigField("String", "WEB_USER_AGENT", "\"haya-hjshop-android-user\"")
+        buildConfigField("String", "WEB_INTERFACE", "\"androidInterface\"")
     }
 
     buildTypes {
         debug {
-
+            buildConfigField("String", "TEST_URL", "\"http://app.nzd.hungrypanda.co/\"")
             buildConfigField("boolean", "DEBUG_ENV", "true")
             buildConfigField("boolean", "IS_OPEN_LOG", "true")
             minifyEnabled false
@@ -32,6 +35,7 @@ android {
 
         }
         release {
+            buildConfigField("String", "TEST_URL", "\"http://app.nzd.hungrypanda.co/\"")
             buildConfigField("boolean", "DEBUG_ENV", "false")
             buildConfigField("boolean", "IS_OPEN_LOG", "false")
             minifyEnabled false
