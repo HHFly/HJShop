@@ -28,17 +28,19 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".login.activity.LoginActivity">
+        <activity android:name=".homepager.HomePagerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".login.activity.LoginActivity" android:screenOrientation="portrait"></activity>
        <activity android:name=".login.activity.ForgetActivity" android:screenOrientation="portrait"></activity>
 
         <activity android:name=".login.activity.RegisterActivity" android:screenOrientation="portrait"></activity>
 
         <activity android:name=".ui.web.WebActivity" android:screenOrientation="portrait"></activity>
+        <!--<activity android:name=".homepager.HomePagerActivity" android:screenOrientation="portrait"></activity>-->
     </application>
 </manifest>

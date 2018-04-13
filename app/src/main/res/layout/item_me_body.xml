@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/hm_layout_item_about"
+        style="@style/hm_item_vip_layout">
+        <ImageView
+            android:id="@+id/me_iv_payment"
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_marginLeft="53px"
+            android:layout_marginTop="37px"
+            android:src="@mipmap/ic_left_white"
+            android:background="@color/btn_small_blue"
+            app:layout_auto_basewidth="height" />
+
+        <ImageView
+            android:id="@+id/titlebar_iv_payment_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_payment"
+            android:layout_alignRight="@+id/me_iv_payment"
+            android:visibility="gone"
+            android:background="@drawable/shape_circle_red"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="101px"
+            android:layout_marginLeft="32px"
+            android:textSize="26px"
+            android:text="@string/me_待付款"
+            android:textColor="#555555"
+
+            />
+
+        <ImageView
+            android:id="@+id/me_iv_Deliver"
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_marginLeft="251px"
+            android:layout_marginTop="37px"
+            android:background="@color/btn_small_blue"
+            android:src="@mipmap/ic_left_white"
+            app:layout_auto_basewidth="height" />
+
+        <ImageView
+            android:id="@+id/titlebar_iv_Deliver_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_Deliver"
+            android:layout_alignRight="@+id/me_iv_Deliver"
+            android:background="@drawable/shape_circle_red"
+            android:visibility="gone"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="101px"
+            android:layout_marginLeft="235px"
+            android:textSize="26px"
+            android:text="@string/me_待发货"
+            android:textColor="#555555"
+            />
+
+        <ImageView
+            android:id="@+id/me_iv_Received"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_marginLeft="448px"
+            android:layout_alignTop="@+id/me_iv_Finsh"
+            android:background="@color/btn_small_blue"
+            android:src="@mipmap/ic_left_white"
+            app:layout_auto_basewidth="height" />
+        <ImageView
+            android:id="@+id/titlebar_iv_Received_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_Received"
+            android:layout_alignRight="@+id/me_iv_Received"
+            android:background="@drawable/shape_circle_red"
+            android:visibility="gone"
+            app:layout_auto_basewidth="height" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="101px"
+            android:layout_marginLeft="439px"
+            android:textSize="26px"
+            android:text="@string/me_已收货"
+            android:textColor="#555555"
+            android:id="@+id/textView" />
+        <ImageView
+            android:id="@+id/me_iv_Finsh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="658px"
+            android:layout_marginTop="37px"
+            android:background="@color/btn_small_blue"
+            android:src="@mipmap/ic_left_white"
+            app:layout_auto_basewidth="height" />
+        <ImageView
+            android:id="@+id/titlebar_iv_Finsh_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_Finsh"
+            android:layout_alignRight="@+id/me_iv_Finsh"
+            android:background="@drawable/shape_circle_red"
+            android:visibility="gone"
+            app:layout_auto_basewidth="height" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="101px"
+            android:layout_marginLeft="641px"
+            android:textSize="26px"
+            android:text="@string/me_已收货"
+            android:textColor="#555555"
+            />
+        <View
+            style="@style/BaseLine.Horizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+</LinearLayout>

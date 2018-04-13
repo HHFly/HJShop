@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/hm_layout_item_about"
+        style="@style/hm_item_layout">
+
+        <ImageView
+           style="@style/hm_item_iv" />
+
+        <TextView
+            style="@style/hm_item_tv"
+             />
+
+        <TextView
+            android:id="@+id/hm_tv_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="50px"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#999999"
+            android:textSize="24px" />
+
+        <ImageView style="@style/hm_img_right" />
+
+        <View
+            style="@style/BaseLine.Horizontal"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+</LinearLayout>

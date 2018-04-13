@@ -133,7 +133,40 @@
         <item name="android:textColor">#666666</item>
     </style>
 
+    <style name="hm_img_right" parent="BaseImg.Right">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+    </style>
+    <style name="hm_item_title_layout" parent="BaseItem.Layout">
+        <item name="android:layout_height">60px</item>
+        <item name="android:paddingLeft">20px</item>
+        <item name="android:paddingRight">20px</item>
+        <item name="android:background">@drawable/select_normal_bg</item>
+    </style>
 
+    <style name="hm_item_vip_layout" parent="BaseItem.Layout">
+        <item name="android:layout_height">168px</item>
+
+        <item name="android:background">@drawable/select_normal_bg</item>
+    </style>
+    <style name="hm_item_layout" parent="BaseItem.Layout">
+        <item name="android:layout_height">100px</item>
+        <item name="android:paddingLeft">20px</item>
+        <item name="android:paddingRight">20px</item>
+        <item name="android:background">@drawable/select_normal_bg</item>
+    </style>
+    <style name="hm_item_iv" parent="BaseItem.Iv">
+        <item name="android:layout_width">40px</item>
+        <item name="android:layout_height">40px</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="hm_item_tv" parent="BaseItem.Tv">
+        <item name="android:layout_marginLeft">60px</item>
+        <item name="android:textSize">26px</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
 
 
 </resources>
