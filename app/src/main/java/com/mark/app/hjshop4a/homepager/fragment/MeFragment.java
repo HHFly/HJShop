@@ -9,6 +9,7 @@ import com.google.gson.JsonElement;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.homepager.adapter.MeAdapter;
 import com.white.lib.utils.ToastUtil;
 
@@ -35,6 +36,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public void setListener() {
         setClickListener(R.id.titlebar_tv_return);
+
     }
 
     @Override
@@ -46,6 +48,7 @@ public class MeFragment extends BaseFragment {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.titlebar_tv_return:
+            ActivityJumpUtils.actLoginSwicth(getActivity());
 //                退出
                 break;
         }
@@ -79,6 +82,11 @@ public class MeFragment extends BaseFragment {
      * 设置监听
      */
     private void setRvListener() {
-
+        mAdapter.setOnItemClickListener(new MeAdapter.OnItemClickListener() {
+            @Override
+            public void onClickUserInfo() {
+                ActivityJumpUtils.actLogin(getActivity());
+            }
+        });
     }
 }
