@@ -10,6 +10,7 @@ import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.login.activity.LoginActivity;
 import com.mark.app.hjshop4a.login.activity.RegisterActivity;
+import com.mark.app.hjshop4a.ui.about.AboutActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
 
 
@@ -116,5 +117,15 @@ public class ActivityJumpUtils {
                 act.startActivity(intent);
             }
         }
+    }
+    /**
+     * 跳转到关于
+     *
+     * @param activity
+
+     */
+    public static void actAbout(Activity activity) {
+        Intent intent = new Intent(activity, AboutActivity.class);
+        activity.startActivity(intent);
     }
 }

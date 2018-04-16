@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mark.app.hjshop4a">
-
+    <uses-permission android:name="android.permission.VIBRATE" />  <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />        <!-- 使用照相机权限 -->
+    <uses-feature android:name="android.hardware.camera.autofocus" />   <!-- 自动聚焦权限 -->
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -40,5 +43,6 @@
         <activity android:name=".login.activity.RegisterActivity" android:screenOrientation="portrait"></activity>
 
         <activity android:name=".ui.web.WebActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.about.AboutActivity" android:screenOrientation="portrait"></activity>
     </application>
 </manifest>

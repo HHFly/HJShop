@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.google.gson.JsonElement;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
@@ -18,8 +17,8 @@ import com.mark.app.hjshop4a.common.utils.CountDownUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
+import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
-import com.mark.app.hjshop4a.ui.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
 import com.white.lib.utils.ToastUtil;
 

@@ -79,5 +79,7 @@ dependencies {
     compile 'com.white.app:mkcommon-refresh-layout:1.0.1'
     //banner
     compile 'cn.bingoogolapple:bga-banner:2.1.4@aar'
+//    二维码
+    compile 'cn.yipianfengye.android:zxing-library:2.2'
 
 }

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_titlebar" />
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="PxUsage">
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            tools:ignore="PxUsage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:text="开户人姓名"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/account_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_weight="1.0"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:hint="请输入开户人姓名"
+                android:maxLength="20"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:singleLine="true"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="Deprecated,RtlHardcoded,TextFields" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            style="@style/BaseLine.Horizontal"
+            />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            tools:ignore="PxUsage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:text="开户银行"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="HardcodedText" />
+
+            <com.mark.app.hjshop4a.widget.AutoSpaceBankEditText
+                android:id="@+id/card_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_weight="1.0"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:hint="请输入开户帐号"
+                android:inputType="number"
+                android:maxLength="30"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:singleLine="true"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="Deprecated,RtlHardcoded,TextFields" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            style="@style/BaseLine.Horizontal"
+            />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30px"
+            android:paddingRight="10px"
+            tools:ignore="PxUsage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:text="开户行"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="HardcodedText" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10px"
+                android:layout_weight="1.0"
+                android:spinnerMode="dropdown"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px" />
+
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            style="@style/BaseLine.Horizontal"
+            />
+
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            tools:ignore="PxUsage">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:text="帐户号码"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/item_et_account_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10px"
+                android:layout_weight="1.0"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:hint="请输入银行卡账号"
+                android:maxLength="20"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:singleLine="true"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="Deprecated,RtlHardcoded,TextFields" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+        <View
+            style="@style/BaseLine.Horizontal"
+            />
+
+
+
+
+
+    <Button
+        android:id="@+id/button"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:layout_marginLeft="30px"
+        android:layout_marginRight="30px"
+        android:layout_marginTop="70px"
+        android:text="保存"
+        android:textColor="@color/white"
+        android:textSize="30px"
+        tools:ignore="PxUsage" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>
