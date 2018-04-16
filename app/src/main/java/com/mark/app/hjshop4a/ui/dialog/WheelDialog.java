@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.login.activity;
+package com.mark.app.hjshop4a.ui.dialog;
 
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;

@@ -11,6 +11,7 @@ import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.data.net.PdMService;
 import com.mark.app.hjshop4a.login.model.LoginRepo;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
  * Created by zhuwh on 2018/4/10.
@@ -42,8 +43,10 @@ App extends Application {
         s_app = this;
         //初始化服务
         s_service = new AppService(this);
+
         //初始化Fresco
         FrescoUtils.initialize(this);
+
     }
 
 
