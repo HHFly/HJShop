@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.login.activity;
+package com.mark.app.hjshop4a.ui.login.activity;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -6,9 +6,7 @@ import android.view.View;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
-import com.mark.app.hjshop4a.login.adapter.LoginSwitchAdapter;
-
-import static java.security.AccessController.getContext;
+import com.mark.app.hjshop4a.ui.login.adapter.LoginSwitchAdapter;
 
 /**
  * Created by hui on 2018/4/15.
@@ -28,7 +26,7 @@ public class LoginSwitchActivity extends BaseActivity {
     }
 
     @Override
-    public void setClickListener(int id) {
+    public void setListener() {
         setClickListener(R.id.titlebar_iv_return);
     }
 

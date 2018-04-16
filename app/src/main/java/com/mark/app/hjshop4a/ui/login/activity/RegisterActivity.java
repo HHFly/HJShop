@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.login.activity;
+package com.mark.app.hjshop4a.ui.login.activity;
 
 import android.content.res.AssetManager;
 import android.os.Bundle;

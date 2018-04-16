@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.login.activity;
+package com.mark.app.hjshop4a.ui.login.activity;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -6,14 +6,12 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.gson.JsonElement;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
-import com.mark.app.hjshop4a.ui.factory.NormalDialogFactory;
 import com.white.lib.utils.ToastUtil;
 
 /**

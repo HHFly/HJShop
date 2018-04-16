@@ -9,8 +9,7 @@ import android.text.TextUtils;
 
 import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
-import com.mark.app.hjshop4a.data.net.PdMService;
-import com.mark.app.hjshop4a.login.model.LoginRepo;
+import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
@@ -46,7 +45,8 @@ App extends Application {
 
         //初始化Fresco
         FrescoUtils.initialize(this);
-
+//        初始化二维码
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
 

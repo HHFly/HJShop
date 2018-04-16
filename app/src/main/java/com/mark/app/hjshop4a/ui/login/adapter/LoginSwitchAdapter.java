@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.login.adapter;
+package com.mark.app.hjshop4a.ui.login.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -6,7 +6,6 @@ import android.view.ViewGroup;
 import com.mark.app.base.recylerview.IndexPath;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
-import com.mark.app.hjshop4a.base.adapter.BaseRvAdapter;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 
 /**

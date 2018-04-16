@@ -183,6 +183,10 @@
 
     <style name="BaseItem"></style>
 
+    <style name="BaseRecommend">
+        <item name="android:background">@drawable/layer_recommend_bg</item>
+    </style>
+
     <style name="BaseItem.Layout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>

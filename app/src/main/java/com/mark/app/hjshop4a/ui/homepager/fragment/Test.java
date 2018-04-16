@@ -1,4 +1,4 @@
-//package com.mark.app.hjshop4a.homepager.fragment;
+//package com.mark.app.hjshop4a.ui.homepager.fragment;
 //
 //
 //        import android.os.Bundle;

@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
-import com.mark.app.hjshop4a.login.model.LoginRepo;
+import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.white.lib.utils.SPUtil;
 
 /**

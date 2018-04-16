@@ -1,19 +1,14 @@
-package com.mark.app.hjshop4a.homepager.fragment;
+package com.mark.app.hjshop4a.ui.homepager.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.google.gson.JsonElement;
-
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
-import com.mark.app.hjshop4a.homepager.adapter.MeAdapter;
-import com.white.lib.utils.ToastUtil;
-
-import java.util.List;
+import com.mark.app.hjshop4a.ui.homepager.adapter.MeAdapter;
 
 /**
  * 首页-我的
@@ -63,10 +58,10 @@ public class MeFragment extends BaseFragment {
         if (mAdapter == null) {
             RecyclerView rv = getView(R.id.recyclerView);
             switch (role){
-                case RoleType.MEMBER: mAdapter = new MeAdapter(role);break;
-                case RoleType.BUSINESS: mAdapter = new MeAdapter(role);break;
-                case RoleType.AREAAGENT: mAdapter = new MeAdapter(role);break;
-                case RoleType.PROVINCIALAGENT: mAdapter = new MeAdapter(role);break;
+                case RoleType.MEMBER: mAdapter = new MeAdapter(role,getActivity());break;
+                case RoleType.BUSINESS: mAdapter = new MeAdapter(role,getActivity());break;
+                case RoleType.AREAAGENT: mAdapter = new MeAdapter(role,getActivity());break;
+                case RoleType.PROVINCIALAGENT: mAdapter = new MeAdapter(role,getActivity());break;
             }
 
             rv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -87,6 +82,8 @@ public class MeFragment extends BaseFragment {
             public void onClickUserInfo() {
                 ActivityJumpUtils.actLogin(getActivity());
             }
+
+
         });
     }
 }

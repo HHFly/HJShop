@@ -1,16 +1,15 @@
-package com.mark.app.hjshop4a.homepager.adapter;
+package com.mark.app.hjshop4a.ui.homepager.adapter;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import com.mark.app.base.recylerview.IndexPath;
-import com.mark.app.base.recylerview.MkMultipleSourcesRvAdapter;
-import com.mark.app.base.recylerview.MkViewHolder;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 
 /**
  * Created by pc on 2018/4/13.
@@ -18,6 +17,7 @@ import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 
 public class MeAdapter extends MultipleSourcesRvAdapter {
     private int mRole ;
+    Activity activity;
     @Override
     public int getSectionsCount() {
         switch (mRole){
@@ -29,7 +29,8 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
         return 1;
     }
 
-    public MeAdapter(int role) {
+    public MeAdapter(int role,Activity act) {
+        activity =act;
      mRole =role;
     }
 
@@ -127,17 +128,53 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                         break;
                     case 4:
 //                    功能内容
+//                        holder.text(R.id.me_iv_lab1, R.string.me_银行卡);
+//                        holder.text(R.id.me_iv_lab2, R.string.me_我的推荐);
+//                        holder.text(R.id.me_iv_lab3, R.string.me_申请代理);
+//                        holder.text(R.id.me_iv_lab4, R.string.me_申请商户);
+                        holder.text(R.id.me_tv_lab1, R.string.me_金豆消费);
+                        holder.text(R.id.me_tv_lab2, R.string.me_在线充值);
+                        holder.text(R.id.me_tv_lab3, R.string.me_资产明细);
+                        holder.text(R.id.me_tv_lab4, R.string.me_会员账单);
+
                         break;
                     case 5:
 //                        功能内容
+//                        holder.text(R.id.me_iv_lab1, R.string.me_银行卡);
+//                        holder.text(R.id.me_iv_lab2, R.string.me_我的推荐);
+//                        holder.text(R.id.me_iv_lab3, R.string.me_申请代理);
+//                        holder.text(R.id.me_iv_lab4, R.string.me_申请商户);
+                        holder.text(R.id.me_tv_lab1, R.string.me_银行卡);
+                        holder.text(R.id.me_tv_lab2, R.string.me_我的推荐);
+                        holder.text(R.id.me_tv_lab3,R.string.me_申请代理);
+                        holder.text(R.id.me_tv_lab4,  R.string.me_申请商户);
+//                        银行卡
+                        holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                            }
+                        });
+                        //   我的推荐
+                        holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityJumpUtils.actRecommend(activity);
+                            }
+                        });
+
                         break;
                     case 6:
-//                       条目
+//                       条目  关于惠家
                         holder.text(R.id.hm_tv_item_name, R.string.me_关于惠家);
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityJumpUtils.actAbout(activity);
+                            }
+                        });
                         break;
                     case 7:
 //                        底部多余
-
                         break;
 
                 }

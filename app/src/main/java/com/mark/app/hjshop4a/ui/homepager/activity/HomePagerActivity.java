@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.homepager.activity;
+package com.mark.app.hjshop4a.ui.homepager.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,19 +9,17 @@ import android.view.View;
 
 
 import com.mark.app.hjshop4a.R;
-import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
-import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
-import com.mark.app.hjshop4a.homepager.fragment.ClassifyFragment;
-import com.mark.app.hjshop4a.homepager.fragment.HomeFragment;
-import com.mark.app.hjshop4a.homepager.fragment.MeFragment;
-import com.mark.app.hjshop4a.homepager.fragment.ShopCarFragment;
+import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
+import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
+import com.mark.app.hjshop4a.ui.homepager.fragment.MeFragment;
+import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
 import com.white.lib.utils.SPUtil;
 import com.white.lib.utils.ToastUtil;
 

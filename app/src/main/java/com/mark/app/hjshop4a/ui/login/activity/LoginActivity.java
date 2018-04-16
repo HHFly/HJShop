@@ -1,27 +1,18 @@
-package com.mark.app.hjshop4a.login.activity;
+package com.mark.app.hjshop4a.ui.login.activity;
 
-import android.content.Intent;
 import android.view.View;
 import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
-import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
-import com.mark.app.hjshop4a.common.utils.PdUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.valid.ValidUtils;
-import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
-import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.login.androidenum.LoginSource;
-import com.mark.app.hjshop4a.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.login.androidenum.LoginSource;
 import com.mark.app.hjshop4a.ui.factory.NormalDialogFactory;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/4/12.

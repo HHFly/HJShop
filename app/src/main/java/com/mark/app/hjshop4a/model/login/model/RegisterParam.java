@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.login.model;
+package com.mark.app.hjshop4a.model.login.model;
 
 
 import com.mark.app.hjshop4a.base.model.ParamBaseModel;

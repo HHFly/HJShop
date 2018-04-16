@@ -11,11 +11,9 @@ import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
-import com.mark.app.hjshop4a.login.model.LoginRepo;
+import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
@@ -29,16 +27,6 @@ import retrofit2.Retrofit;
 
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
-import retrofit2.http.Header;
-import retrofit2.http.HeaderMap;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 
 /**
  * 网络请求服务

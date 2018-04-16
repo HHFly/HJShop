@@ -7,7 +7,8 @@
 
     <LinearLayout
         android:id="@+id/hm_layout_item_about"
-        style="@style/hm_item_vip_layout"
+        android:layout_height="168px"
+        android:layout_width="match_parent"
         android:gravity="center">
         <RelativeLayout
             style="@style/hm_item_layout_lab"
@@ -35,6 +36,7 @@
                 app:layout_auto_basewidth="height" />
 
             <TextView
+                android:id="@+id/me_tv_lab1"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -73,6 +75,7 @@
                 app:layout_auto_basewidth="height" />
 
             <TextView
+                android:id="@+id/me_tv_lab2"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_marginTop="24px"
@@ -107,6 +110,7 @@
                 android:visibility="gone"
                 app:layout_auto_basewidth="height" />
             <TextView
+                android:id="@+id/me_tv_lab3"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -140,6 +144,7 @@
                 android:visibility="gone"
                 app:layout_auto_basewidth="height" />
             <TextView
+                android:id="@+id/me_tv_lab4"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:layout_centerHorizontal="true"

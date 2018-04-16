@@ -5,13 +5,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mark.app.base.recylerview.IndexPath;
-import com.mark.app.base.recylerview.MkViewHolder;
 
 /**
  * Created by hui on 2018/4/14.
  */
 
-public abstract class MultipleSourcesRvAdapter extends BaseRvAdapter {
+public abstract class MultipleSourcesRvAdapter extends BaseMkRvAdapter {
     int curSelect = 0;
 
     public MultipleSourcesRvAdapter() {

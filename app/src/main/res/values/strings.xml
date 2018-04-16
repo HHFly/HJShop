@@ -202,5 +202,13 @@
     <string name="login_省代理账号">省代理账号</string>
     <string name="login_代理账号">代理账号</string>
     <string name="login_商家账号">商家账号</string>
+    <string name="me_金豆消费">金豆消费</string>
+    <string name="me_在线充值">在线充值</string>
+    <string name="me_资产明细">资产明细</string>
+    <string name="me_会员账单">会员账单</string>
+    <string name="me_银行卡">银行卡</string>
+    <string name="me_我的推荐">我的推荐</string>
+    <string name="me_申请代理">申请代理</string>
+    <string name="me_申请商户">申请商户</string>
 
 </resources>
