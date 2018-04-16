@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
     android:keepScreenOn="true"
     android:orientation="vertical">
 
@@ -72,17 +72,17 @@
                 android:textSize="@dimen/textsize_26px"
                 tools:ignore="HardcodedText" />
 
-            <com.mark.app.hjshop4a.widget.AutoSpaceBankEditText
-                android:id="@+id/card_number"
+            <EditText
+                android:id="@+id/item_et_account_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10px"
                 android:layout_weight="1.0"
                 android:background="@null"
-                android:gravity="right|center_vertical"
-                android:hint="请输入开户帐号"
                 android:inputType="number"
-                android:maxLength="30"
+                android:gravity="right|center_vertical"
+                android:hint="请输入开户银行"
+                android:maxLength="20"
                 android:paddingBottom="30px"
                 android:paddingTop="30px"
                 android:singleLine="true"
@@ -99,7 +99,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="30px"
-            android:paddingRight="10px"
+            android:paddingRight="30px"
             tools:ignore="PxUsage">
 
             <TextView
@@ -107,21 +107,37 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="30px"
                 android:paddingTop="30px"
-                android:text="开户行"
+                android:text="开户银行名称"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textsize_26px"
                 tools:ignore="HardcodedText" />
-
-            <Spinner
-                android:id="@+id/spinner"
+            <EditText
+                android:id="@+id/item_et_bank_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10px"
                 android:layout_weight="1.0"
-                android:spinnerMode="dropdown"
+                android:background="@null"
+                android:inputType="number"
+                android:gravity="right|center_vertical"
+                android:hint="请输入开户银行名称"
+                android:maxLength="20"
+                android:paddingBottom="30px"
+                android:paddingTop="30px"
+                android:singleLine="true"
                 android:textColor="@color/colorText"
-                android:textSize="@dimen/textsize_26px" />
+                android:textSize="@dimen/textsize_26px"
+                tools:ignore="Deprecated,RtlHardcoded,TextFields" />
+            <!--<Spinner-->
+                <!--android:id="@+id/spinner"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginLeft="10px"-->
+                <!--android:layout_weight="1.0"-->
+                <!--android:spinnerMode="dropdown"-->
+                <!--android:textColor="@color/colorText"-->
+                <!--android:textSize="@dimen/textsize_26px" />-->
 
         </com.zhy.autolayout.AutoLinearLayout>
 
@@ -141,27 +157,28 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="30px"
                 android:paddingTop="30px"
-                android:text="帐户号码"
+                android:text="帐户"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textsize_26px"
                 tools:ignore="HardcodedText" />
-
-            <EditText
-                android:id="@+id/item_et_account_number"
+            <com.mark.app.hjshop4a.widget.AutoSpaceBankEditText
+                android:id="@+id/card_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10px"
                 android:layout_weight="1.0"
                 android:background="@null"
                 android:gravity="right|center_vertical"
-                android:hint="请输入银行卡账号"
-                android:maxLength="20"
+                android:hint="请输入开户帐号"
+                android:inputType="number"
+                android:maxLength="30"
                 android:paddingBottom="30px"
                 android:paddingTop="30px"
                 android:singleLine="true"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textsize_26px"
                 tools:ignore="Deprecated,RtlHardcoded,TextFields" />
+
         </com.zhy.autolayout.AutoLinearLayout>
 
         <View

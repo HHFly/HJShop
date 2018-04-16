@@ -17,30 +17,6 @@
         android:orientation="vertical">
 
         <RelativeLayout
-            android:id="@+id/user_layout_photo"
-            style="@style/user_item_layout">
-
-            <TextView
-                style="@style/user_item_tv"
-                android:text="@string/user_msg_logo" />
-
-            <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/user_sdv_user_logo"
-                style="@style/BaseSDV.Circle"
-                android:layout_width="80px"
-                android:layout_height="80px"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                app:layout_auto_basewidth="height"
-                app:placeholderImage="@mipmap/ic_close_white" />
-
-        </RelativeLayout>
-
-        <View
-            style="@style/BaseLine.Horizontal"
-            android:layout_marginLeft="30px" />
-
-        <RelativeLayout
             android:id="@+id/user_layout_user_name"
             style="@style/user_item_layout"
             android:background="@drawable/select_normal_bg">
@@ -110,52 +86,26 @@
                 android:id="@+id/imageView5" />
 
         </RelativeLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="20px"
-            android:background="@color/background"
 
-            />
+        <View
+            style="@style/BaseLine.Horizontal"
+           android:layout_height="20px"/>
+
+
         <RelativeLayout
-            android:id="@+id/user_layout_certification"
+            android:id="@+id/user_layout_user_invitation"
             style="@style/user_item_layout"
-            android:background="@drawable/select_normal_bg">
-
+            android:background="@drawable/select_normal_bg"
+           >
 
             <TextView
                 style="@style/user_item_tv"
-                android:text="@string/user_msg_实名认证" />
-
-
-
-            <ImageView
-                style="@style/BaseImg.Right"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/imageView" />
-
-        </RelativeLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="20px"
-            android:background="@color/background"
-            />
-        <RelativeLayout
-            android:id="@+id/user_layout_pwd_modify"
-            style="@style/user_item_layout"
-            android:background="@drawable/select_normal_bg">
-
+                android:text="@string/certification_推荐人" />
 
             <TextView
-                style="@style/user_item_tv"
-
-                android:text="@string/user_msg_pwd_modify" />
-
-            <ImageView
-                style="@style/BaseImg.Right"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:id="@+id/imageView2" />
+                android:id="@+id/certification_tv_user_invitation"
+                style="@style/user_item_tv_content"
+                />
 
         </RelativeLayout>
     </LinearLayout>

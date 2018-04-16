@@ -8,8 +8,10 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.mark.app.hjshop4a.R;
@@ -37,7 +39,28 @@ public abstract class BaseDialogFragment extends DialogFragment implements View.
         dialog.setCanceledOnTouchOutside(isCanceledOnTouchOutside);
         return dialog;
     }
+    public void onStart() {
+        super.onStart();
+        if(this.getStartInBottom()) {
+            this.startInBottom();
+        }
 
+    }
+    protected boolean getStartInBottom() {
+        return false;
+    }
+
+    protected void startInBottom() {
+        Window win = this.getDialog().getWindow();
+        win.setBackgroundDrawable(new ColorDrawable(16777215));
+        DisplayMetrics dm = new DisplayMetrics();
+        this.getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
+        WindowManager.LayoutParams params = win.getAttributes();
+        params.gravity = 80;
+        params.width = -1;
+        params.height = -2;
+        win.setAttributes(params);
+    }
     /**
      * 设置点击外面对话框会不会消失
      *
@@ -164,6 +187,22 @@ public abstract class BaseDialogFragment extends DialogFragment implements View.
             if (view != null && view instanceof TextView) {
                 TextView tv = (TextView) view;
                 tv.setText(data);
+            }
+        }
+    }
+    /**
+     * 设置文案
+     *
+     * @param rootView
+     * @param id
+     * @param data
+     */
+    public void setTvHint(View rootView, @IdRes int id, @StringRes int data) {
+        if (rootView != null) {
+            View view = getView(rootView, id);
+            if (view != null && view instanceof TextView) {
+                TextView tv = (TextView) view;
+                tv.setHint(data);
             }
         }
     }

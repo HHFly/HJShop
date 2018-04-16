@@ -7,12 +7,17 @@ import android.os.Bundle;
 import com.mark.app.hjshop4a.common.androidenum.login.LoginBackType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
+import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.ui.login.activity.RegisterActivity;
 import com.mark.app.hjshop4a.ui.about.AboutActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
+import com.mark.app.hjshop4a.ui.userinfo.BasicInfoActivity;
+import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
+import com.mark.app.hjshop4a.ui.userinfo.ModifyPWActivity;
+import com.mark.app.hjshop4a.ui.userinfo.UserInfoActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
 
 
@@ -139,6 +144,7 @@ public class ActivityJumpUtils {
     public static void actAbout(Activity activity) {
         Intent intent = new Intent(activity, AboutActivity.class);
         activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
     }
     /**
      * 跳转到我的推荐
@@ -149,5 +155,61 @@ public class ActivityJumpUtils {
     public static void actRecommend(Activity activity) {
         Intent intent = new Intent(activity, RecommendActivity.class);
         activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到个人信息
+     *
+     * @param activity
+
+     */
+    public static void actUserInfo(Activity activity) {
+        Intent intent = new Intent(activity, UserInfoActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到基本信息
+     *
+     * @param activity
+
+     */
+    public static void actBasicInfo(Activity activity) {
+        Intent intent = new Intent(activity, BasicInfoActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到认证资料
+     *
+     * @param activity
+
+     */
+    public static void actCertificationInfo(Activity activity) {
+        Intent intent = new Intent(activity, CertificationInfoActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到设置密码
+     *
+     * @param activity
+
+     */
+    public static void actModifyPW(Activity activity) {
+        Intent intent = new Intent(activity, ModifyPWActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到设置密码
+     *
+     * @param activity
+
+     */
+    public static void actBankCard(Activity activity) {
+        Intent intent = new Intent(activity, BankCardActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
     }
 }

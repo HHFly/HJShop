@@ -210,5 +210,9 @@
     <string name="me_我的推荐">我的推荐</string>
     <string name="me_申请代理">申请代理</string>
     <string name="me_申请商户">申请商户</string>
+    <string name="info_请输入姓名">请输入姓名</string>
+    <string name="basicinfo_请输入居住地址">请输入居住地址</string>
+    <string name="certificationinfo_请输入用户名">请输入用户名</string>
+    <string name="certificationinfo_请输入推荐人号码">请输入推荐人号码</string>
 
 </resources>

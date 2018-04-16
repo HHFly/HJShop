@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="129px"
     android:background="@drawable/select_normal_bg"
+    android:id="@+id/account"
     android:orientation="vertical">
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/item_sdv_logo"
@@ -11,7 +12,6 @@
         android:layout_height="85px"
         android:layout_centerVertical="true"
         android:layout_marginLeft="43px"
-
         app:layout_auto_basewidth="height"
         app:roundAsCircle="true"
         app:placeholderImage="@mipmap/ic_load1"/>

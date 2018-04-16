@@ -7,6 +7,14 @@
     android:orientation="vertical">
 
     <include layout="@layout/include_titlebar" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/certification_layout_user_name"
         style="@style/user_item_layout"
@@ -19,8 +27,7 @@
         <TextView
             android:id="@+id/certification_tv_user_name"
             style="@style/user_item_tv_content"
-            android:layout_marginRight="0px"
-            android:layout_toLeftOf="@+id/imageView4" />
+            android:layout_alignParentEnd="true" />
 
         <ImageView
             style="@style/BaseImg.Right"
@@ -43,8 +50,7 @@
         <TextView
             android:id="@+id/certification_tv_user_city"
             style="@style/user_item_tv_content"
-            android:layout_marginRight="0px"
-            android:layout_toLeftOf="@+id/imageView" />
+            android:layout_alignParentEnd="true"/>
         <ImageView
             style="@style/BaseImg.Right"
             android:layout_alignParentRight="true"
@@ -66,8 +72,7 @@
         <TextView
             android:id="@+id/certification_tv_user_address"
             style="@style/user_item_tv_content"
-            android:layout_marginRight="0px"
-            android:layout_toLeftOf="@+id/imageView1" />
+            android:layout_alignParentEnd="true" />
         <ImageView
             style="@style/BaseImg.Right"
             android:layout_alignParentRight="true"
@@ -93,24 +98,12 @@
         <TextView
             android:id="@+id/certification_tv_user_ispass"
             style="@style/user_item_tv_content"
-             />
+            android:layout_alignParentEnd="true" />
 
     </RelativeLayout>
     <View
         style="@style/BaseLine.Horizontal"
         android:layout_marginLeft="30px" />
-    <RelativeLayout
-        style="@style/user_item_layout"
-        android:background="@drawable/select_normal_bg">
-
-        <TextView
-            style="@style/user_item_tv"
-            android:text="@string/certification_推荐人" />
-
-        <TextView
-            android:id="@+id/certification_tv_user_invitation"
-            style="@style/user_item_tv_content"
-            />
-
-    </RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>

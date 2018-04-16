@@ -31,7 +31,7 @@
             android:layout_height="15px"
             android:layout_alignTop="@+id/me_iv_lab1"
             android:layout_alignRight="@+id/me_iv_lab1"
-            android:visibility="visible"
+            android:visibility="gone"
             android:background="@drawable/shape_circle_red"
             app:layout_auto_basewidth="height" />
 

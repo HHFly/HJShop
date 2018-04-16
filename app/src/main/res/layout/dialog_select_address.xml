@@ -1,0 +1,75 @@
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9E9E9"
+    android:orientation="vertical"
+    android:paddingTop="12px" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5px" >
+    <Button
+        android:id="@+id/btn_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="确定"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@null"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/btn_small_blue" />
+
+     <Button
+        android:id="@+id/btn_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+         android:background="@null"
+        android:text="取消"
+        android:textColor="@color/btn_small_blue"  />
+    </RelativeLayout>
+
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView
+            android:id="@+id/id_province"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+        </com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView>
+
+        <com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView
+            android:id="@+id/id_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView>
+
+        <com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView
+            android:id="@+id/id_district"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView>
+    </com.zhy.autolayout.AutoLinearLayout>
+
+    <LinearLayout
+        android:id="@+id/view_none"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+    </LinearLayout>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

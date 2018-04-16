@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/ground_white"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="@drawable/shape_good_dialog_blue"
+        android:gravity="center"
+        android:text=""
+
+        android:textColor="@color/white"
+        android:textSize="@dimen/textsize_28px"
+        android:visibility="gone" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:background="#f6f6f6"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_value"
+                android:paddingLeft="@dimen/textsize_10px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint=""
+                android:background="@null"
+                android:maxLength="20"
+                android:singleLine="true"
+                android:textSize="@dimen/textsize_28px" />
+
+        </LinearLayout>
+
+
+
+    <View style="@style/BaseLine.Horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/normal_btn_left"
+            style="@style/BaseBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="0px"
+            android:text="@string/btn_msg_cancel"
+            android:textColor="#999999"
+            android:textSize="@dimen/textsize_30px" />
+
+        <View style="@style/BaseLine.Vertical" />
+
+        <Button
+            android:id="@+id/normal_btn_right"
+            style="@style/BaseBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:padding="0px"
+            android:text="@string/btn_msg_ok"
+            android:textColor="@color/color_main_blue"
+            android:textSize="@dimen/textsize_30px" />
+
+    </LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

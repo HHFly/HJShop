@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import com.mark.app.base.recylerview.IndexPath;
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
@@ -101,12 +102,14 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
             case RoleType.MEMBER://会员
                 switch (indexPath.getSection()){
                     case 0:   //顶部数据
+
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                if (onItemClickListener != null) {
-                                    onItemClickListener.onClickUserInfo();
-                                }
+//                            if(App.hasToken()){
+//                               ActivityJumpUtils.actLogin(activity);
+//                            }
+                            ActivityJumpUtils.actUserInfo(activity);
                             }
                         });
 //                        用户名
@@ -152,6 +155,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                         holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                ActivityJumpUtils.actBankCard(activity);
                             }
                         });
                         //   我的推荐
