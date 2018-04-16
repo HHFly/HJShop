@@ -149,6 +149,10 @@
 
         <item name="android:background">@drawable/select_normal_bg</item>
     </style>
+    <style name="hm_item_layout_lab" parent="BaseItem.Layout">
+        <item name="android:layout_height">187px</item>
+        <item name="android:layout_width">184px</item>
+    </style>
     <style name="hm_item_layout" parent="BaseItem.Layout">
         <item name="android:layout_height">100px</item>
         <item name="android:paddingLeft">20px</item>

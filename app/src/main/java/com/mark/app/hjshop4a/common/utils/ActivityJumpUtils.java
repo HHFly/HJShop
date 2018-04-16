@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.login.activity.LoginActivity;
+import com.mark.app.hjshop4a.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.login.activity.RegisterActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
 
@@ -59,6 +60,16 @@ public class ActivityJumpUtils {
     public static void actForgetPwd(Activity activity, String phone) {
         Intent intent = new Intent(activity, ForgetActivity.class);
         BundleUtils.getInstance().putString(BundleKey.PHONE, phone).addIntent(intent);
+        activity.startActivity(intent);
+    }
+    /**
+     * 跳转到账号管理
+     *
+     * @param activity
+     */
+    public static void actLoginSwicth(Activity activity) {
+        Intent intent = new Intent(activity, LoginSwitchActivity.class);
+
         activity.startActivity(intent);
     }
     /**

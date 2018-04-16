@@ -8,12 +8,12 @@
 
         <ImageView
             android:id="@+id/hm_iv_logo"
-           style="@style/hm_item_iv" />
+            style="@style/hm_item_iv" />
 
         <TextView
             style="@style/hm_item_tv"
             android:id="@+id/hm_tv_item_name"
-             />
+            />
 
         <TextView
             android:id="@+id/hm_tv_other"
@@ -30,9 +30,10 @@
         <ImageView style="@style/hm_img_right"
             android:id="@+id/search_go_btn"/>
 
-        <View
-            style="@style/BaseLine.Horizontal"
-            android:layout_alignParentBottom="true" />
-    </RelativeLayout>
 
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_height="19px"
+        android:layout_alignParentBottom="true" />
 </LinearLayout>

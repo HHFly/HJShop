@@ -28,7 +28,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".homepager.HomePagerActivity">
+        <activity android:name=".homepager.activity.HomePagerActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,5 +42,6 @@
 
         <activity android:name=".ui.web.WebActivity" android:screenOrientation="portrait"></activity>
         <!--<activity android:name=".homepager.HomePagerActivity" android:screenOrientation="portrait"></activity>-->
+        <activity android:name=".login.activity.LoginSwitchActivity" android:screenOrientation="portrait"></activity>
     </application>
 </manifest>

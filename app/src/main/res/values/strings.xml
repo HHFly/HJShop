@@ -193,5 +193,14 @@
     <string name="me_待付款">待付款</string>
     <string name="me_待发货">待发货</string>
     <string name="me_已收货">已收货</string>
+    <string name="me_我的订单">我的订单</string>
+    <string name="me_查看全部">查看全部</string>
+    <string name="me_会员中心">会员中心</string>
+    <string name="me_关于惠家">关于惠家</string>
+    <string name="me_退出账号">退出账号</string>
+    <string name="login_账号管理">账号管理</string>
+    <string name="login_省代理账号">省代理账号</string>
+    <string name="login_代理账号">代理账号</string>
+    <string name="login_商家账号">商家账号</string>
 
 </resources>

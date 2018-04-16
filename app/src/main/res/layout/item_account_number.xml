@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="129px"
+    android:background="@drawable/select_normal_bg"
+    android:orientation="vertical">
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/item_sdv_logo"
+        style="@style/BaseSDV"
+        android:layout_width="85px"
+        android:layout_height="85px"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="43px"
+
+        app:layout_auto_basewidth="height"
+        app:roundAsCircle="true"
+        app:placeholderImage="@mipmap/ic_load1"/>
+
+    <TextView
+        android:id="@+id/item_account_number_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/item_sdv_logo"
+        android:layout_marginStart="21px"
+        android:layout_toEndOf="@+id/item_sdv_logo"
+
+        android:textColor="#333333"
+        android:textSize="26px" />
+
+    <TextView
+        android:id="@+id/item_account_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="21px"
+        android:layout_marginTop="17px"
+        android:layout_toRightOf="@+id/item_sdv_logo"
+        android:layout_below="@+id/item_account_number_type"
+        android:textColor="#333333"
+        android:textSize="26px" />
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_height="21px"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

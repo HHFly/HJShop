@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.homepager;
+package com.mark.app.hjshop4a.homepager.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,9 +31,9 @@ import com.white.lib.utils.ToastUtil;
 public class HomePagerActivity extends BaseActivity {
 
     //View
-    private View tab1;      //外卖
-    private View tab2;      //发现
-    private View tab3;      //订单
+    private View tab1;      //首页
+    private View tab2;      //分类
+    private View tab3;      //购物车
     private View tab4;      //我的
 
    private HomeFragment homeFragment;
