@@ -180,6 +180,27 @@
     <string name="login_注册需要同意协议">注册需要同意协议</string>
     <string name="login_同意协议内容">同意协议内容</string>
     <string name="login_请选择区域">请选择区域</string>
+    <!--homepager-->
     <string name="home_惠家">惠家</string>
+    <string name="home_分类">分类</string>
+    <string name="home_购物车">购物车</string>
+    <string name="home_我的">我的</string>
+    <string name="home_再按一次退出">再按一次退出</string>
+    <!--ME-->
+    <string name="me_余额">余额</string>
+    <string name="me_金豆">金豆</string>
+    <string name="me_积分">积分</string>
+    <string name="me_待付款">待付款</string>
+    <string name="me_待发货">待发货</string>
+    <string name="me_已收货">已收货</string>
+    <string name="me_我的订单">我的订单</string>
+    <string name="me_查看全部">查看全部</string>
+    <string name="me_会员中心">会员中心</string>
+    <string name="me_关于惠家">关于惠家</string>
+    <string name="me_退出账号">退出账号</string>
+    <string name="login_账号管理">账号管理</string>
+    <string name="login_省代理账号">省代理账号</string>
+    <string name="login_代理账号">代理账号</string>
+    <string name="login_商家账号">商家账号</string>
 
 </resources>

@@ -82,6 +82,7 @@ public class LoginActivity extends BaseActivity {
                 break;
             }
             case R.id.titlebar_iv_return:{
+                finish();
                 break;
             }
             case R.id.login_iv_eye: {

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/hm_layout_item_about"
+        style="@style/hm_item_vip_layout"
+        android:gravity="center">
+        <RelativeLayout
+            style="@style/hm_item_layout_lab"
+            android:id="@+id/hm_lab1"
+            >
+        <ImageView
+            android:id="@+id/me_iv_lab1"
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_marginLeft="53px"
+             android:layout_centerHorizontal="true"
+            android:layout_marginTop="37px"
+            android:src="@mipmap/ic_left_white"
+            android:background="@color/btn_small_blue"
+            app:layout_auto_basewidth="height" />
+
+        <ImageView
+            android:id="@+id/titlebar_iv_payment_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_lab1"
+            android:layout_alignRight="@+id/me_iv_lab1"
+            android:visibility="visible"
+            android:background="@drawable/shape_circle_red"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textSize="26px"
+            android:text="@string/me_待付款"
+            android:textColor="#555555"
+            android:layout_below="@id/me_iv_lab1"
+            android:layout_marginTop="24px"
+
+            />
+        </RelativeLayout>
+
+        <RelativeLayout
+        style="@style/hm_item_layout_lab"
+        android:id="@+id/hm_lab2"
+
+        >
+        <ImageView
+            android:id="@+id/me_iv_lab2"
+            android:layout_width="40px"
+            android:layout_height="40px"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37px"
+            android:background="@color/btn_small_blue"
+            android:src="@mipmap/ic_left_white"
+            app:layout_auto_basewidth="height" />
+
+        <ImageView
+            android:id="@+id/titlebar_iv_Deliver_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_lab2"
+            android:layout_alignRight="@+id/me_iv_lab2"
+            android:background="@drawable/shape_circle_red"
+            android:visibility="gone"
+            app:layout_auto_basewidth="height" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+           android:layout_marginTop="24px"
+            android:layout_below="@+id/me_iv_lab2"
+            android:layout_centerHorizontal="true"
+            android:textSize="26px"
+            android:text="@string/me_待发货"
+            android:textColor="#555555"
+            />
+    </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/hm_item_layout_lab"
+            android:id="@+id/hm_lab3"
+            >
+        <ImageView
+            android:id="@+id/me_iv_lab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+            android:layout_marginTop="37px"
+            android:background="@color/btn_small_blue"
+            android:src="@mipmap/ic_left_white"
+            app:layout_auto_basewidth="height" />
+        <ImageView
+            android:id="@+id/titlebar_iv_Received_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_lab3"
+            android:layout_alignRight="@+id/me_iv_lab3"
+            android:background="@drawable/shape_circle_red"
+            android:visibility="gone"
+            app:layout_auto_basewidth="height" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/me_iv_lab3"
+            android:layout_marginTop="24px"
+            android:textSize="26px"
+            android:text="@string/me_已收货"
+            android:textColor="#555555"
+             />
+        </RelativeLayout>
+        <RelativeLayout
+            style="@style/hm_item_layout_lab"
+            android:id="@+id/hm_lab4"
+            >
+        <ImageView
+            android:id="@+id/me_iv_lab4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="37px"
+            android:background="@color/btn_small_blue"
+            android:src="@mipmap/ic_left_white"
+            app:layout_auto_basewidth="height" />
+        <ImageView
+            android:id="@+id/titlebar_iv_Finsh_count"
+            android:layout_width="15px"
+            android:layout_height="15px"
+            android:layout_alignTop="@+id/me_iv_lab4"
+            android:layout_alignRight="@+id/me_iv_lab4"
+            android:background="@drawable/shape_circle_red"
+            android:visibility="gone"
+            app:layout_auto_basewidth="height" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24px"
+            android:layout_below="@+id/me_iv_lab4"
+            android:textSize="26px"
+            android:text="@string/me_已收货"
+            android:textColor="#555555"
+            />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_alignParentBottom="true" />
+</LinearLayout>

@@ -37,4 +37,6 @@
 
     <!-- 输入框左侧标题同一最小宽度 -->
     <dimen name="edit_title_minWidth">160px</dimen>
+    <!--我的-->
+    <dimen name="me_image_height">88px</dimen>
 </resources>
