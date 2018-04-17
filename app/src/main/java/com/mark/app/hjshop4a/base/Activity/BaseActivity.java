@@ -266,7 +266,17 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
             view.setSelected(isSelected);
         }
     }
-
+    /**
+     * 设置View的setSelected
+     *
+     * @param view
+     * @param isSelect
+     */
+    public void setViewSelected(View view, boolean isSelect) {
+        if (view != null) {
+            view.setSelected(isSelect);
+        }
+    }
     /**
      * 获取View
      *

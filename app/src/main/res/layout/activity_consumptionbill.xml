@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+  <include layout="@layout/include_titlebar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="71px"
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            android:id="@+id/text1"
+            style="@style/BaseTab.Layout.Horizontal"
+            >
+
+            <TextView
+                style="@style/tab_tv"
+                android:text="@string/me_金豆消费" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/text2"
+            style="@style/BaseTab.Layout.Horizontal">
+
+            <TextView
+                style="@style/tab_tv"
+                android:text="余额消费" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/text3"
+            style="@style/BaseTab.Layout.Horizontal">
+
+            <TextView
+                style="@style/tab_tv"
+                android:text="充值" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View style="@style/BaseLine.Horizontal" />
+
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

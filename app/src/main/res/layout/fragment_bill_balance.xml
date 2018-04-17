@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="@dimen/textsize_20px"
+    android:background="@drawable/shape_hm_bg"
+    android:paddingBottom="28px"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="86px"
+        android:paddingLeft="40px"
+        android:paddingRight="28px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="#666666"
+            android:textSize="26px"
+            android:text="余额提现"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="26px"
+            android:textColor="#333333"
+            android:text="2018-03-29"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="@dimen/textsize_20px"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/textsize_20px">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/withdrawals_count"
+                android:text="800.00"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="提现金额"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/arrival_count"
+                android:text="100.000"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="到账金额"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/state"
+                android:text="审核中"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="状态"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+</LinearLayout>

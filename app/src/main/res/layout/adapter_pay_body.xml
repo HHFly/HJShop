@@ -4,6 +4,7 @@
     android:id="@+id/pay_layout_zhifubao"
     android:layout_width="match_parent"
     android:layout_height="100px"
+    android:layout_marginBottom="@dimen/textsize_20px"
     android:background="#ffffff">
 
     <ImageView
@@ -32,9 +33,4 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="30px" />
 
-    <View
-        android:id="@+id/item_view_line"
-        style="@style/BaseLine.Horizontal"
-        android:layout_alignParentBottom="true"
-       android:layout_height="@dimen/textsize_20px" />
 </RelativeLayout>

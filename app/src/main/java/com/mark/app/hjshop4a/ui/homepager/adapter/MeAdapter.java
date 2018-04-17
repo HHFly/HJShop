@@ -12,6 +12,8 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
+import com.white.lib.utils.CallPhoneUtil;
 
 /**
  * Created by pc on 2018/4/13.
@@ -160,7 +162,13 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                             }
                         });
                         holder.text(R.id.me_tv_lab4, R.string.me_会员账单);
-
+                        //             资产明细
+                        holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityJumpUtils.actConsumption(activity);
+                            }
+                        });
                         break;
                     case 5:
 //                        功能内容
@@ -186,7 +194,21 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                                 ActivityJumpUtils.actRecommend(activity);
                             }
                         });
-
+//                     申请代理
+                        holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                final String strPhone = "4001017979";
+                                NormalDialogFactory.getNormalDialogTwoBtn()
+                                        .setContentText( strPhone)
+                                        .setRightBtnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                CallPhoneUtil.call(activity, strPhone);
+                                            }
+                                        }).show(activity.getFragmentManager());
+                            }
+                        });
                         break;
                     case 6:
 //                       条目  关于惠家

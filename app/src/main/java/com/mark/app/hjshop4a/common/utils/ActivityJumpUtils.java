@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
+import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.GoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
@@ -251,6 +252,14 @@ public class ActivityJumpUtils {
         Bundle bundle = new Bundle();
         bundle.putInt(BundleKey.ROLE,role);
         intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+    * 跳转消费账单
+    * */
+    public static void actConsumption(Activity activity) {
+        Intent intent = new Intent(activity, ConsumptionBillActivty.class);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }
