@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pay_layout_zhifubao"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/pay_tv_order_sn"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:layout_marginBottom="20px"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:paddingLeft="30px"
+        android:text="@string/split_order_sn"
+        android:textColor="#333333"
+        android:textSize="28px" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="#ffffff">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30px"
+            android:text="@string/pay_msg_should_pay"
+            android:textColor="#333333"
+            android:textSize="28px"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/pay_tv_should_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="30px"
+            android:text="@string/normal_money"
+            android:textColor="#FE4747"
+            android:textSize="28px" />
+
+        <View
+            style="@style/BaseLine.Horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20px"
+            android:layout_marginRight="20px" />
+
+    </RelativeLayout>
+</LinearLayout>

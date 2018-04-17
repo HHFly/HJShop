@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/pay_layout_zhifubao"
+    android:layout_width="match_parent"
+    android:layout_height="100px"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/item_sdv_icon"
+        android:layout_width="50px"
+        android:layout_height="50px"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30px"
+        app:layout_auto_basewidth="height" />
+
+    <TextView
+        android:id="@+id/item_tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="100px"
+        android:text="@string/pay_msg_zhifubao"
+        android:textColor="#333333"
+        android:textSize="28px" />
+
+    <ImageView
+        android:id="@+id/item_iv_card"
+        android:layout_width="200px"
+        android:layout_height="50px"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20px"
+        android:layout_toRightOf="@+id/item_tv_name"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ic_pay_card_third"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/item_iv_check"
+        style="@style/BaseImg.Select"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30px" />
+
+    <View
+        android:id="@+id/item_view_line"
+        style="@style/BaseLine.Horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="20px"
+        android:layout_marginRight="20px" />
+</RelativeLayout>

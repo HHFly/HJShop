@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pay_layout_zhifubao"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/pay_btn_commit"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_marginBottom="57px"
+        android:layout_marginTop="57px"
+        android:text="@string/pay_msg_commit" />
+
+</LinearLayout>
