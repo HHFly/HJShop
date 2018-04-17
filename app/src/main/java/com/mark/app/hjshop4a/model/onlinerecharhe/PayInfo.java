@@ -1,6 +1,7 @@
-package com.haya.app.pandah4a.model.pay;
+package com.mark.app.hjshop4a.model.onlinerecharhe;
 
-import com.haya.app.pandah4a.base.model.BaseModel;
+
+import com.mark.app.hjshop4a.base.model.BaseModel;
 
 import java.util.List;
 

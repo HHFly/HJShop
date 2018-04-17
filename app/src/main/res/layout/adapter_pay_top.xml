@@ -6,49 +6,53 @@
     android:background="@color/background"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_marginTop="@dimen/textsize_20px"
+        android:id="@+id/recharge_count"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="充值金额"
+            android:id="@+id/textView" />
+
+        <EditText
+            android:id="@+id/et_recharge_count"
+            style="@style/user_item_tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView"
+            android:layout_toStartOf="@+id/imageView4"
+            android:background="@null"
+            android:inputType="number|numberDecimal"
+            android:gravity="right|center_vertical"
+            android:hint="请输入您要充值的金额"
+            android:textColorHint="#666666" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/imageView4" />
+    </RelativeLayout>
+
+
     <TextView
         android:id="@+id/pay_tv_order_sn"
         android:layout_width="match_parent"
         android:layout_height="100px"
-        android:layout_marginBottom="20px"
+        android:layout_marginTop="@dimen/textsize_20px"
         android:background="#ffffff"
         android:gravity="center_vertical"
         android:paddingLeft="30px"
-        android:text="@string/split_order_sn"
+        android:text="支付方式"
         android:textColor="#333333"
         android:textSize="28px" />
+    <View
+       style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="@dimen/textsize_20px"
+        android:layout_marginRight="@dimen/textsize_20px"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:background="#ffffff">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="30px"
-            android:text="@string/pay_msg_should_pay"
-            android:textColor="#333333"
-            android:textSize="28px"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/pay_tv_should_pay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="30px"
-            android:text="@string/normal_money"
-            android:textColor="#FE4747"
-            android:textSize="28px" />
-
-        <View
-            style="@style/BaseLine.Horizontal"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="20px"
-            android:layout_marginRight="20px" />
-
-    </RelativeLayout>
 </LinearLayout>

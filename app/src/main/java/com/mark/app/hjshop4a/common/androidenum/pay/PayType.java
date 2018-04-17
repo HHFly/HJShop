@@ -11,7 +11,7 @@ import java.lang.annotation.RetentionPolicy;
  */
 @IntDef({
         PayType.ALIPAY,
-        PayType.CREDIT_CARD,
+        PayType.WECHAT,
         PayType.STRIPE
 })
 @Retention(RetentionPolicy.SOURCE)
@@ -21,9 +21,9 @@ public @interface PayType {
      */
     int ALIPAY = 1;
     /**
-     * 信用卡支付
+     * 微信支付
      */
-    int CREDIT_CARD = 2;
+    int WECHAT = 2;
     /**
      * 新的支付方式
      */

@@ -1,9 +1,10 @@
-package com.haya.app.pandah4a.model.pay;
+package com.mark.app.hjshop4a.model.onlinerecharhe;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.haya.app.pandah4a.common.androidenum.pay.PayResultStatus;
+import com.mark.app.hjshop4a.common.androidenum.pay.PayResultStatus;
+
 
 /**
  * 支付结果
@@ -38,7 +39,7 @@ public class PayResult implements Parcelable {
         return result;
     }
 
-    public static final Parcelable.Creator<PayResult> CREATOR = new Parcelable.Creator<PayResult>() {
+    public static final Creator<PayResult> CREATOR = new Creator<PayResult>() {
         public PayResult createFromParcel(Parcel in) {
             return new PayResult(in);
         }

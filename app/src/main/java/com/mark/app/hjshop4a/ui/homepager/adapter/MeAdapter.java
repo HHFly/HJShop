@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.ui.homepager.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -136,7 +137,20 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 //                        holder.text(R.id.me_iv_lab3, R.string.me_申请代理);
 //                        holder.text(R.id.me_iv_lab4, R.string.me_申请商户);
                         holder.text(R.id.me_tv_lab1, R.string.me_金豆消费);
+                        //           金豆消费
+                        holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityJumpUtils.actGoldBeanConsume(activity,RoleType.MEMBER);
+                            }
+                        });
                         holder.text(R.id.me_tv_lab2, R.string.me_在线充值);
+                        holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityJumpUtils.actOnlineRecharge(activity,RoleType.MEMBER);
+                            }
+                        });
                         holder.text(R.id.me_tv_lab3, R.string.me_资产明细);
                         //             资产明细
                         holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {

@@ -214,5 +214,7 @@
     <string name="basicinfo_请输入居住地址">请输入居住地址</string>
     <string name="certificationinfo_请输入用户名">请输入用户名</string>
     <string name="certificationinfo_请输入推荐人号码">请输入推荐人号码</string>
+    <string name="bean_change_rule">1.进度可在商家店铺消费时抵扣现金\n2. 会员申请换购时，需要指定惠家生活网联盟商家\n3. 会员申请换购时，会员金豆即时转给商家，不需要审核</string>
+    <string name="gold_请输入金豆换购的个数">请输入金豆换购的个数</string>
 
 </resources>

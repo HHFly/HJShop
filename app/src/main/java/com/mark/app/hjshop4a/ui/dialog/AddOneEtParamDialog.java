@@ -86,11 +86,9 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
 /*
 *设置输入数字
 * s*/
-public  void InputNumber(boolean IsNumber){
-    if (IsNumber==true){
-        EditText etValue = getView(mRootView, R.id.et_value);
-            etValue.setInputType(InputType.TYPE_CLASS_PHONE);
-    }
+public  AddOneEtParamDialog InputType(int inputtype){
+    setETIputType(mRootView, R.id.et_value,inputtype);
+    return this;
 }
     /**
      * 设置参数名称

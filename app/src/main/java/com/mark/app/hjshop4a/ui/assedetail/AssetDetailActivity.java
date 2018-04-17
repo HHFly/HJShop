@@ -6,6 +6,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
+import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 
 /**
  * Created by pc on 2018/4/17.
@@ -20,7 +21,7 @@ public class AssetDetailActivity extends BaseActivity {
 
     @Override
     public void getIntentParam(Bundle bundle) {
-         role =bundle.getInt("Role");
+         role =bundle.getInt(BundleKey.ROLE);
     }
 
     @Override

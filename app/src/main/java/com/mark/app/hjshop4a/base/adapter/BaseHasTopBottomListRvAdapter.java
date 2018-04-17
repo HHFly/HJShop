@@ -1,4 +1,4 @@
-package com.haya.app.pandah4a.base.adapter;
+package com.mark.app.hjshop4a.base.adapter;
 
 import android.view.View;
 import android.view.ViewGroup;

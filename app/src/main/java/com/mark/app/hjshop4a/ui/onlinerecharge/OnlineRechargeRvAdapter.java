@@ -1,13 +1,14 @@
-package com.haya.app.pandah4a.ui.pay.adapter;
+package com.mark.app.hjshop4a.ui.onlinerecharge;
 
 import android.view.View;
 
-import com.haya.app.pandah4a.R;
-import com.haya.app.pandah4a.base.adapter.AutoViewHolder;
-import com.haya.app.pandah4a.base.adapter.BaseHasTopBottomListRvAdapter;
-import com.haya.app.pandah4a.common.androidenum.pay.PayType;
-import com.haya.app.pandah4a.model.pay.Pay;
-import com.haya.app.pandah4a.model.pay.PayInfo;
+
+import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
+import com.mark.app.hjshop4a.base.adapter.BaseHasTopBottomListRvAdapter;
+import com.mark.app.hjshop4a.common.androidenum.pay.PayType;
+import com.mark.app.hjshop4a.model.onlinerecharhe.Pay;
+import com.mark.app.hjshop4a.model.onlinerecharhe.PayInfo;
 
 import java.util.List;
 
@@ -16,11 +17,11 @@ import java.util.List;
  * Created by lenovo on 2017/10/6.
  */
 
-public class PayRvAdapter extends BaseHasTopBottomListRvAdapter<PayInfo, Pay> {
+public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<PayInfo, Pay> {
 
     private int mSelectPos = 0;
 
-    public PayRvAdapter(PayInfo payInfo, List<Pay> bodyData) {
+    public OnlineRechargeRvAdapter(PayInfo payInfo, List<Pay> bodyData) {
         super(payInfo, bodyData);
     }
 
@@ -42,12 +43,11 @@ public class PayRvAdapter extends BaseHasTopBottomListRvAdapter<PayInfo, Pay> {
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, PayInfo payInfo) {
         //设置订单编号
-        String strOrderSn = getString(R.string.split_order_sn);
-        strOrderSn += payInfo.getOrderSn();
-        holder.text(R.id.pay_tv_order_sn, strOrderSn);
+
+//        holder.text(R.id.pay_tv_order_sn, strOrderSn);
 
         //设置应付款
-        holder.text(R.id.pay_tv_should_pay, payInfo.getFixedPrice());
+//        holder.text(R.id.pay_tv_should_pay, payInfo.getFixedPrice());
     }
 
     @Override
@@ -58,18 +58,18 @@ public class PayRvAdapter extends BaseHasTopBottomListRvAdapter<PayInfo, Pay> {
 
         switch (data.getPayType()) {
             case PayType.ALIPAY: {
-                holder.image(R.id.item_sdv_icon, R.mipmap.ic_pay_alipay);
-                holder.visibility(R.id.item_iv_card, false);
+                holder.image(R.id.item_sdv_icon, R.mipmap.ic_pay_zfb);
+
                 break;
             }
-            case PayType.CREDIT_CARD: {
-                holder.image(R.id.item_sdv_icon, R.mipmap.ic_pay_card);
-                holder.visibility(R.id.item_iv_card, true);
+            case PayType.WECHAT: {
+                holder.image(R.id.item_sdv_icon, R.mipmap.ic_third_wx);
+
                 break;
             }
             case PayType.STRIPE: {
-                holder.image(R.id.item_sdv_icon, R.mipmap.ic_pay_stripe);
-                holder.visibility(R.id.item_iv_card, false);
+                holder.image(R.id.item_sdv_icon,  R.mipmap.ic_pay_stripe);
+
                 break;
             }
         }

@@ -26,10 +26,15 @@ import java.lang.annotation.RetentionPolicy;
         BundleKey.LNG,
         BundleKey.PARAM_OBJ,
         BundleKey.PARAM_STRING,
-        BundleKey.SOURCE
+        BundleKey.SOURCE,
+        BundleKey.ROLE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface BundleKey {
+    /*
+    * 角色
+    * */
+    String ROLE ="role";
     /**
      * 来源
      */

@@ -9,11 +9,13 @@ import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.GoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.ui.login.activity.RegisterActivity;
 import com.mark.app.hjshop4a.ui.about.AboutActivity;
+import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.userinfo.BasicInfoActivity;
 import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
@@ -222,7 +224,32 @@ public class ActivityJumpUtils {
     public static void actAssetDetail(Activity activity,int role) {
         Intent intent = new Intent(activity, AssetDetailActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("Role",role);
+        bundle.putInt(BundleKey.ROLE,role);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    } /**
+     * 跳转到金豆消费
+     *
+     *
+     * @param activity
+
+     */
+    public static void actGoldBeanConsume(Activity activity,int role) {
+        Intent intent = new Intent(activity, GoldBeanConsumeActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(BundleKey.ROLE,role);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+    * 跳转在线充值
+    * */
+    public static void actOnlineRecharge(Activity activity,int role) {
+        Intent intent = new Intent(activity, OnlineRechargeActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(BundleKey.ROLE,role);
         intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);

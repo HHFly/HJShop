@@ -8,14 +8,17 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
+import com.mark.app.hjshop4a.common.valid.ValidContext;
 
 /**
  * 对话框基类
@@ -203,6 +206,22 @@ public abstract class BaseDialogFragment extends DialogFragment implements View.
             if (view != null && view instanceof TextView) {
                 TextView tv = (TextView) view;
                 tv.setHint(data);
+            }
+        }
+    }
+    /**
+     * 设置Edit
+     *
+     * @param rootView
+     * @param id
+     * @param
+     */
+    public void setETIputType(View rootView, @IdRes int id, @StringRes int type) {
+        if (rootView != null) {
+            View view = getView(rootView, id);
+            if (view != null && view instanceof EditText) {
+                EditText tv = (EditText) view;
+                tv.setInputType(type);
             }
         }
     }
