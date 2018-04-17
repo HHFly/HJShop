@@ -28,6 +28,7 @@ public class CertificationInfoActivity extends BaseActivity {
         super.onDestroy();
         sexDialog =null;
         mAddOneEtParamDialog=null;
+        selectDateDialog=null;
     }
 
     @Override
@@ -115,19 +116,23 @@ public class CertificationInfoActivity extends BaseActivity {
         }
         sexDialog.setOnDialogClickListener(new SexDialog.OnDialogClickListener() {
             @Override
-            public void onClickNo() {
+            public void onClickNo(SexDialog dialog) {
                 setTvText(idres,"保密");
+                dialog.dismiss();
             }
 
             @Override
-            public void onClickMan() {
+            public void onClickMan(SexDialog dialog) {
                 setTvText(idres,"男");
+                dialog.dismiss();
             }
 
             @Override
-            public void onClickWoman() {
+            public void onClickWoman(SexDialog dialog) {
                 setTvText(idres,"女");
+                dialog.dismiss();
             }
+
         });
         sexDialog.setContent(this.getActivity());
         sexDialog.show(getFragmentManager());

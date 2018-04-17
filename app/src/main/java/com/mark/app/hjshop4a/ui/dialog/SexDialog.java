@@ -66,19 +66,19 @@ public class SexDialog extends BaseDialogFragment {
         switch (v.getId()){
             case R.id.sex_no:
                 if (onDialogClickListener != null) {
-                    onDialogClickListener.onClickNo();
+                    onDialogClickListener.onClickNo(this);
                     dismiss();
                 }
                 break;
             case R.id.sex_man:
                 if (onDialogClickListener != null) {
-                    onDialogClickListener.onClickMan();
-                    dismiss();
+                    onDialogClickListener.onClickMan(this);
+
                 }
                 break;
             case R.id.sex_woman:
                 if (onDialogClickListener != null) {
-                    onDialogClickListener.onClickWoman();
+                    onDialogClickListener.onClickWoman(this);
                     dismiss();
                 }
                 break;
@@ -91,8 +91,8 @@ public class SexDialog extends BaseDialogFragment {
     }
 
     public interface OnDialogClickListener {
-        void onClickNo();
-        void onClickMan();
-        void onClickWoman();
+        void onClickNo(SexDialog dialog);
+        void onClickMan(SexDialog dialog);
+        void onClickWoman(SexDialog dialog);
     }
 }

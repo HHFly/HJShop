@@ -138,6 +138,13 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                         holder.text(R.id.me_tv_lab1, R.string.me_金豆消费);
                         holder.text(R.id.me_tv_lab2, R.string.me_在线充值);
                         holder.text(R.id.me_tv_lab3, R.string.me_资产明细);
+                        //             资产明细
+                        holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityJumpUtils.actAssetDetail(activity,RoleType.MEMBER);
+                            }
+                        });
                         holder.text(R.id.me_tv_lab4, R.string.me_会员账单);
 
                         break;

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.mark.app.hjshop4a.common.androidenum.login.LoginBackType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
+import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
@@ -209,6 +210,20 @@ public class ActivityJumpUtils {
      */
     public static void actBankCard(Activity activity) {
         Intent intent = new Intent(activity, BankCardActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到我的资产
+     *
+     * @param activity
+
+     */
+    public static void actAssetDetail(Activity activity,int role) {
+        Intent intent = new Intent(activity, AssetDetailActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("Role",role);
+        intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }

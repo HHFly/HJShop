@@ -53,5 +53,6 @@
         <activity android:name=".ui.userinfo.ModifyPWActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.bankcard.BankCardActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.bankcard.BankCardAddActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.assedetail.AssetDetailActivity" android:screenOrientation="portrait"></activity>
     </application>
 </manifest>
