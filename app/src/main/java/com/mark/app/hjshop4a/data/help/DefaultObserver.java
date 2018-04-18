@@ -13,7 +13,7 @@ import com.mark.app.hjshop4a.common.androidenum.service.ServiceResultCode;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
-import com.mark.app.hjshop4a.ui.factory.NormalDialogFactory;
+import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;

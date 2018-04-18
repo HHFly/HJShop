@@ -12,7 +12,8 @@ import com.mark.app.hjshop4a.common.androidenum.other.UpdateType;
 import com.mark.app.hjshop4a.model.homepager.Lookup;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialogOneBtn;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialogTwoBtn;
-import com.mark.app.hjshop4a.ui.factory.NormalDialogFactory;
+
+import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.white.lib.utils.download.DownloadUtil;
 import com.white.lib.utils.download.DownloadUtilHelper;
 

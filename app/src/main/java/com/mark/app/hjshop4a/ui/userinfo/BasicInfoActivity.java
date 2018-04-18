@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
+import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
 
@@ -50,58 +51,18 @@ public class BasicInfoActivity extends BaseActivity {
                 break;
             case R.id.certification_layout_user_name:
 //                姓名
-                showAddOneParamDialog(R.string.info_请输入姓名,R.id.certification_tv_user_name);
+                FunctionDialogFactory.showAddOneParamDialog(this,R.string.info_请输入姓名,R.id.certification_tv_user_name);
                 break;
             case R.id.certification_layout_user_city:
 //                居住城市
-                showWheeDialog();
+                FunctionDialogFactory.showWheeDialog(this);
                 break;
             case R.id.certification_layout_user_address:
 //                居住地址
-                showAddOneParamDialog(R.string.basicinfo_请输入居住地址,R.id.certification_tv_user_address);
+                FunctionDialogFactory.showAddOneParamDialog(this,R.string.basicinfo_请输入居住地址,R.id.certification_tv_user_address);
                 break;
         }
     }
-    /**
-     * 显示一个参数的对话框
-     */
-    private void showAddOneParamDialog(  @StringRes int paramEmptyHint,@IdRes final int idres) {
-        if (mAddOneEtParamDialog == null) {
-            mAddOneEtParamDialog = AddOneEtParamDialog.getInstance();
-        }
-        mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
-            @Override
-            public void onClickCommit(AddOneEtParamDialog dialog, String data) {
-//                requestUpdateParam(type, data);
-                setTvText(idres,data);
-                dialog.dismiss();
-            }
-        });
-//        mAddOneEtParamDialog.setTvParamName(paramName);
-        mAddOneEtParamDialog.setTvEmptyParamHint(paramEmptyHint);
-        mAddOneEtParamDialog.show(getFragmentManager());
-    }
-    /*显示滚轮参数
-    * */
-    private  void  showWheeDialog(){
-        AssetManager asset = getAssets();
-        InputStream input  =null;
-        try {
-            input = asset.open("province_data.xml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        WheelDialog dialog = WheelDialogFactory.getProvinceWheelDialog(input);
-        dialog.setOnDialogClickListener(new WheelDialog.OnDialogClickListener() {
-            @Override
-            public void onCancel() {
 
-            }
 
-            @Override
-            public void onOk(PickerScrollView.ItemModel data) {
-                setTvText(R.id.certification_tv_user_city,data.getName());
-            }
-        }).show(getFragmentManager());
-    }
 }

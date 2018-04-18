@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
+import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.GoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
@@ -30,6 +31,11 @@ import com.mark.app.hjshop4a.ui.web.WebActivity;
  * Created by lenovo on 2017/8/27.
  */
 public class ActivityJumpUtils {
+    public  static void actActivity(Activity act,Class ca){
+        Intent intent =new Intent(act,ca);
+        act.startActivity(intent);
+//        act.overridePendingTransition(0,0);
+    }
 
     /**
      * 跳转到登陆
@@ -260,6 +266,14 @@ public class ActivityJumpUtils {
     * */
     public static void actConsumption(Activity activity) {
         Intent intent = new Intent(activity, ConsumptionBillActivty.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+  * 跳转消费账单
+  * */
+    public static void actBusinesApply(Activity activity) {
+        Intent intent = new Intent(activity, BusinessApplicationActivity.class);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }

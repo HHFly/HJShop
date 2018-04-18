@@ -209,6 +209,13 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                                         }).show(activity.getFragmentManager());
                             }
                         });
+//                        申请商户
+                        holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                ActivityJumpUtils.actBusinesApply(activity);
+                            }
+                        });
                         break;
                     case 6:
 //                       条目  关于惠家

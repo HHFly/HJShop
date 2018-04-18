@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.consumptionbill;
+package com.mark.app.hjshop4a.ui.consumptionbill.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

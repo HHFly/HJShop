@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/Relayout"
         android:layout_width="match_parent"
         android:layout_height="120px"
-        android:background="@color/white"
+        android:layout_marginRight="27px"
+        android:layout_marginLeft="30px"
+        android:layout_marginBottom="@dimen/textsize_20px"
+        android:layout_marginTop="@dimen/textsize_20px"
+        android:background="@drawable/shape_hm_bg"
        >
 
         <TextView
@@ -49,20 +54,5 @@
             android:textColor="#333333"
             android:textSize="@dimen/textsize_24px" />
     </RelativeLayout>
-    <View
-        style="@style/BaseLine.Vertical"
-        android:layout_width="31px"
-        android:layout_height="120px"
-        ></View>
 
-    <View
-        style="@style/BaseLine.Vertical"
-        android:layout_alignParentRight="true"
-        android:layout_width="31px"
-        android:layout_height="120px"></View>
-    <View
-        style="@style/BaseLine.Horizontal"
-       android:layout_below="@+id/Relayout"
-        android:layout_width="match_parent"
-        android:layout_height="26px"></View>
 </RelativeLayout>

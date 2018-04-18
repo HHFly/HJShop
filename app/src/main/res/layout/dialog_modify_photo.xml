@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:padding="20px">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dialog_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_dialog_normal_bg"
+        android:overScrollMode="never"
+        android:scrollbars="none" />
+
+    <Button
+        android:id="@+id/dialog_btn_cancel"
+        style="@style/BaseBtn"
+        android:layout_width="match_parent"
+        android:layout_height="114px"
+        android:layout_marginTop="16px"
+        android:background="@drawable/shape_dialog_normal_bg"
+        android:text="@string/取消"
+        android:textColor="@color/color_main_blue"
+        android:textSize="40px" />
+</com.zhy.autolayout.AutoLinearLayout>

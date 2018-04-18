@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    >
+    <include layout="@layout/include_titlebar" />
+    <RelativeLayout
+        android:id="@+id/basic_information"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="个人信息" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/company_information"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="公司信息" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/state"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="审核状态" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_width="match_parent"
+        android:layout_marginTop="57px"
+        android:text="确定" />
+
+</LinearLayout>

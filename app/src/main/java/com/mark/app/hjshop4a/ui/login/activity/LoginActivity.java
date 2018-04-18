@@ -11,8 +11,9 @@ import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.valid.ValidUtils;
+import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.login.androidenum.LoginSource;
-import com.mark.app.hjshop4a.ui.factory.NormalDialogFactory;
+
 
 /**
  * Created by pc on 2018/4/12.

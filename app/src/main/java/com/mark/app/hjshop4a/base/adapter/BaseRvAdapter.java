@@ -112,5 +112,56 @@ public abstract class BaseRvAdapter extends RecyclerView.Adapter {
     public View inflater(ViewGroup parent, @LayoutRes int resId) {
         return LayoutInflater.from(parent.getContext()).inflate(resId, parent, false);
     }
+    /**
+     * 点击Item监听
+     */
+    private OnItemClickListener onBaseItemClickListener;
+    /**
+     * 点击Item监听
+     */
+    public interface OnItemClickListener<Model> {
+        /**
+         * 点击Item监听
+         *
+         * @param view     点击的View
+         * @param position 点击对应的position
+         * @param data     点击返回的Item数据源
+         * @param type     类型：用于区分点击的是哪个东西(自己设置)
+         */
+        void onItemClick(View view, int position, Model data, int type);
+    }
 
+    /**
+     * 设置点击Item监听
+     *
+     * @param listener
+     */
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        onBaseItemClickListener = listener;
+    }
+
+    /**
+     * 调用点击监听器
+     *
+     * @param view     点击的View
+     * @param position 点击对应的position
+     * @param data     点击返回的Item数据源
+     * @param type     类型：用于区分点击的是哪个东西(自己设置)
+     */
+    public void useOnItemClick(View view, int position, Object data, int type) {
+        if (onBaseItemClickListener != null) {
+            onBaseItemClickListener.onItemClick(view, position, data, type);
+        }
+    }
+
+    /**
+     * 调用点击监听器
+     *
+     * @param view     点击的View
+     * @param position 点击对应的position
+     * @param data     点击返回的Item数据源
+     */
+    public void useOnItemClick(View view, int position, Object data) {
+        useOnItemClick(view, position, data, -1);
+    }
 }

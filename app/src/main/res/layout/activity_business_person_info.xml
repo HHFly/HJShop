@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_titlebar" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/user_layout_user_name"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="会员名称" />
+
+                <TextView
+                    android:id="@+id/user_tv_user_name"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView4" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView4" />
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/user_layout_real_name"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="真实姓名"
+                    />
+
+                <TextView
+                    android:id="@+id/user_tv_user_real_name"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView3" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView3" />
+
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/user_layout_user_email"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="邮箱地址"
+                    />
+
+                <TextView
+                    android:id="@+id/user_tv_user_email"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView5" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView5" />
+
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/user_layout_user_idcard"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="身份证号码"
+                    />
+
+                <TextView
+                    android:id="@+id/user_tv_user_idcard"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView6" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView6" />
+
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/user_layout_user_check"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="身份证验证"
+                    />
+
+                <TextView
+                    android:id="@+id/user_tv_user_check"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView7" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView7" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+</LinearLayout>

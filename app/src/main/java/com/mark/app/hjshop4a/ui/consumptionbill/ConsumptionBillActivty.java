@@ -8,9 +8,9 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.androidenum.consumptionbill.BillTabType;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
-import com.mark.app.hjshop4a.model.consumptionbill.BalanceRepo;
-import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
-import com.mark.app.hjshop4a.ui.consumptionbill.adapter.RechargeAdpater;
+import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceFragment;
+import com.mark.app.hjshop4a.ui.consumptionbill.fragment.GoldBeanFragment;
+import com.mark.app.hjshop4a.ui.consumptionbill.fragment.RechargeFragment;
 
 /**
  * Created by pc on 2018/4/17.

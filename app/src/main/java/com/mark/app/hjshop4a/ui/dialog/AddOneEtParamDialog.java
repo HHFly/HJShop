@@ -115,7 +115,18 @@ public  AddOneEtParamDialog InputType(int inputtype){
         setTvHint(mRootView, R.id.et_value, mEmptyParamHint);
         return this;
     }
+    /**
+     * 设置空参数提示
+     *
+     * @param data
+     * @return
+     */
+    public AddOneEtParamDialog setTvEmptyParamHint(String data) {
 
+        //设置hint
+        setTvHint(mRootView, R.id.et_value, data);
+        return this;
+    }
     @Override
     public void onClick(View v) {
         super.onClick(v);

@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.consumptionbill;
+package com.mark.app.hjshop4a.ui.consumptionbill.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -8,9 +8,8 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.model.consumptionbill.BalanceRepo;
 import com.mark.app.hjshop4a.model.consumptionbill.GoldBeanRepo;
-import com.mark.app.hjshop4a.model.consumptionbill.RechargeRepo;
+import com.mark.app.hjshop4a.ui.consumptionbill.adapter.BalanceAdapter;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
-import com.mark.app.hjshop4a.ui.consumptionbill.adapter.RechargeAdpater;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -22,17 +21,18 @@ import java.util.List;
  * Created by pc on 2018/4/17.
  */
 
-public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreListener {
+public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreListener {
     //下拉刷新View
     SmartRefreshLayout mRefreshLayout;
-    private RechargeAdpater rechargeAdpater;
+    private GoldBeanAdapter goldBeanAdapter;
     //是否正在刷新数据
     boolean isRequestData;
     boolean isInit;
-
+    //tab type
+    int mTabType;
     @Override
     public int getContentResId() {
-        return  R.layout.fragment_bill;
+        return R.layout.fragment_bill;
     }
 
     @Override
@@ -50,8 +50,8 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
         isInit = false;
         initRefresh();
         initEmpty();
-        List<RechargeRepo> a =new ArrayList<>();
-        RechargeRepo b =new RechargeRepo();
+        List<GoldBeanRepo> a =new ArrayList<>();
+        GoldBeanRepo b =new GoldBeanRepo();
         a.add(b);
         initRvAdapter( a,  false);
 //        requestData(1);
@@ -78,20 +78,20 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
      *
      * @param isRefresh
      */
-    private void initRvAdapter(List<RechargeRepo> data, boolean isRefresh) {
+    private void initRvAdapter(List<GoldBeanRepo> data, boolean isRefresh) {
 
 
-        if (rechargeAdpater == null) {
+        if (goldBeanAdapter == null) {
             RecyclerView rv = getView(R.id.recyclerView);
-            rechargeAdpater = new RechargeAdpater(data);
+            goldBeanAdapter = new GoldBeanAdapter(data);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
             if (rv != null) {
                 rv.setLayoutManager(layoutManager);
-                rv.setAdapter(rechargeAdpater);
+                rv.setAdapter(goldBeanAdapter);
             }
 
         } else {
-            rechargeAdpater.notifyData(data, isRefresh);
+            goldBeanAdapter.notifyData(data, isRefresh);
         }
 
         boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_titlebar" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/company_layout_name"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="公司名称" />
+
+                <TextView
+                    android:id="@+id/company_tv_name"
+                    style="@style/user_item_tv_content"
+                    android:hint="请输入公司名称"
+                    android:textColorHint="#666666"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView1" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView1" />
+            </RelativeLayout>
+        <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/company_layout_loacl"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="所在区域"
+                    />
+
+                <TextView
+                    android:id="@+id/company_tv_loacl"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView3" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView3" />
+
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/company_layout_address"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="详细地址"
+                    />
+
+                <TextView
+                    android:id="@+id/company_tv_address"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView4" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView4" />
+
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"
+                android:layout_height="@dimen/textsize_20px"
+                android:background="@color/background"/>
+            <RelativeLayout
+                android:id="@+id/store_layout_name"
+                style="@style/user_item_layout"
+                android:layout_marginTop="@dimen/textsize_20px"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="店铺名称"
+                    />
+
+                <TextView
+                    android:id="@+id/store_tv_name"
+                    style="@style/user_item_tv_content"
+                    android:hint="请输入店铺名称"
+                    android:textColorHint="#666666"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView5" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView5" />
+
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/shop_layout_type"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="店铺分类"
+                    />
+
+                <TextView
+                    android:id="@+id/shop_tv_type"
+                    style="@style/user_item_tv_content"
+                    android:hint="请输入店铺分类"
+                    android:textColorHint="#666666"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView2" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView2" />
+
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+                android:id="@+id/shop_layout_img"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="店铺照片"
+                    />
+
+                <TextView
+                    android:id="@+id/shop_tv_img"
+                    style="@style/user_item_tv_content"
+                    android:layout_marginRight="0px"
+                    android:layout_toLeftOf="@+id/imageView6" />
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/imageView6" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+</LinearLayout>
