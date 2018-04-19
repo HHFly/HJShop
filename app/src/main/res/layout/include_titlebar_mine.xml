@@ -16,7 +16,7 @@
         android:textSize="@dimen/titlebar_title_textsize" />
 
     <TextView
-        android:id="@+id/titlebar_tv_return"
+        android:id="@+id/titlebar_tv_right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"

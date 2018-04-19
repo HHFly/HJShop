@@ -15,7 +15,7 @@ import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 public class BusniessUserInfoActivity extends BaseActivity {
     @Override
     public int getContentViewResId() {
-        return R.layout.activity_business_person_info;
+        return R.layout.activity_business_apply_person_info;
     }
 
     @Override

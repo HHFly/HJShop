@@ -49,12 +49,12 @@
 
             <TextView
                 style="@style/user_item_tv"
-                android:text="消费店铺名称" />
+                android:text="金豆换购数量" />
 
             <TextView
                 android:id="@+id/certification_tv_user_name"
                 style="@style/user_item_tv_content"
-                android:hint="请输入消费店铺名称"
+                android:hint="请输入金豆换购的数量"
                 android:textColorHint="#666666"
                 android:layout_alignParentEnd="true" />
 
@@ -72,20 +72,19 @@
 
             <TextView
                 style="@style/user_item_tv"
-                android:text="金豆换购数" />
+                android:text="兑换金额(元)" />
 
             <TextView
                 android:id="@+id/tv_bean_change_count"
-                style="@style/user_item_tv_content"
-                android:hint="0.00"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:hint="900.00"
                 android:textColorHint="#666666"
                 android:layout_alignParentEnd="true" />
 
-            <ImageView
-                style="@style/BaseImg.Right"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                />
+
         </RelativeLayout>
         <View style="@style/BaseLine.Horizontal"></View>
         <RelativeLayout
@@ -95,19 +94,23 @@
 
             <TextView
                 style="@style/user_item_tv"
-                android:text="可抵金额" />
+                android:text="验证码" />
 
-            <TextView
+            <EditText
                 android:id="@+id/tv_money_count"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
 
                 android:hint="0.00"
                 android:textColorHint="#666666"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                />
 
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/sdv_aduit"
+                android:layout_width="200px"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"/>
 
         </RelativeLayout>
 
@@ -118,7 +121,7 @@
             android:layout_marginTop="43px"
             android:textColor="#666666"
             android:textSize="26px"
-            android:text="金豆消费说明:"/>
+            android:text="商家换购金豆说明::"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -127,7 +130,7 @@
             android:lineSpacingExtra="@dimen/textsize_20px"
             android:textSize="22px"
             android:textColor="#666666"
-            android:text="@string/bean_change_rule"
+            android:text="@string/busniess_兑换金豆"
             />
         <Button
             android:id="@+id/button"

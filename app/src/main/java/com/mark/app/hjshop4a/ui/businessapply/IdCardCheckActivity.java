@@ -19,7 +19,7 @@ public class IdCardCheckActivity extends BaseActivity {
     Uri mUri;
     @Override
     public int getContentViewResId() {
-        return R.layout.activity_business_idcard;
+        return R.layout.activity_business_apply_idcard;
     }
 
     @Override

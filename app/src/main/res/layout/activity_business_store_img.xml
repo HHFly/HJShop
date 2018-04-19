@@ -1,6 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent">
 <include layout="@layout/include_titlebar"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginTop="43px"
+            android:layout_marginLeft="31px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="营业执照"
+            android:textColor="#666666"
+            android:textSize="@dimen/textsize_26px"
+            android:id="@+id/textView2" />
+
+        <RelativeLayout
+            android:layout_width="200px"
+            android:layout_height="180px"
+            android:layout_alignTop="@+id/textView2"
+            android:layout_marginStart="16px"
+            android:layout_toEndOf="@+id/textView2"
+            >
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@mipmap/gird_storeimg_update"
+                />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imagebtn"
+                style="@style/BaseSDV"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                fresco:placeholderImage="@mipmap/gird_storeimg_update"
+                app:roundedCornerRadius="10px" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="130px"
+        >
+
+        <com.mark.app.hjshop4a.widget.WarpLinearLayout
+            android:id="@+id/eval_layout_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="20px"
+            android:layout_marginTop="20px"
+            android:orientation="horizontal"
+            app:grivate="left"
+            app:horizontal_Space="5dp"
+            app:vertical_Space="5dp" />
+        <TextView
+            android:layout_marginTop="43px"
+            android:layout_marginLeft="31px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="店内形象"
+            android:textColor="#666666"
+            android:textSize="@dimen/textsize_26px"
+            android:id="@+id/textView3" />
+
+        <View
+            android:id="@+id/eval_iv_add_pic"
+            android:layout_width="200px"
+            android:layout_height="180px"
+            android:layout_alignTop="@+id/textView3"
+            android:layout_marginStart="17px"
+            android:layout_toEndOf="@+id/textView3"
+            android:background="@mipmap/gird_storeimg_update"
+            app:layout_auto_basewidth="height" />
+
+
+
+    </RelativeLayout>
+
 </LinearLayout>

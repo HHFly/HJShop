@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -205,6 +206,7 @@ public class AutoViewHolder extends MkViewHolder {
         if (view != null) {
             view.setVisibility(isVisibility ? View.VISIBLE : View.GONE);
         }
+
         return this;
     }
     public AutoViewHolder backgroundColor(@IdRes int id, int color) {
@@ -229,4 +231,24 @@ public class AutoViewHolder extends MkViewHolder {
         }
         return this;
     }
+
+    TextView itemDividerTypeTv;
+    RelativeLayout itemRootLayout;
+    // 这个方法是重点!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public void setVisibility(boolean isVisible) {
+        RecyclerView.LayoutParams param = (RecyclerView.LayoutParams) itemView.getLayoutParams();
+        if (isVisible) {
+            param.height = RelativeLayout.LayoutParams.WRAP_CONTENT;// 这里注意使用自己布局的根布局类型
+            param.width = RelativeLayout.LayoutParams.MATCH_PARENT;// 这里注意使用自己布局的根布局类型
+            itemView.setVisibility(View.VISIBLE);
+        } else {
+            itemView.setVisibility(View.GONE);
+            param.height = 0;
+            param.width = 0;
+        }
+        itemView.setLayoutParams(param);
+    }
+
+
+
 }

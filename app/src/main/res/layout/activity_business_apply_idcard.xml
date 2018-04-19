@@ -62,7 +62,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:src="@mipmap/addimag"
+                    android:src="@mipmap/bg_photo_update"
                  />
 
                 <com.facebook.drawee.view.SimpleDraweeView
@@ -113,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:src="@mipmap/addimag"
+                    android:src="@mipmap/bg_photo_update"
                     />
 
                 <com.facebook.drawee.view.SimpleDraweeView

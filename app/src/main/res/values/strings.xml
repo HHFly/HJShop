@@ -203,7 +203,6 @@
     <string name="login_代理账号">代理账号</string>
     <string name="login_商家账号">商家账号</string>
     <string name="me_金豆消费">金豆消费</string>
-    <string name="me_在线充值">在线充值</string>
     <string name="me_资产明细">资产明细</string>
     <string name="me_会员账单">会员账单</string>
     <string name="me_银行卡">银行卡</string>
@@ -216,5 +215,27 @@
     <string name="certificationinfo_请输入推荐人号码">请输入推荐人号码</string>
     <string name="bean_change_rule">1.进度可在商家店铺消费时抵扣现金\n2. 会员申请换购时，需要指定惠家生活网联盟商家\n3. 会员申请换购时，会员金豆即时转给商家，不需要审核</string>
     <string name="gold_请输入金豆换购的个数">请输入金豆换购的个数</string>
+    <string name="me_商家管理中心">商家管理中心</string>
+    <string name="me_线下报单">线下报单</string>
+    <string name="me_收货地址">收货地址</string>
+    <string name="me_我的收藏">我的收藏</string>
+    <string name="me_报单账单">报单账单</string>
+    <string name="me_金豆兑换">金豆兑换</string>
+    <string name="me_账单">账单</string>
+    <string name="me_商户信息">商户信息</string>
+    <string name="me_在线充值">在线充值</string>
+
+    <string name="me_收豆二维码">收豆二维码</string>
+    <string name="me_代理管理中心">代理管理中心</string>
+    <string name="me_区域城市">区域城市</string>
+    <string name="me_区域收益">区域收益</string>
+    <string name="me_余额提现">余额提现</string>
+    <string name="me_提现记录">提现记录</string>
+    <string name="me_区域商户">区域商户</string>
+    <string name="me_商户申请">商户申请</string>
+    <string name="me_代理业绩">代理业绩</string>
+
+    <string name="me_辖区报单审核">辖区报单审核</string>
+    <string name="busniess_兑换金豆">1.金豆满200个可以申请换购，且必须是100的倍数\n2. 商家金豆换购收取10%的手续费\n3. 商家金豆换购，最多需要2个工作日的审核时间\n4. 商家金豆换购，每天只能换购一次</string>
 
 </resources>

@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/item_body"
     android:background="@color/white">
 
     <LinearLayout
         android:id="@+id/hm_layout_item_about"
         android:layout_height="168px"
         android:layout_width="match_parent"
-        android:gravity="center">
+        android:gravity="left">
         <RelativeLayout
             style="@style/hm_item_layout_lab"
             android:id="@+id/hm_lab1"
@@ -22,7 +23,7 @@
              android:layout_centerHorizontal="true"
             android:layout_marginTop="37px"
             android:src="@mipmap/ic_left_white"
-            android:background="@color/btn_small_blue"
+           
             app:layout_auto_basewidth="height" />
 
         <ImageView
@@ -60,7 +61,7 @@
             android:layout_height="40px"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="37px"
-            android:background="@color/btn_small_blue"
+           
             android:src="@mipmap/ic_left_white"
             app:layout_auto_basewidth="height" />
 
@@ -97,7 +98,7 @@
             android:layout_height="wrap_content"
            android:layout_centerHorizontal="true"
             android:layout_marginTop="37px"
-            android:background="@color/btn_small_blue"
+           
             android:src="@mipmap/ic_left_white"
             app:layout_auto_basewidth="height" />
         <ImageView
@@ -131,7 +132,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="37px"
-            android:background="@color/btn_small_blue"
+           
             android:src="@mipmap/ic_left_white"
             app:layout_auto_basewidth="height" />
         <ImageView
@@ -157,7 +158,5 @@
         </RelativeLayout>
 
     </LinearLayout>
-    <View
-        style="@style/BaseLine.Horizontal"
-        android:layout_alignParentBottom="true" />
+
 </LinearLayout>

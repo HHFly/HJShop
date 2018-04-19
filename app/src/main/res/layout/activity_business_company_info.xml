@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include layout="@layout/include_titlebar"/>
+<LinearLayout
+   style="@style/hm_item_layout"
+    android:orientation="horizontal"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#333333"
+        android:textSize="24px"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="32px"
+        android:text="店铺名称:"/>
+    <TextView
+        android:id="@+id/store_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10px"
+        android:textColor="#333333"
+        android:textSize="24px"
+        android:text=""/>
+</LinearLayout>
+    <View
+      style="@style/BaseLine.Horizontal"/>
+    <LinearLayout
+        style="@style/hm_item_layout"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:textSize="24px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="32px"
+            android:text="店铺分类:"/>
+        <TextView
+            android:id="@+id/store_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10px"
+            android:textColor="#333333"
+            android:textSize="24px"
+            android:text=""/>
+    </LinearLayout>
+    <View
+        style="@style/BaseLine.Horizontal"/>
+    <LinearLayout
+        style="@style/hm_item_layout"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:textSize="24px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="32px"
+            android:text="公司地址:"/>
+        <TextView
+            android:id="@+id/store_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10px"
+            android:textColor="#333333"
+            android:textSize="24px"
+            android:text=""/>
+    </LinearLayout>
+</LinearLayout>

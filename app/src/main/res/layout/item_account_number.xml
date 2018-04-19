@@ -4,6 +4,7 @@
     android:layout_width="match_parent" android:layout_height="129px"
     android:background="@drawable/select_normal_bg"
     android:id="@+id/account"
+    android:layout_marginBottom="@dimen/textsize_20px"
     android:orientation="vertical">
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/item_sdv_logo"
@@ -37,9 +38,6 @@
         android:layout_below="@+id/item_account_number_type"
         android:textColor="#333333"
         android:textSize="26px" />
-    <View
-        style="@style/BaseLine.Horizontal"
-        android:layout_height="21px"
-        android:layout_alignParentBottom="true"/>
+
 
 </RelativeLayout>

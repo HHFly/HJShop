@@ -1,13 +1,17 @@
 package com.mark.app.hjshop4a.ui.login.activity;
 
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
+import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.model.login.model.LoginType;
 import com.mark.app.hjshop4a.ui.login.adapter.LoginSwitchAdapter;
+import com.white.lib.utils.intent.BundleUtil;
 
 import java.util.ArrayList;
 
@@ -51,22 +55,26 @@ public class LoginSwitchActivity extends BaseActivity {
         LoginType a = new LoginType();
         a.setTpye("省代理账号");
         a.setPhone("15151515151");
+        a.setRoleType(RoleType.PROVINCIALAGENT);
         loginTypes.add(a);
         a = new LoginType();
         a.setTpye("区代理账号");
         a.setPhone("15151515151");
+        a.setRoleType(RoleType.AREAAGENT);
         loginTypes.add(a);
         a = new LoginType();
         a.setTpye("商家账号");
         a.setPhone("15151515151");
+        a.setRoleType(RoleType.BUSINESS);
         loginTypes.add(a);
         a = new LoginType();
         a.setTpye("会员账号");
         a.setPhone("15151515151");
+        a.setRoleType(RoleType.MEMBER);
         loginTypes.add(a);
         if (mAdapter == null) {
             RecyclerView rv = getView(R.id.recyclerView);
-            mAdapter = new LoginSwitchAdapter(loginTypes);
+            mAdapter = new LoginSwitchAdapter(loginTypes,this);
 
             rv.setLayoutManager(new LinearLayoutManager(this));
             rv.setAdapter(mAdapter);
@@ -80,7 +88,7 @@ public class LoginSwitchActivity extends BaseActivity {
         mAdapter.setOnItemClickListener(new LoginSwitchAdapter.OnItemClickListener() {
             @Override
             public void onClickUserInfo(LoginType data) {
-                finish();
+
             }
         });
     }
