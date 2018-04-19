@@ -39,7 +39,7 @@
                 style="@style/BaseSDV"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                fresco:placeholderImage="@mipmap/gird_storeimg_update"
+                app:placeholderImage="@mipmap/gird_storeimg_update"
                 app:roundedCornerRadius="10px" />
 
 

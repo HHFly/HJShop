@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+    <include layout="@layout/include_titlebar_right_iv"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+
+                android:id="@+id/member_id"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="* 会员账号" />
+
+                <TextView
+                    android:id="@+id/tv_member_id"
+                    style="@style/user_item_tv_content_right"
+                    android:hint="请输入会员账号"
+                    android:textColorHint="#666666"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+        <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+
+                android:id="@+id/roletype"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="* 账户类别" />
+
+                <TextView
+                    android:id="@+id/tv_roletype"
+                    style="@style/user_item_tv_content_right"
+                    android:hint=""
+                    android:textColorHint="#666666"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+
+                android:id="@+id/consmue_count"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="* 消费金额" />
+
+                <TextView
+                    android:id="@+id/tv_consmue_count"
+                    style="@style/user_item_tv_content_right"
+                    android:hint="请输入消费金额"
+                    android:textColorHint="#666666"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+
+                android:id="@+id/service_charge"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="* 服务费" />
+
+                <TextView
+                    android:id="@+id/tv_service_charge"
+                    style="@style/user_item_tv_content_right"
+                    android:textColorHint="#666666"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+
+
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/textsize_30px"
+                android:paddingBottom="@dimen/textsize_20px"
+                android:paddingTop="@dimen/textsize_20px"
+                android:text="商品信息"
+                android:textSize="@dimen/textsize_26px"
+                android:textColor="#666666"/>
+            <RelativeLayout
+
+            android:id="@+id/commodity_name"
+            style="@style/user_item_layout"
+            android:background="@drawable/select_normal_bg">
+
+            <TextView
+                style="@style/user_item_tv"
+                android:text="* 商品名称" />
+
+            <TextView
+                android:id="@+id/tv_commodity_name"
+                style="@style/user_item_tv_content_right"
+                android:hint="请输入消费金额"
+                android:textColorHint="#666666"
+                android:layout_alignParentEnd="true" />
+
+            <ImageView
+                style="@style/BaseImg.Right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+            <RelativeLayout
+
+                android:id="@+id/commodity_conut"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="* 商品数量" />
+
+                <TextView
+                    android:id="@+id/tv_commodity_conut"
+                    style="@style/user_item_tv_content_right"
+                    android:hint="请输入商品数量"
+                    android:textColorHint="#666666"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+
+            <RelativeLayout
+
+                android:id="@+id/commodity_price"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="* 商品单价" />
+
+                <TextView
+                    android:id="@+id/tv_commodity_price"
+                    style="@style/user_item_tv_content_right"
+                    android:hint="请输入商品单价"
+                    android:textColorHint="#666666"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/textsize_30px"
+                android:paddingBottom="@dimen/textsize_20px"
+                android:paddingTop="@dimen/textsize_20px"
+                android:text="* 购买单据"
+                android:textSize="@dimen/textsize_26px"
+                android:textColor="#666666"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imagebtn"
+                android:layout_width="200px"
+                android:layout_height="180px"
+                android:layout_marginLeft="70px"
+                app:placeholderImage="@mipmap/gird_storeimg_update"
+           />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="30px"
+                    android:layout_toRightOf="@+id/imagebtn"
+                    android:layout_centerVertical="true"
+                    android:text="@string/order_commit_tip"/>
+            </RelativeLayout>
+            <Button
+                android:id="@+id/button"
+                style="@style/BaseBtn.Normal.Important"
+                android:layout_width="match_parent"
+                android:layout_marginTop="52px"
+                android:text="@string/login_msg_login" />
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

@@ -11,7 +11,7 @@ import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
 import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
-import com.mark.app.hjshop4a.ui.goldbeanconsume.GoldBeanConsumeActivity;
+
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
@@ -230,20 +230,6 @@ public class ActivityJumpUtils {
      */
     public static void actAssetDetail(Activity activity,int role) {
         Intent intent = new Intent(activity, AssetDetailActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt(BundleKey.ROLE,role);
-        intent.putExtras(bundle);
-        activity.startActivity(intent);
-        activity.overridePendingTransition(0,0);
-    } /**
-     * 跳转到金豆消费
-     *
-     *
-     * @param activity
-
-     */
-    public static void actGoldBeanConsume(Activity activity,int role) {
-        Intent intent = new Intent(activity, GoldBeanConsumeActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt(BundleKey.ROLE,role);
         intent.putExtras(bundle);

@@ -55,7 +55,7 @@
         <activity android:name=".ui.bankcard.BankCardActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.bankcard.BankCardAddActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.assedetail.AssetDetailActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.goldbeanconsume.GoldBeanConsumeActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.goldbeanconsume.MemberGoldBeanConsumeActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.onlinerecharge.OnlineRechargeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.consumptionbill.ConsumptionBillActivty" android:screenOrientation="portrait"/>
         <activity android:name=".ui.businessapply.BusinessApplicationActivity" android:screenOrientation="portrait"/>
@@ -64,8 +64,11 @@
         <activity android:name=".ui.businessapply.BusniessCompanyActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.businessapply.BusinessStoreImgActivity" android:screenOrientation="portrait"/>
         <!--商户-->
-        <activity android:name=".ui.business.BusniessInfoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.CompanyInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.business.busniessinfo.BusniessInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.business.busniessinfo.CompanyInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.business.zxing.BusniessZxingActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.business.goldbeanconsume.BusniessGoldBeanConsumeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.business.consumecommit.CommitRuleActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.business.consumecommit.ConsumeCommitActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

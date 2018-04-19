@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.AnimRes;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
@@ -19,10 +20,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
@@ -373,6 +376,19 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
                 EditText et = (EditText) tv;
                 et.setSelection(et.length());
             }
+        }
+    }
+    /**
+     * 设置TextView文案
+     *
+     * @param id
+     * @param resId
+     */
+    public void setIvImage(@IdRes int id, @DrawableRes int resId) {
+        View view = getView(id);
+        if (view != null && view instanceof TextView) {
+            ImageView tv = (ImageView) view;
+           tv.setImageResource(resId);
         }
     }
 

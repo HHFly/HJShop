@@ -16,7 +16,7 @@ import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
  * Created by pc on 2018/4/17.
  */
 
-public class GoldBeanConsumeActivity  extends BaseActivity{
+public class MemberGoldBeanConsumeActivity extends BaseActivity{
     private int role ;
     private AddOneEtParamDialog mAddOneEtParamDialog;
     @Override

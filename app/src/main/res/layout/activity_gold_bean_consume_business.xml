@@ -94,19 +94,23 @@
 
             <TextView
                 style="@style/user_item_tv"
-                android:text="验证码" />
+                android:text="验证码"
+                android:id="@+id/textView4" />
 
             <EditText
-                android:id="@+id/tv_money_count"
-                android:layout_width="wrap_content"
+                android:id="@+id/et_audit"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
-                android:hint="0.00"
-                android:textColorHint="#666666"
-
-                />
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/textView4"
+                android:layout_toStartOf="@+id/audit"
+                android:background="@null"
+                android:gravity="right|center_vertical"
+                android:textSize="@dimen/textsize_26px"
+                android:hint="请输入验证码"
+                android:textColorHint="#666666" />
             <com.facebook.drawee.view.SimpleDraweeView
-                android:id="@+id/sdv_aduit"
+                android:id="@+id/audit"
                 android:layout_width="200px"
                 android:layout_height="match_parent"
                 android:layout_alignParentRight="true"

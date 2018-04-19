@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.business;
+package com.mark.app.hjshop4a.ui.business.busniessinfo;
 
 import android.view.View;
 

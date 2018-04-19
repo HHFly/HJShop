@@ -1,20 +1,21 @@
 package com.mark.app.hjshop4a.ui.homepager.adapter;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.mark.app.base.recylerview.IndexPath;
 import com.mark.app.hjshop4a.R;
-import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
-import com.mark.app.hjshop4a.ui.business.BusniessInfoActivity;
+import com.mark.app.hjshop4a.ui.business.busniessinfo.BusniessInfoActivity;
+import com.mark.app.hjshop4a.ui.business.consumecommit.ConsumeCommitActivity;
+import com.mark.app.hjshop4a.ui.business.goldbeanconsume.BusniessGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
 import com.white.lib.utils.CallPhoneUtil;
 
 /**
@@ -93,7 +94,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                     case 6:
                         return inflater(viewGroup,R.layout.item_me_body_bottom);
                     case 7:
-                        return inflater(viewGroup,R.layout.item_me_bottom);
+                        return inflater(viewGroup,R.layout.item_me_last_bottom);
 
                 }
                 break;
@@ -319,7 +320,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actGoldBeanConsume(activity,RoleType.MEMBER);
+                        ActivityJumpUtils.actActivity(activity, MemberGoldBeanConsumeActivity.class);
                     }
                 });
                 holder.text(R.id.me_tv_lab2, R.string.me_在线充值);
@@ -374,15 +375,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        final String strPhone = "4001017979";
-                        NormalDialogFactory.getNormalDialogTwoBtn()
-                                .setContentText( strPhone)
-                                .setRightBtnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        CallPhoneUtil.call(activity, strPhone);
-                                    }
-                                }).show(activity.getFragmentManager());
+                        agant();
                     }
                 });
 //                        申请商户
@@ -450,6 +443,20 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               holder.text(R.id.me_tv_lab2, R.string.me_报单账单);
               holder.text(R.id.me_tv_lab3, R.string.me_金豆兑换);
               holder.text(R.id.me_tv_lab4, R.string.me_账单);
+              holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actActivity(activity, ConsumeCommitActivity.class);
+                  }
+              });
+
+              holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actActivity(activity, BusniessGoldBeanConsumeActivity.class);
+                  }
+              });
+
               break;
           case 3:
               //                       功能内容
@@ -535,6 +542,18 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               });
               break;
       }
+  }
+//  申请代理
+  private void agant(){
+      final String strPhone = "4001017979";
+      NormalDialogFactory.getNormalDialogTwoBtn()
+              .setContentText( strPhone)
+              .setRightBtnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      CallPhoneUtil.call(activity, strPhone);
+                  }
+              }).show(activity.getFragmentManager());
   }
     private OnItemClickListener onItemClickListener;
 
