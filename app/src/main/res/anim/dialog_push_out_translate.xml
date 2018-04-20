@@ -9,7 +9,7 @@
         android:toYDelta="100%" />
     <alpha
         android:duration="@android:integer/config_mediumAnimTime"
-        android:fromAlpha="1"
+        android:fromAlpha="1.0"
         android:interpolator="@android:anim/accelerate_decelerate_interpolator"
-        android:toAlpha="0" />
+        android:toAlpha="0.0" />
 </set>

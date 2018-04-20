@@ -10,12 +10,18 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
+import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordAdapter;
 import com.mark.app.hjshop4a.ui.business.busniessinfo.BusniessInfoActivity;
 import com.mark.app.hjshop4a.ui.business.consumecommit.ConsumeCommitActivity;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.BusniessGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
+import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
+import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
+import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
+import com.mark.app.hjshop4a.ui.withdraw.WithDrawActivity;
 import com.white.lib.utils.CallPhoneUtil;
 
 /**
@@ -343,7 +349,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actConsumption(activity);
+                        ActivityJumpUtils.actConsumption(activity,RoleType.MEMBER);
                     }
                 });
                 break;
@@ -368,7 +374,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actRecommend(activity);
+                        ActivityJumpUtils.actRecommend(activity,RoleType.MEMBER);
                     }
                 });
 //                     申请代理
@@ -449,7 +455,12 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                       ActivityJumpUtils.actActivity(activity, ConsumeCommitActivity.class);
                   }
               });
-
+              holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actActivity(activity, BusniessBillRecordActivity.class);
+                  }
+              });
               holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
@@ -474,7 +485,18 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                       ActivityJumpUtils.actActivity(activity, BusniessInfoActivity.class);
                   }
               });
-
+              holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actActivity(activity, OnlineRechargeActivity.class);
+                  }
+              });
+              holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);
+                  }
+              });
               holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
@@ -494,31 +516,31 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               holder.text(R.id.me_tv_lab3, "银行卡");
               holder.text(R.id.me_tv_lab4, "我的推荐");
 
-//              holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
-//                  @Override
-//                  public void onClick(View v) {
-//                      ActivityJumpUtils.actGoldBeanConsume(activity,RoleType.MEMBER);
-//                  }
-//              });
-//              holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
-//                  @Override
-//                  public void onClick(View v) {
-//                      ActivityJumpUtils.actOnlineRecharge(activity,RoleType.MEMBER);
-//                  }
-//              });
+              holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actAssetDetail(activity,RoleType.BUSINESS);
+                  }
+              });
+              holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actConsumption(activity,RoleType.BUSINESS);
+                  }
+              });
 //
-//              holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
-//                  @Override
-//                  public void onClick(View v) {
-//                      ActivityJumpUtils.actAssetDetail(activity,RoleType.MEMBER);
-//                  }
-//              });
-//              holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
-//                  @Override
-//                  public void onClick(View v) {
-//                      ActivityJumpUtils.actConsumption(activity);
-//                  }
-//              });
+              holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actBankCard(activity);
+                  }
+              });
+              holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actRecommend(activity,RoleType.BUSINESS);
+                  }
+              });
               break;
           case 5:
               //                      标题

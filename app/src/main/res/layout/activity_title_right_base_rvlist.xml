@@ -3,11 +3,5 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include layout="@layout/include_titlebar_right"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:background="@color/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v7.widget.RecyclerView>
+    <include layout="@layout/common_list_has_empty_refresh_loadmore"/>
 </LinearLayout>

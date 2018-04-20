@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.zhy.autolayout.AutoRelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="164px"
+        android:layout_marginTop="23px"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/item_bank_logo"
+            android:layout_width="68px"
+            android:layout_height="68px"
+           android:layout_marginTop="45px"
+            android:background="@mipmap/ic_launcher"
+            android:layout_marginBottom="51px"
+            android:layout_marginLeft="30px"
+
+            />
+
+        <TextView
+            android:id="@+id/item_tv_bank_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/item_bank_logo"
+            android:layout_marginLeft="12px"
+            android:layout_marginTop="45px"
+            android:text="工商银行"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/textsize_28px" />
+        <TextView
+            android:id="@+id/item_tv_card_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/textsize_24px"
+            android:layout_toRightOf="@+id/item_bank_logo"
+            android:layout_marginTop="105px"
+            android:layout_marginLeft="12px"
+            android:textColor="#666666"
+            android:text="信用卡"
+            />
+        <TextView
+            android:id="@+id/item_tv_card_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/textsize_20px"
+            android:layout_marginTop="109px"
+            android:text="4242 4242 4242 4224"
+
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/textsize_24px" />
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</LinearLayout>

@@ -20,7 +20,7 @@ public class BankCardAdapter extends BaseListRvAdapter<BankCard> {
 
     @Override
     public int getItemResId() {
-        return R.layout.item_bankcard_list;
+        return R.layout.item_bankcard;
     }
 
     @Override

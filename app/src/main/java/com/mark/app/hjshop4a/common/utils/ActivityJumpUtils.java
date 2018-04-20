@@ -162,8 +162,11 @@ public class ActivityJumpUtils {
      * @param activity
 
      */
-    public static void actRecommend(Activity activity) {
+    public static void actRecommend(Activity activity,int Role) {
         Intent intent = new Intent(activity, RecommendActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(BundleKey.ROLE,Role);
+        intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }
@@ -250,8 +253,11 @@ public class ActivityJumpUtils {
     /*
     * 跳转消费账单
     * */
-    public static void actConsumption(Activity activity) {
+    public static void actConsumption(Activity activity,int role) {
         Intent intent = new Intent(activity, ConsumptionBillActivty.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(BundleKey.ROLE,role);
+        intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }

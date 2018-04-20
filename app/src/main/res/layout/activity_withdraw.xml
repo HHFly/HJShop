@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/include_titlebar"/>
+    <RelativeLayout
+        android:id="@+id/item_bank_card"
+        style="@style/user_item_layout"
+        android:layout_height="110px"
+        android:background="@drawable/select_normal_bg">
+
+        <ImageView
+            android:id="@+id/iv_bnak_card"
+           android:layout_height="68px"
+            android:layout_width="68px"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/head" />
+        <TextView
+            android:id="@+id/item_tv_bank_name"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_bnak_card"
+            android:layout_marginLeft="24px"
+            android:layout_centerVertical="true"
+            android:text="中国工商银行（8888）" />
+
+        <ImageView
+            android:id="@+id/iv_bnak_card_slsect"
+            android:padding="@dimen/textsize_30px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_right_gray"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+
+    <RelativeLayout
+        android:id="@+id/item_cash"
+        style="@style/user_item_layout"
+        android:layout_height="172px"
+        android:background="@color/white"
+        >
+
+        <TextView
+            android:id="@+id/iv_cash_symbol"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerVertical="true"
+           android:text="￥"
+            android:textColor="#333333"
+            android:textSize="70px"/>
+        <EditText
+            android:id="@+id/et_cash_conut"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/iv_cash_symbol"
+            android:layout_marginLeft="24px"
+            android:textColor="#333333"
+            android:textSize="70px"
+            android:gravity="center_vertical|left"
+            android:layout_toStartOf="@+id/iv_withdraw"
+            android:background="@null" />
+
+        <TextView
+            android:id="@+id/iv_withdraw"
+           android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="#289BF8"
+            android:textSize="30px"
+            android:gravity="center"
+            android:padding="@dimen/textsize_30px"
+            android:text="提现"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="76px"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26px"
+            android:layout_marginLeft="@dimen/textsize_30px"
+            android:textColor="#666666"
+            android:textSize="22px"
+            android:text="当前可提现金额为"/>
+
+        <TextView
+            android:id="@+id/tv_cash_useful"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26px"
+            android:text="￥2200.12"
+            android:textColor="#666666"
+            android:textSize="22px" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="110px"
+        android:background="@color/white"
+        android:layout_marginTop="20px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="27px"
+            android:textSize="26px"
+            android:layout_marginLeft="@dimen/textsize_30px"
+            android:textColor="#333333"
+            android:text="会员备注："/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提现说明:"
+        android:layout_marginTop="38px"
+        android:layout_marginLeft="@dimen/textsize_30px"
+        android:textColor="#666666"
+        android:textSize="26px"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="22px"
+        android:layout_marginTop="21px"
+        android:layout_marginLeft="@dimen/textsize_30px"
+        android:textColor="#666666"
+        android:lineSpacingExtra="20px"
+        android:text="@string/withdraw_tip"/>
+    <Button
+    android:id="@+id/button"
+    android:layout_marginTop="116px"
+    android:layout_gravity="center_horizontal"
+    android:layout_width="690px"
+    android:layout_height="80px"
+    android:text="提交申请"
+    android:textColor="@color/white"
+    android:textSize="30px"
+    style="@style/BaseBtn.Normal.Important"
+    />
+</LinearLayout>

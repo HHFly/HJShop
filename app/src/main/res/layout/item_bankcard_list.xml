@@ -3,11 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-
+    android:background="@color/background"
     android:clickable="true">
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:background="@color/white">
 
     <ImageView
@@ -52,12 +53,7 @@
 
             android:textColor="@color/colorText"
             android:textSize="@dimen/textsize_24px" />
-        <View
-            style="@style/BaseLine.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="20px"
-            android:layout_marginTop="180px"
-            ></View>
+
     </com.zhy.autolayout.AutoRelativeLayout>
 
     <com.zhy.autolayout.AutoLinearLayout

@@ -32,6 +32,6 @@
         android:layout_centerVertical="true"
         android:paddingLeft="20px"
         android:paddingRight="20px"
-        android:src="@mipmap/ic_search_white" />
+        android:src="@mipmap/grid_storeimg_add" />
 
 </RelativeLayout>

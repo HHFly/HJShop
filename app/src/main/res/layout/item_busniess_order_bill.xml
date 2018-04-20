@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/textsize_20px"
+    android:layout_marginRight="30px"
+    android:layout_marginLeft="30px">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="86px"
+        android:paddingLeft="40px"
+        android:paddingRight="28px">
+        <ImageView
+            android:id="@+id/Image_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+
+            android:src="@mipmap/store"/>
+        <TextView
+            android:id="@+id/store_name"
+            android:layout_toEndOf="@+id/Image_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="#666666"
+            android:textSize="26px"
+            android:text="罗马瓷砖"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="26px"
+            android:textColor="#333333"
+            android:text="2018-03-29"/>
+    </RelativeLayout>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="@dimen/textsize_20px"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/textsize_20px">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/gold_bean_count"
+                android:text="15151515151"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="消费会员"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/deductiblet_count"
+                android:text="吃饭"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="商品名称"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/consume_store_name"
+                android:text="会员报单"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="类型"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/consume_type"
+                android:text="￥100.00"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="消费金额"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/service_charge"
+                android:text="￥100.00"
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="服务费"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+    </LinearLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="@dimen/textsize_20px"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:paddingRight="28px"
+        android:paddingLeft="40px"
+        >
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:id="@+id/state"
+            android:text="审核中"
+            style="@style/Bill_right"/>
+        <TextView
+            android:layout_centerVertical="true"
+            android:text="状态"
+            style="@style/Bill_left" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.ui.consumptionbill;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
@@ -7,6 +8,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.androidenum.consumptionbill.BillTabType;
+import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.GoldBeanFragment;
@@ -23,12 +25,21 @@ public class ConsumptionBillActivty extends BaseActivity {
     private GoldBeanFragment mFragmentGoldBean;
     private BalanceFragment mFragmentBalance;
     private RechargeFragment mFragmentRecharge;
+
     @Override
     public int getContentViewResId() {
         return R.layout.activity_consumptionbill;
     }
     //类型
     int mType =0;
+//    角色
+    int Role ;
+
+    @Override
+    public void getIntentParam(Bundle bundle) {
+        super.getIntentParam(bundle);
+        Role= bundle.getInt(BundleKey.ROLE);
+    }
 
     @Override
     public void initView() {
