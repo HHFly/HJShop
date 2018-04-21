@@ -12,6 +12,8 @@ import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.AgentPerformanceActivity;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.AreaBusniessActivity;
+import com.mark.app.hjshop4a.ui.areaagent.areaincome.AreaIncomeActivity;
+import com.mark.app.hjshop4a.ui.areaagent.billreview.AreaBillReviewActivity;
 import com.mark.app.hjshop4a.ui.areaagent.businessreview.BusinessReviewActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
@@ -234,6 +236,18 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                     @Override
                     public void onClick(View v) {
                         ActivityJumpUtils.actActivity(activity, WithDrawDetailActivity.class);
+                    }
+                });
+                holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, AreaIncomeActivity.class);
+                    }
+                });
+                holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, AreaBillReviewActivity.class);
                     }
                 });
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {

@@ -4,349 +4,385 @@
     android:layout_height="match_parent" android:background="@color/background">
 
     <include layout="@layout/include_titlebar"></include>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scrollbars="none"
-    android:fillViewport="true">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-    <!--账户余额-->
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="@dimen/textsize_20px"
-    android:background="@color/white">
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="132px"
-      android:paddingLeft="@dimen/textsize_26px"
-      android:paddingTop="19px">
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="账户余额"
-          android:textColor="#666666"
-          android:textSize="26px"
-          />
-      <TextView
-          android:id="@+id/account_balance"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="￥2000.12"
-          android:textSize="40px"
-          android:textColor="#333333"
-          android:layout_marginBottom="20px"
-          android:layout_alignParentBottom="true"
-          />
+        android:fillViewport="true"
+        android:scrollbars="none">
 
-      <View style="@style/BaseLine.Horizontal"
-          android:layout_alignParentBottom="true"></View>
-  </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="121px">
-    <LinearLayout
-        android:layout_width="0px"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingLeft="27px"
-        android:paddingTop="24px">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="可用余额(元）"
-        android:textColor="#666666"
-        android:textSize="22px"/>
-    <TextView
-        android:id="@+id/canuse_account_balance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10px"
-        android:textSize="26px"
-        android:textColor="#333333"
-        android:text="1333.00"/>
-
-
-</LinearLayout>
-    <View style="@style/BaseLine.Vertical"></View>
         <LinearLayout
-            android:layout_width="0px"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:paddingLeft="27px"
-            android:paddingTop="24px">
-            <TextView
-                android:layout_width="wrap_content"
+            android:orientation="vertical">
+            <!--账户余额-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="冻结金额(元）"
-                android:textColor="#666666"
-                android:textSize="22px"/>
-            <TextView
-                android:id="@+id/frozen_amount"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/textsize_20px"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="132px"
+                    android:paddingLeft="@dimen/textsize_26px"
+                    android:paddingTop="19px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="账户余额"
+                        android:textColor="#666666"
+                        android:textSize="26px" />
+
+                    <TextView
+                        android:id="@+id/account_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="20px"
+                        android:text="￥2000.12"
+                        android:textColor="#333333"
+                        android:textSize="40px" />
+
+                    <View
+                        style="@style/BaseLine.Horizontal"
+                        android:layout_alignParentBottom="true"></View>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="121px">
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="可用余额(元）"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/canuse_account_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="1333.00"
+                            android:textColor="#333333"
+                            android:textSize="26px" />
+
+
+                    </LinearLayout>
+
+                    <View style="@style/BaseLine.Vertical"></View>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="冻结金额(元）"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/frozen_amount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="1333.00"
+                            android:textColor="#333333"
+                            android:textSize="26px" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="97px"
+                    android:paddingLeft="30px"
+                    android:paddingRight="30px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="同级推荐收益"
+                        android:textColor="#333333"
+                        android:textSize="22px" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="+15.78"
+                        android:textColor="#289BF8"
+
+                        android:textSize="26px" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!--账户金豆-->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10px"
-                android:textSize="26px"
-                android:textColor="#333333"
-                android:text="1333.00"/>
+                android:layout_marginTop="@dimen/textsize_20px"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="132px"
+                    android:paddingLeft="@dimen/textsize_26px"
+                    android:paddingTop="19px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="账户金豆"
+                        android:textColor="#666666"
+                        android:textSize="26px" />
+
+                    <TextView
+                        android:id="@+id/account_gold_bean"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="20px"
+                        android:text="1232.78"
+                        android:textColor="#333333"
+                        android:textSize="40px" />
+
+                    <View
+                        style="@style/BaseLine.Horizontal"
+                        android:layout_alignParentBottom="true"></View>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="121px">
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="待赠金豆"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/given_gold_bean"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="1333.00"
+                            android:textColor="#333333"
+                            android:textSize="26px" />
+
+
+                    </LinearLayout>
+
+                    <View style="@style/BaseLine.Vertical"></View>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已有摇钱树"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/money_tree"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="1333.00"
+                            android:textColor="#333333"
+                            android:textSize="26px" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="121px">
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="已赠金豆"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/gived_gold_bean"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="3235.24"
+                            android:textColor="#333333"
+                            android:textSize="26px" />
+
+
+                    </LinearLayout>
+
+                    <View style="@style/BaseLine.Vertical"></View>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="摇钱树每日收益"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/money_tree_get"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="+32.23"
+                            android:textColor="#289BF8"
+                            android:textSize="26px" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--报单收入-->
+            <LinearLayout
+                android:id="@+id/declaration_income"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20px"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:paddingLeft="26px">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="报单收入(元)"
+                        android:textColor="#666666"
+                        android:textSize="26px" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="121px"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="总收入"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/total_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="1333.00"
+                            android:textColor="#333333"
+                            android:textSize="26px" />
+
+
+                    </LinearLayout>
+
+                    <View style="@style/BaseLine.Vertical"></View>
+
+                    <LinearLayout
+                        android:layout_width="0px"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingLeft="27px"
+                        android:paddingTop="24px">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="昨日收入"
+                            android:textColor="#666666"
+                            android:textSize="22px" />
+
+                        <TextView
+                            android:id="@+id/yesterday_income"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10px"
+                            android:text="1333.00"
+                            android:textColor="#333333"
+                            android:textSize="26px" />
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
 
         </LinearLayout>
-    </LinearLayout>
-    
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="97px"
-        android:paddingLeft="30px"
-        android:paddingRight="30px">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="同级推荐收益"
-            android:textColor="#333333"
-            android:textSize="22px"
-            android:layout_centerVertical="true"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="+15.78"
-            android:textColor="#289BF8"
-            android:textSize="26px"
-
-            android:layout_centerVertical="true"/>
-    </RelativeLayout>
-</LinearLayout>
-
-    <!--账户金豆-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/textsize_20px"
-        android:background="@color/white">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="132px"
-            android:paddingLeft="@dimen/textsize_26px"
-            android:paddingTop="19px">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="账户金豆"
-                android:textColor="#666666"
-                android:textSize="26px"
-                />
-            <TextView
-                android:id="@+id/account_gold_bean"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1232.78"
-                android:textSize="40px"
-                android:textColor="#333333"
-                android:layout_marginBottom="20px"
-                android:layout_alignParentBottom="true"
-                />
-
-            <View style="@style/BaseLine.Horizontal"
-                android:layout_alignParentBottom="true"></View>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="121px">
-            <LinearLayout
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="27px"
-                android:paddingTop="24px">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="待赠金豆"
-                    android:textColor="#666666"
-                    android:textSize="22px"/>
-                <TextView
-                    android:id="@+id/given_gold_bean"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10px"
-                    android:textSize="26px"
-                    android:textColor="#333333"
-                    android:text="1333.00"/>
-
-
-            </LinearLayout>
-            <View style="@style/BaseLine.Vertical"></View>
-            <LinearLayout
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="27px"
-                android:paddingTop="24px">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已有摇钱树"
-                    android:textColor="#666666"
-                    android:textSize="22px"/>
-                <TextView
-                    android:id="@+id/money_tree"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10px"
-                    android:textSize="26px"
-                    android:textColor="#333333"
-                    android:text="1333.00"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="121px">
-            <LinearLayout
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="27px"
-                android:paddingTop="24px">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="已赠金豆"
-                    android:textColor="#666666"
-                    android:textSize="22px"/>
-                <TextView
-                    android:id="@+id/gived_gold_bean"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10px"
-                    android:textSize="26px"
-                    android:textColor="#333333"
-                    android:text="3235.24"/>
-
-
-            </LinearLayout>
-            <View style="@style/BaseLine.Vertical"></View>
-            <LinearLayout
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="27px"
-                android:paddingTop="24px">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="摇钱树每日收益"
-                    android:textColor="#666666"
-                    android:textSize="22px"/>
-                <TextView
-                    android:id="@+id/money_tree_get"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10px"
-                    android:textSize="26px"
-                    android:textColor="#289BF8"
-                    android:text="+32.23"/>
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!--报单收入-->
-    <LinearLayout
-        android:id="@+id/declaration_income"
-        android:layout_width="match_parent"
-        android:background="@color/white"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="20px">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:paddingLeft="26px">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:text="报单收入(元)"
-                android:textColor="#666666"
-                android:textSize="26px" />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="121px"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="27px"
-                android:paddingTop="24px">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="总收入"
-                    android:textColor="#666666"
-                    android:textSize="22px"/>
-                <TextView
-                    android:id="@+id/total_income"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10px"
-                    android:textSize="26px"
-                    android:textColor="#333333"
-                    android:text="1333.00"/>
-
-
-            </LinearLayout>
-            <View style="@style/BaseLine.Vertical"></View>
-            <LinearLayout
-                android:layout_width="0px"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:paddingLeft="27px"
-                android:paddingTop="24px">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="昨日收入"
-                    android:textColor="#666666"
-                    android:textSize="22px"/>
-                <TextView
-                    android:id="@+id/yesterday_income"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10px"
-                    android:textSize="26px"
-                    android:textColor="#333333"
-                    android:text="1333.00"/>
-
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-
-
-    </LinearLayout>
-</ScrollView>
+    </ScrollView>
 </LinearLayout>

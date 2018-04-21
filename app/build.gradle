@@ -81,4 +81,6 @@ dependencies {
     compile 'cn.bingoogolapple:bga-banner:2.1.4@aar'
 //    二维码
     compile 'cn.yipianfengye.android:zxing-library:2.2'
+// 图表
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
 }

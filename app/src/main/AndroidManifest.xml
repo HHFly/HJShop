@@ -80,6 +80,8 @@
         <activity android:name=".ui.areaagent.areabusniess.AreaBusniessActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.areaagent.businessreview.BusinessReviewActivity" android:screenOrientation="portrait" />
         <activity android:name=".ui.areaagent.agentperformance.AgentPerformanceActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.areaagent.areaincome.AreaIncomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.areaagent.billreview.AreaBillReviewActivity" android:screenOrientation="portrait"/>
         <!--省代理-->
         <activity android:name=".ui.provinceagent.ProvinceAreaBusniessActivity" android:screenOrientation="portrait"/>
 

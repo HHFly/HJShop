@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_main_blue">
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="150px"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:text="总报单"
+                android:textColor="@color/white"
+                android:textSize="22px"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:id="@+id/all_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/textsize_20px"
+                android:textSize="40px"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:text="32829.78"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="150px"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:text="昨日报单"
+                android:textColor="@color/white"
+                android:textSize="22px"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                android:id="@+id/yesterday_bill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/textsize_20px"
+                android:textSize="40px"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                android:text="22829.48"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
