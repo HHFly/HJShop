@@ -22,69 +22,170 @@
             android:id="@+id/textView2" />
 
         <RelativeLayout
-            android:layout_width="200px"
-            android:layout_height="180px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textView2"
-            android:layout_marginStart="16px"
+           android:layout_marginLeft="16px"
             android:layout_toEndOf="@+id/textView2"
             >
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/gird_storeimg_update"
-                />
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imagebtn"
                 style="@style/BaseSDV"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:placeholderImage="@mipmap/gird_storeimg_update"
-                app:roundedCornerRadius="10px" />
+                android:layout_width="200px"
+                android:layout_height="180px"
+                android:background="@mipmap/gird_storeimg_update"
+
+               />
 
 
         </RelativeLayout>
     </RelativeLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:layout_marginTop="43px"
+        android:layout_marginLeft="31px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="店内形象"
+        android:textColor="#666666"
+        android:textSize="@dimen/textsize_26px"
+        android:id="@+id/textView3" />
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="130px"
+        android:layout_marginLeft="16px"
+        android:layout_marginTop="28px"
         >
 
-        <com.mark.app.hjshop4a.widget.WarpLinearLayout
-            android:id="@+id/eval_layout_pic"
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/item_sdv_1"
+            style="@style/BaseSDV.AspectRatio"
+            android:layout_width="200px"
+            android:layout_height="180px"
+            android:layout_marginRight="15px"
+            android:layout_marginTop="15px"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="@mipmap/gird_storeimg_update" />
+
+        <ImageView
+
+            android:id="@+id/item_iv_delete_1"
+            android:layout_width="30px"
+            android:layout_height="30px"
+            android:layout_marginLeft="180px"
+            android:src="@mipmap/ic_delete_black" />
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/item_rl_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30px"
-            android:layout_marginRight="20px"
-            android:layout_marginTop="20px"
-            android:orientation="horizontal"
-            app:grivate="left"
-            app:horizontal_Space="5dp"
-            app:vertical_Space="5dp" />
+            android:layout_marginLeft="63px"
+            android:layout_marginTop="28px"
+            >
+
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/item_sdv_2"
+                style="@style/BaseSDV.AspectRatio"
+                android:layout_width="200px"
+                android:layout_height="180px"
+                android:layout_marginRight="15px"
+                android:layout_marginTop="15px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@mipmap/gird_storeimg_update" />
+
+            <ImageView
+                android:id="@+id/item_iv_delete_2"
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_marginLeft="180px"
+                android:src="@mipmap/ic_delete_black" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
         <TextView
             android:layout_marginTop="43px"
             android:layout_marginLeft="31px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="店内形象"
-            android:textColor="#666666"
+            android:textColor="@color/background"
             android:textSize="@dimen/textsize_26px"
-            android:id="@+id/textView3" />
+             />
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/item_rl_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16px"
+            android:layout_marginTop="43px"
+            >
 
-        <View
-            android:id="@+id/eval_iv_add_pic"
-            android:layout_width="200px"
-            android:layout_height="180px"
-            android:layout_alignTop="@+id/textView3"
-            android:layout_marginStart="17px"
-            android:layout_toEndOf="@+id/textView3"
-            android:background="@mipmap/gird_storeimg_update"
-            app:layout_auto_basewidth="height" />
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/item_sdv_3"
+                style="@style/BaseSDV.AspectRatio"
+                android:layout_width="200px"
+                android:layout_height="180px"
+                android:layout_marginRight="15px"
+                android:layout_marginTop="15px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@mipmap/gird_storeimg_update" />
 
+            <ImageView
+                android:id="@+id/item_iv_delete_3"
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_marginLeft="180px"
+                android:src="@mipmap/ic_delete_black" />
 
+        </RelativeLayout>
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/item_rl_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="63px"
+            android:layout_marginTop="43px"
+            >
 
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/item_sdv_4"
+                style="@style/BaseSDV.AspectRatio"
+                android:layout_width="200px"
+                android:layout_height="180px"
+                android:layout_marginRight="15px"
+                android:layout_marginTop="15px"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@mipmap/gird_storeimg_update" />
+
+            <ImageView
+                android:id="@+id/item_iv_delete_4"
+                android:layout_width="30px"
+                android:layout_height="30px"
+                android:layout_marginLeft="180px"
+                android:src="@mipmap/ic_delete_black" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
 </LinearLayout>

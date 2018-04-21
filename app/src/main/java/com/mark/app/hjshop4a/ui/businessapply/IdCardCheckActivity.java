@@ -44,10 +44,10 @@ public class IdCardCheckActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.imagebtn1:
-                FunctionDialogFactory.showTakePhoneDialog(this,R.id.imagebtn1);
+                FunctionDialogFactory.showTakePhoneIDDialog(this,R.id.imagebtn1);
                 break;
             case R.id.imagebtn2:
-                FunctionDialogFactory.showTakePhoneDialog(this,R.id.imagebtn2);
+                FunctionDialogFactory.showTakePhoneIDDialog(this,R.id.imagebtn2);
                 break;
             case R.id.titlebar_tv_right:
                 break;

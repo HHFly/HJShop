@@ -80,7 +80,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
                 break;
             case R.id.imagebtn:
 //             图片
-                FunctionDialogFactory.showTakePhoneDialog(getAppCompatActivity(), R.id.imagebtn);
+                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(), R.id.imagebtn);
                 break;
             case R.id.button:
 //                提交

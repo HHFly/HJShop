@@ -10,6 +10,9 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.model.bankcard.BankCard;
+import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
+import com.mark.app.hjshop4a.ui.bankcard.BankCardAddActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordAdapter;
 import com.mark.app.hjshop4a.ui.business.busniessinfo.BusniessInfoActivity;
@@ -21,7 +24,10 @@ import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
+import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.withdraw.WithDrawActivity;
+import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailActivity;
+import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailAdapter;
 import com.white.lib.utils.CallPhoneUtil;
 
 /**
@@ -177,6 +183,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
 //                        用户名
                 holder.text(R.id.hm_tv_user_nickname,"151515151515");
+                holder.visibility(R.id.item_mesage,false);
                 break;
             case 1:
                 //                标题
@@ -192,6 +199,12 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.text(R.id.me_tv_lab2, R.string.me_商户申请);
                 holder.text(R.id.me_tv_lab3, R.string.me_代理业绩);
                 holder.text(R.id.me_tv_lab4, R.string.me_余额提现);
+                holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);
+                    }
+                });
                 break;
             case 3:
                 holder.image(R.id.me_iv_lab1,R.mipmap.cashdetial);
@@ -202,10 +215,28 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.text(R.id.me_tv_lab2, R.string.me_区域收益);
                 holder.text(R.id.me_tv_lab3, R.string.me_辖区报单审核);
                 holder.text(R.id.me_tv_lab4,R.string.me_银行卡);
+                holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, WithDrawDetailActivity.class);
+                    }
+                });
+                holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, BankCardActivity.class);
+                    }
+                });
                 break;
             case 4:
                 holder.image(R.id.me_iv_lab1,R.mipmap.recommend);
                 holder.text(R.id.me_tv_lab1,R.string.me_我的推荐);
+                holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, RecommendActivity.class);
+                    }
+                });
                 holder.visibility(R.id.hm_lab2,false);
                 holder.visibility(R.id.hm_lab3,false);
                 holder.visibility(R.id.hm_lab4,false);
@@ -427,11 +458,13 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 //                            if(App.hasToken()){
 //                               ActivityJumpUtils.actLogin(activity);
 //                            }
+
                       ActivityJumpUtils.actUserInfo(activity);
                   }
               });
 //                        用户名
               holder.text(R.id.hm_tv_user_nickname,"151515151515");
+              holder.visibility(R.id.item_mesage,false);
 //
               break;
           case 1:
@@ -556,6 +589,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 
               //                       条目  关于惠家
               holder.text(R.id.hm_tv_item_name, R.string.me_关于惠家);
+              holder.image(R.id.hm_iv_logo,R.mipmap.about);
               holder.itemView.setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.other.PhotoType;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 import com.mark.app.hjshop4a.model.bankcard.BankCard;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
@@ -31,7 +32,7 @@ public class FunctionDialogFactory {
     /**
      * 打开上传图片对话框
      */
-    public static void showTakePhoneDialog(final AppCompatActivity activity,final @IdRes int id) {
+    public static void showTakePhoneIDDialog(final AppCompatActivity activity,final @IdRes int id) {
         List<ListDialog.ListDialogModel> data = new ArrayList<>();
         data.add(new ListDialog.ListDialogModel(0,"拍照"));
         data.add(new ListDialog.ListDialogModel(1, "从相机选择"));
@@ -47,6 +48,36 @@ public class FunctionDialogFactory {
                     }
                     case 0: {
                         TakeImgUtil.takePhoto(activity,id);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
+        dialog.show(activity.getFragmentManager());
+    }
+    /**
+     * 打开上传图片对话框
+     */
+    public static void showTakePhoneDialog(final AppCompatActivity activity) {
+        List<ListDialog.ListDialogModel> data = new ArrayList<>();
+        data.add(new ListDialog.ListDialogModel(0,"拍照"));
+        data.add(new ListDialog.ListDialogModel(1, "从相机选择"));
+        ListDialog dialog = ListDialog.getInstance(data);
+        dialog.setOnBtnClickListenr(new ListDialog.OnBtnClickListenr() {
+            @Override
+            public void onItemClick(View view, ListDialog.ListDialogModel data, int position) {
+                switch (data.getId()) {
+                    case PhotoType.ALBUM: {
+                        TakePhoneUtil.choosePhoto(activity);
+                        break;
+                    }
+                    case PhotoType.CAMERA: {
+                        TakePhoneUtil.takePhoto(activity);
                         break;
                     }
                 }
