@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
 import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 
+import com.mark.app.hjshop4a.ui.homepager.start.GuideActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
@@ -36,7 +37,16 @@ public class ActivityJumpUtils {
         act.startActivity(intent);
 //        act.overridePendingTransition(0,0);
     }
-
+    /**
+     * 跳转到引导页
+     *
+     * @param act
+     */
+    public static void actGuideNORMAL(final Activity act) {
+        Intent intent = new Intent(act, GuideActivity.class);
+        act.startActivity(intent);
+        ActAnimationUtils.actAlphaIn(act);
+    }
     /**
      * 跳转到登陆
      *

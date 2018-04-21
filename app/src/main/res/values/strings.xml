@@ -240,5 +240,8 @@
     <string name="order_commit_tip">如您要购买单据，您需要上传单\n据谢谢配合！</string>
     <string name="consume_commit_rule">1.请先保证账户有足够的余额\n2.消费金额需要满100元才可以提交\n3.每个会员每天累计最高可提交消费金额100000元\n4.只有商户可以报单，且只能给会员报\n5.以上所有信息为必填项：</string>
     <string name="withdraw_tip">1.满200可以申请提现,且必须是100的倍数\n2.提现不收手续费\n3.提现申请提交后，3个工作日到账</string>
+    <string name="split_start">%1$s 跳过</string>
+    <string name="me_前往">前往</string>
+    <string name="me_退出">退出</string>
 
 </resources>

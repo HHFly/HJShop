@@ -14,6 +14,7 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
@@ -147,7 +148,7 @@ public class HomePagerActivity extends BaseActivity {
             //是否第一次引导
             if (isFirstGuide()) {
                 LogUtils.logFormat(this, "switchActJump", "go to GuideActivity");
-//                ActivityJumpUtils.actGuideNORMAL(getActivity());
+                ActivityJumpUtils.actGuideNORMAL(getActivity());
             } else {
                 LogUtils.logFormat(this, "switchActJump", "go to StartActivity");
 //                ActivityJumpUtils.actStart(getActivity());

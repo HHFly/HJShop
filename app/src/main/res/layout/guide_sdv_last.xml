@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/guide_sdv"
+        style="@style/BaseSDV.MatchMatch" />
+
+    <Button
+        android:id="@+id/guide_btn"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50px"
+        android:layout_marginLeft="100px"
+        android:layout_marginRight="100px"
+        android:text="@string/btn_msg_goto_index" />
+
+</RelativeLayout>
