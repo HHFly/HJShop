@@ -76,6 +76,12 @@
         <activity android:name=".ui.business.billrecord.BusniessBillRecordActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.withdraw.WithDrawActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.withdrawdetail.WithDrawDetailActivity" android:screenOrientation="portrait"/>
+        <!--区代理-->
+        <activity android:name=".ui.areaagent.areabusniess.AreaBusniessActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.areaagent.businessreview.BusinessReviewActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ui.areaagent.agentperformance.AgentPerformanceActivity" android:screenOrientation="portrait"/>
+        <!--省代理-->
+        <activity android:name=".ui.provinceagent.ProvinceAreaBusniessActivity" android:screenOrientation="portrait"/>
 
     </application>
 </manifest>

@@ -3,7 +3,6 @@ package com.mark.app.hjshop4a.ui.business.billrecord;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
-import com.mark.app.hjshop4a.base.adapter.BaseRvAdapter;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillRecord;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 
@@ -20,7 +19,7 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
 
     @Override
     public int getTopItemResId() {
-        return R.layout.activity_busniess_bill;
+        return R.layout.item_area_busniess_top;
     }
 
     @Override

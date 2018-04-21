@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10px"
-                android:text="总报单"
+                android:text="辖区内总营业额"
                 android:textColor="@color/white"
                 android:textSize="22px"
                 android:layout_gravity="center_horizontal"
@@ -29,7 +29,7 @@
                 android:textSize="40px"
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
-                android:text="1333.00"/>
+                android:text="32829.78"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0px"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10px"
-                android:text="昨日报单"
+                android:text="辖区内当月营业额"
                 android:textColor="@color/white"
                 android:textSize="22px"
                 android:layout_gravity="center_horizontal"
@@ -53,7 +53,38 @@
                 android:textSize="40px"
                 android:textColor="@color/white"
                 android:layout_gravity="center_horizontal"
-                android:text="1333.00"/>
+                android:text="22829.48"/>
         </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/local_address"
+        android:layout_marginTop="15px"
+        android:layout_marginBottom="@dimen/textsize_20px"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="100px">
+        <ImageView
+         android:layout_width="36px"
+         android:layout_height="36px"
+            android:layout_marginLeft="38px"
+        android:layout_gravity="center_vertical"
+        android:src="@mipmap/ic_address"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:layout_gravity="center_vertical"
+            android:textSize="24px"
+            android:text="当前位置:"/>
+        <TextView
+            android:id="@+id/tv_address_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:layout_gravity="center_vertical"
+            android:textSize="24px"
+            android:text="杭州代理"/>
     </LinearLayout>
 </LinearLayout>

@@ -10,24 +10,21 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
-import com.mark.app.hjshop4a.model.bankcard.BankCard;
+import com.mark.app.hjshop4a.ui.areaagent.agentperformance.AgentPerformanceActivity;
+import com.mark.app.hjshop4a.ui.areaagent.areabusniess.AreaBusniessActivity;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.BusinessReviewActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
-import com.mark.app.hjshop4a.ui.bankcard.BankCardAddActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
-import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordAdapter;
 import com.mark.app.hjshop4a.ui.business.busniessinfo.BusniessInfoActivity;
 import com.mark.app.hjshop4a.ui.business.consumecommit.ConsumeCommitActivity;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.BusniessGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
-import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
-import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.withdraw.WithDrawActivity;
 import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailActivity;
-import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailAdapter;
 import com.white.lib.utils.CallPhoneUtil;
 
 /**
@@ -199,6 +196,24 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.text(R.id.me_tv_lab2, R.string.me_商户申请);
                 holder.text(R.id.me_tv_lab3, R.string.me_代理业绩);
                 holder.text(R.id.me_tv_lab4, R.string.me_余额提现);
+                holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, AreaBusniessActivity.class);
+                    }
+                });
+                holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, BusinessReviewActivity.class);
+                    }
+                });
+                holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, AgentPerformanceActivity.class);
+                    }
+                });
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

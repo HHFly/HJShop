@@ -33,7 +33,7 @@
             android:layout_alignTop="@+id/me_iv_lab1"
             android:layout_alignRight="@+id/me_iv_lab1"
             android:visibility="gone"
-            android:background="@drawable/shape_circle_red"
+            android:background="@drawable/shape_btn_5px_red"
             app:layout_auto_basewidth="height" />
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_height="15px"
             android:layout_alignTop="@+id/me_iv_lab2"
             android:layout_alignRight="@+id/me_iv_lab2"
-            android:background="@drawable/shape_circle_red"
+            android:background="@drawable/shape_btn_5px_red"
             android:visibility="gone"
             app:layout_auto_basewidth="height" />
 
@@ -94,8 +94,8 @@
             >
         <ImageView
             android:id="@+id/me_iv_lab3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40px"
+            android:layout_height="40px"
            android:layout_centerHorizontal="true"
             android:layout_marginTop="37px"
            
@@ -107,7 +107,7 @@
             android:layout_height="15px"
             android:layout_alignTop="@+id/me_iv_lab3"
             android:layout_alignRight="@+id/me_iv_lab3"
-            android:background="@drawable/shape_circle_red"
+            android:background="@drawable/shape_btn_5px_red"
             android:visibility="gone"
             app:layout_auto_basewidth="height" />
         <TextView
@@ -128,8 +128,8 @@
             >
         <ImageView
             android:id="@+id/me_iv_lab4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40px"
+            android:layout_height="40px"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="37px"
            
@@ -141,7 +141,7 @@
             android:layout_height="15px"
             android:layout_alignTop="@+id/me_iv_lab4"
             android:layout_alignRight="@+id/me_iv_lab4"
-            android:background="@drawable/shape_circle_red"
+            android:background="@drawable/shape_btn_5px_red"
             android:visibility="gone"
             app:layout_auto_basewidth="height" />
         <TextView

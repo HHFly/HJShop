@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
@@ -234,6 +235,7 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
         }
+
     }
 
     /**
