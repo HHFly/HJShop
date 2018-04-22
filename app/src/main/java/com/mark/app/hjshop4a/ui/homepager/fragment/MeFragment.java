@@ -43,7 +43,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_right,"切换账号");
-        initRvAdapter(RoleType.AREAAGENT,true);
+        initRvAdapter(RoleType.PROVINCIALAGENT,true);
     }
 
     @Override

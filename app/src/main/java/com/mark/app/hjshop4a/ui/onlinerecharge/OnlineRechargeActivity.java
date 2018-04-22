@@ -22,7 +22,7 @@ public class OnlineRechargeActivity extends BaseActivity {
     private PayInfo mData;
     @Override
     public int getContentViewResId() {
-        return R.layout.activity_title_rvlist;
+        return R.layout.activity_onlinerecharge;
     }
     @Override
     public void setListener() {

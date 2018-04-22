@@ -21,6 +21,7 @@ import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.MeFragment;
+import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
 import com.white.lib.utils.SPUtil;
 import com.white.lib.utils.ToastUtil;
@@ -35,12 +36,12 @@ public class HomePagerActivity extends BaseActivity {
     private View tab2;      //分类
     private View tab3;      //购物车
     private View tab4;      //我的
-
+    private View tab5;      //客服
    private HomeFragment homeFragment;
    private ClassifyFragment classifyFragment;
    private ShopCarFragment shopCarFragment;
     private MeFragment meFragment;
-
+    private ServiceFragment mServiceFragment;
     private Fragment mCurFragment;
 
     //tab类型
@@ -73,6 +74,7 @@ public class HomePagerActivity extends BaseActivity {
         tab2 = getView(R.id.hp_layout_tab2);
         tab3 = getView(R.id.hp_layout_tab3);
         tab4 = getView(R.id.hp_layout_tab4);
+        tab5 =getView(R.id.hp_layout_tab5);
     }
 
     @Override
@@ -81,6 +83,7 @@ public class HomePagerActivity extends BaseActivity {
         tab2.setOnClickListener(this);
         tab3.setOnClickListener(this);
         tab4.setOnClickListener(this);
+        tab5.setOnClickListener(this);
     }
 
     @Override
@@ -122,7 +125,11 @@ public class HomePagerActivity extends BaseActivity {
 //                    ActivityJumpUtils.actLogin(getActivity());
 //                }
                 break;
+
             }
+            case R.id.hp_layout_tab5:
+                selectTab(tab5);
+                break;
         }
     }
 

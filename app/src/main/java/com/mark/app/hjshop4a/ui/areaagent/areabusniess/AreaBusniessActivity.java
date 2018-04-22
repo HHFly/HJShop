@@ -64,12 +64,7 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
     }
 
     public void initRvAdapter(ArrayList<AreaBusniess> data, boolean isRefresh) {
-//        data = new ArrayList<>();
-//        RedItem item = new RedItem();
-//        item.setRedPacketName("10元红包");
-//        item.setRedPacketPrice("￡66.00");
-//        item.setEndTime(66666666666l);
-//        data.add(item);
+
         if (mAdapter == null) {
             mAdapter = new AreaBusniessAdapter(data.get(0),data);
             RecyclerView rv = getView(R.id.recyclerView);

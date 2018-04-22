@@ -144,7 +144,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="90px"
-
             android:paddingRight="28px"
             android:paddingLeft="40px"
             >
@@ -153,12 +152,13 @@
                 android:id="@+id/tv_1_pass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/tv_1_unpass"
-                android:layout_marginEnd="21px"
+                android:layout_marginRight="10px"
                 android:layout_toStartOf="@+id/tv_1_unpass"
                 android:background="@drawable/shape_btn_small_click_fill"
+                android:layout_centerVertical="true"
+
+                android:paddingBottom="10px"
                 android:paddingTop="@dimen/textsize_10px"
-                android:paddingBottom="@dimen/textsize_10px"
                 android:paddingLeft="34px"
                 android:paddingRight="34px"
 
@@ -168,14 +168,17 @@
             <TextView
                 android:id="@+id/tv_1_unpass"
                 android:text="不通过"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:background="@drawable/shape_btn_5px_red"
                 android:textColor="#FFFFFF"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
                 android:paddingBottom="@dimen/textsize_10px"
                 android:paddingTop="@dimen/textsize_10px"
                 android:paddingLeft="@dimen/textsize_22px"
                 android:paddingRight="@dimen/textsize_22px"
-                android:layout_centerVertical="true"
-                style="@style/Bill_right"/>
+               />
             <TextView
                 android:layout_centerVertical="true"
                 android:text="报单状态"
