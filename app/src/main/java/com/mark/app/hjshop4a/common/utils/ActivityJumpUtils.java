@@ -10,6 +10,7 @@ import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
 import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
 import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
+import com.mark.app.hjshop4a.ui.calendarview.CalendarViewActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 
 import com.mark.app.hjshop4a.ui.homepager.start.GuideActivity;
@@ -276,6 +277,17 @@ public class ActivityJumpUtils {
   * */
     public static void actBusinesApply(Activity activity) {
         Intent intent = new Intent(activity, BusinessApplicationActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+  * 跳转消费账单
+  * */
+    public static void actCalendarView(Activity activity,String title) {
+        Intent intent = new Intent(activity, CalendarViewActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("title",title);
+        intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }

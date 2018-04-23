@@ -46,6 +46,7 @@ android {
         exclude 'META-INF/rxjava.properties'
         // ... and any other excludes go here
     }
+
 }
 
 dependencies {
@@ -83,4 +84,5 @@ dependencies {
     compile 'cn.yipianfengye.android:zxing-library:2.2'
 // 图表
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+
 }

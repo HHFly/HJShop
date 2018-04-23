@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:calendarview="http://schemas.android.com/apk/res-auto"
+    xmlns:weekview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_multi_choose"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/include_titlebar"/>
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="110px"
+    >
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="28px"
+        >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:text="开始时间"
+          android:textSize="24px"
+          android:textColor="#333333"/>
+        <TextView
+            android:id="@+id/tv_time_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5px"
+            android:layout_gravity="center_horizontal"
+            android:textSize="22px"
+            android:text="2018-09-12"
+            android:textColor="#289BF8"/>
+    </LinearLayout>
+    <View style="@style/BaseLine.Vertical"
+        android:layout_marginTop="15px"
+        android:layout_marginBottom="15px"/>
+    <LinearLayout
+        android:layout_width="0px"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingTop="28px"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="结束时间"
+            android:textSize="24px"
+            android:textColor="#333333"/>
+        <TextView
+            android:id="@+id/tv_time_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5px"
+            android:layout_gravity="center_horizontal"
+            android:textSize="22px"
+            android:text="2018-09-12"
+            android:textColor="#289BF8"/>
+    </LinearLayout>
+</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        android:background="#ffffff">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80px"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/textsize_30px"
+            android:src="@mipmap/ic_left_gray"
+            android:onClick="lastMonth" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="28px"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="80px"
+            android:padding="@dimen/textsize_30px"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_right_gray"
+            android:onClick="nextMonth" />
+
+    </RelativeLayout>
+
+    <com.mark.app.hjshop4a.widget.calendarview.weiget.CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="50px" />
+
+    <com.mark.app.hjshop4a.widget.calendarview.weiget.CalendarView
+        android:id="@+id/calendar"
+        android:layout_width="match_parent"
+        android:layout_height="440px"
+        calendarview:choose_type="multi"
+        calendarview:show_lunar="false"
+        />
+
+
+</LinearLayout>

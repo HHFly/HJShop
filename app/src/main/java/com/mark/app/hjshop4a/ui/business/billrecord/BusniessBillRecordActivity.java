@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillRecord;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
@@ -62,6 +63,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
                 finish();
                 break;
             case R.id.titlebar_tv_right:
+                ActivityJumpUtils.actCalendarView(this,"报单账单");
                 break;
         }
 

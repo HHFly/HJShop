@@ -45,7 +45,7 @@
         <activity android:name=".ui.homepager.activity.HomePagerActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.homepager.start.StartActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.login.activity.RegisterActivity" android:screenOrientation="portrait"></activity>
-
+        <activity android:name=".ui.calendarview.CalendarViewActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.web.WebActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.login.activity.LoginSwitchActivity" android:screenOrientation="portrait"></activity>
         <!--会员-->

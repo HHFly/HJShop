@@ -20,8 +20,11 @@ allprojects {
         google()
         jcenter()
         maven{
+
             url 'http://106.14.187.190:8081/nexus/content/repositories/releases/'
+
         }
+        maven { url "https://jitpack.io" }
     }
 }
 
