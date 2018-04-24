@@ -3,7 +3,8 @@ package com.mark.app.hjshop4a.ui.bankcard;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
-import com.mark.app.hjshop4a.model.bankcard.BankCard;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
+
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -25,6 +26,19 @@ public class BankCardAdapter extends BaseListRvAdapter<BankCard> {
 
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPos, BankCard data) {
+        if(data!=null) {
+            holder.sdvSmall(R.id.item_bank_logo, data.getBankPic());
+            holder.text(R.id.item_tv_bank_name, data.getBankName());
+            holder.text(R.id.item_tv_card_type, CardType(data.getBankType()));
+            holder.text(R.id.item_tv_card_number,data.getBankNo());
+        }
+    }
 
+    private String CardType(int bankType) {
+        switch (bankType){
+            case 0:return "普通卡";
+            case 1:return  "信用卡";
+        }
+        return "";
     }
 }
