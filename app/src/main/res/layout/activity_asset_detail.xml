@@ -42,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="20px"
-                        android:text="￥2000.12"
+                        android:text=""
                         android:textColor="#333333"
                         android:textSize="40px" />
 
@@ -75,7 +75,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="1333.00"
+                            android:text=""
                             android:textColor="#333333"
                             android:textSize="26px" />
 
@@ -104,7 +104,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="1333.00"
+                            android:text=""
                             android:textColor="#333333"
                             android:textSize="26px" />
 
@@ -126,11 +126,12 @@
                         android:textSize="22px" />
 
                     <TextView
+                        android:id="@+id/invite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:text="+15.78"
+                        android:text=""
                         android:textColor="#289BF8"
 
                         android:textSize="26px" />
@@ -164,7 +165,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="20px"
-                        android:text="1232.78"
+                        android:text=""
                         android:textColor="#333333"
                         android:textSize="40px" />
 
@@ -197,7 +198,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="1333.00"
+                            android:text=""
                             android:textColor="#333333"
                             android:textSize="26px" />
 
@@ -226,7 +227,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="1333.00"
+                            android:text=""
                             android:textColor="#333333"
                             android:textSize="26px" />
 
@@ -257,7 +258,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="3235.24"
+                            android:text=""
                             android:textColor="#333333"
                             android:textSize="26px" />
 
@@ -286,7 +287,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="+32.23"
+                            android:text=""
                             android:textColor="#289BF8"
                             android:textSize="26px" />
 
@@ -345,7 +346,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="1333.00"
+                            android:text=""
                             android:textColor="#333333"
                             android:textSize="26px" />
 
@@ -374,7 +375,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10px"
-                            android:text="1333.00"
+                            android:text=""
                             android:textColor="#333333"
                             android:textSize="26px" />
 

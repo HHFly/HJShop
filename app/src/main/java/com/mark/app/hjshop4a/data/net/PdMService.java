@@ -13,6 +13,7 @@ import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
@@ -256,8 +257,14 @@ public interface PdMService {
     * 我的*/
     @GET("/api/app/center")
     Observable<BaseResultEntity<MeCenterInfo>>center(@Query("userType") int userType);
-
-
+/*
+*  资产明细 */
+    @GET("/api/app/property/detail")
+    Observable<BaseResultEntity<AssetDetail>>getAssetDetail(@Query("userType") int userType);
+    /*
+    * 金豆消费*/
+    @GET("/api/app/bean/consume/get")
+    Observable<BaseResultEntity>getConsume();
     class IndexRepo {
         /**
          * 消息数量
