@@ -25,31 +25,21 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
-import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
-import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
-import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.model.homepager.Lookup;
 import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
-import com.white.lib.utils.ToastUtil;
 import com.white.lib.utils.location.LocationManagerUtil;
-import com.white.lib.utils.location.SystemLocationUtil;
-import com.white.lib.utils.location.listener.LocationCallback;
 import com.white.lib.utils.luban.LubanUtil;
 import com.white.lib.utils.luban.model.LubanResultData;
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.io.File;
 import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * activity基类

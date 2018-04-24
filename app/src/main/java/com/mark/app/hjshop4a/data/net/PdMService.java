@@ -16,6 +16,7 @@ import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
+import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -245,15 +246,18 @@ public interface PdMService {
                                             @Query("bankBranchName") String bankBranchName,
                                             @Query("bankAccount") String bankAccount);
 
-
     /*
-    *
-    *
     //开户行
     * */
-
     @GET("/api/merchant/data/config/bank")
     Observable<BaseResultEntity<InfoBank>> configBank();
+
+    /*
+    * 我的*/
+    @GET("/api/app/center")
+    Observable<BaseResultEntity<MeCenterInfo>>center(@Query("userType") int userType);
+
+
     class IndexRepo {
         /**
          * 消息数量

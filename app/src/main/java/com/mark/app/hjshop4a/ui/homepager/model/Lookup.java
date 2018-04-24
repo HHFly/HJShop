@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.model.homepager;
+package com.mark.app.hjshop4a.ui.homepager.model;
 
 
 import com.mark.app.hjshop4a.base.model.BaseModel;

@@ -22,7 +22,8 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="40px"
                 android:background="@drawable/shape_circle_white"
-                app:layout_auto_basewidth="height">
+                app:layout_auto_basewidth="height"
+                android:id="@+id/relativeLayout">
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/hm_sdv_logo"
@@ -31,13 +32,23 @@
                     android:layout_height="120px"
                     android:layout_centerInParent="true"
                     app:layout_auto_basewidth="height"
-                    app:placeholderImage="@mipmap/ic_launcher"
+                    app:placeholderImage="@mipmap/ic_logo"
                     app:roundAsCircle="true" />
 
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/hm_tv_user_nickname"
+                android:id="@+id/hm_tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_above="@+id/imageView10"
+                android:layout_toEndOf="@+id/hm_tv_user_phone"
+                android:text=""
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+            <TextView
+                android:id="@+id/hm_tv_user_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -46,11 +57,21 @@
                 android:textColor="#ffffff"
                 android:textSize="28px" />
 
+            <TextView
+                android:id="@+id/hm_tv_user_shopname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView10"
+                android:layout_toEndOf="@+id/hm_tv_user_phone"
+                android:text=""
+                android:textColor="#ffffff"
+                android:textSize="28px" />
             <ImageView
                 style="@style/BaseImg.Right.White"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="43px" />
+                android:layout_marginRight="43px"
+                android:id="@+id/imageView10" />
 
         </RelativeLayout>
 

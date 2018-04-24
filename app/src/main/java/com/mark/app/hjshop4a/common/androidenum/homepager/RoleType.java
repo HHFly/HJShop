@@ -21,18 +21,18 @@ public @interface RoleType {
     /**
      *会员
      */
-    int MEMBER = 0;
+    int MEMBER = 1;
     /**
      * 分类
      */
-    int BUSINESS = 1;
+    int BUSINESS = 2;
     /**
      * 区代理
      */
-    int AREAAGENT=2;
+    int AREAAGENT=3;
 
     /**
      * 省代理
      */
-    int PROVINCIALAGENT = 3;
+    int PROVINCIALAGENT = 4;
 }

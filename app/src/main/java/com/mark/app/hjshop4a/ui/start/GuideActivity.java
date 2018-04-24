@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.homepager.start;
+package com.mark.app.hjshop4a.ui.start;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -12,7 +12,7 @@ import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.model.launch.GuidePage;
 import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
-import com.mark.app.hjshop4a.ui.homepager.start.adapter.GuideVpAdapter;
+import com.mark.app.hjshop4a.ui.start.adapter.GuideVpAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

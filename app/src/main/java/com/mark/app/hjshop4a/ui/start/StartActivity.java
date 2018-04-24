@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.homepager.start;
+package com.mark.app.hjshop4a.ui.start;
 
 import android.os.Bundle;
 import android.view.View;

@@ -23,6 +23,7 @@ public class AppContext {
 
     LoginRepo mLoginRepo;//登录数据
     Boolean isAutoLogin ;//是否自动登录
+    int mRoleType ;//登录角色
     public AppContext(Context context) {
         mContext = context.getApplicationContext();
         init();
@@ -166,5 +167,11 @@ public class AppContext {
     public void setIsAutoLogin(Boolean autoLogin){
        isAutoLogin =autoLogin;
         SPUtil.getInstance(mContext).putBoolean(KEY_AUTOLOGIN,isAutoLogin);
+    }
+    public int getRoleType(){
+        return mRoleType;
+    }
+    public void  setRoleType(int type){
+        mRoleType=type;
     }
 }

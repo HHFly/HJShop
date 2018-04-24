@@ -23,6 +23,7 @@ import com.mark.app.hjshop4a.ui.business.goldbeanconsume.BusniessGoldBeanConsume
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
+import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.provinceagent.ProvinceAreaBusniessActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
@@ -37,6 +38,7 @@ import com.white.lib.utils.CallPhoneUtil;
 public class MeAdapter extends MultipleSourcesRvAdapter {
     private int mRole ;
     Activity activity;
+    private MeCenterInfo mData;
     @Override
     public int getSectionsCount() {
         switch (mRole){
@@ -48,9 +50,10 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
         return 1;
     }
 
-    public MeAdapter(int role,Activity act) {
+    public MeAdapter(int role,Activity act ,MeCenterInfo centerInfo) {
         activity =act;
         mRole =role;
+        mData =centerInfo;
     }
 
     @Override
@@ -181,9 +184,15 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                         ActivityJumpUtils.actUserInfo(activity);
                     }
                 });
+                holder.visibility(R.id.item_mesage, false);
+                if(mData!=null) {
 //                        用户名
-                holder.text(R.id.hm_tv_user_nickname,"151515151515");
-                holder.visibility(R.id.item_mesage,false);
+                    holder.text(R.id.hm_tv_user_name,mData.getUserName());
+                    //店铺名称
+                    holder.text(R.id.hm_tv_user_shopname,mData.getShopName());
+                    holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
+
+                }
                 break;
             case 1:
                 //                标题
@@ -299,8 +308,15 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                         ActivityJumpUtils.actUserInfo(activity);
                     }
                 });
+                holder.visibility(R.id.item_mesage, false);
+                if(mData!=null) {
 //                        用户名
-                holder.text(R.id.hm_tv_user_nickname,"151515151515");
+                    holder.text(R.id.hm_tv_user_name,mData.getUserName());
+                    //店铺名称
+                    holder.text(R.id.hm_tv_user_shopname,mData.getShopName());
+                    holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
+
+                }
                 break;
             case 1:
 //                标题
@@ -380,7 +396,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
         switch (indexPath.getSection())
         {
             case 0:   //顶部数据
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.get(R.id.hm_sdv_logo).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
 //                            if(App.hasToken()){
@@ -389,8 +405,18 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                         ActivityJumpUtils.actUserInfo(activity);
                     }
                 });
+            if(mData!=null) {
 //                        用户名
-                holder.text(R.id.hm_tv_user_nickname,"151515151515");
+                holder.text(R.id.hm_tv_user_phone, mData.getMessageCount());
+                //金豆
+                holder.text(R.id.hm_tv_red, mData.getEvaDetailCount());
+                //余额
+                holder.text(R.id.hm_tv_balance, mData.getAccountBlance());
+                //积分
+                holder.text(R.id.hm_tv_integral, mData.getIntegral());
+                //头像
+                holder.sdvInside(R.id.hm_sdv_logo, mData.getUserPic());
+            }
 //
                 break;
             case 1:
@@ -518,7 +544,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
   private  void bindBusniess(AutoViewHolder holder, IndexPath indexPath){
       switch (indexPath.getSection()){
           case 0:   //顶部数据
-              holder.itemView.setOnClickListener(new View.OnClickListener() {
+              holder.get(R.id.hm_sdv_logo).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View view) {
 //                            if(App.hasToken()){
@@ -528,10 +554,15 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                       ActivityJumpUtils.actUserInfo(activity);
                   }
               });
+              holder.visibility(R.id.item_mesage, false);
+          if(mData!=null) {
 //                        用户名
-              holder.text(R.id.hm_tv_user_nickname,"151515151515");
-              holder.visibility(R.id.item_mesage,false);
-//
+              holder.text(R.id.hm_tv_user_name,mData.getUserName());
+              //店铺名称
+              holder.text(R.id.hm_tv_user_shopname,mData.getShopName());
+              holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
+
+          }
               break;
           case 1:
 //                      标题

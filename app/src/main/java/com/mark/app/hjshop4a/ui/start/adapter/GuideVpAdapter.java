@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.homepager.start.adapter;
+package com.mark.app.hjshop4a.ui.start.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;

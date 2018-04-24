@@ -31,7 +31,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".ui.homepager.start.SplashActivity" android:screenOrientation="portrait">
+        <activity android:name=".ui.start.SplashActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,10 +40,10 @@
         </activity>
         <activity android:name=".ui.login.activity.LoginActivity" android:screenOrientation="portrait"></activity>
        <activity android:name=".ui.login.activity.ForgetActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.homepager.start.GuideActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.homepager.start.PermisstionActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.start.GuideActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.start.PermisstionActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.homepager.activity.HomePagerActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.homepager.start.StartActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.start.StartActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.login.activity.RegisterActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.calendarview.CalendarViewActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.web.WebActivity" android:screenOrientation="portrait"></activity>

@@ -222,6 +222,7 @@ public class HomePagerActivity extends BaseActivity {
         tab2.setSelected(false);
         tab3.setSelected(false);
         tab4.setSelected(false);
+        tab5.setSelected(false);
         view.setSelected(true);
 
         switch (view.getId()) {

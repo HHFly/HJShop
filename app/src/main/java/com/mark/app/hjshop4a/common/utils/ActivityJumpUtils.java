@@ -13,7 +13,7 @@ import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.calendarview.CalendarViewActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 
-import com.mark.app.hjshop4a.ui.homepager.start.GuideActivity;
+import com.mark.app.hjshop4a.ui.start.GuideActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
