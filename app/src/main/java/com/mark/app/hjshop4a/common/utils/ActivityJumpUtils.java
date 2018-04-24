@@ -8,7 +8,7 @@ import com.mark.app.hjshop4a.common.androidenum.login.LoginBackType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
-import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
+import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardActivity;
 import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.calendarview.CalendarViewActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;

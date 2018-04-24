@@ -16,7 +16,7 @@ public class LoginParam extends ParamBaseModel {
     private String captcha;     //验证码
     private String password;    //密码
     private String inviteCode;  //邀请码
-
+    private  long addressConfigId; //地址配置Id
     //找回密码userName、verification、passwd
     private String userName;
     private String verification;
@@ -40,6 +40,14 @@ public class LoginParam extends ParamBaseModel {
     public void setPasswd(String passwd) {
         passwd = MD5Utils.md5(passwd);
         this.passwd = passwd;
+    }
+
+    public long getAddressConfigId() {
+        return addressConfigId;
+    }
+
+    public void setAddressConfigId(long addressConfigId) {
+        this.addressConfigId = addressConfigId;
     }
 
     public String getUserName() {

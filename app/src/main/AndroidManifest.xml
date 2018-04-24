@@ -55,8 +55,8 @@
         <activity android:name=".ui.userinfo.BasicInfoActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.userinfo.CertificationInfoActivity" android:screenOrientation="portrait" />
         <activity android:name=".ui.userinfo.ModifyPWActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.bankcard.BankCardActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.bankcard.BankCardAddActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.bankcard.activity.BankCardActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.bankcard.activity.BankCardAddActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.assedetail.AssetDetailActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.goldbeanconsume.MemberGoldBeanConsumeActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.onlinerecharge.OnlineRechargeActivity" android:screenOrientation="portrait"/>

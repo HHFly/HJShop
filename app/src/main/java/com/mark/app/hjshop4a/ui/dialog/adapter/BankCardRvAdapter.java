@@ -5,7 +5,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
-import com.mark.app.hjshop4a.model.bankcard.BankCard;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 
 import java.util.List;
 

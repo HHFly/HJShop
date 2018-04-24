@@ -1,7 +1,9 @@
 package com.mark.app.hjshop4a.ui.login.activity;
 
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -10,13 +12,20 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
+import com.mark.app.hjshop4a.common.utils.MD5Utils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.model.login.LoginParam;
+import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
@@ -24,6 +33,9 @@ import com.white.lib.utils.ToastUtil;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/4/13.
@@ -180,6 +192,7 @@ public class RegisterActivity extends BaseActivity {
      * 获取验证码
      */
     private void getCode() {
+       String macId= MD5Utils.md5(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)+android.os.Build.SERIAL);
         String strPhone = getTvText(R.id.register_et_username);
         if (!ValidShowBtnUtils.phone(strPhone)) {
             ToastUtil.show(R.string.login_手机号格式不正确);
@@ -189,31 +202,32 @@ public class RegisterActivity extends BaseActivity {
         if (countDownUtils != null) {
             countDownUtils.pre();
         }
-        if (countDownUtils != null) {
-            countDownUtils.start();
-        }
-//        PhoneCodeParam phoneCodeParam = new PhoneCodeParam(mAreaCode);
-//        App.getService().getUserService().getCode(phoneCodeParam, strPhone, new DefaultServiceListener() {
-//            @Override
-//            public void onSuccess(int code, JsonElement o) {
-//                super.onSuccess(code, o);
-//                if (isDestroyed()) {
-//                    return;
-//                }
-//                if (countDownUtils != null) {
-//                    countDownUtils.start();
-//                }
-//                ToastUtil.show(R.string.验证码发送成功);
-//            }
-//
-//            @Override
-//            public void onUnSuccessFinish() {
-//                super.onUnSuccessFinish();
-//                if (countDownUtils != null) {
-//                    countDownUtils.over();
-//                }
-//            }
-//        });
+
+        App.getServiceManager().getPdmService().getCode(strPhone,macId,"1")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                        if(isDestroyed()){
+                            return;
+                        }
+
+                        if (countDownUtils != null) {
+                            countDownUtils.start();
+                        }
+                        ToastUtils.show("验证码发送成功");
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+                        if(countDownUtils!=null){
+                            countDownUtils.over();
+                        }
+                    }
+                });
+
     }
 
     /**
@@ -225,31 +239,34 @@ public class RegisterActivity extends BaseActivity {
         String strPwd = getTvText(R.id.register_et_pwd);
         String strInvitation = getTvText(R.id.register_et_invitation);
         String strRegion = getTvText(R.id.register_et_region);
+        isValidPass(true);
+        LoginParam param = new LoginParam();
+        param.setAccount(strUserName);
+        param.setCaptcha(strCode);
+        param.setPassword(strPwd);
+        param.setInviteCode(strInvitation);
+        param.setAddressConfigId(0);//区域选择
+        showLoadingDialog();
+        App.getServiceManager().getPdmService().register(param.getMap())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
 
-//        LoginParam param = new LoginParam();
-//        param.setAccount(strUserName);
-//        param.setCaptcha(strCode);
-//        param.setPassword(strPwd);
-//        param.setInviteCode(strInvitation);
-//
-//        PhoneCodeParam phoneCodeParam = new PhoneCodeParam(mAreaCode);
-//        param.addMap(phoneCodeParam);
-//
-//        showLoadingDialog();
-//        App.getService().getLoginService().userReg(param, new DefaultServiceListener() {
-//            @Override
-//            public void onSuccess(int code, JsonElement o) {
-//                super.onSuccess(code, o);
-//                ToastUtil.show(R.string.success_msg_register);
-//                finish();
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                super.onFinish();
-//                hideLoadingDialog();
-//            }
-//        });
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                        ToastUtils.show("注册成功");
+                           finish();
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+
+
+
     }
     /**
      * 文本监听
@@ -297,7 +314,7 @@ public class RegisterActivity extends BaseActivity {
             return ValidShowBtnUtils.phone(strPhone)
                     && ValidShowBtnUtils.verifyCode(strCode)
                     && ValidShowBtnUtils.pwd(strPwd)
-                    && ValidShowBtnUtils.phone(strRegion)
+                    && TextUtils.isEmpty(strRegion)
                     && isAgree;
         } else {
             boolean result = false;

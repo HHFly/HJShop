@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.bankcard;
+package com.mark.app.hjshop4a.ui.bankcard.activity;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +13,7 @@ import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.bankcard.adapter.BankCardAdapter;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;

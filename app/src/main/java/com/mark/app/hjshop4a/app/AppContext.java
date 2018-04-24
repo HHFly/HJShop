@@ -18,11 +18,11 @@ import com.white.lib.utils.SPUtil;
 public class AppContext {
     final String KEY_SETTING = "setting";//设置
     final String KEY_TOKEN = "token";//
-
+    final String KEY_AUTOLOGIN ="autologin";//自动登录
     Context mContext;//getApplicationContext
 
     LoginRepo mLoginRepo;//登录数据
-
+    Boolean isAutoLogin ;//是否自动登录
     public AppContext(Context context) {
         mContext = context.getApplicationContext();
         init();
@@ -154,4 +154,17 @@ public class AppContext {
         LogUtils.logFormat(this, "setLoginRepo", "更新token信息" + JsonUtils.toJson(data));
     }
 
+    /*
+    * 是否自动登录
+    * */
+        public Boolean getIsAutoLogin(){
+          isAutoLogin= SPUtil.getInstance(mContext).getBoolean(KEY_AUTOLOGIN,false);
+        return isAutoLogin;
+        }
+
+
+    public void setIsAutoLogin(Boolean autoLogin){
+       isAutoLogin =autoLogin;
+        SPUtil.getInstance(mContext).putBoolean(KEY_AUTOLOGIN,isAutoLogin);
+    }
 }

@@ -15,7 +15,7 @@ import com.mark.app.hjshop4a.ui.areaagent.areabusniess.AreaBusniessActivity;
 import com.mark.app.hjshop4a.ui.areaagent.areaincome.AreaIncomeActivity;
 import com.mark.app.hjshop4a.ui.areaagent.billreview.AreaBillReviewActivity;
 import com.mark.app.hjshop4a.ui.areaagent.businessreview.BusinessReviewActivity;
-import com.mark.app.hjshop4a.ui.bankcard.BankCardActivity;
+import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
 import com.mark.app.hjshop4a.ui.business.busniessinfo.BusniessInfoActivity;
 import com.mark.app.hjshop4a.ui.business.consumecommit.ConsumeCommitActivity;

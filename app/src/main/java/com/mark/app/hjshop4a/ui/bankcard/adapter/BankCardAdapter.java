@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.bankcard;
+package com.mark.app.hjshop4a.ui.bankcard.adapter;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;

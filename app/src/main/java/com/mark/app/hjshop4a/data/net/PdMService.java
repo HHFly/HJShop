@@ -11,12 +11,19 @@ import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
+import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
+import io.reactivex.Observable;
 import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -27,6 +34,14 @@ import retrofit2.Retrofit;
 
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.HeaderMap;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 /**
  * 网络请求服务
@@ -180,46 +195,65 @@ public interface PdMService {
 //                                                     @Header("role") int role,
 //                                                     @Header("type") int type);
 //
-//    /**
-//     * 登录
-//     *
-//     * @param account
-//     * @param password
-//     * @return
-//     */
-//    @FormUrlEncoded
-//    @POST("/api/oauth2/merchant/login")
-//    Observable<BaseResultEntity<LoginRepo>> login(@FieldMap Map<String, String> map,
-//                                                  @Field("account") String account,
-//                                                  @Field("password") String password);
-//
-//    /**
-//     * 忘记密码
-//     *
-//     * @param account
-//     * @param verification
-//     * @param passwd
-//     * @return
-//     */
-//    @FormUrlEncoded
-//    @POST("/api/merchant/pwd/reset")
-//    Observable<BaseResultEntity> pwdReset(@FieldMap Map<String, String> map,
-//                                          @Field("userName") String account,
-//                                          @Field("verification") String verification,
-//                                          @Field("passwd") String passwd);
-//
-//    /**
-//     * 获取验证码
-//     *
-//     * @param telephone
-//     * @return
-//     */
-//    @GET("/api/user/getCaptcha")
-//    Observable<BaseResultEntity> getVCode(@QueryMap Map<String, String> map,
-//                                          @Query("telephone") String telephone);
+    /**
+     * 登录
+     *
+     * @param account
+     * @param password
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("/api/oauth2/login")
+    Observable<BaseResultEntity<LoginRepo>> login(@Field("account") String account,
+                                                  @Field("password") String password);
 
 
+    /**
+     * 注册
+     *
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("/api/user/reg")
+    Observable<BaseResultEntity<LoginRepo>> register(@FieldMap Map<String, String> map);
 
+    /*
+    * 登出*/
+
+    @GET("/api/oauth2/logout")
+    Observable<BaseResultEntity>logout();
+
+    /*
+    * 验证码
+    * */
+    @GET("/api/user/getCaptcha")
+    Observable<BaseResultEntity>getCode(@Query("telephone") String telephone,
+                                        @Query("macId") String macId,
+                                        @Query("type") String type);
+/*
+* 银行卡
+* */
+    @GET("/api/app/bank/list")
+    Observable<BaseResultEntity<ArrayList<BankCard>>>getBankList(@HeaderMap Map<String, String> headers);
+
+/*
+* 新增银行卡
+* */
+    @GET("/api/app/bank/add")
+    Observable<BaseResultEntity>addBnakCard(@Query("accountHolder") String accountHolder,
+                                            @Query("bankName") String bankName,
+                                            @Query("bankBranchName") String bankBranchName,
+                                            @Query("bankAccount") String bankAccount);
+
+
+    /*
+    *
+    *
+    //开户行
+    * */
+
+    @GET("/api/merchant/data/config/bank")
+    Observable<BaseResultEntity<InfoBank>> configBank();
     class IndexRepo {
         /**
          * 消息数量

@@ -31,7 +31,7 @@ App extends Application {
         return s_service;
     }
     private static AppContext mAppContext;
-    public AppContext getAppContext(){return mAppContext;}
+    public static AppContext getAppContext(){return mAppContext;}
     private Activity mCurActivity;
 
 
@@ -123,7 +123,13 @@ App extends Application {
      * @return
      */
     public static boolean hasToken() {
-        return !TextUtils.isEmpty(getToken());
+        boolean autologin =getAppContext().getIsAutoLogin();
+        if(autologin){
+            return !TextUtils.isEmpty(getToken());
+        }else {
+           return  false;
+        }
+
     }
 
     public String getAccToken() {

@@ -10,7 +10,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.PhotoType;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
-import com.mark.app.hjshop4a.model.bankcard.BankCard;
+
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.BankCardDialog;
 import com.mark.app.hjshop4a.ui.dialog.ListDialog;

@@ -21,8 +21,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         db.execSQL(SQLiteContextUtils.TABLE.SHOPCAR.SQL.CREATE);
         //创建公共数据表
         db.execSQL(SQLiteContextUtils.TABLE.COMMON.SQL.CREATE);
-        //创建国家数据表
-        db.execSQL(SQLiteContextUtils.TABLE.COUNTRY.SQL.CREATE);
+
     }
 
     @Override
@@ -32,10 +31,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         //创建购物车表
         db.execSQL(SQLiteContextUtils.TABLE.SHOPCAR.SQL.CREATE);
-        //删除旧国家数据表
-        db.execSQL(SQLiteContextUtils.TABLE.COUNTRY.SQL.DELETE);
-        //创建国家数据表
-        db.execSQL(SQLiteContextUtils.TABLE.COUNTRY.SQL.CREATE);
+
     }
 
     @Override
@@ -47,9 +43,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
         //创建购物车表
         db.execSQL(SQLiteContextUtils.TABLE.SHOPCAR.SQL.CREATE);
-        //删除旧国家数据表
-        db.execSQL(SQLiteContextUtils.TABLE.COUNTRY.SQL.DELETE);
-        //创建国家数据表
-        db.execSQL(SQLiteContextUtils.TABLE.COUNTRY.SQL.CREATE);
+
     }
 }

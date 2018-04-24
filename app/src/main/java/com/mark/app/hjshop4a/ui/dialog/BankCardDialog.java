@@ -1,7 +1,6 @@
 package com.mark.app.hjshop4a.ui.dialog;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -21,13 +20,11 @@ import android.view.animation.AnimationUtils;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.BaseRvAdapter;
 import com.mark.app.hjshop4a.base.fragment.BaseDialogFragment;
-import com.mark.app.hjshop4a.model.bankcard.BankCard;
-import com.mark.app.hjshop4a.ui.bankcard.BankCardAdapter;
+
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.dialog.adapter.BankCardRvAdapter;
-import com.mark.app.hjshop4a.ui.dialog.adapter.ListDialogRvAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by pc on 2018/4/20.
@@ -50,7 +47,7 @@ private BankCardRvAdapter mAdapter;
      * @param data
      * @return
      */
-    public static BankCardDialog getInstance(ArrayList<BankCard> data,Context context) {
+    public static BankCardDialog getInstance(ArrayList<BankCard> data, Context context) {
         BankCardDialog dialog = new BankCardDialog();
         dialog.mData = data;
         dialog.context =context;

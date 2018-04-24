@@ -27,7 +27,7 @@ public interface SQLiteContextUtils {
             /**
              * 表名称
              */
-            String NAME = "shopcar";
+            String NAME = "loginrepo";
 
             /**
              * 数据库表字段

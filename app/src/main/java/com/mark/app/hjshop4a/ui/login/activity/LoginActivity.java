@@ -1,18 +1,27 @@
 package com.mark.app.hjshop4a.ui.login.activity;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
+import com.mark.app.hjshop4a.common.utils.PdUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.valid.ValidUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.login.androidenum.LoginSource;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -25,7 +34,7 @@ public class LoginActivity extends BaseActivity {
     //密码是否可见
     boolean isPwdShow;
     //是否自动登录
-    boolean isautologin;
+    boolean isautologin =false;
 
     @Override
     public int getContentViewResId() {
@@ -33,8 +42,14 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void getIntentParam(Bundle bundle) {
+        super.getIntentParam(bundle);
         mSource = BundleUtils.getInt(this, BundleKey.SOURCE, LoginSource.NORMAL);
+    }
+
+    @Override
+    public void initView() {
+
         //设置标题栏
         setTvText(R.id.titlebar_tv_title, R.string.login_msg_login);
         setTvText(R.id.titlebar_tv_right,R.string.login_msg_register);
@@ -50,6 +65,7 @@ public class LoginActivity extends BaseActivity {
        setClickListener(R.id.titlebar_iv_return);
        setClickListener(R.id.login_iv_eye);
        setClickListener(R.id.login_btn);
+
     }
 
     @Override
@@ -57,6 +73,7 @@ public class LoginActivity extends BaseActivity {
         super.onClick(v);
         switch (v.getId()){
             case R.id.login_tv_quick_login:{
+//                自动登录
                 isautologin =!isautologin;
                 setViewSelected(R.id.login_tv_quick_login, isautologin);
                 break;
@@ -103,38 +120,39 @@ public class LoginActivity extends BaseActivity {
             ToastUtils.show(R.string.login_密码由6到20位字符组成);
             return;
         }
-//        showLoadingDialog();
-//        App.getServiceManager().login(phoneCodeParam.getMap(), account, PdUtils.getMD5(password))
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new DefaultObserver<LoginRepo>() {
-//                    @Override
-//                    public void onSuccess(BaseResultEntity<LoginRepo> obj) {
-//                        LoginRepo repo = obj.getResult();
-//                        repo.setNowTime(obj.getNowTime());
-//
-//                        //保存登录信息
-//                        App.get().setLogin(repo);
-//
-//                        //初始化设置信息
-//
-//
-//                        //成功跳转
-//                        if (mSource == LoginSource.SPLASH) {
-////                            ActJumpUtils.actHome(getActivity());
-//                            finish();
-//                        } else {
-//                            setResult(RESULT_OK);
-//                            finish();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onAllFinish() {
-//                        super.onAllFinish();
-//                        hideLoadingDialog();
-//                    }
-//                });
+        showLoadingDialog();
+        App.getServiceManager().getPdmService().login( account, PdUtils.getMD5(password))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<LoginRepo>() {
+                    @Override
+                    public void onSuccess(BaseResultEntity<LoginRepo> obj) {
+                        LoginRepo repo = obj.getResult();
+                        repo.setNowTime(obj.getNowTime());
+
+                        //保存登录信息
+                        App.get().setLogin(repo);
+//                        是否自动登录
+                        App.getAppContext().setIsAutoLogin(isautologin);
+                        //初始化设置信息
+
+
+                        //成功跳转
+                        if (mSource == LoginSource.SPLASH) {
+//                            ActJumpUtils.actHome(getActivity());
+                            finish();
+                        } else {
+                            setResult(RESULT_OK);
+                            finish();
+                        }
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 
     /**

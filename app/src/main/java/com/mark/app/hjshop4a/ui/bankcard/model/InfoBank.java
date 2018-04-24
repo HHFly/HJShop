@@ -1,6 +1,7 @@
-package com.haya.app.pandam4a.info.model;
+package com.mark.app.hjshop4a.ui.bankcard.model;
 
-import com.haya.app.pandam4a.base.model.BaseModel;
+
+import com.mark.app.hjshop4a.base.model.BaseModel;
 
 import java.util.List;
 

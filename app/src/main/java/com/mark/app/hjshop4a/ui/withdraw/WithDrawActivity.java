@@ -6,13 +6,12 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
-import com.mark.app.hjshop4a.model.bankcard.BankCard;
-import com.mark.app.hjshop4a.ui.bankcard.BankCardAddActivity;
+
+import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardAddActivity;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.dialog.BankCardDialog;
 
 import java.util.ArrayList;
-
-import static com.mark.app.hjshop4a.ui.dialog.BankCardDialog.getInstance;
 
 /**
  * Created by pc on 2018/4/20.

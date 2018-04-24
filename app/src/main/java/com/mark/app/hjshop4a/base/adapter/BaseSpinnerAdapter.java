@@ -1,4 +1,4 @@
-package com.haya.app.pandam4a.base.adapter;
+package com.mark.app.hjshop4a.base.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,9 +6,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.haya.app.pandam4a.R;
-import com.haya.app.pandam4a.base.model.BaseModel;
-
+import com.mark.app.hjshop4a.base.model.BaseModel;
+import com.mark.app.hjshop4a.R;
 import java.util.ArrayList;
 import java.util.List;
 

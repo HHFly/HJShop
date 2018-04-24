@@ -7,12 +7,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.white.lib.utils.ToastUtil;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/4/13.
@@ -121,28 +128,31 @@ public class ForgetActivity extends BaseActivity {
         if (countDownUtils != null) {
                     countDownUtils.start();
                 }
-//        PhoneCodeParam phoneCodeParam = new PhoneCodeParam(mAreaCode);
-//        App.getService().getUserService().getCode(phoneCodeParam, strPhone, new DefaultServiceListener() {
-//            @Override
-//            public void onSuccess(int code, JsonElement o) {
-//                super.onSuccess(code, o);
-//                if (isDestroyed()) {
-//                    return;
-//                }
-//                if (countDownUtils != null) {
-//                    countDownUtils.start();
-//                }
-//                ToastUtil.show(R.string.验证码发送成功);
-//            }
-//
-//            @Override
-//            public void onUnSuccessFinish() {
-//                super.onUnSuccessFinish();
-//                if (countDownUtils != null) {
-//                    countDownUtils.over();
-//                }
-//            }
-//        });
+        App.getServiceManager().getPdmService().getCode(strPhone,"","1")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                        if(isDestroyed()){
+                            return;
+                        }
+
+                        if (countDownUtils != null) {
+                            countDownUtils.start();
+                        }
+                        ToastUtils.show("验证码发送成功");
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+                        if(countDownUtils!=null){
+                            countDownUtils.over();
+                        }
+                    }
+                });
+
     }
     /**
      * 确认修改
