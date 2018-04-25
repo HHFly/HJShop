@@ -21,6 +21,7 @@ import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanC
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
+import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -291,6 +292,10 @@ public interface PdMService {
     @POST("/api/app/topUp/online")
     Observable<BaseResultEntity>onLine(@Field("topUpMoney") String topUpMoney,
                                        @Field("payWayCode") int payWayCode);
+
+    /*我的推荐*/
+    @GET("/api/app/recommend")
+    Observable<BaseResultEntity<ZXingCode>>recommend(@FieldMap Map<String, String> map);
     class IndexRepo {
         /**
          * 消息数量

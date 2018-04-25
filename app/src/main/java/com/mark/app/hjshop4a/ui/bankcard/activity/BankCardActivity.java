@@ -43,6 +43,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();
+
     }
     @Override
     public void initView() {
@@ -73,10 +74,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
 
 
     private  void requestData(final  int curPage){
-        BankCard a =new BankCard();
-        ArrayList<BankCard>b =new ArrayList<>();
-        b.add(a);
-        bankCards.setBankCards(b);
+
 
         PagingParam pagingParam = new PagingParam();
         pagingParam.setCurrentPage(curPage);

@@ -4,23 +4,23 @@ package com.mark.app.hjshop4a.ui.recommend.model;
  * Created by pc on 2018/4/16.
  */
 
-public class Redata {
-    private  String name;
-  private   String date;
+public class Recommend {
+    private  String userName;
+  private   String regTime;
 
     public String getName() {
-        return name;
+        return userName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.userName = name;
     }
 
     public String getDate() {
-        return date;
+        return regTime;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        this.regTime = date;
     }
 }

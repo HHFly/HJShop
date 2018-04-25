@@ -96,7 +96,6 @@ public class OnlineRechargeActivity extends BaseActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {
 
-
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
                         requestData();
