@@ -89,9 +89,11 @@ public class BusinessReviewActivity extends BaseActivity implements OnRefreshLoa
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
-            public void onLoadMore(int nextPage) {
+            public void onLoadMore(int nextPage, long timestamp) {
                 requestData(nextPage);
             }
+
+
         });
     }
 

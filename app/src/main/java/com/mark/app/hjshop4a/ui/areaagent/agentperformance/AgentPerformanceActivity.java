@@ -88,9 +88,11 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
-            public void onLoadMore(int nextPage) {
+            public void onLoadMore(int nextPage, long timestamp) {
                 requestData(nextPage);
             }
+
+
         });
     }
 

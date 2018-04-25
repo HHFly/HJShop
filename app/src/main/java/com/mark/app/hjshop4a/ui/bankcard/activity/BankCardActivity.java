@@ -48,13 +48,13 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"银行卡管理");
-
+        setTvText(R.id.titlebar_tv_right,"新增");
     }
 
     @Override
     public void setListener() {
         setClickListener(R.id.titlebar_iv_return);
-        setClickListener(R.id.titlebar_iv_add);
+        setClickListener(R.id.titlebar_tv_right);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
             case R.id.titlebar_iv_return:
                 finish();
                 break;
-            case R.id.titlebar_iv_add:
+            case R.id.titlebar_tv_right:
 //                添加银行卡
                 Intent intent = new Intent(this, BankCardAddActivity.class);
                 this.startActivity(intent);

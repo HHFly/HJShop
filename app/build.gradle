@@ -27,7 +27,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "TEST_URL", "\"http://192.168.0.11/\"")
+            buildConfigField("String", "TEST_URL", "\"https://5120cc5f-2776-4a2b-a710-6417dba53f3d.mock.pstmn.io/\"")
             buildConfigField("boolean", "DEBUG_ENV", "true")
             buildConfigField("boolean", "IS_OPEN_LOG", "true")
             minifyEnabled false

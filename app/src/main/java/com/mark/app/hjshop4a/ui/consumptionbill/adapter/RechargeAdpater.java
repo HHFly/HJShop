@@ -5,6 +5,7 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
 import com.mark.app.hjshop4a.base.adapter.BaseRvAdapter;
 import com.mark.app.hjshop4a.model.consumptionbill.RechargeRepo;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUp;
 
 import java.util.List;
 
@@ -12,8 +13,8 @@ import java.util.List;
  * Created by pc on 2018/4/17.
  */
 
-public class RechargeAdpater extends BaseListRvAdapter<RechargeRepo> {
-    public RechargeAdpater(List<RechargeRepo> data) {
+public class RechargeAdpater extends BaseListRvAdapter<TopUp> {
+    public RechargeAdpater(List<TopUp> data) {
         super(data);
     }
 
@@ -23,7 +24,9 @@ public class RechargeAdpater extends BaseListRvAdapter<RechargeRepo> {
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPos, RechargeRepo data) {
-
+    public void bindBodyData(AutoViewHolder holder, int bodyPos, TopUp data) {
+            holder.text(R.id.topUptime,data.getTopUptime());
+            holder.text(R.id.topUpMoney,data.getTopUpMoney());
+            holder.text(R.id.toAccountMoney,data.getToAccountMoney());
     }
 }

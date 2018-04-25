@@ -13,7 +13,9 @@ import java.lang.annotation.RetentionPolicy;
 @IntDef({
         BillTabType.GOLDBEAN,
         BillTabType.BALANCE,
-        BillTabType.RECHARGE
+        BillTabType.RECHARGE,
+        BillTabType.BALANCEWITHDRAW,
+        BillTabType.BEANTRADEIN
 
 })
 @Retention(RetentionPolicy.SOURCE)
@@ -30,5 +32,13 @@ public @interface BillTabType {
      * 充值
      */
     int RECHARGE = 2;
+    /*
+    *
+    * */
+    int BALANCEWITHDRAW=4;
+    /*
+    *
+    * */
+    int BEANTRADEIN=3;
 
 }

@@ -12,12 +12,10 @@ import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.model.consumptionbill.BalanceRepo;
-import com.mark.app.hjshop4a.model.consumptionbill.GoldBeanRepo;
-import com.mark.app.hjshop4a.model.consumptionbill.RechargeRepo;
-import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
-import com.mark.app.hjshop4a.ui.consumptionbill.adapter.RechargeAdpater;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
+import com.mark.app.hjshop4a.ui.consumptionbill.adapter.BalanceWithDrawAdapter;
+
+import com.mark.app.hjshop4a.ui.consumptionbill.model.Balance;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUp;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -30,18 +28,17 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by pc on 2018/4/17.
+ * Created by pc on 2018/4/25.
  */
 
-public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreListener {
+public class BalanceWithDrawFragment  extends BaseFragment implements OnRefreshLoadmoreListener {
     //下拉刷新View
     SmartRefreshLayout mRefreshLayout;
-    private RechargeAdpater rechargeAdpater;
+    private BalanceWithDrawAdapter mAdapter;
     PagingBaseModel mPagingData;
     //是否正在刷新数据
     boolean isRequestData;
     boolean isInit;
-
     @Override
     public int getContentResId() {
         return  R.layout.fragment_bill;
@@ -66,6 +63,11 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
         mRefreshLayout.autoRefresh();
         isInit = true;
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
     /**
      * 初始化下拉刷新View
      */
@@ -86,28 +88,24 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
      *
      * @param isRefresh
      */
-    private void initRvAdapter(List<TopUp> data, boolean isRefresh) {
+    private void initRvAdapter(List<BalanceWithDraw> data, boolean isRefresh) {
 
 
-        if (rechargeAdpater == null) {
+        if (mAdapter == null) {
             RecyclerView rv = getView(R.id.recyclerView);
-            rechargeAdpater = new RechargeAdpater(data);
+            mAdapter = new BalanceWithDrawAdapter(data);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
             if (rv != null) {
                 rv.setLayoutManager(layoutManager);
-                rv.setAdapter(rechargeAdpater);
+                rv.setAdapter(mAdapter);
             }
 
         } else {
-            rechargeAdpater.notifyData(data, isRefresh);
+            mAdapter.notifyData(data, isRefresh);
         }
 
         boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
         setVisibilityGone(R.id.empty_layout_empty, isShowEmpty);
-    }
-    @Override
-    public void onClick(View v) {
-
     }
     /**
      * 请求数据
@@ -119,13 +117,13 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
             pagingParam.setCurrentPage(curPage);
             pagingParam.setTimestamp(timetamp);
 
-            App.getServiceManager().getPdmService().TopUpList(1,4,pagingParam.getMap())
+            App.getServiceManager().getPdmService().busniessbalanceWithDrawList(2,3,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver<ArrayList<TopUp>>() {
+                    .subscribe(new DefaultObserver<ArrayList<BalanceWithDraw>>() {
                         @Override
-                        public void onSuccess(BaseResultEntity<ArrayList<TopUp>> obj) {
-                            ArrayList<TopUp> data = obj.getResult();
+                        public void onSuccess(BaseResultEntity<ArrayList<BalanceWithDraw>> obj) {
+                            ArrayList<BalanceWithDraw> data = obj.getResult();
                             initRvAdapter(data, curPage == 1);
                             if (mPagingData == null) {
                                 mPagingData = new PagingBaseModel();
@@ -144,6 +142,7 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
                         @Override
                         public void onAllFinish() {
                             super.onAllFinish();
+
                             isRequestData = false;
                         }
                     });

@@ -5,12 +5,17 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
+import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.androidenum.consumptionbill.BillTabType;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceFragment;
+import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceWithDrawFragment;
+import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BeanTradeInFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.GoldBeanFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.RechargeFragment;
 
@@ -25,7 +30,8 @@ public class ConsumptionBillActivty extends BaseActivity {
     private GoldBeanFragment mFragmentGoldBean;
     private BalanceFragment mFragmentBalance;
     private RechargeFragment mFragmentRecharge;
-
+    private BalanceWithDrawFragment mFragmentBalanceWithDraw;
+    private BeanTradeInFragment mFragmentBeanTradeIn;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_consumptionbill;
@@ -38,12 +44,25 @@ public class ConsumptionBillActivty extends BaseActivity {
     @Override
     public void getIntentParam(Bundle bundle) {
         super.getIntentParam(bundle);
-        Role= bundle.getInt(BundleKey.ROLE);
+        Role= App.getAppContext().getRoleType();
     }
 
     @Override
     public void initView() {
-            setTvText(R.id.titlebar_tv_title,"消费账单");
+        switch (Role){
+            case RoleType.MEMBER:
+                setTvText(R.id.titlebar_tv_title,"消费账单");
+                setViewVisibility(R.id.text4,false);
+                setViewVisibility(R.id.text5,false);
+                break;
+            case RoleType.BUSINESS:
+                setTvText(R.id.titlebar_tv_title,"申请记录");
+                setViewVisibility(R.id.text1,false);
+                setViewVisibility(R.id.text2
+
+                        ,false);
+        }
+
 
     }
     @Override
@@ -62,6 +81,8 @@ public class ConsumptionBillActivty extends BaseActivity {
         setClickListener(R.id.text1);
         setClickListener(R.id.text2);
         setClickListener(R.id.text3);
+        setClickListener(R.id.text4);
+        setClickListener(R.id.text5);
     }
 
     @Override
@@ -73,6 +94,8 @@ public class ConsumptionBillActivty extends BaseActivity {
             case R.id.text1:
             case R.id.text2:
             case R.id.text3:
+            case R.id.text4:
+            case R.id.text5:
                 selectTab(v);
                 break;
         }
@@ -84,6 +107,8 @@ public class ConsumptionBillActivty extends BaseActivity {
         mFragmentGoldBean =new GoldBeanFragment();
         mFragmentBalance = new BalanceFragment();
         mFragmentRecharge = new RechargeFragment();
+        mFragmentBalanceWithDraw= new BalanceWithDrawFragment();
+        mFragmentBeanTradeIn= new BeanTradeInFragment();
     }
 
     /**
@@ -111,6 +136,19 @@ public class ConsumptionBillActivty extends BaseActivity {
                 View view = getView(R.id.text3);
                 selectTab(view);
                 break;
+
+            }
+            case BillTabType.BEANTRADEIN:{
+                //金豆兑换
+                View view = getView(R.id.text4);
+                selectTab(view);
+                break;
+            }
+            case BillTabType.BALANCEWITHDRAW:{
+                //金豆兑换
+                View view = getView(R.id.text5);
+                selectTab(view);
+                break;
             }
         }
     }
@@ -124,6 +162,8 @@ public class ConsumptionBillActivty extends BaseActivity {
         setViewSelected(R.id.text1, false);
         setViewSelected(R.id.text2, false);
         setViewSelected(R.id.text3, false);
+        setViewSelected(R.id.text4, false);
+        setViewSelected(R.id.text5, false);
         setViewSelected(view, true);
         switch (view.getId()) {
             case R.id.text1:
@@ -134,6 +174,12 @@ public class ConsumptionBillActivty extends BaseActivity {
                 break;
             case R.id.text3:
                 switchFragment(mFragmentRecharge);
+                break;
+            case R.id.text4:
+                switchFragment(mFragmentBeanTradeIn);
+                break;
+            case R.id.text5:
+                switchFragment(mFragmentBalanceWithDraw);
                 break;
         }
     }

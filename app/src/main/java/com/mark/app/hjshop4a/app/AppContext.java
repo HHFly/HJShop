@@ -19,6 +19,7 @@ public class AppContext {
     final String KEY_SETTING = "setting";//设置
     final String KEY_TOKEN = "token";//
     final String KEY_AUTOLOGIN ="autologin";//自动登录
+    final  String KEY_ROLETYPE ="roletype";//角色
     Context mContext;//getApplicationContext
 
     LoginRepo mLoginRepo;//登录数据
@@ -37,7 +38,9 @@ public class AppContext {
 
         //初始化登录数据
         LoginRepo loginRepo = getLoginRepo();
+       int RoleType =getRoleType();
         LogUtils.logFormat(this, "init", "初始化登录数据" + JsonUtils.toJson(loginRepo));
+        LogUtils.logFormat(this, "init", "初始化登录数据" +RoleType);
     }
 
 
@@ -169,9 +172,11 @@ public class AppContext {
         SPUtil.getInstance(mContext).putBoolean(KEY_AUTOLOGIN,isAutoLogin);
     }
     public int getRoleType(){
+        mRoleType =  SPUtil.getInstance(mContext).getInt(KEY_ROLETYPE,0);
         return mRoleType;
     }
     public void  setRoleType(int type){
         mRoleType=type;
+        SPUtil.getInstance(mContext).putInt(KEY_ROLETYPE,mRoleType);
     }
 }

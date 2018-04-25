@@ -31,6 +31,26 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/text4"
+            style="@style/BaseTab.Layout.Horizontal"
+            >
+
+            <TextView
+                style="@style/tab_tv"
+                android:text="@string/me_金豆兑换" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/text5"
+            style="@style/BaseTab.Layout.Horizontal">
+
+            <TextView
+                style="@style/tab_tv"
+                android:text="@string/me_余额提现" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/text3"

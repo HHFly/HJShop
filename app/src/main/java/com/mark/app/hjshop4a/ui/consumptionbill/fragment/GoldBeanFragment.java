@@ -5,17 +5,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
+import com.mark.app.hjshop4a.base.model.PagingBaseModel;
+import com.mark.app.hjshop4a.base.model.PagingParam;
+import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.model.consumptionbill.BalanceRepo;
 import com.mark.app.hjshop4a.model.consumptionbill.GoldBeanRepo;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.BalanceAdapter;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
+import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/4/17.
@@ -25,6 +37,7 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
     //下拉刷新View
     SmartRefreshLayout mRefreshLayout;
     private GoldBeanAdapter goldBeanAdapter;
+    PagingBaseModel mPagingData;
     //是否正在刷新数据
     boolean isRequestData;
     boolean isInit;
@@ -50,12 +63,7 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
         isInit = false;
         initRefresh();
         initEmpty();
-        List<GoldBeanRepo> a =new ArrayList<>();
-        GoldBeanRepo b =new GoldBeanRepo();
-        a.add(b);
-        initRvAdapter( a,  false);
-//        requestData(1);
-//        mRefreshLayout.autoRefresh();
+        mRefreshLayout.autoRefresh();
         isInit = true;
     }
     /**
@@ -78,7 +86,7 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
      *
      * @param isRefresh
      */
-    private void initRvAdapter(List<GoldBeanRepo> data, boolean isRefresh) {
+    private void initRvAdapter(List<Bean> data, boolean isRefresh) {
 
 
         if (goldBeanAdapter == null) {
@@ -101,14 +109,62 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
     public void onClick(View v) {
 
     }
+    /**
+     * 请求数据
+     */
+    private  void requestData(final  int curPage,final  long timetamp){
+        if(!isRequestData) {
+            isRequestData = true;
+            PagingParam pagingParam = new PagingParam();
+            pagingParam.setCurrentPage(curPage);
+            pagingParam.setTimestamp(timetamp);
 
+            App.getServiceManager().getPdmService().memberBeanList(1,1,pagingParam.getMap())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new DefaultObserver<ArrayList<Bean>>() {
+                        @Override
+                        public void onSuccess(BaseResultEntity<ArrayList<Bean>> obj) {
+                            ArrayList<Bean> data = obj.getResult();
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data, obj.getNowTime());
+                            RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
+                        }
+
+
+                        @Override
+                        public void onUnSuccessFinish() {
+//                            initRvAdapter(null, curPage == 1);
+                            RefreshLayoutUtils.finish(mRefreshLayout);
+                        }
+
+                        @Override
+                        public void onAllFinish() {
+                            super.onAllFinish();
+                            isRequestData = false;
+                        }
+                    });
+        }
+
+    }
     @Override
     public void onLoadmore(RefreshLayout refreshLayout) {
+        RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
 
+            @Override
+            public void onLoadMore(int nextPage, long timestamp) {
+                {
+                    requestData(nextPage,timestamp);
+                }
+            }
+        });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-
+       requestData(1,0);
     }
 }

@@ -9,8 +9,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopBottomListRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.pay.PayType;
-import com.mark.app.hjshop4a.model.onlinerecharhe.Pay;
-import com.mark.app.hjshop4a.model.onlinerecharhe.PayInfo;
+
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
 
 import java.util.ArrayList;

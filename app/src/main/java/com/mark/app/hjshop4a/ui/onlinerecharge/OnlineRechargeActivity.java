@@ -13,8 +13,6 @@ import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.model.onlinerecharhe.Pay;
-import com.mark.app.hjshop4a.model.onlinerecharhe.PayInfo;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
 
@@ -30,7 +28,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class OnlineRechargeActivity extends BaseActivity {
     private OnlineRechargeRvAdapter mAdapter;
-    private PayInfo mData;
+
     @Override
     public int getContentViewResId() {
         return R.layout.activity_onlinerecharge;

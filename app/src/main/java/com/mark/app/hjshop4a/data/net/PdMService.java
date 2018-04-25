@@ -15,9 +15,13 @@ import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
-import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.Balance;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeIn;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUp;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
@@ -310,4 +314,29 @@ public interface PdMService {
     @GET("/api/app/merchant/bean/QRcode")
     Observable<BaseResultEntity>merchantQRcode();
 
+    /*消费账单金豆消费 userType=1 consummerType =1*/
+    @GET("/api/app/comsumer/bill/list")
+    Observable<BaseResultEntity<ArrayList<Bean>>>memberBeanList(@Query("userType") int userType,
+                                                          @Query("consumerType") int consumerType,
+                                                          @QueryMap Map<String, String> map);
+    /*消费账单余额消费 userType=1 consummerType =2*/
+    @GET("/api/app/comsumer/bill/list")
+    Observable<BaseResultEntity<ArrayList<Balance>>>memberBalanceList(@Query("userType") int userType,
+                                                                      @Query("consumerType") int consumerType,
+                                                                      @QueryMap Map<String, String> map);
+    /*消费账单充值 userType=1 consummerType =4*/
+    @GET("/api/app/comsumer/bill/list")
+    Observable<BaseResultEntity<ArrayList<TopUp>>>TopUpList(@Query("userType") int userType,
+                                                                    @Query("consumerType") int consumerType,
+                                                                    @QueryMap Map<String, String> map);
+    /*消费账单余额提现userType=2 consummerType =3*/
+    @GET("/api/app/comsumer/bill/list")
+    Observable<BaseResultEntity<ArrayList<BalanceWithDraw>>>busniessbalanceWithDrawList(@Query("userType") int userType,
+                                                                                        @Query("consumerType") int consumerType,
+                                                                                        @QueryMap Map<String, String> map);
+    /*消费账单金豆兑换userType=2 consummerType =1*/
+    @GET("/api/app/comsumer/bill/list")
+    Observable<BaseResultEntity<ArrayList<BeanTradeIn>>>busniessbeanTradeIn(@Query("userType") int userType,
+                                                                            @Query("consumerType") int consumerType,
+                                                                            @QueryMap Map<String, String> map);
 }

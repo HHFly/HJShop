@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
 
@@ -41,6 +42,7 @@ public class LoginSwitchAdapter extends BaseListRvAdapter<LoginType> {
             @Override
             public void onClick(View v) {
 
+                App.getAppContext().setRoleType(data.getRoleType());
                 Intent intent =activity.getIntent();
                 intent.putExtra("LoginType",data);
                 activity.setResult(1,intent);
