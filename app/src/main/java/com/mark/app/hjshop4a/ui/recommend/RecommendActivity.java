@@ -89,7 +89,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
         PagingParam pagingParam = new PagingParam();
         pagingParam.setCurrentPage(curPage);
         pagingParam.setTimestamp(timestamp);
-        showLoadingDialog();
+
         App.getServiceManager().getPdmService()
                 .recommend(pagingParam.getMap())
                 .subscribeOn(Schedulers.io())
@@ -109,7 +109,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                     }
                     @Override
                     public void onUnSuccessFinish() {
-                        initRvAdapter(new ZXingCode(), curPage == 1);
+//                        initRvAdapter(new ZXingCode(), curPage == 1);
                         RefreshLayoutUtils.finish(mRefreshLayout);
 
                     }
@@ -117,7 +117,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                     public void onAllFinish() {
                         super.onAllFinish();
 
-                        hideLoadingDialog();
+
                     }
                 });
     }

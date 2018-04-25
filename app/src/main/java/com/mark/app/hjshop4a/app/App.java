@@ -9,6 +9,7 @@ import android.text.TextUtils;
 
 import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
@@ -43,6 +44,7 @@ App extends Application {
         //初始化服务
         s_service = new AppService(this);
         mAppContext =new AppContext(this);
+        ToastUtils.init(this);
         //初始化Fresco
         FrescoUtils.initialize(this);
 //        初始化二维码

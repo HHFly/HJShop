@@ -17,6 +17,7 @@ import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
+import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Balance;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
@@ -44,6 +45,7 @@ import retrofit2.Retrofit;
 
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -102,12 +104,14 @@ public interface PdMService {
                     //获取平台
                     String platform = AppContext.getPlatForm();
 
-
+                    //获取版本号
+                    String version =AppContext.versionName();
                     //刷新token
                     token = refreshTOken(chain, oldRequest, token);
 
                     builder.addHeader("Authorization", token)
-                            .addHeader("platform", platform);
+                            .addHeader("platform", platform)
+                            .addHeader("version",version);
 
                     Request newRequest = builder.build();
                     LogUtils.logFormat(this, "intecept", newRequest);
@@ -205,6 +209,9 @@ public interface PdMService {
 //                                                     @Header("role") int role,
 //                                                     @Header("type") int type);
 //
+//图片上传
+@POST("/api/user/img/upload")
+Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /**
      * 登录
      *
@@ -251,13 +258,14 @@ public interface PdMService {
 * 银行卡
 * */
     @GET("/api/app/bank/list")
-    Observable<BaseResultEntity<ArrayList<BankCard>>>getBankList(@HeaderMap Map<String, String> headers);
+    Observable<BaseResultEntity<ArrayList<BankCard>>>getBankList(@QueryMap Map<String, String> headers);
 
 /*
-* 新增银行卡
+* 新增银行卡1 添加 2 删除
 * */
-    @GET("/api/app/bank/add")
-    Observable<BaseResultEntity>addBnakCard(@Query("accountHolder") String accountHolder,
+    @GET("/api/app/bank/edit")
+    Observable<BaseResultEntity>editBnakCard(@Query("type") int type,
+                                            @Query("accountHolder") String accountHolder,
                                             @Query("bankName") String bankName,
                                             @Query("bankBranchName") String bankBranchName,
                                             @Query("bankAccount") String bankAccount);
@@ -307,7 +315,7 @@ public interface PdMService {
     /*我的推荐*/
 
     @GET("/api/app/recommend")
-    Observable<BaseResultEntity<ZXingCode>>recommend(@HeaderMap Map<String, String> map);
+    Observable<BaseResultEntity<ZXingCode>>recommend(@QueryMap Map<String, String> map);
     /*
     * 商家收豆二维码
     * */
@@ -339,4 +347,8 @@ public interface PdMService {
     Observable<BaseResultEntity<ArrayList<BeanTradeIn>>>busniessbeanTradeIn(@Query("userType") int userType,
                                                                             @Query("consumerType") int consumerType,
                                                                             @QueryMap Map<String, String> map);
+
+    /*申请商户*/
+    @GET("/api/app/merchant/apply/get")
+    Observable<BaseResultEntity<BusinessApply>>merchantapply();
 }

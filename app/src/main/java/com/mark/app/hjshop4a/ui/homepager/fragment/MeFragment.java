@@ -40,7 +40,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-//        requestData(App.getAppContext().getRoleType());
+
     }
 
     @Override
@@ -63,7 +63,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_right,"切换账号");
-        initRvAdapter(RoleType.PROVINCIALAGENT,true,new MeCenterInfo());
+        requestData(App.getAppContext().getRoleType());
     }
 
     @Override
@@ -86,7 +86,7 @@ public class MeFragment extends BaseFragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode==1){
             LoginType loginType= (LoginType) data.getSerializableExtra("LoginType");
-            initRvAdapter(loginType.getRoleType(),false,new MeCenterInfo());
+            requestData(loginType.getRoleType());
         }
 
     }

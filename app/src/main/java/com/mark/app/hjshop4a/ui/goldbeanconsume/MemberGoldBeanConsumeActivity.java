@@ -110,8 +110,8 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
                         requestData();
+                        ToastUtils.show("成功");
                     }
-
                     @Override
                     public void onAllFinish() {
                         super.onAllFinish();
@@ -147,7 +147,7 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
     }
     private void  bindData(BeanConsume data){
         setTvText(R.id.gold_bean_count,data.getBeanNum());
-        BeanNum =NumParseUtils.parseDouble(data.getBeanRatio());
+        BeanNum =NumParseUtils.parseDouble(data.getBeanNum());
         Ratiox = NumParseUtils.parseDouble(data.getBeanRatio());
     }
     private  void showDialog(){

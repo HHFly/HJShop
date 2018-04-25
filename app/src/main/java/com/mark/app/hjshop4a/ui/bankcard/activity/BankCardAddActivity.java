@@ -138,7 +138,7 @@ public class BankCardAddActivity extends BaseActivity {
         }
         showLoadingDialog();
         App.getServiceManager().getPdmService()
-                .addBnakCard(accountHolder, bankName, bankBranchName, bankAccount)
+                .editBnakCard(1,accountHolder, bankName, bankBranchName, bankAccount)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {

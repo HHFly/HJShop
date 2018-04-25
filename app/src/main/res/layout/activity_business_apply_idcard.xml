@@ -4,26 +4,37 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
-<include layout="@layout/include_titlebar_right"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:scrollbars="none">
+<include layout="@layout/include_titlebar"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
            >
+            <RelativeLayout
+                android:id="@+id/layout_card_id"
+                android:layout_width="match_parent"
+                android:layout_height="100px"
+                android:background="@color/white"
+                android:paddingLeft="42px"
+                android:paddingRight="22px">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="拍摄/上传您的身份证"
-                android:textColor="#666666"
-                android:textSize="40px"
-                android:layout_marginTop="59px"
-                android:layout_gravity="center_horizontal"
-                />
+                android:textSize="24px"
+                android:textColor="#333333"
+                android:layout_centerVertical="true"
+                android:text="身份证号:"/>
+              <TextView
+               android:id="@+id/tv_crad_id"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_centerVertical="true"
+                  android:layout_alignParentRight="true"
+                  android:textColor="#666666"
+                  android:textSize="24px"
+                  android:text=""/>
+            </RelativeLayout>
             <RelativeLayout
                 android:layout_width="575px"
                 android:layout_height="364px"
@@ -59,6 +70,7 @@
                     android:textColor="#333333"
                     android:textSize="32px" />
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -110,6 +122,7 @@
                     android:textColor="#333333"
                     android:textSize="32px" />
                 <ImageView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
@@ -127,5 +140,5 @@
             </RelativeLayout>
         </LinearLayout>
 
-    </ScrollView>
+
 </LinearLayout>

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.mcxtzhang.swipemenulib.SwipeMenuLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="@dimen/textsize_20px">
     <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="164px"
-        android:layout_marginTop="23px"
-        android:layout_marginLeft="15px"
-        android:layout_marginRight="15px"
-        android:background="@color/white">
+        android:layout_height="300px" android:background="@color/white">
+
+        <!--android:layout_marginTop="23px"-->
+        <!--android:layout_marginLeft="15px"-->
+        <!--android:layout_marginRight="15px"-->
+
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/item_bank_logo"
@@ -27,7 +29,7 @@
             android:layout_toRightOf="@+id/item_bank_logo"
             android:layout_marginLeft="12px"
             android:layout_marginTop="45px"
-            android:text="工商银行"
+            android:text=""
             android:textColor="@color/colorText"
             android:textSize="@dimen/textsize_28px" />
         <TextView
@@ -39,7 +41,7 @@
             android:layout_marginTop="105px"
             android:layout_marginLeft="12px"
             android:textColor="#666666"
-            android:text="信用卡"
+            android:text=""
             />
         <TextView
             android:id="@+id/item_tv_card_number"
@@ -48,10 +50,22 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/textsize_20px"
             android:layout_marginTop="109px"
-            android:text="4242 4242 4242 4224"
+            android:text=""
 
             android:textColor="@color/colorText"
             android:textSize="@dimen/textsize_24px" />
 
     </com.zhy.autolayout.AutoRelativeLayout>
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/btn_delete"
+            android:layout_width="100px"
+            android:layout_height="match_parent"
+            android:background="@color/red_fo3a53"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+</com.mcxtzhang.swipemenulib.SwipeMenuLayout>

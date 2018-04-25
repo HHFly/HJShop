@@ -71,7 +71,24 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
                 break;
         }
     }
+    private void delete(BankCard data){
+        App.getServiceManager().getPdmService().editBnakCard(2,"",data.getBankName(),"",data.getBankNo())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                    }
 
+
+                    @Override
+                    public void onUnSuccessFinish() {
+//
+                    }
+
+
+                });
+    }
 
     private  void requestData(final  int curPage,final  long timetamp){
 
@@ -97,7 +114,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
 
                     @Override
                     public void onUnSuccessFinish() {
-                        initRvAdapter(null, curPage == 1);
+//                        initRvAdapter(null, curPage == 1);
                         RefreshLayoutUtils.finish(mRefreshLayout);
                     }
 
@@ -113,6 +130,12 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
             bankCardAdapter = new BankCardAdapter(data);
             rv.setLayoutManager(new LinearLayoutManager(this));
             rv.setAdapter(bankCardAdapter);
+            bankCardAdapter.setOnItemClickListener(new BankCardAdapter.OnItemClickListener() {
+                @Override
+                public void onClickDelete(BankCard data) {
+                    delete(data);
+                }
+            });
         }
         else {
             bankCardAdapter.notifyData(data,true);

@@ -13,6 +13,7 @@ import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
+import com.white.lib.utils.ToastUtil;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -86,6 +87,13 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
                             requestData();
+                        ToastUtil.show("成功");
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+                        ToastUtil.show("失败");
                     }
 
                     @Override

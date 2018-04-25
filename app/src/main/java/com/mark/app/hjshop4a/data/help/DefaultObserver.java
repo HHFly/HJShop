@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.androidenum.service.ServiceResultCode;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 
@@ -180,7 +181,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
      */
     private void toast(String data) {
         if (isNeedShowSystemMsg) {
-            //ToastUtils.show(data);
+            ToastUtils.show(data);
         }
     }
 
@@ -191,7 +192,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
      */
     private void toast(@StringRes int data) {
         if (isNeedShowSystemMsg) {
-         //   ToastUtils.show(data);
+            ToastUtils.show(data);
         }
     }
 }

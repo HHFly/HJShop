@@ -7,20 +7,20 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
  */
 
 public class MeCenterInfo extends BaseModel {
-    private String messageCount;//电话
+    private String cellPhone	;//电话
     private String integral;//积分
     private  String accountBlance;//账户余额
-    private  String evaDetailCount;//金豆
+    private  String bean;//金豆
     private String userName;//用户名
     private String userPic;//用户头像
     private String shopName;//店铺名
 
     public String getMessageCount() {
-        return messageCount;
+        return cellPhone	;
     }
 
     public void setMessageCount(String messageCount) {
-        this.messageCount = messageCount;
+        this.cellPhone	 = messageCount;
     }
 
     public String getIntegral() {
@@ -40,11 +40,11 @@ public class MeCenterInfo extends BaseModel {
     }
 
     public String getEvaDetailCount() {
-        return evaDetailCount;
+        return bean;
     }
 
     public void setEvaDetailCount(String evaDetailCount) {
-        this.evaDetailCount = evaDetailCount;
+        this.bean = evaDetailCount;
     }
 
     public String getUserName() {

@@ -13,6 +13,7 @@ import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -25,12 +26,16 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
 import com.white.lib.utils.location.LocationManagerUtil;
@@ -40,6 +45,12 @@ import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.io.File;
 import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * activity基类
@@ -555,26 +566,34 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      * @param file
      */
     private void requestUploadImage(File file, final DefOnUploadPicListener listenr) {
-//        App.getService().getUserService().uploadImage(file, new DefaultServiceListener() {
-//            @Override
-//            public void onSuccess(int code, JsonElement o) {
-//                super.onSuccess(code, o);
-//                ToastUtil.show(R.string.上传成功);
-//                String imgUrl = o.getAsString();
-//                if (listenr != null) {
-//                    listenr.onLoadPicFinish(imgUrl);
-//                }
-//            }
-//
-//            @Override
-//            public void onUnSuccessFinish() {
-//                super.onUnSuccessFinish();
-//                ToastUtil.show(R.string.图片上传失败);
-//                if (listenr != null) {
-//                    listenr.onLoadPicUnSuccessFinish();
-//                }
-//            }
-//        });
+        RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("uploadType", "上传图片")
+                .addFormDataPart("imageUrl", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
+                .build();
+        App.getServiceManager().getPdmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<String>() {
+                    @Override
+                    public void onSuccess(@io.reactivex.annotations.NonNull BaseResultEntity<String> obj) {
+                        String data = obj.getResult();
+                        if (listenr != null) {
+                            if (TextUtils.isEmpty(data)) {
+                                ToastUtils.show("图片上传成功");
+                                listenr.onLoadPicUnSuccessFinish();
+                            } else {
+                                listenr.onLoadPicFinish(data);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+                        ToastUtils.show("图片上传失败");
+                        if (listenr != null) {
+                            listenr.onLoadPicUnSuccessFinish();
+                        }
+                    }
+                });
     }
     /**
      * 获取Activity
