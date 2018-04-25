@@ -25,7 +25,9 @@ public class PagingBaseModel<T extends BaseModel> extends BaseModel {
      * 总页数
      */
     private int pages;
-
+    /*
+    * 时间戳*/
+    private long timestamp;
     /**
      * 设置分页数据
      *
@@ -48,8 +50,9 @@ public class PagingBaseModel<T extends BaseModel> extends BaseModel {
      * @param currentPage
      * @param data
      */
-    public void setPagingInfo(int currentPage, List data) {
+    public void setPagingInfo(int currentPage, List data,long timestamp) {
         setCurrentPage(currentPage);
+        setTimestamp(timestamp);
         int size = data == null ? 0 : data.size();
         if (size == 0) {
             //达到最后一页
@@ -57,6 +60,14 @@ public class PagingBaseModel<T extends BaseModel> extends BaseModel {
         } else {
             setPages(currentPage + 1);
         }
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     /**

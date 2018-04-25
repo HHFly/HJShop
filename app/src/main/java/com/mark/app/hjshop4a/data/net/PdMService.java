@@ -229,6 +229,13 @@ public interface PdMService {
     @GET("/api/oauth2/logout")
     Observable<BaseResultEntity>logout();
 
+    /*忘记密码*/
+    @FormUrlEncoded
+    @POST("/api/pwd/reset")
+    Observable<BaseResultEntity>forgetPSW(@Field("userName") String userName,
+                                          @Field("verification") String verification,
+                                          @Field("passwd") String passwd);
+
     /*
     * 验证码
     * */

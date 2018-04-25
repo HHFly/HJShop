@@ -37,6 +37,7 @@ public class BankCardAddActivity extends BaseActivity {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"银行卡管理");
+        requestData();
     }
 
     @Override

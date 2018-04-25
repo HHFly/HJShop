@@ -85,9 +85,10 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     /**
      * 请求数据
      */
-    private void requestData(final  int curPage) {
+    private void requestData(final  int curPage,final long timestamp) {
         PagingParam pagingParam = new PagingParam();
         pagingParam.setCurrentPage(curPage);
+        pagingParam.setTimestamp(timestamp);
         showLoadingDialog();
         App.getServiceManager().getPdmService()
                 .recommend(pagingParam.getMap())
@@ -103,7 +104,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                         if (mPagingData == null) {
                             mPagingData = new PagingBaseModel();
                         }
-                        mPagingData.setPagingInfo(curPage,data.getRecommendList());
+                        mPagingData.setPagingInfo(curPage,data.getRecommendList(),obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
                     @Override
@@ -125,14 +126,16 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
-            public void onLoadMore(int nextPage) {
-                requestData(nextPage);
+            public void onLoadMore(int nextPage, long timestamp) {
+                requestData(nextPage,timestamp);
             }
+
+
         });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1);
+        requestData(1,0);
     }
 }

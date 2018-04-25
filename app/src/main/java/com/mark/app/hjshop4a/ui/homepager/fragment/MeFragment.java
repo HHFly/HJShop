@@ -22,6 +22,8 @@ import com.mark.app.hjshop4a.ui.homepager.adapter.MeAdapter;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
 
+import java.util.ArrayList;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
@@ -54,7 +56,7 @@ public class MeFragment extends BaseFragment {
     @Override
     public void setListener() {
         setClickListener(R.id.titlebar_tv_right);
-
+        setClickListener(R.id.titlebar_tv_title);
 
     }
 
@@ -72,6 +74,9 @@ public class MeFragment extends BaseFragment {
 //                退出
                 Intent intent = new Intent(getActivity(), LoginSwitchActivity.class);
                 this.startActivityForResult(intent,REQUESTCODE);
+                break;
+            case R.id.titlebar_tv_title:
+                ActivityJumpUtils.actLogin(getActivity());
                 break;
         }
     }

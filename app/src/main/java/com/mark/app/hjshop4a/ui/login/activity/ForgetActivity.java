@@ -158,18 +158,32 @@ public class ForgetActivity extends BaseActivity {
      * 确认修改
      */
     private void commit() {
-//        showLoadingDialog();
+        showLoadingDialog();
         String phone = getTvText(R.id.et_username);
         String code = getTvText(R.id.et_code);
         String pwd = getTvText(R.id.et_pwd);
 
-//        LoginParam param = new LoginParam();
-//        param.setUserName(phone);
-//        param.setVerification(code);
-//        param.setPasswd(pwd);
-//
-//        PhoneCodeParam phoneCodeParam = new PhoneCodeParam(mAreaCode);
-//        param.addMap(phoneCodeParam);
+        App.getServiceManager().getPdmService().forgetPSW(phone,code,pwd)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
 
 
     }

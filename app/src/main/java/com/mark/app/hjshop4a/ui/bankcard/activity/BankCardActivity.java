@@ -73,12 +73,12 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
     }
 
 
-    private  void requestData(final  int curPage){
+    private  void requestData(final  int curPage,final  long timetamp){
 
 
         PagingParam pagingParam = new PagingParam();
         pagingParam.setCurrentPage(curPage);
-
+        pagingParam.setTimestamp(timetamp);
         App.getServiceManager().getPdmService().getBankList(pagingParam.getMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -90,7 +90,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
                         if (mPagingData == null) {
                             mPagingData = new PagingBaseModel();
                         }
-                        mPagingData.setPagingInfo(curPage,data);
+                        mPagingData.setPagingInfo(curPage,data,obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
 
@@ -124,15 +124,18 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
     @Override
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
+
             @Override
-            public void onLoadMore(int nextPage) {
-                requestData(nextPage);
+            public void onLoadMore(int nextPage, long timestamp) {
+                {
+                    requestData(nextPage,timestamp);
+                }
             }
         });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1);
+        requestData(1,0);
     }
 }

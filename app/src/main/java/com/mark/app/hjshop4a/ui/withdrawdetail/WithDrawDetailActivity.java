@@ -70,7 +70,7 @@ public class WithDrawDetailActivity extends BaseActivity implements OnRefreshLoa
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
         }
-        mPagingData.setPagingInfo(curPage,arrayList );
+//        mPagingData.setPagingInfo(curPage,arrayList );
         initRvAdapter(arrayList, curPage == 1);
         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
 
@@ -104,9 +104,11 @@ public class WithDrawDetailActivity extends BaseActivity implements OnRefreshLoa
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
-            public void onLoadMore(int nextPage) {
+            public void onLoadMore(int nextPage, long timestamp) {
                 requestData(nextPage);
             }
+
+
         });
     }
 

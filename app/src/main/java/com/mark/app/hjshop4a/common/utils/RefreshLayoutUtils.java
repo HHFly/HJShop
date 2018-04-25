@@ -27,7 +27,7 @@ public class RefreshLayoutUtils {
                 @Override
                 public void loadMore(int nextPage) {
                     if (listener != null) {
-                        listener.onLoadMore(nextPage);
+                        listener.onLoadMore(nextPage,data.getTimestamp());
                     }
                 }
             });
@@ -110,6 +110,6 @@ public class RefreshLayoutUtils {
          *
          * @param nextPage
          */
-        void onLoadMore(int nextPage);
+        void onLoadMore(int nextPage,long timestamp);
     }
 }

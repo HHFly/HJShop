@@ -24,6 +24,18 @@ public class PagingParam extends ParamBaseModel {
      * 纬度
      */
     private String latitude;
+    /*
+    * 时间戳
+    * */
+    private long timestamp;
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
 
     /**
      * 经纬度是否为空

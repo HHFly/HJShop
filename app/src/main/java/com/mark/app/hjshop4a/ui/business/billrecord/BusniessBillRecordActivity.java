@@ -69,7 +69,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
 
     }
 
-    private  void requestData(final  int curPage){
+    private  void requestData(final  int curPage,final long timetamp){
         BillsRecord data =new BillsRecord();
         BillRecord billRecord =new BillRecord();
         ArrayList<BillRecord> billRecordArrayList =new ArrayList<>();
@@ -79,7 +79,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
         }
-        mPagingData.setPagingInfo(curPage,billRecordArrayList );
+//        mPagingData.setPagingInfo(curPage,billRecordArrayList );
 
         initRvAdapter(data, curPage == 1);
         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
@@ -111,14 +111,16 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
-            public void onLoadMore(int nextPage) {
-                requestData(nextPage);
+            public void onLoadMore(int nextPage, long timestamp) {
+                requestData(nextPage,timestamp);
             }
+
+
         });
     }
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1);
+        requestData(1,0);
     }
 }
