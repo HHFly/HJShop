@@ -108,7 +108,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                     }
                     @Override
                     public void onUnSuccessFinish() {
-                        initRvAdapter(null, curPage == 1);
+                        initRvAdapter(new ZXingCode(), curPage == 1);
                         RefreshLayoutUtils.finish(mRefreshLayout);
 
                     }

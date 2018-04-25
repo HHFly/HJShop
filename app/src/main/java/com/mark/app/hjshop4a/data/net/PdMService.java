@@ -294,76 +294,13 @@ public interface PdMService {
                                        @Field("payWayCode") int payWayCode);
 
     /*我的推荐*/
+
     @GET("/api/app/recommend")
-    Observable<BaseResultEntity<ZXingCode>>recommend(@FieldMap Map<String, String> map);
-    class IndexRepo {
-        /**
-         * 消息数量
-         */
-        private int messageCount;
-        private int stayOrderCount;
-        private int stayDeliveryCount;
-        private int completeCount;
-        private String shopName;
-        private String accountBlance;//帐户金额
-        private int noticeCount;
+    Observable<BaseResultEntity<ZXingCode>>recommend(@HeaderMap Map<String, String> map);
+    /*
+    * 商家收豆二维码
+    * */
+    @GET("/api/app/merchant/bean/QRcode")
+    Observable<BaseResultEntity>merchantQRcode();
 
-        public String getAccountBlance() {
-            return accountBlance;
-        }
-
-        public String getShopName() {
-            return shopName;
-        }
-
-        public IndexRepo setShopName(String shopName) {
-            this.shopName = shopName;
-            return this;
-        }
-
-        public int getNoticeCount() {
-            return noticeCount;
-        }
-
-        public IndexRepo setNoticeCount(int noticeCount) {
-            this.noticeCount = noticeCount;
-            return this;
-        }
-
-        public int getMessageCount() {
-            return messageCount;
-        }
-
-        public IndexRepo setMessageCount(int messageCount) {
-            this.messageCount = messageCount;
-            return this;
-        }
-
-        public int getStayOrderCount() {
-            return stayOrderCount;
-        }
-
-        public IndexRepo setStayOrderCount(int stayOrderCount) {
-            this.stayOrderCount = stayOrderCount;
-            return this;
-        }
-
-        public int getStayDeliveryCount() {
-            return stayDeliveryCount;
-        }
-
-        public IndexRepo setStayDeliveryCount(int stayDeliveryCount) {
-            this.stayDeliveryCount = stayDeliveryCount;
-            return this;
-        }
-
-        public int getCompleteCount() {
-            return completeCount;
-        }
-
-        public IndexRepo setCompleteCount(int completeCount) {
-            this.completeCount = completeCount;
-            return this;
-        }
-    }
 }

@@ -25,7 +25,7 @@
             android:id="@+id/zxingcode"
             android:layout_width="285px"
             android:layout_height="318px"
-
+                android:padding="@dimen/textsize_10px"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40px"
             android:layout_marginBottom="40px"

@@ -5,8 +5,20 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.base.model.PagingBaseModel;
+import com.mark.app.hjshop4a.base.model.PagingParam;
+import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
+
+import java.util.ArrayList;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/4/19.
@@ -22,9 +34,7 @@ public class BusniessZxingActivity extends BaseActivity {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"商家收豆二维码");
-        mBitmap = CodeUtils.createImage("这是测试二维码", 300, 300, null);
-        ImageView ZXing = (ImageView) getView(R.id.zxing);
-        ZXing.setImageBitmap(mBitmap);
+        requestData();
     }
 
     @Override
@@ -39,5 +49,41 @@ public class BusniessZxingActivity extends BaseActivity {
                 finish();
                 break;
         }
+    }
+
+    private  void requestData(){
+        showLoadingDialog();
+        App.getServiceManager().getPdmService()
+                .merchantQRcode()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                       String data =obj.getResult().toString();
+                        initRvAdapter(data);
+                    }
+
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        initRvAdapter(null);
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+
+
+    }
+
+    private void initRvAdapter(String data) {
+        mBitmap = CodeUtils.createImage(data, 300, 300, null);
+        ImageView ZXing = (ImageView) getView(R.id.zxing);
+        ZXing.setImageBitmap(mBitmap);
     }
 }

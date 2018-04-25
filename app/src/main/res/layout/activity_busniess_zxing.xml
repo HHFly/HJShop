@@ -26,6 +26,7 @@
         <ImageView
             android:id="@+id/zxing"
             android:layout_marginBottom="84px"
+            android:padding="@dimen/textsize_10px"
             android:layout_width="400px"
             android:layout_height="400px"
             android:layout_gravity="center_horizontal"
