@@ -23,7 +23,8 @@ import com.mark.app.hjshop4a.common.utils.ToastUtils;
  */
 
 public class AddOneEtParamDialog extends BaseDialogFragment {
-
+    //number
+    boolean isnumber;
     //根布局
     View mRootView;
 
@@ -39,15 +40,23 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
      *
      * @return
      */
-    public static AddOneEtParamDialog getInstance() {
+    public static AddOneEtParamDialog getInstance(boolean isnumber) {
         AddOneEtParamDialog dialog = new AddOneEtParamDialog();
+        dialog.isnumber =isnumber;
         return dialog;
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.dialog_add_one_param, container, false);
+        View rootView;
+        if (isnumber){
+            rootView = inflater.inflate(R.layout.dialog_add_one_param_input_num, container, false);
+        }
+        else {
+             rootView = inflater.inflate(R.layout.dialog_add_one_param, container, false);
+        }
+
         initView(rootView);
         return rootView;
     }

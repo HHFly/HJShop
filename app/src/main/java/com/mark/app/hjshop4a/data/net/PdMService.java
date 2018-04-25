@@ -17,7 +17,10 @@ import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
+import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
+import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -262,9 +265,32 @@ public interface PdMService {
     @GET("/api/app/property/detail")
     Observable<BaseResultEntity<AssetDetail>>getAssetDetail(@Query("userType") int userType);
     /*
-    * 金豆消费*/
+    * 金豆消费数据*/
     @GET("/api/app/bean/consume/get")
-    Observable<BaseResultEntity>getConsume();
+    Observable<BaseResultEntity<BeanConsume>>getConsume();
+    /*金豆消费*/
+    @FormUrlEncoded
+    @POST("/api/app/bean/consume")
+    Observable<BaseResultEntity>beanconsume(@Field("shopId") String shopId,
+                                            @Field("beanTradeInNum") String beanTradeInNum);
+    /*
+    * 金豆换购数据
+    * */
+    @GET("/api/app/bean/tradeIn/get")
+    Observable<BaseResultEntity<BusniessGoldBeanCS>>tradeInget();
+    /*金豆换购
+    * */
+    @FormUrlEncoded
+    @POST("/api/app/bean/tradeIn")
+    Observable<BaseResultEntity>tradeIn(@Field("beanTradeInNum") String beanTradeInNum,
+                                        @Field("cpatCha") String cpatCha);
+    /*在线充值数据*/
+    @GET("/api/app/topUp/online/get")
+    Observable<BaseResultEntity<ArrayList<OnlineRecharge>>>onLineGet();
+
+    @POST("/api/app/topUp/online")
+    Observable<BaseResultEntity>onLine(@Field("topUpMoney") String topUpMoney,
+                                       @Field("payWayCode") int payWayCode);
     class IndexRepo {
         /**
          * 消息数量

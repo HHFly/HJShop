@@ -28,7 +28,7 @@
         android:layout_marginBottom="70px"
         android:textSize="55px"
         android:textColor="#FFFFFF"
-        android:text="402.94"/>
+        android:text=""/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,14 +50,15 @@
             <TextView
                 style="@style/user_item_tv"
                 android:layout_alignParentStart="true"
-                android:layout_alignTop="@+id/certification_tv_user_name"
+                android:layout_alignTop="@+id/tv_user_shop_name"
                 android:text="消费店铺名称" />
 
             <TextView
-                android:id="@+id/certification_tv_user_name"
+                android:id="@+id/tv_user_shop_name"
                 style="@style/user_item_tv_content"
                 android:hint="请输入消费店铺名称"
                 android:textColorHint="#666666"
+                android:gravity="right"
                 android:layout_alignParentEnd="true" />
 
             <ImageView
@@ -81,6 +82,7 @@
                 style="@style/user_item_tv_content"
                 android:hint="0.00"
                 android:textColorHint="#666666"
+                android:gravity="right"
                 android:layout_alignParentEnd="true" />
 
             <ImageView
@@ -93,7 +95,7 @@
         <RelativeLayout
             android:id="@+id/money_count"
             style="@style/user_item_layout"
-            android:background="@drawable/select_normal_bg">
+           >
 
             <TextView
                 style="@style/user_item_tv"
@@ -103,7 +105,7 @@
                 android:id="@+id/tv_money_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:gravity="right"
                 android:hint="0.00"
                 android:textColorHint="#666666"
                 android:layout_alignParentRight="true"

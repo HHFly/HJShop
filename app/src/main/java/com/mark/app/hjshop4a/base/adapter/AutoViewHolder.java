@@ -5,8 +5,10 @@ import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,6 +27,19 @@ public class AutoViewHolder extends MkViewHolder {
     public AutoViewHolder(View view) {
         super(view);
         AutoUtils.autoSize(view);
+    }
+    /**
+     * 设置Edittext文本监听
+     *
+     * @param id
+     * @param textWatcher
+     */
+    public void setEtTextWatcher(@IdRes int id, TextWatcher textWatcher) {
+        View view = get(id);
+        if (view != null && view instanceof EditText) {
+            EditText et = (EditText) view;
+            et.addTextChangedListener(textWatcher);
+        }
     }
 
     /**

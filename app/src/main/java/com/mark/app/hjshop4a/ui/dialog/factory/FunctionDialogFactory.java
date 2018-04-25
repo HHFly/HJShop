@@ -4,6 +4,7 @@ import android.content.res.AssetManager;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
+import android.text.InputType;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
@@ -98,7 +99,7 @@ public class FunctionDialogFactory {
      */
     public static void showAddOneParamDialog(final BaseActivity activity, @StringRes int paramEmptyHint, @IdRes final int idres) {
 
-        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance();
+        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(false);
 
         mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
             @Override
@@ -117,13 +118,35 @@ public class FunctionDialogFactory {
      */
     public static void showAddOneParamDialog(final BaseActivity activity, String paramEmptyHint, @IdRes final int idres) {
 
-        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance();
+        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(false);
 
         mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
             @Override
             public void onClickCommit(AddOneEtParamDialog dialog, String data) {
 //                requestUpdateParam(type, data);
                 activity.setTvText(idres,data);
+                dialog.dismiss();
+            }
+        });
+//        mAddOneEtParamDialog.setTvParamName(paramName);
+        mAddOneEtParamDialog.setTvEmptyParamHint(paramEmptyHint);
+        mAddOneEtParamDialog.show(activity.getFragmentManager());
+    }
+
+
+    /**
+     * 显示一个参数的对话框输入数字
+     */
+    public static void showAddOneParamDialogNum(final BaseActivity activity, String paramEmptyHint, @IdRes final int idres) {
+
+        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(true);
+
+        mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
+            @Override
+            public void onClickCommit(AddOneEtParamDialog dialog, String data) {
+//                requestUpdateParam(type, data);
+                activity.setTvText(idres,data);
+
                 dialog.dismiss();
             }
         });
@@ -155,4 +178,5 @@ public class FunctionDialogFactory {
             }
         }).show(activity.getFragmentManager());
     }
+
 }

@@ -1,5 +1,7 @@
 package com.mark.app.hjshop4a.ui.onlinerecharge;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 
 
@@ -9,7 +11,9 @@ import com.mark.app.hjshop4a.base.adapter.BaseHasTopBottomListRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.pay.PayType;
 import com.mark.app.hjshop4a.model.onlinerecharhe.Pay;
 import com.mark.app.hjshop4a.model.onlinerecharhe.PayInfo;
+import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,12 +21,13 @@ import java.util.List;
  * Created by lenovo on 2017/10/6.
  */
 
-public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<PayInfo, Pay> {
+public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<ArrayList<OnlineRecharge>, OnlineRecharge> {
+    private TextWatcher textWatcher;
+    private int mSelectPos = 1;//默认第一个付款方式
+    private  String count ="";
 
-    private int mSelectPos = 0;
-
-    public OnlineRechargeRvAdapter(PayInfo payInfo, List<Pay> bodyData) {
-        super(payInfo, bodyData);
+    public OnlineRechargeRvAdapter(List<OnlineRecharge> onlineRecharges) {
+        super(onlineRecharges);
     }
 
     @Override
@@ -40,35 +45,60 @@ public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<PayIn
         return R.layout.adapter_pay_bottom;
     }
 
+
     @Override
-    public void bindTopData(AutoViewHolder holder, int topPos, PayInfo payInfo) {
-        //设置订单编号
+    public void bindTopData(AutoViewHolder holder, int topPos, ArrayList<OnlineRecharge> onlineRecharges) {
+        textWatcher=new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-//        holder.text(R.id.pay_tv_order_sn, strOrderSn);
+            }
 
-        //设置应付款
-//        holder.text(R.id.pay_tv_should_pay, payInfo.getFixedPrice());
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                count =s.toString();
+            }
+        };
+        holder.setEtTextWatcher(R.id.et_recharge_count,textWatcher);
+
+    }
+    @Override
+    public void bindBottomData(AutoViewHolder holder, int position, ArrayList<OnlineRecharge> onlineRecharges) {
+        holder.get(R.id.pay_btn_commit).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onItemClickListener != null) {
+                    OnlineRecharge pay = getDataItem(mSelectPos);
+                    if (pay != null) {
+                        onItemClickListener.onClickPay(pay,count);
+                    }
+                }
+            }
+        });
     }
 
+
+
     @Override
-    public void bindBodyData(AutoViewHolder holder, final int bodyPosition, Pay data) {
+    public void bindBodyData(AutoViewHolder holder, final int bodyPosition, OnlineRecharge data) {
         boolean isSelected = mSelectPos == bodyPosition;
         holder.itemView.setSelected(isSelected);
 
 
-        switch (data.getPayType()) {
+        switch (data.getPayWayCode()) {
             case PayType.ALIPAY: {
                 holder.image(R.id.item_sdv_icon, R.mipmap.ic_pay_zfb);
+
 
                 break;
             }
             case PayType.WECHAT: {
                 holder.image(R.id.item_sdv_icon, R.mipmap.ic_third_wx);
-
-                break;
-            }
-            case PayType.STRIPE: {
-                holder.image(R.id.item_sdv_icon,  R.mipmap.ic_pay_stripe);
 
                 break;
             }
@@ -84,20 +114,7 @@ public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<PayIn
         });
     }
 
-    @Override
-    public void bindBottomData(AutoViewHolder holder, int position, final PayInfo payInfo) {
-        holder.get(R.id.pay_btn_commit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onItemClickListener != null) {
-                    Pay pay = getDataItem(mSelectPos);
-                    if (pay != null) {
-                        onItemClickListener.onClickPay(pay);
-                    }
-                }
-            }
-        });
-    }
+
 
     private OnItemClickListener onItemClickListener;
 
@@ -111,6 +128,6 @@ public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<PayIn
          *
          * @param data
          */
-        void onClickPay(Pay data);
+        void onClickPay(OnlineRecharge data,String count);
     }
 }

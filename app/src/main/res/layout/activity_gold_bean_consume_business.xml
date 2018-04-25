@@ -28,7 +28,7 @@
                 android:layout_marginBottom="70px"
                 android:textSize="55px"
                 android:textColor="#FFFFFF"
-                android:text="402.94"/>
+                android:text=""/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         <RelativeLayout
             android:id="@+id/bean_change_count"
             style="@style/user_item_layout"
-            android:background="@drawable/select_normal_bg">
+            >
 
             <TextView
                 style="@style/user_item_tv"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:hint="900.00"
+                android:hint="0.00"
                 android:textColorHint="#666666"
                 android:layout_alignParentEnd="true" />
 
@@ -101,6 +101,7 @@
                 android:id="@+id/et_audit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLength="4"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/textView4"
                 android:layout_toStartOf="@+id/audit"
@@ -125,7 +126,7 @@
             android:layout_marginTop="43px"
             android:textColor="#666666"
             android:textSize="26px"
-            android:text="商家换购金豆说明::"/>
+            android:text="商家换购金豆说明:"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

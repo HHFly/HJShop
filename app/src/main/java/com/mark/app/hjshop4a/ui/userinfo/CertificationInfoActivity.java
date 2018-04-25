@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.SelectDateDialog;
 import com.mark.app.hjshop4a.ui.dialog.SexDialog;
+import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 
 /**
  * Created by pc on 2018/4/16.
@@ -54,7 +55,7 @@ public class CertificationInfoActivity extends BaseActivity {
                 break;
             case R.id.user_layout_user_name:
 //                姓名
-                showAddOneParamDialog(R.string.certificationinfo_请输入用户名,R.id.user_tv_user_name);
+                FunctionDialogFactory.showAddOneParamDialog(this,R.string.certificationinfo_请输入用户名,R.id.user_tv_user_name);
                 break;
             case R.id.user_layout_user_sex:
 //                性别
@@ -66,7 +67,7 @@ public class CertificationInfoActivity extends BaseActivity {
                 break;
             case R.id.user_layout_user_invitation:
 //                推荐人
-                showAddOneParamDialog(R.string.certificationinfo_请输入推荐人号码,R.id.certification_tv_user_invitation);
+                FunctionDialogFactory.showAddOneParamDialog(this,R.string.certificationinfo_请输入推荐人号码,R.id.certification_tv_user_invitation);
                 break;
 
         }
@@ -87,25 +88,8 @@ public class CertificationInfoActivity extends BaseActivity {
         selectDateDialog.showDateDialog(this);
     }
 
-    /**
-     * 显示一个参数的对话框
-     */
-    private void showAddOneParamDialog(@StringRes int paramEmptyHint, @IdRes final int idres) {
-        if (mAddOneEtParamDialog == null) {
-            mAddOneEtParamDialog = AddOneEtParamDialog.getInstance();
-        }
-        mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
-            @Override
-            public void onClickCommit(AddOneEtParamDialog dialog, String data) {
-//                requestUpdateParam(type, data);
-                setTvText(idres,data);
-                dialog.dismiss();
-            }
-        });
-//        mAddOneEtParamDialog.setTvParamName(paramName);
-        mAddOneEtParamDialog.setTvEmptyParamHint(paramEmptyHint);
-        mAddOneEtParamDialog.show(getFragmentManager());
-    }
+
+
 
 
     /*
