@@ -64,7 +64,9 @@ public class BusinessApplicationActivity extends BaseActivity {
                 }
                 break;
             case R.id.layout_company_info:
-                ActivityJumpUtils.actActivity(this,BusniessCompanyActivity.class);
+                Intent intent = new Intent(this, BusniessCompanyActivity.class);
+                BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
+                this.startActivity(intent);
                 break;
             case R.id.state:
                 break;
@@ -75,7 +77,7 @@ public class BusinessApplicationActivity extends BaseActivity {
     }
     private  void requestData(){
         showLoadingDialog();
-        App.getServiceManager().getPdmService().merchantapply()
+        App.getServiceManager().getPdmService().getMerchantapply()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver<BusinessApply>() {

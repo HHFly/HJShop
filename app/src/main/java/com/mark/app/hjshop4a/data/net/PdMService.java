@@ -307,7 +307,8 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /*在线充值数据*/
     @GET("/api/app/topUp/online/get")
     Observable<BaseResultEntity<ArrayList<OnlineRecharge>>>onLineGet();
-
+    /*在线充值*/
+    @FormUrlEncoded
     @POST("/api/app/topUp/online")
     Observable<BaseResultEntity>onLine(@Field("topUpMoney") String topUpMoney,
                                        @Field("payWayCode") int payWayCode);
@@ -348,7 +349,20 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                                                             @Query("consumerType") int consumerType,
                                                                             @QueryMap Map<String, String> map);
 
-    /*申请商户*/
+    /*申请商户数据*/
     @GET("/api/app/merchant/apply/get")
-    Observable<BaseResultEntity<BusinessApply>>merchantapply();
+    Observable<BaseResultEntity<BusinessApply>>getMerchantapply();
+    /*申请商户*/
+    @FormUrlEncoded
+    @POST("/api/app/merchant/apply")
+    Observable<BaseResultEntity>merchantApply(@Field("companyName") String companyName,
+                                              @Field("provinceId") String provinceId,
+                                              @Field("cityId") String cityId,
+                                              @Field("countyId") String countyId,
+                                              @Field("completeAddress") String completeAddress,
+                                              @Field("completeAddress") String shopName,
+                                              @Field("completeAddress") long shopCategoryId,
+                                              @Field("completeAddress") String licenceImage,
+                                              @Field("completeAddress") String shopImagesIn,
+                                              @Field("completeAddress") String shopImages);
 }
