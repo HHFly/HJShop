@@ -19,6 +19,7 @@ import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.RechargeAdpater;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUp;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUpList;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -122,15 +123,15 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
             App.getServiceManager().getPdmService().TopUpList(1,4,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver<ArrayList<TopUp>>() {
+                    .subscribe(new DefaultObserver<TopUpList>() {
                         @Override
-                        public void onSuccess(BaseResultEntity<ArrayList<TopUp>> obj) {
-                            ArrayList<TopUp> data = obj.getResult();
-                            initRvAdapter(data, curPage == 1);
+                        public void onSuccess(BaseResultEntity<TopUpList> obj) {
+                            TopUpList data = obj.getResult();
+                            initRvAdapter(data.getTopUpList(), curPage == 1);
                             if (mPagingData == null) {
                                 mPagingData = new PagingBaseModel();
                             }
-                            mPagingData.setPagingInfo(curPage, data, obj.getNowTime());
+                            mPagingData.setPagingInfo(curPage, data.getTopUpList(), obj.getNowTime());
                             RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
 

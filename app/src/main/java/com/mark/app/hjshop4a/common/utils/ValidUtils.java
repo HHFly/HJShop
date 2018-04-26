@@ -25,7 +25,16 @@ public class ValidUtils {
     private static final String HOUSE_NUM = "^.{1,}$";
     //邮编
     private static final String ZIP_CODE = "^.{1,}$";
-
+    /**
+     * 正则表达式:验证身份证
+     */
+    private static final String REGEX_ID_CARD = "(^\\d{15}$)|(^\\d{17}([0-9]|X)$)";
+    public static  boolean IDCard(String data){return Pattern.matches(REGEX_ID_CARD, data);}
+    /**
+     * 正则表达式:验证邮箱
+     */
+    private static final String REGEX_EMAIL = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+    public  static  boolean EMail (String data){return Pattern.matches(REGEX_EMAIL, data);}
 
     /**
      * 邮编

@@ -122,12 +122,12 @@
 
             android:text="@string/login_msg_region" />
 
-        <EditText
+        <TextView
             android:id="@+id/register_et_region"
             style="@style/login_input_et"
             android:layout_weight="1"
             android:hint="@string/hint_请选择"
-           android:enabled="false"
+           android:gravity="center_vertical"
             android:maxLength="20" />
 
         <ImageView
@@ -147,12 +147,14 @@
             android:id="@+id/login_tv_in"
             style="@style/login_input_tv"
             android:text="@string/login_msg_invitation" />
-
-        <EditText
+        <com.mark.app.hjshop4a.widget.PhoneEditText
             android:id="@+id/register_et_invitation"
             style="@style/login_input_et"
+            android:layout_weight="1"
             android:hint="@string/hint_请输入邀请人手机号"
-            android:maxLength="20" />
+            android:inputType="number"
+            android:maxLength="15" />
+
     </LinearLayout>
 
 

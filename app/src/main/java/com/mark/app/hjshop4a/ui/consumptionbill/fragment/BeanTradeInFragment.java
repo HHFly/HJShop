@@ -17,6 +17,7 @@ import com.mark.app.hjshop4a.ui.consumptionbill.adapter.BeanTradeInAdapter;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.RechargeAdpater;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeIn;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeInList;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -120,15 +121,15 @@ public class BeanTradeInFragment extends BaseFragment implements OnRefreshLoadmo
             App.getServiceManager().getPdmService().busniessbeanTradeIn(2,1,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver<ArrayList<BeanTradeIn>>() {
+                    .subscribe(new DefaultObserver<BeanTradeInList>() {
                         @Override
-                        public void onSuccess(BaseResultEntity<ArrayList<BeanTradeIn>> obj) {
-                            ArrayList<BeanTradeIn> data = obj.getResult();
-                            initRvAdapter(data, curPage == 1);
+                        public void onSuccess(BaseResultEntity<BeanTradeInList> obj) {
+                            BeanTradeInList data = obj.getResult();
+                            initRvAdapter(data.getBeanTradeInList(), curPage == 1);
                             if (mPagingData == null) {
                                 mPagingData = new PagingBaseModel();
                             }
-                            mPagingData.setPagingInfo(curPage, data, obj.getNowTime());
+                            mPagingData.setPagingInfo(curPage, data.getBeanTradeInList(), obj.getNowTime());
                             RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
 

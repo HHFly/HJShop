@@ -8,12 +8,8 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
-import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
-import com.mark.app.hjshop4a.ui.businessapply.model.CardIntentMessage;
-import com.mark.app.hjshop4a.ui.businessapply.model.UserInfo;
-import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.white.lib.utils.TakePhoneUtil;
+import com.mark.app.hjshop4a.ui.businessapply.model.BusniessApplyUserInfo;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +22,7 @@ public class IdCardCheckActivity extends BaseActivity {
     //上传的图片
     Uri mUri;
    Map<Integer,String>pic =new HashMap<>();
-   UserInfo mdata;
+   BusniessApplyUserInfo mdata;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_business_apply_idcard;
@@ -35,7 +31,7 @@ public class IdCardCheckActivity extends BaseActivity {
     @Override
     public void getIntentParam(Bundle bundle) {
         super.getIntentParam(bundle);
-        mdata= (UserInfo) bundle.get("userInfo");
+        mdata= (BusniessApplyUserInfo) bundle.get("userInfo");
     }
 
     @Override

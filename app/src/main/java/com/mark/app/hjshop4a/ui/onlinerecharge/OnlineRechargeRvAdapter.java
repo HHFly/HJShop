@@ -10,7 +10,8 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopBottomListRvAdapter;
 import com.mark.app.hjshop4a.common.androidenum.pay.PayType;
 
-import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
+import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWay;
+import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +21,13 @@ import java.util.List;
  * Created by lenovo on 2017/10/6.
  */
 
-public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<ArrayList<OnlineRecharge>, OnlineRecharge> {
+public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<PayWayList, PayWay> {
     private TextWatcher textWatcher;
-    private int mSelectPos = 1;//默认第一个付款方式
+    private int mSelectPos = 0;//默认第一个付款方式
     private  String count ="";
 
-    public OnlineRechargeRvAdapter(List<OnlineRecharge> onlineRecharges) {
-        super(onlineRecharges);
+    public OnlineRechargeRvAdapter(PayWayList payWayList, List<PayWay> payWays) {
+        super(payWayList, payWays);
     }
 
     @Override
@@ -40,13 +41,7 @@ public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<Array
     }
 
     @Override
-    public int getBottomItemResId() {
-        return R.layout.adapter_pay_bottom;
-    }
-
-
-    @Override
-    public void bindTopData(AutoViewHolder holder, int topPos, ArrayList<OnlineRecharge> onlineRecharges) {
+    public void bindTopData(AutoViewHolder holder, int topPos, PayWayList payWayList) {
         textWatcher=new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -64,15 +59,21 @@ public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<Array
             }
         };
         holder.setEtTextWatcher(R.id.et_recharge_count,textWatcher);
-
     }
+
     @Override
-    public void bindBottomData(AutoViewHolder holder, int position, ArrayList<OnlineRecharge> onlineRecharges) {
+    public int getBottomItemResId() {
+        return R.layout.adapter_pay_bottom;
+    }
+
+    @Override
+    public void bindBottomData(AutoViewHolder holder, int position, PayWayList payWayList) {
+
         holder.get(R.id.pay_btn_commit).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onItemClickListener != null) {
-                    OnlineRecharge pay = getDataItem(mSelectPos);
+                    PayWay pay = getDataItem(mSelectPos);
                     if (pay != null) {
                         onItemClickListener.onClickPay(pay,count);
                     }
@@ -83,8 +84,11 @@ public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<Array
 
 
 
+
+
+
     @Override
-    public void bindBodyData(AutoViewHolder holder, final int bodyPosition, OnlineRecharge data) {
+    public void bindBodyData(AutoViewHolder holder, final int bodyPosition, PayWay data) {
         boolean isSelected = mSelectPos == bodyPosition;
         holder.itemView.setSelected(isSelected);
 
@@ -127,6 +131,6 @@ public class OnlineRechargeRvAdapter extends BaseHasTopBottomListRvAdapter<Array
          *
          * @param data
          */
-        void onClickPay(OnlineRecharge data,String count);
+        void onClickPay(PayWay data, String count);
     }
 }

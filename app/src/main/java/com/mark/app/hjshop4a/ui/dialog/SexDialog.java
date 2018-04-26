@@ -40,7 +40,7 @@ public class SexDialog extends BaseDialogFragment {
         View rootView = inflater.inflate(R.layout.dialog_select_sex, container, false);
         final AlertDialog dialog = new AlertDialog.Builder(content, R.style.dialog_lhp )
                 .create();
-        dialog.show();
+
         Window window = dialog.getWindow();
         window.setWindowAnimations(R.style.mystyle);
         initView(rootView);

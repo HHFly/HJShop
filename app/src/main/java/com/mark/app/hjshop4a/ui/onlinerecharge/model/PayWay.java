@@ -6,7 +6,7 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
  * Created by pc on 2018/4/24.
  */
 
-public class OnlineRecharge extends BaseModel {
+public class PayWay extends BaseModel {
     private int payWayCode; //支付方式ID
     private  String payWayName;//支付方式名称
 

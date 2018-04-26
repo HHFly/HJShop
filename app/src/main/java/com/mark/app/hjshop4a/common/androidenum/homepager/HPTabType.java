@@ -14,7 +14,9 @@ import java.lang.annotation.RetentionPolicy;
         HPTabType.HOME,
         HPTabType.CLASSIFY,
         HPTabType.ME,
-        HPTabType.SHOPCAR
+        HPTabType.SHOPCAR,
+        HPTabType.SERVICE
+
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface HPTabType {
@@ -34,4 +36,8 @@ public @interface HPTabType {
      * 我的
      */
     int ME = 3;
+    /*
+    * 客服
+    * */
+    int SERVICE=4;
 }

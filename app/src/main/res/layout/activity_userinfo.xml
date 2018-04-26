@@ -48,7 +48,25 @@
 
         <TextView
             style="@style/user_item_tv"
-            android:text="忘记密码" />
+            android:text="密码修改" />
+
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+    <RelativeLayout
+        android:id="@+id/set_pay_psw"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="支付密码" />
 
         <ImageView
             style="@style/BaseImg.Right"

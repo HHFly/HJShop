@@ -27,8 +27,8 @@ import java.util.Locale;
 public class SelectDateDialog implements OnWheelChangedListener {
 
 
-    public static final int START_YEAR = 1900;
-    public static final int END_YEAR = 2100;
+    public static final int START_YEAR = 1970;
+    public static final int END_YEAR = 2050;
 
 
     private WheelView year;

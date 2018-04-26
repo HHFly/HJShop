@@ -31,7 +31,7 @@ public class BankCardAdapter extends BaseListRvAdapter<BankCard> {
         if(data!=null) {
             holder.sdvSmall(R.id.item_bank_logo, data.getBankPic());
             holder.text(R.id.item_tv_bank_name, data.getBankName());
-            holder.text(R.id.item_tv_card_type, CardType(data.getBankType()));
+            holder.text(R.id.item_tv_card_type, data.getBankType());
             holder.text(R.id.item_tv_card_number,data.getBankNo());
             holder.get(R.id.btn_delete).setOnClickListener(new View.OnClickListener() {
                 @Override

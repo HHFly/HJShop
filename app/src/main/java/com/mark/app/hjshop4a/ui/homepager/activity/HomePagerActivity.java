@@ -9,6 +9,7 @@ import android.view.View;
 
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
@@ -45,7 +46,7 @@ public class HomePagerActivity extends BaseActivity {
     private Fragment mCurFragment;
 
     //tab类型
-    private int mType = HPTabType.ME;
+    private int mType = HPTabType.HOME;
     private boolean isSecondBack;//双击退出
 
     @Override
@@ -110,20 +111,16 @@ public class HomePagerActivity extends BaseActivity {
             }
             case R.id.hp_layout_tab3: {
                 selectTab(tab3);
-//                if (App.hasToken()) {
-//                    selectTab(tab3);
-//                } else {
-//                    ActivityJumpUtils.actLogin(getActivity());
-//                }
+
                 break;
             }
             case R.id.hp_layout_tab4: {
-                selectTab(tab4);
-//                if (App.hasToken()) {
-//                    selectTab(tab4);
-//                } else {
-//                    ActivityJumpUtils.actLogin(getActivity());
-//                }
+//                selectTab(tab4);
+                if (App.hasToken()) {
+                    selectTab(tab4);
+                } else {
+                    ActivityJumpUtils.actLogin(getActivity());
+                }
                 break;
 
             }
@@ -143,8 +140,11 @@ public class HomePagerActivity extends BaseActivity {
      * 初始化fragment
      */
     private void createFragment() {
-
+        homeFragment =new HomeFragment();
         meFragment = new MeFragment();
+        classifyFragment =new ClassifyFragment();
+        shopCarFragment = new ShopCarFragment();
+        mServiceFragment =new ServiceFragment();
     }
 
     /**
@@ -209,6 +209,10 @@ public class HomePagerActivity extends BaseActivity {
                 selectTab(tab4);
                 break;
             }
+            case HPTabType.SERVICE: {
+                selectTab(tab5);
+                break;
+            }
         }
     }
 
@@ -240,6 +244,10 @@ public class HomePagerActivity extends BaseActivity {
             }
             case R.id.hp_layout_tab4: {
                 switchFragment(meFragment);
+                break;
+            }
+            case R.id.hp_layout_tab5: {
+                switchFragment(mServiceFragment);
                 break;
             }
         }

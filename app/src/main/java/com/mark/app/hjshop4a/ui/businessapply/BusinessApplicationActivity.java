@@ -6,18 +6,11 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
-import com.mark.app.hjshop4a.base.model.PagingBaseModel;
-import com.mark.app.hjshop4a.base.model.PagingParam;
-import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
-import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.white.lib.utils.ToastUtil;
-
-import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -57,7 +50,7 @@ public class BusinessApplicationActivity extends BaseActivity {
             case R.id.layout_certificates:
                 if(mData!=null) {
                     Intent intent = new Intent(this, IdCardCheckActivity.class);
-                    BundleUtils.getInstance().putSerializable("userInfo", mData.getUserInfo()).addIntent(intent);
+                    BundleUtils.getInstance().putSerializable("userInfo", mData.getBusniessApplyUserInfo()).addIntent(intent);
                     this.startActivity(intent);
                 }else {
                     ToastUtil.show("服务器繁忙稍后重试");
@@ -85,10 +78,10 @@ public class BusinessApplicationActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<BusinessApply> obj) {
                         BusinessApply data =obj.getResult();
                         mData =data;
-                        setTvText(R.id.user_tv_1,data.getUserInfo().getUserNick());
-                        setTvText(R.id.user_tv_2,data.getUserInfo().getUserRealName());
-                        setTvText(R.id.user_tv_3,data.getUserInfo().getCellphone());
-                        setTvText(R.id.user_tv_4,data.getUserInfo().getEmail());
+                        setTvText(R.id.user_tv_1,data.getBusniessApplyUserInfo().getUserNick());
+                        setTvText(R.id.user_tv_2,data.getBusniessApplyUserInfo().getUserRealName());
+                        setTvText(R.id.user_tv_3,data.getBusniessApplyUserInfo().getCellphone());
+                        setTvText(R.id.user_tv_4,data.getBusniessApplyUserInfo().getEmail());
                         SwitchAduit(data.getAuditStatus());
                     }
 

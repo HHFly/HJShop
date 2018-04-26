@@ -1,15 +1,31 @@
 package com.mark.app.hjshop4a.ui.userinfo;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
 import android.view.View;
+import android.widget.Switch;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.utils.BundleUtils;
+import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
+import com.mark.app.hjshop4a.common.utils.ValidUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.SelectDateDialog;
 import com.mark.app.hjshop4a.ui.dialog.SexDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
+import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
+import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/4/16.
@@ -19,9 +35,20 @@ public class CertificationInfoActivity extends BaseActivity {
     private AddOneEtParamDialog mAddOneEtParamDialog;
     private SexDialog sexDialog;
     private SelectDateDialog selectDateDialog;
+    private UserInfo mData;
+    private CommitUserInfo commitUserInfo;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_certification_information;
+    }
+
+    @Override
+    public void getIntentParam(Bundle bundle) {
+        super.getIntentParam(bundle);
+        if(bundle!=null)
+        {
+            mData= (UserInfo) bundle.getSerializable("UserInfo");
+        }
     }
 
     @Override
@@ -36,8 +63,17 @@ public class CertificationInfoActivity extends BaseActivity {
     public void initView() {
      setTvText(R.id.titlebar_tv_title,"认证资料");
 
+        bindData();
     }
-
+    private void bindData(){
+        if(mData!=null){
+            setTvText(R.id.user_tv_user_name,mData.getUserRealName());
+            setTvText(R.id.user_tv_user_sex,SwitchSex(mData.getGender()));
+            setTvText(R.id.user_tv_user_date,mData.getBirthday());
+            setTvText(R.id.certification_tv_user_invitation,mData.getRecommend());
+            setTvText(R.id.tv_id_card,mData.getUserIdCard());
+        }
+    }
     @Override
     public void setListener() {
         setClickListener(R.id.titlebar_iv_return);
@@ -45,6 +81,8 @@ public class CertificationInfoActivity extends BaseActivity {
         setClickListener(R.id.user_layout_user_sex);
         setClickListener(R.id.user_layout_user_date);
         setClickListener(R.id.user_layout_user_invitation);
+        setClickListener(R.id.rl_id_card);
+        setClickListener(R.id.rl_id_card_img);
     }
 
     @Override
@@ -55,7 +93,7 @@ public class CertificationInfoActivity extends BaseActivity {
                 break;
             case R.id.user_layout_user_name:
 //                姓名
-                FunctionDialogFactory.showAddOneParamDialog(this,R.string.certificationinfo_请输入用户名,R.id.user_tv_user_name);
+               ShowDialog(R.id.user_layout_user_name,false);
                 break;
             case R.id.user_layout_user_sex:
 //                性别
@@ -67,10 +105,29 @@ public class CertificationInfoActivity extends BaseActivity {
                 break;
             case R.id.user_layout_user_invitation:
 //                推荐人
-                FunctionDialogFactory.showAddOneParamDialog(this,R.string.certificationinfo_请输入推荐人号码,R.id.certification_tv_user_invitation);
-                break;
 
+                break;
+            case R.id.rl_id_card:
+                //身份证号码
+
+                ShowDialog( R.id.rl_id_card,false);
+                break;
+            case R.id.rl_id_card_img:
+                //身份证
+                Intent intent =new Intent(this,IDCardImgActivity.class);
+                BundleUtils.getInstance().putString("userIdCardFront",mData.getUserIdCardFront()).putString("userIdCardSide",mData.getUserIdCardSide()).addIntent(intent);
+                this.startActivityForResult(intent,1);
+                break;
         }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==1){
+            BundleUtils.getString(data,"","");
+        }
+
     }
     /**
      * 显示一个时间的对话框
@@ -83,13 +140,48 @@ public class CertificationInfoActivity extends BaseActivity {
             @Override
             public void onClickDate(String str) {
                 setTvText(idres,str);
+                CommitUserInfo commitUserInfo =new CommitUserInfo();
+                commitUserInfo.setBirthday(str);
+                requestData(1,commitUserInfo);
             }
         });
         selectDateDialog.showDateDialog(this);
     }
 
 
+    //    填写信息dialog
+    private  void  ShowDialog(final int type,Boolean isNumber){
+        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(isNumber);
 
+        mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
+            @Override
+            public void onClickCommit(AddOneEtParamDialog dialog, String data) {
+                CommitUserInfo commitUserInfo =new CommitUserInfo();
+                switch (type){
+                    case R.id.user_layout_user_name:
+        //真实姓名
+                        commitUserInfo.setUserRealName(data);
+                        setTvText(R.id.user_tv_user_name,data);
+                        requestData(1,commitUserInfo);  break;
+                    case R.id.rl_id_card:
+//身份证号
+                        if(ValidUtils.IDCard(data)){
+                            commitUserInfo.setUserIdCard(data);
+                            setTvText(R.id.tv_id_card,data);
+                            requestData(1,commitUserInfo);break;
+                        }else {
+                            ToastUtils.show("身份证号格式不正确");
+                        }
+
+
+
+                }
+                dialog.dismiss();
+            }
+        });
+
+        mAddOneEtParamDialog.show(this.getFragmentManager());
+    }
 
 
     /*
@@ -102,23 +194,67 @@ public class CertificationInfoActivity extends BaseActivity {
             @Override
             public void onClickNo(SexDialog dialog) {
                 setTvText(idres,"保密");
+                CommitUserInfo commitUserInfo =new CommitUserInfo();
+                commitUserInfo.setGender(0);
+                requestData(1,commitUserInfo);
                 dialog.dismiss();
             }
 
             @Override
             public void onClickMan(SexDialog dialog) {
                 setTvText(idres,"男");
+                CommitUserInfo commitUserInfo =new CommitUserInfo();
+                commitUserInfo.setGender(1);
+                requestData(1,commitUserInfo);
                 dialog.dismiss();
             }
 
             @Override
             public void onClickWoman(SexDialog dialog) {
                 setTvText(idres,"女");
+                CommitUserInfo commitUserInfo =new CommitUserInfo();
+                commitUserInfo.setGender(2);
+                requestData(1,commitUserInfo);
                 dialog.dismiss();
             }
 
         });
         sexDialog.setContent(this.getActivity());
         sexDialog.show(getFragmentManager());
+    }
+    private String SwitchSex(int type){
+        switch (type){
+            case 0: return "保密";
+            case 1: return "男";
+            case 2: return "女";
+            default: return "";
+    }
+    }
+
+    /**
+     * 请求数据
+     */
+    private void requestData(int type,CommitUserInfo userInfo) {
+        showLoadingDialog();
+
+        App.getServiceManager().getPdmService()
+                .setUserInfo(1,userInfo.getMap())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+
+
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }

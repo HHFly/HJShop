@@ -125,13 +125,13 @@ App extends Application {
      * @return
      */
     public static boolean hasToken() {
-        boolean autologin =getAppContext().getIsAutoLogin();
-        if(autologin){
-            return !TextUtils.isEmpty(getToken());
-        }else {
-           return  false;
-        }
-
+//        boolean autologin =getAppContext().getIsAutoLogin();
+//        if(autologin){
+//            return !TextUtils.isEmpty(getToken());
+//        }else {
+//           return  false;
+//        }
+        return !TextUtils.isEmpty(getToken());
     }
 
     public String getAccToken() {

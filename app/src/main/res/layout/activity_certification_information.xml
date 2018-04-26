@@ -7,9 +7,7 @@
     android:orientation="vertical">
 
     <include layout="@layout/include_titlebar" />
-<ScrollView
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +21,7 @@
 
             <TextView
                 style="@style/user_item_tv"
-                android:text="@string/user_msg_user_name" />
+                android:text="姓名" />
 
             <TextView
                 android:id="@+id/user_tv_user_name"
@@ -89,27 +87,69 @@
 
         <View
             style="@style/BaseLine.Horizontal"
-           android:layout_height="20px"/>
-
+            android:layout_marginLeft="30px" />
 
         <RelativeLayout
             android:id="@+id/user_layout_user_invitation"
             style="@style/user_item_layout"
-            android:background="@drawable/select_normal_bg"
+
            >
 
             <TextView
                 style="@style/user_item_tv"
                 android:text="@string/certification_推荐人" />
 
-            <TextView
-                android:id="@+id/certification_tv_user_invitation"
-                style="@style/user_item_tv_content"
-                />
-
         </RelativeLayout>
     </LinearLayout>
 
+    <RelativeLayout
+        android:layout_marginTop="20px"
+        android:id="@+id/rl_id_card"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
 
-</ScrollView>
+        <TextView
+            style="@style/user_item_tv"
+            android:text="身份证号码" />
+
+        <TextView
+            android:id="@+id/tv_id_card"
+            style="@style/user_item_tv_content"
+            android:layout_marginRight="0px"
+            android:layout_toLeftOf="@+id/imageView6" />
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/imageView6" />
+
+        <TextView
+            android:id="@+id/certification_tv_user_invitation"
+            style="@style/user_item_tv_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="26dp"
+            android:layout_toStartOf="@+id/tv_id_card" />
+    </RelativeLayout>
+    <RelativeLayout
+
+        android:id="@+id/rl_id_card_img"
+        style="@style/user_item_layout"
+        android:background="@drawable/select_normal_bg">
+
+        <TextView
+            style="@style/user_item_tv"
+            android:text="身份证号码" />
+
+        <TextView
+
+            style="@style/user_item_tv_content"
+            android:layout_marginRight="0px"
+            android:layout_alignParentRight="true"
+            />
+        <ImageView
+            style="@style/BaseImg.Right"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+             />
+    </RelativeLayout>
 </LinearLayout>

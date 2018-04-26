@@ -12,13 +12,9 @@ import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.model.consumptionbill.BalanceRepo;
-import com.mark.app.hjshop4a.model.consumptionbill.GoldBeanRepo;
-import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
-import com.mark.app.hjshop4a.ui.consumptionbill.adapter.BalanceAdapter;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
-import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanList;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -122,15 +118,15 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
             App.getServiceManager().getPdmService().memberBeanList(1,1,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver<ArrayList<Bean>>() {
+                    .subscribe(new DefaultObserver<BeanList>() {
                         @Override
-                        public void onSuccess(BaseResultEntity<ArrayList<Bean>> obj) {
-                            ArrayList<Bean> data = obj.getResult();
-                            initRvAdapter(data, curPage == 1);
+                        public void onSuccess(BaseResultEntity<BeanList> obj) {
+                            BeanList data = obj.getResult();
+                            initRvAdapter(data.getBeanList(), curPage == 1);
                             if (mPagingData == null) {
                                 mPagingData = new PagingBaseModel();
                             }
-                            mPagingData.setPagingInfo(curPage, data, obj.getNowTime());
+                            mPagingData.setPagingInfo(curPage, data.getBeanList(), obj.getNowTime());
                             RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
 

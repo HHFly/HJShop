@@ -7,10 +7,7 @@
     android:orientation="vertical">
 
     <include layout="@layout/include_titlebar" />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +19,7 @@
 
         <TextView
             style="@style/user_item_tv"
-            android:text="@string/certificaton_姓名" />
+            android:text="用户名" />
 
         <TextView
             android:id="@+id/certification_tv_user_name"
@@ -87,23 +84,7 @@
 
 
         />
-    <RelativeLayout
-        style="@style/user_item_layout"
-        android:background="@drawable/select_normal_bg">
 
-        <TextView
-            style="@style/user_item_tv"
-            android:text="@string/certification_审核状态" />
-
-        <TextView
-            android:id="@+id/certification_tv_user_ispass"
-            style="@style/user_item_tv_content"
-            android:layout_alignParentEnd="true" />
-
-    </RelativeLayout>
-    <View
-        style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
     </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

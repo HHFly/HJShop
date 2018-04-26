@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.common.utils;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
@@ -38,6 +39,13 @@ public class TakeImgUtil {
     public static void  setRId(final @IdRes int rid){
         id= rid;
     }
+    public static void choosePhoto(final android.support.v4.app.Fragment activity, final @IdRes int id) {
+        PermissionUtil.checkAndRequestMorePermissions(activity.getActivity(), new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, 2, new PermissionRequestSuccessCallBack() {
+            public void onHasPermission() {
+                TakeImgUtil.openChooser(activity,id);
+            }
+        });
+    }
     public static void choosePhoto(final Activity activity,final @IdRes int id) {
         PermissionUtil.checkAndRequestMorePermissions(activity, new String[]{"android.permission.WRITE_EXTERNAL_STORAGE"}, 2, new PermissionRequestSuccessCallBack() {
             public void onHasPermission() {
@@ -45,14 +53,26 @@ public class TakeImgUtil {
             }
         });
     }
-
+    private static void openChooser(android.support.v4.app.Fragment  activity,final @IdRes int id) {
+        Intent intent = new Intent("android.intent.action.GET_CONTENT");
+        intent.addCategory("android.intent.category.OPENABLE");
+        intent.setType("image/*");
+        activity.startActivityForResult(Intent.createChooser(intent, "选择图片"), 2);
+    }
     private static void openChooser(Activity activity,final @IdRes int id) {
         Intent intent = new Intent("android.intent.action.GET_CONTENT");
         intent.addCategory("android.intent.category.OPENABLE");
         intent.setType("image/*");
         activity.startActivityForResult(Intent.createChooser(intent, "选择图片"), 2);
     }
-
+    public static void takePhoto(final android.support.v4.app.Fragment  activity ,final @IdRes int id) {
+        String[] pers = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE"};
+        PermissionUtil.checkAndRequestMorePermissions(activity.getActivity(), pers, 1, new PermissionRequestSuccessCallBack() {
+            public void onHasPermission() {
+                TakeImgUtil.openPhoto(activity,id);
+            }
+        });
+    }
     public static void takePhoto(final Activity activity ,final @IdRes int id) {
         String[] pers = new String[]{"android.permission.CAMERA", "android.permission.WRITE_EXTERNAL_STORAGE"};
         PermissionUtil.checkAndRequestMorePermissions(activity, pers, 1, new PermissionRequestSuccessCallBack() {
@@ -61,7 +81,20 @@ public class TakeImgUtil {
             }
         });
     }
-
+    private static void openPhoto(android.support.v4.app.Fragment  context,final @IdRes int id) {
+        File file = getFile();
+        Intent intentFromCapture = new Intent("android.media.action.IMAGE_CAPTURE");
+        if(Build.VERSION.SDK_INT >= 24) {
+            String strFileProvider = UtilsConfig.getInstance(context.getActivity()).getFileProvider();
+            intentFromCapture.addFlags(FLAG_GRANT_READ_URI_PERMISSION);
+            intentFromCapture.addFlags(FLAG_GRANT_WRITE_URI_PERMISSION);
+            mUri = FileProvider.getUriForFile(context.getActivity(), strFileProvider, file);
+        } else {
+            mUri = Uri.fromFile(file);
+        }
+        intentFromCapture.putExtra("output", mUri);
+        context.startActivityForResult(intentFromCapture, 1);
+    }
     private static void openPhoto(Activity context,final @IdRes int id) {
         File file = getFile();
         Intent intentFromCapture = new Intent("android.media.action.IMAGE_CAPTURE");

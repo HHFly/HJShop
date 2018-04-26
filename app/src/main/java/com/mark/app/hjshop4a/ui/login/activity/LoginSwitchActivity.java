@@ -6,14 +6,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.model.login.model.LoginType;
+import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.login.adapter.LoginSwitchAdapter;
 import com.white.lib.utils.intent.BundleUtil;
 
 import java.util.ArrayList;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by hui on 2018/4/15.
@@ -36,12 +44,19 @@ public class LoginSwitchActivity extends BaseActivity {
     @Override
     public void setListener() {
         setClickListener(R.id.titlebar_iv_return);
+        setClickListener(R.id.hm_layout_logout);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.titlebar_iv_return:
+                finish();
+                break;
+            case R.id.hm_layout_logout:
+                App.get().setLogin(null);
+                requestData();
+                ActivityJumpUtils.actHomePager(this);
                 finish();
                 break;
         }
@@ -91,5 +106,28 @@ public class LoginSwitchActivity extends BaseActivity {
 
             }
         });
+    }
+
+    /**
+     * 请求数据登出
+     */
+    private void requestData() {
+        App.getServiceManager().getPdmService()
+                .logout()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }

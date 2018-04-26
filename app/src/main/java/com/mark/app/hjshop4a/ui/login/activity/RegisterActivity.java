@@ -20,6 +20,7 @@ import com.mark.app.hjshop4a.common.utils.CountDownUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.MD5Utils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
+
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
@@ -29,7 +30,7 @@ import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
-import com.white.lib.utils.ToastUtil;
+
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -195,7 +196,7 @@ public class RegisterActivity extends BaseActivity {
        String macId= MD5Utils.md5(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)+android.os.Build.SERIAL);
         String strPhone = getTvText(R.id.register_et_username);
         if (!ValidShowBtnUtils.phone(strPhone)) {
-            ToastUtil.show(R.string.login_手机号格式不正确);
+            ToastUtils.show(R.string.login_手机号格式不正确);
             return;
         }
 
@@ -314,25 +315,23 @@ public class RegisterActivity extends BaseActivity {
             return ValidShowBtnUtils.phone(strPhone)
                     && ValidShowBtnUtils.verifyCode(strCode)
                     && ValidShowBtnUtils.pwd(strPwd)
-                    && TextUtils.isEmpty(strRegion)
+                    && !TextUtils.isEmpty(strRegion)
                     && isAgree;
         } else {
             boolean result = false;
             if (!ValidUtils.phone(strPhone)) {
-                ToastUtil.show(R.string.login_手机号格式不正确);
+                ToastUtils.show(R.string.login_手机号格式不正确);
             } else if (!ValidUtils.verifyCode(strCode)) {
-                ToastUtil.show(R.string.login_验证码格式不正确);
+                ToastUtils.show(R.string.login_验证码格式不正确);
             } else if (!ValidUtils.pwd(strPwd)) {
-                ToastUtil.show(R.string.login_密码格式错误);
+                ToastUtils.show(R.string.login_密码格式错误);
             }
-            else if (!ValidUtils.phone(strInvitation)) {
-                ToastUtil.show(R.string.login_手机号格式不正确);
-            }
-            else if (!TextUtils.isEmpty(strRegion)) {
-                ToastUtil.show(R.string.login_请选择区域);
+
+            else if (TextUtils.isEmpty(strRegion)) {
+                ToastUtils.show(R.string.login_请选择区域);
             }
             else if (!isAgree) {
-                ToastUtil.show(R.string.login_注册需要同意协议);
+                ToastUtils.show(R.string.login_注册需要同意协议);
             } else {
                 result = true;
             }

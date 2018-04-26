@@ -66,13 +66,23 @@
                 android:text=""
                 android:textColor="#ffffff"
                 android:textSize="28px" />
+
             <ImageView
                 style="@style/BaseImg.Right.White"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="43px"
                 android:id="@+id/imageView10" />
-
+            <RelativeLayout
+                android:id="@+id/user_rl_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_alignTop="@+id/relativeLayout"
+                android:layout_alignBottom="@+id/relativeLayout"
+                android:layout_toStartOf="@+id/imageView10"
+                android:layout_toEndOf="@+id/relativeLayout"
+               android:layout_marginLeft="@dimen/textsize_30px"
+                />
         </RelativeLayout>
 
         <LinearLayout

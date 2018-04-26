@@ -169,7 +169,8 @@ public class ForgetActivity extends BaseActivity {
                 .subscribe(new DefaultObserver() {
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
-
+                        ToastUtils.show("密码修改成功");
+                        finish();
                     }
 
                     @Override

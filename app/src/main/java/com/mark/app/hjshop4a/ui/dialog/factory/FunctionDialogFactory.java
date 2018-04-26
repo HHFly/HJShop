@@ -1,5 +1,7 @@
 package com.mark.app.hjshop4a.ui.dialog.factory;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.content.res.AssetManager;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
@@ -33,7 +35,38 @@ public class FunctionDialogFactory {
     /**
      * 打开上传图片对话框
      */
-    public static void showTakePhoneIDDialog(final AppCompatActivity activity,final @IdRes int id) {
+    public static void showTakePhoneIDDialog(final android.support.v4.app.Fragment activity, final @IdRes int id) {
+        List<ListDialog.ListDialogModel> data = new ArrayList<>();
+        data.add(new ListDialog.ListDialogModel(0,"拍照"));
+        data.add(new ListDialog.ListDialogModel(1, "从相机选择"));
+        TakeImgUtil.setRId(id);
+        ListDialog dialog = ListDialog.getInstance(data);
+        dialog.setOnBtnClickListenr(new ListDialog.OnBtnClickListenr() {
+            @Override
+            public void onItemClick(View view, ListDialog.ListDialogModel data, int position) {
+                switch (data.getId()) {
+                    case 1: {
+                        TakeImgUtil.choosePhoto(activity,id);
+                        break;
+                    }
+                    case 0: {
+                        TakeImgUtil.takePhoto(activity,id);
+                        break;
+                    }
+                }
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+        });
+        dialog.show(activity.getActivity().getFragmentManager());
+    }
+    /**
+     * 打开上传图片对话框
+     */
+    public static void showTakePhoneIDDialog(final Activity activity,final @IdRes int id) {
         List<ListDialog.ListDialogModel> data = new ArrayList<>();
         data.add(new ListDialog.ListDialogModel(0,"拍照"));
         data.add(new ListDialog.ListDialogModel(1, "从相机选择"));
@@ -64,7 +97,7 @@ public class FunctionDialogFactory {
     /**
      * 打开上传图片对话框
      */
-    public static void showTakePhoneDialog(final AppCompatActivity activity) {
+    public static void showTakePhoneDialog(final Activity activity) {
         List<ListDialog.ListDialogModel> data = new ArrayList<>();
         data.add(new ListDialog.ListDialogModel(0,"拍照"));
         data.add(new ListDialog.ListDialogModel(1, "从相机选择"));
@@ -106,6 +139,7 @@ public class FunctionDialogFactory {
             public void onClickCommit(AddOneEtParamDialog dialog, String data) {
 //                requestUpdateParam(type, data);
                 activity.setTvText(idres,data);
+
                 dialog.dismiss();
             }
         });

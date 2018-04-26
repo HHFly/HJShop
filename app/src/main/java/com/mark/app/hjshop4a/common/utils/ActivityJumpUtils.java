@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.login.LoginBackType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
@@ -13,6 +14,7 @@ import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.calendarview.CalendarViewActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 
+import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.ui.start.GuideActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
@@ -290,5 +292,29 @@ public class ActivityJumpUtils {
         intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
+    }
+
+    /**
+     * 跳转到首页
+     *
+     * @param act
+     */
+    public static void actHomePager(Activity act) {
+        actHomePager(act, HPTabType.HOME);
+    }
+
+    /**
+     * 跳转到首页
+     *
+     * @param act
+     * @param type
+     */
+    public static void actHomePager(Activity act, @HPTabType int type) {
+        Intent intent = new Intent(act, HomePagerActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Bundle bundle = new Bundle();
+        bundle.putInt(BundleKey.TYPE, type);
+        intent.putExtras(bundle);
+        act.startActivity(intent);
     }
 }

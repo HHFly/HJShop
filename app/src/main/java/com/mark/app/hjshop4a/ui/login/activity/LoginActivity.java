@@ -18,7 +18,10 @@ import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
+import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.login.androidenum.LoginSource;
+import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
+import com.white.lib.utils.ToastUtil;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -129,24 +132,9 @@ public class LoginActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<LoginRepo> obj) {
                         LoginRepo repo = obj.getResult();
                         repo.setNowTime(obj.getNowTime());
+                        requestData(repo);
 
-                        //保存登录信息
-                        App.get().setLogin(repo);
-//                        是否自动登录
-                        App.getAppContext().setIsAutoLogin(isautologin);
-                        //初始化设置信息
-
-
-                        //成功跳转
-                        if (mSource == LoginSource.SPLASH) {
-//                            ActJumpUtils.actHome(getActivity());
-                            finish();
-                        } else {
-                            setResult(RESULT_OK);
-                            finish();
-                        }
                     }
-
                     @Override
                     public void onAllFinish() {
                         super.onAllFinish();
@@ -165,5 +153,36 @@ public class LoginActivity extends BaseActivity {
         EditTextUtils.changedEditTextVisiable(et, flag);
         setViewSelected(R.id.login_iv_eye, flag);
     }
+    /**
+     * 请求数据
+     */
+    private void requestData(final LoginRepo repo) {
+//        showLoadingDialog();
+        App.getServiceManager().getPdmService()
+                .getUserInfo(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<UserInfo>() {
 
+
+                    @Override
+                    public void onSuccess(BaseResultEntity<UserInfo> obj) {
+                        UserInfo data = obj.getResult();
+
+                        //保存登录信息
+                        App.get().setLogin(repo);
+//                        是否自动登录
+                        App.getAppContext().setIsAutoLogin(isautologin);
+                        //初始化设置信息
+                        App.getAppContext().setUserInfo(data);
+                        finish();
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+    }
 }

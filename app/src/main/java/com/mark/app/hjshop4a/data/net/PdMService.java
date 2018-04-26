@@ -19,14 +19,20 @@ import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Balance;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDrawList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeIn;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeInList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUp;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUpList;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
-import com.mark.app.hjshop4a.ui.onlinerecharge.model.OnlineRecharge;
+import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
 import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
+import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,7 +56,6 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -210,7 +215,7 @@ public interface PdMService {
 //                                                     @Header("type") int type);
 //
 //图片上传
-@POST("/api/user/img/upload")
+@POST("/api/img/upload")
 Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /**
      * 登录
@@ -263,15 +268,16 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
 /*
 * 新增银行卡1 添加 2 删除
 * */
-    @GET("/api/app/bank/edit")
-    Observable<BaseResultEntity>editBnakCard(@Query("type") int type,
-                                            @Query("accountHolder") String accountHolder,
-                                            @Query("bankName") String bankName,
-                                            @Query("bankBranchName") String bankBranchName,
-                                            @Query("bankAccount") String bankAccount);
+@FormUrlEncoded
+    @POST("/api/app/bank/edit")
+    Observable<BaseResultEntity>editBnakCard(@Field("type") int type,
+                                            @Field("accountHolder") String accountHolder,
+                                            @Field("bankName") String bankName,
+                                            @Field("bankBranchName") String bankBranchName,
+                                            @Field("bankAccount") String bankAccount);
 
     /*
-    //开户行
+    //开户行id
     * */
     @GET("/api/merchant/data/config/bank")
     Observable<BaseResultEntity<InfoBank>> configBank();
@@ -306,7 +312,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                         @Field("cpatCha") String cpatCha);
     /*在线充值数据*/
     @GET("/api/app/topUp/online/get")
-    Observable<BaseResultEntity<ArrayList<OnlineRecharge>>>onLineGet();
+    Observable<BaseResultEntity<PayWayList>>onLineGet();
     /*在线充值*/
     @FormUrlEncoded
     @POST("/api/app/topUp/online")
@@ -325,29 +331,29 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
 
     /*消费账单金豆消费 userType=1 consummerType =1*/
     @GET("/api/app/comsumer/bill/list")
-    Observable<BaseResultEntity<ArrayList<Bean>>>memberBeanList(@Query("userType") int userType,
-                                                          @Query("consumerType") int consumerType,
-                                                          @QueryMap Map<String, String> map);
+    Observable<BaseResultEntity<BeanList>>memberBeanList(@Query("userType") int userType,
+                                                         @Query("consumerType") int consumerType,
+                                                         @QueryMap Map<String, String> map);
     /*消费账单余额消费 userType=1 consummerType =2*/
     @GET("/api/app/comsumer/bill/list")
-    Observable<BaseResultEntity<ArrayList<Balance>>>memberBalanceList(@Query("userType") int userType,
-                                                                      @Query("consumerType") int consumerType,
-                                                                      @QueryMap Map<String, String> map);
+    Observable<BaseResultEntity<BalanceList>>memberBalanceList(@Query("userType") int userType,
+                                                               @Query("consumerType") int consumerType,
+                                                               @QueryMap Map<String, String> map);
     /*消费账单充值 userType=1 consummerType =4*/
     @GET("/api/app/comsumer/bill/list")
-    Observable<BaseResultEntity<ArrayList<TopUp>>>TopUpList(@Query("userType") int userType,
-                                                                    @Query("consumerType") int consumerType,
-                                                                    @QueryMap Map<String, String> map);
+    Observable<BaseResultEntity<TopUpList>>TopUpList(@Query("userType") int userType,
+                                                     @Query("consumerType") int consumerType,
+                                                     @QueryMap Map<String, String> map);
     /*消费账单余额提现userType=2 consummerType =3*/
     @GET("/api/app/comsumer/bill/list")
-    Observable<BaseResultEntity<ArrayList<BalanceWithDraw>>>busniessbalanceWithDrawList(@Query("userType") int userType,
-                                                                                        @Query("consumerType") int consumerType,
-                                                                                        @QueryMap Map<String, String> map);
+    Observable<BaseResultEntity<BalanceWithDrawList>>busniessbalanceWithDrawList(@Query("userType") int userType,
+                                                                                 @Query("consumerType") int consumerType,
+                                                                                 @QueryMap Map<String, String> map);
     /*消费账单金豆兑换userType=2 consummerType =1*/
     @GET("/api/app/comsumer/bill/list")
-    Observable<BaseResultEntity<ArrayList<BeanTradeIn>>>busniessbeanTradeIn(@Query("userType") int userType,
-                                                                            @Query("consumerType") int consumerType,
-                                                                            @QueryMap Map<String, String> map);
+    Observable<BaseResultEntity<BeanTradeInList>>busniessbeanTradeIn(@Query("userType") int userType,
+                                                                     @Query("consumerType") int consumerType,
+                                                                     @QueryMap Map<String, String> map);
 
     /*申请商户数据*/
     @GET("/api/app/merchant/apply/get")
@@ -360,9 +366,19 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                               @Field("cityId") String cityId,
                                               @Field("countyId") String countyId,
                                               @Field("completeAddress") String completeAddress,
-                                              @Field("completeAddress") String shopName,
-                                              @Field("completeAddress") long shopCategoryId,
-                                              @Field("completeAddress") String licenceImage,
-                                              @Field("completeAddress") String shopImagesIn,
-                                              @Field("completeAddress") String shopImages);
+                                              @Field("shopName") String shopName,
+                                              @Field("shopCategoryId") long shopCategoryId,
+                                              @Field("licenceImage") String licenceImage,
+                                              @Field("shopImagesIn") String shopImagesIn,
+                                              @Field("shopImages") String shopImages);
+
+    /*个人信息获取*/
+    @GET("/api/app/getUserInfo")
+    Observable<BaseResultEntity<UserInfo>>getUserInfo(@Query("type") int type);
+
+    /*修改个人信息*/
+    @FormUrlEncoded
+    @POST("/api/app/userInfo/update")
+    Observable<BaseResultEntity>setUserInfo(@Field( "type") int type,
+                                            @FieldMap Map<String, String> map);
 }

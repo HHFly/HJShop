@@ -87,7 +87,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
                 String reason = obj.getReason();
                 if (!TextUtils.isEmpty(reason)) {
                     toast(reason);
-//                        showDialog(reason);
+                        showDialog(reason);
                 }
 
                 if (AppContext.isDebudEnv()) {

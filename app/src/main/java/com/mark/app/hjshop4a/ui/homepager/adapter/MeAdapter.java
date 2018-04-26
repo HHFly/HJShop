@@ -399,12 +399,20 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.get(R.id.hm_sdv_logo).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                            if(App.hasToken()){
-//                               ActivityJumpUtils.actLogin(activity);
-//                            }
-                        ActivityJumpUtils.actUserInfo(activity);
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onClickUserPic(R.id.hm_sdv_logo);
+                        }
+
                     }
                 });
+            holder.get(R.id.user_rl_info).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onClickUserInfo();
+                    }
+                }
+            });
             if(mData!=null) {
 //                        用户名
                 holder.text(R.id.hm_tv_user_phone, mData.getMessageCount());
@@ -721,7 +729,8 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
          *
          */
         void onClickUserInfo();
-
+        //
+        void onClickUserPic(int id);
 
     }
 

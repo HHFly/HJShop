@@ -8,6 +8,7 @@ import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 import com.white.lib.utils.SPUtil;
 
 /**
@@ -20,11 +21,13 @@ public class AppContext {
     final String KEY_TOKEN = "token";//
     final String KEY_AUTOLOGIN ="autologin";//自动登录
     final  String KEY_ROLETYPE ="roletype";//角色
+    final  String KEY_USERINFO ="userinfo";//个人信息
     Context mContext;//getApplicationContext
 
     LoginRepo mLoginRepo;//登录数据
     Boolean isAutoLogin ;//是否自动登录
-    int mRoleType ;//登录角色
+    UserInfo mUserInfo;//角色数据
+
     public AppContext(Context context) {
         mContext = context.getApplicationContext();
         init();
@@ -38,9 +41,9 @@ public class AppContext {
 
         //初始化登录数据
         LoginRepo loginRepo = getLoginRepo();
-       int RoleType =getRoleType();
+        UserInfo userInfo = getUserInfo();
+
         LogUtils.logFormat(this, "init", "初始化登录数据" + JsonUtils.toJson(loginRepo));
-        LogUtils.logFormat(this, "init", "初始化登录数据" +RoleType);
     }
 
 
@@ -137,6 +140,39 @@ public class AppContext {
         }
         return mLoginRepo;
     }
+
+    /**
+     * 获取个人信息
+     *
+     * @return
+     */
+    public UserInfo getUserInfo() {
+        if (mUserInfo == null) {
+            String json = SPUtil.getInstance(mContext).getString(KEY_USERINFO, "");
+            if (TextUtils.isEmpty(json)) {
+                mUserInfo = new UserInfo();
+            } else {
+                mUserInfo = JsonUtils.fromJson(json, UserInfo.class);
+            }
+        }
+        return mUserInfo;
+    }
+
+    /**
+     * 更新个人信息
+     *
+     * @param data
+     */
+    public void setUserInfo(UserInfo data) {
+        mUserInfo = data;
+        if (data != null) {
+
+            SPUtil.getInstance(mContext).putString(KEY_USERINFO, data.toJson());
+        } else {
+            SPUtil.getInstance(mContext).putString(KEY_USERINFO, new UserInfo().toJson());
+        }
+        LogUtils.logFormat(this, "setUserInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
+    }
     /**
      * 更新token信息
      *
@@ -172,11 +208,11 @@ public class AppContext {
         SPUtil.getInstance(mContext).putBoolean(KEY_AUTOLOGIN,isAutoLogin);
     }
     public int getRoleType(){
-        mRoleType =  SPUtil.getInstance(mContext).getInt(KEY_ROLETYPE,0);
-        return mRoleType;
+        UserInfo userInfo =getUserInfo();
+
+        return Integer.parseInt(userInfo.getUserTypeId());
     }
-    public void  setRoleType(int type){
-        mRoleType=type;
-        SPUtil.getInstance(mContext).putInt(KEY_ROLETYPE,mRoleType);
-    }
+
+//
+
 }

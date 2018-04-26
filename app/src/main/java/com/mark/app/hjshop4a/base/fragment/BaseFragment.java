@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,26 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
+import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.white.lib.utils.location.LocationManagerUtil;
+import com.white.lib.utils.luban.LubanUtil;
+import com.white.lib.utils.luban.model.LubanResultData;
+
+import java.io.File;
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 /**
  * fragment基类
@@ -375,6 +392,68 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             view.setEnabled(isEnable);
         }
     }
+    /**
+     * 压缩图片
+     *
+     * @param uri
+     */
+    public void luban(Uri uri, final DefOnUploadPicListener listener) {
+        LubanUtil.getInstance(this.getContext()).setOnLubanListener(new LubanUtil.DefOnLubanListener() {
+            @Override
+            public void onSuccess(LubanResultData lubanResultData) {
+                requestUploadImage(lubanResultData.getAfterFile(), listener);
+            }
+        }).startForUri(uri);
+    }
 
+    /**
+     * 压缩图片
+     *
+     * @param uri
+     */
+    public void luban(List<Uri> uri, final DefOnUploadPicListener listener) {
+        LubanUtil.getInstance(this.getContext()).setOnLubanListener(new LubanUtil.DefOnLubanListener() {
+            @Override
+            public void onSuccess(LubanResultData lubanResultData) {
+                requestUploadImage(lubanResultData.getAfterFile(), listener);
+            }
+        }).startForUri(uri);
+    }
+
+    /**
+     * 上传图片接口
+     *
+     * @param file
+     */
+    private void requestUploadImage(File file, final DefOnUploadPicListener listenr) {
+        RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("uploadType", "上传图片")
+                .addFormDataPart("imageUrl", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
+                .build();
+        App.getServiceManager().getPdmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<String>() {
+                    @Override
+                    public void onSuccess(@io.reactivex.annotations.NonNull BaseResultEntity<String> obj) {
+                        String data = obj.getResult();
+                        if (listenr != null) {
+                            if (TextUtils.isEmpty(data)) {
+                                ToastUtils.show("图片上传成功");
+                                listenr.onLoadPicUnSuccessFinish();
+                            } else {
+                                listenr.onLoadPicFinish(data);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+                        ToastUtils.show("图片上传失败");
+                        if (listenr != null) {
+                            listenr.onLoadPicUnSuccessFinish();
+                        }
+                    }
+                });
+    }
 
 }

@@ -16,6 +16,7 @@ import com.mark.app.hjshop4a.ui.consumptionbill.adapter.BalanceWithDrawAdapter;
 
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Balance;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDrawList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUp;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -120,15 +121,15 @@ public class BalanceWithDrawFragment  extends BaseFragment implements OnRefreshL
             App.getServiceManager().getPdmService().busniessbalanceWithDrawList(2,3,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver<ArrayList<BalanceWithDraw>>() {
+                    .subscribe(new DefaultObserver<BalanceWithDrawList>() {
                         @Override
-                        public void onSuccess(BaseResultEntity<ArrayList<BalanceWithDraw>> obj) {
-                            ArrayList<BalanceWithDraw> data = obj.getResult();
-                            initRvAdapter(data, curPage == 1);
+                        public void onSuccess(BaseResultEntity<BalanceWithDrawList> obj) {
+                            BalanceWithDrawList data = obj.getResult();
+                            initRvAdapter(data.getBalanceWithDrawList(), curPage == 1);
                             if (mPagingData == null) {
                                 mPagingData = new PagingBaseModel();
                             }
-                            mPagingData.setPagingInfo(curPage, data, obj.getNowTime());
+                            mPagingData.setPagingInfo(curPage, data.getBalanceWithDrawList(), obj.getNowTime());
                             RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
 

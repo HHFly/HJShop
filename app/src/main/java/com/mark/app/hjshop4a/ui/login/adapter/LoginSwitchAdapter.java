@@ -42,7 +42,7 @@ public class LoginSwitchAdapter extends BaseListRvAdapter<LoginType> {
             @Override
             public void onClick(View v) {
 
-                App.getAppContext().setRoleType(data.getRoleType());
+
                 Intent intent =activity.getIntent();
                 intent.putExtra("LoginType",data);
                 activity.setResult(1,intent);

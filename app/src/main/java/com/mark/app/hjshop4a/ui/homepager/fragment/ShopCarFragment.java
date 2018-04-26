@@ -2,6 +2,7 @@ package com.mark.app.hjshop4a.ui.homepager.fragment;
 
 import android.view.View;
 
+import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 
 /**
@@ -11,7 +12,7 @@ import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 public class ShopCarFragment extends BaseFragment {
     @Override
     public int getContentResId() {
-        return 0;
+        return R.layout.fragment_blank;
     }
 
     @Override

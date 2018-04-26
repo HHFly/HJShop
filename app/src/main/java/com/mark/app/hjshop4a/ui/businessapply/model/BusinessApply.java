@@ -9,17 +9,17 @@ import java.util.List;
  */
 
 public class BusinessApply extends BaseModel {
-    private  UserInfo userInfo;
+    private BusniessApplyUserInfo busniessApplyUserInfo;
     private  CompanyInfo companyInfo;
     private List<ShopCategory> shopCategoryList;
     private  int  auditStatus;
 
-    public UserInfo getUserInfo() {
-        return userInfo;
+    public BusniessApplyUserInfo getBusniessApplyUserInfo() {
+        return busniessApplyUserInfo;
     }
 
-    public void setUserInfo(UserInfo userInfo) {
-        this.userInfo = userInfo;
+    public void setBusniessApplyUserInfo(BusniessApplyUserInfo busniessApplyUserInfo) {
+        this.busniessApplyUserInfo = busniessApplyUserInfo;
     }
 
     public CompanyInfo getCompanyInfo() {

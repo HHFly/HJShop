@@ -6,7 +6,7 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
  * Created by pc on 2018/4/25.
  */
 
-public class UserInfo extends BaseModel {
+public class BusniessApplyUserInfo extends BaseModel {
     private String userNick;//会员名称
     private String userRealName;//真实姓名
     private String cellphone;//联系方式

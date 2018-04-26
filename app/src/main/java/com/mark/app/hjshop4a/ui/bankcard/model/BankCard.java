@@ -9,7 +9,7 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
 public class BankCard extends BaseModel {
    private String bankPic;
    private String bankName;
-   private int bankType;
+   private String bankType;
    private String bankNo;
 
     public String getBankPic() {
@@ -28,11 +28,11 @@ public class BankCard extends BaseModel {
         this.bankName = bankName;
     }
 
-    public int getBankType() {
+    public String getBankType() {
         return bankType;
     }
 
-    public void setBankType(int bankType) {
+    public void setBankType(String bankType) {
         this.bankType = bankType;
     }
 

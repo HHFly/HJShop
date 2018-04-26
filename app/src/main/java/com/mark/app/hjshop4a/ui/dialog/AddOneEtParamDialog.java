@@ -40,9 +40,9 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
      *
      * @return
      */
-    public static AddOneEtParamDialog getInstance(boolean isnumber) {
+    public static AddOneEtParamDialog getInstance(boolean isNumber) {
         AddOneEtParamDialog dialog = new AddOneEtParamDialog();
-        dialog.isnumber =isnumber;
+        dialog.isnumber =isNumber;
         return dialog;
     }
 
