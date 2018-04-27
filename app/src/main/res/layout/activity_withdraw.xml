@@ -9,12 +9,12 @@
         android:layout_height="110px"
         android:background="@drawable/select_normal_bg">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_bnak_card"
            android:layout_height="68px"
             android:layout_width="68px"
             android:layout_centerVertical="true"
-            android:src="@mipmap/head" />
+             />
         <TextView
             android:id="@+id/item_tv_bank_name"
            android:layout_width="wrap_content"
@@ -22,7 +22,7 @@
             android:layout_toRightOf="@+id/iv_bnak_card"
             android:layout_marginLeft="24px"
             android:layout_centerVertical="true"
-            android:text="中国工商银行（8888）" />
+            android:text="" />
 
         <ImageView
             android:id="@+id/iv_bnak_card_slsect"
@@ -54,12 +54,13 @@
             android:textColor="#333333"
             android:textSize="70px"/>
         <EditText
-            android:id="@+id/et_cash_conut"
+            android:id="@+id/withDraw"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toEndOf="@+id/iv_cash_symbol"
             android:layout_marginLeft="24px"
             android:textColor="#333333"
+            android:inputType="number|numberDecimal"
             android:textSize="70px"
             android:gravity="center_vertical|left"
             android:layout_toStartOf="@+id/iv_withdraw"
@@ -100,25 +101,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="26px"
-            android:text="￥2200.12"
+            android:text=""
             android:textColor="#666666"
             android:textSize="22px" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110px"
+        android:layout_height="wrap_content"
         android:background="@color/white"
         android:layout_marginTop="20px">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:paddingTop="27px"
+            android:padding="27px"
             android:textSize="26px"
             android:layout_marginLeft="@dimen/textsize_30px"
             android:textColor="#333333"
             android:text="会员备注："/>
         <EditText
+            android:id="@+id/remark"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"

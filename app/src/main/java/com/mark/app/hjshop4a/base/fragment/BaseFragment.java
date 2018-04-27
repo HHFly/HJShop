@@ -199,15 +199,10 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      * @return
      */
     public <T extends View> T getView(View rootView, @IdRes int id) {
-        if (mViews == null) {
-            mViews = new SparseArray<>();
+        if (rootView == null) {
+            return null;
         }
-        View view = mViews.get(id);
-        if (view == null) {
-            view = rootView.findViewById(id);
-            mViews.put(id, view);
-        }
-        return (T) view;
+        return (T) rootView.findViewById(id);
     }
 
     /**

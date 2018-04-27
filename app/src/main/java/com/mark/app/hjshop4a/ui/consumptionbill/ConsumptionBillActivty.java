@@ -58,9 +58,7 @@ public class ConsumptionBillActivty extends BaseActivity {
             case RoleType.BUSINESS:
                 setTvText(R.id.titlebar_tv_title,"申请记录");
                 setViewVisibility(R.id.text1,false);
-                setViewVisibility(R.id.text2
-
-                        ,false);
+                setViewVisibility(R.id.text2,false);
         }
 
 

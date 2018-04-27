@@ -42,23 +42,30 @@
 
                 android:id="@+id/roletype"
                 style="@style/user_item_layout"
-                android:background="@drawable/select_normal_bg">
+                android:background="@color/white">
 
                 <TextView
                     style="@style/user_item_tv"
-                    android:text="* 账户类别" />
+                    android:text="* 账户类别"
+                    android:id="@+id/textView6" />
 
-                <TextView
-                    android:id="@+id/tv_roletype"
+                <Spinner
+                    android:id="@+id/spinner"
                     style="@style/user_item_tv_content_right"
-                    android:hint=""
-                    android:textColorHint="#666666"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|right"
+                    android:background="@null"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/textView6" />
 
                 <ImageView
                     style="@style/BaseImg.Right"
+
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_bottom_gray"
+
                     />
             </RelativeLayout>
             <View style="@style/BaseLine.Horizontal"/>
@@ -87,14 +94,15 @@
             </RelativeLayout>
             <View style="@style/BaseLine.Horizontal"/>
             <RelativeLayout
-
+                android:background="@color/white"
                 android:id="@+id/service_charge"
                 style="@style/user_item_layout"
-                android:background="@drawable/select_normal_bg">
+                >
 
                 <TextView
                     style="@style/user_item_tv"
-                    android:text="* 服务费" />
+                    android:text="* 服务费"
+                    android:id="@+id/textView7" />
 
                 <TextView
                     android:id="@+id/tv_service_charge"
@@ -127,7 +135,7 @@
             <TextView
                 android:id="@+id/tv_commodity_name"
                 style="@style/user_item_tv_content_right"
-                android:hint="请输入消费金额"
+                android:hint="请输入商品名称"
                 android:textColorHint="#666666"
                 android:layout_alignParentEnd="true" />
 
@@ -171,6 +179,8 @@
 
                 <TextView
                     style="@style/user_item_tv"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@+id/imageView9"
                     android:text="* 商品单价" />
 
                 <TextView
@@ -184,9 +194,44 @@
                     style="@style/BaseImg.Right"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    />
+                    android:id="@+id/imageView9" />
             </RelativeLayout>
-            <View style="@style/BaseLine.Horizontal"/>
+            <View style="@style/BaseLine.Horizontal"></View>
+            <RelativeLayout
+                android:id="@+id/money_count"
+                style="@style/user_item_layout"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="* 验证码"
+                    android:id="@+id/textView4" />
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/audit"
+                    android:layout_width="200px"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"/>
+
+                <EditText
+                    android:id="@+id/et_audit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toStartOf="@+id/audit"
+                    android:layout_toEndOf="@+id/textView4"
+                    android:background="@null"
+                    android:gravity="right|center_vertical"
+                    android:hint="请输入验证码"
+                    android:inputType="number"
+                    android:maxLength="4"
+                    android:textColorHint="#666666"
+                    android:textSize="@dimen/textsize_26px" />
+
+            </RelativeLayout>
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -221,7 +266,7 @@
                 style="@style/BaseBtn.Normal.Important"
                 android:layout_width="match_parent"
                 android:layout_marginTop="52px"
-                android:text="@string/login_msg_login" />
+                android:text="提交" />
         </LinearLayout>
 
 

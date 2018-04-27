@@ -37,11 +37,11 @@ public class MonthView extends ViewGroup {
     private int currentMonthDays;//记录当月天数
     private int lastMonthDays;//记录当月显示的上个月天数
     private int nextMonthDays;//记录当月显示的下个月天数
-
+    private List<View> views  =new ArrayList<>();//
     private int item_layout;
     private CalendarViewAdapter calendarViewAdapter;
     private Set<Integer> chooseDays = new HashSet<>();//记录多选时当前页选中的日期
-    private AttrsBean mAttrsBean;
+    public AttrsBean mAttrsBean;
 
     public MonthView(Context context) {
         this(context, null);
@@ -88,10 +88,12 @@ public class MonthView extends ViewGroup {
             }
 
             View view;
+
             TextView solarDay;//阳历TextView
             TextView lunarDay;//阴历TextView(节假日、节气同样使用阴历TextView来显示)
             if (item_layout != 0 && calendarViewAdapter != null) {
                 view = LayoutInflater.from(mContext).inflate(item_layout, null);
+
                 TextView[] views = calendarViewAdapter.convertView(view, date);
                 solarDay = views[0];
                 lunarDay = views[1];
@@ -100,7 +102,7 @@ public class MonthView extends ViewGroup {
                 solarDay = (TextView) view.findViewById(com.mark.app.hjshop4a.R.id.solar_day);
                 lunarDay = (TextView) view.findViewById(com.mark.app.hjshop4a.R.id.lunar_day);
             }
-
+            views.add(view);
             solarDay.setTextColor(mAttrsBean.getColorSolar());
             solarDay.setTextSize(mAttrsBean.getSizeSolar());
             lunarDay.setTextColor(mAttrsBean.getColorLunar());
@@ -389,7 +391,12 @@ public class MonthView extends ViewGroup {
         }
         return view;
     }
-
+    public void  clear(){
+        for(int i=0 ;i<views.size();i++){
+            setDayColor(views.get(i), COLOR_RESET);
+        }
+        chooseDays.clear();
+    }
     public void setAttrsBean(AttrsBean attrsBean) {
         mAttrsBean = attrsBean;
     }

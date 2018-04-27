@@ -10,8 +10,8 @@
      >
 
 
-        <ImageView
-            android:id="@+id/iv_bnak_card"
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/sdv_bnak_card"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/textsize_30px"
             android:layout_width="50px"
@@ -22,19 +22,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/iv_bnak_card"
-            android:layout_marginLeft="@dimen/textsize_20px"
-            android:text="招商银行（8888）"
+            android:layout_marginStart="18dp"
+            android:layout_toEndOf="@+id/sdv_bnak_card"
+            android:text=""
             android:textColor="#333333"
             android:textSize="28px" />
 
         <ImageView
+            android:visibility="gone"
             android:id="@+id/iv_bnak_card_slsect"
             android:layout_centerVertical="true"
             android:layout_width="50px"
             android:layout_height="50px"
             android:layout_alignParentRight="true"
             android:layout_marginRight="@dimen/textsize_30px"
+            android:src="@mipmap/ic_radio_select"
             />
         <View style="@style/BaseLine.Horizontal"
             android:layout_alignParentBottom="true"

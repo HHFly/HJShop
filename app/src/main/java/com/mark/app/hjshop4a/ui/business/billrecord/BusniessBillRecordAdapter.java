@@ -3,18 +3,22 @@ package com.mark.app.hjshop4a.ui.business.billrecord;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
-import com.mark.app.hjshop4a.ui.business.billrecord.model.BillRecord;
+import com.mark.app.hjshop4a.common.utils.BillUtil;
+import com.mark.app.hjshop4a.model.consumptionbill.Bill;
+import com.mark.app.hjshop4a.ui.business.billrecord.model.Customs;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pc on 2018/4/20.
  */
 
-public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRecord,BillRecord> {
-    public BusniessBillRecordAdapter(BillsRecord billsRecord, ArrayList<BillRecord> billRecords) {
-        super(billsRecord, billRecords);
+public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRecord,Customs> {
+
+    public BusniessBillRecordAdapter(BillsRecord billsRecord, List<Customs> customs) {
+        super(billsRecord, customs);
     }
 
     @Override
@@ -29,12 +33,23 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
 
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, BillsRecord billsRecord) {
-
+            holder.visibility(R.id.local_address,false);
+            holder.text(R.id.all_bill,billsRecord.getCustomsTotal());
+            holder.text(R.id.yesterday_bill,billsRecord.getCustomsYestoday());
 
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPosition, BillRecord billRecord) {
+    public void bindBodyData(AutoViewHolder holder, int bodyPosition, Customs customs) {
+        holder.text(R.id.shopName,customs.getShopName());
+        holder.text(R.id.offlineOrderSn,customs.getCustomsTime());
+        holder.text(R.id.customsUerName,customs.getCustomsUerName());
+        holder.text(R.id.productName,customs.getProductName());
+        holder.text(R.id.productNum,customs.getProductNum());
+        holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
+        holder.text(R.id.customsMoney,customs.getCustomsMoney());
+        holder.text(R.id.serviceMony,customs.getServiceMony());
+        holder.text(R.id.customsStatus, BillUtil.swichAuditStatus(customs.getCustomsStatus()));
 
     }
 private OnItemClickListener onItemClickListener;

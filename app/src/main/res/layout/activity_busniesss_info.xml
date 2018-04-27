@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="149px"
-                android:text="胡海洋"
+                android:text=""
                 android:textSize="@dimen/textsize_26px"
                 android:textColor="#333333"
                 />
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10px"
-                android:text="1757557575"
+                android:text=""
                 android:textSize="@dimen/textsize_26px"
                 android:textColor="#333333"
                 />
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10px"
-                android:text="andy@dlydly.com"
+                android:text=""
                 android:textSize="@dimen/textsize_26px"
                 android:textColor="#333333"
                 />

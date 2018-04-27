@@ -1,6 +1,8 @@
 package com.mark.app.hjshop4a.widget.calendarview.bean;
 
-public class DateBean {
+import com.mark.app.hjshop4a.base.model.BaseModel;
+
+public class DateBean extends BaseModel {
     private int[] solar;//阳历年、月、日
     private String[] lunar;//农历月、日
     private String solarHoliday;//阳历节假日

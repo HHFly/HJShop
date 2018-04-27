@@ -65,7 +65,7 @@
         <activity android:name=".ui.businessapply.BusinessApplicationActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.businessapply.IdCardCheckActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.businessapply.BusniessCompanyActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.businessapply.BusinessStoreImgActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.business.busniessinfo.BusinessStoreImgActivity" android:screenOrientation="portrait"/>
         <!--商户-->
         <activity android:name=".ui.business.busniessinfo.BusniessInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.business.busniessinfo.CompanyInfoActivity" android:screenOrientation="portrait"/>

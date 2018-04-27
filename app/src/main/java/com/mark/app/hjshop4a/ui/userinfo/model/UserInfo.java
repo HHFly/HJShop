@@ -8,21 +8,21 @@ import com.mark.app.hjshop4a.base.model.ParamBaseModel;
  */
 
 public class UserInfo extends BaseModel {
-    private  String userName;
-    private  long provinceId;
-    private  String provinceName;
-    private  String cityName;
-    private  long cityId;
-    private  String countyName;
-    private  long countyId;
-    private  String completeAddress;
-    private  int userAuditStatus;
-    private  String userRealName;
-    private  String birthday;
-    private  int gender;
-    private  String recommend;
-    private  String userHeadImg;
-    private String userTypeId;
+    private  String userName; //用户名
+    private  long provinceId; //	省ID
+    private  String provinceName;//省份名称
+    private  String cityName;//市
+    private  long cityId;//市ID
+    private  String countyName;//区县
+    private  long countyId;//区县ID
+    private  String completeAddress;//详细地址
+    private  int userAuditStatus;//审核状态 0 待审核 1审核中 2审核通过 3 审核不通过
+    private  String userRealName;//	姓名
+    private  String birthday;//出生日期
+    private  int gender;//性别 0 保密 1 男 2 女
+    private  String recommend;//推荐人
+    private  String userHeadImg;//用户头像
+    private String userTypeId;//用户角色ID
 
     private  String userIdCard;
     private  String userIdCardFront;

@@ -78,10 +78,12 @@ public class BusinessApplicationActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<BusinessApply> obj) {
                         BusinessApply data =obj.getResult();
                         mData =data;
+
                         setTvText(R.id.user_tv_1,data.getBusniessApplyUserInfo().getUserNick());
                         setTvText(R.id.user_tv_2,data.getBusniessApplyUserInfo().getUserRealName());
                         setTvText(R.id.user_tv_3,data.getBusniessApplyUserInfo().getCellphone());
                         setTvText(R.id.user_tv_4,data.getBusniessApplyUserInfo().getEmail());
+                        setSdvInside(R.id.hm_sdv_logo,data.getBusniessApplyUserInfo().getUserHeadImg());
                         SwitchAduit(data.getAuditStatus());
                     }
 

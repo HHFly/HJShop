@@ -3,6 +3,8 @@ package com.mark.app.hjshop4a.ui.withdrawdetail;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
+import com.mark.app.hjshop4a.common.utils.BillUtil;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 
 import java.util.List;
 
@@ -10,8 +12,8 @@ import java.util.List;
  * Created by pc on 2018/4/21.
  */
 
-public class WithDrawDetailAdapter extends BaseListRvAdapter<WithDraw> {
-    public WithDrawDetailAdapter(List<WithDraw> data) {
+public class WithDrawDetailAdapter extends BaseListRvAdapter<BalanceWithDraw> {
+    public WithDrawDetailAdapter(List<BalanceWithDraw> data) {
         super(data);
     }
 
@@ -21,7 +23,10 @@ public class WithDrawDetailAdapter extends BaseListRvAdapter<WithDraw> {
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPos, WithDraw data) {
-
+    public void bindBodyData(AutoViewHolder holder, int bodyPos, BalanceWithDraw data) {
+                holder.text(R.id.withDrawTime,data.getWithDrawTime());
+                holder.text(R.id.withDrawMoney,data.getWithDrawMoney());
+                holder.text(R.id.toAccountMoney,data.getToAccountMoney());
+                holder.text(R.id.auditStatus, BillUtil.swichAuditStatus(data.getAuditStatus()));
     }
 }

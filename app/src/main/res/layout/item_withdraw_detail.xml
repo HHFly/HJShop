@@ -18,13 +18,14 @@
             android:textSize="26px"
             android:text="余额提现"/>
         <TextView
+            android:id="@+id/withDrawTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:textSize="26px"
             android:textColor="#333333"
-            android:text="2018-03-29"/>
+            android:text=""/>
     </RelativeLayout>
 
     <View
@@ -45,8 +46,8 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/gold_bean_count"
-                android:text="800.00"
+                android:id="@+id/withDrawMoney"
+                android:text=""
                 style="@style/Bill_right"/>
             <TextView
                 android:text="提现金额"
@@ -62,8 +63,8 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/deductiblet_count"
-                android:text="100.000"
+                android:id="@+id/toAccountMoney"
+                android:text=""
                 style="@style/Bill_right"/>
             <TextView
                 android:text="到账金额"
@@ -87,7 +88,7 @@
 
         <TextView
             android:layout_centerVertical="true"
-            android:id="@+id/state"
+            android:id="@+id/auditStatus"
             android:text="审核中"
             style="@style/Bill_right"/>
         <TextView

@@ -11,6 +11,15 @@ public class BankCard extends BaseModel {
    private String bankName;
    private String bankType;
    private String bankNo;
+    private boolean isSelect =false;
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
+    }
 
     public String getBankPic() {
         return bankPic;

@@ -6,19 +6,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
-import com.mark.app.hjshop4a.ui.business.billrecord.model.BillRecord;
+import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-import com.white.lib.utils.ToastUtil;
 
 import java.util.ArrayList;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by pc on 2018/4/20.
@@ -28,7 +33,8 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
 
     SmartRefreshLayout mRefreshLayout;//刷新框架
     BusniessBillRecordAdapter mAdapter;
-
+    private long  startTime;
+    private long endTime;
 
     int mSource;//来源
     PagingBaseModel mPagingData;
@@ -39,6 +45,11 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
 
     @Override
     public void findView() {
+        if (mPagingData == null) {
+            mPagingData = new PagingBaseModel();
+        }
+        startTime=System.currentTimeMillis()/1000;
+        endTime=System.currentTimeMillis()/1000;
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();
@@ -69,24 +80,51 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
 
     }
 
-    private  void requestData(final  int curPage,final long timetamp){
-        BillsRecord data =new BillsRecord();
-        BillRecord billRecord =new BillRecord();
-        ArrayList<BillRecord> billRecordArrayList =new ArrayList<>();
-        billRecordArrayList.add(billRecord);
-        billRecordArrayList.add(billRecord);
-        data.setBillRecords(billRecordArrayList);
-        if (mPagingData == null) {
-            mPagingData = new PagingBaseModel();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==2){
+            startTime=data.getLongExtra("sTime", System.currentTimeMillis()/1000);
+            endTime=data.getLongExtra("eTime", System.currentTimeMillis()/1000);
+            mRefreshLayout.autoRefresh();
         }
-//        mPagingData.setPagingInfo(curPage,billRecordArrayList );
 
-        initRvAdapter(data, curPage == 1);
-        RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
+    }
+
+    private  void requestData(final  int curPage, final  long timetamp){
+
+
+        PagingParam pagingParam = new PagingParam();
+        pagingParam.setCurrentPage(curPage);
+        pagingParam.setTimestamp(timetamp);
+        App.getServiceManager().getPdmService().getCustomsList(pagingParam.getMap(),startTime,endTime)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<BillsRecord>() {
+                    @Override
+                    public void onSuccess(BaseResultEntity<BillsRecord> obj) {
+                        BillsRecord data =obj.getResult();
+                        initRvAdapter(data, curPage == 1);
+
+                        mPagingData.setPagingInfo(curPage,data.getCustomsList(),obj.getNowTime());
+                        RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
+                    }
+
+
+                    @Override
+                    public void onUnSuccessFinish() {
+//                        initRvAdapter(null, curPage == 1);
+                        RefreshLayoutUtils.finish(mRefreshLayout);
+                    }
+
+
+                });
+
+
     }
     private void initRvAdapter(BillsRecord data ,boolean isRefresh){
         if (mAdapter == null) {
-            mAdapter = new BusniessBillRecordAdapter(data, data.getBillRecords());
+            mAdapter = new BusniessBillRecordAdapter(data, data.getCustomsList());
             RecyclerView rv = getView(R.id.recyclerView);
             if (rv != null) {
                 rv.setAdapter(mAdapter);
@@ -100,10 +138,10 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
                 }
             });
         } else {
-            mAdapter.notifyData(data.getBillRecords(), isRefresh);
+            mAdapter.notifyData(data.getCustomsList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.getBillRecords().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null || data.getCustomsList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
 
@@ -121,6 +159,6 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1,0);
+        requestData(1,mPagingData.getTimestamp());
     }
 }

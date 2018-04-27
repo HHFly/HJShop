@@ -16,6 +16,8 @@ import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
+import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
+import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Balance;
@@ -381,4 +383,24 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     @POST("/api/app/userInfo/update")
     Observable<BaseResultEntity>setUserInfo(@Field( "type") int type,
                                             @FieldMap Map<String, String> map);
+
+    /*商家报单-获取数据*/
+    @GET("/api/app/merchant/customs/data")
+    Observable<BaseResultEntity<Custom>>getCustomsData();
+
+    /*商家报单账单*/
+    @GET("/api/app/merchant/customs/list")
+    Observable<BaseResultEntity<BillsRecord>>getCustomsList(@QueryMap Map<String, String> map,
+                                                            @Query("startTime") long startTime,
+                                                            @Query("endTime") long endTime);
+    /*提现*/
+    @FormUrlEncoded
+    @POST("/api/app/balance/withDraw")
+    Observable<BaseResultEntity>withDraw(@Field("userType")int userType,
+                                         @Field("userType")String withDraw,
+                                         @Field("userType")String bank,
+                                         @Field("userType")String bankNumber,
+                                         @Field("userType")String remark);
+
+
 }

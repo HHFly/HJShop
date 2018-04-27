@@ -71,9 +71,9 @@ public class SelectDateDialog implements OnWheelChangedListener {
         month.setCurrentItem(curMonth - 1);
         day.setCurrentItem(curDate - 1);
 
-        year.setVisibleItems(9);
-        month.setVisibleItems(9);
-        day.setVisibleItems(9);
+        year.setVisibleItems(7);
+        month.setVisibleItems(7);
+        day.setVisibleItems(7);
 
         //设置滚轮滑动监听
         setDateUpListener();

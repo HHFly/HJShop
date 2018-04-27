@@ -290,7 +290,7 @@ public class ActivityJumpUtils {
         Bundle bundle = new Bundle();
         bundle.putString("title",title);
         intent.putExtras(bundle);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent,1);
         activity.overridePendingTransition(0,0);
     }
 

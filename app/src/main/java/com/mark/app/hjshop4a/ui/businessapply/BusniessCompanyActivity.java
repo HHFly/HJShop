@@ -112,16 +112,18 @@ public class BusniessCompanyActivity extends BaseActivity {
             setSdvBig(R.id.imagebtn_licence,companyInfo.getLicencePic());
             setSdvBig(R.id.imagebtn_shop,companyInfo.getShopImages());
             setSdvBig(R.id.item_sdv_1,companyInfo.getShopImagesIn().get(0));
-            setSdvBig(R.id.item_sdv_2,companyInfo.getShopImagesIn().get(1));
-            setSdvBig(R.id.item_sdv_3,companyInfo.getShopImagesIn().get(2));
-            setSdvBig(R.id.item_sdv_4,companyInfo.getShopImagesIn().get(3));
+
+
             if (companyInfo.getShopImagesIn().get(1)!=""){
+                setSdvBig(R.id.item_sdv_2,companyInfo.getShopImagesIn().get(1));
                 setViewVisibility(R.id.item_rl_2,true);
             }
             if (companyInfo.getShopImagesIn().get(2)!=""){
+                setSdvBig(R.id.item_sdv_3,companyInfo.getShopImagesIn().get(2));
                 setViewVisibility(R.id.item_rl_3,true);
             }
             if (companyInfo.getShopImagesIn().get(3)!=""){
+                setSdvBig(R.id.item_sdv_4,companyInfo.getShopImagesIn().get(3));
                 setViewVisibility(R.id.item_rl_4,true);
             }
             setViewVisibility(R.id.button,false);
@@ -185,7 +187,7 @@ public class BusniessCompanyActivity extends BaseActivity {
                 break;
             case R.id.button:
                 //提交
-
+                    requestUpdateData();
                 break;
             case R.id.imagebtn_shop:
                 FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(), R.id.imagebtn_shop);

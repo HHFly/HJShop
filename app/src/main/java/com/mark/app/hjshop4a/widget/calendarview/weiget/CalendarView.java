@@ -40,7 +40,7 @@ public class CalendarView extends ViewPager {
     private int[] lastClickDate = new int[2];//记录单选的ViewPager position以及选中的日期
     private SparseArray<HashSet<Integer>> chooseDate;//记录多选时全部选中的日期
     private Set<Integer> positions;//多选时记录选中日期对应的ViewPager position
-    public final ArrayList<DateBean> mDates =new ArrayList<>();//记录多选选中日期
+    public ArrayList<DateBean> mDates =new ArrayList<>();//记录多选选中日期
     private CalendarPagerAdapter calendarPagerAdapter;
 
     private AttrsBean mAttrsBean;
@@ -318,7 +318,14 @@ public class CalendarView extends ViewPager {
             setCurrentItem(destPosition, false);
         }
     }
+    public void clear(){
+        mDates.clear();
+        chooseDate.clear();
+        positions.clear();
 
+        calendarPagerAdapter.clear();
+        today();
+    }
     /**
      * 单选时跳转到指定日期
      *

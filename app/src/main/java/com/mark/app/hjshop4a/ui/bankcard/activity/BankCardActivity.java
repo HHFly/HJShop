@@ -11,6 +11,7 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.bankcard.adapter.BankCardAdapter;
@@ -40,6 +41,9 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
     }
     @Override
     public void findView() {
+        if (mPagingData == null) {
+            mPagingData = new PagingBaseModel();
+        }
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();
@@ -49,6 +53,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"银行卡管理");
         setTvText(R.id.titlebar_tv_right,"新增");
+
     }
 
     @Override
@@ -78,12 +83,14 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
                 .subscribe(new DefaultObserver() {
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
+                        ToastUtils.show("删除成功");
+                        mRefreshLayout.autoRefresh();
                     }
 
 
                     @Override
                     public void onUnSuccessFinish() {
-//
+                        ToastUtils.show("删除失败");
                     }
 
 
@@ -104,9 +111,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
                     public void onSuccess(BaseResultEntity<ArrayList<BankCard>> obj) {
                         ArrayList<BankCard> data =obj.getResult();
                         initRvAdapter(data, curPage == 1);
-                        if (mPagingData == null) {
-                            mPagingData = new PagingBaseModel();
-                        }
+
                         mPagingData.setPagingInfo(curPage,data,obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
@@ -159,6 +164,6 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1,0);
+        requestData(1,mPagingData.getTimestamp());
     }
 }

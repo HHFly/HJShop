@@ -78,7 +78,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
         }
         showLoadingDialog();
         App.getServiceManager().getPdmService()
-                .beanconsume(beanTradeInNum,cpatCha)
+                .tradeIn(beanTradeInNum,cpatCha)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {

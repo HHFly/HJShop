@@ -1,7 +1,8 @@
-package com.mark.app.hjshop4a.ui.businessapply;
+package com.mark.app.hjshop4a.ui.business.busniessinfo;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.common.utils.MapUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 
+import com.mark.app.hjshop4a.ui.businessapply.model.CompanyInfo;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.white.lib.utils.TakePhoneUtil;
 import com.zhy.autolayout.utils.AutoUtils;
@@ -47,6 +49,13 @@ public class BusinessStoreImgActivity extends BaseActivity {
     private SimpleDraweeView sdv4;
 
     ViewGroup parent;
+    private CompanyInfo mData;
+    @Override
+    public void getIntentParam(Bundle bundle) {
+        super.getIntentParam(bundle);
+        mData= (CompanyInfo) bundle.getSerializable("CompanyInfo");
+    }
+
     @Override
     public int getContentViewResId() {
         return R.layout.activity_business_store_img;
@@ -61,6 +70,28 @@ public class BusinessStoreImgActivity extends BaseActivity {
         mUris =new LinkedHashMap<>();
         mPicUris =new ArrayList<>();
         setTvText(R.id.titlebar_tv_title, "商户照片");
+        setSdvInside(R.id.imagebtn_licence,mData.getLicencePic());
+        setSdvInside(R.id.imagebtn_shop,mData.getShopImages());
+        setSdvBig(R.id.item_sdv_1,mData.getShopImagesIn().get(0));
+        setViewVisibility(R.id.item_iv_delete_1,false);
+        setViewVisibility(R.id.item_iv_delete_2,false);
+        setViewVisibility(R.id.item_iv_delete_3,false);
+        setViewVisibility(R.id.item_iv_delete_4,false);
+
+
+        if (mData.getShopImagesIn().get(1)!=""){
+            setSdvBig(R.id.item_sdv_2,mData.getShopImagesIn().get(1));
+            setViewVisibility(R.id.item_rl_2,true);
+
+        }
+        if (mData.getShopImagesIn().get(2)!=""){
+            setSdvBig(R.id.item_sdv_3,mData.getShopImagesIn().get(2));
+            setViewVisibility(R.id.item_rl_3,true);
+        }
+        if (mData.getShopImagesIn().get(3)!=""){
+            setSdvBig(R.id.item_sdv_4,mData.getShopImagesIn().get(3));
+            setViewVisibility(R.id.item_rl_4,true);
+        }
 
     }
 
@@ -85,19 +116,19 @@ public class BusinessStoreImgActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.imagebtn:
-                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(), R.id.imagebtn);
+//                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(), R.id.imagebtn);
                 break;
             case R.id.item_sdv_1:
-                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_1);
+//                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_1);
                 break;
             case R.id.item_sdv_2:
-                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_2);
+//                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_2);
                 break;
             case R.id.item_sdv_3:
-                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_3);
+//                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_3);
                 break;
             case R.id.item_sdv_4:
-                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_4);
+//                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_4);
                 break;
             case R.id.item_iv_delete_1:
                 remove(R.id.item_sdv_1);

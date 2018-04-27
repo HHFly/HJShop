@@ -175,13 +175,21 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
     private void bindAreaAgent(AutoViewHolder holder, IndexPath indexPath) {
         switch (indexPath.getSection()){
             case 0://顶部数据
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.get(R.id.hm_sdv_logo).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                            if(App.hasToken()){
-//                               ActivityJumpUtils.actLogin(activity);
-//                            }
-                        ActivityJumpUtils.actUserInfo(activity);
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onClickUserPic(R.id.hm_sdv_logo);
+                        }
+
+                    }
+                });
+                holder.get(R.id.user_rl_info).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onClickUserInfo();
+                        }
                     }
                 });
                 holder.visibility(R.id.item_mesage, false);
@@ -552,17 +560,24 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
   private  void bindBusniess(AutoViewHolder holder, IndexPath indexPath){
       switch (indexPath.getSection()){
           case 0:   //顶部数据
+              holder.visibility(R.id.item_mesage, false);
               holder.get(R.id.hm_sdv_logo).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View view) {
-//                            if(App.hasToken()){
-//                               ActivityJumpUtils.actLogin(activity);
-//                            }
+                      if (onItemClickListener != null) {
+                          onItemClickListener.onClickUserPic(R.id.hm_sdv_logo);
+                      }
 
-                      ActivityJumpUtils.actUserInfo(activity);
                   }
               });
-              holder.visibility(R.id.item_mesage, false);
+              holder.get(R.id.user_rl_info).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      if (onItemClickListener != null) {
+                          onItemClickListener.onClickUserInfo();
+                      }
+                  }
+              });
           if(mData!=null) {
 //                        用户名
               holder.text(R.id.hm_tv_user_name,mData.getUserName());

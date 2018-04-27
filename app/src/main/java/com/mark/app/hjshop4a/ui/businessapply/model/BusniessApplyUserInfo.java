@@ -7,6 +7,7 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
  */
 
 public class BusniessApplyUserInfo extends BaseModel {
+    private String userHeadImg;//会员头像
     private String userNick;//会员名称
     private String userRealName;//真实姓名
     private String cellphone;//联系方式
@@ -14,6 +15,14 @@ public class BusniessApplyUserInfo extends BaseModel {
     private String userIdCard;//身份证号
     private String userIdCardFront;//身份证正面
     private String userIdCardSide;//身份证反面
+
+    public String getUserHeadImg() {
+        return userHeadImg;
+    }
+
+    public void setUserHeadImg(String userHeadImg) {
+        this.userHeadImg = userHeadImg;
+    }
 
     public String getUserNick() {
         return userNick;

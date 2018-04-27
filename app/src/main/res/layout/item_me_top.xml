@@ -105,7 +105,7 @@
                 <TextView
                     android:id="@+id/hm_tv_balance"
                     style="@style/home_me_tab_tv_top"
-                    android:text="￥1200"
+                    android:text=""
                     android:textColor="#fe5262" />
 
                 <TextView
@@ -128,7 +128,7 @@
                 <TextView
                     android:id="@+id/hm_tv_red"
                     style="@style/home_me_tab_tv_top"
-                    android:text="10个"
+                    android:text=""
                     android:textColor="#fea434" />
 
                 <TextView
@@ -149,7 +149,7 @@
                 <TextView
                     android:id="@+id/hm_tv_integral"
                     style="@style/home_me_tab_tv_top"
-                    android:text="641分"
+                    android:text=""
                     android:textColor="#289BF8" />
 
                 <TextView

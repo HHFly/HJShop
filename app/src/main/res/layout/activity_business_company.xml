@@ -140,9 +140,10 @@
 
                 <Spinner
                     android:id="@+id/spinner"
-                    android:layout_width="286dp"
+                    android:layout_width="286px"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    android:gravity="right|center_vertical"
                     android:dropDownWidth="200px"
                     android:background="@null" />
                 <TextView

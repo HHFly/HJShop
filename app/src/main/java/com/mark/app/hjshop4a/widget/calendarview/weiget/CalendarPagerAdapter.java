@@ -74,7 +74,13 @@ public class CalendarPagerAdapter extends PagerAdapter {
     public SparseArray<MonthView> getViews() {
         return mViews;
     }
+    /*清除多选日期*/
+    public void clear(){
 
+        for(int i=0 ;i< mViews.size();i++){
+            mViews.valueAt(i).clear();
+        }
+    }
 
     public void setAttrsBean(AttrsBean attrsBean) {
         mAttrsBean = attrsBean;

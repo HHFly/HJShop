@@ -67,6 +67,7 @@
         <View style="@style/BaseLine.Horizontal"></View>
         <RelativeLayout
             android:id="@+id/bean_change_count"
+            android:background="@color/white"
             style="@style/user_item_layout"
             >
 
@@ -102,6 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:maxLength="4"
+                android:inputType="number"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/textView4"
                 android:layout_toStartOf="@+id/audit"
