@@ -13,6 +13,8 @@ import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
+import com.mark.app.hjshop4a.ui.areaagent.areaincome.model.AreaIncome;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
@@ -20,15 +22,10 @@ import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
 import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.Balance;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceList;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDrawList;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanList;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeIn;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeInList;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUp;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUpList;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
@@ -401,6 +398,15 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                          @Field("userType")String bank,
                                          @Field("userType")String bankNumber,
                                          @Field("userType")String remark);
+    /*区域收益  类型 1 市 2 省*/
+    @GET("/api/app/area/income")
+    Observable<BaseResultEntity<AreaIncome>>areaincome(@Query("type") int type);
 
-
+    /*区域商户 类型 1 市 2 省*/
+    @GET("/api/app/area/merchant")
+    Observable<BaseResultEntity<AreaBusniess>>areaMerchant(@Query("type") int type,
+                                                           @QueryMap Map<String, String> map,
+                                                           @Query("startTime") long startTime,
+                                                           @Query("endTime") long endTime,
+                                                           @Query("cityId") long cityId);
 }

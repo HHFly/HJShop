@@ -105,7 +105,9 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
                     public void onSuccess(BaseResultEntity<BillsRecord> obj) {
                         BillsRecord data =obj.getResult();
                         initRvAdapter(data, curPage == 1);
-
+                        if (mPagingData == null) {
+                            mPagingData = new PagingBaseModel();
+                        }
                         mPagingData.setPagingInfo(curPage,data.getCustomsList(),obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
@@ -113,7 +115,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
 
                     @Override
                     public void onUnSuccessFinish() {
-//                        initRvAdapter(null, curPage == 1);
+                        initRvAdapter(null, curPage == 1);
                         RefreshLayoutUtils.finish(mRefreshLayout);
                     }
 

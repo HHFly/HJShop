@@ -93,8 +93,8 @@ private void BindData( int year,int month){
                 dateBeans.add(chooseday.get(i));
             }
             mData =new ArrayList<>();
-            for (int i=0; i<dateBeans.size();i++){
-                mData.add(dateBeans.get(i));
+            for (int i=0; i<chooseday.size();i++){
+                mData.add(chooseday.get(i));
             }
             //设置
             if (dateBeans.size()>0){

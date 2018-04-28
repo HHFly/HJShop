@@ -8,15 +8,11 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
-import com.mark.app.hjshop4a.ui.areaagent.areaincome.AreaIncome;
-import com.mark.app.hjshop4a.ui.areaagent.areaincome.AreaIncomeAdapter;
-import com.mark.app.hjshop4a.ui.areaagent.areaincome.OrderItemBean;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by pc on 2018/4/21.

@@ -8,8 +8,6 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
-import com.mark.app.hjshop4a.ui.areaagent.areabusniess.AreaBusniess;
-import com.mark.app.hjshop4a.ui.areaagent.areabusniess.AreaBusniessAdapter;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;

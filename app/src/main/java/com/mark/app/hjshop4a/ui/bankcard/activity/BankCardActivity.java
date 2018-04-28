@@ -111,7 +111,9 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
                     public void onSuccess(BaseResultEntity<ArrayList<BankCard>> obj) {
                         ArrayList<BankCard> data =obj.getResult();
                         initRvAdapter(data, curPage == 1);
-
+                        if (mPagingData == null) {
+                            mPagingData = new PagingBaseModel();
+                        }
                         mPagingData.setPagingInfo(curPage,data,obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
@@ -119,7 +121,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
 
                     @Override
                     public void onUnSuccessFinish() {
-//                        initRvAdapter(null, curPage == 1);
+                        initRvAdapter(null, curPage == 1);
                         RefreshLayoutUtils.finish(mRefreshLayout);
                     }
 

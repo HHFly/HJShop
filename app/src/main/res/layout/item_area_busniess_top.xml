@@ -46,7 +46,7 @@
                 android:layout_gravity="center_horizontal"
                 />
             <TextView
-                android:id="@+id/yesterday_bill"
+                android:id="@+id/turnOverMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/textsize_20px"
@@ -79,12 +79,12 @@
             android:textSize="24px"
             android:text="当前位置:"/>
         <TextView
-            android:id="@+id/tv_address_name"
+            android:id="@+id/cityName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#333333"
             android:layout_gravity="center_vertical"
             android:textSize="24px"
-            android:text="杭州代理"/>
+            android:text=""/>
     </LinearLayout>
 </LinearLayout>
