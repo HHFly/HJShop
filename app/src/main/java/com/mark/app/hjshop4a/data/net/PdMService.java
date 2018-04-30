@@ -13,6 +13,7 @@ import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.mark.app.hjshop4a.ui.areaagent.areaincome.model.AreaIncome;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
@@ -409,4 +410,12 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                                            @Query("startTime") long startTime,
                                                            @Query("endTime") long endTime,
                                                            @Query("cityId") long cityId);
+
+    /*.代理业绩* 类型 1 市 2 省*/
+    @GET("/api/app/proxy/performance")
+    Observable<BaseResultEntity<AgentPreformance>>agentPerformance(@Query("type") int type,
+                                                                   @QueryMap Map<String, String> map,
+                                                                   @Query("startTime") long startTime,
+                                                                   @Query("endTime") long endTime,
+                                                                   @Query("cityId") long cityId);
 }
