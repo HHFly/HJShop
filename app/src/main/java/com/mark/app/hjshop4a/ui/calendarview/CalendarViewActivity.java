@@ -29,7 +29,7 @@ import java.util.Set;
 public class CalendarViewActivity extends BaseActivity {
     private  String title ;
     private CalendarView calendarView;
-    private ArrayList<DateBean> mData ; //选择的时间
+    private ArrayList<DateBean> mData =new ArrayList<>() ; //选择的时间
     @Override
     public int getContentViewResId() {
         return R.layout.activity_select_calenderview;
@@ -39,6 +39,7 @@ public class CalendarViewActivity extends BaseActivity {
     public void findView() {
         super.findView();
         calendarView =(CalendarView) findViewById(R.id.calendar);
+
     }
 
     @Override

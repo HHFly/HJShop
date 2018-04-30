@@ -3,6 +3,7 @@ package com.mark.app.hjshop4a.ui.areaagent.agentperformance;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
+import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPrefermance;
 
 import java.util.ArrayList;
 
