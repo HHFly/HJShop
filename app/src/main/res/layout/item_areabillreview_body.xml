@@ -23,15 +23,16 @@
 
                 android:src="@mipmap/store"/>
             <TextView
-                android:id="@+id/store_name"
+                android:id="@+id/shopName"
                 android:layout_toEndOf="@+id/Image_logo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textColor="#666666"
                 android:textSize="26px"
-                android:text="罗马瓷砖"/>
+                android:text=""/>
             <TextView
+                android:id="@+id/customsTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -39,7 +40,7 @@
                 android:textSize="26px"
                 android:visibility="visible"
                 android:textColor="#333333"
-                android:text="2018-03-29"/>
+                android:text=""/>
         </RelativeLayout>
 
         <View
@@ -61,8 +62,8 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/gold_bean_count"
-                    android:text="15151515151"
+                    android:id="@+id/customsUerName"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="消费会员"
@@ -78,12 +79,32 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/deductiblet_count"
-                    android:text="吃饭"
+                    android:id="@+id/productName"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="商品名称"
                     style="@style/Bill_left" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="@dimen/textsize_10px"
+                android:paddingLeft="40px"
+                android:paddingRight="28px"
+                android:paddingTop="@dimen/textsize_10px">
+
+                <TextView
+                    android:id="@+id/productNum"
+                    style="@style/Bill_right"
+                    android:text="" />
+
+                <TextView
+                    style="@style/Bill_left"
+                    android:text="商品数量" />
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -94,8 +115,8 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/consume_store_name"
-                    android:text="会员报单"
+                    android:id="@+id/customsTypeName"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="类型"
@@ -111,8 +132,8 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/consume_type"
-                    android:text="￥100.00"
+                    android:id="@+id/customsMoney"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="消费金额"
@@ -128,8 +149,8 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/service_charge"
-                    android:text="￥100.00"
+                    android:id="@+id/serviceMony"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="服务费"
@@ -156,12 +177,10 @@
                 android:layout_toStartOf="@+id/tv_1_unpass"
                 android:background="@drawable/shape_btn_small_click_fill"
                 android:layout_centerVertical="true"
-
                 android:paddingBottom="10px"
                 android:paddingTop="@dimen/textsize_10px"
                 android:paddingLeft="34px"
                 android:paddingRight="34px"
-
 
                 android:text="通过"
                 android:textColor="#FFFFFF" />

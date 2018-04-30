@@ -3,16 +3,20 @@ package com.mark.app.hjshop4a.ui.areaagent.billreview;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
+import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
+import com.mark.app.hjshop4a.ui.areaagent.billreview.model.Customs;
+import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by pc on 2018/4/21.
  */
 
-public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillReview,AreaBillReview> {
-    public AreaBillReviewAdapter(AreaBillReview areaBillReview, ArrayList<AreaBillReview> areaBillReviews) {
-        super(areaBillReview, areaBillReviews);
+public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillReview,Customs> {
+    public AreaBillReviewAdapter(AreaBillReview areaBillReview, List<Customs> customs) {
+        super(areaBillReview, customs);
     }
 
     @Override
@@ -27,11 +31,39 @@ public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillRevie
 
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, AreaBillReview areaBillReview) {
+        if(areaBillReview !=null){
+            holder.text(R.id.customsTotal,String.valueOf(areaBillReview.getCustomsTotal()));
+            holder.text(R.id.customsYestoday,String.valueOf(areaBillReview.getCustomsYestoday()));
 
+        }
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPosition, AreaBillReview areaBillReview) {
+    public void bindBodyData(AutoViewHolder holder, int bodyPosition, Customs customs) {
+        if(customs!=null){
+            holder.text(R.id.shopName,customs.getShopName());
+            holder.text(R.id.customsTime,customs.getCustomsTime());
+            holder.text(R.id.customsUerName,customs.getCustomsUerName());
+            holder.text(R.id.productName,customs.getProductName());
+            holder.text(R.id.productNum,String.valueOf(customs.getProductNum()));
+            holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
+            holder.text(R.id.serviceMony,customs.getCustomsMoney());
+            holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
+            holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
+            holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
 
+
+        }
     }
+    private BusniessBillRecordAdapter.OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(BusniessBillRecordAdapter.OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public interface OnItemClickListener {
+
+        void onClickItem();
+    }
+
 }

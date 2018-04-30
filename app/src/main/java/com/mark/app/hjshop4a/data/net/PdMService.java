@@ -16,6 +16,8 @@ import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.mark.app.hjshop4a.ui.areaagent.areaincome.model.AreaIncome;
+import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.BusinessReview;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
@@ -418,4 +420,14 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                                                    @Query("startTime") long startTime,
                                                                    @Query("endTime") long endTime,
                                                                    @Query("cityId") long cityId);
+
+    /*报单申请*/
+    @GET("/api/app/merchant/customs/list")
+    Observable<BaseResultEntity<AreaBillReview>>areaBillReview( @QueryMap Map<String, String> map,
+                                                                @Query("startTime") long startTime,
+                                                                @Query("endTime") long endTime);
+
+    /**/
+    @GET("/api/app/merchant/apply")
+    Observable<BaseResultEntity<BusinessReview>>busunessReview( @QueryMap Map<String, String> map);
 }

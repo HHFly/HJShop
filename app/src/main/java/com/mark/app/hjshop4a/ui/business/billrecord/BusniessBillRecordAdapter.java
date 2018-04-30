@@ -52,7 +52,7 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
         holder.text(R.id.customsStatus, BillUtil.swichAuditStatus(customs.getCustomsStatus()));
 
     }
-private OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
