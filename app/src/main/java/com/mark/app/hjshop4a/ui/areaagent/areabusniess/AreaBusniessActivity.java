@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.ui.areaagent.areabusniess;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -36,12 +37,18 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
     private long  startTime;
     private long endTime;
 
-    private long cityId;
+    private long cityId =0;
     int mSource;//来源
     PagingBaseModel mPagingData;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_title_right_base_rvlist;
+    }
+
+    @Override
+    public void getIntentParam(Bundle bundle) {
+        super.getIntentParam(bundle);
+        cityId=bundle.getLong("cityId");
     }
 
     @Override
@@ -56,7 +63,9 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
         }
         startTime=System.currentTimeMillis()/1000;
         endTime=System.currentTimeMillis()/1000;
-        cityId= App.getAppContext().getUserInfo().getCityId();
+        if(cityId==0) {
+            cityId = App.getAppContext().getUserInfo().getCityId();
+        }
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();

@@ -1,6 +1,5 @@
 package com.mark.app.hjshop4a.ui.userinfo;
 
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -20,10 +19,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by pc on 2018/4/16.
+ * Created by pc on 2018/5/1.
  */
 
-public class ModifyPWActivity extends BaseActivity {
+public class PayPWDActivity extends BaseActivity {
     private  boolean newflag =false;
     private  boolean oldflag =false;
     @Override
@@ -33,7 +32,8 @@ public class ModifyPWActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        setTvText(R.id.titlebar_tv_title,"设置密码");
+        setTvText(R.id.titlebar_tv_title,"支付密码");
+
     }
 
     @Override
@@ -71,14 +71,6 @@ public class ModifyPWActivity extends BaseActivity {
     private  void commit(){
         String old =getTvText(R.id.et_old_pwd);
         String news =getTvText(R.id.et_new_pwd);
-        if(TextUtils.isEmpty(old)){
-            ToastUtils.show("请输入旧密码");
-            return;
-        }
-        if(TextUtils.isEmpty(news)){
-            ToastUtils.show("请输入新密码");
-            return;
-        }
         if(!ValidUtils.pwd(old)){
             ToastUtils.show(R.string.login_密码格式错误);
             return;
@@ -87,10 +79,12 @@ public class ModifyPWActivity extends BaseActivity {
             ToastUtils.show(R.string.login_密码格式错误);
             return;
         }
+        if(!old.equals(news)){
+            ToastUtils.show("两次密码不同");
+        }
         CommitUserInfo commitUserInf=new CommitUserInfo();
-        commitUserInf.setOldPassword(MD5Utils.md5(old));
-        commitUserInf.setNewPassword(MD5Utils.md5(news));
-        requestData(2,commitUserInf);
+       commitUserInf.setPayPassword(MD5Utils.md5(old));
+        requestData(3,commitUserInf);
     }
     /**
      * 请求数据
@@ -108,9 +102,7 @@ public class ModifyPWActivity extends BaseActivity {
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
                         ToastUtils.show("修改成功");
-                        App.get().setLogin(null);
-                        loginout();
-                        ActivityJumpUtils.actHomePager(getAppCompatActivity());
+                        finish();
                     }
 
                     @Override
@@ -120,27 +112,4 @@ public class ModifyPWActivity extends BaseActivity {
                     }
                 });
     }
-    /**
-     * 请求数据登出
-     */
-    private void loginout() {
-        App.getServiceManager().getPdmService()
-                .logout()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
-
-                    @Override
-                    public void onSuccess(BaseResultEntity obj) {
-
-                    }
-
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
-    }
-
 }

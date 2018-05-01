@@ -1,7 +1,6 @@
-package com.mark.app.hjshop4a.ui.areaagent.agentperformance;
+package com.mark.app.hjshop4a.ui.provinceagent.agentperFormance;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,27 +11,27 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.areaagent.agentperformance.AgentPerformanceActivity;
+import com.mark.app.hjshop4a.ui.areaagent.agentperformance.AgentPrefermanceAdapter;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
-import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-
-import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by pc on 2018/4/21.
+ * Created by pc on 2018/5/1.
  */
 
-public class AgentPerformanceActivity extends BaseActivity implements OnRefreshLoadmoreListener {
+public class PAgentPerformanceActivity extends BaseActivity implements OnRefreshLoadmoreListener {
     SmartRefreshLayout mRefreshLayout;//刷新框架
-    AgentPrefermanceAdapter mAdapter;
+    PAgentPrefermanceAdapter mAdapter;
     private long  startTime;
     private long endTime;
 
@@ -46,11 +45,6 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
     }
 
     @Override
-    public void getIntentParam(Bundle bundle) {
-        super.getIntentParam(bundle);
-        cityId=bundle.getLong("cityId");
-    }
-    @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"代理业绩");
         setTvText(R.id.titlebar_tv_right,"筛选");
@@ -62,9 +56,7 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
         }
         startTime=System.currentTimeMillis()/1000;
         endTime=System.currentTimeMillis()/1000;
-        if(cityId==0) {
-            cityId = App.getAppContext().getUserInfo().getCityId();
-        }
+        cityId= App.getAppContext().getUserInfo().getCityId();
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();
@@ -100,7 +92,7 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
         PagingParam pagingParam = new PagingParam();
         pagingParam.setCurrentPage(curPage);
         pagingParam.setTimestamp(timetamp);
-        App.getServiceManager().getPdmService().agentPerformance(1,pagingParam.getMap(),startTime,endTime,cityId)
+        App.getServiceManager().getPdmService().agentPerformance(2,pagingParam.getMap(),startTime,endTime,cityId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver<AgentPreformance>() {
@@ -129,15 +121,23 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
     public void initRvAdapter(AgentPreformance data, boolean isRefresh) {
 
         if (mAdapter == null) {
-            mAdapter = new AgentPrefermanceAdapter(data,data.getPerformanceCityList());
+            mAdapter = new PAgentPrefermanceAdapter(data,data.getPerformanceProvinceList());
             RecyclerView rv = getView(R.id.recyclerView);
             if (rv != null) {
                 rv.setAdapter(mAdapter);
                 rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }
+            mAdapter.setOnItemClickListener(new PAgentPrefermanceAdapter.OnItemClickListener() {
+                @Override
+                public void onClickDetails(long cityId) {
+                    Intent intent = new Intent(getAppCompatActivity(), AgentPerformanceActivity.class);
+                    BundleUtils.getInstance().putLong("cityId",cityId).addIntent(intent);
+                    getAppCompatActivity().startActivity(intent);
+                }
+            });
 
         } else {
-            mAdapter.notifyData(data.getPerformanceCityList(), isRefresh);
+            mAdapter.notifyData(data,data.getPerformanceProvinceList(), isRefresh);
         }
 
         boolean isShowEmpty = isRefresh && (data == null || data.getPerformanceCityList().size() == 0);

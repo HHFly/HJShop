@@ -17,7 +17,7 @@ import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformanc
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.mark.app.hjshop4a.ui.areaagent.areaincome.model.AreaIncome;
 import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
-import com.mark.app.hjshop4a.ui.areaagent.businessreview.BusinessReview;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.model.BusinessReview;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
@@ -430,4 +430,6 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /**/
     @GET("/api/app/merchant/apply")
     Observable<BaseResultEntity<BusinessReview>>busunessReview( @QueryMap Map<String, String> map);
+
+
 }

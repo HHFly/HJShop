@@ -4,6 +4,16 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />        <!-- 使用照相机权限 -->
     <uses-feature android:name="android.hardware.camera.autofocus" />   <!-- 自动聚焦权限 -->
+    <!--微信权限-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -59,6 +69,7 @@
         <activity android:name=".ui.bankcard.activity.BankCardAddActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.assedetail.AssetDetailActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.goldbeanconsume.MemberGoldBeanConsumeActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ui.userinfo.PayPWDActivity" android:screenOrientation="portrait"/>
         <!--会员-->
         <activity android:name=".ui.onlinerecharge.OnlineRechargeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.consumptionbill.ConsumptionBillActivty" android:screenOrientation="portrait"/>
@@ -83,7 +94,7 @@
         <activity android:name=".ui.areaagent.areaincome.AreaIncomeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.areaagent.billreview.AreaBillReviewActivity" android:screenOrientation="portrait"/>
         <!--省代理-->
-        <activity android:name=".ui.provinceagent.ProvinceAreaBusniessActivity" android:screenOrientation="portrait"/>
-
+        <activity android:name=".ui.provinceagent.areabusniess.ProvinceAreaBusniessActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.provinceagent.agentperFormance.PAgentPerformanceActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

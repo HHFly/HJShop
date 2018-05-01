@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="30px"
+        android:paddingTop="30px">
+
+
+        <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5px"
+            android:drawableTop="@mipmap/ic_wx"
+            android:gravity="center"
+            android:text="微信"
+            android:textColor="#333333"
+            android:textSize="20px" />
+
+
+
+        <TextView
+            android:id="@+id/tv_2"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5px"
+            android:drawableTop="@mipmap/ic_wx"
+            android:gravity="center"
+            android:text="朋友圈"
+            android:textColor="#333333"
+            android:textSize="20px" />
+
+
+
+
+        <TextView
+            android:id="@+id/tv_3"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5px"
+            android:drawableTop="@mipmap/ic_wx"
+            android:gravity="center"
+            android:text="微博"
+            android:textColor="#333333"
+            android:textSize="20px" />
+        <TextView
+            android:id="@+id/tv_4"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5px"
+            android:drawableTop="@mipmap/ic_wx"
+            android:gravity="center"
+            android:text="QQ"
+            android:textColor="#333333"
+            android:textSize="20px" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="15px"
+        android:text="取消"
+        android:textColor="#666666"
+        android:textSize="30px" />
+</LinearLayout>

@@ -275,7 +275,7 @@ public class ActivityJumpUtils {
         activity.overridePendingTransition(0,0);
     }
     /*
-  * 跳转消费账单
+  * 跳转商户申请
   * */
     public static void actBusinesApply(Activity activity) {
         Intent intent = new Intent(activity, BusinessApplicationActivity.class);
@@ -283,7 +283,7 @@ public class ActivityJumpUtils {
         activity.overridePendingTransition(0,0);
     }
     /*
-  * 跳转消费账单
+  * 跳转时间筛选
   * */
     public static void actCalendarView(Activity activity,String title) {
         Intent intent = new Intent(activity, CalendarViewActivity.class);

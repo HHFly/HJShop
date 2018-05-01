@@ -1,5 +1,7 @@
 package com.mark.app.hjshop4a.ui.areaagent.billreview;
 
+import android.view.View;
+
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
@@ -51,19 +53,35 @@ public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillRevie
             holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
             holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
             holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
-
+            holder.get(R.id.tv_1_pass).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onItemClickListener!=null){
+                        onItemClickListener.onClickItemYes();
+                    }
+                }
+            });
+            holder.get(R.id.tv_1_unpass).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onItemClickListener!=null){
+                        onItemClickListener.onClickItemNo();
+                    }
+                }
+            });
 
         }
     }
-    private BusniessBillRecordAdapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(BusniessBillRecordAdapter.OnItemClickListener onItemClickListener) {
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
         this.onItemClickListener = onItemClickListener;
     }
 
     public interface OnItemClickListener {
 
-        void onClickItem();
+        void onClickItemYes();
+        void onClickItemNo();
     }
 
 }

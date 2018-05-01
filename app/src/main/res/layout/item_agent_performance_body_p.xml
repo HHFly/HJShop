@@ -7,8 +7,8 @@
     android:layout_marginRight="30px"
     android:layout_marginLeft="30px">
     <RelativeLayout
-        android:layout_width="match_parent"
         android:id="@+id/rl_location"
+        android:layout_width="match_parent"
         android:layout_height="86px"
         android:paddingLeft="40px"
         android:paddingRight="28px">
@@ -18,9 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
 
-            android:src="@mipmap/ic_address"/>
+            android:src="@mipmap/address"/>
         <TextView
-            android:id="@+id/cityName"
+            android:id="@+id/store_name"
             android:layout_toEndOf="@+id/Image_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,6 +29,7 @@
             android:textSize="26px"
             android:text=""/>
         <TextView
+            android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -58,11 +59,12 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/areaProxy"
+                android:id="@+id/newUserDay"
                 android:text=""
                 style="@style/Bill_right"/>
             <TextView
-                android:text="区域代理"
+
+                android:text="今日新增会员"
                 style="@style/Bill_left" />
         </RelativeLayout>
 
@@ -75,11 +77,11 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/cellPhone"
+                android:id="@+id/userTotal"
                 android:text=""
                 style="@style/Bill_right"/>
             <TextView
-                android:text="联系方式"
+                android:text="会员总数"
                 style="@style/Bill_left" />
         </RelativeLayout>
         <RelativeLayout
@@ -91,11 +93,11 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/shopNum"
+                android:id="@+id/customsDay"
                 android:text=""
                 style="@style/Bill_right"/>
             <TextView
-                android:text="店铺数量"
+                android:text="今日报单金额"
                 style="@style/Bill_left" />
         </RelativeLayout>
         <RelativeLayout
@@ -107,35 +109,91 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/userNum"
+                android:id="@+id/beanIncomeDay"
                 android:text=""
                 style="@style/Bill_right"/>
             <TextView
-                android:text="会员数量"
+                android:text="今日金豆收入"
                 style="@style/Bill_left" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
 
+            <TextView
+                android:id="@+id/customsMonth"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="当月报单金额"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/beanIncomeMonth"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="当月金豆收入"
+                style="@style/Bill_left" />
+        </RelativeLayout>
     </LinearLayout>
     <View
         style="@style/BaseLine.Horizontal"
         android:layout_marginLeft="40px"
         android:layout_marginRight="@dimen/textsize_20px"/>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100px"
-        android:paddingRight="28px"
-        android:paddingLeft="40px"
-        >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="120px"
+        android:paddingTop="26px">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            >
 
-        <TextView
-            android:layout_centerVertical="true"
-            android:id="@+id/turnTotal"
-            android:text=""
-            style="@style/Bill_right"/>
-        <TextView
-            android:layout_centerVertical="true"
-            android:text="当月营业额"
-            style="@style/Bill_left" />
-    </RelativeLayout>
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/turnOverMonth"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:layout_centerVertical="true"
+                android:text="当月营业额"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            >
+            <TextView
+                android:layout_centerVertical="true"
+                android:id="@+id/turnOverTotal"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:layout_centerVertical="true"
+                android:text="总营业额"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+    </LinearLayout>
+
 </LinearLayout>

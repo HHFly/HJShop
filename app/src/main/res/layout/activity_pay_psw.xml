@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <include layout="@layout/include_titlebar" />
+    <LinearLayout
+        style="@style/input_layout"
+        android:layout_marginTop="20px">
+        <TextView
+            style="@style/login_input_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="原密码："/>
+        <EditText
+            android:id="@+id/et_old_pwd"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+            android:paddingLeft="30px"
+            android:hint="请输入原密码"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <ImageView
+            android:id="@+id/iv_old_eye"
+            android:layout_width="100px"
+            android:layout_height="60px"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:src="@drawable/select_password_eye"
+            />
+    </LinearLayout>
+    <LinearLayout style="@style/input_layout"
+
+        >
+        <TextView
+            style="@style/login_input_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="新密码："/>
+        <EditText
+            android:id="@+id/et_new_pwd"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+            android:paddingLeft="30px"
+            android:hint="请输入新密码"
+            android:inputType="textPassword"
+            android:maxLength="20" />
+
+        <ImageView
+            android:id="@+id/iv_new_eye"
+            android:layout_width="100px"
+            android:layout_height="60px"
+            android:paddingLeft="30px"
+            android:paddingRight="30px"
+            android:src="@drawable/select_password_eye"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30px"
+        android:paddingTop="20px"
+        android:text="密码长度6-12个字符"
+        android:textSize="22px"/>
+    <Button
+        android:id="@+id/btn"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_width="match_parent"
+        android:layout_marginTop="40px"
+        android:text="@string/btn_确认修改" />
+
+</LinearLayout>

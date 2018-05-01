@@ -22,7 +22,7 @@ public class AgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefor
     @Override
 
     public int getTopItemResId() {
-        return R.layout.item_agent_performance_top;
+        return R.layout.item_agent_performance_top_2;
     }
 
     @Override

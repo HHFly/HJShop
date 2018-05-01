@@ -23,6 +23,7 @@ android {
         buildConfigField("String", "PLATFORM", "\"ANDROID_USER\"")
         buildConfigField("String", "WEB_USER_AGENT", "\"haya-hjshop-android-user\"")
         buildConfigField("String", "WEB_INTERFACE", "\"androidInterface\"")
+        buildConfigField("String", "WX_APPID", "\"wxfc06ea4375a4ecd4\"")
     }
 
     buildTypes {
@@ -86,4 +87,6 @@ dependencies {
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
     //侧滑
     compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+    //微信分享
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
 }

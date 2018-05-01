@@ -1,21 +1,33 @@
 package com.mark.app.hjshop4a.ui.recommend;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.support.annotation.IdRes;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.dialog.SexDialog;
+import com.mark.app.hjshop4a.ui.dialog.ShareDialog;
 import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
+import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
+import java.io.ByteArrayOutputStream;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -28,6 +40,12 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     private  RecommendAdapter recommendAdapter;
     SmartRefreshLayout mRefreshLayout;//刷新框架
     PagingBaseModel mPagingData;
+
+    private ShareDialog shareDialog;
+    private IWXAPI api;
+    private String inviteUrl;
+    private  String inviteTitle;
+    private  String   inviteContent;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_title_right_base_rvlist;
@@ -42,6 +60,8 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"我的推荐");
         setTvText(R.id.titlebar_tv_right,"分享");
+        api = WXAPIFactory.createWXAPI(this, BuildConfig.WX_APPID,true);
+        api.registerApp(BuildConfig.WX_APPID);
 
     }
 
@@ -67,6 +87,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     @Override
     public void setListener() {
         setClickListener(R.id.titlebar_iv_return);
+        setClickListener(R.id.titlebar_tv_right);
     }
 
     @Override
@@ -74,6 +95,9 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
         switch (v.getId()){
             case  R.id.titlebar_iv_return:
                 finish();
+                break;
+            case R.id.titlebar_tv_right:
+                showShareDialog();
                 break;
         }
     }
@@ -133,5 +157,63 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
         requestData(1,0);
+    }
+
+    /**
+     * 获取分享封面byte数组
+     * @return
+     */
+    private  byte[] getThumbData() {
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inSampleSize=2;
+        Bitmap bitmap=BitmapFactory.decodeResource(getResources(), R.mipmap.ic_logo,options);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, output);
+        int quality = 100;
+        while (output.toByteArray().length > 32768 && quality != 10) {//微信分享图片大小限制
+            output.reset(); // 清空baos
+            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, output);// 这里压缩options%，把压缩后的数据存放到baos中
+            quality -= 10;
+        }
+        bitmap.recycle();
+        byte[] result = output.toByteArray();
+        try {
+            output.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    /*
+  * 显示性别选择*/
+    private  void  showShareDialog(){
+        if(shareDialog ==null){
+            shareDialog =new ShareDialog();
+        }
+        shareDialog.setOnDialogClickListener(new ShareDialog.OnDialogClickListener() {
+
+
+            @Override
+            public void onClickWX(ShareDialog dialog) {
+                ToastUtils.show("1");
+            }
+
+            @Override
+            public void onClickWXF(ShareDialog dialog) {
+                ToastUtils.show("2");
+            }
+
+            @Override
+            public void onClickWeiBo(ShareDialog dialog) {
+                ToastUtils.show("3");
+            }
+
+            @Override
+            public void onClickQQ(ShareDialog dialog) {
+                ToastUtils.show("4");
+            }
+        });
+        shareDialog.setContent(this.getActivity());
+        shareDialog.show(getFragmentManager());
     }
 }

@@ -34,7 +34,7 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, BillsRecord billsRecord) {
             holder.visibility(R.id.local_address,false);
-            holder.text(R.id.all_bill,billsRecord.getCustomsTotal());
+            holder.text(R.id.turnOverTotal,billsRecord.getCustomsTotal());
             holder.text(R.id.yesterday_bill,billsRecord.getCustomsYestoday());
 
     }
@@ -51,6 +51,7 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
         holder.text(R.id.serviceMony,customs.getServiceMony());
         holder.text(R.id.customsStatus, BillUtil.swichAuditStatus(customs.getCustomsStatus()));
 
+
     }
     private OnItemClickListener onItemClickListener;
 
@@ -60,6 +61,8 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
 
     public interface OnItemClickListener {
 
-        void onClickItem();
+        void onClickItemYes();
+
+        void onClickItemNo();
     }
 }

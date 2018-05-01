@@ -72,7 +72,8 @@ public class UserInfoActivity extends BaseActivity {
 
             case R.id.set_pay_psw:
 //                支付密码
-                ShowDialog();
+               ActivityJumpUtils.actActivity(this,PayPWDActivity.class);
+                break;
             case  R.id.titlebar_iv_return:
                 finish();
                 break;

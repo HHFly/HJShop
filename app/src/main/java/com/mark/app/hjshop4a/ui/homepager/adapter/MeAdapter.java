@@ -25,7 +25,8 @@ import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
-import com.mark.app.hjshop4a.ui.provinceagent.ProvinceAreaBusniessActivity;
+import com.mark.app.hjshop4a.ui.provinceagent.agentperFormance.PAgentPerformanceActivity;
+import com.mark.app.hjshop4a.ui.provinceagent.areabusniess.ProvinceAreaBusniessActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.withdraw.WithDrawActivity;
 import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailActivity;
@@ -307,13 +308,21 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
     private void bindProvinceAgent(AutoViewHolder holder, IndexPath indexPath) {
         switch (indexPath.getSection()){
             case 0://顶部数据
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.get(R.id.hm_sdv_logo).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-//                            if(App.hasToken()){
-//                               ActivityJumpUtils.actLogin(activity);
-//                            }
-                        ActivityJumpUtils.actUserInfo(activity);
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onClickUserPic(R.id.hm_sdv_logo);
+                        }
+
+                    }
+                });
+                holder.get(R.id.user_rl_info).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (onItemClickListener != null) {
+                            onItemClickListener.onClickUserInfo();
+                        }
                     }
                 });
                 holder.visibility(R.id.item_mesage, false);
@@ -368,9 +377,11 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
             case 3:
                 holder.image(R.id.me_iv_lab1,R.mipmap.bankcard);
                 holder.image(R.id.me_iv_lab2,R.mipmap.recommend);
+                holder.image(R.id.me_iv_lab3,R.mipmap.achievement);
                 holder.text(R.id.me_tv_lab1,R.string.me_银行卡);
                 holder.text(R.id.me_tv_lab2,R.string.me_我的推荐);
-                holder.visibility(R.id.hm_lab3,false);
+                holder.text(R.id.me_tv_lab3, R.string.me_代理业绩);
+//                holder.visibility(R.id.hm_lab3,false);
                 holder.visibility(R.id.hm_lab4,false);
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -382,6 +393,12 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                     @Override
                     public void onClick(View v) {
                         ActivityJumpUtils.actActivity(activity, RecommendActivity.class);
+                    }
+                });
+                holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityJumpUtils.actActivity(activity, PAgentPerformanceActivity.class);
                     }
                 });
                 break;

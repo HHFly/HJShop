@@ -9,9 +9,9 @@
     android:paddingTop="288px">
 
     <ImageView
-        android:layout_width="93px"
-        android:layout_height="110px"
-        android:src="@mipmap/ic_logo" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_empty" />
 
     <TextView
         android:id="@+id/empty_tv_title"

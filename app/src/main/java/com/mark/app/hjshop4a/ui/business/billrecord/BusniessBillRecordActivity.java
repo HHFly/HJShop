@@ -135,9 +135,15 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
             mAdapter.setOnItemClickListener(new BusniessBillRecordAdapter.OnItemClickListener() {
 
                 @Override
-                public void onClickItem() {
+                public void onClickItemYes() {
 
                 }
+
+                @Override
+                public void onClickItemNo() {
+
+                }
+
             });
         } else {
             mAdapter.notifyData(data.getCustomsList(), isRefresh);

@@ -130,7 +130,7 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
             mAdapter.notifyData(data.getCustomsList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.getCustomsList().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null || data.getCustomsList()==null);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override

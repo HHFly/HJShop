@@ -23,14 +23,14 @@
 
             android:src="@mipmap/store"/>
         <TextView
-            android:id="@+id/store_name"
+            android:id="@+id/shopName"
             android:layout_toEndOf="@+id/Image_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:textColor="#666666"
             android:textSize="26px"
-            android:text="罗马瓷砖"/>
+            android:text=""/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,8 +61,8 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/gold_bean_count"
-                android:text="罗大佑"
+                android:id="@+id/userName"
+                android:text=""
                 style="@style/Bill_right"/>
             <TextView
                 android:text="店主"
@@ -78,8 +78,8 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/deductiblet_count"
-                android:text="1815135115"
+                android:id="@+id/cellPhone"
+                android:text=""
                 style="@style/Bill_right"/>
             <TextView
                 android:text="联系方式"
@@ -94,8 +94,8 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/consume_store_name"
-                android:text="2018-03-29 09:30"
+                android:id="@+id/applyTime"
+                android:text=""
                 style="@style/Bill_right"/>
             <TextView
                 android:text="申请时间"
@@ -112,25 +112,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="90px"
-
+        android:id="@+id/rl_1"
         android:paddingRight="28px"
         android:paddingLeft="40px"
         >
 
         <TextView
             android:id="@+id/tv_1_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120px"
+            android:layout_height="60px"
+
             android:layout_alignTop="@+id/tv_1_unpass"
-            android:layout_marginEnd="21px"
+            android:gravity="center"
+            android:layout_marginEnd="36px"
             android:layout_toStartOf="@+id/tv_1_unpass"
             android:background="@drawable/shape_btn_small_click_fill"
-            android:paddingTop="@dimen/textsize_10px"
-            android:paddingBottom="@dimen/textsize_10px"
-            android:paddingLeft="34px"
-            android:paddingRight="34px"
-
-
             android:text="通过"
             android:textColor="#FFFFFF" />
         <TextView
@@ -138,10 +134,9 @@
             android:text="不通过"
             android:background="@drawable/shape_btn_5px_red"
             android:textColor="#FFFFFF"
-            android:paddingBottom="@dimen/textsize_10px"
-            android:paddingTop="@dimen/textsize_10px"
-            android:paddingLeft="@dimen/textsize_22px"
-            android:paddingRight="@dimen/textsize_22px"
+            android:gravity="center"
+            android:layout_width="120px"
+            android:layout_height="60px"
             android:layout_centerVertical="true"
             style="@style/Bill_right"/>
         <TextView
@@ -153,24 +148,21 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="90px"
-
+        android:id="@+id/rl_2"
         android:paddingRight="28px"
         android:paddingLeft="40px"
         >
 
         <TextView
             android:id="@+id/tv_2_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="120px"
+            android:layout_height="60px"
+
             android:layout_alignTop="@+id/tv_2_unpass"
-            android:layout_marginEnd="21px"
+            android:gravity="center"
+            android:layout_marginEnd="36px"
             android:layout_toStartOf="@+id/tv_2_unpass"
             android:background="@drawable/shape_btn_small_click_fill"
-            android:paddingBottom="@dimen/textsize_10px"
-            android:paddingLeft="34px"
-            android:paddingRight="34px"
-            android:paddingTop="@dimen/textsize_10px"
-
             android:text="通过"
             android:textColor="#FFFFFF" />
         <TextView
@@ -178,10 +170,9 @@
             android:text="不通过"
             android:background="@drawable/shape_btn_5px_red"
             android:textColor="#FFFFFF"
-            android:paddingBottom="@dimen/textsize_10px"
-            android:paddingTop="@dimen/textsize_10px"
-            android:paddingLeft="@dimen/textsize_22px"
-            android:paddingRight="@dimen/textsize_22px"
+            android:gravity="center"
+            android:layout_width="120px"
+            android:layout_height="60px"
             android:layout_centerVertical="true"
             style="@style/Bill_right"/>
         <TextView
@@ -213,23 +204,25 @@
 
                 android:src="@mipmap/store"/>
             <TextView
-                android:id="@+id/store_name_2"
+                android:id="@+id/shopName_2"
                 android:layout_toEndOf="@+id/Image_logo_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:textColor="#666666"
                 android:textSize="26px"
-                android:text="罗马瓷砖"/>
+                android:text=""/>
             <TextView
+                android:id="@+id/business_review"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:textSize="26px"
-                android:visibility="gone"
-                android:textColor="#333333"
-                android:text="2018-03-29"/>
+                android:textSize="24px"
+                android:padding="13px"
+                android:background="@drawable/shape_slide_1px_blue"
+                android:textColor="#FF289BF8"
+                android:text="受理申请"/>
         </RelativeLayout>
 
         <View
@@ -251,8 +244,8 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/gold_bean_count_2"
-                    android:text="罗大佑"
+                    android:id="@+id/userName_2"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="店主"
@@ -268,8 +261,8 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/deductiblet_count_2"
-                    android:text="1815135115"
+                    android:id="@+id/cellPhone_2"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="联系方式"
@@ -284,8 +277,8 @@
                 android:paddingBottom="@dimen/textsize_10px">
 
                 <TextView
-                    android:id="@+id/consume_store_name_2"
-                    android:text="2018-03-29 09:30"
+                    android:id="@+id/applyTime_2"
+                    android:text=""
                     style="@style/Bill_right"/>
                 <TextView
                     android:text="申请时间"
@@ -309,8 +302,8 @@
 
 
             <TextView
-                android:id="@+id/tv_1_unpass_2"
-                android:text="未审核"
+                android:id="@+id/auditStatusProxy"
+                android:text=""
 
                 android:layout_centerVertical="true"
                 style="@style/Bill_right"/>
@@ -330,11 +323,8 @@
 
 
             <TextView
-                android:id="@+id/tv_2_unpass_2"
-                android:text="未审核"
-
-
-
+                android:id="@+id/auditStatusProvice"
+                android:text=""
                 android:layout_centerVertical="true"
                 style="@style/Bill_right"/>
             <TextView
