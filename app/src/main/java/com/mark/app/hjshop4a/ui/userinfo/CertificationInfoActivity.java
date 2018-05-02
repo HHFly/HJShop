@@ -11,6 +11,7 @@ import android.widget.Switch;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.userinfo.UserInfoType;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -47,7 +48,7 @@ public class CertificationInfoActivity extends BaseActivity {
         super.getIntentParam(bundle);
         if(bundle!=null)
         {
-            mData= (UserInfo) bundle.getSerializable("UserInfo");
+            mData= (UserInfo) bundle.getSerializable("UserInfoType");
         }
     }
 
@@ -139,10 +140,10 @@ public class CertificationInfoActivity extends BaseActivity {
         selectDateDialog.setOnDialogClickListener(new SelectDateDialog.OnDialogClickListener() {
             @Override
             public void onClickDate(String str) {
-                setTvText(idres,str);
+//                setTvText(idres,str);
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
                 commitUserInfo.setBirthday(str);
-                requestData(1,commitUserInfo);
+                requestData(idres,commitUserInfo,str);
             }
         });
         selectDateDialog.showDateDialog(this);
@@ -161,14 +162,14 @@ public class CertificationInfoActivity extends BaseActivity {
                     case R.id.user_layout_user_name:
         //真实姓名
                         commitUserInfo.setUserRealName(data);
-                        setTvText(R.id.user_tv_user_name,data);
-                        requestData(1,commitUserInfo);  break;
+//                        setTvText(R.id.user_tv_user_name,data);
+                        requestData(R.id.user_tv_user_name,commitUserInfo,data);  break;
                     case R.id.rl_id_card:
 //身份证号
                         if(ValidUtils.IDCard(data)){
                             commitUserInfo.setUserIdCard(data);
-                            setTvText(R.id.tv_id_card,data);
-                            requestData(1,commitUserInfo);break;
+//                            setTvText(R.id.tv_id_card,data);
+                            requestData(R.id.tv_id_card,commitUserInfo,data);break;
                         }else {
                             ToastUtils.show("身份证号格式不正确");
                         }
@@ -193,28 +194,28 @@ public class CertificationInfoActivity extends BaseActivity {
         sexDialog.setOnDialogClickListener(new SexDialog.OnDialogClickListener() {
             @Override
             public void onClickNo(SexDialog dialog) {
-                setTvText(idres,"保密");
+//                setTvText(idres,"保密");
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
                 commitUserInfo.setGender(0);
-                requestData(1,commitUserInfo);
+                requestData(idres,commitUserInfo,"保密");
                 dialog.dismiss();
             }
 
             @Override
             public void onClickMan(SexDialog dialog) {
-                setTvText(idres,"男");
+//                setTvText(idres,"男");
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
                 commitUserInfo.setGender(1);
-                requestData(1,commitUserInfo);
+                requestData(idres,commitUserInfo,"男");
                 dialog.dismiss();
             }
 
             @Override
             public void onClickWoman(SexDialog dialog) {
-                setTvText(idres,"女");
+//                setTvText(idres,"女");
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
                 commitUserInfo.setGender(2);
-                requestData(1,commitUserInfo);
+                requestData(idres,commitUserInfo,"女");
                 dialog.dismiss();
             }
 
@@ -234,11 +235,11 @@ public class CertificationInfoActivity extends BaseActivity {
     /**
      * 请求数据
      */
-    private void requestData(int type,CommitUserInfo userInfo) {
+    private void requestData(final int type, CommitUserInfo userInfo, final String data) {
         showLoadingDialog();
 
         App.getServiceManager().getPdmService()
-                .setUserInfo(1,userInfo.getMap())
+                .setUserInfo(UserInfoType.CERTIFI,userInfo.getMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {
@@ -247,7 +248,7 @@ public class CertificationInfoActivity extends BaseActivity {
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
 
-
+                        setTvText(type,data);
                     }
 
                     @Override

@@ -49,9 +49,7 @@ public class BusniessCompanyActivity extends BaseActivity {
     //是否同意
     private boolean isAgree;
     Spinner spinner;
-    Spinner spinner_p;//省
-    Spinner spinner_c;//市
-    Spinner spinner_a;//区
+
     private Map<Integer,Uri>mUris =new LinkedHashMap<>();
     private List<Uri> mPicUris =new ArrayList<>();  //上传图片Uri集合
     Map<Integer,String>pic =new HashMap<>();//上传图片地址集合
@@ -235,17 +233,7 @@ public class BusniessCompanyActivity extends BaseActivity {
             @Override
             public void back(Uri var1, int id) {
                 if(requestUpdateDataOfNewPic(var1,id)) {
-                    switch (id) {
-                        case R.id.imagebtn_licence:
-                            setSdvBig(id, var1);
-                            break;
-                        case R.id.imagebtn_shop:
-                            setSdvBig(id, var1);
-                            break;
-                        default:
-                            addpic(var1, id);
-                            break;
-                    }
+
                 }
             }
         });
@@ -301,7 +289,7 @@ public class BusniessCompanyActivity extends BaseActivity {
     /**
      * 请求更新数据，有新图片
      */
-    private boolean requestUpdateDataOfNewPic(Uri uri,final int id) {
+    private boolean requestUpdateDataOfNewPic(final Uri uri,final int id) {
         showLoadingDialog();
         final boolean[] isSuccess = new boolean[1];
         luban(uri, new DefOnUploadPicListener() {
@@ -309,16 +297,26 @@ public class BusniessCompanyActivity extends BaseActivity {
             public void onLoadPicFinish(String imgUrl) {
                 super.onLoadPicFinish(imgUrl);
 //                requestUpdateData(imgUrl);
-                  pic.put(id,imgUrl);
-                ToastUtils.show("上传图片成功");
+                pic.put(id,imgUrl);
+                switch (id) {
+                    case R.id.imagebtn_licence:
+                        setSdvBig(id, uri);
+                        break;
+                    case R.id.imagebtn_shop:
+                        setSdvBig(id, uri);
+                        break;
+                    default:
+                        addpic(uri, id);
+                        break;
+                }
                 hideLoadingDialog();
-                isSuccess[0] =true;
+
             }
 
             @Override
             public void onLoadPicUnSuccessFinish() {
                 super.onLoadPicUnSuccessFinish();
-                ToastUtils.show("上传图片失败");
+
                 hideLoadingDialog();
                 isSuccess[0] =false;
             }

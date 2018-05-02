@@ -38,7 +38,7 @@ public class ActivityJumpUtils {
     public  static void actActivity(Activity act,Class ca){
         Intent intent =new Intent(act,ca);
         act.startActivity(intent);
-//        act.overridePendingTransition(0,0);
+        act.overridePendingTransition(0,0);
     }
     /**
      * 跳转到引导页
@@ -69,6 +69,7 @@ public class ActivityJumpUtils {
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         BundleUtils.getInstance().putInt(BundleKey.TYPE, type).addIntent(intent);
         act.startActivity(intent);
+        act.overridePendingTransition(0,0);
     }
     /**
      * 跳转到注册
@@ -80,6 +81,7 @@ public class ActivityJumpUtils {
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         BundleUtils.getInstance().putString(BundleKey.PHONE, phone).addIntent(intent);
         act.startActivity(intent);
+        act.overridePendingTransition(0,0);
     }
     /**
      * 跳转到忘记密码
@@ -91,17 +93,10 @@ public class ActivityJumpUtils {
         Intent intent = new Intent(activity, ForgetActivity.class);
         BundleUtils.getInstance().putString(BundleKey.PHONE, phone).addIntent(intent);
         activity.startActivity(intent);
-    }
-    /**
-     * 跳转到账号管理
-     *
-     * @param activity
-     */
-    public static void actLoginSwicth(Activity activity) {
-        Intent intent = new Intent(activity, LoginSwitchActivity.class);
+        activity.overridePendingTransition(0,0);
 
-        activity.startActivity(intent);
     }
+
     /**
      * 跳转到网页
      *
@@ -316,5 +311,6 @@ public class ActivityJumpUtils {
         bundle.putInt(BundleKey.TYPE, type);
         intent.putExtras(bundle);
         act.startActivity(intent);
+        act.overridePendingTransition(0,0);
     }
 }

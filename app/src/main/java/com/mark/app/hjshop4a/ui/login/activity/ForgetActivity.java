@@ -11,6 +11,7 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
+import com.mark.app.hjshop4a.common.utils.MD5Utils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
@@ -128,7 +129,7 @@ public class ForgetActivity extends BaseActivity {
         if (countDownUtils != null) {
                     countDownUtils.start();
                 }
-        App.getServiceManager().getPdmService().getCode(strPhone,"","1")
+        App.getServiceManager().getPdmService().getCode(strPhone,"","2")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {
@@ -162,8 +163,19 @@ public class ForgetActivity extends BaseActivity {
         String phone = getTvText(R.id.et_username);
         String code = getTvText(R.id.et_code);
         String pwd = getTvText(R.id.et_pwd);
-
-        App.getServiceManager().getPdmService().forgetPSW(phone,code,pwd)
+        if (!ValidShowBtnUtils.phone(phone)) {
+            ToastUtil.show(R.string.login_手机号格式不正确);
+            return;
+        }
+        if (!ValidUtils.verifyCode(code)) {
+            ToastUtils.show(R.string.login_验证码格式不正确);
+            return;
+        }
+        if (!ValidUtils.pwd(pwd)) {
+            ToastUtils.show(R.string.login_密码格式错误);
+            return;
+        }
+        App.getServiceManager().getPdmService().forgetPSW(phone,code, MD5Utils.md5(pwd))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {

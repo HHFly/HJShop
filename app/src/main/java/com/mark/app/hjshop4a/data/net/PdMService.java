@@ -20,6 +20,7 @@ import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
 import com.mark.app.hjshop4a.ui.areaagent.businessreview.model.BusinessReview;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCategory;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
@@ -31,6 +32,7 @@ import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeInList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUpList;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.model.Shop;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
 import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
@@ -38,6 +40,7 @@ import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -77,6 +80,7 @@ public interface PdMService {
 
         public static PdMService newService(String mBaseUrl) {
             Gson gson = new GsonBuilder().create();
+            System.setProperty("https.protocols", "TLSv1.2,TLSv1.1,SSLv3");
             OkHttpClient client = getOkHttpClient();
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(mBaseUrl)
@@ -255,7 +259,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                           @Field("passwd") String passwd);
 
     /*
-    * 验证码
+    * 验证码0 登录 1 注册 2 找回密码
     * */
     @GET("/api/user/getCaptcha")
     Observable<BaseResultEntity>getCode(@Query("telephone") String telephone,
@@ -270,14 +274,17 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
 /*
 * 新增银行卡1 添加 2 删除
 * */
-@FormUrlEncoded
+    @FormUrlEncoded
     @POST("/api/app/bank/edit")
-    Observable<BaseResultEntity>editBnakCard(@Field("type") int type,
+    Observable<BaseResultEntity>editBnakCard(@Field("bankId") long bankId,
+                                             @Field("type") int type,
                                             @Field("accountHolder") String accountHolder,
-                                            @Field("bankName") String bankName,
+                                            @Field("bankCategoryId") long bankCategoryId,
                                             @Field("bankBranchName") String bankBranchName,
                                             @Field("bankAccount") String bankAccount);
-
+    /*返回银行*/
+    @GET("/api/app/bank/category/list")
+    Observable<BaseResultEntity<List<BankCategory>>>bangkCategory();
     /*
     //开户行id
     * */
@@ -296,6 +303,10 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     * 金豆消费数据*/
     @GET("/api/app/bean/consume/get")
     Observable<BaseResultEntity<BeanConsume>>getConsume();
+
+    /**/
+    @GET("/api/app/shop/shopInfo")
+    Observable<BaseResultEntity<Shop>>getShopName(@Query("shopId") long shopId);
     /*金豆消费*/
     @FormUrlEncoded
     @POST("/api/app/bean/consume")
@@ -430,6 +441,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /**/
     @GET("/api/app/merchant/apply")
     Observable<BaseResultEntity<BusinessReview>>busunessReview( @QueryMap Map<String, String> map);
-
-
+/*获取图片验证码*/
+    @GET("/api/randomVerification")
+    Observable<BaseResultEntity>randomVerification();
 }

@@ -6,6 +6,7 @@ import android.widget.EditText;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.userinfo.UserInfoType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.MD5Utils;
@@ -27,7 +28,7 @@ public class PayPWDActivity extends BaseActivity {
     private  boolean oldflag =false;
     @Override
     public int getContentViewResId() {
-        return R.layout.activity_user_modify_pwd;
+        return R.layout.activity_pay_psw;
     }
 
     @Override
@@ -93,7 +94,7 @@ public class PayPWDActivity extends BaseActivity {
         showLoadingDialog();
 
         App.getServiceManager().getPdmService()
-                .setUserInfo(type,userInfo.getMap())
+                .setUserInfo(UserInfoType.PAYPSW,userInfo.getMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {

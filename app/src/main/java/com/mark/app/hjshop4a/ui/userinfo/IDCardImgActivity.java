@@ -8,6 +8,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.userinfo.UserInfoType;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
@@ -148,7 +149,7 @@ public class IDCardImgActivity extends BaseActivity {
         showLoadingDialog();
 
         App.getServiceManager().getPdmService()
-                .setUserInfo(type,userInfo.getMap())
+                .setUserInfo(UserInfoType.CERTIFI,userInfo.getMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {

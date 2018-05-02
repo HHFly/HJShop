@@ -21,6 +21,7 @@ import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.model.Shop;
 import com.white.lib.utils.ToastUtil;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -32,14 +33,16 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MemberGoldBeanConsumeActivity extends BaseActivity{
 
-    private AddOneEtParamDialog mAddOneEtParamDialog;
+    private AddOneEtParamDialog mAddOneEtParamDialogId;
+    private AddOneEtParamDialog mAddOneEtParamDialogCount;
     private  Double  Ratiox =1.0;
     private Double BeanNum =0.0 ;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mAddOneEtParamDialog=null;
+        mAddOneEtParamDialogId=null;
+        mAddOneEtParamDialogCount=null;
     }
 
     @Override
@@ -80,11 +83,10 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
                 commit();
                 break;
             case R.id.bean_change_count:
-                showDialog();
+                showInputDialogCount( R.id.bean_change_count);
                 break;
             case R.id.shop_name:
-                FunctionDialogFactory.showAddOneParamDialogNum(this,"请输入店铺ID号",R.id.tv_user_shop_name);
-
+                showInputDialogID( R.id.shop_name);
         }
     }
 
@@ -146,31 +148,104 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
                 });
     }
     private void  bindData(BeanConsume data){
-        setTvText(R.id.gold_bean_count,data.getBeanNum());
-        BeanNum =NumParseUtils.parseDouble(data.getBeanNum());
-        Ratiox = NumParseUtils.parseDouble(data.getBeanRatio());
+        if(data!=null) {
+            setTvText(R.id.gold_bean_count, data.getBeanNum());
+            BeanNum = NumParseUtils.parseDouble(data.getBeanNum());
+            Ratiox = NumParseUtils.parseDouble(data.getBeanRatio());
+        }
     }
-    private  void showDialog(){
-        if(mAddOneEtParamDialog==null) {
-            mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(true);
-            mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
+    private  void showInputDialogID(final int id){
+        if(mAddOneEtParamDialogId==null) {
+            mAddOneEtParamDialogId = AddOneEtParamDialog.getInstance(true);
+            mAddOneEtParamDialogId.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
                 @Override
                 public void onClickCommit(AddOneEtParamDialog dialog, String data) {
-                    Double count = NumParseUtils.parseDouble(data);
-                    if (count < BeanNum) {
-                        setTvText(R.id.tv_bean_change_count, data);
-                        String cash = String.valueOf(count * Ratiox);
-                        setTvText(R.id.tv_money_count, cash);
+                   switch (id) {
+                       case  R.id.bean_change_count:
+                       Double count = NumParseUtils.parseDouble(data);
+                       if (count < BeanNum) {
+                           setTvText(R.id.tv_bean_change_count, data);
+                           String cash = String.valueOf(count * Ratiox);
+                           setTvText(R.id.tv_money_count, cash);
 
-                    }else {
-                        ToastUtils.show(getApplicationContext(),"超过可用金豆数");
-                    }
+                       } else {
+                           ToastUtils.show(getApplicationContext(), "超过可用金豆数");
+                       }
+                       break;
+                       case    R.id.shop_name:
+                           requestShopName(NumParseUtils.parseLong(data));
 
+                   }
                     dialog.dismiss();
                 }
             });
 
         }
-        mAddOneEtParamDialog.show(this.getFragmentManager());
+        mAddOneEtParamDialogId.show(this.getFragmentManager());
     }
+    private  void showInputDialogCount(final int id){
+        if(mAddOneEtParamDialogCount==null) {
+            mAddOneEtParamDialogCount = AddOneEtParamDialog.getInstance(true);
+            mAddOneEtParamDialogCount.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
+                @Override
+                public void onClickCommit(AddOneEtParamDialog dialog, String data) {
+                    switch (id) {
+                        case  R.id.bean_change_count:
+                            Double count = NumParseUtils.parseDouble(data);
+                            if (count < BeanNum) {
+                                setTvText(R.id.tv_bean_change_count, data);
+                                String cash = String.valueOf(count * Ratiox);
+                                setTvText(R.id.tv_money_count, cash);
+
+                            } else {
+                                ToastUtils.show(getApplicationContext(), "超过可用金豆数");
+                            }
+                            break;
+                        case    R.id.shop_name:
+                            requestShopName(NumParseUtils.parseLong(data));
+
+                    }
+                    dialog.dismiss();
+                }
+            });
+
+        }
+        mAddOneEtParamDialogCount.show(this.getFragmentManager());
+    }
+
+    /**
+     * 请求数据
+     */
+    private void requestShopName(long id) {
+        showLoadingDialog();
+        App.getServiceManager().getPdmService()
+                .getShopName(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<Shop>() {
+
+
+                    @Override
+                    public void onSuccess(BaseResultEntity<Shop> obj) {
+                        Shop data = obj.getResult();
+                        if(data!=null) {
+                            setTvText(R.id.tv_user_shop_name, data.getShopName());
+                        }
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+                        ToastUtils.show("不存在该店铺ID");
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+    }
+
+
 }

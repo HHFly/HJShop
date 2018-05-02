@@ -10,6 +10,7 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
+import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
@@ -71,13 +72,13 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
             case R.id.titlebar_tv_right:
 //                添加银行卡
                 Intent intent = new Intent(this, BankCardAddActivity.class);
-                this.startActivity(intent);
+                this.startActivityForResult(intent,1);
                 this.overridePendingTransition(0,0);
                 break;
         }
     }
     private void delete(BankCard data){
-        App.getServiceManager().getPdmService().editBnakCard(2,"",data.getBankName(),"",data.getBankNo())
+        App.getServiceManager().getPdmService().editBnakCard(data.getBankId(),2,"",0,"",data.getBankNo())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {
@@ -167,5 +168,13 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
         requestData(1,mPagingData.getTimestamp());
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode== ActResultCode.RESULT_OK){
+            mRefreshLayout.autoRefresh();
+        }
     }
 }

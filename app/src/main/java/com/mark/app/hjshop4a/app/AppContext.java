@@ -165,7 +165,7 @@ public class AppContext {
      */
     public void setUserInfo(UserInfo data) {
         mUserInfo = data;
-        if (data != null) {
+        if (data != null&&getIsAutoLogin()) {
 
             SPUtil.getInstance(mContext).putString(KEY_USERINFO, data.toJson());
         } else {
@@ -180,13 +180,14 @@ public class AppContext {
      */
     public void setLoginRepo(LoginRepo data) {
         mLoginRepo = data;
-        if (data != null) {
+        if (data != null&&getIsAutoLogin()) {
             //当前时间
             long curTime = System.currentTimeMillis();
             //超时时间秒
             int expiresIn = data.getExpiresIn();
             long endTime = curTime + expiresIn * 1000l;
             data.setEndTime(endTime);
+
             SPUtil.getInstance(mContext).putString(KEY_TOKEN, data.toJson());
         } else {
             SPUtil.getInstance(mContext).putString(KEY_TOKEN, new LoginRepo().toJson());
@@ -198,14 +199,14 @@ public class AppContext {
     * 是否自动登录
     * */
         public Boolean getIsAutoLogin(){
-          isAutoLogin= SPUtil.getInstance(mContext).getBoolean(KEY_AUTOLOGIN,false);
+//          isAutoLogin= SPUtil.getInstance(mContext).getBoolean(KEY_AUTOLOGIN,false);
         return isAutoLogin;
         }
 
 
     public void setIsAutoLogin(Boolean autoLogin){
        isAutoLogin =autoLogin;
-        SPUtil.getInstance(mContext).putBoolean(KEY_AUTOLOGIN,isAutoLogin);
+//        SPUtil.getInstance(mContext).putBoolean(KEY_AUTOLOGIN,isAutoLogin);
     }
     public int getRoleType(){
         UserInfo userInfo =getUserInfo();

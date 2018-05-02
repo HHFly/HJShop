@@ -69,12 +69,13 @@ public class BusniessInfoActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<BusinessApply> obj) {
                         BusinessApply data =obj.getResult();
                         mData =data;
-
-                        setTvText(R.id.user_tv_user_name,data.getBusniessApplyUserInfo().getUserRealName());
-                        setTvText(R.id.user_tv_user_phone,data.getBusniessApplyUserInfo().getCellphone());
-                        setTvText(R.id.user_tv_user_email,data.getBusniessApplyUserInfo().getEmail());
-                        setSdvInside(R.id.hm_sdv_logo,data.getBusniessApplyUserInfo().getUserHeadImg());
+                    if(data!=null) {
+                        setTvText(R.id.user_tv_user_name, data.getBusniessApplyUserInfo().getUserRealName());
+                        setTvText(R.id.user_tv_user_phone, data.getBusniessApplyUserInfo().getCellphone());
+                        setTvText(R.id.user_tv_user_email, data.getBusniessApplyUserInfo().getEmail());
+                        setSdvInside(R.id.hm_sdv_logo, data.getBusniessApplyUserInfo().getUserHeadImg());
                         SwitchAduit(data.getAuditStatus());
+                    }
                     }
 
 

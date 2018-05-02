@@ -169,7 +169,7 @@
             android:layout_marginTop="153px"
             android:layout_alignParentRight="true"
             android:layout_marginRight="110px"
-            android:src="@mipmap/ic_review_pass"/>
+            android:src="@mipmap/ic_uppass"/>
 
 
 

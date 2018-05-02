@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.ui.login.activity;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,8 +28,10 @@ import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.model.login.LoginParam;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
+import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
 
 
@@ -42,7 +45,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/13.
  */
 
-public class RegisterActivity extends BaseActivity {
+public class RegisterActivity extends BaseActivity  implements SelectInterface {
     //从上一个界面传递过来的手机号
     private String mPhone;
 
@@ -53,7 +56,7 @@ public class RegisterActivity extends BaseActivity {
     //倒计时工具类
     private CountDownUtils countDownUtils;
     //选择dialog
-    private WheelDialog wheelDialog;
+    private SelectAddressDialog wheelDialog;
 
     @Override
     public int getContentViewResId() {
@@ -63,7 +66,6 @@ public class RegisterActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         if(wheelDialog!=null){
-            wheelDialog.onDestroy();
             wheelDialog=null;
         }
 
@@ -166,25 +168,7 @@ public class RegisterActivity extends BaseActivity {
                 break;
             }
             case R.id.register_iv_region:{
-                AssetManager asset = getAssets();
-                InputStream input  =null;
-                try {
-                     input = asset.open("province_data.xml");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                WheelDialog dialog = WheelDialogFactory.getProvinceWheelDialog(input);
-                dialog.setOnDialogClickListener(new WheelDialog.OnDialogClickListener() {
-                    @Override
-                    public void onCancel() {
-
-                    }
-
-                    @Override
-                    public void onOk(PickerScrollView.ItemModel data) {
-                        setTvText(R.id.register_et_region,data.getName());
-                    }
-                }).show(getFragmentManager());
+             showDateDiaglog();
                 break;
             }
         }
@@ -235,7 +219,7 @@ public class RegisterActivity extends BaseActivity {
      * 注册
      */
     private void register() {
-        String strUserName = getTvText(R.id.register_et_username);
+        final String strUserName = getTvText(R.id.register_et_username);
         String strCode = getTvText(R.id.register_et_code);
         String strPwd = getTvText(R.id.register_et_pwd);
         String strInvitation = getTvText(R.id.register_et_invitation);
@@ -246,7 +230,7 @@ public class RegisterActivity extends BaseActivity {
         param.setCaptcha(strCode);
         param.setPassword(strPwd);
         param.setInviteCode(strInvitation);
-        param.setAddressConfigId(0);//区域选择
+        param.setAddressConfigId(1);//区域选择
         showLoadingDialog();
         App.getServiceManager().getPdmService().register(param.getMap())
                 .subscribeOn(Schedulers.io())
@@ -256,7 +240,10 @@ public class RegisterActivity extends BaseActivity {
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
                         ToastUtils.show("注册成功");
-                           finish();
+                        Intent intent = getIntent();
+                        intent.putExtra("Num", strUserName);
+                        setResult(2, intent);
+                        finish();
                     }
 
                     @Override
@@ -361,4 +348,19 @@ public class RegisterActivity extends BaseActivity {
         setViewSelected(R.id.register_iv_eye, flag);
     }
 
+    /**
+     * 弹出地址对话框--三级联动的效果
+     *
+     *
+     */
+    public void showDateDiaglog() {
+        wheelDialog = new SelectAddressDialog(this,
+                this, SelectAddressDialog.STYLE_THREE, null);
+        wheelDialog.showDialog();
+    }
+
+    @Override
+    public void selectedResult(String result) {
+            setTvText(R.id.register_et_region,result);
+    }
 }

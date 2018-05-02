@@ -38,9 +38,16 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        requestData();
+        requestImgCode();
+    }
+
+    @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"商家兑换金豆");
-        requestData();
+
     }
 
     @Override
@@ -49,6 +56,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
         setClickListener(R.id.button);
         setClickListener(R.id.shop_name);
         setClickListener(R.id.bean_change_count);
+        setClickListener(R.id.audit);
     }
 
     @Override
@@ -62,6 +70,9 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
                 break;
             case R.id.shop_name:
                 showDialog();
+                break;
+            case R.id.audit:
+                requestImgCode();
                 break;
         }
     }
@@ -132,7 +143,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
         setTvText(R.id.gold_bean_count,data.getBeanUsable());
         BeanNum =NumParseUtils.parseDouble(data.getBeanUsable());
         Ratiox = NumParseUtils.parseDouble(data.getDisCounts());
-        setSdvInside(R.id.audit,data.getCaptCha());
+
     }
     private  void showDialog(){
         if(mAddOneEtParamDialog==null) {
@@ -156,5 +167,38 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
 
         }
         mAddOneEtParamDialog.show(this.getFragmentManager());
+    }
+    /**
+     * 请求数据
+     */
+    private void requestImgCode() {
+        showLoadingDialog();
+        App.getServiceManager().getPdmService()
+                .randomVerification()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+
+
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                        String data = (String) obj.getResult();
+                        if(data!=null) {
+                            setSdvInside(R.id.audit,data);
+                        }
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }

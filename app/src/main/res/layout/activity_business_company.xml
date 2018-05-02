@@ -28,6 +28,7 @@
                 <TextView
                     android:id="@+id/company_tv_name"
                     style="@style/user_item_tv_content"
+                    android:gravity="right|center_vertical"
                     android:hint="请输入公司名称"
                     android:textColorHint="#666666"
                     android:layout_marginRight="0px"
@@ -39,7 +40,7 @@
                     android:id="@+id/imageView1" />
             </RelativeLayout>
         <View style="@style/BaseLine.Horizontal"/>
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/company_layout_loacl"
                 style="@style/user_item_layout"
                 android:background="@drawable/select_normal_bg">
@@ -49,61 +50,23 @@
                     android:text="所在区域"
                     android:layout_gravity="center_vertical"
                     />
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/spinner_p"
-                    android:background="@null"
-                    android:layout_weight="1" />
-                <ImageView
 
-                    style="@style/BaseImg.Right"
-                   android:src="@mipmap/ic_bottom_gray"
-                  android:layout_gravity="center_vertical"
-
-                   />
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/spinner_c"
-                    android:background="@null"
-
-                    android:layout_weight="1" />
-                <ImageView
-
-                    style="@style/BaseImg.Right"
-                    android:src="@mipmap/ic_bottom_gray"
-                    android:layout_gravity="center_vertical"
-
-                    />
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/spinner_a"
-                    android:background="@null"
-
-                    android:layout_weight="1" />
-                <ImageView
-
-                    style="@style/BaseImg.Right"
-                    android:src="@mipmap/ic_bottom_gray"
-                    android:layout_gravity="center_vertical"
-
-                    />
                 <TextView
-                    android:visibility="gone"
+
                     android:id="@+id/company_tv_loacl"
                     style="@style/user_item_tv_content"
                     android:layout_marginRight="0px"
                     android:layout_toLeftOf="@+id/imageView3" />
-                <ImageView
-                    android:visibility="gone"
-                    style="@style/BaseImg.Right"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:id="@+id/imageView3" />
 
-            </LinearLayout>
+                <ImageView
+
+                    android:id="@+id/imageView3"
+                    style="@style/BaseImg.Right"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true" />
+
+            </RelativeLayout>
             <View style="@style/BaseLine.Horizontal"/>
             <RelativeLayout
                 android:id="@+id/company_layout_address"
@@ -118,6 +81,7 @@
                 <TextView
                     android:id="@+id/company_tv_address"
                     style="@style/user_item_tv_content"
+                    android:gravity="right|center_vertical"
                     android:layout_marginRight="0px"
                     android:layout_toLeftOf="@+id/imageView4" />
                 <ImageView
@@ -177,6 +141,7 @@
                 <TextView
                     android:id="@+id/store_tv_name"
                     style="@style/user_item_tv_content"
+                    android:gravity="right|center_vertical"
                     android:hint="请输入店铺名称"
                     android:textColorHint="#666666"
                     android:layout_marginRight="0px"

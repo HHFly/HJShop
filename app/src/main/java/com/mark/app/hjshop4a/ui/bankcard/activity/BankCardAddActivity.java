@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.ui.bankcard.activity;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Spinner;
@@ -12,6 +13,7 @@ import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.bankcard.model.BankCategory;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBankItem;
 
@@ -26,8 +28,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class BankCardAddActivity extends BaseActivity {
-    //数据源
-    InfoBank mData;
+    Spinner sp;
 
     @Override
     public int getContentViewResId() {
@@ -63,13 +64,13 @@ public class BankCardAddActivity extends BaseActivity {
     private void requestData() {
         showLoadingDialog();
         App.getServiceManager().getPdmService()
-                .configBank()
+                .bangkCategory()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<InfoBank>() {
+                .subscribe(new DefaultObserver<List<BankCategory>>() {
                     @Override
-                    public void onSuccess(@NonNull BaseResultEntity<InfoBank> obj) {
-                        InfoBank data = obj.getResult();
+                    public void onSuccess(@NonNull BaseResultEntity<List<BankCategory>> obj) {
+                        List<BankCategory>data = obj.getResult();
                         bindData(data);
                     }
 
@@ -85,12 +86,12 @@ public class BankCardAddActivity extends BaseActivity {
      *
      * @param data
      */
-    private void bindData(InfoBank data) {
-        mData = data;
+    private void bindData(List<BankCategory> data) {
+
         if (data != null) {
 
-            List<InfoBankItem> list = data.getBankTypes();
-            initSpinner(data.getBankTypeId(), list);
+            List<BankCategory> list = data;
+            initSpinner(data.get(0).getBankCategoryId(), list);
         }
     }
     /**
@@ -99,14 +100,14 @@ public class BankCardAddActivity extends BaseActivity {
      * @param curId
      * @param data
      */
-    private void initSpinner(long curId, List<InfoBankItem> data) {
-        Spinner sp = getView(R.id.spinner);
-        BaseSpinnerAdapter<InfoBankItem> adapter = new BaseSpinnerAdapter<InfoBankItem>(data, R.layout.spinner_item_80_gravity_right) {
+    private void initSpinner(long curId, List<BankCategory> data) {
+        sp = getView(R.id.spinner);
+        BaseSpinnerAdapter<BankCategory> adapter = new BaseSpinnerAdapter<BankCategory>(data, R.layout.spinner_item_80_gravity_right) {
             @Override
-            public SpinnerModel getSpinnerModelItem(InfoBankItem data) {
+            public SpinnerModel getSpinnerModelItem(BankCategory data) {
                 SpinnerModel item = new SpinnerModel();
-                item.setId(data.getBankId());
-                item.setName(data.getBankName());
+                item.setId(data.getBankCategoryId());
+                item.setName(data.getBankCategoryName());
                 return item;
             }
         };
@@ -115,19 +116,16 @@ public class BankCardAddActivity extends BaseActivity {
     }
     private void commit() {
         String accountHolder =getTvText(R.id.account_name);
-        String bankName  =getTvText(R.id.item_et_account_number);
+        long bankCategoryId  =sp.getSelectedItemId();
         String bankBranchName =getTvText(R.id.item_et_bank_name);
-        String bankAccount =getTvText(R.id.card_number);
+        String bankAccount =getTvText(R.id.card_number).replaceAll(" ","");
 
 
         if (TextUtils.isEmpty(accountHolder)) {
             ToastUtils.show("请输入开户人姓名");
             return;
         }
-        if (TextUtils.isEmpty(bankName)) {
-            ToastUtils.show("请输入开户银行");
-            return;
-        }
+
         if (TextUtils.isEmpty(bankBranchName)) {
             ToastUtils.show("请输入开户银行名称");
             return;
@@ -138,13 +136,14 @@ public class BankCardAddActivity extends BaseActivity {
         }
         showLoadingDialog();
         App.getServiceManager().getPdmService()
-                .editBnakCard(1,accountHolder, bankName, bankBranchName, bankAccount)
+                .editBnakCard(0,1,accountHolder, bankCategoryId, bankBranchName, bankAccount)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {
                     @Override
                     public void onSuccess(@NonNull BaseResultEntity obj) {
                         ToastUtils.show("保存成功");
+
                         setResult(ActResultCode.RESULT_OK);
                         finish();
                     }

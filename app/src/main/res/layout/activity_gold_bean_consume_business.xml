@@ -91,6 +91,8 @@
         <RelativeLayout
             android:id="@+id/money_count"
             style="@style/user_item_layout"
+            android:focusable="false"
+            android:paddingRight="0px"
             android:background="@drawable/select_normal_bg">
 
             <TextView
@@ -103,12 +105,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:maxLength="4"
-                android:inputType="number"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/textView4"
                 android:layout_toStartOf="@+id/audit"
                 android:background="@null"
-                android:gravity="right|center_vertical"
+               android:gravity="center_vertical|right"
+                android:paddingRight="@dimen/textsize_30px"
                 android:textSize="@dimen/textsize_26px"
                 android:hint="请输入验证码"
                 android:textColorHint="#666666" />

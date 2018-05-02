@@ -7,6 +7,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
@@ -53,13 +54,17 @@ public class BusinessApplicationActivity extends BaseActivity {
                     BundleUtils.getInstance().putSerializable("userInfo", mData.getBusniessApplyUserInfo()).addIntent(intent);
                     this.startActivity(intent);
                 }else {
-                    ToastUtil.show("服务器繁忙稍后重试");
+                    ToastUtils.show("个人信息未设置");
                 }
                 break;
             case R.id.layout_company_info:
+                if(mData!=null) {
                 Intent intent = new Intent(this, BusniessCompanyActivity.class);
                 BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
                 this.startActivity(intent);
+                }else {
+                    ToastUtils.show("个人信息未设置");
+                }
                 break;
             case R.id.state:
                 break;
@@ -78,13 +83,14 @@ public class BusinessApplicationActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<BusinessApply> obj) {
                         BusinessApply data =obj.getResult();
                         mData =data;
-
-                        setTvText(R.id.user_tv_1,data.getBusniessApplyUserInfo().getUserNick());
-                        setTvText(R.id.user_tv_2,data.getBusniessApplyUserInfo().getUserRealName());
-                        setTvText(R.id.user_tv_3,data.getBusniessApplyUserInfo().getCellphone());
-                        setTvText(R.id.user_tv_4,data.getBusniessApplyUserInfo().getEmail());
-                        setSdvInside(R.id.hm_sdv_logo,data.getBusniessApplyUserInfo().getUserHeadImg());
+                    if(data!=null) {
+                        setTvText(R.id.user_tv_1, data.getBusniessApplyUserInfo().getUserNick());
+                        setTvText(R.id.user_tv_2, data.getBusniessApplyUserInfo().getUserRealName());
+                        setTvText(R.id.user_tv_3, data.getBusniessApplyUserInfo().getCellphone());
+                        setTvText(R.id.user_tv_4, data.getBusniessApplyUserInfo().getEmail());
+                        setSdvInside(R.id.hm_sdv_logo, data.getBusniessApplyUserInfo().getUserHeadImg());
                         SwitchAduit(data.getAuditStatus());
+                    }
                     }
 
 
@@ -107,9 +113,9 @@ public class BusinessApplicationActivity extends BaseActivity {
 
     private void  SwitchAduit(int auditStatus){
         switch (auditStatus){
-            case 0: setIvImage(R.id.aduit_logo,R.mipmap.ic_review_pass);break;
+            case 0: setIvImage(R.id.aduit_logo,R.mipmap.ic_in_review);break;
             case 1:setIvImage(R.id.aduit_logo,R.mipmap.ic_review_pass);break;
-            case 2:setIvImage(R.id.aduit_logo,R.mipmap.ic_review_pass);break;
+            case 2:setIvImage(R.id.aduit_logo,R.mipmap.ic_uppass);break;
 
         }
     }

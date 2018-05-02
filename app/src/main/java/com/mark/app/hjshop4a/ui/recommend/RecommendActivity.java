@@ -120,11 +120,14 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                     @Override
                     public void onSuccess(BaseResultEntity<ZXingCode> obj) {
                         ZXingCode data = obj.getResult();
-                        initRvAdapter(data, curPage == 1);
-                        if (mPagingData == null) {
-                            mPagingData = new PagingBaseModel();
+                        if(data!=null) {
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getRecommendList(), obj.getNowTime());
+
                         }
-                        mPagingData.setPagingInfo(curPage,data.getRecommendList(),obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
                     @Override

@@ -38,7 +38,11 @@ public class UserInfoActivity extends BaseActivity {
         mdata= App.getAppContext().getUserInfo();
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        update();
+    }
 
     @Override
     public void setListener() {
@@ -54,13 +58,13 @@ public class UserInfoActivity extends BaseActivity {
         switch (v.getId()){
             case R.id.certification_information:
                 Intent intent =new Intent(this,CertificationInfoActivity.class);
-                BundleUtils.getInstance().putSerializable("UserInfo",mdata).addIntent(intent);
+                BundleUtils.getInstance().putSerializable("UserInfoType",mdata).addIntent(intent);
                 this.startActivity(intent);
                 break;
             case R.id.basic_information:
                 //基本信息
                 Intent intent_i =new Intent(this,BasicInfoActivity.class);
-                BundleUtils.getInstance().putSerializable("UserInfo",mdata).addIntent(intent_i);
+                BundleUtils.getInstance().putSerializable("UserInfoType",mdata).addIntent(intent_i);
                 this.startActivity(intent_i);
 
                 break;
@@ -120,5 +124,34 @@ public class UserInfoActivity extends BaseActivity {
         });
 
         mAddOneEtParamDialog.show(this.getFragmentManager());
+    }
+
+    /**
+     * 请求数据
+     */
+    private void update() {
+        showLoadingDialog();
+        App.getServiceManager().getPdmService()
+                .getUserInfo(1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<UserInfo>() {
+
+
+                    @Override
+                    public void onSuccess(BaseResultEntity<UserInfo> obj) {
+                        UserInfo data = obj.getResult();
+                        mdata =data;
+                        //设置信息
+                        App.getAppContext().setUserInfo(data);
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }

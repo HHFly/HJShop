@@ -7,6 +7,7 @@ import android.widget.EditText;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.userinfo.UserInfoType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.MD5Utils;
@@ -99,7 +100,7 @@ public class ModifyPWActivity extends BaseActivity {
         showLoadingDialog();
 
         App.getServiceManager().getPdmService()
-                .setUserInfo(type,userInfo.getMap())
+                .setUserInfo(UserInfoType.CHANGEPSW,userInfo.getMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {

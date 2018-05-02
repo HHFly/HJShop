@@ -7,11 +7,20 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
  */
 
 public class BankCard extends BaseModel {
-   private String bankPic;
-   private String bankName;
-   private String bankType;
-   private String bankNo;
+    private long bankId;//银行卡ID
+   private String bankPic;//银行卡图标
+   private String bankName;//银行卡名称
+   private String bankType;//银行卡类型 0 普通 1 信用卡
+   private String bankNo;//银行卡号
     private boolean isSelect =false;
+
+    public long getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(long bankId) {
+        this.bankId = bankId;
+    }
 
     public boolean isSelect() {
         return isSelect;

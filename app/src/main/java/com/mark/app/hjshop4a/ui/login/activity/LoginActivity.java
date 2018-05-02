@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.ui.login.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -72,6 +73,14 @@ public class LoginActivity extends BaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==2){
+            setTvText(R.id.login_et_username,data.getStringExtra("Num"));
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         super.onClick(v);
         switch (v.getId()){
@@ -132,7 +141,12 @@ public class LoginActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<LoginRepo> obj) {
                         LoginRepo repo = obj.getResult();
                         repo.setNowTime(obj.getNowTime());
-                        requestData(repo);
+                        //                        是否自动登录
+                        App.getAppContext().setIsAutoLogin(isautologin);
+//                        保存登陆信息
+                        App.get().setLogin(repo);
+
+                        requestData();
 
                     }
                     @Override
@@ -156,7 +170,7 @@ public class LoginActivity extends BaseActivity {
     /**
      * 请求数据
      */
-    private void requestData(final LoginRepo repo) {
+    private void requestData() {
 //        showLoadingDialog();
         App.getServiceManager().getPdmService()
                 .getUserInfo(1)
@@ -169,10 +183,6 @@ public class LoginActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<UserInfo> obj) {
                         UserInfo data = obj.getResult();
 
-                        //保存登录信息
-                        App.get().setLogin(repo);
-//                        是否自动登录
-                        App.getAppContext().setIsAutoLogin(isautologin);
                         //初始化设置信息
                         App.getAppContext().setUserInfo(data);
                         finish();
