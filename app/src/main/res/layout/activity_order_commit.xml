@@ -225,7 +225,7 @@
                     android:background="@null"
                     android:gravity="right|center_vertical"
                     android:hint="请输入验证码"
-                    android:inputType="number"
+                    android:paddingRight="10px"
                     android:maxLength="4"
                     android:textColorHint="#666666"
                     android:textSize="@dimen/textsize_26px" />

@@ -19,7 +19,7 @@ import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
 import com.mark.app.hjshop4a.ui.business.busniessinfo.BusniessInfoActivity;
 import com.mark.app.hjshop4a.ui.business.consumecommit.ConsumeCommitActivity;
-import com.mark.app.hjshop4a.ui.business.goldbeanconsume.BusniessGoldBeanConsumeActivity;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.BusniessGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;

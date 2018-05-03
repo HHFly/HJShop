@@ -7,6 +7,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
@@ -46,16 +47,22 @@ public class BusniessInfoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.layout_certificates:
-                Intent intent1 =new Intent(this,BusinessStoreImgActivity.class);
-                BundleUtils.getInstance().putSerializable("CompanyInfo",mData.getCompanyInfo()).addIntent(intent1);
-                startActivity(intent1);
-
+                if(mData==null||mData.getCompanyInfo()==null||mData.getBusniessApplyUserInfo()==null){
+                    ToastUtils.show("服务器繁忙");
+                }else {
+                    Intent intent1 = new Intent(this, BusinessStoreImgActivity.class);
+                    BundleUtils.getInstance().putSerializable("CompanyInfo", mData.getCompanyInfo()).addIntent(intent1);
+                    startActivity(intent1);
+                }
                 break;
             case R.id.layout_company_info:
-                Intent intent =new Intent(this,CompanyInfoActivity.class);
-                BundleUtils.getInstance().putSerializable("CompanyInfo",mData.getCompanyInfo()).addIntent(intent);
-                startActivity(intent);
-
+                if(mData==null||mData.getCompanyInfo()==null||mData.getBusniessApplyUserInfo()==null){
+                    ToastUtils.show("服务器繁忙");
+                }else {
+                    Intent intent = new Intent(this, CompanyInfoActivity.class);
+                    BundleUtils.getInstance().putSerializable("CompanyInfo", mData.getCompanyInfo()).addIntent(intent);
+                    startActivity(intent);
+                }
                 break;
         }
     }

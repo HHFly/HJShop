@@ -72,27 +72,29 @@ public class BusinessStoreImgActivity extends BaseActivity {
         setTvText(R.id.titlebar_tv_title, "商户照片");
         setSdvInside(R.id.imagebtn_licence,mData.getLicencePic());
         setSdvInside(R.id.imagebtn_shop,mData.getShopImages());
-        setSdvBig(R.id.item_sdv_1,mData.getShopImagesIn().get(0));
         setViewVisibility(R.id.item_iv_delete_1,false);
         setViewVisibility(R.id.item_iv_delete_2,false);
         setViewVisibility(R.id.item_iv_delete_3,false);
         setViewVisibility(R.id.item_iv_delete_4,false);
 
+        if(mData.getShopImagesIn()!=null) {
+            setSdvBig(R.id.item_sdv_1, mData.getShopImagesIn().get(0));
 
-        if (mData.getShopImagesIn().get(1)!=""){
-            setSdvBig(R.id.item_sdv_2,mData.getShopImagesIn().get(1));
-            setViewVisibility(R.id.item_rl_2,true);
 
-        }
-        if (mData.getShopImagesIn().get(2)!=""){
-            setSdvBig(R.id.item_sdv_3,mData.getShopImagesIn().get(2));
-            setViewVisibility(R.id.item_rl_3,true);
-        }
-        if (mData.getShopImagesIn().get(3)!=""){
-            setSdvBig(R.id.item_sdv_4,mData.getShopImagesIn().get(3));
-            setViewVisibility(R.id.item_rl_4,true);
-        }
+            if (mData.getShopImagesIn().get(1) != "") {
+                setSdvBig(R.id.item_sdv_2, mData.getShopImagesIn().get(1));
+                setViewVisibility(R.id.item_rl_2, true);
 
+            }
+            if (mData.getShopImagesIn().get(2) != "") {
+                setSdvBig(R.id.item_sdv_3, mData.getShopImagesIn().get(2));
+                setViewVisibility(R.id.item_rl_3, true);
+            }
+            if (mData.getShopImagesIn().get(3) != "") {
+                setSdvBig(R.id.item_sdv_4, mData.getShopImagesIn().get(3));
+                setViewVisibility(R.id.item_rl_4, true);
+            }
+        }
     }
 
     @Override
@@ -131,16 +133,16 @@ public class BusinessStoreImgActivity extends BaseActivity {
 //                FunctionDialogFactory.showTakePhoneIDDialog(getAppCompatActivity(),R.id.item_sdv_4);
                 break;
             case R.id.item_iv_delete_1:
-                remove(R.id.item_sdv_1);
+//                remove(R.id.item_sdv_1);
                 break;
             case R.id.item_iv_delete_2:
-                remove(R.id.item_sdv_2);
+//                remove(R.id.item_sdv_2);
                 break;
             case R.id.item_iv_delete_3:
-                remove(R.id.item_sdv_3);
+//                remove(R.id.item_sdv_3);
                 break;
             case R.id.item_iv_delete_4:
-                remove(R.id.item_sdv_4);
+//                remove(R.id.item_sdv_4);
                 break;
         }
     }

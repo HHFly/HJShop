@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.business.goldbeanconsume;
+package com.mark.app.hjshop4a.ui.goldbeanconsume;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -10,9 +10,8 @@ import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
-import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.white.lib.utils.ToastUtil;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -78,8 +77,9 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
     }
     private void commit() {
         String cpatCha =getTvText(R.id.et_audit);
-        String beanTradeInNum= getTvText(R.id.tv_bean_change_count);
-        if(TextUtils.isEmpty(beanTradeInNum)){
+        String beanTradeInStr= getTvText(R.id.certification_tv_user_name);
+        int beanTradeInNum = NumParseUtils.parseInt(beanTradeInStr);
+        if(TextUtils.isEmpty(beanTradeInStr)){
             ToastUtils.show(getApplicationContext(),"请输入兑换的金豆数");
             return;
         }
@@ -152,10 +152,10 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
                 @Override
                 public void onClickCommit(AddOneEtParamDialog dialog, String data) {
                     Double count = NumParseUtils.parseDouble(data);
-                    if (count < BeanNum) {
-                        setTvText(R.id.tv_bean_change_count, data);
+                    if (count <= BeanNum) {
+                        setTvText(R.id.certification_tv_user_name, data);
                         String cash = String.valueOf(count * Ratiox);
-                        setTvText(R.id.tv_money_count, cash);
+                        setTvText(R.id.tv_bean_change_count, cash);
 
                     }else {
                         ToastUtils.show(getApplicationContext(),"超过可用金豆数");
@@ -169,7 +169,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
         mAddOneEtParamDialog.show(this.getFragmentManager());
     }
     /**
-     * 请求数据
+     * 请求图片验证码
      */
     private void requestImgCode() {
         showLoadingDialog();

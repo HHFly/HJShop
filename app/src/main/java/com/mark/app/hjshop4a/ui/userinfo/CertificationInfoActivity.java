@@ -72,7 +72,7 @@ public class CertificationInfoActivity extends BaseActivity {
             setTvText(R.id.user_tv_user_sex,SwitchSex(mData.getGender()));
             setTvText(R.id.user_tv_user_date,mData.getBirthday());
             setTvText(R.id.certification_tv_user_invitation,mData.getRecommend());
-            setTvText(R.id.tv_id_card,mData.getUserIdCard());
+            setTvText(R.id.tv_id_card,mData.getIdcard());
         }
     }
     @Override
@@ -116,7 +116,7 @@ public class CertificationInfoActivity extends BaseActivity {
             case R.id.rl_id_card_img:
                 //身份证
                 Intent intent =new Intent(this,IDCardImgActivity.class);
-                BundleUtils.getInstance().putString("userIdCardFront",mData.getUserIdCardFront()).putString("userIdCardSide",mData.getUserIdCardSide()).addIntent(intent);
+                BundleUtils.getInstance().putString("userIdCardFront",mData.getIdcardFront()).putString("userIdCardSide",mData.getIdcardSide()).addIntent(intent);
                 this.startActivityForResult(intent,1);
                 break;
         }

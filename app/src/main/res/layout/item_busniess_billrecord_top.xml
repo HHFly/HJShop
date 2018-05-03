@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10px"
-                android:text="辖区内总营业额"
+                android:text="昨日报单"
                 android:textColor="@color/white"
                 android:textSize="22px" />
 
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10px"
-                android:text="辖区内当月营业额"
+                android:text="昨日报单"
                 android:textColor="@color/white"
                 android:textSize="22px"
                 android:layout_gravity="center_horizontal"
@@ -60,35 +60,6 @@
                 android:text=""/>
         </LinearLayout>
     </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/local_address"
-        android:layout_marginTop="15px"
-        android:layout_marginBottom="@dimen/textsize_20px"
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="100px">
-        <ImageView
-         android:layout_width="36px"
-         android:layout_height="36px"
-            android:layout_marginLeft="38px"
-        android:layout_gravity="center_vertical"
-        android:src="@mipmap/ic_address"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#333333"
-            android:layout_gravity="center_vertical"
-            android:textSize="24px"
-            android:text="当前位置:"/>
-        <TextView
-            android:id="@+id/cityName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#333333"
-            android:layout_gravity="center_vertical"
-            android:textSize="24px"
-            android:text=""/>
-    </LinearLayout>
+
+
 </LinearLayout>

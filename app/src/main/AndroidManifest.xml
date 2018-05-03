@@ -81,7 +81,7 @@
         <activity android:name=".ui.business.busniessinfo.BusniessInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.business.busniessinfo.CompanyInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.business.zxing.BusniessZxingActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.goldbeanconsume.BusniessGoldBeanConsumeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ui.goldbeanconsume.BusniessGoldBeanConsumeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.business.consumecommit.CommitRuleActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.business.consumecommit.ConsumeCommitActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.business.billrecord.BusniessBillRecordActivity" android:screenOrientation="portrait"/>

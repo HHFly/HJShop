@@ -165,7 +165,7 @@ public class AppContext {
      */
     public void setUserInfo(UserInfo data) {
         mUserInfo = data;
-        if (data != null&&getIsAutoLogin()) {
+        if (data != null) {
 
             SPUtil.getInstance(mContext).putString(KEY_USERINFO, data.toJson());
         } else {

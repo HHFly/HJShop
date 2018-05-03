@@ -20,6 +20,7 @@ import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
+import com.mark.app.hjshop4a.ui.business.consumecommit.model.CustomPram;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Model;
 import com.mark.app.hjshop4a.ui.businessapply.model.ShopCategory;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
@@ -55,6 +56,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
         setTvText(R.id.titlebar_tv_right,"说明");
         setIvImage(R.id.titlebar_iv_logo,R.mipmap.ic_tip);
         requestData();
+
     }
 
     @Override
@@ -162,13 +164,20 @@ public class ConsumeCommitActivity  extends BaseActivity{
                     public void onSuccess(BaseResultEntity<Custom> obj) {
                         Custom data =obj.getResult();
                             bindData(data);
+                        requestImgCode();
 
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+                        hideLoadingDialog();
                     }
 
                     @Override
                     public void onAllFinish() {
                         super.onAllFinish();
-                        hideLoadingDialog();
+//                        hideLoadingDialog();
                     }
                 });
     }
@@ -266,30 +275,78 @@ public class ConsumeCommitActivity  extends BaseActivity{
             ToastUtils.show("请输入商品价格");
             return;
         }
+        if(TextUtils.isEmpty(pic))
+        {
+            ToastUtils.show("请上传单据图片");
+            return;
+        }
         if(TextUtils.isEmpty(audit))
         {
             ToastUtils.show("请输入验证码");
             return;
         }
-//        App.getServiceManager().getPdmService()
-//                .merchantApply(companyName, "", "", "", completeAddress, shopName, shopCategoryId, licenceImage, shopImagesIn, shopImages)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new DefaultObserver() {
-//                    @Override
-//                    public void onSuccess(BaseResultEntity obj) {
-//                        ToastUtils.show("提交成功");
-//                        setResult(ActResultCode.RESULT_OK);
-//                        finish();
-//                    }
-//
-//                    @Override
-//                    public void onAllFinish() {
-//                        super.onAllFinish();
-//                        hideLoadingDialog();
-//                    }
-//                });
+        CustomPram customPram =new CustomPram();
+        customPram.setCellPhone(memberId);
+        customPram.setModelId(ModelId);
+        customPram.setOcMoeny(consumecount);
+        customPram.setProductName(commodityname);
+        customPram.setProductNum(NumParseUtils.parseInt(commodityconut));
+        customPram.setProductPrice(commodityprice);
+        customPram.setBuyProof(pic);
+        customPram.setCaptchaPc(audit);
+        App.getServiceManager().getPdmService()
+                .customs(customPram.getMap())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                        ToastUtils.show("提交成功");
+                        setResult(ActResultCode.RESULT_OK);
+                        finish();
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
 
 
+    }
+
+    /**
+     * 请求图片验证码
+     */
+    private void requestImgCode() {
+        showLoadingDialog();
+        App.getServiceManager().getPdmService()
+                .randomVerification()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+
+
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                        String data = (String) obj.getResult();
+                        if(data!=null) {
+                            setSdvInside(R.id.audit,data);
+                        }
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }

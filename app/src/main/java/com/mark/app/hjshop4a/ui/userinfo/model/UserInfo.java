@@ -24,32 +24,32 @@ public class UserInfo extends BaseModel {
     private  String userHeadImg;//用户头像
     private String userTypeId;//用户角色ID
 
-    private  String userIdCard;
-    private  String userIdCardFront;
-    private  String userIdCardSide;
+    private  String idCard;
+    private  String idCardFront;
+    private  String idCardSide;
 
-    public String getUserIdCard() {
-        return userIdCard;
+    public String getIdcard() {
+        return idCard;
     }
 
-    public void setUserIdCard(String userIdCard) {
-        this.userIdCard = userIdCard;
+    public void setIdcard(String idcard) {
+        this.idCard = idcard;
     }
 
-    public String getUserIdCardFront() {
-        return userIdCardFront;
+    public String getIdcardFront() {
+        return idCardFront;
     }
 
-    public void setUserIdCardFront(String userIdCardFront) {
-        this.userIdCardFront = userIdCardFront;
+    public void setIdcardFront(String idcardFront) {
+        this.idCardFront = idcardFront;
     }
 
-    public String getUserIdCardSide() {
-        return userIdCardSide;
+    public String getIdcardSide() {
+        return idCardSide;
     }
 
-    public void setUserIdCardSide(String userIdCardSide) {
-        this.userIdCardSide = userIdCardSide;
+    public void setIdcardSide(String idcardSide) {
+        this.idCardSide = idcardSide;
     }
 
     public String getUserName() {

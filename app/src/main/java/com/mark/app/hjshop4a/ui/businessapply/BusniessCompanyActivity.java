@@ -22,8 +22,11 @@ import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.businessapply.model.AddressInfo;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.businessapply.model.CompanyInfo;
+import com.mark.app.hjshop4a.ui.businessapply.model.MerchantApplyPram;
 import com.mark.app.hjshop4a.ui.businessapply.model.ShopCategory;
+import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
+import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 import com.white.lib.utils.TakePhoneUtil;
 import com.white.lib.utils.ToastUtil;
 
@@ -40,7 +43,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/18.
  */
 
-public class BusniessCompanyActivity extends BaseActivity {
+public class BusniessCompanyActivity extends BaseActivity implements SelectInterface {
     private BusinessApply mData;
     private CompanyInfo companyInfo;
     private AddressInfo addressInfo;
@@ -48,6 +51,8 @@ public class BusniessCompanyActivity extends BaseActivity {
     private List<ShopCategory> shopCategorys;
     //是否同意
     private boolean isAgree;
+    //选择dialog
+    private SelectAddressDialog wheelDialog;
     Spinner spinner;
 
     private Map<Integer,Uri>mUris =new LinkedHashMap<>();
@@ -78,11 +83,11 @@ public class BusniessCompanyActivity extends BaseActivity {
      * @param repo
      */
     private void bindData(BusinessApply repo) {
-        if(repo!=null){
-            companyInfo=repo.getCompanyInfo();
-            shopCategory=companyInfo.getShopCategory();
-            shopCategorys =repo.getShopCategoryList();
-            addressInfo =companyInfo.getAddressInfo();
+        if(repo!=null) {
+            companyInfo = repo.getCompanyInfo();
+            shopCategory = companyInfo.getShopCategory();
+            shopCategorys = repo.getShopCategoryList();
+            addressInfo = companyInfo.getAddressInfo();
             //设置分类下拉框
 
             BaseSpinnerAdapter adapter = new BaseSpinnerAdapter<ShopCategory>(shopCategorys) {
@@ -95,37 +100,42 @@ public class BusniessCompanyActivity extends BaseActivity {
 
                 }
             };
-            spinner =findViewById(R.id.spinner);
+            spinner = findViewById(R.id.spinner);
             spinner.setAdapter(adapter);
 
 
             //选中已经设置的分类id
-            long cId = shopCategory.getShopCategoryId();
-            spinner.setSelection(adapter.getPositionById(cId));
-            setTvText(R.id.company_tv_name,companyInfo.getCompanyName());
-            setTvText(R.id.company_tv_loacl,addressInfo.getProvince()+addressInfo.getCity()+addressInfo.getCounty());
-            setTvText(R.id.company_tv_address,addressInfo.getCompleteAddress());
+            if (shopCategory != null) {
+                spinner.setSelection(adapter.getPositionById(shopCategory.getShopCategoryId()));
+            }
+
+
+            setTvText(R.id.company_tv_name, companyInfo.getCompanyName());
+            setTvText(R.id.company_tv_loacl, addressInfo.getProvince() + addressInfo.getCity() + addressInfo.getCounty());
+            setTvText(R.id.company_tv_address, addressInfo.getCompleteAddress());
 //            setTvText(R.id.shop_tv_type,shopCategory.getShopCategoryName());
-            setTvText(R.id.store_tv_name,companyInfo.getShopName());
-            setSdvBig(R.id.imagebtn_licence,companyInfo.getLicencePic());
-            setSdvBig(R.id.imagebtn_shop,companyInfo.getShopImages());
-            setSdvBig(R.id.item_sdv_1,companyInfo.getShopImagesIn().get(0));
+            setTvText(R.id.store_tv_name, companyInfo.getShopName());
+            setSdvBig(R.id.imagebtn_licence, companyInfo.getLicencePic());
+            setSdvBig(R.id.imagebtn_shop, companyInfo.getShopImages());
+            if (companyInfo.getShopImagesIn() != null) {
+                setSdvBig(R.id.item_sdv_1, companyInfo.getShopImagesIn().get(0));
 
 
-            if (companyInfo.getShopImagesIn().get(1)!=""){
-                setSdvBig(R.id.item_sdv_2,companyInfo.getShopImagesIn().get(1));
-                setViewVisibility(R.id.item_rl_2,true);
+                if (companyInfo.getShopImagesIn().get(1) != "") {
+                    setSdvBig(R.id.item_sdv_2, companyInfo.getShopImagesIn().get(1));
+                    setViewVisibility(R.id.item_rl_2, true);
+                }
+                if (companyInfo.getShopImagesIn().get(2) != "") {
+                    setSdvBig(R.id.item_sdv_3, companyInfo.getShopImagesIn().get(2));
+                    setViewVisibility(R.id.item_rl_3, true);
+                }
+                if (companyInfo.getShopImagesIn().get(3) != "") {
+                    setSdvBig(R.id.item_sdv_4, companyInfo.getShopImagesIn().get(3));
+                    setViewVisibility(R.id.item_rl_4, true);
+                }
+                setViewVisibility(R.id.button, false);
+                setViewVisibility(R.id.layout_agree, false);
             }
-            if (companyInfo.getShopImagesIn().get(2)!=""){
-                setSdvBig(R.id.item_sdv_3,companyInfo.getShopImagesIn().get(2));
-                setViewVisibility(R.id.item_rl_3,true);
-            }
-            if (companyInfo.getShopImagesIn().get(3)!=""){
-                setSdvBig(R.id.item_sdv_4,companyInfo.getShopImagesIn().get(3));
-                setViewVisibility(R.id.item_rl_4,true);
-            }
-            setViewVisibility(R.id.button,false);
-            setViewVisibility(R.id.layout_agree,false);
         }
     }
     @Override
@@ -163,11 +173,11 @@ public class BusniessCompanyActivity extends BaseActivity {
                 break;
             case R.id.company_layout_loacl:
                 //所在区域
-                FunctionDialogFactory.showWheeDialog(this);
+                showDateDiaglog();
                 break;
             case R.id.company_layout_address:
                 //详细地址
-                FunctionDialogFactory.showAddOneParamDialog(this,"",R.id.company_tv_loacl);
+                FunctionDialogFactory.showAddOneParamDialog(this,"",R.id.company_tv_address);
                 break;
             case R.id.store_layout_name:
                 //店铺名称
@@ -175,7 +185,7 @@ public class BusniessCompanyActivity extends BaseActivity {
                 break;
             case R.id.shop_layout_type:
                 //店铺分类
-                FunctionDialogFactory.showAddOneParamDialog(this,"",R.id.shop_tv_type);
+
                 break;
 
             case R.id.register_layout_agree:
@@ -217,6 +227,14 @@ public class BusniessCompanyActivity extends BaseActivity {
             case R.id.item_iv_delete_4:
                 remove(R.id.item_sdv_4);
                 break;
+            case R.id.register_tv_agreement:
+                //同意协议内容
+                String url = "file:///android_asset/agreement/terms_and_conditions.html";
+                String title = getString(R.string.login_同意协议内容);
+                ActivityJumpUtils.actWebActivity(getActivity(), url, title);
+                break;
+
+
         }
     }
     @Override
@@ -371,8 +389,27 @@ public class BusniessCompanyActivity extends BaseActivity {
             ToastUtils.show("请上传店铺照片 ");
             return;
         }
+        if (!isAgree) {
+            ToastUtils.show(R.string.login_注册需要同意协议);
+            return;
+        }
+        MerchantApplyPram merchantApplyPram =new MerchantApplyPram();
+        merchantApplyPram.setShopName(shopName);//店铺名称
+        merchantApplyPram.setProvinceId(1);//省ID
+        merchantApplyPram.setCityId(1);//市ID
+        merchantApplyPram.setCountyId(1);//区ID
+        merchantApplyPram.setCompleteAddress(completeAddress);//详细地址
+        merchantApplyPram.setShopCateogryId(shopCategoryId);//类目ID
+        merchantApplyPram.setCompanyName(companyName);//公司名称
+        merchantApplyPram.setShopLicence(licenceImage);//营业执照
+        merchantApplyPram.setShopImg(shopImages);//店铺形象照片
+        merchantApplyPram.setShopInImg1(shopImagesIn1);
+        merchantApplyPram.setShopInImg2(shopImagesIn2);
+        merchantApplyPram.setShopInImg3(shopImagesIn3);
+        merchantApplyPram.setShopInImg4(shopImagesIn4);
+        merchantApplyPram.setIsReadProtocol("1");
         App.getServiceManager().getPdmService()
-                .merchantApply(companyName, "", "", "", completeAddress, shopName, shopCategoryId, licenceImage, shopImagesIn, shopImages)
+                .merchantApply(merchantApplyPram.getMap())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {
@@ -392,6 +429,7 @@ public class BusniessCompanyActivity extends BaseActivity {
     }
     private void  remove(int id){
         mUris.remove(id);
+        pic.remove(id);
         showpic(mUris);
     }
     /**
@@ -404,5 +442,21 @@ public class BusniessCompanyActivity extends BaseActivity {
 //        if (textWatcher != null) {
 //            textWatcher.onTextChanged("", 0, 0, 0);
 //        }
+    }
+
+    /**
+     * 弹出地址对话框--三级联动的效果
+     *
+     *
+     */
+    public void showDateDiaglog() {
+        wheelDialog = new SelectAddressDialog(this,
+                this, SelectAddressDialog.STYLE_THREE, null);
+        wheelDialog.showDialog();
+    }
+
+    @Override
+    public void selectedResult(String result) {
+        setTvText(R.id.company_tv_loacl,result);
     }
 }

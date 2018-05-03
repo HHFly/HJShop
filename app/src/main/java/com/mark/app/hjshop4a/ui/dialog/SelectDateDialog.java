@@ -84,22 +84,17 @@ public class SelectDateDialog implements OnWheelChangedListener {
         ok.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String str = String.format(Locale.CHINA,
-                        "%4d-%2d-%2d", year.getCurrentItem() + START_YEAR,//1900
-                        month.getCurrentItem() + 1, day.getCurrentItem() + 1);
-
+//                String str = String.format(Locale.CHINA,
+//                        "%4d年%2d月%2d日", year.getCurrentItem() + START_YEAR,//1900
+//                        month.getCurrentItem() + 1, day.getCurrentItem() + 1);
+             int dateyear =   year.getCurrentItem() + START_YEAR;//1900
+              int datemonth = month.getCurrentItem() + 1;
+              int dateday = day.getCurrentItem() + 1;
+                String time  =String.valueOf(dateyear)+"年"+String.valueOf(datemonth)+"月"+String.valueOf(dateday)+"日";
                 if(onDialogClickListener!=null){
-                    onDialogClickListener.onClickDate(str);
+                    onDialogClickListener.onClickDate(time);
                     dialog.cancel();
                 }
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                try {
-                    final Date date = dateFormat.parse(str);
-
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
             }
         });
         cancel.setOnClickListener(new OnClickListener() {
@@ -214,4 +209,6 @@ public class SelectDateDialog implements OnWheelChangedListener {
         void onClickDate(String str);
 
     }
+
+
 }

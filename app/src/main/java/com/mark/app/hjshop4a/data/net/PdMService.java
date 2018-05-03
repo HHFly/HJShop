@@ -24,7 +24,7 @@ import com.mark.app.hjshop4a.ui.bankcard.model.BankCategory;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
-import com.mark.app.hjshop4a.ui.business.goldbeanconsume.model.BusniessGoldBeanCS;
+import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDrawList;
@@ -37,6 +37,7 @@ import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
 import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
+import com.mark.app.hjshop4a.ui.withdraw.model.WithDraw;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -321,7 +322,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     * */
     @FormUrlEncoded
     @POST("/api/app/bean/tradeIn")
-    Observable<BaseResultEntity>tradeIn(@Field("beanTradeInNum") String beanTradeInNum,
+    Observable<BaseResultEntity>tradeIn(@Field("beanTradeInNum") int beanTradeInNum,
                                         @Field("cpatCha") String cpatCha);
     /*在线充值数据*/
     @GET("/api/app/topUp/online/get")
@@ -374,16 +375,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /*申请商户*/
     @FormUrlEncoded
     @POST("/api/app/merchant/apply")
-    Observable<BaseResultEntity>merchantApply(@Field("companyName") String companyName,
-                                              @Field("provinceId") String provinceId,
-                                              @Field("cityId") String cityId,
-                                              @Field("countyId") String countyId,
-                                              @Field("completeAddress") String completeAddress,
-                                              @Field("shopName") String shopName,
-                                              @Field("shopCategoryId") long shopCategoryId,
-                                              @Field("licenceImage") String licenceImage,
-                                              @Field("shopImagesIn") String shopImagesIn,
-                                              @Field("shopImages") String shopImages);
+    Observable<BaseResultEntity>merchantApply(@FieldMap  Map<String, String> map );
 
     /*个人信息获取*/
     @GET("/api/app/getUserInfo")
@@ -404,14 +396,22 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     Observable<BaseResultEntity<BillsRecord>>getCustomsList(@QueryMap Map<String, String> map,
                                                             @Query("startTime") long startTime,
                                                             @Query("endTime") long endTime);
+    /*商家报单提交*/
+    @FormUrlEncoded
+    @POST("/api/app/customs")
+    Observable<BaseResultEntity>customs(@FieldMap Map<String, String> map);
+
+    /*可以提现数据*/
+    @GET("/api/app/balance/withDraw/get")
+    Observable<BaseResultEntity<WithDraw>>withDrawget();
     /*提现*/
     @FormUrlEncoded
     @POST("/api/app/balance/withDraw")
     Observable<BaseResultEntity>withDraw(@Field("userType")int userType,
-                                         @Field("userType")String withDraw,
-                                         @Field("userType")String bank,
-                                         @Field("userType")String bankNumber,
-                                         @Field("userType")String remark);
+                                         @Field("withDraw")String withDraw,
+                                         @Field("bank")String bank,
+                                         @Field("bankNumber")String bankNumber,
+                                         @Field("remark")String remark);
     /*区域收益  类型 1 市 2 省*/
     @GET("/api/app/area/income")
     Observable<BaseResultEntity<AreaIncome>>areaincome(@Query("type") int type);

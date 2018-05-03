@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.business.goldbeanconsume.model;
+package com.mark.app.hjshop4a.ui.goldbeanconsume.model;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
 

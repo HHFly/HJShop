@@ -113,22 +113,20 @@ public class IDCardImgActivity extends BaseActivity {
             public void onLoadPicFinish(String imgUrl) {
                 super.onLoadPicFinish(imgUrl);
 //                requestUpdateData(imgUrl);
-                setSdvInside(id,imgUrl);
+
                 pic.put(id,imgUrl);
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
                 switch (id){
                     case R.id.imagebtn1:
                         commitUserInfo.setUserIdCardFront(imgUrl);
-                        requestData(1,commitUserInfo);
+                        requestData(R.id.imagebtn1,commitUserInfo,imgUrl);
                         break;
                     case R.id.imagebtn2:
                         commitUserInfo.setUserIdCardSide(imgUrl);
-                        requestData(1,commitUserInfo);
+                        requestData(R.id.imagebtn2,commitUserInfo,imgUrl);
                         break;
                 }
 
-
-                hideLoadingDialog();
                 isSuccess[0] =true;
             }
 
@@ -145,7 +143,7 @@ public class IDCardImgActivity extends BaseActivity {
     /**
      * 请求数据
      */
-    private void requestData(int type,CommitUserInfo userInfo) {
+    private void requestData(final int type, final CommitUserInfo userInfo,final  String url) {
         showLoadingDialog();
 
         App.getServiceManager().getPdmService()
@@ -157,8 +155,8 @@ public class IDCardImgActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
-
-
+                        setSdvBig(type,url);
+                        ToastUtils.show("上传图片成功");
                     }
 
                     @Override

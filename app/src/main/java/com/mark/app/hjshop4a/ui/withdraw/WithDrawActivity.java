@@ -9,15 +9,17 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingParam;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
+import com.mark.app.hjshop4a.common.androidenum.withdraw.WithDrawRole;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 
-import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardAddActivity;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.dialog.BankCardDialog;
+import com.mark.app.hjshop4a.ui.withdraw.model.WithDraw;
 
 import java.util.ArrayList;
 
@@ -33,16 +35,24 @@ public class WithDrawActivity extends BaseActivity {
     private Activity activity;
     private ArrayList<BankCard> bankCards;
     private BankCard currentCard;
+    private WithDraw withDrawData;//可提现金额
     @Override
     public int getContentViewResId() {
         return R.layout.activity_withdraw;
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        requestData(1);
+    }
+
+    @Override
     public void initView() {
         this.activity=this;
         setTvText(R.id.titlebar_tv_title,"提现");
-        requestData(1);
+
+
     }
 
     @Override
@@ -68,17 +78,29 @@ public class WithDrawActivity extends BaseActivity {
         }
 
     }
-
+    private  int  SwitchRole(int Role){
+        switch (Role){
+            case RoleType.MEMBER:
+                return 0;
+            case RoleType.BUSINESS:
+                 return WithDrawRole.BUSNIESS;
+            case RoleType.AREAAGENT:
+                return WithDrawRole.AREAGENT;
+            case RoleType.PROVINCIALAGENT:
+                return WithDrawRole.PAREAGENT;
+        }
+        return 0;
+    }
     private void commit() {
         String withDraw =getTvText(R.id.withDraw);
         String remark =getTvText(R.id.remark);
-        int Role =App.getAppContext().getRoleType();
+        String bankId =String.valueOf(currentCard.getBankId());
         if (TextUtils.isEmpty(withDraw)){
             ToastUtils.show("请输入金额");
             return;
         }
         showLoadingDialog();
-        App.getServiceManager().getPdmService().withDraw(Role,withDraw,currentCard.getBankName(),currentCard.getBankNo(),remark)
+        App.getServiceManager().getPdmService().withDraw(SwitchRole(App.getAppContext().getRoleType()),withDraw,bankId,currentCard.getBankNo(),remark)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver() {
@@ -119,12 +141,14 @@ public class WithDrawActivity extends BaseActivity {
                     @Override
                     public void onSuccess(BaseResultEntity<ArrayList<BankCard>> obj) {
                         bankCards =obj.getResult();
-                        if(bankCards!=null) {
+                        if(bankCards!=null&bankCards.size()!=0) {
                             currentCard =bankCards.get(0);
                             bankCards.get(0).setSelect(true);
                             setSdvSmall(R.id.iv_bnak_card, bankCards.get(0).getBankPic());
                             setTvText(R.id.item_tv_bank_name, bankCards.get(0).getBankName());
+                            requestWithDrawCash();
                         }
+
                     }
 
 
@@ -136,7 +160,7 @@ public class WithDrawActivity extends BaseActivity {
                     @Override
                     public void onAllFinish() {
                         super.onAllFinish();
-                        hideLoadingDialog();
+//                        hideLoadingDialog();
                     }
                 });
 
@@ -163,6 +187,7 @@ public class WithDrawActivity extends BaseActivity {
             @Override
             public void addbank() {
                 ActivityJumpUtils.actActivity(activity, BankCardAddActivity.class);
+
             }
         });
         bankCardDialog.show(getFragmentManager());
@@ -173,5 +198,31 @@ public class WithDrawActivity extends BaseActivity {
             bankCards.get(i).setSelect(false);
         }
         bankCards.get(pos).setSelect(true);
+    }
+
+    /**
+     * 请求可提现金额
+     */
+    private void requestWithDrawCash() {
+        showLoadingDialog();
+        App.getServiceManager().getPdmService()
+                .withDrawget()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<WithDraw>() {
+
+
+                    @Override
+                    public void onSuccess(BaseResultEntity<WithDraw> obj) {
+                        withDrawData = obj.getResult();
+                        setTvText(R.id.tv_cash_useful,withDrawData.getAccountBalance());
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }

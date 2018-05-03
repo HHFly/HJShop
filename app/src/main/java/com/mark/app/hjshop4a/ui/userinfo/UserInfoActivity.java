@@ -38,11 +38,7 @@ public class UserInfoActivity extends BaseActivity {
         mdata= App.getAppContext().getUserInfo();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        update();
-    }
+
 
     @Override
     public void setListener() {
@@ -57,15 +53,13 @@ public class UserInfoActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.certification_information:
-                Intent intent =new Intent(this,CertificationInfoActivity.class);
-                BundleUtils.getInstance().putSerializable("UserInfoType",mdata).addIntent(intent);
-                this.startActivity(intent);
+
+                requestCert();
                 break;
             case R.id.basic_information:
                 //基本信息
-                Intent intent_i =new Intent(this,BasicInfoActivity.class);
-                BundleUtils.getInstance().putSerializable("UserInfoType",mdata).addIntent(intent_i);
-                this.startActivity(intent_i);
+                updateBasicInfo();
+
 
                 break;
             case  R.id.forget_psw:
@@ -84,32 +78,6 @@ public class UserInfoActivity extends BaseActivity {
         }
     }
 
-    /**
-     * 请求数据
-     */
-    private void requestData(int type,CommitUserInfo userInfo) {
-//        showLoadingDialog();
-
-        App.getServiceManager().getPdmService()
-                .setUserInfo(type,userInfo.getMap())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
-
-
-                    @Override
-                    public void onSuccess(BaseResultEntity obj) {
-                        ToastUtils.show("修改成功");
-
-                    }
-
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
-    }
 
     private  void  ShowDialog(){
         AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(true);
@@ -129,7 +97,7 @@ public class UserInfoActivity extends BaseActivity {
     /**
      * 请求数据
      */
-    private void update() {
+    private void updateBasicInfo() {
         showLoadingDialog();
         App.getServiceManager().getPdmService()
                 .getUserInfo(1)
@@ -141,9 +109,12 @@ public class UserInfoActivity extends BaseActivity {
                     @Override
                     public void onSuccess(BaseResultEntity<UserInfo> obj) {
                         UserInfo data = obj.getResult();
-                        mdata =data;
+
+                        Intent intent_i =new Intent(getAppCompatActivity(),BasicInfoActivity.class);
+                        BundleUtils.getInstance().putSerializable("UserInfoType",data).addIntent(intent_i);
+                        getAppCompatActivity().startActivity(intent_i);
                         //设置信息
-                        App.getAppContext().setUserInfo(data);
+//                        App.getAppContext().setUserInfo(data);
 
                     }
 
@@ -154,4 +125,35 @@ public class UserInfoActivity extends BaseActivity {
                     }
                 });
     }
+    /**
+     * 请求认证
+     */
+    private void requestCert() {
+        showLoadingDialog();
+
+        App.getServiceManager().getPdmService()
+                .getUserInfo(2)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<UserInfo>() {
+
+
+                    @Override
+                    public void onSuccess(BaseResultEntity<UserInfo> obj) {
+                        UserInfo data = obj.getResult();
+
+                        Intent intent_i =new Intent(getAppCompatActivity(),CertificationInfoActivity.class);
+                        BundleUtils.getInstance().putSerializable("UserInfoType",data).addIntent(intent_i);
+                        getAppCompatActivity().startActivity(intent_i);
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+    }
+
 }

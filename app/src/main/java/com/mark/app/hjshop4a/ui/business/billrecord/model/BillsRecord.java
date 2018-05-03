@@ -23,16 +23,16 @@ public class BillsRecord extends BaseModel {
         this.customsList = customsList;
     }
 
-    public int getCustomsTotal() {
-        return customsTotal;
+    public String getCustomsTotal() {
+        return String.valueOf(customsTotal);
     }
 
     public void setCustomsTotal(int customsTotal) {
         this.customsTotal = customsTotal;
     }
 
-    public int getCustomsYestoday() {
-        return customsYestoday;
+    public String getCustomsYestoday() {
+        return String.valueOf(customsYestoday);
     }
 
     public void setCustomsYestoday(int customsYestoday) {

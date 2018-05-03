@@ -114,6 +114,7 @@ private BankCardRvAdapter mAdapter;
                 if (onBtnClickListenr != null) {
                     onBtnClickListenr.addbank();
                 }
+                dismiss();
         }
     }
 

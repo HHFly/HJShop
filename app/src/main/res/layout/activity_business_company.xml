@@ -94,7 +94,7 @@
             <LinearLayout
                 android:id="@+id/shop_layout_type"
                 style="@style/user_item_layout"
-                android:background="@drawable/select_normal_bg">
+               android:background="@color/white">
 
                 <TextView
                     style="@style/user_item_tv"
@@ -104,12 +104,14 @@
 
                 <Spinner
                     android:id="@+id/spinner"
-                    android:layout_width="286px"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="right|center_vertical"
-                    android:dropDownWidth="200px"
-                    android:background="@null" />
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10px"
+                    android:layout_weight="1.0"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textsize_26px" />
                 <TextView
                     android:visibility="gone"
                     android:id="@+id/shop_tv_type"
@@ -119,6 +121,7 @@
                     android:layout_marginRight="0px"
                     android:layout_toLeftOf="@+id/imageView2" />
                 <ImageView
+                    android:visibility="gone"
                     style="@style/BaseImg.Right"
                     android:layout_gravity="center_vertical"
                     android:src="@mipmap/ic_bottom_gray"
@@ -412,7 +415,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
-                    android:text="商家入驻协议"
+                    android:text="《商家入驻协议》"
                     android:textColor="#ff385c"
                     android:textSize="@dimen/textsize_24px" />
 

@@ -49,7 +49,7 @@ public class BusinessApplicationActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.layout_certificates:
-                if(mData!=null) {
+                if(mData!=null&&mData.getBusniessApplyUserInfo()!=null) {
                     Intent intent = new Intent(this, IdCardCheckActivity.class);
                     BundleUtils.getInstance().putSerializable("userInfo", mData.getBusniessApplyUserInfo()).addIntent(intent);
                     this.startActivity(intent);
@@ -83,7 +83,7 @@ public class BusinessApplicationActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<BusinessApply> obj) {
                         BusinessApply data =obj.getResult();
                         mData =data;
-                    if(data!=null) {
+                    if(data!=null&& data.getBusniessApplyUserInfo()!=null) {
                         setTvText(R.id.user_tv_1, data.getBusniessApplyUserInfo().getUserNick());
                         setTvText(R.id.user_tv_2, data.getBusniessApplyUserInfo().getUserRealName());
                         setTvText(R.id.user_tv_3, data.getBusniessApplyUserInfo().getCellphone());

@@ -104,18 +104,20 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
                     @Override
                     public void onSuccess(BaseResultEntity<BillsRecord> obj) {
                         BillsRecord data =obj.getResult();
-                        initRvAdapter(data, curPage == 1);
-                        if (mPagingData == null) {
-                            mPagingData = new PagingBaseModel();
+                        if(data!=null) {
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getCustomsList(), obj.getNowTime());
                         }
-                        mPagingData.setPagingInfo(curPage,data.getCustomsList(),obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
 
 
                     @Override
                     public void onUnSuccessFinish() {
-                        initRvAdapter(null, curPage == 1);
+                        initRvAdapter(new BillsRecord(), curPage == 1);
                         RefreshLayoutUtils.finish(mRefreshLayout);
                     }
 
@@ -149,7 +151,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
             mAdapter.notifyData(data.getCustomsList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.getCustomsList().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null|| data.getCustomsList()==null || data.getCustomsList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
 

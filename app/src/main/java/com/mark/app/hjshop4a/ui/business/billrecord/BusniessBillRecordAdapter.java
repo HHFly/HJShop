@@ -23,7 +23,7 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
 
     @Override
     public int getTopItemResId() {
-        return R.layout.item_area_busniess_top;
+        return R.layout.item_busniess_billrecord_top;
     }
 
     @Override
@@ -33,24 +33,26 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
 
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, BillsRecord billsRecord) {
-            holder.visibility(R.id.local_address,false);
-            holder.text(R.id.turnOverTotal,billsRecord.getCustomsTotal());
-            holder.text(R.id.yesterday_bill,billsRecord.getCustomsYestoday());
+        if(billsRecord!=null) {
 
+            holder.text(R.id.tv_turnOverTotal, billsRecord.getCustomsTotal());
+            holder.text(R.id.turnOverMonth, billsRecord.getCustomsYestoday());
+        }
     }
 
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPosition, Customs customs) {
-        holder.text(R.id.shopName,customs.getShopName());
-        holder.text(R.id.offlineOrderSn,customs.getCustomsTime());
-        holder.text(R.id.customsUerName,customs.getCustomsUerName());
-        holder.text(R.id.productName,customs.getProductName());
-        holder.text(R.id.productNum,customs.getProductNum());
-        holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
-        holder.text(R.id.customsMoney,customs.getCustomsMoney());
-        holder.text(R.id.serviceMony,customs.getServiceMony());
-        holder.text(R.id.customsStatus, BillUtil.swichAuditStatus(customs.getCustomsStatus()));
-
+        if(customs!=null) {
+            holder.text(R.id.shopName, customs.getShopName());
+            holder.text(R.id.offlineOrderSn, customs.getCustomsTime());
+            holder.text(R.id.customsUerName, customs.getCustomsUerName());
+            holder.text(R.id.productName, customs.getProductName());
+            holder.text(R.id.productNum, customs.getProductNum());
+            holder.text(R.id.customsTypeName, customs.getCustomsTypeName());
+            holder.text(R.id.customsMoney, customs.getCustomsMoney());
+            holder.text(R.id.serviceMony, customs.getServiceMony());
+            holder.text(R.id.customsStatus, BillUtil.swichAuditStatus(customs.getCustomsStatus()));
+        }
 
     }
     private OnItemClickListener onItemClickListener;
