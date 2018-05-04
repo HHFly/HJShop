@@ -10,6 +10,7 @@ import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.business.busniessinfo.BusinessStoreImgActivity;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.white.lib.utils.ToastUtil;
 
@@ -43,6 +44,14 @@ public class BusinessApplicationActivity extends BaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==RESULT_OK){
+            requestData();
+        }
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.titlebar_iv_return:
@@ -50,18 +59,22 @@ public class BusinessApplicationActivity extends BaseActivity {
                 break;
             case R.id.layout_certificates:
                 if(mData!=null&&mData.getBusniessApplyUserInfo()!=null) {
+
                     Intent intent = new Intent(this, IdCardCheckActivity.class);
                     BundleUtils.getInstance().putSerializable("userInfo", mData.getBusniessApplyUserInfo()).addIntent(intent);
-                    this.startActivity(intent);
+                    this.startActivityForResult(intent,1);
+
                 }else {
                     ToastUtils.show("个人信息未设置");
                 }
                 break;
             case R.id.layout_company_info:
                 if(mData!=null) {
-                Intent intent = new Intent(this, BusniessCompanyActivity.class);
-                BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
-                this.startActivity(intent);
+
+                        Intent intent = new Intent(this, BusniessCompanyActivity.class);
+                        BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
+                        this.startActivity(intent);
+
                 }else {
                     ToastUtils.show("个人信息未设置");
                 }
@@ -109,14 +122,16 @@ public class BusinessApplicationActivity extends BaseActivity {
 
 
     }
-    // 0 审核中 1 审核通过 2 审核不通过
+    // 0 审核中 1 审核通过 2 审核不通过 3未提交
 
     private void  SwitchAduit(int auditStatus){
         switch (auditStatus){
-            case 0: setIvImage(R.id.aduit_logo,R.mipmap.ic_in_review);break;
-            case 1:setIvImage(R.id.aduit_logo,R.mipmap.ic_review_pass);break;
-            case 2:setIvImage(R.id.aduit_logo,R.mipmap.ic_uppass);break;
-
+            case 0: setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_in_review);
+                    setViewVisibility(R.id.aduit_logo_apply,true);
+                     break;
+            case 1:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_review_pass);break;
+            case 2:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_uppass);break;
+            case 3:setViewVisibility(R.id.aduit_logo_apply,false);break;
         }
     }
 }

@@ -2,12 +2,14 @@ package com.mark.app.hjshop4a.ui.login.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
@@ -17,6 +19,10 @@ import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.valid.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.model.login.AreaAgentInfo;
+import com.mark.app.hjshop4a.model.login.BusniessInfo;
+import com.mark.app.hjshop4a.model.login.MemberInfo;
+import com.mark.app.hjshop4a.model.login.ProvenceAgentInfo;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
@@ -34,12 +40,12 @@ import io.reactivex.schedulers.Schedulers;
 
 public class LoginActivity extends BaseActivity {
     //来源：@LoginSource
-    int mSource;
+    int Role;
     //密码是否可见
     boolean isPwdShow;
     //是否自动登录
     boolean isautologin =false;
-
+    String account;//账号
     @Override
     public int getContentViewResId() {
       return R.layout.activity_login;
@@ -48,7 +54,11 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void getIntentParam(Bundle bundle) {
         super.getIntentParam(bundle);
-        mSource = BundleUtils.getInt(this, BundleKey.SOURCE, LoginSource.NORMAL);
+        Role =bundle.getInt("RoleType", RoleType.NOROLE);
+        account=bundle.getString("Phone");
+        if (account!=null){
+            setTvText(R.id.login_et_username,account);
+        }
     }
 
     @Override
@@ -93,13 +103,13 @@ public class LoginActivity extends BaseActivity {
             case R.id.login_tv_forget_pwd:{
                 //忘记密码
                 String strPhone = getTvText(R.id.login_et_username);
-                ActivityJumpUtils.actForgetPwd(getActivity(), strPhone);
+                ActivityJumpUtils.actForgetPwd(getActivity(), "");
                 break;
             }
             case R.id.titlebar_tv_right:{
 //               注册
                 String strPhone = getTvText(R.id.login_et_username);
-                ActivityJumpUtils.actRegister(getActivity(), strPhone);
+                ActivityJumpUtils.actRegister(getActivity(), "");
                 break;
             }
             case R.id.titlebar_iv_return:{
@@ -121,19 +131,23 @@ public class LoginActivity extends BaseActivity {
     }
 //d登录
     private void login() {
-        final String account = getTvText(R.id.login_et_username);
+        account = getTvText(R.id.login_et_username);
         String password = getTvText(R.id.login_et_pwd);
         if (!ValidUtils.get().phone(account)) {
-            NormalDialogFactory.getNormalDialogOneBtn()
-                    .setContentText(R.string.login_手机号格式错误)
-                    .show(getFragmentManager());
+
+            ToastUtils.show(R.string.login_手机号格式错误);
             return;
-        } else if (!ValidUtils.get().password(password)) {
+        }
+        if(TextUtils.isEmpty(password)){
+            ToastUtils.show("密码不能为空");
+            return;
+        }
+        if (!ValidUtils.get().password(password)) {
             ToastUtils.show(R.string.login_密码由6到20位字符组成);
             return;
         }
         showLoadingDialog();
-        App.getServiceManager().getPdmService().login( account, PdUtils.getMD5(password))
+        App.getServiceManager().getPdmService().login( account, PdUtils.getMD5(password),Role)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver<LoginRepo>() {
@@ -156,7 +170,34 @@ public class LoginActivity extends BaseActivity {
                     }
                 });
     }
-
+    private void  setRoleInfo(UserInfo data){
+        switch (Integer.parseInt(data.getUserTypeId())){
+            case RoleType.MEMBER:
+                MemberInfo memberInfo =new MemberInfo();
+                memberInfo.setNumber(account);
+                memberInfo.setHeadImg(data.getUserHeadImg());
+                App.getAppContext().setMemberInfo(memberInfo);
+                break;
+            case RoleType.BUSINESS:
+                BusniessInfo busniessInfo =new BusniessInfo();
+                busniessInfo.setNumber(account);
+                busniessInfo.setHeadImg(data.getUserHeadImg());
+                App.getAppContext().setBusniessInfo(busniessInfo);
+                break;
+            case RoleType.AREAAGENT:
+                AreaAgentInfo areaAgentInfo =new AreaAgentInfo();
+                areaAgentInfo.setNumber(account);
+                areaAgentInfo.setHeadImg(data.getUserHeadImg());
+                App.getAppContext().setAreaAgentInfo(areaAgentInfo);
+                break;
+            case RoleType.PROVINCIALAGENT:
+                ProvenceAgentInfo provenceAgentInfo =new ProvenceAgentInfo();
+                provenceAgentInfo.setNumber(account);
+                provenceAgentInfo.setHeadImg(data.getUserHeadImg());
+                App.getAppContext().setProvenceAgentInfo(provenceAgentInfo);
+                break;
+        }
+    }
     /**
      * 密码输入框是否可见
      *
@@ -183,8 +224,10 @@ public class LoginActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<UserInfo> obj) {
                         UserInfo data = obj.getResult();
 
-                        //初始化设置信息
+                        //设置信息
                         App.getAppContext().setUserInfo(data);
+                        //角色信息
+                        setRoleInfo( data);
                         finish();
                     }
 

@@ -42,7 +42,10 @@ public class AgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefor
             holder.text(R.id.tv_1_1, agentPreformance.getPerformanceCity().getPerformanceCityTotal().getTurnOver());
             holder.text(R.id.tv_1_2, agentPreformance.getPerformanceCity().getPerformanceCityTotal().getUserNum());
             holder.text(R.id.tv_1_3, agentPreformance.getPerformanceCity().getPerformanceCityTotal().getShopNum());
+        }else {
+            holder.setVisibility(false);
         }
+
     }
 
     @Override

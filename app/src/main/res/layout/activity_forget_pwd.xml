@@ -9,17 +9,10 @@
 
     <LinearLayout style="@style/input_layout">
 
-        <LinearLayout
-            android:id="@+id/layout_phone_code"
-            style="@style/phonecode_layout">
+        <TextView
 
-            <TextView
-                android:id="@+id/tv_phone_code"
-                style="@style/phonecode_tv" />
-
-            <!--<ImageView style="@style/phonecode_iv" />-->
-
-        </LinearLayout>
+            style="@style/login_input_tv"
+            android:text="@string/login_msg_username" />
 
         <com.mark.app.hjshop4a.widget.PhoneEditText
             android:id="@+id/et_username"

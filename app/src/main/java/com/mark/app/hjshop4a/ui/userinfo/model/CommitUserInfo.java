@@ -14,7 +14,7 @@ public class CommitUserInfo extends ParamBaseModel {
     private  String completeAddress;
     private  String userRealName;
     private  String birthday;
-    private  int gender;
+    private  String gender;
     private  String userIdCard;
     private  String userIdCardFront;
     private  String userIdCardSide;
@@ -79,11 +79,12 @@ public class CommitUserInfo extends ParamBaseModel {
         this.birthday = birthday;
     }
 
-    public int getGender() {
+
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(int gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

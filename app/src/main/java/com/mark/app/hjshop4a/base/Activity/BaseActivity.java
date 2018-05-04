@@ -387,7 +387,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
      */
     public void setIvImage(@IdRes int id, @DrawableRes int resId) {
         View view = getView(id);
-        if (view != null && view instanceof TextView) {
+        if (view != null && view instanceof ImageView) {
             ImageView tv = (ImageView) view;
            tv.setImageResource(resId);
         }

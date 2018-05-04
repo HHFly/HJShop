@@ -14,7 +14,8 @@ public class ValidUtils {
     //手机号
 //    private static final String PHONE = "(^\\d{4}0\\d{10}$)|(^\\d{2}0\\d{10}$)|(^\\d{2}\\d{10}$)|(^(0\\d{10})$)|(^\\d{10}$)|(^\\d{11}$)";
 //    private static final String PHONE = "(^44\\d{10}$)|(^0\\d{10}$)|(^1\\d{10}$)|(^[2-9]\\d{9}$)";
-    private static final String PHONE = "^\\d{10,}$";
+//    private static final String PHONE = "^\\d{11,}$";
+    private static final String PHONE = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147,145))\\d{8}$";
     //密码
     private static final String PWD = "^.{6,20}$";
     //联系人
@@ -95,7 +96,15 @@ public class ValidUtils {
     public static boolean phone(String data) {
         return Pattern.matches(PHONE, data);
     }
-
+    /**
+     * 校验手机号
+     *
+     * @param data
+     * @return
+     */
+    public static boolean Isphone(String data) {
+        return !Pattern.matches(PHONE, data);
+    }
     /**
      * 校验密码
      *

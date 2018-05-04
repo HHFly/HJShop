@@ -13,13 +13,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="原密码："/>
+            android:text="新密码："/>
         <EditText
             android:id="@+id/et_old_pwd"
             style="@style/login_input_et"
             android:layout_weight="1"
             android:paddingLeft="30px"
-            android:hint="请输入原密码"
+            android:hint="请输入新密码"
             android:inputType="textPassword"
             android:maxLength="20" />
 
@@ -33,7 +33,7 @@
             />
     </LinearLayout>
     <LinearLayout style="@style/input_layout"
-
+        android:visibility="gone"
         >
         <TextView
             style="@style/login_input_tv"
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="30px"
         android:paddingTop="20px"
-        android:text="密码长度6-12个字符"
+        android:text="密码长度6-20个字符"
         android:textSize="22px"/>
     <Button
         android:id="@+id/btn"

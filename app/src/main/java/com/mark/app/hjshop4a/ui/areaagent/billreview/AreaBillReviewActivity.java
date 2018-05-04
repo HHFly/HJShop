@@ -72,7 +72,7 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
                 finish();
                 break;
             case R.id.titlebar_tv_right:
-                ActivityJumpUtils.actCalendarView(this,"代理业绩");
+                ActivityJumpUtils.actCalendarView(this,"辖区报单申请");
                 break;
         }
     }
@@ -98,11 +98,13 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
                     @Override
                     public void onSuccess(BaseResultEntity<AreaBillReview> obj) {
                         AreaBillReview data =obj.getResult();
-                        initRvAdapter(data, curPage == 1);
-                        if (mPagingData == null) {
-                            mPagingData = new PagingBaseModel();
+                        if(data!=null&&data.getCustomsList()!=null) {
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getCustomsList(), obj.getNowTime());
                         }
-                        mPagingData.setPagingInfo(curPage,data.getCustomsList(),obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
 

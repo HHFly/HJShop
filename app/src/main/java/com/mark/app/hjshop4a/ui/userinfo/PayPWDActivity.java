@@ -76,13 +76,13 @@ public class PayPWDActivity extends BaseActivity {
             ToastUtils.show(R.string.login_密码格式错误);
             return;
         }
-        if(!ValidUtils.pwd(news)){
-            ToastUtils.show(R.string.login_密码格式错误);
-            return;
-        }
-        if(!old.equals(news)){
-            ToastUtils.show("两次密码不同");
-        }
+//        if(!ValidUtils.pwd(news)){
+//            ToastUtils.show(R.string.login_密码格式错误);
+//            return;
+//        }
+//        if(!old.equals(news)){
+//            ToastUtils.show("两次密码不同");
+//        }
         CommitUserInfo commitUserInf=new CommitUserInfo();
        commitUserInf.setPayPassword(MD5Utils.md5(old));
         requestData(3,commitUserInf);

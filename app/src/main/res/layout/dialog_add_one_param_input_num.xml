@@ -27,6 +27,8 @@
                 android:hint=""
                 android:background="@null"
                 android:maxLength="20"
+                android:maxEms="20"
+                android:ellipsize="end"
                 android:singleLine="true"
                 android:inputType="number"
                 android:gravity="center"

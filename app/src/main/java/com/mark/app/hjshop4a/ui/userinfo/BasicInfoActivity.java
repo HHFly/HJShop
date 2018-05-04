@@ -79,7 +79,7 @@ public class BasicInfoActivity extends BaseActivity implements SelectInterface {
                 break;
             case R.id.certification_layout_user_name:
 //                姓名
-                ShowDialog(R.id.certification_layout_user_name);
+                ShowDialog(R.id.certification_layout_user_name,getTvText(R.id.certification_tv_user_name));
 
                 break;
             case R.id.certification_layout_user_city:
@@ -88,7 +88,7 @@ public class BasicInfoActivity extends BaseActivity implements SelectInterface {
                 break;
             case R.id.certification_layout_user_address:
 //                居住地址
-                ShowDialog(R.id.certification_layout_user_address);
+                ShowDialog(R.id.certification_layout_user_address,getTvText(R.id.certification_tv_user_address));
 
                 break;
         }
@@ -122,8 +122,8 @@ public class BasicInfoActivity extends BaseActivity implements SelectInterface {
     }
 
 //    填写信息dialog
-    private  void  ShowDialog(final int type){
-        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(false);
+    private  void  ShowDialog(final int type,final String text){
+        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(false,text);
 
         mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
             @Override

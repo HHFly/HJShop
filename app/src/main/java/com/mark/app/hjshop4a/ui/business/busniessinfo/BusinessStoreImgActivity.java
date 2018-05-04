@@ -71,30 +71,27 @@ public class BusinessStoreImgActivity extends BaseActivity {
         mPicUris =new ArrayList<>();
         setTvText(R.id.titlebar_tv_title, "商户照片");
         setSdvInside(R.id.imagebtn_licence,mData.getLicencePic());
-        setSdvInside(R.id.imagebtn_shop,mData.getShopImages());
+        setSdvInside(R.id.imagebtn_shop,mData.getShopImg());
         setViewVisibility(R.id.item_iv_delete_1,false);
         setViewVisibility(R.id.item_iv_delete_2,false);
         setViewVisibility(R.id.item_iv_delete_3,false);
         setViewVisibility(R.id.item_iv_delete_4,false);
 
-        if(mData.getShopImagesIn()!=null) {
-            setSdvBig(R.id.item_sdv_1, mData.getShopImagesIn().get(0));
+        setSdvBig(R.id.item_sdv_1, mData.getShopInImg1());
+
+        setSdvBig(R.id.item_sdv_2, mData.getShopInImg2());
+        setViewVisibility(R.id.item_rl_2, true);
 
 
-            if (mData.getShopImagesIn().get(1) != "") {
-                setSdvBig(R.id.item_sdv_2, mData.getShopImagesIn().get(1));
-                setViewVisibility(R.id.item_rl_2, true);
 
-            }
-            if (mData.getShopImagesIn().get(2) != "") {
-                setSdvBig(R.id.item_sdv_3, mData.getShopImagesIn().get(2));
-                setViewVisibility(R.id.item_rl_3, true);
-            }
-            if (mData.getShopImagesIn().get(3) != "") {
-                setSdvBig(R.id.item_sdv_4, mData.getShopImagesIn().get(3));
-                setViewVisibility(R.id.item_rl_4, true);
-            }
-        }
+        setSdvBig(R.id.item_sdv_3, mData.getShopInImg3());
+        setViewVisibility(R.id.item_rl_3, true);
+
+
+        setSdvBig(R.id.item_sdv_4, mData.getShopInImg4());
+        setViewVisibility(R.id.item_rl_4, true);
+
+
     }
 
     @Override

@@ -16,11 +16,38 @@ public class LoginParam extends ParamBaseModel {
     private String captcha;     //验证码
     private String password;    //密码
     private String inviteCode;  //邀请码
+    private String provinceId;
+    private String cityId;
+    private String countyId;
     private  long addressConfigId; //地址配置Id
     //找回密码userName、verification、passwd
     private String userName;
     private String verification;
     private String passwd;
+
+    public String getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(String provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getCountyId() {
+        return countyId;
+    }
+
+    public void setCountyId(String countyId) {
+        this.countyId = countyId;
+    }
 
     /**
      * 设置加密密码

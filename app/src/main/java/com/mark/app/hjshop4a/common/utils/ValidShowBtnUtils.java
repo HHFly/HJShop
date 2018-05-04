@@ -13,8 +13,9 @@ public class ValidShowBtnUtils {
     //短信验证码
     private static final String VERIFY_CODE = "\\d{6}";
     //手机号
-    private static final String PHONE = "^\\d{10,}$";
-//    private static final String PHONE ="^((13[0-9])|(15[^4])|(166)|(17[0-8])|(18[0-9])|(19[8-9])|(147,145))\\d{8}$";
+//    private static final String PHONE = "^\\d{11,}$";
+    private static final String PHONE ="^((13[0-9])|(15[^4])|(166)|(17[0-8])|(18[0-9])|(19[8-9])|(147,145))\\d{8}$";
+
     //密码
     private static final String PWD = "^.{6,20}$";
     //联系人

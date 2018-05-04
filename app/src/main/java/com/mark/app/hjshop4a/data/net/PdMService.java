@@ -234,7 +234,8 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     @FormUrlEncoded
     @POST("/api/oauth2/login")
     Observable<BaseResultEntity<LoginRepo>> login(@Field("account") String account,
-                                                  @Field("password") String password);
+                                                  @Field("password") String password,
+                                                  @Field("type") int type);
 
 
     /**
@@ -376,7 +377,12 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     @FormUrlEncoded
     @POST("/api/app/merchant/apply")
     Observable<BaseResultEntity>merchantApply(@FieldMap  Map<String, String> map );
-
+    /*商户申请审核*/
+    @FormUrlEncoded
+    @POST("/api/app/proxy/toAccept")
+    Observable<BaseResultEntity>toAccept(@Field("shopId") long shopId,
+                                         @Field(("auditStatus"))int auditStatus ,
+                                         @Field(("auditRemark")) String auditRemark);
     /*个人信息获取*/
     @GET("/api/app/getUserInfo")
     Observable<BaseResultEntity<UserInfo>>getUserInfo(@Query("type") int type);
@@ -439,7 +445,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                                                 @Query("endTime") long endTime);
 
     /**/
-    @GET("/api/app/merchant/apply")
+    @GET("/api/app/merchant/apply/log")
     Observable<BaseResultEntity<BusinessReview>>busunessReview( @QueryMap Map<String, String> map);
 /*获取图片验证码*/
     @GET("/api/randomVerification")

@@ -122,18 +122,20 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
                         @Override
                         public void onSuccess(BaseResultEntity<BeanList> obj) {
                             BeanList data = obj.getResult();
-                            initRvAdapter(data.getBeanList(), curPage == 1);
-                            if (mPagingData == null) {
-                                mPagingData = new PagingBaseModel();
+                            if(data!=null) {
+                                initRvAdapter(data.getBeanList(), curPage == 1);
+                                if (mPagingData == null) {
+                                    mPagingData = new PagingBaseModel();
+                                }
+                                mPagingData.setPagingInfo(curPage, data.getBeanList(), obj.getNowTime());
                             }
-                            mPagingData.setPagingInfo(curPage, data.getBeanList(), obj.getNowTime());
                             RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
 
 
                         @Override
                         public void onUnSuccessFinish() {
-//                            initRvAdapter(null, curPage == 1);
+                            initRvAdapter(new ArrayList<Bean>(), curPage == 1);
                             RefreshLayoutUtils.finish(mRefreshLayout);
                         }
 

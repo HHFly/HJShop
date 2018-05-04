@@ -243,7 +243,10 @@ public class ConsumeCommitActivity  extends BaseActivity{
     private void requestUpdateData() {
 
         String memberId = getTvText(R.id.tv_member_id);//h会员账号
-        long ModelId = spinner.getSelectedItemId(); //服务类型
+        long ModelId=0;
+        if(spinner!=null) {
+            ModelId= spinner.getSelectedItemId(); //服务类型
+        }
         String consumecount = getTvText(R.id.tv_consmue_count);
         String commodityname = getTvText(R.id.tv_commodity_name);
         String commodityconut = getTvText(R.id.tv_commodity_conut);

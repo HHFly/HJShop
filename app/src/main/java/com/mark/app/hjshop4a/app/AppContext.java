@@ -7,6 +7,10 @@ import android.text.TextUtils;
 import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.model.login.AreaAgentInfo;
+import com.mark.app.hjshop4a.model.login.BusniessInfo;
+import com.mark.app.hjshop4a.model.login.MemberInfo;
+import com.mark.app.hjshop4a.model.login.ProvenceAgentInfo;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 import com.white.lib.utils.SPUtil;
@@ -22,12 +26,19 @@ public class AppContext {
     final String KEY_AUTOLOGIN ="autologin";//自动登录
     final  String KEY_ROLETYPE ="roletype";//角色
     final  String KEY_USERINFO ="userinfo";//个人信息
+    final  String KEY_MEMBERINFO ="memberinfo";//会员信息
+    final  String KEY_BUSNIESSINFO ="busniessinfo";//商户信息
+    final  String KEY_AREAAGENTINFO ="areaagentinfo";//市信息
+    final  String KEY_PROVENCEAGENTINFO ="provenceagentinfo";//省信息
     Context mContext;//getApplicationContext
 
     LoginRepo mLoginRepo;//登录数据
     Boolean isAutoLogin ;//是否自动登录
     UserInfo mUserInfo;//角色数据
-
+    MemberInfo memberInfo;//会员角色信息
+    BusniessInfo busniessInfo;
+    AreaAgentInfo areaAgentInfo;
+    ProvenceAgentInfo provenceAgentInfo;
     public AppContext(Context context) {
         mContext = context.getApplicationContext();
         init();
@@ -141,6 +152,119 @@ public class AppContext {
         return mLoginRepo;
     }
 
+    public BusniessInfo getBusniessInfo() {
+        if (busniessInfo == null) {
+            String json = SPUtil.getInstance(mContext).getString(KEY_BUSNIESSINFO, "");
+            if (TextUtils.isEmpty(json)) {
+                busniessInfo = new BusniessInfo();
+            } else {
+                busniessInfo = JsonUtils.fromJson(json, BusniessInfo.class);
+            }
+        }
+        return busniessInfo;
+    }
+
+    public void setBusniessInfo(BusniessInfo data) {
+        busniessInfo =data;
+
+        if (data != null) {
+
+            SPUtil.getInstance(mContext).putString(KEY_BUSNIESSINFO, data.toJson());
+        } else {
+            SPUtil.getInstance(mContext).putString(KEY_BUSNIESSINFO, new BusniessInfo().toJson());
+        }
+        LogUtils.logFormat(this, "setBusniessInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
+    }
+
+    public AreaAgentInfo getAreaAgentInfo() {
+        if (areaAgentInfo == null) {
+            String json = SPUtil.getInstance(mContext).getString(KEY_AREAAGENTINFO, "");
+            if (TextUtils.isEmpty(json)) {
+                areaAgentInfo = new AreaAgentInfo();
+            } else {
+                areaAgentInfo = JsonUtils.fromJson(json, AreaAgentInfo.class);
+            }
+        }
+        return areaAgentInfo;
+    }
+
+    public void setAreaAgentInfo(AreaAgentInfo data) {
+        areaAgentInfo =data;
+
+        if (data != null) {
+
+            SPUtil.getInstance(mContext).putString(KEY_AREAAGENTINFO, data.toJson());
+        } else {
+            SPUtil.getInstance(mContext).putString(KEY_AREAAGENTINFO, new AreaAgentInfo().toJson());
+        }
+        LogUtils.logFormat(this, "setAreaAgentInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
+    }
+    /**
+     * 获取省信息
+     *
+     * @return
+     */
+    public ProvenceAgentInfo getProvenceAgentInfo() {
+        if (provenceAgentInfo == null) {
+            String json = SPUtil.getInstance(mContext).getString(KEY_PROVENCEAGENTINFO, "");
+            if (TextUtils.isEmpty(json)) {
+                provenceAgentInfo = new ProvenceAgentInfo();
+            } else {
+                provenceAgentInfo = JsonUtils.fromJson(json, ProvenceAgentInfo.class);
+            }
+        }
+
+        return provenceAgentInfo;
+    }
+    /**
+     * 获取省信息
+     *
+     * @return
+     */
+    public void setProvenceAgentInfo(ProvenceAgentInfo data) {
+        provenceAgentInfo =data;
+
+        if (data != null) {
+
+            SPUtil.getInstance(mContext).putString(KEY_PROVENCEAGENTINFO, data.toJson());
+        } else {
+            SPUtil.getInstance(mContext).putString(KEY_PROVENCEAGENTINFO, new ProvenceAgentInfo().toJson());
+        }
+        LogUtils.logFormat(this, "setProvenceAgentInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
+    }
+
+    /**
+     * 获取会员信息
+     *
+     * @return
+     */
+    public MemberInfo getMemberInfo() {
+        if (memberInfo == null) {
+            String json = SPUtil.getInstance(mContext).getString(KEY_MEMBERINFO, "");
+            if (TextUtils.isEmpty(json)) {
+                memberInfo = new MemberInfo();
+            } else {
+                memberInfo = JsonUtils.fromJson(json, MemberInfo.class);
+            }
+        }
+        return memberInfo;
+    }
+    /**
+     * 更新会员信息
+     *
+     * @param data
+     */
+    public void setMemberInfo(MemberInfo data) {
+        memberInfo =data;
+
+        if (data != null) {
+
+            SPUtil.getInstance(mContext).putString(KEY_MEMBERINFO, data.toJson());
+        } else {
+            SPUtil.getInstance(mContext).putString(KEY_MEMBERINFO, new MemberInfo().toJson());
+        }
+        LogUtils.logFormat(this, "setMemberInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
+    }
     /**
      * 获取个人信息
      *

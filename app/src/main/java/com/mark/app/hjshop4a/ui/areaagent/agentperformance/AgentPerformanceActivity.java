@@ -140,7 +140,7 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
             mAdapter.notifyData(data.getPerformanceCityList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.getPerformanceCityList().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null || data.getPerformanceCityList() == null|| data.getPerformanceCityList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override

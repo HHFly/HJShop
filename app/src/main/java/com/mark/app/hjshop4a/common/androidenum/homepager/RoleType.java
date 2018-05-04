@@ -14,7 +14,8 @@ import java.lang.annotation.RetentionPolicy;
         RoleType.MEMBER,
         RoleType.BUSINESS,
         RoleType.AREAAGENT,
-        RoleType.PROVINCIALAGENT
+        RoleType.PROVINCIALAGENT,
+        RoleType.NOROLE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface RoleType {
@@ -35,4 +36,9 @@ public @interface RoleType {
      * 省代理
      */
     int PROVINCIALAGENT = 4;
+
+    /*
+    无角色
+    * */
+    int NOROLE =0;
 }

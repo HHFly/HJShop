@@ -51,5 +51,12 @@
             android:layout_marginLeft="11px"
             android:text="我的推荐"/>
     </LinearLayout>
-
+   <TextView
+       android:visibility="gone"
+       android:id="@+id/tip"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textColor="@color/colorText"
+       android:layout_marginLeft="48px"
+       android:text="还未有人被邀请，快去分享吧！"/>
 </LinearLayout>

@@ -12,10 +12,14 @@ public class CompanyInfo extends BaseModel {
     private  String companyName;//公司名称
     private  AddressInfo addressInfo;//地址信息
     private  String shopName;//店铺名称
-    private  ShopCategory shopCategory;//店铺分类(当前被选中)
+    private  long shopCategoryId;//店铺id(当前被选中)
+    private String shopCategoryName;//类目名称
     private  String licencePic;//营业执照照片
-    private List<String> shopImagesIn;//店铺内照片
-    private  String shopImages;//店铺形象照片
+    private  String shopImg;//店铺形象照片
+    private  String shopInImg1;//店铺内照片1
+    private  String shopInImg2;//店铺形象照片
+    private  String shopInImg3;//店铺形象照片
+    private  String shopInImg4;//店铺形象照片
 
     public String getCompanyName() {
         return companyName;
@@ -50,28 +54,59 @@ public class CompanyInfo extends BaseModel {
         this.licencePic = licencePic;
     }
 
-
-    public String getShopImages() {
-        return shopImages;
+    public long getShopCategoryId() {
+        return shopCategoryId;
     }
 
-    public void setShopImages(String shopImages) {
-        this.shopImages = shopImages;
+    public void setShopCategoryId(long shopCategoryId) {
+        this.shopCategoryId = shopCategoryId;
     }
 
-    public ShopCategory getShopCategory() {
-        return shopCategory;
+    public String getShopCategoryName() {
+        return shopCategoryName;
     }
 
-    public void setShopCategory(ShopCategory shopCategory) {
-        this.shopCategory = shopCategory;
+    public void setShopCategoryName(String shopCategoryName) {
+        this.shopCategoryName = shopCategoryName;
     }
 
-    public List<String> getShopImagesIn() {
-        return shopImagesIn;
+    public String getShopImg() {
+        return shopImg;
     }
 
-    public void setShopImagesIn(List<String> shopImagesIn) {
-        this.shopImagesIn = shopImagesIn;
+    public void setShopImg(String shopImg) {
+        this.shopImg = shopImg;
+    }
+
+    public String getShopInImg1() {
+        return shopInImg1;
+    }
+
+    public void setShopInImg1(String shopInImg1) {
+        this.shopInImg1 = shopInImg1;
+    }
+
+    public String getShopInImg2() {
+        return shopInImg2;
+    }
+
+    public void setShopInImg2(String shopInImg2) {
+        this.shopInImg2 = shopInImg2;
+    }
+
+    public String getShopInImg3() {
+        return shopInImg3;
+    }
+
+    public void setShopInImg3(String shopInImg3) {
+        this.shopInImg3 = shopInImg3;
+    }
+
+    public String getShopInImg4() {
+        return shopInImg4;
+    }
+
+    public void setShopInImg4(String shopInImg4) {
+        this.shopInImg4 = shopInImg4;
     }
 }

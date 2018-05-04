@@ -99,11 +99,13 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
                     @Override
                     public void onSuccess(BaseResultEntity<AgentPreformance> obj) {
                         AgentPreformance data =obj.getResult();
-                        initRvAdapter(data, curPage == 1);
-                        if (mPagingData == null) {
-                            mPagingData = new PagingBaseModel();
+                        if(data!=null&&data.getPerformanceProvinceList()!=null) {
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getPerformanceCityList(), obj.getNowTime());
                         }
-                        mPagingData.setPagingInfo(curPage,data.getPerformanceCityList(),obj.getNowTime());
                         RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                     }
 
@@ -140,7 +142,7 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
             mAdapter.notifyData(data,data.getPerformanceProvinceList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.getPerformanceCityList().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null|| data.getPerformanceCityList()==null || data.getPerformanceCityList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override

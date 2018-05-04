@@ -36,17 +36,16 @@ public class LoginSwitchAdapter extends BaseListRvAdapter<LoginType> {
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPos, final LoginType data) {
         holder.text(R.id.item_account_number_type,data.getTpye());
-
+        holder.sdvSmall(R.id.item_sdv_logo,data.getHeadImg());
         holder.text(R.id.item_account_number,data.getPhone());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
 
-                Intent intent =activity.getIntent();
-                intent.putExtra("LoginType",data);
-                activity.setResult(1,intent);
-                activity.finish();
+             if(onItemClickListener!=null){
+                 onItemClickListener.onClickUserInfo(data);
+             }
             }
         });
     }

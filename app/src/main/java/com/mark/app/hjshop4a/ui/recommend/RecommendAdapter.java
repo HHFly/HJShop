@@ -48,11 +48,16 @@ public class RecommendAdapter extends BaseHasTopListRvAdapter <ZXingCode, Recomm
         mBitmap = CodeUtils.createImage(zXingCode.getCode(), 300, 300, null);
         ImageView ZXing = (ImageView) holder.get(R.id.zxingcode);
         ZXing.setImageBitmap(mBitmap);
+        if(getBodyData().size()==0){
+            holder.visibility(R.id.tip,true);
+        }
     }
 
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPosition, Recommend recommend) {
-       holder.text(R.id.name, recommend.getName());
-       holder.text(R.id.date, recommend.getDate());
+        if(recommend!=null) {
+            holder.text(R.id.name, recommend.getName());
+            holder.text(R.id.date, recommend.getDate());
+        }
     }
 }

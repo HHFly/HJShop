@@ -74,7 +74,28 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"公司信息");
         bindData(mData);
+        if(mData.getAuditStatus()!=3){
+            setViewEnable(R.id.companyinfo_all,false);
+            setViewEnable(R.id.company_layout_name,false);
+            setViewEnable(R.id.company_layout_loacl,false);
+            setViewEnable(R.id.company_layout_address,false);
+            setViewEnable(R.id.store_layout_name,false);
+            setViewEnable(R.id.shop_layout_type,false);
+            setViewEnable(R.id.register_layout_agree,false);
+            setViewEnable(R.id.button,false);
 
+            setViewEnable(R.id.imagebtn_shop,false);
+            setViewEnable(R.id.imagebtn_licence,false);
+            setViewEnable(R.id.item_sdv_1,false);
+            setViewVisibility(R.id.item_iv_delete_1,false);
+            setViewEnable(R.id.item_sdv_2,false);
+            setViewVisibility(R.id.item_iv_delete_2,false);
+            setViewEnable(R.id.item_sdv_3,false);
+              setViewVisibility(R.id.item_iv_delete_3,false);
+            setViewEnable(R.id.item_sdv_4,false);
+
+            setViewVisibility(R.id.item_iv_delete_4,false);
+        }
 
     }
     /**
@@ -85,9 +106,9 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
     private void bindData(BusinessApply repo) {
         if(repo!=null) {
             companyInfo = repo.getCompanyInfo();
-            shopCategory = companyInfo.getShopCategory();
+
             shopCategorys = repo.getShopCategoryList();
-            addressInfo = companyInfo.getAddressInfo();
+//
             //设置分类下拉框
 
             BaseSpinnerAdapter adapter = new BaseSpinnerAdapter<ShopCategory>(shopCategorys) {
@@ -105,37 +126,32 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
 
 
             //选中已经设置的分类id
-            if (shopCategory != null) {
-                spinner.setSelection(adapter.getPositionById(shopCategory.getShopCategoryId()));
-            }
-
-
-            setTvText(R.id.company_tv_name, companyInfo.getCompanyName());
-            setTvText(R.id.company_tv_loacl, addressInfo.getProvince() + addressInfo.getCity() + addressInfo.getCounty());
-            setTvText(R.id.company_tv_address, addressInfo.getCompleteAddress());
+            if(companyInfo!=null) {
+                spinner.setSelection(adapter.getPositionById(companyInfo.getShopCategoryId()));
+                addressInfo = companyInfo.getAddressInfo();
+                setTvText(R.id.company_tv_name, companyInfo.getCompanyName());
+                setTvText(R.id.company_tv_loacl, addressInfo.getProvince() + addressInfo.getCity() + addressInfo.getCounty());
+                setTvText(R.id.company_tv_address, addressInfo.getCompleteAddress());
 //            setTvText(R.id.shop_tv_type,shopCategory.getShopCategoryName());
-            setTvText(R.id.store_tv_name, companyInfo.getShopName());
-            setSdvBig(R.id.imagebtn_licence, companyInfo.getLicencePic());
-            setSdvBig(R.id.imagebtn_shop, companyInfo.getShopImages());
-            if (companyInfo.getShopImagesIn() != null) {
-                setSdvBig(R.id.item_sdv_1, companyInfo.getShopImagesIn().get(0));
+                setTvText(R.id.store_tv_name, companyInfo.getShopName());
+                setSdvBig(R.id.imagebtn_licence, companyInfo.getLicencePic());
+                setSdvBig(R.id.imagebtn_shop, companyInfo.getShopImg());
+
+                setSdvBig(R.id.item_sdv_1, companyInfo.getShopInImg1());
+
+                setSdvBig(R.id.item_sdv_2, companyInfo.getShopInImg2());
+                setViewVisibility(R.id.item_rl_2, true);
 
 
-                if (companyInfo.getShopImagesIn().get(1) != "") {
-                    setSdvBig(R.id.item_sdv_2, companyInfo.getShopImagesIn().get(1));
-                    setViewVisibility(R.id.item_rl_2, true);
-                }
-                if (companyInfo.getShopImagesIn().get(2) != "") {
-                    setSdvBig(R.id.item_sdv_3, companyInfo.getShopImagesIn().get(2));
-                    setViewVisibility(R.id.item_rl_3, true);
-                }
-                if (companyInfo.getShopImagesIn().get(3) != "") {
-                    setSdvBig(R.id.item_sdv_4, companyInfo.getShopImagesIn().get(3));
-                    setViewVisibility(R.id.item_rl_4, true);
-                }
-                setViewVisibility(R.id.button, false);
-                setViewVisibility(R.id.layout_agree, false);
+                setSdvBig(R.id.item_sdv_3, companyInfo.getShopInImg3());
+                setViewVisibility(R.id.item_rl_3, true);
+
+
+                setSdvBig(R.id.item_sdv_4, companyInfo.getShopInImg4());
+                setViewVisibility(R.id.item_rl_4, true);
+              
             }
+
         }
     }
     @Override
@@ -148,17 +164,17 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
         setClickListener(R.id.shop_layout_type);
         setClickListener(R.id.register_layout_agree);
         setClickListener(R.id.button);
-
+        setClickListener(R.id.register_tv_agreement);
         setClickListener(R.id.imagebtn_shop);
         setClickListener(R.id.imagebtn_licence);
         setClickListener(R.id.item_sdv_1);
-        setClickListener(R.id.item_iv_delete_1);
+//        setClickListener(R.id.item_iv_delete_1);
         setClickListener(R.id.item_sdv_2);
-        setClickListener(R.id.item_iv_delete_2);
+//        setClickListener(R.id.item_iv_delete_2);
         setClickListener(R.id.item_sdv_3);
-        setClickListener(R.id.item_iv_delete_3);
+//        setClickListener(R.id.item_iv_delete_3);
         setClickListener(R.id.item_sdv_4);
-        setClickListener(R.id.item_iv_delete_4);
+//        setClickListener(R.id.item_iv_delete_4);
     }
 
     @Override
@@ -270,9 +286,9 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
             mPicUris.add(str);
         }
 
-        setViewVisibility(R.id.item_rl_2,false);
-        setViewVisibility(R.id.item_rl_3,false);
-        setViewVisibility(R.id.item_rl_4,false);
+//        setViewVisibility(R.id.item_rl_2,false);
+//        setViewVisibility(R.id.item_rl_3,false);
+//        setViewVisibility(R.id.item_rl_4,false);
         Uri uri = Uri.parse("res:///" + R.mipmap.gird_storeimg_update);
         setSdvBig(R.id.item_sdv_1,uri);
         setSdvBig(R.id.item_sdv_2,uri);
@@ -408,6 +424,8 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
         merchantApplyPram.setShopInImg3(shopImagesIn3);
         merchantApplyPram.setShopInImg4(shopImagesIn4);
         merchantApplyPram.setIsReadProtocol("1");
+        merchantApplyPram.setLatitude("0");//纬度
+        merchantApplyPram.setLongitude("0");//精度
         App.getServiceManager().getPdmService()
                 .merchantApply(merchantApplyPram.getMap())
                 .subscribeOn(Schedulers.io())

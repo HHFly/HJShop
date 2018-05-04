@@ -36,7 +36,7 @@ public class BusinessReviewAdapter extends BaseHasTopListRvAdapter<BusinessRevie
 
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, BusinessReview businessReview) {
-        if(businessReview!=null) {
+        if(businessReview!=null&&businessReview.getMerchantAuditStayList()!=null) {
             holder.text(R.id.tv_1, businessReview.getMerchantAuditStay().getAuditStayNum());
             holder.text(R.id.tv_2, businessReview.getMerchantAuditStay().getNewShopNum());
             holder.text(R.id.tv_3, businessReview.getMerchantAuditStay().getShopNumTotal());

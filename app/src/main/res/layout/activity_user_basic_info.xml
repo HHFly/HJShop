@@ -24,6 +24,7 @@
         <TextView
             android:id="@+id/certification_tv_user_name"
             style="@style/user_item_tv_content"
+
             android:layout_alignParentEnd="true" />
 
         <ImageView

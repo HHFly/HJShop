@@ -82,14 +82,15 @@ public class AreaIncomeActivity extends BaseActivity {
                         @Override
                         public void onSuccess(BaseResultEntity<AreaIncome> obj) {
                             AreaIncome data = obj.getResult();
-                            Binddata(data);
-
+                            if(data!=null) {
+                                Binddata(data);
+                            }
                         }
 
 
                         @Override
                         public void onUnSuccessFinish() {
-                            Binddata(null);
+                            Binddata(new AreaIncome());
                         }
 
                         @Override
@@ -104,6 +105,7 @@ public class AreaIncomeActivity extends BaseActivity {
     }
 
     public void Binddata(AreaIncome data) {
+
         setTvText(R.id.account_balance,data.getTotalassets());
         setTvText(R.id.incomeYestoday,data.getIncomeYestoday());
         setTvText(R.id.balanceUsable,data.getBalanceUsable());

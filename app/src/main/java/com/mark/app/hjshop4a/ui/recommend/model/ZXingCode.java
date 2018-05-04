@@ -9,15 +9,15 @@ import java.util.ArrayList;
  */
 
 public class ZXingCode extends BaseModel{
-    private  String QRCode ;
+    private  String qRCode ;
     private ArrayList<Recommend>  recommendList;
 
     public String getCode() {
-        return QRCode;
+        return qRCode;
     }
 
     public void setCode(String code) {
-        this.QRCode = code;
+        this.qRCode = code;
     }
 
     public ArrayList<Recommend> getRecommendList() {

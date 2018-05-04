@@ -129,7 +129,7 @@ public class BusinessReviewActivity extends BaseActivity implements OnRefreshLoa
             mAdapter.notifyData(data,data.getMerchantAuditStayList(),isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.getMerchantAuditStayList().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null || data.getMerchantAuditStayList() == null|| data.getMerchantAuditStayList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override

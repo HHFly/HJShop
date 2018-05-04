@@ -7,12 +7,14 @@ import com.mark.app.hjshop4a.base.model.ParamBaseModel;
  */
 
 public class MerchantApplyPram extends ParamBaseModel {
+    private String longitude;//精度
+    private String latitude;//纬度
     private  String shopName; //店铺名称
     private  long provinceId;//省ID
     private  long cityId;//市ID
     private  long countyId;//区ID
     private  String completeAddress;//详细地址
-    private  long shopCateogryId;//	类目ID
+    private  long shopCategoryId;//	类目ID
     private  String companyName;//公司名称
     private  String shopLicence;//营业执照
     private  String shopImg;//店铺形象照片
@@ -21,6 +23,22 @@ public class MerchantApplyPram extends ParamBaseModel {
     private  String shopInImg3;//店铺内照片3
     private  String shopInImg4;//店铺内照片4
     private  String isReadProtocol;//用户是否阅读协议 0 否 1 是
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 
     public long getProvinceId() {
         return provinceId;
@@ -47,11 +65,11 @@ public class MerchantApplyPram extends ParamBaseModel {
     }
 
     public long getShopCateogryId() {
-        return shopCateogryId;
+        return shopCategoryId;
     }
 
     public void setShopCateogryId(long shopCateogryId) {
-        this.shopCateogryId = shopCateogryId;
+        this.shopCategoryId = shopCateogryId;
     }
 
     public String getShopName() {

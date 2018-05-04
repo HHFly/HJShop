@@ -70,12 +70,40 @@ public class IDCardImgActivity extends BaseActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        String front =pic.get(R.id.imagebtn1);
+        String side=pic.get(R.id.imagebtn2);
+
+        if(front!=null){
+            userIdCardFront =front;
+        }
+        if(side!=null){
+            userIdCardSide=side;
+        }
+//        BundleUtils.getInstance().putString("userIdCardFront",userIdCardFront).putString("userIdCardSide",userIdCardSide).addIntent(getIntent());
+        getIntent().putExtra("userIdCardFront",userIdCardFront);
+        getIntent().putExtra("userIdCardSide",userIdCardSide);
+        setResult(1,getIntent());
+        finish();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case  R.id.titlebar_iv_return:
-                userIdCardFront=pic.get(R.id.imagebtn1);
-                userIdCardSide =pic.get(R.id.imagebtn2);
-                BundleUtils.getInstance().putString("userIdCardFront",userIdCardFront).putString("userIdCardSide",userIdCardSide).addIntent(getIntent());
+                String front =pic.get(R.id.imagebtn1);
+                String side=pic.get(R.id.imagebtn2);
+
+                if(front!=null){
+                    userIdCardFront =front;
+                }
+                if(side!=null){
+                    userIdCardSide=side;
+                }
+//        BundleUtils.getInstance().putString("userIdCardFront",userIdCardFront).putString("userIdCardSide",userIdCardSide).addIntent(getIntent());
+                getIntent().putExtra("userIdCardFront",userIdCardFront);
+                getIntent().putExtra("userIdCardSide",userIdCardSide);
                 setResult(1,getIntent());
                 finish();
                 break;

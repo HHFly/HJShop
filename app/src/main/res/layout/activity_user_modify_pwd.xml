@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="30px"
         android:paddingTop="20px"
-        android:text="密码长度6-12个字符"
+        android:text="密码长度6-20个字符"
         android:textSize="22px"/>
     <Button
         android:id="@+id/btn"

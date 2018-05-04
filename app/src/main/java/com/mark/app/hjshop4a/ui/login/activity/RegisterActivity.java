@@ -102,7 +102,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
         setClickListener(R.id.titlebar_iv_return);
         setClickListener(R.id.register_btn_code);
         setClickListener(R.id.register_iv_eye);
-        setClickListener(R.id.register_iv_region);
+        setClickListener(R.id.register_rl_region);
         setClickListener(R.id.register_layout_agree);
         setClickListener(R.id.register_tv_agreement);
         setClickListener(R.id.register_tv_disclaimer);
@@ -167,7 +167,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
                 changedAgree(isAgree);
                 break;
             }
-            case R.id.register_iv_region:{
+            case R.id.register_rl_region:{
              showDateDiaglog();
                 break;
             }
@@ -224,13 +224,15 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
         String strPwd = getTvText(R.id.register_et_pwd);
         String strInvitation = getTvText(R.id.register_et_invitation);
         String strRegion = getTvText(R.id.register_et_region);
-        isValidPass(true);
+//        isValidPass(false);
         LoginParam param = new LoginParam();
         param.setAccount(strUserName);
         param.setCaptcha(strCode);
         param.setPassword(strPwd);
         param.setInviteCode(strInvitation);
-        param.setAddressConfigId(1);//区域选择
+        param.setProvinceId("1");
+        param.setCityId("1");
+        param.setCountyId("1");
         showLoadingDialog();
         App.getServiceManager().getPdmService().register(param.getMap())
                 .subscribeOn(Schedulers.io())
@@ -303,7 +305,8 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
                     && ValidShowBtnUtils.verifyCode(strCode)
                     && ValidShowBtnUtils.pwd(strPwd)
                     && !TextUtils.isEmpty(strRegion)
-                    && isAgree;
+                    && isAgree
+                    &&(TextUtils.isEmpty(strInvitation)||!ValidUtils.Isphone(strInvitation));
         } else {
             boolean result = false;
             if (!ValidUtils.phone(strPhone)) {
@@ -322,6 +325,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
             } else {
                 result = true;
             }
+
             return result;
         }
     }
@@ -362,5 +366,9 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
     @Override
     public void selectedResult(String result) {
             setTvText(R.id.register_et_region,result);
+        if (textWatcher != null) {
+            textWatcher.onTextChanged("", 0, 0, 0);
+        }
+
     }
 }

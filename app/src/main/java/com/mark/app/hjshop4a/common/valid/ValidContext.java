@@ -10,7 +10,8 @@ public interface ValidContext {
      * 用于校验是否允许点击按钮
      */
     interface ShowBtn {
-        String PHONE = "\\d{7,}";//手机号
+//        String PHONE = "\\d{7,}";//手机号
+        String PHONE = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147,145))\\d{8}$";
         String PWD = "^.{6,}$";//密码
         String CODE = "\\d{6}";//短信验证码
         String NAME = "\\S{1,}";//姓名
@@ -23,7 +24,8 @@ public interface ValidContext {
      */
     interface INPUT {
 //        String PHONE = "(^44\\d{10}$)|(^0\\d{10}$)|(^1\\d{10}$)|(^[2-9]\\d{9}$)";//手机号
-        String PHONE = "\\d{7,}";//手机号
+//        String PHONE = "\\d{11,}";//手机号
+        String PHONE = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147,145))\\d{8}$";
         String PWD = "^.{6,}$";//密码
         String CODE = "\\d{6}";//短信验证码
         String NAME = "\\S{1,}";//姓名

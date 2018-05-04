@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
@@ -36,7 +37,7 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
     AreaBusniessAdapter mAdapter;
     private long  startTime;
     private long endTime;
-
+    private int role;
     private long cityId =0;
     int mSource;//来源
     PagingBaseModel mPagingData;
@@ -66,6 +67,7 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
         if(cityId==0) {
             cityId = App.getAppContext().getUserInfo().getCityId();
         }
+        role= App.getAppContext().getRoleType();
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();

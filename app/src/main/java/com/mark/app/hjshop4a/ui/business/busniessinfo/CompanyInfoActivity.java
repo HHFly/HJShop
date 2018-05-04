@@ -26,10 +26,10 @@ public class CompanyInfoActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        if(mData!=null&&mData.getShopCategory()!=null) {
+        if(mData!=null) {
             setTvText(R.id.titlebar_tv_title, "公司信息");
             setTvText(R.id.store_name, mData.getCompanyName());
-            setTvText(R.id.store_type, mData.getShopCategory().getShopCategoryName());
+            setTvText(R.id.store_type, mData.getShopCategoryName());
             setTvText(R.id.store_address, mData.getAddressInfo().getCompleteAddress());
         }
     }

@@ -34,7 +34,7 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
     //空提示
     @StringRes
     int mEmptyParamHint;
-
+    String mData ;
     /**
      * 获取实例
      *
@@ -43,9 +43,15 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
     public static AddOneEtParamDialog getInstance(boolean isNumber) {
         AddOneEtParamDialog dialog = new AddOneEtParamDialog();
         dialog.isnumber =isNumber;
+
         return dialog;
     }
-
+    public static AddOneEtParamDialog getInstance(boolean isNumber,String text) {
+        AddOneEtParamDialog dialog = new AddOneEtParamDialog();
+        dialog.isnumber =isNumber;
+        dialog.mData=text;
+        return dialog;
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -64,7 +70,7 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
     @Override
     public void onResume() {
         super.onResume();
-        setTvText(mRootView, R.id.et_value, "");
+
     }
 
     /**
@@ -77,16 +83,17 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
 
         //设置参数名
 //        setTvText(rootView, R.id.tv_title, mParamName);
-
+        setTvText(mRootView, R.id.et_value, mData);
         //设置输入框
         EditText etValue = getView(rootView, R.id.et_value);
 
         EditTextUtils.openKeyBroad(etValue);
-        etValue.setText("");
+//        etValue.setText("");
         if (mEmptyParamHint != 0) {
             etValue.setHint(mEmptyParamHint);
         }
-
+        int i =etValue.getText().length();
+        etValue.setSelection(etValue.getText().length());
         View viewCancel = getView(rootView, R.id.normal_btn_left);
         View viewCommit = getView(rootView, R.id.normal_btn_right);
         setListener(viewCancel, this);

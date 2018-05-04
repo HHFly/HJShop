@@ -97,7 +97,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                 finish();
                 break;
             case R.id.titlebar_tv_right:
-                showShareDialog();
+//                showShareDialog();
                 break;
         }
     }

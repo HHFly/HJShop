@@ -125,8 +125,9 @@ public class CertificationInfoActivity extends BaseActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==1){
-            BundleUtils.getString(data,"","");
+        if(resultCode==1){
+           mData.setIdcardFront(data.getStringExtra("userIdCardFront"));
+           mData.setIdcardSide(data.getStringExtra("userIdCardSide"));
         }
 
     }
@@ -196,7 +197,7 @@ public class CertificationInfoActivity extends BaseActivity {
             public void onClickNo(SexDialog dialog) {
 //                setTvText(idres,"保密");
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
-                commitUserInfo.setGender(0);
+                commitUserInfo.setGender("0");
                 requestData(idres,commitUserInfo,"保密");
                 dialog.dismiss();
             }
@@ -205,7 +206,7 @@ public class CertificationInfoActivity extends BaseActivity {
             public void onClickMan(SexDialog dialog) {
 //                setTvText(idres,"男");
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
-                commitUserInfo.setGender(1);
+                commitUserInfo.setGender("1");
                 requestData(idres,commitUserInfo,"男");
                 dialog.dismiss();
             }
@@ -214,7 +215,7 @@ public class CertificationInfoActivity extends BaseActivity {
             public void onClickWoman(SexDialog dialog) {
 //                setTvText(idres,"女");
                 CommitUserInfo commitUserInfo =new CommitUserInfo();
-                commitUserInfo.setGender(2);
+                commitUserInfo.setGender("2");
                 requestData(idres,commitUserInfo,"女");
                 dialog.dismiss();
             }
