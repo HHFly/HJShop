@@ -154,14 +154,10 @@ public class WithDrawActivity extends BaseActivity {
 
                     @Override
                     public void onUnSuccessFinish() {
-
+                        hideLoadingDialog();
                     }
 
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-//                        hideLoadingDialog();
-                    }
+
                 });
 
 
@@ -204,7 +200,6 @@ public class WithDrawActivity extends BaseActivity {
      * 请求可提现金额
      */
     private void requestWithDrawCash() {
-        showLoadingDialog();
         App.getServiceManager().getPdmService()
                 .withDrawget()
                 .subscribeOn(Schedulers.io())

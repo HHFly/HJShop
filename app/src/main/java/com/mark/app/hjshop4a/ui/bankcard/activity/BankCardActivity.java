@@ -146,7 +146,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
             });
         }
         else {
-            bankCardAdapter.notifyData(data,true);
+            bankCardAdapter.notifyData(data,isRefresh);
         }
         boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);

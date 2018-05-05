@@ -6,6 +6,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
@@ -38,6 +39,7 @@ public class BusniessInfoActivity extends BaseActivity {
         setClickListener(R.id.layout_company_info);
         setClickListener(R.id.layout_certificates);
         setClickListener(R.id.titlebar_iv_return);
+        setClickListener(R.id.titlebar_tv_right);
     }
 
     @Override
@@ -45,6 +47,12 @@ public class BusniessInfoActivity extends BaseActivity {
         switch (v.getId()){
             case R.id.titlebar_iv_return:
                 finish();
+                break;
+            case R.id.titlebar_tv_right:
+                //同意协议内容
+                String url = "file:///android_asset/agreement/terms_and_conditions.html";
+                String title = getString(R.string.login_同意协议内容);
+                ActivityJumpUtils.actWebActivity(getActivity(), url, title);
                 break;
             case R.id.layout_certificates:
                 if(mData==null||mData.getCompanyInfo()==null||mData.getBusniessApplyUserInfo()==null){
@@ -105,7 +113,7 @@ public class BusniessInfoActivity extends BaseActivity {
 
     private void  SwitchAduit(int auditStatus){
         switch (auditStatus){
-            case 0: setIvImage(R.id.aduit_logo,R.mipmap.ic_review_pass);break;//待审核
+            case 0: setIvImage(R.id.aduit_logo,R.mipmap.ic_in_review);break;//待审核
             case 1:setIvImage(R.id.aduit_logo,R.mipmap.ic_review_pass);break;//审核通过
             case 2:setIvImage(R.id.aduit_logo,R.mipmap.ic_uppass);break;  //审核不通过
 

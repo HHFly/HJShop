@@ -42,5 +42,5 @@
         android:layout_width="31px"
         android:layout_height="31px"
         android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/titlebar_tv_right" />
+        android:layout_alignLeft="@+id/titlebar_tv_right" />
 </RelativeLayout>

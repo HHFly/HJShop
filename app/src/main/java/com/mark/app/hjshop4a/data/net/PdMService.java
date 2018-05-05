@@ -450,4 +450,18 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
 /*获取图片验证码*/
     @GET("/api/randomVerification")
     Observable<BaseResultEntity>randomVerification();
+
+    /*商户申请审核*/
+    @FormUrlEncoded
+    @POST("/api/app/proxy/toAccept")
+    Observable<BaseResultEntity>merchantToAccept(@Field("shopId") long shopId,
+                                                 @Field("auditStatus")int auditStatus,
+                                                 @Field("auditRemark") String auditRemark);
+
+    /*商户报单(代理商)-审核*/
+    @FormUrlEncoded
+    @POST("/api/app/customs/proxy/audit")
+    Observable<BaseResultEntity>proxyToAccept(@Field("offlineOrderSn") String offlineOrderSn,
+                                              @Field("auditStatus")int auditStatus,
+                                              @Field("remark") String remark);
 }

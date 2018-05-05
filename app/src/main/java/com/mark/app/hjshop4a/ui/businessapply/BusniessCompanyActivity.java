@@ -400,9 +400,24 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
             ToastUtils.show("请上传店铺形象照片");
             return;
         }
-        if(TextUtils.isEmpty(shopImagesIn))
+        if(TextUtils.isEmpty(shopImagesIn1))
         {
-            ToastUtils.show("请上传店铺照片 ");
+            ToastUtils.show("请上传店铺照片1");
+            return;
+        }
+        if(TextUtils.isEmpty(shopImagesIn2))
+        {
+            ToastUtils.show("请上传店铺照片2");
+            return;
+        }
+        if(TextUtils.isEmpty(shopImagesIn3))
+        {
+            ToastUtils.show("请上传店铺照片3");
+            return;
+        }
+        if(TextUtils.isEmpty(shopImagesIn4))
+        {
+            ToastUtils.show("请上传店铺照片4");
             return;
         }
         if (!isAgree) {

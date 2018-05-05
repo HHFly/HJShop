@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="149px"
+                android:layout_marginRight="0px"
                 android:text=""
                 android:textSize="@dimen/textsize_26px"
                 android:textColor="#333333"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10px"
+                android:layout_marginRight="0px"
                 android:text=""
                 android:textSize="@dimen/textsize_26px"
                 android:textColor="#333333"
@@ -59,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10px"
+                android:layout_marginRight="0px"
                 android:text=""
                 android:textSize="@dimen/textsize_26px"
                 android:textColor="#333333"
@@ -94,7 +97,7 @@
             android:layout_marginTop="153px"
             android:layout_alignParentRight="true"
             android:layout_marginRight="110px"
-            android:src="@mipmap/ic_review_pass"/>
+          />
 
 
 

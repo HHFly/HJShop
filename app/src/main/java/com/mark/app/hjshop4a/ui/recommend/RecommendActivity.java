@@ -74,9 +74,9 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
         }
         else {
             if(isRefresh) {
-                recommendAdapter.notifyData(data, data.getRecommendList(), true);
+                recommendAdapter.notifyData(data, data.getRecommendList(), isRefresh);
             }else {
-                recommendAdapter.notifyData( data.getRecommendList(), false);
+                recommendAdapter.notifyData( data.getRecommendList(), isRefresh);
             }
         }
 

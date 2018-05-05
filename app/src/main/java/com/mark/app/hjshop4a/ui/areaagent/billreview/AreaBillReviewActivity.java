@@ -16,6 +16,7 @@ import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
+import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -127,7 +128,17 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
                 rv.setAdapter(mAdapter);
                 rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
             }
+            mAdapter.setOnItemClickListener(new AreaBillReviewAdapter.OnItemClickListener() {
+                @Override
+                public void onClickItemYes() {
 
+                }
+
+                @Override
+                public void onClickItemNo() {
+
+                }
+            });
         } else {
             mAdapter.notifyData(data.getCustomsList(), isRefresh);
         }
@@ -135,6 +146,50 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
         boolean isShowEmpty = isRefresh && (data == null || data.getCustomsList()==null);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
+
+    private void merchantToAccept(boolean ispass,long shopid,String remark){
+        if(ispass){
+                showLoadingDialog();
+                App.getServiceManager().getPdmService()
+                        .merchantToAccept(shopid,1,remark)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new DefaultObserver() {
+
+                            @Override
+                            public void onSuccess(BaseResultEntity obj) {
+
+                            }
+
+                            @Override
+                            public void onAllFinish() {
+                                super.onAllFinish();
+                                hideLoadingDialog();
+                            }
+                        });
+
+        }else {
+            showLoadingDialog();
+            App.getServiceManager().getPdmService()
+                    .merchantToAccept(shopid,2,remark)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new DefaultObserver() {
+
+                        @Override
+                        public void onSuccess(BaseResultEntity obj) {
+
+                        }
+
+                        @Override
+                        public void onAllFinish() {
+                            super.onAllFinish();
+                            hideLoadingDialog();
+                        }
+                    });
+        }
+    }
+
     @Override
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {

@@ -17,6 +17,7 @@ import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
+import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
@@ -38,7 +39,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ConsumeCommitActivity  extends BaseActivity{
     private AddOneEtParamDialog mAddOneEtParamDialog;
-    private Double discounts;//服务费率
+    private Double discounts=0.0 ;//服务费率
     Spinner spinner;
     private  String pic;//上传图片地址
     @Override
@@ -127,6 +128,8 @@ public class ConsumeCommitActivity  extends BaseActivity{
                 @Override
                 public void onClickCommit(AddOneEtParamDialog dialog, String data) {
                     Double count = NumParseUtils.parseDouble(data);
+
+
                     Double service =discounts*count;
                     setTvText(R.id.tv_service_charge,service.toString());
                     setTvText(R.id.tv_consmue_count, data);
@@ -253,9 +256,9 @@ public class ConsumeCommitActivity  extends BaseActivity{
         String commodityprice = getTvText(R.id.tv_commodity_price);
         String audit = getTvText(R.id.et_audit);
         //校验
-        if(TextUtils.isEmpty(memberId))
+        if(!ValidUtils.phone(memberId))
         {
-            ToastUtils.show("请输入会员账号");
+            ToastUtils.show("请输入正确会员账号");
             return;
         }
         if(TextUtils.isEmpty(consumecount))
