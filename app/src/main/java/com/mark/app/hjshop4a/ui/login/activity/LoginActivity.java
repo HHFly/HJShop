@@ -228,6 +228,7 @@ public class LoginActivity extends BaseActivity {
                         App.getAppContext().setUserInfo(data);
                         //角色信息
                         setRoleInfo( data);
+                        setResult(RESULT_OK);
                         finish();
                     }
 

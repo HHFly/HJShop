@@ -244,5 +244,6 @@
     <string name="split_start">%1$s 跳过</string>
     <string name="me_前往">前往</string>
     <string name="me_退出">退出</string>
+    <string name="_1_s">尾号%1$s</string>
 
 </resources>

@@ -43,7 +43,18 @@
                 android:layout_height="wrap_content"
 
                 android:layout_above="@+id/imageView10"
-                android:layout_toEndOf="@+id/hm_tv_user_phone"
+                android:layout_marginLeft="183px"
+                android:text=""
+                android:textColor="#ffffff"
+                android:textSize="28px" />
+
+
+            <TextView
+                android:id="@+id/hm_tv_user_shopname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="183px"
                 android:text=""
                 android:textColor="#ffffff"
                 android:textSize="28px" />
@@ -51,18 +62,9 @@
                 android:id="@+id/hm_tv_user_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView10"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="183px"
-                android:text=""
-                android:textColor="#ffffff"
-                android:textSize="28px" />
-
-            <TextView
-                android:id="@+id/hm_tv_user_shopname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imageView10"
-                android:layout_toEndOf="@+id/hm_tv_user_phone"
                 android:text=""
                 android:textColor="#ffffff"
                 android:textSize="28px" />

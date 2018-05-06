@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.data.net;
 
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.google.gson.Gson;
@@ -11,6 +12,7 @@ import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.data.cookie.CookieManger;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
@@ -79,10 +81,10 @@ public interface PdMService {
     /******** Helper class that sets up a new services *******/
     class Creator {
 
-        public static PdMService newService(String mBaseUrl) {
+        public static PdMService newService(String mBaseUrl, Context context) {
             Gson gson = new GsonBuilder().create();
             System.setProperty("https.protocols", "TLSv1.2,TLSv1.1,SSLv3");
-            OkHttpClient client = getOkHttpClient();
+            OkHttpClient client = getOkHttpClient( context);
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(mBaseUrl)
                     .client(client)
@@ -98,7 +100,7 @@ public interface PdMService {
          *
          * @return
          */
-        private static OkHttpClient getOkHttpClient() {
+        private static OkHttpClient getOkHttpClient(final Context context) {
             OkHttpClient client = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
 
                 @Override
@@ -119,7 +121,7 @@ public interface PdMService {
                     //获取版本号
                     String version =AppContext.versionName();
                     //刷新token
-                    token = refreshTOken(chain, oldRequest, token);
+                    token = refreshTOken(chain, oldRequest, token,context);
 
                     builder.addHeader("Authorization", token)
                             .addHeader("platform", platform)
@@ -154,7 +156,7 @@ public interface PdMService {
                  * @return
                  * @throws IOException
                  */
-                private String refreshTOken(Chain chain, Request original, String token) throws IOException {
+                private String refreshTOken(Chain chain, Request original, String token, Context context) throws IOException {
                     if (!TextUtils.isEmpty(refreshToken())) {
                         LogUtils.logFormat("ServiceHelper", "intercept", "刷新token");
                         RequestBody body = new FormBody.Builder()
@@ -191,7 +193,9 @@ public interface PdMService {
                     }
                     return token;
                 }
-            }).readTimeout(60, TimeUnit.SECONDS).writeTimeout(60, TimeUnit.SECONDS).connectTimeout(60, TimeUnit.SECONDS).build();
+            }).readTimeout(60, TimeUnit.SECONDS).writeTimeout(60, TimeUnit.SECONDS).connectTimeout(60, TimeUnit.SECONDS)
+                    .cookieJar(new CookieManger(context) )
+                    .build();
             return client;
         }
 
@@ -306,13 +310,13 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     @GET("/api/app/bean/consume/get")
     Observable<BaseResultEntity<BeanConsume>>getConsume();
 
-    /**/
+    /*店铺id 获取店铺名称*/
     @GET("/api/app/shop/shopInfo")
     Observable<BaseResultEntity<Shop>>getShopName(@Query("shopId") long shopId);
     /*金豆消费*/
     @FormUrlEncoded
     @POST("/api/app/bean/consume")
-    Observable<BaseResultEntity>beanconsume(@Field("shopId") String shopId,
+    Observable<BaseResultEntity>beanconsume(@Field("shopId") long shopId,
                                             @Field("beanTradeInNum") String beanTradeInNum);
     /*
     * 金豆换购数据

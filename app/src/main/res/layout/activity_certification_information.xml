@@ -98,7 +98,11 @@
             <TextView
                 style="@style/user_item_tv"
                 android:text="@string/certification_推荐人" />
-
+            <TextView
+                android:id="@+id/certification_tv_user_invitation"
+                style="@style/user_item_tv_content"
+                android:layout_alignParentRight="true"
+               />
         </RelativeLayout>
     </LinearLayout>
 
@@ -123,12 +127,7 @@
             android:layout_centerVertical="true"
             android:id="@+id/imageView6" />
 
-        <TextView
-            android:id="@+id/certification_tv_user_invitation"
-            style="@style/user_item_tv_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="26dp"
-            android:layout_toStartOf="@+id/tv_id_card" />
+
     </RelativeLayout>
     <RelativeLayout
 

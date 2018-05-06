@@ -6,7 +6,9 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
+import com.mark.app.hjshop4a.common.utils.StringUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
@@ -23,6 +25,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BusinessApplicationActivity extends BaseActivity {
     private BusinessApply mData;
+    private int role ;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_merchant_apply;
@@ -30,7 +33,16 @@ public class BusinessApplicationActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        setTvText(R.id.titlebar_tv_title,"商户申请");
+        role =App.getAppContext().getRoleType();
+        switch (role){
+          case   RoleType.MEMBER: setTvText(R.id.titlebar_tv_title,"商户申请");
+
+                                    break;
+            case  RoleType.BUSINESS: setTvText(R.id.titlebar_tv_title,"商户信息");
+                                        setViewVisibility(R.id.rl_4,true);
+                                             break;
+        }
+
         requestData();
     }
 
@@ -65,18 +77,21 @@ public class BusinessApplicationActivity extends BaseActivity {
                     this.startActivityForResult(intent,1);
 
                 }else {
-                    ToastUtils.show("个人信息未设置");
+                    ToastUtils.show("个人信息认证未设置");
                 }
                 break;
             case R.id.layout_company_info:
                 if(mData!=null) {
-
-                        Intent intent = new Intent(this, BusniessCompanyActivity.class);
-                        BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
-                        this.startActivity(intent);
+                        if(mData.getUserAuditStatus()==1) {
+                            Intent intent = new Intent(this, BusniessCompanyActivity.class);
+                            BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
+                            this.startActivity(intent);
+                        }else {
+                            ToastUtils.show("个人信息认证审核未通过");
+                        }
 
                 }else {
-                    ToastUtils.show("个人信息未设置");
+                    ToastUtils.show("个人信息认证未设置");
                 }
                 break;
             case R.id.state:
@@ -100,7 +115,7 @@ public class BusinessApplicationActivity extends BaseActivity {
                         setTvText(R.id.user_tv_1, data.getBusniessApplyUserInfo().getUserNick());
                         setTvText(R.id.user_tv_2, data.getBusniessApplyUserInfo().getUserRealName());
                         setTvText(R.id.user_tv_3, data.getBusniessApplyUserInfo().getCellphone());
-                        setTvText(R.id.user_tv_4, data.getBusniessApplyUserInfo().getEmail());
+                        setTvText(R.id.user_tv_4, String.valueOf(data.getCompanyInfo().getShopId()));
                         setSdvInside(R.id.hm_sdv_logo, data.getBusniessApplyUserInfo().getUserHeadImg());
                         SwitchAduit(data.getAuditStatus());
                     }

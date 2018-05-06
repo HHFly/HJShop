@@ -8,6 +8,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
+
         android:fillViewport="true">
         <LinearLayout
             android:orientation="vertical"
@@ -50,18 +52,19 @@
                     android:id="@+id/textView6" />
 
                 <Spinner
+                    android:layout_toEndOf="@+id/textView6"
                     android:id="@+id/spinner"
-                    style="@style/user_item_tv_content_right"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical|right"
-                    android:background="@null"
-                    android:layout_alignParentTop="true"
-                    android:layout_toEndOf="@+id/textView6" />
-
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10px"
+                    android:layout_weight="1.0"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/textsize_26px" />
                 <ImageView
                     style="@style/BaseImg.Right"
-
+                    android:visibility="gone"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:src="@mipmap/ic_bottom_gray"
@@ -211,7 +214,7 @@
 
                 <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/audit"
-                    android:layout_width="200px"
+                    android:layout_width="220px"
                     android:layout_height="match_parent"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"/>
@@ -220,13 +223,16 @@
                     android:id="@+id/et_audit"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toStartOf="@+id/audit"
+
                     android:layout_toEndOf="@+id/textView4"
+                    android:layout_toStartOf="@+id/audit"
+                    android:layout_marginRight="@dimen/textsize_10px"
                     android:background="@null"
                     android:gravity="right|center_vertical"
                     android:hint="请输入验证码"
-                    android:paddingRight="10px"
                     android:maxLength="4"
+                    android:paddingRight="20px"
+                    android:singleLine="true"
                     android:textColorHint="#666666"
                     android:textSize="@dimen/textsize_26px" />
 
@@ -262,6 +268,7 @@
                     android:text="@string/order_commit_tip"/>
             </RelativeLayout>
             <Button
+                android:layout_marginBottom="200px"
                 android:id="@+id/button"
                 style="@style/BaseBtn.Normal.Important"
                 android:layout_width="match_parent"

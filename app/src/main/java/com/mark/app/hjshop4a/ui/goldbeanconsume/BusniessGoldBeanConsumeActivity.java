@@ -83,6 +83,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
             ToastUtils.show(getApplicationContext(),"请输入兑换的金豆数");
             return;
         }
+
         if(TextUtils.isEmpty(cpatCha)){
             ToastUtils.show(getApplicationContext(),"请输入验证码");
             return;
@@ -97,14 +98,17 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
-                            requestData();
-                        ToastUtil.show("成功");
+                        requestData();
+                        setTvText(R.id.certification_tv_user_name,"");
+                        setTvText(R.id.et_audit,"");
+                        requestImgCode();
+                        ToastUtils.show("金豆兑换成功");
                     }
 
                     @Override
                     public void onUnSuccessFinish() {
                         super.onUnSuccessFinish();
-                        ToastUtil.show("失败");
+
                     }
 
                     @Override
@@ -153,10 +157,17 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
                 public void onClickCommit(AddOneEtParamDialog dialog, String data) {
                     Double count = NumParseUtils.parseDouble(data);
                     if (count <= BeanNum) {
-                        setTvText(R.id.certification_tv_user_name, data);
-                        String cash = String.valueOf(count * Ratiox);
-                        setTvText(R.id.tv_bean_change_count, cash);
-
+                        if(count%100==0) {
+                            if(count>=200) {
+                                setTvText(R.id.certification_tv_user_name, data);
+                                String cash = String.valueOf(count * Ratiox);
+                                setTvText(R.id.tv_bean_change_count, cash);
+                            }else {
+                                ToastUtils.show(getApplicationContext(),"金豆兑换数最小200");
+                            }
+                        }else {
+                            ToastUtils.show(getApplicationContext(),"金豆兑换数必须是100的倍数");
+                        }
                     }else {
                         ToastUtils.show(getApplicationContext(),"超过可用金豆数");
                     }

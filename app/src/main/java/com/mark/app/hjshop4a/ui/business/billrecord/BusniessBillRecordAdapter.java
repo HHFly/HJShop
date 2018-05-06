@@ -47,7 +47,7 @@ public class BusniessBillRecordAdapter extends BaseHasTopListRvAdapter <BillsRec
             holder.text(R.id.offlineOrderSn, customs.getCustomsTime());
             holder.text(R.id.customsUerName, customs.getCustomsUerName());
             holder.text(R.id.productName, customs.getProductName());
-            holder.text(R.id.productNum, customs.getProductNum());
+            holder.text(R.id.productNum, String.valueOf(customs.getProductNum()));
             holder.text(R.id.customsTypeName, customs.getCustomsTypeName());
             holder.text(R.id.customsMoney, customs.getCustomsMoney());
             holder.text(R.id.serviceMony, customs.getServiceMony());

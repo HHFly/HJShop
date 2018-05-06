@@ -45,7 +45,7 @@
             android:id="@+id/login_et_pwd"
             style="@style/login_input_et"
             android:layout_weight="1"
-            android:hint="@string/hint_请输入密码不少于6位"
+            android:hint="@string/hint_请输入密码"
             android:inputType="textPassword"
             android:maxLength="20" />
 

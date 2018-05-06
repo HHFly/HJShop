@@ -183,7 +183,7 @@
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textsize_26px"
                 tools:ignore="HardcodedText" />
-            <com.mark.app.hjshop4a.widget.AutoSpaceBankEditText
+            <EditText
                 android:id="@+id/card_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

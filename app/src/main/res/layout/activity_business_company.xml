@@ -304,7 +304,8 @@
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="57px">
 
                 <TextView
                     android:layout_marginTop="43px"
@@ -380,7 +381,6 @@
                 android:id="@+id/button"
                 style="@style/BaseBtn.Normal.Important"
                 android:layout_width="match_parent"
-                android:layout_marginTop="57px"
                 android:text="@string/me_申请商户" />
             <LinearLayout
                 android:id="@+id/layout_agree"

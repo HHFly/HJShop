@@ -9,10 +9,27 @@ import java.util.List;
  */
 
 public class BusinessApply extends BaseModel {
-    private BusniessApplyUserInfo userInfo;
-    private  CompanyInfo companyInfo;
-    private List<ShopCategory> shopCategoryList;
-    private  int  auditStatus;
+    private BusniessApplyUserInfo userInfo;//	个人信息
+    private  CompanyInfo companyInfo;//公司信息
+    private List<ShopCategory> shopCategoryList;//类目列表
+    private  int  auditStatus;//审核状态 0 审核中 1 审核通过 2 审核不通过
+   private  int userAuditStatus;//用户审核状态 0待审核 1审核通过 2审核不通过
+
+    public BusniessApplyUserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(BusniessApplyUserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    public int getUserAuditStatus() {
+        return userAuditStatus;
+    }
+
+    public void setUserAuditStatus(int userAuditStatus) {
+        this.userAuditStatus = userAuditStatus;
+    }
 
     public BusniessApplyUserInfo getBusniessApplyUserInfo() {
         return userInfo;

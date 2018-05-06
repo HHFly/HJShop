@@ -81,9 +81,9 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
             setViewEnable(R.id.company_layout_address,false);
             setViewEnable(R.id.store_layout_name,false);
             setViewEnable(R.id.shop_layout_type,false);
-            setViewEnable(R.id.register_layout_agree,false);
-            setViewEnable(R.id.button,false);
-
+            setViewVisibility(R.id.layout_agree,false);
+            setViewVisibility(R.id.button,false);
+            setViewEnable(R.id.spinner,false);
             setViewEnable(R.id.imagebtn_shop,false);
             setViewEnable(R.id.imagebtn_licence,false);
             setViewEnable(R.id.item_sdv_1,false);

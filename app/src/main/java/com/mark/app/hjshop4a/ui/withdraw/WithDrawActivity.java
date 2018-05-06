@@ -16,6 +16,7 @@ import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardActivity;
 import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardAddActivity;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.dialog.BankCardDialog;
@@ -74,6 +75,8 @@ public class WithDrawActivity extends BaseActivity {
                 break;
             case R.id.item_bank_card:
             showBankCardDialog();
+//                Intent intent =new Intent(this, BankCardActivity.class);
+//                this.startActivityForResult(intent,1);
                 break;
         }
 
@@ -126,6 +129,9 @@ public class WithDrawActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==1){
+
+        }
 
     }
 

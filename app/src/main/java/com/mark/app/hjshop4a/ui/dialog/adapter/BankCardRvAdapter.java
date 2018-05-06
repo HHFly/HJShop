@@ -5,6 +5,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
+import com.mark.app.hjshop4a.common.utils.StringUtils;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class BankCardRvAdapter extends BaseListRvAdapter<BankCard> {
         final  BankCard item =data;
         holder.sdvSmall(R.id.sdv_bnak_card,data.getBankPic());
         holder.text(R.id.item_tv_bank_name,data.getBankName());
+//        String s = String.format("尾号%1$s", StringUtils.substring(data.getBankNo(),data.getBankNo().length()-4));
+        holder.text(R.id.tv_bank_num,data.getBankNo());
         if(data.isSelect())
         {  holder.visibility(R.id.iv_bnak_card_slsect,true);
         }

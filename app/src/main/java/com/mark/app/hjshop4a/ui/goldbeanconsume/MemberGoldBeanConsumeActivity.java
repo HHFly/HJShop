@@ -37,7 +37,7 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
     private AddOneEtParamDialog mAddOneEtParamDialogCount;
     private  Double  Ratiox =1.0;
     private Double BeanNum =0.0 ;
-
+    long shopId ;
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -91,9 +91,9 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
     }
 
     private void commit() {
-        String shopId =getTvText(R.id.tv_user_shop_name);
+
         String beanTradeInNum= getTvText(R.id.tv_bean_change_count);
-        if(TextUtils.isEmpty(shopId)){
+        if(shopId==0){
             ToastUtils.show(getApplicationContext(),"请输入店铺Id号");
             return;
         }
@@ -112,7 +112,9 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
                         requestData();
-                        ToastUtils.show("成功");
+                        setTvText(R.id.tv_bean_change_count,"");
+
+                        ToastUtils.show("换购成功");
                     }
                     @Override
                     public void onAllFinish() {
@@ -152,6 +154,7 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
             setTvText(R.id.gold_bean_count, data.getBeanNum());
             BeanNum = NumParseUtils.parseDouble(data.getBeanNum());
             Ratiox = NumParseUtils.parseDouble(data.getBeanRatio());
+
         }
     }
     private  void showInputDialogID(final int id){
@@ -230,13 +233,14 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
                         Shop data = obj.getResult();
                         if(data!=null) {
                             setTvText(R.id.tv_user_shop_name, data.getShopName());
+                            shopId =data.getShopId();
                         }
                     }
 
                     @Override
                     public void onUnSuccessFinish() {
                         super.onUnSuccessFinish();
-                        ToastUtils.show("不存在该店铺ID");
+//                        ToastUtils.show("不存在该店铺ID");
                     }
 
                     @Override

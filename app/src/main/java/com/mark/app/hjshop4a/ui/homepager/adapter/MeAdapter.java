@@ -19,6 +19,7 @@ import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
 import com.mark.app.hjshop4a.ui.business.busniessinfo.BusniessInfoActivity;
 import com.mark.app.hjshop4a.ui.business.consumecommit.ConsumeCommitActivity;
+import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.BusniessGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
@@ -196,9 +197,9 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.visibility(R.id.item_mesage, false);
                 if(mData!=null) {
 //                        用户名
-                    holder.text(R.id.hm_tv_user_name,mData.getUserName());
-                    //店铺名称
-                    holder.text(R.id.hm_tv_user_shopname,mData.getShopName());
+                    holder.text(R.id.hm_tv_user_name,mData.getUserRealName());
+                    //c会员账号
+                    holder.text(R.id.hm_tv_user_phone,mData.getCellPhone());
                     holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
 
                 }
@@ -328,9 +329,9 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.visibility(R.id.item_mesage, false);
                 if(mData!=null) {
 //                        用户名
-                    holder.text(R.id.hm_tv_user_name,mData.getUserName());
-                    //店铺名称
-                    holder.text(R.id.hm_tv_user_shopname,mData.getShopName());
+                    holder.text(R.id.hm_tv_user_name,mData.getUserRealName());
+                    //c会员账号
+                    holder.text(R.id.hm_tv_user_phone,mData.getCellPhone());
                     holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
 
                 }
@@ -440,7 +441,9 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
             });
             if(mData!=null) {
 //                        用户名
-                holder.text(R.id.hm_tv_user_phone, mData.getMessageCount());
+                holder.text(R.id.hm_tv_user_name,mData.getUserRealName());
+                //c会员账号
+                holder.text(R.id.hm_tv_user_phone,mData.getCellPhone());
                 //金豆
                 holder.text(R.id.hm_tv_red, mData.getEvaDetailCount());
                 //余额
@@ -597,9 +600,9 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               });
           if(mData!=null) {
 //                        用户名
-              holder.text(R.id.hm_tv_user_name,mData.getUserName());
-              //店铺名称
-              holder.text(R.id.hm_tv_user_shopname,mData.getShopName());
+              holder.text(R.id.hm_tv_user_name,mData.getUserRealName());
+              //c会员账号
+              holder.text(R.id.hm_tv_user_phone,mData.getCellPhone());
               holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
 
           }
@@ -652,7 +655,8 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actActivity(activity, BusniessInfoActivity.class);
+//                      ActivityJumpUtils.actActivity(activity, BusniessInfoActivity.class);
+                      ActivityJumpUtils.actActivity(activity, BusinessApplicationActivity.class);
                   }
               });
               holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {

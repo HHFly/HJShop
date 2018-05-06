@@ -27,7 +27,8 @@ public class NumberUtils {
     private static final String PARAM_DATETIME_YMD = "yyyy-MM-dd";
     //格式化日期
     private static final String PARAM_DATETIME_MS = "（剩余 mm 分 ss 秒）";
-
+    //格式化日期
+    private static final String PARAM_DATETIME_NEW_YMD = "yyyy年MM月dd日";
     //格式化数值
     private static final String PARAM_KEEP_DECIMAL_TWO = "#0.00";
     //格式化数值
@@ -200,7 +201,16 @@ public class NumberUtils {
     public static String getFormatDateTimeYMD(long dateTime) {
         return getFormatDateTime(PARAM_DATETIME_YMD, dateTime);
     }
-
+    /**
+     * 格式化日期(2000年1月1日)
+     * yyyy-MM-dd HH:mm:ss
+     *
+     * @param dateTime
+     * @return
+     */
+    public static String getFormatDateTimeNEWYMD(long dateTime) {
+        return getFormatDateTime(PARAM_DATETIME_NEW_YMD, dateTime);
+    }
     /**
      * 格式化日期
      * yyyy-MM-dd HH:mm:ss

@@ -49,7 +49,7 @@ public class LoginSwitchActivity extends BaseActivity {
         loginTypes.add(loginType2);
         loginTypes.add(loginType3);
         loginTypes.add(loginType4);
-
+        setViewVisibility(R.id.titlebar_iv_add,false);
         initRvAdapter();
     }
 
@@ -60,9 +60,19 @@ public class LoginSwitchActivity extends BaseActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            setResult(2);
+            finish();
+        }
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
         if(App.hasToken()) {
+
             finish();
         }else {
             ActivityJumpUtils.actHomePager(this);
@@ -74,7 +84,9 @@ public class LoginSwitchActivity extends BaseActivity {
         switch (v.getId()) {
             case R.id.titlebar_iv_return:
                 if(App.hasToken()) {
+
                     finish();
+
                 }else {
                     ActivityJumpUtils.actHomePager(this);
                 }
@@ -114,7 +126,7 @@ public class LoginSwitchActivity extends BaseActivity {
                 requestData();
                 Intent intent =new Intent(getAppCompatActivity(),LoginActivity.class);
                 BundleUtils.getInstance().putInt("RoleType",data.getRoleType()).putString("Phone",data.getPhone()).addIntent(intent);
-                startActivity(intent);
+                startActivityForResult(intent,1);
             }
         });
     }

@@ -28,6 +28,18 @@
             android:textColor="#333333"
             android:textSize="28px" />
 
+        <TextView
+            android:id="@+id/tv_bank_num"
+            style="@style/user_item_tv_content_right"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="90px"
+            android:layout_height="wrap_content"
+
+            android:layout_toEndOf="@+id/item_tv_bank_name"
+            android:ellipsize="end"
+            android:ems="30"
+            android:singleLine="true"
+            android:text="" />
         <ImageView
             android:visibility="gone"
             android:id="@+id/iv_bnak_card_slsect"

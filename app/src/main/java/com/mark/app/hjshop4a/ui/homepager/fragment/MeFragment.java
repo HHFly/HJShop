@@ -52,7 +52,7 @@ public class MeFragment extends BaseFragment  {
     @Override
     public void onResume() {
         super.onResume();
-
+        requestData(role,false);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class MeFragment extends BaseFragment  {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_right,"切换账号");
-        initRvAdapter(role,false,new MeCenterInfo());
+        initRvAdapter(role,new MeCenterInfo());
         requestData(role,false);
 
     }
@@ -103,6 +103,10 @@ public class MeFragment extends BaseFragment  {
         if (resultCode==1){
             LoginType loginType= (LoginType) data.getSerializableExtra("LoginType");
             requestData(loginType.getRoleType(),false);
+        }
+        if(resultCode==2){
+            role=App.getAppContext().getRoleType();
+            requestData(role,false);
         }
         TakeImgUtil.onActivityResult(getActivity(), requestCode, resultCode, data, new TakeImgUtil.CallBack() {
             @Override
@@ -171,7 +175,7 @@ public class MeFragment extends BaseFragment  {
      *
      *
      */
-    private void initRvAdapter( int role,boolean isRefresh ,MeCenterInfo data) {
+    private void initRvAdapter( int role,MeCenterInfo data) {
 
             RecyclerView rv = getView(R.id.recyclerView);
             switch (role) {
@@ -220,7 +224,7 @@ public class MeFragment extends BaseFragment  {
                     @Override
                     public void onSuccess(BaseResultEntity<MeCenterInfo> obj) {
                         MeCenterInfo data = obj.getResult();
-                        initRvAdapter(roletype,isRefresh,data);
+                        initRvAdapter(roletype,data);
                     }
 
                     @Override

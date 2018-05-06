@@ -20,6 +20,15 @@ public class CompanyInfo extends BaseModel {
     private  String shopInImg2;//店铺形象照片
     private  String shopInImg3;//店铺形象照片
     private  String shopInImg4;//店铺形象照片
+    private long  shopId;//
+
+    public long getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(long shopId) {
+        this.shopId = shopId;
+    }
 
     public String getCompanyName() {
         return companyName;

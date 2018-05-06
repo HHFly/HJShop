@@ -3,7 +3,9 @@ package com.mark.app.hjshop4a.ui.business.consumecommit;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -73,6 +75,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
         setClickListener(R.id.commodity_price);
         setClickListener(R.id.imagebtn);
         setClickListener(R.id.button);
+        setClickListener(R.id.audit);
     }
 
 
@@ -119,6 +122,9 @@ public class ConsumeCommitActivity  extends BaseActivity{
 //                提交
                 requestUpdateData();
                 break;
+            case R.id.audit:
+                requestImgCode();
+                break;
         }
     }
     private  void showDialog(){
@@ -128,12 +134,14 @@ public class ConsumeCommitActivity  extends BaseActivity{
                 @Override
                 public void onClickCommit(AddOneEtParamDialog dialog, String data) {
                     Double count = NumParseUtils.parseDouble(data);
-
-
-                    Double service =discounts*count;
-                    setTvText(R.id.tv_service_charge,service.toString());
-                    setTvText(R.id.tv_consmue_count, data);
-                    dialog.dismiss();
+                    if(count>=100) {
+                        Double service = discounts * count;
+                        setTvText(R.id.tv_service_charge, service.toString());
+                        setTvText(R.id.tv_consmue_count, data);
+                        dialog.dismiss();
+                    }else {
+                        ToastUtils.show("消费金额必须满100");
+                    }
                 }
             });
 
@@ -166,7 +174,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
                     @Override
                     public void onSuccess(BaseResultEntity<Custom> obj) {
                         Custom data =obj.getResult();
-                            bindData(data);
+                        bindData(data);
                         requestImgCode();
 
                     }
@@ -204,8 +212,10 @@ public class ConsumeCommitActivity  extends BaseActivity{
 
                 }
             };
+
             spinner = findViewById(R.id.spinner);
             spinner.setAdapter(adapter);
+
             setSdvInside(R.id.audit,data.getCaptcha());
         }
     }

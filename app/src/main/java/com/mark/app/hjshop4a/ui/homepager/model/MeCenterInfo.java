@@ -14,6 +14,31 @@ public class MeCenterInfo extends BaseModel {
     private String userName;//用户名
     private String userPic;//用户头像
     private String shopName;//店铺名
+    private String userRealName;//真实姓名
+
+    public String getCellPhone() {
+        return cellPhone;
+    }
+
+    public void setCellPhone(String cellPhone) {
+        this.cellPhone = cellPhone;
+    }
+
+    public String getBean() {
+        return bean;
+    }
+
+    public void setBean(String bean) {
+        this.bean = bean;
+    }
+
+    public String getUserRealName() {
+        return userRealName;
+    }
+
+    public void setUserRealName(String userRealName) {
+        this.userRealName = userRealName;
+    }
 
     public String getMessageCount() {
         return cellPhone	;

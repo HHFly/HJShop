@@ -30,7 +30,7 @@ public class AppService {
 
     public PdMService getPdmService() {
         if (mPdMService == null) {
-            mPdMService = PdMService.Creator.newService(mBaseUrl);
+            mPdMService = PdMService.Creator.newService(mBaseUrl,mContext);
         }
         return mPdMService;
     }

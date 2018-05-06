@@ -6,7 +6,8 @@
     android:background="@color/white">
     <RelativeLayout
         android:id="@+id/hm_layout_item_about"
-        style="@style/hm_item_title_layout">
+        style="@style/hm_item_title_layout"
+        android:background="@color/white">
 
 
     <TextView
@@ -17,6 +18,7 @@
         />
 
     <TextView
+        android:visibility="gone"
         android:id="@+id/hm_tv_other"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +30,8 @@
         android:textColor="#999999"
         android:textSize="24px" />
 
-    <ImageView style="@style/hm_img_right" />
+    <ImageView style="@style/hm_img_right"
+        android:visibility="gone"/>
 
     <View
         style="@style/BaseLine.Horizontal"
