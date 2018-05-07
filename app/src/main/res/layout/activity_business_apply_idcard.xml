@@ -31,14 +31,23 @@
                   android:layout_height="wrap_content"
                   android:layout_centerVertical="true"
                   android:layout_alignParentRight="true"
-                  android:textColor="#666666"
+                  android:textColor="#333333"
                   android:textSize="24px"
                   android:text=""/>
             </RelativeLayout>
+            <TextView
+                android:layout_marginLeft="42px"
+                android:layout_marginTop="@dimen/textsize_30px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="身份证件照："
+                android:textSize="24px"
+                android:textColor="#333333"
+                />
             <RelativeLayout
                 android:layout_width="575px"
                 android:layout_height="364px"
-                android:layout_marginTop="77px"
+                android:layout_marginTop="42px"
              android:layout_gravity="center_horizontal"
                 android:background="@drawable/shape_radius_rect_blue">
 

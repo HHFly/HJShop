@@ -30,14 +30,16 @@ public class NormalDialogTwoBtn extends NormalDialog {
 
     //点击按钮是是否自动调用dismiss
     private boolean isAutoUseDismiss = true;
-
+        public  TextView tvContent;
+        public   Button btnLeft;
+        public Button btnRight;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.dialog_normal_two_btn, container, false);
-        TextView tvContent = getView(rootView, R.id.normal_tv_content);
-        Button btnLeft = getView(rootView, R.id.normal_btn_left);
-        Button btnRight = getView(rootView, R.id.normal_btn_right);
+        tvContent = getView(rootView, R.id.normal_tv_content);
+        btnLeft = getView(rootView, R.id.normal_btn_left);
+        btnRight = getView(rootView, R.id.normal_btn_right);
 
         //设置内容
         setText(tvContent, mContentStr);

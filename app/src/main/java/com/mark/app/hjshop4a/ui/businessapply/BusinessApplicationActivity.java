@@ -58,7 +58,7 @@ public class BusinessApplicationActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==RESULT_OK){
+        if(resultCode==RESULT_OK){
             requestData();
         }
     }
@@ -115,9 +115,11 @@ public class BusinessApplicationActivity extends BaseActivity {
                         setTvText(R.id.user_tv_1, data.getBusniessApplyUserInfo().getUserNick());
                         setTvText(R.id.user_tv_2, data.getBusniessApplyUserInfo().getUserRealName());
                         setTvText(R.id.user_tv_3, data.getBusniessApplyUserInfo().getCellphone());
-                        setTvText(R.id.user_tv_4, String.valueOf(data.getCompanyInfo().getShopId()));
                         setSdvInside(R.id.hm_sdv_logo, data.getBusniessApplyUserInfo().getUserHeadImg());
                         SwitchAduit(data.getAuditStatus());
+                    }
+                    if(data.getCompanyInfo()!=null){
+                        setTvText(R.id.user_tv_4, String.valueOf(data.getCompanyInfo().getShopId()));
                     }
                     }
 
@@ -143,10 +145,13 @@ public class BusinessApplicationActivity extends BaseActivity {
         switch (auditStatus){
             case 0: setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_in_review);
                     setViewVisibility(R.id.aduit_logo_apply,true);
+                setTvText(R.id.tv_company_info,"审核中");
                      break;
-            case 1:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_review_pass);break;
-            case 2:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_uppass);break;
-            case 3:setViewVisibility(R.id.aduit_logo_apply,false);break;
+            case 1:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_review_pass);
+                    setTvText(R.id.tv_company_info,"审核通过");break;
+            case 2:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_uppass); setTvText(R.id.tv_company_info,"审核不通过");break;
+            case 3:setViewVisibility(R.id.aduit_logo_apply,false);
+                setTvText(R.id.tv_company_info,"未提交");break;
         }
     }
 }

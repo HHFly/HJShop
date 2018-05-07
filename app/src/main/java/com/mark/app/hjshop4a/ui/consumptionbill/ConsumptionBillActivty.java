@@ -3,6 +3,7 @@ package com.mark.app.hjshop4a.ui.consumptionbill;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.Switch;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
@@ -37,28 +38,31 @@ public class ConsumptionBillActivty extends BaseActivity {
         return R.layout.activity_consumptionbill;
     }
     //类型
-    int mType =0;
+    int mType ;
 //    角色
     int Role ;
 
     @Override
     public void getIntentParam(Bundle bundle) {
         super.getIntentParam(bundle);
-        Role= App.getAppContext().getRoleType();
+
     }
 
     @Override
     public void initView() {
+        Role= App.getAppContext().getRoleType();
         switch (Role){
             case RoleType.MEMBER:
                 setTvText(R.id.titlebar_tv_title,"消费账单");
                 setViewVisibility(R.id.text4,false);
                 setViewVisibility(R.id.text5,false);
+                setViewVisibility(R.id.text6,false);
                 break;
             case RoleType.BUSINESS:
                 setTvText(R.id.titlebar_tv_title,"申请记录");
                 setViewVisibility(R.id.text1,false);
                 setViewVisibility(R.id.text2,false);
+                setViewVisibility(R.id.text6,false);
         }
 
 
@@ -68,6 +72,15 @@ public class ConsumptionBillActivty extends BaseActivity {
         super.onResume();
         if (mCurFragment == null) {
             initFragmentList();
+            Role= App.getAppContext().getRoleType();
+            switch(Role){
+                case RoleType.MEMBER:
+                    mType=0;
+
+                    break;
+                case RoleType.BUSINESS:
+                   mType=4;
+            }
             selectTab(mType);
         } else {
 //            mCurFragment.updateData();

@@ -42,29 +42,29 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:layout_marginTop="@dimen/textsize_20px"
             android:id="@+id/shop_name"
             style="@style/user_item_layout"
+            android:layout_marginTop="@dimen/textsize_20px"
             android:background="@drawable/select_normal_bg">
 
             <TextView
                 style="@style/user_item_tv"
                 android:text="金豆换购数量" />
 
-            <TextView
+            <EditText
                 android:id="@+id/certification_tv_user_name"
                 style="@style/user_item_tv_content"
+                android:layout_alignParentEnd="true"
                 android:gravity="right|center_vertical"
-                android:paddingRight="10px"
+                android:inputType="number"
                 android:hint="请输入金豆换购的数量"
-                android:textColorHint="#666666"
-                android:layout_alignParentEnd="true" />
+                android:paddingRight="10px"
+                android:textColorHint="#666666" />
 
             <ImageView
                 style="@style/BaseImg.Right"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                />
+                android:layout_centerVertical="true" />
         </RelativeLayout>
         <View style="@style/BaseLine.Horizontal"></View>
         <RelativeLayout

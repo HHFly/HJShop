@@ -13,8 +13,11 @@ import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
+import com.mark.app.hjshop4a.ui.consumptionbill.adapter.MemberGoldBeanTradeInAdapter;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanList;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -26,19 +29,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * Created by pc on 2018/4/17.
+ * Created by pc on 2018/5/7.
  */
 
-public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreListener {
+public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRefreshLoadmoreListener {
     //下拉刷新View
     SmartRefreshLayout mRefreshLayout;
-    private GoldBeanAdapter goldBeanAdapter;
+    private MemberGoldBeanTradeInAdapter memberGoldBeanTradeInAdapter;
     PagingBaseModel mPagingData;
     //是否正在刷新数据
     boolean isRequestData;
     boolean isInit;
-    //tab type
-    int mTabType;
+
     @Override
     public int getContentResId() {
         return R.layout.fragment_bill;
@@ -46,16 +48,6 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
 
     @Override
     public void findView() {
-
-    }
-
-    @Override
-    public void setListener() {
-
-    }
-
-    @Override
-    public void initView() {
         isInit = false;
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
@@ -79,34 +71,44 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
         setVisibilityGone(R.id.empty_layout_empty, false);
         setTvText(R.id.empty_tv_title, "暂无记录");
     }
+    @Override
+    public void setListener() {
+
+    }
+
+    @Override
+    public void initView() {
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
     /**
      * 刷新适配器
      *
      *
      * @param isRefresh
      */
-    private void initRvAdapter(List<Bean> data, boolean isRefresh) {
+    private void initRvAdapter(List<MemberGoldBeanTradeIn> data, boolean isRefresh) {
 
 
-        if (goldBeanAdapter == null) {
+        if (memberGoldBeanTradeInAdapter == null) {
             RecyclerView rv = getView(R.id.recyclerView);
-            goldBeanAdapter = new GoldBeanAdapter(data);
+            memberGoldBeanTradeInAdapter = new MemberGoldBeanTradeInAdapter(data);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
             if (rv != null) {
                 rv.setLayoutManager(layoutManager);
-                rv.setAdapter(goldBeanAdapter);
+                rv.setAdapter(memberGoldBeanTradeInAdapter);
             }
 
         } else {
-            goldBeanAdapter.notifyData(data, isRefresh);
+            memberGoldBeanTradeInAdapter.notifyData(data, isRefresh);
         }
 
         boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
         setVisibilityGone(R.id.empty_layout_empty, isShowEmpty);
-    }
-    @Override
-    public void onClick(View v) {
-
     }
     /**
      * 请求数据
@@ -118,19 +120,19 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
             pagingParam.setCurrentPage(curPage);
             pagingParam.setTimestamp(timetamp);
 
-            App.getServiceManager().getPdmService().memberBeanList(1,1,pagingParam.getMap())
+            App.getServiceManager().getPdmService().memberBeanTrade(2,6,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver<BeanList>() {
+                    .subscribe(new DefaultObserver<MemberGoldBeanTradeIn>() {
                         @Override
-                        public void onSuccess(BaseResultEntity<BeanList> obj) {
-                            BeanList data = obj.getResult();
+                        public void onSuccess(BaseResultEntity<MemberGoldBeanTradeIn> obj) {
+                            MemberGoldBeanTradeIn data = obj.getResult();
                             if(data!=null) {
-                                initRvAdapter(data.getBeanList(), curPage == 1);
+//                                initRvAdapter(data.(), curPage == 1);
                                 if (mPagingData == null) {
                                     mPagingData = new PagingBaseModel();
                                 }
-                                mPagingData.setPagingInfo(curPage, data.getBeanList(), obj.getNowTime());
+//                                mPagingData.setPagingInfo(curPage, data.getBeanList(), obj.getNowTime());
                             }
                             RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
@@ -138,7 +140,7 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
 
                         @Override
                         public void onUnSuccessFinish() {
-                            initRvAdapter(new ArrayList<Bean>(), curPage == 1);
+//                            initRvAdapter(new ArrayList<Bean>(), curPage == 1);
                             RefreshLayoutUtils.finish(mRefreshLayout);
                         }
 
@@ -158,7 +160,7 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
             @Override
             public void onLoadMore(int nextPage, long timestamp) {
                 {
-                    requestData(nextPage,timestamp);
+                    requestData(nextPage, timestamp);
                 }
             }
         });
@@ -166,6 +168,6 @@ public class GoldBeanFragment extends BaseFragment implements OnRefreshLoadmoreL
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-       requestData(1,mPagingData.getTimestamp());
+        requestData(1, mPagingData.getTimestamp());
     }
 }

@@ -116,6 +116,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
     private void error(@NonNull Throwable e) {
         if (AppContext.isDebudEnv()) {
             LogUtils.logFormat(this, "接口请求回调", e.getMessage());
+
             e.printStackTrace();
         }
         onUnSuccessFinish();

@@ -19,7 +19,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10px"
-                android:text="昨日报单"
+                android:text="总报单"
                 android:textColor="@color/white"
                 android:textSize="22px" />
 

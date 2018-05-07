@@ -193,7 +193,7 @@
             android:text="身份认证" />
 
         <TextView
-            android:id="@+id/tv_company_info"
+            android:id="@+id/tv_certificates"
             style="@style/user_item_tv_content"
             android:layout_marginRight="0px"
             android:layout_toLeftOf="@+id/imageView4" />
@@ -215,7 +215,8 @@
             android:text="公司信息" />
 
         <TextView
-            android:id="@+id/tv_certificates"
+            android:id="@+id/tv_company_info"
+
             style="@style/user_item_tv_content"
             android:layout_marginRight="0px"
             android:layout_toLeftOf="@+id/imageView1" />

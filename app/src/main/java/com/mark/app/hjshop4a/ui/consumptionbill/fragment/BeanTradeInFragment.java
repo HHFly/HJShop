@@ -58,6 +58,9 @@ public class BeanTradeInFragment extends BaseFragment implements OnRefreshLoadmo
     @Override
     public void initView() {
         isInit = false;
+        if (mPagingData == null) {
+            mPagingData = new PagingBaseModel();
+        }
         initRefresh();
         initEmpty();
 
@@ -118,7 +121,7 @@ public class BeanTradeInFragment extends BaseFragment implements OnRefreshLoadmo
             pagingParam.setCurrentPage(curPage);
             pagingParam.setTimestamp(timetamp);
 
-            App.getServiceManager().getPdmService().busniessbeanTradeIn(2,1,pagingParam.getMap())
+            App.getServiceManager().getPdmService().busniessbeanTradeIn(2,5,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new DefaultObserver<BeanTradeInList>() {
@@ -152,11 +155,18 @@ public class BeanTradeInFragment extends BaseFragment implements OnRefreshLoadmo
 
     @Override
     public void onLoadmore(RefreshLayout refreshLayout) {
+        RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
 
+            @Override
+            public void onLoadMore(int nextPage, long timestamp) {
+                {
+                    requestData(nextPage,timestamp);
+                }
+            }
+        });
     }
-
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-
+        requestData(1,mPagingData.getTimestamp());
     }
 }

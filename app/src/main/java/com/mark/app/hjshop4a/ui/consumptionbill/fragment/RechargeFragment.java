@@ -45,7 +45,7 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
 
     @Override
     public int getContentResId() {
-        return  R.layout.fragment_bill;
+        return R.layout.fragment_bill;
     }
 
     @Override
@@ -61,12 +61,16 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
     @Override
     public void initView() {
         isInit = false;
+        if (mPagingData == null) {
+            mPagingData = new PagingBaseModel();
+        }
         initRefresh();
         initEmpty();
 
         mRefreshLayout.autoRefresh();
         isInit = true;
     }
+
     /**
      * 初始化下拉刷新View
      */
@@ -74,6 +78,7 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
     }
+
     /**
      * 初始化空布局
      */
@@ -81,9 +86,9 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
         setVisibilityGone(R.id.empty_layout_empty, false);
         setTvText(R.id.empty_tv_title, "暂无记录");
     }
+
     /**
      * 刷新适配器
-     *
      *
      * @param isRefresh
      */
@@ -106,21 +111,23 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
         boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
         setVisibilityGone(R.id.empty_layout_empty, isShowEmpty);
     }
+
     @Override
     public void onClick(View v) {
 
     }
+
     /**
      * 请求数据
      */
-    private  void requestData(final  int curPage,final  long timetamp){
-        if(!isRequestData) {
+    private void requestData(final int curPage, final long timetamp) {
+        if (!isRequestData) {
             isRequestData = true;
             PagingParam pagingParam = new PagingParam();
             pagingParam.setCurrentPage(curPage);
             pagingParam.setTimestamp(timetamp);
 
-            App.getServiceManager().getPdmService().TopUpList(1,4,pagingParam.getMap())
+            App.getServiceManager().getPdmService().TopUpList(1, 4, pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new DefaultObserver<TopUpList>() {
@@ -151,21 +158,22 @@ public class RechargeFragment extends BaseFragment implements OnRefreshLoadmoreL
         }
 
     }
+
     @Override
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
 
-            @Override
-            public void onLoadMore(int nextPage, long timestamp) {
-                {
-                    requestData(nextPage,timestamp);
-                }
+        @Override
+        public void onLoadMore(int nextPage, long timestamp) {
+            {
+                requestData(nextPage, timestamp);
             }
-        });
-    }
+        }
+    });
+}
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1,0);
+        requestData(1, mPagingData.getTimestamp());
     }
 }

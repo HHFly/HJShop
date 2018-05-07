@@ -40,6 +40,32 @@
                     />
             </RelativeLayout>
         <View style="@style/BaseLine.Horizontal"/>
+
+            <RelativeLayout
+
+                android:id="@+id/member_bill_id"
+                style="@style/user_item_layout"
+                android:background="@drawable/select_normal_bg">
+
+                <TextView
+                    style="@style/user_item_tv"
+                    android:text="金豆换购编号" />
+
+                <TextView
+                    android:id="@+id/tv_member_bill_id"
+                    style="@style/user_item_tv_content_right"
+                    android:hint="请输入金豆换购编号"
+                    android:textColorHint="#666666"
+                    android:layout_alignParentEnd="true" />
+
+                <ImageView
+                    style="@style/BaseImg.Right"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    />
+            </RelativeLayout>
+            <View style="@style/BaseLine.Horizontal"/>
+
             <RelativeLayout
 
                 android:id="@+id/roletype"
@@ -62,6 +88,7 @@
                     android:spinnerMode="dropdown"
                     android:textColor="@color/colorText"
                     android:textSize="@dimen/textsize_26px" />
+
                 <ImageView
                     style="@style/BaseImg.Right"
                     android:visibility="gone"
@@ -203,6 +230,7 @@
             <RelativeLayout
                 android:id="@+id/money_count"
                 style="@style/user_item_layout"
+                android:layout_height="120px"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:background="@drawable/select_normal_bg">
@@ -272,7 +300,7 @@
                 android:id="@+id/button"
                 style="@style/BaseBtn.Normal.Important"
                 android:layout_width="match_parent"
-                android:layout_marginTop="52px"
+                android:layout_marginTop="70px"
                 android:text="提交" />
         </LinearLayout>
 

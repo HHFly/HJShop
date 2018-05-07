@@ -9,8 +9,8 @@
         android:id="@+id/item_tv"
         android:layout_width="match_parent"
         android:layout_height="80px"
-        android:paddingLeft="20px"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|right"
+        android:paddingRight="15px"
         android:text="test"
         android:textSize="@dimen/textsize_26px" />
 

@@ -109,7 +109,9 @@ public class WithDrawActivity extends BaseActivity {
                 .subscribe(new DefaultObserver() {
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
-
+                        ToastUtils.show("成功提交申请");
+                       setTvText(R.id.withDraw,"");
+                       setTvText(R.id.remark,"");
                     }
 
 

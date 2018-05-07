@@ -640,7 +640,12 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                       ActivityJumpUtils.actActivity(activity, BusniessGoldBeanConsumeActivity.class);
                   }
               });
-
+              holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                  @Override
+                  public void onClick(View v) {
+                      ActivityJumpUtils.actConsumption(activity,RoleType.BUSINESS);
+                  }
+              });
               break;
           case 3:
               //                       功能内容
@@ -685,6 +690,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               holder.image(R.id.me_iv_lab2, R.mipmap.applicationrecord);
               holder.image(R.id.me_iv_lab3, R.mipmap.bankcard);
               holder.image(R.id.me_iv_lab4, R.mipmap.recommend);
+              holder.visibility(R.id.hm_lab2,false);
               holder.text(R.id.me_tv_lab1, "资产详情");
               holder.text(R.id.me_tv_lab2, "申请记录");
               holder.text(R.id.me_tv_lab3, "银行卡");
@@ -742,9 +748,10 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
   }
 //  申请代理
   private void agant(){
-      final String strPhone = "4001017979";
+      final String strPhone = "400 101 7979";
       NormalDialogFactory.getNormalDialogTwoBtn()
               .setContentText( strPhone)
+              .setRightBtnText(R.string.呼叫)
               .setRightBtnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {

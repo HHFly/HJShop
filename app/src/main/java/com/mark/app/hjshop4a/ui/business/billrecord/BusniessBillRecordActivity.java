@@ -83,7 +83,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==2){
+        if(resultCode==2){
             startTime=data.getLongExtra("sTime", System.currentTimeMillis()/1000);
             endTime=data.getLongExtra("eTime", System.currentTimeMillis()/1000);
             mRefreshLayout.autoRefresh();

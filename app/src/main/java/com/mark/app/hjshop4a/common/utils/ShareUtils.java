@@ -1,7 +1,11 @@
 package com.mark.app.hjshop4a.common.utils;
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
@@ -11,6 +15,13 @@ import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
+import com.umeng.socialize.shareboard.SnsPlatform;
+import com.umeng.socialize.utils.ShareBoardlistener;
 
 import java.io.ByteArrayOutputStream;
 
@@ -18,7 +29,7 @@ import java.io.ByteArrayOutputStream;
  * Created by pc on 2018/5/1.
  */
 
-public class ShareUtils  {
+public class ShareUtils   {
     private static ShareUtils utils;
     /**
      * 获取实例
@@ -34,6 +45,75 @@ public class ShareUtils  {
             }
         }
         return utils;
+    }
+  private static UMShareListener  umShareListener = new UMShareListener() {
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+            //分享开始的回调
+        }
+
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+//            Toast.makeText(ShareActivity.this, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+//            Toast.makeText(ShareActivity.this,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+//            Toast.makeText(ShareActivity.this,platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
+    /**
+     * 分享链接
+     */
+    public static void shareWeb(final Activity activity, String WebUrl, String title, String description, String imageUrl, int imageID, SHARE_MEDIA platform) {
+        final UMWeb web = new UMWeb(WebUrl);//连接地址
+        web.setTitle(title);//标题
+        web.setDescription(description);//描述
+        if (TextUtils.isEmpty(imageUrl)) {
+            web.setThumb(new UMImage(activity, imageID));  //本地缩略图
+        } else {
+            web.setThumb(new UMImage(activity, imageUrl));  //网络缩略图
+        }
+
+        new ShareAction(activity)
+         .setDisplayList(SHARE_MEDIA.QQ, SHARE_MEDIA.SINA, SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE)
+                .setShareboardclickCallback(new ShareBoardlistener() {
+                    @Override
+                    public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
+                        if (share_media == SHARE_MEDIA.QQ) {
+//                            Log.e("点击QQ");
+                            new ShareAction(activity).setPlatform(SHARE_MEDIA.QQ)
+                                    .withMedia(web)
+                                    .setCallback(umShareListener)
+                                    .share();
+                        } else if (share_media == SHARE_MEDIA.WEIXIN) {
+//                            Log.e("点击微信");
+                            new ShareAction(activity).setPlatform(SHARE_MEDIA.WEIXIN)
+                                    .withMedia(web)
+                                    .setCallback(umShareListener)
+                                    .share();
+                        } else if (share_media == SHARE_MEDIA.SINA) {
+                            new ShareAction(activity).setPlatform(SHARE_MEDIA.SINA)
+                                    .withMedia(web)
+                                    .setCallback(umShareListener)
+                                    .share();
+                        } else if (share_media == SHARE_MEDIA.WEIXIN_CIRCLE) {
+                            new ShareAction(activity).setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE)
+                                    .withMedia(web)
+                                    .setCallback(umShareListener)
+                                    .share();
+                        }
+                    }
+                }).open();
+
+
+
     }
     /*
    * 原生微信分享

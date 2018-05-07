@@ -11,9 +11,16 @@ import java.util.List;
 
 public class BillsRecord extends BaseModel {
     private List<Customs> customsList;//报单列表
-    private int customsTotal;//总报单
-    private  int customsYestoday;//昨日报单数量
+    private String customsTotal;//总报单
+    private  String customsYestoday;//昨日报单数量
 
+    public void setCustomsTotal(String customsTotal) {
+        this.customsTotal = customsTotal;
+    }
+
+    public void setCustomsYestoday(String customsYestoday) {
+        this.customsYestoday = customsYestoday;
+    }
 
     public List<Customs> getCustomsList() {
         return customsList;
@@ -27,15 +34,11 @@ public class BillsRecord extends BaseModel {
         return String.valueOf(customsTotal);
     }
 
-    public void setCustomsTotal(int customsTotal) {
-        this.customsTotal = customsTotal;
-    }
+
 
     public String getCustomsYestoday() {
         return String.valueOf(customsYestoday);
     }
 
-    public void setCustomsYestoday(int customsYestoday) {
-        this.customsYestoday = customsYestoday;
-    }
+
 }

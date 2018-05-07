@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -76,6 +77,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
         setClickListener(R.id.imagebtn);
         setClickListener(R.id.button);
         setClickListener(R.id.audit);
+        setClickListener(R.id.member_bill_id);
     }
 
 
@@ -91,6 +93,10 @@ public class ConsumeCommitActivity  extends BaseActivity{
             case R.id.member_id:
 //                *会员账号
                 FunctionDialogFactory.showAddOneParamDialogNum(this,"",R.id.tv_member_id);
+                break;
+            case R.id.member_bill_id:
+//                金豆换购编号
+                FunctionDialogFactory.showAddOneParamDialog(this,"",R.id.tv_member_bill_id);
                 break;
             case R.id.roletype:
 //                *账户类别
@@ -265,6 +271,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
         String commodityconut = getTvText(R.id.tv_commodity_conut);
         String commodityprice = getTvText(R.id.tv_commodity_price);
         String audit = getTvText(R.id.et_audit);
+        String beanTradeInSn =getTvText(R.id.tv_member_bill_id);
         //校验
         if(!ValidUtils.phone(memberId))
         {
@@ -310,6 +317,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
         customPram.setProductPrice(commodityprice);
         customPram.setBuyProof(pic);
         customPram.setCaptchaPc(audit);
+        customPram.setBeanTradeInSn(beanTradeInSn);
         App.getServiceManager().getPdmService()
                 .customs(customPram.getMap())
                 .subscribeOn(Schedulers.io())

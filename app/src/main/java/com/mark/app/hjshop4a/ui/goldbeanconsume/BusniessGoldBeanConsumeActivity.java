@@ -1,7 +1,10 @@
 package com.mark.app.hjshop4a.ui.goldbeanconsume;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
+import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
@@ -40,12 +43,13 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         requestData();
-        requestImgCode();
+
     }
 
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"商家兑换金豆");
+       EditText e=  getView(R.id.certification_tv_user_name);
 
     }
 
@@ -145,6 +149,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
     }
     private void  bindData(BusniessGoldBeanCS data){
         setTvText(R.id.gold_bean_count,data.getBeanUsable());
+        setSdvInside(R.id.audit,data.getCaptCha());
         BeanNum =NumParseUtils.parseDouble(data.getBeanUsable());
         Ratiox = NumParseUtils.parseDouble(data.getDisCounts());
 

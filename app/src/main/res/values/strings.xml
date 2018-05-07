@@ -220,8 +220,8 @@
     <string name="me_线下报单">线下报单</string>
     <string name="me_收货地址">收货地址</string>
     <string name="me_我的收藏">我的收藏</string>
-    <string name="me_报单账单">报单账单</string>
-    <string name="me_金豆兑换">金豆兑换</string>
+    <string name="me_报单账单">报单记录</string>
+    <string name="me_金豆兑换">金豆兑换金额</string>
     <string name="me_账单">账单</string>
     <string name="me_商户信息">商户信息</string>
     <string name="me_在线充值">在线充值</string>
@@ -245,5 +245,7 @@
     <string name="me_前往">前往</string>
     <string name="me_退出">退出</string>
     <string name="_1_s">尾号%1$s</string>
+    <string name="me_会员金豆换购">会员金豆换购</string>
+    <string name="呼叫">呼叫</string>
 
 </resources>

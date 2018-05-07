@@ -11,8 +11,9 @@ import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.umeng.commonsdk.UMConfigure;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
-
+import com.umeng.socialize.Config;
 /**
  * Created by zhuwh on 2018/4/10.
  */
@@ -49,6 +50,9 @@ App extends Application {
         FrescoUtils.initialize(this);
 //        初始化二维码
         ZXingLibrary.initDisplayOpinion(this);
+
+//        友盟
+        UMConfigure.init(this,"5a12384aa40fa3551f0001d1","umeng", UMConfigure.DEVICE_TYPE_PHONE,"");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
     }
 
 

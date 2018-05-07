@@ -1,11 +1,17 @@
 package com.mark.app.hjshop4a.ui.recommend;
 
+import android.Manifest;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.annotation.IdRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
@@ -26,8 +32,20 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.editorpage.ShareActivity;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.media.UMWeb;
+import com.umeng.socialize.shareboard.ShareBoardConfig;
+import com.umeng.socialize.shareboard.SnsPlatform;
+import com.umeng.socialize.utils.ShareBoardlistener;
 
 import java.io.ByteArrayOutputStream;
+import java.lang.ref.WeakReference;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -40,12 +58,13 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     private  RecommendAdapter recommendAdapter;
     SmartRefreshLayout mRefreshLayout;//刷新框架
     PagingBaseModel mPagingData;
-
+    private UMShareListener mShareListener;
+    private ShareAction mShareAction;
     private ShareDialog shareDialog;
     private IWXAPI api;
-    private String inviteUrl;
-    private  String inviteTitle;
-    private  String   inviteContent;
+    private String inviteUrl="https://www.baidu.com";
+    private  String inviteTitle= "惠家商城";
+    private  String   inviteContent ="快来下载惠家商城App吧！";
     @Override
     public int getContentViewResId() {
         return R.layout.activity_title_right_base_rvlist;
@@ -60,8 +79,40 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"我的推荐");
         setTvText(R.id.titlebar_tv_right,"分享");
-        api = WXAPIFactory.createWXAPI(this, BuildConfig.WX_APPID,true);
-        api.registerApp(BuildConfig.WX_APPID);
+//        api = WXAPIFactory.createWXAPI(this, BuildConfig.WX_APPID,true);
+//        api.registerApp(BuildConfig.WX_APPID);
+        PlatformConfig.setWeixin("你的微信APPID", "你的微信AppSecret");//微信APPID和AppSecret
+        PlatformConfig.setQQZone("你的QQAPPID", "你的QQAppSecret");//QQAPPID和AppSecret
+        PlatformConfig.setSinaWeibo("你的微博APPID", "你的微博APPSecret","微博的后台配置回调地址");//微博
+
+        mShareListener = new CustomShareListener(this);
+        /*增加自定义按钮的分享面板*/
+        mShareAction = new ShareAction(RecommendActivity.this).setDisplayList(
+                SHARE_MEDIA.WEIXIN, SHARE_MEDIA.WEIXIN_CIRCLE,
+                SHARE_MEDIA.SINA, SHARE_MEDIA.QQ
+               )
+//                .addButton("复制文本", "复制文本", "umeng_socialize_copy", "umeng_socialize_copy")
+//                .addButton("复制链接", "复制链接", "umeng_socialize_copyurl", "umeng_socialize_copyurl")
+                .setShareboardclickCallback(new ShareBoardlistener() {
+                    @Override
+                    public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
+//                        if (snsPlatform.mShowWord.equals("复制文本")) {
+//                            Toast.makeText(RecommendActivity.this, "复制文本按钮", Toast.LENGTH_LONG).show();
+//                        } else if (snsPlatform.mShowWord.equals("复制链接")) {
+//                            Toast.makeText(RecommendActivity.this, "复制链接按钮", Toast.LENGTH_LONG).show();
+//
+//                        } else {
+                            UMWeb web = new UMWeb(inviteUrl);
+                            web.setTitle(inviteTitle);
+                            web.setDescription(inviteContent);
+                            web.setThumb(new UMImage(RecommendActivity.this,R.mipmap.ic_launcher));
+                            new ShareAction(RecommendActivity.this).withMedia(web)
+                                    .setPlatform(share_media)
+                                    .setCallback(mShareListener)
+                                    .share();
+//                        }
+                    }
+                });
 
     }
 
@@ -97,11 +148,20 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                 finish();
                 break;
             case R.id.titlebar_tv_right:
-//                showShareDialog();
+                showShareDialog();
                 break;
         }
     }
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        UMShareAPI.get(this).release();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
+    }
     /**
      * 请求数据
      */
@@ -188,35 +248,74 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
         return result;
     }
     /*
-  * 显示性别选择*/
-    private  void  showShareDialog(){
-        if(shareDialog ==null){
-            shareDialog =new ShareDialog();
+  * 显示*/
+    private  void  showShareDialog() {
+        ShareBoardConfig config = new ShareBoardConfig();
+        config.setMenuItemBackgroundShape(ShareBoardConfig.BG_SHAPE_NONE);
+        mShareAction.open(config);
+    }
+
+    private static class CustomShareListener implements UMShareListener {
+
+        private WeakReference<RecommendActivity> mActivity;
+
+        private CustomShareListener(RecommendActivity activity) {
+            mActivity = new WeakReference(activity);
         }
-        shareDialog.setOnDialogClickListener(new ShareDialog.OnDialogClickListener() {
 
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
 
-            @Override
-            public void onClickWX(ShareDialog dialog) {
-                ToastUtils.show("1");
+        }
+
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+
+            if (platform.name().equals("WEIXIN_FAVORITE")) {
+                Toast.makeText(mActivity.get(), platform + " 收藏成功啦", Toast.LENGTH_SHORT).show();
+            } else {
+                if (platform != SHARE_MEDIA.MORE && platform != SHARE_MEDIA.SMS
+                        && platform != SHARE_MEDIA.EMAIL
+                        && platform != SHARE_MEDIA.FLICKR
+                        && platform != SHARE_MEDIA.FOURSQUARE
+                        && platform != SHARE_MEDIA.TUMBLR
+                        && platform != SHARE_MEDIA.POCKET
+                        && platform != SHARE_MEDIA.PINTEREST
+
+                        && platform != SHARE_MEDIA.INSTAGRAM
+                        && platform != SHARE_MEDIA.GOOGLEPLUS
+                        && platform != SHARE_MEDIA.YNOTE
+                        && platform != SHARE_MEDIA.EVERNOTE) {
+                    Toast.makeText(mActivity.get(), platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            if (platform != SHARE_MEDIA.MORE && platform != SHARE_MEDIA.SMS
+                    && platform != SHARE_MEDIA.EMAIL
+                    && platform != SHARE_MEDIA.FLICKR
+                    && platform != SHARE_MEDIA.FOURSQUARE
+                    && platform != SHARE_MEDIA.TUMBLR
+                    && platform != SHARE_MEDIA.POCKET
+                    && platform != SHARE_MEDIA.PINTEREST
+
+                    && platform != SHARE_MEDIA.INSTAGRAM
+                    && platform != SHARE_MEDIA.GOOGLEPLUS
+                    && platform != SHARE_MEDIA.YNOTE
+                    && platform != SHARE_MEDIA.EVERNOTE) {
+                Toast.makeText(mActivity.get(), platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+
             }
 
-            @Override
-            public void onClickWXF(ShareDialog dialog) {
-                ToastUtils.show("2");
-            }
+        }
 
-            @Override
-            public void onClickWeiBo(ShareDialog dialog) {
-                ToastUtils.show("3");
-            }
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
 
-            @Override
-            public void onClickQQ(ShareDialog dialog) {
-                ToastUtils.show("4");
-            }
-        });
-        shareDialog.setContent(this.getActivity());
-        shareDialog.show(getFragmentManager());
+            Toast.makeText(mActivity.get(), platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
     }
 }

@@ -15,6 +15,15 @@ public class CustomPram extends ParamBaseModel {
     private  String productPrice;//商品单价
     private  String buyProof;//购买单据
     private  String captchaPc;//	验证码
+    private String beanTradeInSn;//用户换购编号
+
+    public String getBeanTradeInSn() {
+        return beanTradeInSn;
+    }
+
+    public void setBeanTradeInSn(String beanTradeInSn) {
+        this.beanTradeInSn = beanTradeInSn;
+    }
 
     public String getCellPhone() {
         return cellPhone;

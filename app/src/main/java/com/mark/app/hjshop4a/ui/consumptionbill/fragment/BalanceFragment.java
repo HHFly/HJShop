@@ -166,6 +166,6 @@ public class BalanceFragment extends BaseFragment implements OnRefreshLoadmoreLi
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1,0);
+        requestData(1,mPagingData.getTimestamp());
     }
 }

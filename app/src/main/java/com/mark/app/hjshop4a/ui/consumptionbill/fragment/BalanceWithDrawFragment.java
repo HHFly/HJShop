@@ -58,6 +58,9 @@ public class BalanceWithDrawFragment  extends BaseFragment implements OnRefreshL
     @Override
     public void initView() {
         isInit = false;
+        if (mPagingData == null) {
+            mPagingData = new PagingBaseModel();
+        }
         initRefresh();
         initEmpty();
 
@@ -165,6 +168,6 @@ public class BalanceWithDrawFragment  extends BaseFragment implements OnRefreshL
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
-        requestData(1,0);
+        requestData(1,mPagingData.getTimestamp());
     }
 }

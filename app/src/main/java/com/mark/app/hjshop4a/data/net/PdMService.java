@@ -26,6 +26,7 @@ import com.mark.app.hjshop4a.ui.bankcard.model.BankCategory;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceList;
@@ -373,6 +374,12 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     Observable<BaseResultEntity<BeanTradeInList>>busniessbeanTradeIn(@Query("userType") int userType,
                                                                      @Query("consumerType") int consumerType,
                                                                      @QueryMap Map<String, String> map);
+
+    /*消费账单金豆消费 userType=2 consummerType =6*/
+    @GET("/api/app/comsumer/bill/list")
+    Observable<BaseResultEntity<MemberGoldBeanTradeIn>>memberBeanTrade(@Query("userType") int userType,
+                                                                      @Query("consumerType") int consumerType,
+                                                                      @QueryMap Map<String, String> map);
 
     /*申请商户数据*/
     @GET("/api/app/merchant/apply/get")
