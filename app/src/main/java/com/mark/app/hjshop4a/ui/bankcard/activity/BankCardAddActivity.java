@@ -3,6 +3,7 @@ package com.mark.app.hjshop4a.ui.bankcard.activity;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.mark.app.hjshop4a.R;
@@ -38,6 +39,10 @@ public class BankCardAddActivity extends BaseActivity {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"添加银行卡");
+        EditText editText = getView(R.id.account_name);
+        EditText editText1 =getView(R.id.item_et_bank_name);
+        setProhibitEmoji(editText);
+        setProhibitEmoji(editText1);
         requestData();
     }
 

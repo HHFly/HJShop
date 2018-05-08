@@ -142,7 +142,7 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
             mAdapter.notifyData(data,data.getPerformanceProvinceList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null|| data.getPerformanceCityList()==null || data.getPerformanceCityList().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null&& data.getPerformanceProvince() == null||data.getPerformanceCityList()==null && data.getPerformanceCityList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override

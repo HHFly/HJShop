@@ -17,6 +17,15 @@ public class Customs extends BaseModel {
     private int  customsStatus;//状态 0 待审核 1 审核中 2 审核通过 3 审核不通过
     private String  customsTime;//时间
     private String shopName;//店铺名称
+    private  int roleCustomsStatus;// 状态 0 待审核 1 审核通过 2 审核不通过
+
+    public int getRoleCustomsStatus() {
+        return roleCustomsStatus;
+    }
+
+    public void setRoleCustomsStatus(int roleCustomsStatus) {
+        this.roleCustomsStatus = roleCustomsStatus;
+    }
 
     public String getOfflineOrderSn() {
         return offlineOrderSn;

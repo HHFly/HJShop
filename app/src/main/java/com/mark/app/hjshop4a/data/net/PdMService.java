@@ -27,6 +27,7 @@ import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberTradeInList;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceList;
@@ -377,13 +378,16 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
 
     /*消费账单金豆消费 userType=2 consummerType =6*/
     @GET("/api/app/comsumer/bill/list")
-    Observable<BaseResultEntity<MemberGoldBeanTradeIn>>memberBeanTrade(@Query("userType") int userType,
-                                                                      @Query("consumerType") int consumerType,
-                                                                      @QueryMap Map<String, String> map);
+    Observable<BaseResultEntity<MemberTradeInList>>memberBeanTrade(@Query("userType") int userType,
+                                                                   @Query("consumerType") int consumerType,
+                                                                   @QueryMap Map<String, String> map);
 
     /*申请商户数据*/
     @GET("/api/app/merchant/apply/get")
     Observable<BaseResultEntity<BusinessApply>>getMerchantapply();
+    /*申请商户数据*/
+    @GET("/api/app/merchant/apply/get/info")
+    Observable<BaseResultEntity<BusinessApply>>getMerchantapplyInfo(@Query("shopId") long shopId);
     /*申请商户*/
     @FormUrlEncoded
     @POST("/api/app/merchant/apply")
@@ -469,7 +473,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                                  @Field("auditStatus")int auditStatus,
                                                  @Field("auditRemark") String auditRemark);
 
-    /*商户报单(代理商)-审核*/
+    /*商户报单(代理商)-审核  审核状态 1 通过 2 不通过*/
     @FormUrlEncoded
     @POST("/api/app/customs/proxy/audit")
     Observable<BaseResultEntity>proxyToAccept(@Field("offlineOrderSn") String offlineOrderSn,

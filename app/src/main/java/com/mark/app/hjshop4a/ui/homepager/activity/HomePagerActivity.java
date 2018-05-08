@@ -19,11 +19,13 @@ import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.MeFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
+import com.white.lib.utils.CallPhoneUtil;
 import com.white.lib.utils.SPUtil;
 import com.white.lib.utils.ToastUtil;
 
@@ -247,13 +249,26 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab5: {
-                switchFragment(mServiceFragment);
+//                switchFragment(mServiceFragment);
+                agant();
                 break;
             }
         }
 
     }
-
+    //  申请代理
+    private void agant(){
+        final String strPhone = "400 101 7979";
+        NormalDialogFactory.getNormalDialogTwoBtn()
+                .setContentText( strPhone)
+                .setRightBtnText(R.string.呼叫)
+                .setRightBtnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        CallPhoneUtil.call(getAppCompatActivity(), strPhone);
+                    }
+                }).show(getActivity().getFragmentManager());
+    }
     /**
      * 选择Fragment
      *

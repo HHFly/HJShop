@@ -3,6 +3,7 @@ package com.mark.app.hjshop4a.base.fragment;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
@@ -14,6 +15,7 @@ import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -204,7 +206,19 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
         }
         return (T) rootView.findViewById(id);
     }
-
+    /**
+     * 设置TextView文案
+     *
+     * @param id
+     * @param resId
+     */
+    public void setIvImage(@IdRes int id, @DrawableRes int resId) {
+        View view = getView(id);
+        if (view != null && view instanceof ImageView) {
+            ImageView tv = (ImageView) view;
+            tv.setImageResource(resId);
+        }
+    }
     /**
      * 设置TextView文案
      *

@@ -64,7 +64,7 @@ public class OnlineRechargeActivity extends BaseActivity {
                     @Override
                     public void onSuccess(BaseResultEntity<PayWayList> obj) {
                         PayWayList data = obj.getResult();
-                        if(data.getPayWayList()!=null) {
+                        if(data!=null&&data.getPayWayList()!=null) {
                             initRvAdapter(data, data.getPayWayList());
                         }
                     }

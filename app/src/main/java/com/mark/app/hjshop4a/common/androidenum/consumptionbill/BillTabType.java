@@ -15,7 +15,8 @@ import java.lang.annotation.RetentionPolicy;
         BillTabType.BALANCE,
         BillTabType.RECHARGE,
         BillTabType.BALANCEWITHDRAW,
-        BillTabType.BEANTRADEIN
+        BillTabType.BEANTRADEIN,
+        BillTabType.MEMBERTRADEIN
 
 })
 @Retention(RetentionPolicy.SOURCE)
@@ -40,5 +41,7 @@ public @interface BillTabType {
     *
     * */
     int BEANTRADEIN=3;
+
+    int MEMBERTRADEIN=5;
 
 }

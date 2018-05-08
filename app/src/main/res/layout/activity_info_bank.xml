@@ -179,7 +179,7 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="30px"
                 android:paddingTop="30px"
-                android:text="帐户"
+                android:text="账号"
                 android:textColor="@color/colorText"
                 android:textSize="@dimen/textsize_26px"
                 tools:ignore="HardcodedText" />
@@ -191,7 +191,7 @@
                 android:layout_weight="1.0"
                 android:background="@null"
                 android:gravity="right|center_vertical"
-                android:hint="请输入开户帐号"
+                android:hint="请输入银行卡账号"
                 android:inputType="number"
                 android:maxLength="40"
                 android:paddingBottom="30px"

@@ -36,7 +36,7 @@ public class BusinessReviewAdapter extends BaseHasTopListRvAdapter<BusinessRevie
 
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, BusinessReview businessReview) {
-        if(businessReview!=null&&businessReview.getMerchantAuditStayList()!=null) {
+        if(businessReview!=null) {
             holder.text(R.id.tv_1, businessReview.getMerchantAuditStay().getAuditStayNum());
             holder.text(R.id.tv_2, businessReview.getMerchantAuditStay().getNewShopNum());
             holder.text(R.id.tv_3, businessReview.getMerchantAuditStay().getShopNumTotal());
@@ -44,24 +44,32 @@ public class BusinessReviewAdapter extends BaseHasTopListRvAdapter<BusinessRevie
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPosition, MerchantAuditStays merchantAuditStays) {
+    public void bindBodyData(final AutoViewHolder holder, int bodyPosition, final MerchantAuditStays merchantAuditStays) {
         if(merchantAuditStays!=null){
             holder.visibility(R.id.rl_2,false);
-            holder.text(R.id.shopName,merchantAuditStays.getShopName());
-            holder.text(R.id.userName,merchantAuditStays.getUserName());
-            holder.text(R.id.applyTime,merchantAuditStays.getApplyTime());
-            holder.text(R.id.cellPhone,merchantAuditStays.getCellPhone());
             holder.text(R.id.shopName_2,merchantAuditStays.getShopName());
             holder.text(R.id.userName_2,merchantAuditStays.getUserName());
             holder.text(R.id.applyTime_2,merchantAuditStays.getApplyTime());
             holder.text(R.id.cellPhone_2,merchantAuditStays.getCellPhone());
-            holder.text(R.id.auditStatusProxy, BillUtil.swichAuditStatus(merchantAuditStays.getAuditStatusProxy()));
-            holder.text(R.id.auditStatusProvice, BillUtil.swichAuditStatus(merchantAuditStays.getAuditStatusProvice()));
+            switch (merchantAuditStays.getAuditStatusProxy()){
+                case AuditStatusProxy.NOREVIEW:
+                    break;
+                case AuditStatusProxy.PASS:
+                    holder.visibility(R.id.rl_review_1,false);
+                    holder.text(R.id.auditStatusProxy, BillUtil.swichAuditStatusProxy(merchantAuditStays.getAuditStatusProxy()));
+                    break;
+                case AuditStatusProxy.UNPASS:
+                    holder.visibility(R.id.rl_review_1,false);
+                    holder.text(R.id.auditStatusProxy, BillUtil.swichAuditStatusProxy(merchantAuditStays.getAuditStatusProxy()));
+                    break;
+            }
+//            holder.text(R.id.auditStatusProxy, BillUtil.swichAuditStatus(merchantAuditStays.getAuditStatusProxy()));
+//            holder.text(R.id.auditStatusProvice, BillUtil.swichAuditStatus(merchantAuditStays.getAuditStatusProvice()));
             holder.get(R.id.tv_1_pass).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener!=null){
-                        onItemClickListener.onClickItemYes();
+                        onItemClickListener.onClickItemYes(merchantAuditStays.getShopId(),holder);
                     }
                 }
             });
@@ -69,7 +77,7 @@ public class BusinessReviewAdapter extends BaseHasTopListRvAdapter<BusinessRevie
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener!=null){
-                        onItemClickListener.onClickItemNo();
+                        onItemClickListener.onClickItemNo(merchantAuditStays.getShopId(),holder);
                     }
                 }
             });
@@ -77,7 +85,7 @@ public class BusinessReviewAdapter extends BaseHasTopListRvAdapter<BusinessRevie
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener!=null){
-                        onItemClickListener.onClickDetails();
+                        onItemClickListener.onClickDetails(merchantAuditStays.getShopId());
                     }
                 }
             });
@@ -92,9 +100,9 @@ public class BusinessReviewAdapter extends BaseHasTopListRvAdapter<BusinessRevie
 
     public interface OnItemClickListener {
 
-        void onClickItemYes();
-        void onClickItemNo();
-        void onClickDetails();
+        void onClickItemYes(long shopID,AutoViewHolder holder);
+        void onClickItemNo(long shopID,AutoViewHolder holder);
+        void onClickDetails(long shopID);
     }
 
 }

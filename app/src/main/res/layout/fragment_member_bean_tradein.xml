@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="@dimen/textsize_20px"
+    android:background="@drawable/shape_hm_bg"
+
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="86px"
+        android:paddingLeft="40px"
+        android:paddingRight="28px">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="#666666"
+            android:textSize="26px"
+            android:text="金豆消费"/>
+        <TextView
+            android:id="@+id/offlineOrderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textSize="26px"
+            android:textColor="#333333"
+            android:text=""/>
+    </RelativeLayout>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="40px"
+        android:layout_marginRight="@dimen/textsize_20px"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/textsize_20px">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/tradeInSn"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="换购编号"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/userCellphone"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="会员账号"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/tradeInBean"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="消费金豆"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="@dimen/textsize_10px">
+
+            <TextView
+                android:id="@+id/tradeInPrice"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="抵扣金额"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/textsize_10px"
+            android:paddingRight="28px"
+            android:paddingLeft="40px"
+            android:paddingBottom="31px">
+
+            <TextView
+                android:id="@+id/offlineOrderSn"
+                android:text=""
+                style="@style/Bill_right"/>
+            <TextView
+                android:text="消费类型"
+                style="@style/Bill_left" />
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

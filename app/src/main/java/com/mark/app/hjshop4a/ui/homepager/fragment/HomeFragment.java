@@ -27,7 +27,8 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void initView() {
-
+        setTvText(R.id.titlebar,"惠家商城");
+        setIvImage(R.id.bg_img,R.mipmap.home);
     }
 
     @Override

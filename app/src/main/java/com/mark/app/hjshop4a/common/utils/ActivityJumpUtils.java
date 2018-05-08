@@ -272,8 +272,15 @@ public class ActivityJumpUtils {
     /*
   * 跳转商户申请
   * */
+
     public static void actBusinesApply(Activity activity) {
         Intent intent = new Intent(activity, BusinessApplicationActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    public static void actBusinesApply(Activity activity,long shopId) {
+        Intent intent = new Intent(activity, BusinessApplicationActivity.class);
+        BundleUtils.getInstance().putLong("shopID",shopId).addIntent(intent);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }

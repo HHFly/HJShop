@@ -139,7 +139,7 @@ public class BeanTradeInFragment extends BaseFragment implements OnRefreshLoadmo
 
                         @Override
                         public void onUnSuccessFinish() {
-//                            initRvAdapter(null, curPage == 1);
+                            initRvAdapter(new ArrayList<BeanTradeIn>(), curPage == 1);
                             RefreshLayoutUtils.finish(mRefreshLayout);
                         }
 

@@ -13,6 +13,15 @@ public class AreaBusniess extends BaseModel {
     private String turnOverMonth;   //辖区内(时间范围)营业额
     private List<ProxyData> proxyDataList; // 辖区代理商数据
     private List<MerchantData>  merchantDataList; //商家数据
+    private String cityName;//当前城市
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 
     public String getTurnOverTotal() {
         return turnOverTotal;

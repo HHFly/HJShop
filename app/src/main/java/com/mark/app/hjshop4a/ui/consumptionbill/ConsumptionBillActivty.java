@@ -18,7 +18,9 @@ import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceWithDrawFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BeanTradeInFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.GoldBeanFragment;
+import com.mark.app.hjshop4a.ui.consumptionbill.fragment.MemberGoldBeanTradeInFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.RechargeFragment;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
 
 /**
  * Created by pc on 2018/4/17.
@@ -33,6 +35,7 @@ public class ConsumptionBillActivty extends BaseActivity {
     private RechargeFragment mFragmentRecharge;
     private BalanceWithDrawFragment mFragmentBalanceWithDraw;
     private BeanTradeInFragment mFragmentBeanTradeIn;
+    private MemberGoldBeanTradeInFragment memberGoldBeanTradeInFragment;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_consumptionbill;
@@ -62,7 +65,7 @@ public class ConsumptionBillActivty extends BaseActivity {
                 setTvText(R.id.titlebar_tv_title,"申请记录");
                 setViewVisibility(R.id.text1,false);
                 setViewVisibility(R.id.text2,false);
-                setViewVisibility(R.id.text6,false);
+//                setViewVisibility(R.id.text6,false);
         }
 
 
@@ -94,6 +97,7 @@ public class ConsumptionBillActivty extends BaseActivity {
         setClickListener(R.id.text3);
         setClickListener(R.id.text4);
         setClickListener(R.id.text5);
+        setClickListener(R.id.text6);
     }
 
     @Override
@@ -107,6 +111,7 @@ public class ConsumptionBillActivty extends BaseActivity {
             case R.id.text3:
             case R.id.text4:
             case R.id.text5:
+            case R.id.text6:
                 selectTab(v);
                 break;
         }
@@ -120,6 +125,7 @@ public class ConsumptionBillActivty extends BaseActivity {
         mFragmentRecharge = new RechargeFragment();
         mFragmentBalanceWithDraw= new BalanceWithDrawFragment();
         mFragmentBeanTradeIn= new BeanTradeInFragment();
+        memberGoldBeanTradeInFragment=new MemberGoldBeanTradeInFragment();
     }
 
     /**
@@ -161,6 +167,12 @@ public class ConsumptionBillActivty extends BaseActivity {
                 selectTab(view);
                 break;
             }
+            case BillTabType.MEMBERTRADEIN:{
+                //金豆兑换
+                View view = getView(R.id.text6);
+                selectTab(view);
+                break;
+            }
         }
     }
 
@@ -175,6 +187,7 @@ public class ConsumptionBillActivty extends BaseActivity {
         setViewSelected(R.id.text3, false);
         setViewSelected(R.id.text4, false);
         setViewSelected(R.id.text5, false);
+        setViewSelected(R.id.text6, false);
         setViewSelected(view, true);
         switch (view.getId()) {
             case R.id.text1:
@@ -191,6 +204,9 @@ public class ConsumptionBillActivty extends BaseActivity {
                 break;
             case R.id.text5:
                 switchFragment(mFragmentBalanceWithDraw);
+                break;
+            case R.id.text6:
+                switchFragment(memberGoldBeanTradeInFragment);
                 break;
         }
     }

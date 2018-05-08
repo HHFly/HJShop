@@ -7,6 +7,7 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
 import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
 import com.mark.app.hjshop4a.ui.areaagent.billreview.model.Customs;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.AuditStatusProxy;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordAdapter;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillRevie
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPosition, Customs customs) {
+    public void bindBodyData(AutoViewHolder holder, int bodyPosition, final Customs customs) {
         if(customs!=null){
             holder.text(R.id.shopName,customs.getShopName());
             holder.text(R.id.customsTime,customs.getCustomsTime());
@@ -53,11 +54,23 @@ public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillRevie
             holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
             holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
             holder.text(R.id.customsTypeName,customs.getCustomsTypeName());
+           switch (customs.getRoleCustomsStatus()){
+               case AuditStatusProxy.NOREVIEW:
+                   break;
+               case AuditStatusProxy.PASS:
+                   holder.visibility(R.id.rl_review,false);
+                   holder.text(R.id.aduit,"通过");
+                   break;
+               case AuditStatusProxy.UNPASS:
+                   holder.visibility(R.id.rl_review,false);
+                   holder.text(R.id.aduit,"不通过");
+                   break;
+           }
             holder.get(R.id.tv_1_pass).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener!=null){
-                        onItemClickListener.onClickItemYes();
+                        onItemClickListener.onClickItemYes(customs.getOfflineOrderSn());
                     }
                 }
             });
@@ -65,7 +78,7 @@ public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillRevie
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener!=null){
-                        onItemClickListener.onClickItemNo();
+                        onItemClickListener.onClickItemNo(customs.getOfflineOrderSn());
                     }
                 }
             });
@@ -80,8 +93,8 @@ public class AreaBillReviewAdapter extends BaseHasTopListRvAdapter<AreaBillRevie
 
     public interface OnItemClickListener {
 
-        void onClickItemYes();
-        void onClickItemNo();
+        void onClickItemYes(String offlineOrderSn);
+        void onClickItemNo(String offlineOrderSn);
     }
 
 }

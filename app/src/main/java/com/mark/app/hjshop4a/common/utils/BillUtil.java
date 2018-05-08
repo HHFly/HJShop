@@ -23,4 +23,13 @@ public class BillUtil {
             default:return "";
         }
     }
+    /*审核状态*/
+    public static String swichAuditStatusProxy(int offlineOrderAuditStatus) {
+        switch (offlineOrderAuditStatus){
+            case 0:return  "";
+            case 1:return  "审核通过";
+            case 2:return  "审核不通过";
+            default:return "";
+        }
+    }
 }

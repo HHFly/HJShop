@@ -18,6 +18,7 @@ import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
+import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberTradeInList;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
@@ -91,12 +92,12 @@ public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRef
      *
      * @param isRefresh
      */
-    private void initRvAdapter(List<MemberGoldBeanTradeIn> data, boolean isRefresh) {
+    private void initRvAdapter(MemberTradeInList data, boolean isRefresh) {
 
 
         if (memberGoldBeanTradeInAdapter == null) {
             RecyclerView rv = getView(R.id.recyclerView);
-            memberGoldBeanTradeInAdapter = new MemberGoldBeanTradeInAdapter(data);
+            memberGoldBeanTradeInAdapter = new MemberGoldBeanTradeInAdapter(data.getMemberGoldBeanTradeIns());
             LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
             if (rv != null) {
                 rv.setLayoutManager(layoutManager);
@@ -104,10 +105,10 @@ public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRef
             }
 
         } else {
-            memberGoldBeanTradeInAdapter.notifyData(data, isRefresh);
+            memberGoldBeanTradeInAdapter.notifyData(data.getMemberGoldBeanTradeIns(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null ||  data.getMemberGoldBeanTradeIns()==null||data.getMemberGoldBeanTradeIns().size() == 0);
         setVisibilityGone(R.id.empty_layout_empty, isShowEmpty);
     }
     /**
@@ -123,16 +124,16 @@ public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRef
             App.getServiceManager().getPdmService().memberBeanTrade(2,6,pagingParam.getMap())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver<MemberGoldBeanTradeIn>() {
+                    .subscribe(new DefaultObserver<MemberTradeInList>() {
                         @Override
-                        public void onSuccess(BaseResultEntity<MemberGoldBeanTradeIn> obj) {
-                            MemberGoldBeanTradeIn data = obj.getResult();
+                        public void onSuccess(BaseResultEntity<MemberTradeInList> obj) {
+                            MemberTradeInList data = obj.getResult();
                             if(data!=null) {
-//                                initRvAdapter(data.(), curPage == 1);
+                                initRvAdapter(data, curPage == 1);
                                 if (mPagingData == null) {
                                     mPagingData = new PagingBaseModel();
                                 }
-//                                mPagingData.setPagingInfo(curPage, data.getBeanList(), obj.getNowTime());
+                                mPagingData.setPagingInfo(curPage, data.getMemberGoldBeanTradeIns(), obj.getNowTime());
                             }
                             RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
@@ -140,7 +141,7 @@ public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRef
 
                         @Override
                         public void onUnSuccessFinish() {
-//                            initRvAdapter(new ArrayList<Bean>(), curPage == 1);
+                            initRvAdapter(new MemberTradeInList(), curPage == 1);
                             RefreshLayoutUtils.finish(mRefreshLayout);
                         }
 

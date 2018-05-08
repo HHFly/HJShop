@@ -9,23 +9,23 @@ import java.util.List;
  */
 
 public class AreaBillReview extends BaseModel {
-    private int customsTotal;//总报单
-    private  int customsYestoday;//昨日报单数量
+    private String customsTotal;//总报单
+    private  String customsYestoday;//昨日报单数量
     private List<Customs> customsList; //	报单列表
 
-    public int getCustomsTotal() {
+    public String getCustomsTotal() {
         return customsTotal;
     }
 
-    public void setCustomsTotal(int customsTotal) {
+    public void setCustomsTotal(String customsTotal) {
         this.customsTotal = customsTotal;
     }
 
-    public int getCustomsYestoday() {
+    public String getCustomsYestoday() {
         return customsYestoday;
     }
 
-    public void setCustomsYestoday(int customsYestoday) {
+    public void setCustomsYestoday(String customsYestoday) {
         this.customsYestoday = customsYestoday;
     }
 

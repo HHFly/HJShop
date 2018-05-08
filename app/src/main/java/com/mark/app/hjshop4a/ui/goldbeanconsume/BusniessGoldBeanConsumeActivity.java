@@ -49,7 +49,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"商家兑换金豆");
-       EditText e=  getView(R.id.certification_tv_user_name);
+//       EditText e=  getView(R.id.certification_tv_user_name);
 
     }
 

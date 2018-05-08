@@ -144,7 +144,7 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
             }
 
         } else {
-            mAdapter.notifyData(data.getMerchantDataList(), isRefresh);
+            mAdapter.notifyData(data,data.getMerchantDataList(), isRefresh);
         }
 
         boolean isShowEmpty = isRefresh && (data == null );

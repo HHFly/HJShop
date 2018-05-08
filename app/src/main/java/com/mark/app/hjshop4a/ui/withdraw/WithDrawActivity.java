@@ -155,6 +155,10 @@ public class WithDrawActivity extends BaseActivity {
                             setSdvSmall(R.id.iv_bnak_card, bankCards.get(0).getBankPic());
                             setTvText(R.id.item_tv_bank_name, bankCards.get(0).getBankName());
                             requestWithDrawCash();
+                        }else {
+                            ToastUtils.show("请先添加银行卡");
+                            ActivityJumpUtils.actBankCard(getAppCompatActivity());
+                            finish();
                         }
 
                     }
@@ -165,8 +169,13 @@ public class WithDrawActivity extends BaseActivity {
                         hideLoadingDialog();
                     }
 
-
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
                 });
+
 
 
     }

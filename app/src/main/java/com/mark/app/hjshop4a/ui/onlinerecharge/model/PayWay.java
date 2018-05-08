@@ -7,15 +7,15 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
  */
 
 public class PayWay extends BaseModel {
-    private int payWayCode; //支付方式ID
+    private int payWayId; //支付方式ID
     private  String payWayName;//支付方式名称
 
     public int getPayWayCode() {
-        return payWayCode;
+        return payWayId;
     }
 
     public void setPayWayCode(int payWayCode) {
-        this.payWayCode = payWayCode;
+        this.payWayId = payWayCode;
     }
 
     public String getPayWayName() {

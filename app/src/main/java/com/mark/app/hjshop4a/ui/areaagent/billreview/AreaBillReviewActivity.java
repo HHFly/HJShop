@@ -12,10 +12,12 @@ import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.IsPass;
 import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -47,7 +49,8 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
     @Override
     public void initView() {
             setTvText(R.id.titlebar_tv_title,"辖区报单申请");
-            setTvText(R.id.titlebar_tv_right,"筛选");
+//            setTvText(R.id.titlebar_tv_right,"筛选");
+        setTvText(R.id.titlebar_tv_right,"");
     }
     @Override
     public void findView() {
@@ -73,7 +76,7 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
                 finish();
                 break;
             case R.id.titlebar_tv_right:
-                ActivityJumpUtils.actCalendarView(this,"辖区报单申请");
+//                ActivityJumpUtils.actCalendarView(this,"辖区报单申请");
                 break;
         }
     }
@@ -130,14 +133,15 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
             }
             mAdapter.setOnItemClickListener(new AreaBillReviewAdapter.OnItemClickListener() {
                 @Override
-                public void onClickItemYes() {
-
+                public void onClickItemYes(String offlineOrderSn) {
+                    merchantToAccept(IsPass.YES,offlineOrderSn,"");
                 }
 
                 @Override
-                public void onClickItemNo() {
-
+                public void onClickItemNo(String offlineOrderSn) {
+                    merchantToAccept(IsPass.NO,offlineOrderSn,"");
                 }
+
             });
         } else {
             mAdapter.notifyData(data.getCustomsList(), isRefresh);
@@ -147,18 +151,23 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
 
-    private void merchantToAccept(boolean ispass,long shopid,String remark){
-        if(ispass){
+    private void merchantToAccept(int  ispass,String offlineOrderSn,String remark){
                 showLoadingDialog();
                 App.getServiceManager().getPdmService()
-                        .merchantToAccept(shopid,1,remark)
+                        .proxyToAccept(offlineOrderSn,ispass,remark)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new DefaultObserver() {
 
                             @Override
                             public void onSuccess(BaseResultEntity obj) {
+                                    mRefreshLayout.autoRefresh();
+                            }
 
+                            @Override
+                            public void onUnSuccessFinish() {
+                                super.onUnSuccessFinish();
+                                ToastUtils.show("审核报单失败，请重试");
                             }
 
                             @Override
@@ -168,26 +177,6 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
                             }
                         });
 
-        }else {
-            showLoadingDialog();
-            App.getServiceManager().getPdmService()
-                    .merchantToAccept(shopid,2,remark)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new DefaultObserver() {
-
-                        @Override
-                        public void onSuccess(BaseResultEntity obj) {
-
-                        }
-
-                        @Override
-                        public void onAllFinish() {
-                            super.onAllFinish();
-                            hideLoadingDialog();
-                        }
-                    });
-        }
     }
 
     @Override

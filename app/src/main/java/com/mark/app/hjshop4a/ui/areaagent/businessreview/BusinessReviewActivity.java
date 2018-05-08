@@ -7,19 +7,18 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
 import com.mark.app.hjshop4a.ui.areaagent.businessreview.model.BusinessReview;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-
-import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -111,19 +110,21 @@ public class BusinessReviewActivity extends BaseActivity implements OnRefreshLoa
             }
             mAdapter.setOnItemClickListener(new BusinessReviewAdapter.OnItemClickListener() {
                 @Override
-                public void onClickItemYes() {
-
+                public void onClickItemYes(long shopID , AutoViewHolder holder) {
+                    requestReview(shopID, IsPass.YES,"",holder);
                 }
 
                 @Override
-                public void onClickItemNo() {
-
+                public void onClickItemNo(long shopID, AutoViewHolder holder) {
+                    requestReview(shopID, IsPass.NO,"",holder);
                 }
 
                 @Override
-                public void onClickDetails() {
-                    ActivityJumpUtils.actBusinesApply(getAppCompatActivity());
+                public void onClickDetails(long shopID) {
+                    ActivityJumpUtils.actBusinesApply(getAppCompatActivity(),shopID);
                 }
+
+
             });
         } else {
             mAdapter.notifyData(data,data.getMerchantAuditStayList(),isRefresh);
@@ -132,6 +133,33 @@ public class BusinessReviewActivity extends BaseActivity implements OnRefreshLoa
         boolean isShowEmpty = isRefresh && (data == null || data.getMerchantAuditStayList() == null|| data.getMerchantAuditStayList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
+
+    private void requestReview(final  long shopID, final  int ispass , String remark, final AutoViewHolder holder) {
+        showLoadingDialog();
+        App.getServiceManager().getPdmService().merchantToAccept(shopID,ispass,remark)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+
+                        mRefreshLayout.autoRefresh();
+                    }
+
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        ToastUtils.show("提交审核失败");
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+    }
+
     @Override
     public void onLoadmore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {

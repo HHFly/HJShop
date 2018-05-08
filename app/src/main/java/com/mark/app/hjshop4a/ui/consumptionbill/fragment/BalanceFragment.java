@@ -62,7 +62,9 @@ public class BalanceFragment extends BaseFragment implements OnRefreshLoadmoreLi
         isInit = false;
         initRefresh();
         initEmpty();
-
+        if (mPagingData == null) {
+            mPagingData = new PagingBaseModel();
+        }
         mRefreshLayout.autoRefresh();
         isInit = true;
     }

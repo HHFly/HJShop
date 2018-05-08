@@ -47,8 +47,8 @@ public class ProvinceAreaBusniessAdapter extends BaseHasTopListRvAdapter<AreaBus
                 holder.text(R.id.cityName,proxyData.getCityName());
                 holder.text(R.id.areaProxy,proxyData.getAreaProxy());
                 holder.text(R.id.cellPhone	,proxyData.getCellPhone());
-                holder.text(R.id.shopNum,proxyData.getShopNum());
-                holder.text(R.id.userNum,proxyData.getUserNum());
+                holder.text(R.id.shopNum,String.valueOf(proxyData.getShopNum()));
+                holder.text(R.id.userNum,String.valueOf(proxyData.getUserNum()));
                 holder.text(R.id.turnTotal,proxyData.getTurnTotal());
                holder.get(R.id.rl_location).setOnClickListener(new View.OnClickListener() {
                    @Override

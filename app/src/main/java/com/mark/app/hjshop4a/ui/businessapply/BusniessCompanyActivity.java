@@ -19,6 +19,7 @@ import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.AuditStatus;
 import com.mark.app.hjshop4a.ui.businessapply.model.AddressInfo;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.businessapply.model.CompanyInfo;
@@ -74,7 +75,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"公司信息");
         bindData(mData);
-        if(mData.getAuditStatus()!=3){
+        if(mData.getAuditStatus()!= 3||mData.getAuditStatus()!=2){
             setViewEnable(R.id.companyinfo_all,false);
             setViewEnable(R.id.company_layout_name,false);
             setViewEnable(R.id.company_layout_loacl,false);

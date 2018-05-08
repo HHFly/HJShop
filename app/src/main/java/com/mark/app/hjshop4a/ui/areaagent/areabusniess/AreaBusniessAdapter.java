@@ -30,10 +30,10 @@ public class AreaBusniessAdapter extends BaseHasTopListRvAdapter<AreaBusniess,Me
 
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, AreaBusniess areaBusniess) {
-        if (areaBusniess!=null&&areaBusniess.getProxyDataList()!=null){
+        if (areaBusniess!=null){
                 holder.text(R.id.turnOverTotal,areaBusniess.getTurnOverTotal());
                 holder.text(R.id.turnOverMonth,areaBusniess.getTurnOverMonth());
-                holder.text(R.id.cityName,areaBusniess.getProxyDataList().get(0).getCityName());
+                holder.text(R.id.cityName,areaBusniess.getCityName());
         }
     }
 
