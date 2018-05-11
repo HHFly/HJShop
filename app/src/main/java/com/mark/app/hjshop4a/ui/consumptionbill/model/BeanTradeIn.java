@@ -12,6 +12,15 @@ public class BeanTradeIn extends BaseModel {
     private  String toAccountMoney;//到账金额
     private  int auditStatus;//状态 1 待审核 1 审核中 2 审核通过 3 审核不通过
     private  String toAccountTime;//到账时间
+    private String tradeInSn;
+
+    public String getTradeInSn() {
+        return tradeInSn;
+    }
+
+    public void setTradeInSn(String tradeInSn) {
+        this.tradeInSn = tradeInSn;
+    }
 
     public String getTradeInMoney() {
         return tradeInMoney;

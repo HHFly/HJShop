@@ -1,5 +1,7 @@
 package com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener;
 
+import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
+
 public interface SelectInterface {
 
     /**
@@ -7,6 +9,6 @@ public interface SelectInterface {
      *
      * @param result
      */
+    void selectedResult(AddressData result1 ,AddressData result2 ,AddressData result3 );
     void selectedResult(String result);
-
 }

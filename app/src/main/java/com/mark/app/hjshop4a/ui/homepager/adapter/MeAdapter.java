@@ -602,7 +602,12 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 //                        用户名
               holder.text(R.id.hm_tv_user_name,mData.getUserRealName());
               //c会员账号
-              holder.text(R.id.hm_tv_user_phone,mData.getCellPhone());
+//              holder.text(R.id.hm_tv_user_phone,mData.getCellPhone());
+//              holder.text(R.id.hm_tv_user_shopname,"商户ID:"+String.valueOf(mData.getShopId()));
+              holder.text(R.id.hm_tv_user_shopname,mData.getCellPhone());
+              if(mData.getShopId()!=0){
+                  holder.text(R.id.hm_tv_user_phone,"商户ID:"+String.valueOf(mData.getShopId()));
+              }
               holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
 
           }
@@ -755,7 +760,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               .setRightBtnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      CallPhoneUtil.call(activity, strPhone);
+                      CallPhoneUtil.call(activity, strPhone.replace(" ",""));
                   }
               }).show(activity.getFragmentManager());
   }

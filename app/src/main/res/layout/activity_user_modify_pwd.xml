@@ -32,6 +32,7 @@
         android:src="@drawable/select_password_eye"
         />
 </LinearLayout>
+    <View style="@style/BaseLine.Horizontal"/>
     <LinearLayout style="@style/input_layout"
 
         >

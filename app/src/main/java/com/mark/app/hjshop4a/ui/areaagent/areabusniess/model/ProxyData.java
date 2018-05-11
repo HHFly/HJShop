@@ -14,6 +14,15 @@ public class ProxyData extends BaseModel {
     private int shopNum;    //店铺数量
     private int userNum;    //会员数量
     private String turnTotal; //营业额(汇总)
+    private long userId;
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
     public String getCityName() {
         return cityName;

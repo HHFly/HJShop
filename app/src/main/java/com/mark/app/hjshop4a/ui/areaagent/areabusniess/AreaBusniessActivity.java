@@ -39,6 +39,7 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
     private long endTime;
     private int role;
     private long cityId =0;
+    private long userId =0;
     int mSource;//来源
     PagingBaseModel mPagingData;
     @Override
@@ -50,6 +51,7 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
     public void getIntentParam(Bundle bundle) {
         super.getIntentParam(bundle);
         cityId=bundle.getLong("cityId");
+        userId =bundle.getLong("userId");
     }
 
     @Override
@@ -62,8 +64,8 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
         }
-        startTime=System.currentTimeMillis()/1000;
-        endTime=System.currentTimeMillis()/1000;
+        startTime=0;
+        endTime=0;
         if(cityId==0) {
             cityId = App.getAppContext().getUserInfo().getCityId();
         }
@@ -93,8 +95,8 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==2){
-            startTime=data.getLongExtra("sTime", System.currentTimeMillis()/1000);
-            endTime=data.getLongExtra("eTime", System.currentTimeMillis()/1000);
+            startTime=data.getLongExtra("sTime", 0);
+            endTime=data.getLongExtra("eTime", 0);
             mRefreshLayout.autoRefresh();
         }
 
@@ -105,30 +107,57 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
         PagingParam pagingParam = new PagingParam();
         pagingParam.setCurrentPage(curPage);
         pagingParam.setTimestamp(timetamp);
-        App.getServiceManager().getPdmService().areaMerchant(1,pagingParam.getMap(),startTime,endTime,cityId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<AreaBusniess>() {
-                    @Override
-                    public void onSuccess(BaseResultEntity<AreaBusniess> obj) {
-                        AreaBusniess data =obj.getResult();
-                        initRvAdapter(data, curPage == 1);
-                        if (mPagingData == null) {
-                            mPagingData = new PagingBaseModel();
+        if(userId==0) {
+            App.getServiceManager().getPdmService().areaMerchant(1, pagingParam.getMap(), startTime, endTime, cityId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new DefaultObserver<AreaBusniess>() {
+                        @Override
+                        public void onSuccess(BaseResultEntity<AreaBusniess> obj) {
+                            AreaBusniess data = obj.getResult();
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getMerchantDataList(), obj.getNowTime());
+                            RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
-                        mPagingData.setPagingInfo(curPage,data.getMerchantDataList(),obj.getNowTime());
-                        RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
-                    }
 
 
-                    @Override
-                    public void onUnSuccessFinish() {
-                        initRvAdapter(new AreaBusniess(), curPage == 1);
-                        RefreshLayoutUtils.finish(mRefreshLayout);
-                    }
+                        @Override
+                        public void onUnSuccessFinish() {
+                            initRvAdapter(new AreaBusniess(), curPage == 1);
+                            RefreshLayoutUtils.finish(mRefreshLayout);
+                        }
 
 
-                });
+                    });
+        }else {
+            App.getServiceManager().getPdmService().areaMerchant(1, pagingParam.getMap(), startTime, endTime, cityId,userId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new DefaultObserver<AreaBusniess>() {
+                        @Override
+                        public void onSuccess(BaseResultEntity<AreaBusniess> obj) {
+                            AreaBusniess data = obj.getResult();
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getMerchantDataList(), obj.getNowTime());
+                            RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
+                        }
+
+
+                        @Override
+                        public void onUnSuccessFinish() {
+                            initRvAdapter(new AreaBusniess(), curPage == 1);
+                            RefreshLayoutUtils.finish(mRefreshLayout);
+                        }
+
+
+                    });
+        }
 
 
     }

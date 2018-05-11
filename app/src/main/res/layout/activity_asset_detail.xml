@@ -46,11 +46,11 @@
                         android:textColor="#333333"
                         android:textSize="40px" />
 
-                    <View
-                        style="@style/BaseLine.Horizontal"
-                        android:layout_alignParentBottom="true"></View>
                 </RelativeLayout>
 
+                <View
+                    style="@style/BaseLine.Horizontal"
+                    android:layout_alignParentBottom="true"></View>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="121px">
@@ -110,7 +110,9 @@
 
                     </LinearLayout>
                 </LinearLayout>
-
+                <View
+                    style="@style/BaseLine.Horizontal"
+                    />
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="97px"
@@ -169,11 +171,11 @@
                         android:textColor="#333333"
                         android:textSize="40px" />
 
-                    <View
-                        style="@style/BaseLine.Horizontal"
-                        android:layout_alignParentBottom="true"></View>
-                </RelativeLayout>
 
+                </RelativeLayout>
+                <View
+                    style="@style/BaseLine.Horizontal"
+                    android:layout_alignParentBottom="true"></View>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="121px">
@@ -233,7 +235,8 @@
 
                     </LinearLayout>
                 </LinearLayout>
-
+                <View
+                    style="@style/BaseLine.Horizontal"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="121px">
@@ -320,7 +323,7 @@
 
 
                 </LinearLayout>
-
+                <View style="@style/BaseLine.Horizontal"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="121px"

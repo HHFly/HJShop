@@ -35,9 +35,9 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
     AgentPrefermanceAdapter mAdapter;
     private long  startTime;
     private long endTime;
-
+    private long userID;
     private long cityId;
-
+    private
     int mSource;//来源
     PagingBaseModel mPagingData;
     @Override
@@ -49,6 +49,7 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
     public void getIntentParam(Bundle bundle) {
         super.getIntentParam(bundle);
         cityId=bundle.getLong("cityId");
+        userID=bundle.getLong("userId");
     }
     @Override
     public void initView() {
@@ -60,8 +61,8 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
         }
-        startTime=System.currentTimeMillis()/1000;
-        endTime=System.currentTimeMillis()/1000;
+        startTime=0;
+        endTime=0;
         if(cityId==0) {
             cityId = App.getAppContext().getUserInfo().getCityId();
         }
@@ -90,8 +91,8 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==2){
-            startTime=data.getLongExtra("sTime", System.currentTimeMillis()/1000);
-            endTime=data.getLongExtra("eTime", System.currentTimeMillis()/1000);
+            startTime=data.getLongExtra("sTime", 0);
+            endTime=data.getLongExtra("eTime", 0);
             mRefreshLayout.autoRefresh();
         }
 
@@ -100,30 +101,57 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
         PagingParam pagingParam = new PagingParam();
         pagingParam.setCurrentPage(curPage);
         pagingParam.setTimestamp(timetamp);
-        App.getServiceManager().getPdmService().agentPerformance(1,pagingParam.getMap(),startTime,endTime,cityId)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<AgentPreformance>() {
-                    @Override
-                    public void onSuccess(BaseResultEntity<AgentPreformance> obj) {
-                        AgentPreformance data =obj.getResult();
-                        initRvAdapter(data, curPage == 1);
-                        if (mPagingData == null) {
-                            mPagingData = new PagingBaseModel();
+        if(userID==0) {
+            App.getServiceManager().getPdmService().agentPerformance(1, pagingParam.getMap(), startTime, endTime, cityId)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new DefaultObserver<AgentPreformance>() {
+                        @Override
+                        public void onSuccess(BaseResultEntity<AgentPreformance> obj) {
+                            AgentPreformance data = obj.getResult();
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getPerformanceCityList(), obj.getNowTime());
+                            RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
                         }
-                        mPagingData.setPagingInfo(curPage,data.getPerformanceCityList(),obj.getNowTime());
-                        RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
-                    }
 
 
-                    @Override
-                    public void onUnSuccessFinish() {
-                        initRvAdapter(new AgentPreformance(), curPage == 1);
-                        RefreshLayoutUtils.finish(mRefreshLayout);
-                    }
+                        @Override
+                        public void onUnSuccessFinish() {
+                            initRvAdapter(new AgentPreformance(), curPage == 1);
+                            RefreshLayoutUtils.finish(mRefreshLayout);
+                        }
 
 
-                });
+                    });
+        }else {
+            App.getServiceManager().getPdmService().agentPerformance(1, pagingParam.getMap(), startTime, endTime, cityId,userID)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new DefaultObserver<AgentPreformance>() {
+                        @Override
+                        public void onSuccess(BaseResultEntity<AgentPreformance> obj) {
+                            AgentPreformance data = obj.getResult();
+                            initRvAdapter(data, curPage == 1);
+                            if (mPagingData == null) {
+                                mPagingData = new PagingBaseModel();
+                            }
+                            mPagingData.setPagingInfo(curPage, data.getPerformanceCityList(), obj.getNowTime());
+                            RefreshLayoutUtils.finish(mRefreshLayout, mPagingData);
+                        }
+
+
+                        @Override
+                        public void onUnSuccessFinish() {
+                            initRvAdapter(new AgentPreformance(), curPage == 1);
+                            RefreshLayoutUtils.finish(mRefreshLayout);
+                        }
+
+
+                    });
+        }
     }
 
     public void initRvAdapter(AgentPreformance data, boolean isRefresh) {

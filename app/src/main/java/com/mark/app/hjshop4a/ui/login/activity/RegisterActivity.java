@@ -20,6 +20,7 @@ import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.MD5Utils;
+import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
@@ -31,6 +32,7 @@ import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
+import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
 
@@ -57,7 +59,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
     private CountDownUtils countDownUtils;
     //选择dialog
     private SelectAddressDialog wheelDialog;
-
+    LoginParam param;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_register;
@@ -91,6 +93,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
      * 初始化倒计时
      */
     private void initCountDown() {
+         param = new LoginParam();
         //初始化倒计时工具类
         Button btnCode = getView(R.id.register_btn_code);
         countDownUtils = CountDownUtils.getInstance(this, btnCode);
@@ -225,14 +228,14 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
         String strInvitation = getTvText(R.id.register_et_invitation);
         String strRegion = getTvText(R.id.register_et_region);
 //        isValidPass(false);
-        LoginParam param = new LoginParam();
+
         param.setAccount(strUserName);
         param.setCaptcha(strCode);
         param.setPassword(strPwd);
         param.setInviteCode(strInvitation);
-        param.setProvinceId("1");
-        param.setCityId("1");
-        param.setCountyId("1");
+//        param.setProvinceId("1");
+//        param.setCityId("1");
+//        param.setCountyId("1");
         showLoadingDialog();
         App.getServiceManager().getPdmService().register(param.getMap())
                 .subscribeOn(Schedulers.io())
@@ -363,12 +366,23 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
         wheelDialog.showDialog();
     }
 
+
+
     @Override
-    public void selectedResult(String result) {
-            setTvText(R.id.register_et_region,result);
+    public void selectedResult(AddressData result1, AddressData result2, AddressData result3) {
+        setTvText(R.id.register_et_region,result1.getName() +"-"+ result2.getName() +"-"+ result3.getName());
+
+        param.setProvinceId(result1.getId());
+        param.setCityId(result2.getId());
+        param.setCountyId(result3.getId());
         if (textWatcher != null) {
             textWatcher.onTextChanged("", 0, 0, 0);
         }
+    }
+
+    @Override
+    public void selectedResult(String result) {
+
 
     }
 }

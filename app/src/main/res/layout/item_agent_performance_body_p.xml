@@ -2,10 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
+    android:background="@drawable/shape_hm_bg"
     android:layout_marginTop="@dimen/textsize_20px"
     android:layout_marginRight="30px"
-    android:layout_marginLeft="30px">
+    android:layout_marginLeft="30px"
+    android:layout_marginBottom="20px">
     <RelativeLayout
         android:id="@+id/rl_location"
         android:layout_width="match_parent"
@@ -17,7 +18,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-
             android:src="@mipmap/address"/>
         <TextView
             android:id="@+id/store_name"
@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/textsize_10px"
             android:textColor="#666666"
             android:textSize="26px"
             android:text=""/>
@@ -140,7 +141,6 @@
             android:paddingRight="28px"
             android:paddingLeft="40px"
             android:paddingBottom="@dimen/textsize_10px">
-
             <TextView
                 android:id="@+id/beanIncomeMonth"
                 android:text=""

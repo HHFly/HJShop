@@ -444,14 +444,31 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
                                                            @Query("startTime") long startTime,
                                                            @Query("endTime") long endTime,
                                                            @Query("cityId") long cityId);
-
+    /*区域商户 类型 1 市 2 省*/
+    @GET("/api/app/area/merchant/info")
+    Observable<BaseResultEntity<AreaBusniess>>areaMerchant(@Query("type") int type,
+                                                           @QueryMap Map<String, String> map,
+                                                           @Query("startTime") long startTime,
+                                                           @Query("endTime") long endTime,
+                                                           @Query("cityId") long cityId,
+                                                           @Query("userId") long userId);
     /*.代理业绩* 类型 1 市 2 省*/
     @GET("/api/app/proxy/performance")
     Observable<BaseResultEntity<AgentPreformance>>agentPerformance(@Query("type") int type,
                                                                    @QueryMap Map<String, String> map,
                                                                    @Query("startTime") long startTime,
                                                                    @Query("endTime") long endTime,
-                                                                   @Query("cityId") long cityId);
+                                                                   @Query("cityId") long cityId
+                                                                   );
+    /*.代理业绩* 类型 1 市 2 省*/
+    @GET("/api/app/proxy/performance/info")
+    Observable<BaseResultEntity<AgentPreformance>>agentPerformance(@Query("type") int type,
+                                                                   @QueryMap Map<String, String> map,
+                                                                   @Query("startTime") long startTime,
+                                                                   @Query("endTime") long endTime,
+                                                                   @Query("cityId") long cityId,
+                                                                   @Query("userId") long userId);
+
 
     /*报单申请*/
     @GET("/api/app/merchant/customs/list")

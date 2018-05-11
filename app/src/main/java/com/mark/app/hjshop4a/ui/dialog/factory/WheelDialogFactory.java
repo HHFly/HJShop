@@ -2,9 +2,9 @@ package com.mark.app.hjshop4a.ui.dialog.factory;
 
 
 import com.mark.app.hjshop4a.common.XmlParserHandler;
-import com.mark.app.hjshop4a.model.common.CityModel;
-import com.mark.app.hjshop4a.model.common.DistrictModel;
-import com.mark.app.hjshop4a.model.common.ProvinceModel;
+import com.mark.app.hjshop4a.ui.dialog.model.CityModel;
+import com.mark.app.hjshop4a.ui.dialog.model.DistrictModel;
+import com.mark.app.hjshop4a.ui.dialog.model.ProvinceModel;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
 

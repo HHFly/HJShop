@@ -10,20 +10,15 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.base.model.PagingParam;
-import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
-import com.mark.app.hjshop4a.ui.areaagent.businessreview.IsPass;
-import com.mark.app.hjshop4a.ui.assedetail.model.AssetDetail;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.eumn.IsPass;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-
-import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -57,8 +52,8 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
         }
-        startTime=System.currentTimeMillis()/1000;
-        endTime=System.currentTimeMillis()/1000;
+        startTime=0;
+        endTime=0;
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();
@@ -85,8 +80,8 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==2){
-            startTime=data.getLongExtra("sTime", System.currentTimeMillis()/1000);
-            endTime=data.getLongExtra("eTime", System.currentTimeMillis()/1000);
+            startTime=data.getLongExtra("sTime", 0);
+            endTime=data.getLongExtra("eTime", 0);
             mRefreshLayout.autoRefresh();
         }
 

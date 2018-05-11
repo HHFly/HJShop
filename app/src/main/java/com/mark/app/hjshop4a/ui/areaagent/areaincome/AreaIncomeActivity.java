@@ -130,9 +130,15 @@ public class AreaIncomeActivity extends BaseActivity {
 
         List<PointValue> pointValues = new ArrayList<>();
         List<AxisValue> axisXValues = new ArrayList<>();
+        List<Income> a =new ArrayList<>();
+
         int count = data == null ? 0 : data.size();
+        for (int j =count;j>0;j--){
+            a.add(data.get(j-1));
+        }
+
         for (int i = 0; i < count; i++) {
-            Income item = data.get(i);
+            Income item = a.get(i);
 
 //            String label = NumberUtils.getFormatDateTimeMD(item.getDay());
             String label = String.valueOf(item.getMonth());
@@ -180,7 +186,7 @@ public class AreaIncomeActivity extends BaseActivity {
 
 //	    axisX.setName("data");  //表格名称
         axisX.setTextSize(11);//设置字体大小
-        axisX.setMaxLabelChars(7); //最多几个X轴坐标，意思就是你的缩放让X轴上数据的个数7<=x<=mAxisXValues.length
+//        axisX.setMaxLabelChars(13); //最多几个X轴坐标，意思就是你的缩放让X轴上数据的个数7<=x<=mAxisXValues.length
         axisX.setValues(axisXValues);  //填充X轴的坐标名称
         data.setAxisXBottom(axisX); //x 轴在底部
 //	    data.setAxisXTop(axisX);  //x 轴在顶部

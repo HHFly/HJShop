@@ -9,6 +9,15 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
 public class BeanConsume extends BaseModel {
     private  String  beanNum;
     private  String beanRatio;
+    private String rule;
+
+    public String getRule() {
+        return rule;
+    }
+
+    public void setRule(String rule) {
+        this.rule = rule;
+    }
 
     public String getBeanNum() {
         return beanNum;

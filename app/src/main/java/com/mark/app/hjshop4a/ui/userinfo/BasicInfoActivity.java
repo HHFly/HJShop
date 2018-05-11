@@ -10,6 +10,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.userinfo.UserInfoType;
+import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
@@ -18,6 +19,7 @@ import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
+import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
@@ -163,13 +165,19 @@ public class BasicInfoActivity extends BaseActivity implements SelectInterface {
         wheelDialog.showDialog();
     }
 
+
+    @Override
+    public void selectedResult(AddressData result1, AddressData result2, AddressData result3) {
+        CommitUserInfo userInfo =new CommitUserInfo();
+        userInfo.setProvinceId(NumParseUtils.parseLong(result1.getId()));
+        userInfo.setCityId(NumParseUtils.parseLong(result2.getId()));
+        userInfo.setCountyId(NumParseUtils.parseLong(result2.getId()));
+        requestData(R.id.certification_tv_user_city,userInfo,result1.getName() + "-" + result2.getName() + "-" + result3.getName());
+    }
+
     @Override
     public void selectedResult(String result) {
-        CommitUserInfo userInfo =new CommitUserInfo();
-        userInfo.setProvinceId(1);
-        userInfo.setCityId(1);
-        userInfo.setCountyId(1);
-        requestData(R.id.certification_tv_user_city,userInfo,result);
-//        setTvText(R.id.certification_tv_user_city,result);
+
+        setTvText(R.id.certification_tv_user_city,result);
     }
 }

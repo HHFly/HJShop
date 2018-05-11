@@ -17,6 +17,15 @@ public class PerformanceProvinces extends BaseModel {
     private String beanIncomeMonth;// 月金豆收入
     private String turnOverMonth;//月营业额
     private String turnOverTotal;//总营业额
+    private long userId;//
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
 
     public String getCityName() {
         return cityName;

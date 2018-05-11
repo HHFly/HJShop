@@ -35,15 +35,23 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
     @StringRes
     int mEmptyParamHint;
     String mData ;
+
+    // type none 0  num 1  num|numberc 2
+    int type ;
     /**
      * 获取实例
      *
      * @return
      */
-    public static AddOneEtParamDialog getInstance(boolean isNumber) {
+    public  static AddOneEtParamDialog getInstance(boolean isNumber) {
         AddOneEtParamDialog dialog = new AddOneEtParamDialog();
         dialog.isnumber =isNumber;
-
+        if(isNumber){
+            dialog.type=1;
+        }
+        else {
+            dialog.type=0;
+        }
         return dialog;
     }
     public static AddOneEtParamDialog getInstance(boolean isNumber,String text) {
@@ -52,16 +60,29 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
         dialog.mData=text;
         return dialog;
     }
+    public static AddOneEtParamDialog getInstance(int  type) {
+        AddOneEtParamDialog dialog = new AddOneEtParamDialog();
+        dialog.type=type;
+        return dialog;
+    }
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View rootView;
-        if (isnumber){
-            rootView = inflater.inflate(R.layout.dialog_add_one_param_input_num, container, false);
+        switch (type){
+            case 0:
+                rootView = inflater.inflate(R.layout.dialog_add_one_param, container, false);
+
+                break;
+            case 1:
+                rootView = inflater.inflate(R.layout.dialog_add_one_param_input_num, container, false);
+                break;
+            case 2:
+                rootView = inflater.inflate(R.layout.dialog_add_one_param_input_num_numc, container, false);
+                break;
+            default:  rootView = inflater.inflate(R.layout.dialog_add_one_param, container, false);
         }
-        else {
-             rootView = inflater.inflate(R.layout.dialog_add_one_param, container, false);
-        }
+
 
         initView(rootView);
         return rootView;

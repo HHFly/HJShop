@@ -6,12 +6,10 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
 import com.mark.app.hjshop4a.common.utils.BillUtil;
-import com.mark.app.hjshop4a.model.consumptionbill.Bill;
+import com.mark.app.hjshop4a.ui.areaagent.businessreview.eumn.AuditStatusProxy;
 import com.mark.app.hjshop4a.ui.areaagent.businessreview.model.BusinessReview;
 import com.mark.app.hjshop4a.ui.areaagent.businessreview.model.MerchantAuditStays;
-import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

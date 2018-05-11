@@ -293,7 +293,7 @@
                     android:layout_marginLeft="30px"
                     android:layout_toRightOf="@+id/imagebtn"
                     android:layout_centerVertical="true"
-                    android:text="@string/order_commit_tip"/>
+                    android:text="请上传单据"/>
             </RelativeLayout>
             <Button
                 android:layout_marginBottom="200px"

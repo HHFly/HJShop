@@ -2,6 +2,7 @@ package com.mark.app.hjshop4a.ui.withdraw;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -13,6 +14,8 @@ import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.androidenum.withdraw.WithDrawRole;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 
+import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
@@ -37,6 +40,8 @@ public class WithDrawActivity extends BaseActivity {
     private ArrayList<BankCard> bankCards;
     private BankCard currentCard;
     private WithDraw withDrawData;//可提现金额
+    private boolean hasCard =false;
+    double canuser =0;
     @Override
     public int getContentViewResId() {
         return R.layout.activity_withdraw;
@@ -46,6 +51,7 @@ public class WithDrawActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         requestData(1);
+        requestWithDrawCash();
     }
 
     @Override
@@ -74,7 +80,13 @@ public class WithDrawActivity extends BaseActivity {
                 commit();
                 break;
             case R.id.item_bank_card:
-            showBankCardDialog();
+                if(hasCard) {
+                    showBankCardDialog();
+                }else
+                {
+                    ActivityJumpUtils.actBankCard(this);
+                    finish();
+                }
 //                Intent intent =new Intent(this, BankCardActivity.class);
 //                this.startActivityForResult(intent,1);
                 break;
@@ -95,37 +107,69 @@ public class WithDrawActivity extends BaseActivity {
         return 0;
     }
     private void commit() {
-        String withDraw =getTvText(R.id.withDraw);
-        String remark =getTvText(R.id.remark);
-        String bankId =String.valueOf(currentCard.getBankId());
-        if (TextUtils.isEmpty(withDraw)){
-            ToastUtils.show("请输入金额");
-            return;
-        }
-        showLoadingDialog();
-        App.getServiceManager().getPdmService().withDraw(SwitchRole(App.getAppContext().getRoleType()),withDraw,bankId,currentCard.getBankNo(),remark)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
-                    @Override
-                    public void onSuccess(BaseResultEntity obj) {
-                        ToastUtils.show("成功提交申请");
-                       setTvText(R.id.withDraw,"");
-                       setTvText(R.id.remark,"");
-                    }
+
+            String withDraw = getTvText(R.id.withDraw);
+            String remark = getTvText(R.id.remark);
+            String bankId = "";
+            if (currentCard != null) {
+                bankId = String.valueOf(currentCard.getBankId());
+            }
+            if (TextUtils.isEmpty(withDraw)) {
+                ToastUtils.show("请输入金额");
+                return;
+            }
+            if(currentCard==null){
+                ToastUtils.show("请选择银行卡");
+                return;
+            }
 
 
-                    @Override
-                    public void onUnSuccessFinish() {
+            if (canuser<200){
+                ToastUtils.show("可提现金额不足");
+                return;
+            }
+            Double count = NumParseUtils.parseDouble(withDraw);
+             if(count<canuser) {
+                 if (count % 100 == 0) {
+                     if (count >= 200) {
 
-                    }
+                     } else {
+                         ToastUtils.show(getApplicationContext(), "提现金额最小200");
+                         return;
+                     }
+                 } else {
+                     ToastUtils.show(getApplicationContext(), "提现金额必须是100的倍数");
+                     return;
+                 }
+             }else {
+                 ToastUtils.show(getApplicationContext(), "提现金额超过可提现金额");
+                 return;
+             }
+            showLoadingDialog();
+            App.getServiceManager().getPdmService().withDraw(SwitchRole(App.getAppContext().getRoleType()), withDraw, bankId, currentCard.getBankNo(), remark)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new DefaultObserver() {
+                        @Override
+                        public void onSuccess(BaseResultEntity obj) {
+                            ToastUtils.show("成功提交申请");
+                            setTvText(R.id.withDraw, "");
+                            setTvText(R.id.remark, "");
+                        }
 
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
+
+                        @Override
+                        public void onUnSuccessFinish() {
+
+                        }
+
+                        @Override
+                        public void onAllFinish() {
+                            super.onAllFinish();
+                            hideLoadingDialog();
+                        }
+                    });
+
     }
 
     @Override
@@ -150,15 +194,17 @@ public class WithDrawActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<ArrayList<BankCard>> obj) {
                         bankCards =obj.getResult();
                         if(bankCards!=null&bankCards.size()!=0) {
+                            hasCard=true;
                             currentCard =bankCards.get(0);
                             bankCards.get(0).setSelect(true);
                             setSdvSmall(R.id.iv_bnak_card, bankCards.get(0).getBankPic());
                             setTvText(R.id.item_tv_bank_name, bankCards.get(0).getBankName());
-                            requestWithDrawCash();
+
                         }else {
-                            ToastUtils.show("请先添加银行卡");
-                            ActivityJumpUtils.actBankCard(getAppCompatActivity());
-                            finish();
+                            setTvText(R.id.item_tv_bank_name, "请先添加银行卡");
+                            setSdvSmall(R.id.iv_bnak_card, FrescoUtils.getUriByResId(R.mipmap.bankcard));
+//                            setSdvSmall(R.id.iv_bnak_card, "res://mipmap://bankcard");
+                            hasCard =false;
                         }
 
                     }
@@ -228,6 +274,7 @@ public class WithDrawActivity extends BaseActivity {
                     public void onSuccess(BaseResultEntity<WithDraw> obj) {
                         withDrawData = obj.getResult();
                         setTvText(R.id.tv_cash_useful,withDrawData.getAccountBalance());
+                        canuser=NumParseUtils.parseDouble(withDrawData.getAccountBalance().replace(",",""));
                     }
 
                     @Override

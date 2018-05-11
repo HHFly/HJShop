@@ -120,12 +120,15 @@
             android:text="@string/login_msg_region" />
 
         <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:id="@+id/register_et_region"
-            style="@style/login_input_et"
+            style="@style/user_item_tv_content"
+            android:layout_marginRight="0px"
             android:layout_weight="1"
             android:hint="@string/hint_请选择"
            android:gravity="center_vertical"
-            android:maxLength="20" />
+             />
 
         <ImageView
             android:id="@+id/register_iv_region"

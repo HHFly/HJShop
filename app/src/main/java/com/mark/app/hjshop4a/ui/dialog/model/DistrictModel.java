@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.model.common;
+package com.mark.app.hjshop4a.ui.dialog.model;
 
 public class DistrictModel {
 	private String name;

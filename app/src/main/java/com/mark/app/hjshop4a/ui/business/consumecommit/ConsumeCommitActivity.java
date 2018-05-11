@@ -31,6 +31,8 @@ import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -42,6 +44,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class ConsumeCommitActivity  extends BaseActivity{
     private AddOneEtParamDialog mAddOneEtParamDialog;
+    private AddOneEtParamDialog mCountDialog;
+    private AddOneEtParamDialog mPriceDialog;
+
     private Double discounts=0.0 ;//服务费率
     Spinner spinner;
     private  String pic;//上传图片地址
@@ -53,6 +58,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
     protected void onDestroy() {
         super.onDestroy();
         mAddOneEtParamDialog=null;
+        mCountDialog=null;
     }
     @Override
     public void initView() {
@@ -103,7 +109,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
                 break;
             case R.id.consmue_count:
 //                *消费金额
-                showDialog();
+                showDialogAllConsume();
                 break;
             case R.id.service_charge:
 //                * 服务费
@@ -114,11 +120,13 @@ public class ConsumeCommitActivity  extends BaseActivity{
                 break;
             case R.id.commodity_conut:
 //                *商品数量
-                FunctionDialogFactory.showAddOneParamDialogNum(this,"",R.id.tv_commodity_conut);
+//                FunctionDialogFactory.showAddOneParamDialogNum(this,"",R.id.tv_commodity_conut);
+                showDialogConut();
                 break;
             case R.id.commodity_price:
 //                *商品单价
-                FunctionDialogFactory.showAddOneParamDialog(this,"",R.id.tv_commodity_price);
+//                FunctionDialogFactory.showAddOneParamDialog(this,"",R.id.tv_commodity_price);
+                showDialogPrice();
                 break;
             case R.id.imagebtn:
 //             图片
@@ -133,7 +141,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
                 break;
         }
     }
-    private  void showDialog(){
+    private  void showDialogAllConsume(){
         if(mAddOneEtParamDialog==null) {
             mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(true);
             mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
@@ -141,10 +149,14 @@ public class ConsumeCommitActivity  extends BaseActivity{
                 public void onClickCommit(AddOneEtParamDialog dialog, String data) {
                     Double count = NumParseUtils.parseDouble(data);
                     if(count>=100) {
-                        Double service = discounts * count;
-                        setTvText(R.id.tv_service_charge, service.toString());
-                        setTvText(R.id.tv_consmue_count, data);
-                        dialog.dismiss();
+                        if(count<=10000) {
+                            Double service = discounts * count;
+                            setTvText(R.id.tv_service_charge,doubleToString(service));
+                            setTvText(R.id.tv_consmue_count, doubleToString(count));
+                            dialog.dismiss();
+                        }else {
+                            ToastUtils.show("单笔报单金额上限10000");
+                        }
                     }else {
                         ToastUtils.show("消费金额必须满100");
                     }
@@ -153,6 +165,55 @@ public class ConsumeCommitActivity  extends BaseActivity{
 
         }
         mAddOneEtParamDialog.show(this.getFragmentManager());
+    }
+
+    private  void showDialogConut(){
+        if(mCountDialog==null) {
+            mCountDialog = AddOneEtParamDialog.getInstance(true);
+            mCountDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
+                @Override
+                public void onClickCommit(AddOneEtParamDialog dialog, String data) {
+                    Double count = NumParseUtils.parseDouble(data);
+                    int strcount =NumParseUtils.parseInt(data);
+                    if(count<=500) {
+                            setTvText(R.id.tv_commodity_conut, String.valueOf(strcount));
+                            dialog.dismiss();
+
+                    }else {
+                        ToastUtils.show("商品数量500以内");
+                    }
+                }
+            });
+
+        }
+        mCountDialog.show(this.getFragmentManager());
+    }
+    private  void showDialogPrice(){
+        if(mPriceDialog==null) {
+            mPriceDialog = AddOneEtParamDialog.getInstance(2);
+            mPriceDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
+                @Override
+                public void onClickCommit(AddOneEtParamDialog dialog, String data) {
+                    Double count = NumParseUtils.parseDouble(data);
+                    Double strcount =Math.ceil(count);
+                    setTvText(R.id.tv_commodity_price, doubleToString(strcount));
+                    dialog.dismiss();
+
+
+                }
+            });
+
+        }
+        mPriceDialog.show(this.getFragmentManager());
+    }
+    /**
+     * double转String,保留小数点后两位
+     * @param num
+     * @return
+     */
+    public static String doubleToString(double num){
+        //使用0.00不足位补0，#.##仅保留有效位
+        return new DecimalFormat("0.00").format(num);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

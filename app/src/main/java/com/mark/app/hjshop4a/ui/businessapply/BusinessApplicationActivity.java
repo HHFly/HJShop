@@ -84,22 +84,20 @@ public class BusinessApplicationActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.layout_certificates:
-                if(mData!=null) {
-                    if(mData.getUserAuditStatus()==1) {
+                if(mData!=null&&!mData.getUserInfo().getUserIdCard().equals("")&&!mData.getUserInfo().getUserIdCardFront().equals("")&&!mData.getUserInfo().getUserIdCardSide().equals("")) {
+
                         Intent intent = new Intent(this, IdCardCheckActivity.class);
                         BundleUtils.getInstance().putSerializable("userInfo", mData.getBusniessApplyUserInfo()).addIntent(intent);
                         this.startActivityForResult(intent,1);
-                    }else {
-                        ToastUtils.show("个人信息认证审核未通过");
-                    }
+
 
                 }else {
-                    ToastUtils.show("个人信息认证未设置");
+                    ToastUtils.show("请先前往个人信息认证");
                 }
                 break;
 
             case R.id.layout_company_info:
-                if(mData!=null) {
+                if(mData!=null&&!mData.getUserInfo().getUserIdCard().equals("")&&!mData.getUserInfo().getUserIdCardFront().equals("")&&!mData.getUserInfo().getUserIdCardSide().equals("")) {
                         if(mData.getUserAuditStatus()==1) {
                             Intent intent = new Intent(this, BusniessCompanyActivity.class);
                             BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
@@ -109,7 +107,7 @@ public class BusinessApplicationActivity extends BaseActivity {
                         }
 
                 }else {
-                    ToastUtils.show("个人信息认证未设置");
+                    ToastUtils.show("请先前往个人信息认证");
                 }
                 break;
             case R.id.state:

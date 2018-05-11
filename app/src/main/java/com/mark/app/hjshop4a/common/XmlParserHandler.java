@@ -2,9 +2,9 @@ package com.mark.app.hjshop4a.common;
 
 
 
-import com.mark.app.hjshop4a.model.common.CityModel;
-import com.mark.app.hjshop4a.model.common.DistrictModel;
-import com.mark.app.hjshop4a.model.common.ProvinceModel;
+import com.mark.app.hjshop4a.ui.dialog.model.CityModel;
+import com.mark.app.hjshop4a.ui.dialog.model.DistrictModel;
+import com.mark.app.hjshop4a.ui.dialog.model.ProvinceModel;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

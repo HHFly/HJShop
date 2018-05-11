@@ -54,8 +54,8 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
         }
-        startTime=System.currentTimeMillis()/1000;
-        endTime=System.currentTimeMillis()/1000;
+        startTime=0;
+        endTime=0;
         cityId= App.getAppContext().getUserInfo().getCityId();
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
@@ -82,8 +82,8 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==2){
-            startTime=data.getLongExtra("sTime", System.currentTimeMillis()/1000);
-            endTime=data.getLongExtra("eTime", System.currentTimeMillis()/1000);
+            startTime=data.getLongExtra("sTime", 0);
+            endTime=data.getLongExtra("eTime", 0);
             mRefreshLayout.autoRefresh();
         }
 
@@ -131,18 +131,20 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
             }
             mAdapter.setOnItemClickListener(new PAgentPrefermanceAdapter.OnItemClickListener() {
                 @Override
-                public void onClickDetails(long cityId) {
+                public void onClickDetails(long cityId, long userId) {
                     Intent intent = new Intent(getAppCompatActivity(), AgentPerformanceActivity.class);
-                    BundleUtils.getInstance().putLong("cityId",cityId).addIntent(intent);
+                    BundleUtils.getInstance().putLong("cityId",cityId).putLong("userId",userId).addIntent(intent);
                     getAppCompatActivity().startActivity(intent);
                 }
+
+
             });
 
         } else {
             mAdapter.notifyData(data,data.getPerformanceProvinceList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null&& data.getPerformanceProvince() == null||data.getPerformanceCityList()==null && data.getPerformanceCityList().size() == 0);
+        boolean isShowEmpty = isRefresh && (data == null&& data.getPerformanceProvince() == null&&data.getPerformanceCityList()==null && data.getPerformanceCityList().size() == 0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override

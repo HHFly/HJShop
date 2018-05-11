@@ -54,7 +54,7 @@ public class ProvinceAreaBusniessAdapter extends BaseHasTopListRvAdapter<AreaBus
                    @Override
                    public void onClick(View v) {
                        if(onItemClickListener!=null){
-                           onItemClickListener.onClickDetails(proxyData.getCityId());
+                           onItemClickListener.onClickDetails(proxyData.getUserId(),proxyData.getUserId());
                        }
                    }
                });
@@ -68,7 +68,7 @@ public class ProvinceAreaBusniessAdapter extends BaseHasTopListRvAdapter<AreaBus
 
     public interface OnItemClickListener {
 
-        void onClickDetails(long cityId);
+        void onClickDetails(long cityId,long userId);
     }
 
 }

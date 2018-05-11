@@ -39,9 +39,9 @@ public class PAgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefo
             holder.text(R.id.tv_2_1, agentPreformance.getPerformanceProvince().getPerformanceProvinceMonth().getTurnOver());
             holder.text(R.id.tv_2_2, agentPreformance.getPerformanceProvince().getPerformanceProvinceMonth().getUserNum());
             holder.text(R.id.tv_2_3, agentPreformance.getPerformanceProvince().getPerformanceProvinceMonth().getShopNum());
-            holder.text(R.id.tv_1_1, agentPreformance.getPerformanceProvince().getPerformanceProvinceTotal().getTurnOver());
-            holder.text(R.id.tv_1_2, agentPreformance.getPerformanceProvince().getPerformanceProvinceTotal().getUserNum());
-            holder.text(R.id.tv_1_3, agentPreformance.getPerformanceProvince().getPerformanceProvinceTotal().getShopNum());
+            holder.text(R.id.tv_3_1, agentPreformance.getPerformanceProvince().getPerformanceProvinceTotal().getTurnOver());
+            holder.text(R.id.tv_3_2, agentPreformance.getPerformanceProvince().getPerformanceProvinceTotal().getUserNum());
+            holder.text(R.id.tv_3_3, agentPreformance.getPerformanceProvince().getPerformanceProvinceTotal().getShopNum());
         }
     }
 
@@ -61,7 +61,7 @@ public class PAgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefo
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener!=null){
-                        onItemClickListener.onClickDetails(performanceProvinces.getCityId());
+                        onItemClickListener.onClickDetails(performanceProvinces.getCityId(),performanceProvinces.getUserId());
                     }
                 }
             });
@@ -76,7 +76,7 @@ public class PAgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefo
 
     public interface OnItemClickListener {
 
-        void onClickDetails(long cityId);
+        void onClickDetails(long cityId,long userId);
     }
 
 

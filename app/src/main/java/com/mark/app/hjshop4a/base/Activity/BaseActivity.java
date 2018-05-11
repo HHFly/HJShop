@@ -395,7 +395,18 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
            tv.setImageResource(resId);
         }
     }
-
+    /**
+     * 设置小图
+     *
+     * @param id
+     * @param url
+     */
+    public void setSdvSmall(@IdRes int id, Uri url) {
+        SimpleDraweeView sdv = getView(id);
+        if (sdv != null) {
+            FrescoUtils.sdvBig(sdv, url);
+        }
+    }
     /**
      * 设置小图
      *

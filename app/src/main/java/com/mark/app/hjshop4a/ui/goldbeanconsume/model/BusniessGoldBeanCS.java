@@ -10,6 +10,15 @@ public class BusniessGoldBeanCS extends BaseModel {
     private String beanUsable;
     private  String disCounts;
     private String captCha;
+    private String rule;
+
+    public String getRule() {
+        return rule;
+    }
+
+    public void setRule(String rule) {
+        this.rule = rule;
+    }
 
     public String getBeanUsable() {
         return beanUsable;

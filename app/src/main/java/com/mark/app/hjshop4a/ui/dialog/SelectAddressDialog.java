@@ -2,32 +2,31 @@ package com.mark.app.hjshop4a.ui.dialog;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.res.AssetManager;
+import android.location.Address;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+
 import com.mark.app.hjshop4a.R;
-import com.mark.app.hjshop4a.common.XmlParserHandler;
-import com.mark.app.hjshop4a.model.common.CityModel;
-import com.mark.app.hjshop4a.model.common.DistrictModel;
-import com.mark.app.hjshop4a.model.common.ProvinceModel;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
+import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
+import com.mark.app.hjshop4a.ui.dialog.model.WheelData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.adapter.ArrayWheelAdapter;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.OnWheelChangedListener;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 
-import java.io.InputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-
 
 
 public class SelectAddressDialog implements OnClickListener,
@@ -42,16 +41,23 @@ public class SelectAddressDialog implements OnClickListener,
     /**
      * 所有省
      */
-    protected String[] mProvinceDatas;
+    protected AddressData[] mProvinceDatas;
     /**
      * key - 省 value - 市
      */
-    protected Map<String, String[]> mCitisDatasMap = new HashMap<String, String[]>();
+    protected Map<String, AddressData[]> mCitisDatasMap = new HashMap<String, AddressData[]>();
+    /**
+     * key - 省 value - 市
+     */
+    protected Map<String,   ArrayList<Map>> mCitisDatasKeyMap = new HashMap<String,   ArrayList<Map>>();
     /**
      * key - 市 values - 区
      */
-    protected Map<String, String[]> mDistrictDatasMap = new HashMap<String, String[]>();
-
+    protected Map<String, AddressData[]> mDistrictDatasMap = new HashMap<String, AddressData[]>();
+    /**
+     * key - 市 values - 区
+     */
+    protected Map<Map, ArrayList<Map>> mDistrictDatasKeyMap = new HashMap<Map, ArrayList<Map>>();
     /**
      * key - 区 values - 邮编
      */
@@ -73,19 +79,24 @@ public class SelectAddressDialog implements OnClickListener,
     /**
      * 当前省的名称
      */
-    protected String mCurrentProviceName;
+    protected AddressData mCurrentProviceName;
     /**
      * 当前市的名称
      */
-    protected String mCurrentCityName;
+    protected AddressData mCurrentCityName;
     /**
      * 当前区的名称
      */
-    protected String mCurrentDistrictName = "";
+    protected AddressData mCurrentDistrictName ;
     /**
      * 当前区的邮政编码
      */
     protected String mCurrentZipCode = "";
+    /**
+     * 当前市的Map名称
+     */
+    protected Map  mCurrentCityNameMap;
+
 
     private WheelView mViewProvince;
     private WheelView mViewCity;
@@ -99,7 +110,7 @@ public class SelectAddressDialog implements OnClickListener,
 
 
     public SelectAddressDialog(final Activity context,
-                               SelectInterface selectAdd, int type, String[] mProvinceDatas) {
+                               SelectInterface selectAdd, int type, AddressData[] mProvinceDatas) {
         this.selectAdd = selectAdd;
         this.type = type;
         this.context = context;
@@ -177,7 +188,7 @@ public class SelectAddressDialog implements OnClickListener,
         } else if (wheel == mViewCity) {
             updateAreas();
         } else if (wheel == mViewDistrict) {
-            mCurrentDistrictName = mDistrictDatasMap.get(mCurrentCityName)[newValue];
+            mCurrentDistrictName = mDistrictDatasMap.get(mCurrentCityName.getId())[newValue];
             tmp3 = newValue;
             mCurrentZipCode = mZipcodeDatasMap.get(mCurrentDistrictName);
         }
@@ -190,14 +201,16 @@ public class SelectAddressDialog implements OnClickListener,
 
         int pCurrent = mViewCity.getCurrentItem();
         tmp2 = pCurrent;
-        mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName)[pCurrent];
-        String[] areas = mDistrictDatasMap.get(mCurrentCityName);
+        mCurrentCityName = mCitisDatasMap.get(mCurrentProviceName.getId())[pCurrent];
+
+//        mCurrentCityNameMap =mCitisDatasKeyMap.get(mCurrentProviceName);
+        AddressData[] areas = mDistrictDatasMap.get(mCurrentCityName.getId());
 
         if (areas == null) {
-            areas = new String[]{""};
+            areas = new AddressData[]{};
         }
         mCurrentDistrictName = areas[0];
-        mViewDistrict.setViewAdapter(new ArrayWheelAdapter<String>(context,
+        mViewDistrict.setViewAdapter(new ArrayWheelAdapter<AddressData>(context,
                 areas));
         mViewDistrict.setCurrentItem(0);
     }
@@ -211,12 +224,12 @@ public class SelectAddressDialog implements OnClickListener,
         tmp1 = pCurrent;
         mCurrentProviceName = mProvinceDatas[pCurrent];
         if (!isMyDatas) {//不是自定义数据
-            String[] cities = mCitisDatasMap.get(mCurrentProviceName);
+            AddressData[] cities = mCitisDatasMap.get(mCurrentProviceName.getId());
             if (cities == null) {
-                cities = new String[]{""};
+                cities = new AddressData[]{};
             }
             mViewCity
-                    .setViewAdapter(new ArrayWheelAdapter<String>(context, cities));
+                    .setViewAdapter(new ArrayWheelAdapter<AddressData>(context, cities));
             mViewCity.setCurrentItem(0);
             updateAreas();
         }
@@ -229,10 +242,9 @@ public class SelectAddressDialog implements OnClickListener,
                 if (type == STYLE_TWO) {
                     selectAdd.selectedResult(mCurrentProviceName + "-" + mCurrentCityName);
                 } else if (type == STYLE_ONE) {
-                    selectAdd.selectedResult(mCurrentProviceName);
+                    selectAdd.selectedResult(mCurrentProviceName,mCurrentCityName,mCurrentDistrictName);
                 } else {
-                    selectAdd.selectedResult(mCurrentProviceName + "-" + mCurrentCityName + "-"
-                            + mCurrentDistrictName);
+                    selectAdd.selectedResult(mCurrentProviceName,mCurrentCityName,mCurrentDistrictName);
                 }
                 mCurrentProviceNamePosition = tmp1;
                 mCurrentCityNamePosition = tmp2;
@@ -253,8 +265,9 @@ public class SelectAddressDialog implements OnClickListener,
      * 设置向上的数据
      */
     private void setUpData() {
-        initProvinceDatas();
-        mViewProvince.setViewAdapter(new ArrayWheelAdapter<String>(context,
+//        initProvinceDatas();
+        initProvinceDatasTxt();
+        mViewProvince.setViewAdapter(new ArrayWheelAdapter<AddressData>(context,
                 mProvinceDatas));
         // 设置可见条目数量
         mViewProvince.setVisibleItems(7);
@@ -284,69 +297,164 @@ public class SelectAddressDialog implements OnClickListener,
      * 解析省市区的XML数据
      */
 
-    protected void initProvinceDatas() {
-        List<ProvinceModel> provinceList = null;
+//    protected void initProvinceDatas() {
+//        List<ProvinceModel> provinceList = null;
+//        AssetManager asset = context.getAssets();
+//        try {
+//            InputStream input = asset.open("province_data.xml");
+//            // 创建一个解析xml的工厂对象
+//            SAXParserFactory spf = SAXParserFactory.newInstance();
+//            // 解析xml
+//            SAXParser parser = spf.newSAXParser();
+//            XmlParserHandler handler = new XmlParserHandler();
+//            parser.parse(input, handler);
+//            input.close();
+//            // 获取解析出来的数据
+//            provinceList = handler.getDataList();
+//            //初始化默认选中的省、市、区
+//            if (provinceList != null && !provinceList.isEmpty()) {
+//                mCurrentProviceName = provinceList.get(0).getName();
+//                List<CityModel> cityList = provinceList.get(0).getCityList();
+//                if (cityList != null && !cityList.isEmpty()) {
+//                    mCurrentCityName = cityList.get(0).getName();
+//                    List<DistrictModel> districtList = cityList.get(0)
+//                            .getDistrictList();
+//                    mCurrentDistrictName = districtList.get(0).getName();
+//                    mCurrentZipCode = districtList.get(0).getZipcode();
+//                }
+//            }
+//
+//            mProvinceDatas = new String[provinceList.size()];
+//            for (int i = 0; i < provinceList.size(); i++) {
+//                // 遍历所有省的数据
+//                mProvinceDatas[i] = provinceList.get(i).getName();
+//                List<CityModel> cityList = provinceList.get(i).getCityList();
+//                String[] cityNames = new String[cityList.size()];
+//                for (int j = 0; j < cityList.size(); j++) {
+//                    // 遍历省下面的所有市的数据
+//                    cityNames[j] = cityList.get(j).getName();
+//                    List<DistrictModel> districtList = cityList.get(j)
+//                            .getDistrictList();
+//                    String[] distrinctNameArray = new String[districtList
+//                            .size()];
+//                    DistrictModel[] distrinctArray = new DistrictModel[districtList
+//                            .size()];
+//                    for (int k = 0; k < districtList.size(); k++) {
+//                        // 遍历市下面所有区/县的数据
+//                        DistrictModel districtModel = new DistrictModel(
+//                                districtList.get(k).getName(), districtList
+//                                .get(k).getZipcode());
+//                        // 区/县对于的邮编，保存到mZipcodeDatasMap
+//                        mZipcodeDatasMap.put(districtList.get(k).getName(),
+//                                districtList.get(k).getZipcode());
+//                        distrinctArray[k] = districtModel;
+//                        distrinctNameArray[k] = districtModel.getName();
+//                    }
+//                    // 市-区/县的数据，保存到mDistrictDatasMap
+//                    mDistrictDatasMap.put(cityNames[j], distrinctNameArray);
+//                }
+//                // 省-市的数据，保存到mCitisDatasMap
+//                mCitisDatasMap.put(provinceList.get(i).getName(), cityNames);
+//            }
+//        } catch (Throwable e) {
+//            e.printStackTrace();
+//        } finally {
+//
+//        }
+//    }
+    /**
+     * 解析省市区的txt数据
+     */
+
+    protected void initProvinceDatasTxt() {
+       WheelData wheelData = null;
         AssetManager asset = context.getAssets();
         try {
-            InputStream input = asset.open("province_data.xml");
-            // 创建一个解析xml的工厂对象
-            SAXParserFactory spf = SAXParserFactory.newInstance();
-            // 解析xml
-            SAXParser parser = spf.newSAXParser();
-            XmlParserHandler handler = new XmlParserHandler();
-            parser.parse(input, handler);
-            input.close();
-            // 获取解析出来的数据
-            provinceList = handler.getDataList();
+            String jsondat =getJson(context,"addr.txt");
+
+
+            wheelData = JsonUtils.fromJson(jsondat,WheelData.class);
+            ArrayList<Map> provinceList =  wheelData.getProvince();
+            Map<String,ArrayList<Map>> cityList= wheelData.getCity();
+            Map<String,ArrayList<Map>> districtList= wheelData.getDistrict();
+            mProvinceDatas = new AddressData[provinceList.size()];
+            for(int i=0;i<provinceList.size();i++) {
+                    AddressData addressDataprovince = new AddressData();
+                addressDataprovince.setId(provinceList.get(i).get("id").toString());
+                addressDataprovince.setName(provinceList.get(i).get("name").toString());
+                mProvinceDatas[i] =addressDataprovince;
+               String ProvinceId =provinceList.get(i).get("id").toString();
+                ArrayList<Map> cityData=  cityList.get(ProvinceId);
+               AddressData[] cityNames =new AddressData[cityData.size()];
+               for (int j=0;j<cityData.size();j++){
+                   AddressData addressDatacity =new AddressData();
+                   addressDatacity.setId(cityData.get(j).get("id").toString());
+                   addressDatacity.setName(cityData.get(j).get("name").toString());
+                   cityNames[j]=addressDatacity;
+                   String CityId =cityData.get(j).get("id").toString();
+                   ArrayList<Map> districtData=  districtList.get(CityId);
+                   AddressData[] districtNames =new AddressData[districtData.size()];
+
+                   for(int k=0;k<districtData.size();k++){
+                       AddressData addressDatadistrict =new AddressData();
+                       addressDatadistrict.setId(districtData.get(k).get("id").toString());
+                       addressDatadistrict.setName(districtData.get(k).get("name").toString());
+                       districtNames[k]=addressDatadistrict;
+//                       mZipcodeDatasMap.put(districtData.get(k).get("id").toString(),
+//                               districtData.get(k).get("id").toString());
+                   }
+                   mDistrictDatasMap.put(cityData.get(j).get("id").toString(),districtNames);
+
+
+               }
+                // 省-市的数据，保存到mCitisDatasMap
+//                mCitisDatasKeyMap.put(provinceList.get(i).get("name").toString(),cityData);
+                mCitisDatasMap.put(provinceList.get(i).get("id").toString(), cityNames);
+            }
+
+
+
             //初始化默认选中的省、市、区
-            if (provinceList != null && !provinceList.isEmpty()) {
-                mCurrentProviceName = provinceList.get(0).getName();
-                List<CityModel> cityList = provinceList.get(0).getCityList();
+            if (wheelData != null ) {
+//                mCurrentProviceName = wheelData.getProvince().get(0).getName();
+                cityList = wheelData.getCity();
                 if (cityList != null && !cityList.isEmpty()) {
-                    mCurrentCityName = cityList.get(0).getName();
-                    List<DistrictModel> districtList = cityList.get(0)
-                            .getDistrictList();
-                    mCurrentDistrictName = districtList.get(0).getName();
-                    mCurrentZipCode = districtList.get(0).getZipcode();
+//                    mCurrentCityName = cityList.get(0).getName();
+                    districtList = wheelData.getDistrict();
+
+//                    mCurrentDistrictName = districtList.get(0).getName();
+//                    mCurrentZipCode = districtList.get(0).getZipcode();
                 }
             }
 
-            mProvinceDatas = new String[provinceList.size()];
-            for (int i = 0; i < provinceList.size(); i++) {
-                // 遍历所有省的数据
-                mProvinceDatas[i] = provinceList.get(i).getName();
-                List<CityModel> cityList = provinceList.get(i).getCityList();
-                String[] cityNames = new String[cityList.size()];
-                for (int j = 0; j < cityList.size(); j++) {
-                    // 遍历省下面的所有市的数据
-                    cityNames[j] = cityList.get(j).getName();
-                    List<DistrictModel> districtList = cityList.get(j)
-                            .getDistrictList();
-                    String[] distrinctNameArray = new String[districtList
-                            .size()];
-                    DistrictModel[] distrinctArray = new DistrictModel[districtList
-                            .size()];
-                    for (int k = 0; k < districtList.size(); k++) {
-                        // 遍历市下面所有区/县的数据
-                        DistrictModel districtModel = new DistrictModel(
-                                districtList.get(k).getName(), districtList
-                                .get(k).getZipcode());
-                        // 区/县对于的邮编，保存到mZipcodeDatasMap
-                        mZipcodeDatasMap.put(districtList.get(k).getName(),
-                                districtList.get(k).getZipcode());
-                        distrinctArray[k] = districtModel;
-                        distrinctNameArray[k] = districtModel.getName();
-                    }
-                    // 市-区/县的数据，保存到mDistrictDatasMap
-                    mDistrictDatasMap.put(cityNames[j], distrinctNameArray);
-                }
-                // 省-市的数据，保存到mCitisDatasMap
-                mCitisDatasMap.put(provinceList.get(i).getName(), cityNames);
-            }
         } catch (Throwable e) {
             e.printStackTrace();
         } finally {
 
         }
     }
+    /**
+     * 从asset路径下读取对应文件转String输出
+     * @param mContext
+     * @return
+     */
+    public static String getJson(Context mContext, String fileName) {
+        // TODO Auto-generated method stub
+        StringBuilder sb = new StringBuilder();
+        AssetManager am = mContext.getAssets();
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    am.open(fileName)));
+            String next = "";
+            while (null != (next = br.readLine())) {
+                sb.append(next);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            sb.delete(0, sb.length());
+        }
+        return sb.toString().trim();
+    }
+
 }

@@ -14,6 +14,20 @@ public class NumParseUtils {
         }
         return l;
     }
+    public  Double roundDouble(double dou, int i)
+    {
+        Double d= null;
+        try
+        {
+            double factor = Math.pow(10, i);
+            d= Math.floor(dou* factor + 0.5) / factor;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return d;
+    }
 
     public static float parseFloat(String data) {
         float d = 0;

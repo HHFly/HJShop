@@ -15,11 +15,11 @@ import com.mark.app.hjshop4a.base.adapter.BaseSpinnerAdapter;
 import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.areaagent.businessreview.AuditStatus;
 import com.mark.app.hjshop4a.ui.businessapply.model.AddressInfo;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 import com.mark.app.hjshop4a.ui.businessapply.model.CompanyInfo;
@@ -27,9 +27,9 @@ import com.mark.app.hjshop4a.ui.businessapply.model.MerchantApplyPram;
 import com.mark.app.hjshop4a.ui.businessapply.model.ShopCategory;
 import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
+import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 import com.white.lib.utils.TakePhoneUtil;
-import com.white.lib.utils.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -50,6 +50,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
     private AddressInfo addressInfo;
     private ShopCategory shopCategory;
     private List<ShopCategory> shopCategorys;
+    MerchantApplyPram merchantApplyPram;
     //是否同意
     private boolean isAgree;
     //选择dialog
@@ -74,6 +75,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"公司信息");
+        merchantApplyPram =new MerchantApplyPram();
         bindData(mData);
         if(mData.getAuditStatus()!= 3||mData.getAuditStatus()!=2){
             setViewEnable(R.id.companyinfo_all,false);
@@ -131,7 +133,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
                 spinner.setSelection(adapter.getPositionById(companyInfo.getShopCategoryId()));
                 addressInfo = companyInfo.getAddressInfo();
                 setTvText(R.id.company_tv_name, companyInfo.getCompanyName());
-                setTvText(R.id.company_tv_loacl, addressInfo.getProvince() + addressInfo.getCity() + addressInfo.getCounty());
+                setTvText(R.id.company_tv_loacl, addressInfo.getProvince() +"-"+ addressInfo.getCity() +"-"+ addressInfo.getCounty());
                 setTvText(R.id.company_tv_address, addressInfo.getCompleteAddress());
 //            setTvText(R.id.shop_tv_type,shopCategory.getShopCategoryName());
                 setTvText(R.id.store_tv_name, companyInfo.getShopName());
@@ -365,6 +367,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
 
         String companyName = getTvText(R.id.company_tv_name);
         String completeAddress = getTvText(R.id.company_tv_address);
+       String localAddress= getTvText(R.id.company_tv_loacl);
         String shopName = getTvText(R.id.store_tv_name);
         long shopCategoryId = spinner.getSelectedItemId();
 
@@ -379,6 +382,11 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
         if(TextUtils.isEmpty(companyName))
         {
             ToastUtils.show("请输入公司名称");
+            return;
+        }
+        if(TextUtils.isEmpty(localAddress))
+        {
+            ToastUtils.show("请选择所在区域");
             return;
         }
         if(TextUtils.isEmpty(completeAddress))
@@ -425,11 +433,11 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
             ToastUtils.show(R.string.login_注册需要同意协议);
             return;
         }
-        MerchantApplyPram merchantApplyPram =new MerchantApplyPram();
+
         merchantApplyPram.setShopName(shopName);//店铺名称
-        merchantApplyPram.setProvinceId(1);//省ID
-        merchantApplyPram.setCityId(1);//市ID
-        merchantApplyPram.setCountyId(1);//区ID
+//        merchantApplyPram.setProvinceId(1);//省ID
+//        merchantApplyPram.setCityId(1);//市ID
+//        merchantApplyPram.setCountyId(1);//区ID
         merchantApplyPram.setCompleteAddress(completeAddress);//详细地址
         merchantApplyPram.setShopCateogryId(shopCategoryId);//类目ID
         merchantApplyPram.setCompanyName(companyName);//公司名称
@@ -489,8 +497,17 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
         wheelDialog.showDialog();
     }
 
+
+    @Override
+    public void selectedResult(AddressData result1, AddressData result2, AddressData result3) {
+        merchantApplyPram.setProvinceId(NumParseUtils.parseLong(result1.getId()));//省ID
+        merchantApplyPram.setCityId(NumParseUtils.parseLong(result2.getId()));//市ID
+        merchantApplyPram.setCountyId(NumParseUtils.parseLong(result3.getId()));//区ID
+        setTvText(R.id.company_tv_loacl, result1.getName() +"-"+ result2.getName() +"-"+ result3.getName());
+    }
+
     @Override
     public void selectedResult(String result) {
-        setTvText(R.id.company_tv_loacl,result);
+
     }
 }

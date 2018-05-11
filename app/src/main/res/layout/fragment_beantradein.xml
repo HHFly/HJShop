@@ -46,11 +46,11 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/tradeInMoney"
+                android:id="@+id/discountsSn"
                 android:text=""
                 style="@style/Bill_right"/>
             <TextView
-                android:text="兑换金豆"
+                android:text="兑换编号"
                 style="@style/Bill_left" />
         </RelativeLayout>
 
@@ -63,17 +63,19 @@
             android:paddingBottom="@dimen/textsize_10px">
 
             <TextView
-                android:id="@+id/discounts"
+                android:id="@+id/tradeInMoney"
                 android:text=""
                 style="@style/Bill_right"/>
             <TextView
-                android:text="手续费"
+                android:text="兑换金豆"
                 style="@style/Bill_left" />
         </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="30px"
             android:paddingTop="@dimen/textsize_10px"
             android:paddingRight="28px"
             android:paddingLeft="40px"
@@ -114,6 +116,7 @@
         android:layout_marginLeft="40px"
         android:layout_marginRight="@dimen/textsize_20px"/>
     <RelativeLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="100px"
         android:paddingRight="28px"

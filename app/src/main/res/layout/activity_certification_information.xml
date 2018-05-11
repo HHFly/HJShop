@@ -101,6 +101,7 @@
             <TextView
                 android:id="@+id/certification_tv_user_invitation"
                 style="@style/user_item_tv_content"
+                android:layout_marginRight="30px"
                 android:layout_alignParentRight="true"
                />
         </RelativeLayout>
@@ -129,6 +130,8 @@
 
 
     </RelativeLayout>
+    <View style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px"/>
     <RelativeLayout
 
         android:id="@+id/rl_id_card_img"

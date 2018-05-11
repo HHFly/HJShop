@@ -44,7 +44,7 @@ public class LoginActivity extends BaseActivity {
     //密码是否可见
     boolean isPwdShow;
     //是否自动登录
-    boolean isautologin =false;
+    boolean isautologin =true;
     String account;//账号
     @Override
     public int getContentViewResId() {
@@ -67,6 +67,7 @@ public class LoginActivity extends BaseActivity {
         //设置标题栏
         setTvText(R.id.titlebar_tv_title, R.string.login_msg_login);
         setTvText(R.id.titlebar_tv_right,R.string.login_msg_register);
+        setViewSelected(R.id.login_tv_quick_login, isautologin);
 //        setViewVisibility(R.id.titlebar_iv_return, false);
 
     }

@@ -162,6 +162,7 @@ public class HomePagerActivity extends BaseActivity {
             } else {
                 LogUtils.logFormat(this, "switchActJump", "go to StartActivity");
 //                ActivityJumpUtils.actStart(getActivity());
+//                ActivityJumpUtils.actGuideNORMAL(getActivity());
             }
 
     }
@@ -265,7 +266,7 @@ public class HomePagerActivity extends BaseActivity {
                 .setRightBtnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CallPhoneUtil.call(getAppCompatActivity(), strPhone);
+                        CallPhoneUtil.call(getAppCompatActivity(), strPhone.replace(" ",""));
                     }
                 }).show(getActivity().getFragmentManager());
     }

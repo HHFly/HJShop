@@ -146,7 +146,7 @@ private void BindData( int year,int month){
             case R.id.set:
                 if(mData.size()==2) {
                     String s =  mData.get(0).getSolar()[0] + "." +  mData.get(0).getSolar()[1] + "." +  mData.get(0).getSolar()[2];
-                    String e =  mData.get(0).getSolar()[0] + "." +  mData.get(0).getSolar()[1] + "." +  mData.get(0).getSolar()[2];
+                    String e =  mData.get(1).getSolar()[0] + "." +  mData.get(1).getSolar()[1] + "." +  mData.get(1).getSolar()[2]+1;
 
                     long starttime = Num(s);
                     long endtime =Num(e);
@@ -156,6 +156,24 @@ private void BindData( int year,int month){
                     this.setResult(2, intent);
                     this.finish();
                 }
+                if(mData.size()==1) {
+                    String s =  mData.get(0).getSolar()[0] + "." +  mData.get(0).getSolar()[1] + "." +  mData.get(0).getSolar()[2];
+                    String e =  mData.get(0).getSolar()[0] + "." +  mData.get(0).getSolar()[1] + "." +  mData.get(0).getSolar()[2]+1;
+
+                    long starttime = Num(s);
+                    long endtime =Num(e);
+                    Intent intent = this.getIntent();
+                    intent.putExtra("sTime", starttime);
+                    intent.putExtra("eTime", endtime);
+                    this.setResult(2, intent);
+                    this.finish();
+                }if(mData.size()==0){
+                Intent intent = this.getIntent();
+                intent.putExtra("sTime", 0);
+                intent.putExtra("eTime", 0);
+                this.setResult(2, intent);
+                this.finish();
+            }
 
                 break;
             case R.id.reset:

@@ -48,8 +48,8 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
         if (mPagingData == null) {
             mPagingData = new PagingBaseModel();
         }
-        startTime=System.currentTimeMillis()/1000;
-        endTime=System.currentTimeMillis()/1000;
+        startTime=0;
+        endTime=0;
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadmoreListener(this);
         mRefreshLayout.autoRefresh();
@@ -84,8 +84,8 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode==2){
-            startTime=data.getLongExtra("sTime", System.currentTimeMillis()/1000);
-            endTime=data.getLongExtra("eTime", System.currentTimeMillis()/1000);
+            startTime=data.getLongExtra("sTime", 0);
+            endTime=data.getLongExtra("eTime", 0);
             mRefreshLayout.autoRefresh();
         }
 

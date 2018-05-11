@@ -15,6 +15,15 @@ public class MeCenterInfo extends BaseModel {
     private String userPic;//用户头像
     private String shopName;//店铺名
     private String userRealName;//真实姓名
+    private long shopId;//商户id
+
+    public long getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(long shopId) {
+        this.shopId = shopId;
+    }
 
     public String getCellPhone() {
         return cellPhone;

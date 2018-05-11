@@ -27,6 +27,7 @@
             android:layout_centerVertical="true"
             android:textColor="#666666"
             android:textSize="26px"
+            android:layout_marginLeft="@dimen/textsize_10px"
             android:text=""/>
         <TextView
             android:layout_width="wrap_content"

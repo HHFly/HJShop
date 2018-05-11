@@ -150,8 +150,12 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
     private void  bindData(BusniessGoldBeanCS data){
         setTvText(R.id.gold_bean_count,data.getBeanUsable());
         setSdvInside(R.id.audit,data.getCaptCha());
+        if(data.getRule()!=null&&!data.getRule().equals("")){
+            setTvText(R.id.tv_tip,data.getRule());
+        }
         BeanNum =NumParseUtils.parseDouble(data.getBeanUsable());
         Ratiox = NumParseUtils.parseDouble(data.getDisCounts());
+
 
     }
     private  void showDialog(){

@@ -154,6 +154,9 @@ public class MemberGoldBeanConsumeActivity extends BaseActivity{
             setTvText(R.id.gold_bean_count, data.getBeanNum());
             BeanNum = NumParseUtils.parseDouble(data.getBeanNum());
             Ratiox = NumParseUtils.parseDouble(data.getBeanRatio());
+            if(data.getRule()!=null&&!data.getRule().equals("")){
+                setTvText(R.id.tv_tip,data.getRule());
+            }
 
         }
     }

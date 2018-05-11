@@ -51,7 +51,7 @@ public class IDCardImgActivity extends BaseActivity {
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"身份验证");
         setTvText(R.id.titlebar_tv_right,"完成");
-        setViewVisibility(R.id.titlebar_tv_right,false);
+//        setViewVisibility(R.id.titlebar_tv_right,false);
         if(userIdCardFront!=""){
             setSdvBig(R.id.imagebtn1,userIdCardFront);
         }
@@ -108,6 +108,20 @@ public class IDCardImgActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.titlebar_tv_right:
+                String front1 =pic.get(R.id.imagebtn1);
+                String side2=pic.get(R.id.imagebtn2);
+
+                if(front1!=null){
+                    userIdCardFront =front1;
+                }
+                if(side2!=null){
+                    userIdCardSide=side2;
+                }
+//        BundleUtils.getInstance().putString("userIdCardFront",userIdCardFront).putString("userIdCardSide",userIdCardSide).addIntent(getIntent());
+                getIntent().putExtra("userIdCardFront",userIdCardFront);
+                getIntent().putExtra("userIdCardSide",userIdCardSide);
+                setResult(1,getIntent());
+                finish();
                 break;
             case R.id.imagebtn1:
                 FunctionDialogFactory.showTakePhoneIDDialog(this,R.id.imagebtn1);

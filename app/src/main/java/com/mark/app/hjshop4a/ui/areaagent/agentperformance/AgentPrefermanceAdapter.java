@@ -33,6 +33,7 @@ public class AgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefor
     @Override
     public void bindTopData(AutoViewHolder holder, int topPos, AgentPreformance agentPreformance) {
         if(agentPreformance.getPerformanceCity()!=null&&agentPreformance.getPerformanceCity().getPerformanceCityDay()!=null&&agentPreformance.getPerformanceCity().getPerformanceCityMonth()!=null&&agentPreformance.getPerformanceCity().getPerformanceCityTotal()!=null) {
+            holder.setVisibility(true);
             holder.text(R.id.tv_1_1, agentPreformance.getPerformanceCity().getPerformanceCityDay().getTurnOver());
             holder.text(R.id.tv_1_2, agentPreformance.getPerformanceCity().getPerformanceCityDay().getUserNum());
             holder.text(R.id.tv_1_3, agentPreformance.getPerformanceCity().getPerformanceCityDay().getShopNum());
@@ -51,17 +52,23 @@ public class AgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefor
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPosition, PerformanceCitys performanceCitys) {
         if(performanceCitys!=null){
-            holder.text(R.id.store_name,performanceCitys.getShopName());
-            holder.text(R.id.userName,performanceCitys.getUserName());
-            holder.text(R.id.newUserDay,performanceCitys.getNewUserDay());
-            holder.text(R.id.userTotal,performanceCitys.getUserTotal());
-            holder.text(R.id.customsDay,performanceCitys.getCustomsDay());
-            holder.text(R.id.beanIncomeDay,performanceCitys.getBeanIncomeDay());
-            holder.text(R.id.customsMonth,performanceCitys.getCustomsMonth());
-            holder.text(R.id.beanIncomeMonth,performanceCitys.getBeanIncomeMonth());
-            holder.text(R.id.turnOverMonth,performanceCitys.getTurnOverMonth());
-            holder.text(R.id.turnOverTotal,performanceCitys.getTurnOverTotal());
-
+            if(performanceCitys!=null) {
+                holder.text(R.id.store_name, performanceCitys.getShopName());
+                holder.text(R.id.userName, performanceCitys.getUserName());
+                holder.text(R.id.newUserDay, performanceCitys.getNewUserDay());
+                holder.text(R.id.userTotal, performanceCitys.getUserTotal());
+                holder.text(R.id.customsDay, performanceCitys.getCustomsDay());
+                holder.text(R.id.beanIncomeDay, performanceCitys.getBeanIncomeDay());
+                holder.text(R.id.customsMonth, performanceCitys.getCustomsMonth());
+                holder.text(R.id.beanIncomeMonth, performanceCitys.getBeanIncomeMonth());
+                holder.text(R.id.turnOverMonth, performanceCitys.getTurnOverMonth());
+                holder.text(R.id.turnOverTotal, performanceCitys.getTurnOverTotal());
+            }else {
+                holder.visibility(R.id.rl_1,false);
+                holder.visibility(R.id.rl_2,false);
+                holder.visibility(R.id.rl_3,false);
+                holder.visibility(R.id.rl_4,false);
+            }
         }
     }
 

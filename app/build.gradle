@@ -18,13 +18,14 @@ android {
             WHITE_PKGNAME     : applicationId,//包名
             WHITE_FILEPROVIDER: "${applicationId}.fileprovider",//7.0文件Provider对应的authorities
                 //qq分享
-                    qqappid: "tencent100424468"
-
+                    qqappid: "tencent100424468",
+//                wechat_app_id: "wxfc06ea4375a4ecd4"
         ]
         buildConfigField("String", "PLATFORM", "\"ANDROID\"")
         buildConfigField("String", "WEB_USER_AGENT", "\"haya-hjshop-android-user\"")
         buildConfigField("String", "WEB_INTERFACE", "\"androidInterface\"")
         buildConfigField("String", "WX_APPID", "\"wxfc06ea4375a4ecd4\"")
+//        buildConfigField("String", "wechat_app_id", "\"wxfc06ea4375a4ecd4\"")
     }
 
     buildTypes {
@@ -89,9 +90,13 @@ dependencies {
     //友盟
     compile 'com.umeng.sdk:share-core:latest.integration'
     compile 'com.umeng.sdk:share-qq:latest.integration'
-    compile 'com.umeng.sdk:share-wechat:latest.integration'
     compile 'com.umeng.sdk:share-sina:latest.integration'
     compile 'com.umeng.sdk:common:latest.integration'
     compile 'com.umeng.sdk:shareboard-widget:latest.integration'
     implementation files('lib/umeng-share-QQ-simplify-6.9.1.jar')
+    // 支付
+    compile 'com.mark.app:mkpay-core:1.0.+'
+    compile 'com.mark.app:mkpay-alipay:1.0.+'
+    compile 'com.mark.app:mkpay-wechat:1.0.+'
+    implementation files('lib/umeng-share-wechat-full-6.9.1.jar')
 }

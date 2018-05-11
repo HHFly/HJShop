@@ -53,7 +53,7 @@
                 android:id="@+id/hm_tv_user_shopname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
+                android:layout_alignTop="@+id/imageView10"
                 android:layout_marginLeft="183px"
                 android:text=""
                 android:textColor="#ffffff"

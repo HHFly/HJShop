@@ -192,8 +192,10 @@ public class MeFragment extends BaseFragment  {
                     mAdapter = new MeAdapter(role, getActivity(), data);
                     break;
             }
-            rv.setLayoutManager(new LinearLayoutManager(getContext()));
-            rv.setAdapter(mAdapter);
+            if(rv!=null) {
+                rv.setLayoutManager(new LinearLayoutManager(getContext()));
+                rv.setAdapter(mAdapter);
+            }
             mAdapter.setOnItemClickListener(new MeAdapter.OnItemClickListener() {
                 @Override
                 public void onClickUserInfo() {
