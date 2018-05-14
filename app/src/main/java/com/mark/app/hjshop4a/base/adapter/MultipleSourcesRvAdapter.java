@@ -25,7 +25,7 @@ public abstract class MultipleSourcesRvAdapter extends BaseMkRvAdapter {
 
     public abstract void onBindViewHolder(AutoViewHolder holder, IndexPath indexPath);
     public AutoViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.d("tag", "[MkMultipleSourcesRvAdapter.onCreateViewHolder]:" + viewType);
+//        Log.d("tag", "[MkMultipleSourcesRvAdapter.onCreateViewHolder]:" + viewType);
         View view = this.onCreateView(parent, viewType);
         return new AutoViewHolder(view);
     }
@@ -49,7 +49,7 @@ public abstract class MultipleSourcesRvAdapter extends BaseMkRvAdapter {
         long startTime = System.nanoTime();
         IndexPath indexPath = this.getIndexPathWithPostion(position);
         long endTime = System.nanoTime();
-        Log.d("tag", "getIndexPath(" + (endTime - startTime) + "ns)");
+//        Log.d("tag", "getIndexPath(" + (endTime - startTime) + "ns)");
         this.onBindViewHolder(holder, indexPath);
     }
 

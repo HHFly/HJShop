@@ -14,6 +14,7 @@ import android.widget.Button;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
+import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.model.WheelData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView;
@@ -107,7 +108,7 @@ public class SelectAddressDialog implements OnClickListener,
     private SelectInterface selectAdd;
     private int tmp1, tmp2, tmp3;
     private int type;
-
+    private long mCurrentProviceNameID,mCurrentCityNameID,mCurrentDistrictNameID;
 
     public SelectAddressDialog(final Activity context,
                                SelectInterface selectAdd, int type, AddressData[] mProvinceDatas) {
@@ -155,7 +156,40 @@ public class SelectAddressDialog implements OnClickListener,
 
     }
 
+    public SelectAddressDialog(final Activity context,
+                               SelectInterface selectAdd, int type, long provice , long city , long county ) {
+        this.selectAdd = selectAdd;
+        this.type = type;
+        this.context = context;
+        this.mCurrentProviceNameID=provice;
+        this.mCurrentCityNameID= city;
+        this.mCurrentDistrictNameID=county;
+        View overdiaView = View.inflate(context,
+                R.layout.dialog_select_address, null);
 
+        mViewProvince = (WheelView) overdiaView.findViewById(R.id.id_province);
+        mViewCity = (WheelView) overdiaView.findViewById(R.id.id_city);
+        mViewDistrict = (WheelView) overdiaView.findViewById(R.id.id_district);
+        if (STYLE_TWO == type) {
+            mViewDistrict.setVisibility(View.GONE);
+        }
+        if (STYLE_ONE == type) {
+            mViewDistrict.setVisibility(View.GONE);
+            mViewCity.setVisibility(View.GONE);
+        }
+        mBtnConfirm = (Button) overdiaView.findViewById(R.id.btn_confirm);
+        mBtnCancel = (Button) overdiaView.findViewById(R.id.btn_cancel);
+        overdialog = new Dialog(context, R.style.dialog_lhp);
+        Window window = overdialog.getWindow();
+        window.setWindowAnimations(R.style.mystyle); // 添加动画
+        overdialog.setContentView(overdiaView);
+        overdialog.setCanceledOnTouchOutside(true);
+        //设置滚轮滑动监听
+        setUpListener();
+        setUpData();
+        isMyDatas = false;
+
+    }
     public void showDialog() {
 
         if (overdialog != null) {
@@ -372,18 +406,21 @@ public class SelectAddressDialog implements OnClickListener,
         try {
             String jsondat =getJson(context,"addr.txt");
 
-
             wheelData = JsonUtils.fromJson(jsondat,WheelData.class);
             ArrayList<Map> provinceList =  wheelData.getProvince();
             Map<String,ArrayList<Map>> cityList= wheelData.getCity();
             Map<String,ArrayList<Map>> districtList= wheelData.getDistrict();
             mProvinceDatas = new AddressData[provinceList.size()];
             for(int i=0;i<provinceList.size();i++) {
-                    AddressData addressDataprovince = new AddressData();
+                AddressData addressDataprovince = new AddressData();
                 addressDataprovince.setId(provinceList.get(i).get("id").toString());
                 addressDataprovince.setName(provinceList.get(i).get("name").toString());
                 mProvinceDatas[i] =addressDataprovince;
                String ProvinceId =provinceList.get(i).get("id").toString();
+               if(ProvinceId .equals(String.valueOf(mCurrentProviceNameID))){
+                   mCurrentProviceNamePosition=i;  //记录初始化postion
+                   LogUtils.log(String.valueOf(tmp1));
+               }
                 ArrayList<Map> cityData=  cityList.get(ProvinceId);
                AddressData[] cityNames =new AddressData[cityData.size()];
                for (int j=0;j<cityData.size();j++){
@@ -392,6 +429,10 @@ public class SelectAddressDialog implements OnClickListener,
                    addressDatacity.setName(cityData.get(j).get("name").toString());
                    cityNames[j]=addressDatacity;
                    String CityId =cityData.get(j).get("id").toString();
+                   if(CityId .equals(String.valueOf(mCurrentCityNameID))){
+                       mCurrentCityNamePosition=j;  //记录初始化postion
+                       LogUtils.log(String.valueOf(tmp2));
+                   }
                    ArrayList<Map> districtData=  districtList.get(CityId);
                    AddressData[] districtNames =new AddressData[districtData.size()];
 
@@ -400,8 +441,11 @@ public class SelectAddressDialog implements OnClickListener,
                        addressDatadistrict.setId(districtData.get(k).get("id").toString());
                        addressDatadistrict.setName(districtData.get(k).get("name").toString());
                        districtNames[k]=addressDatadistrict;
-//                       mZipcodeDatasMap.put(districtData.get(k).get("id").toString(),
-//                               districtData.get(k).get("id").toString());
+                       String Districtid =districtData.get(k).get("id").toString();
+                       if(Districtid .equals(String.valueOf(mCurrentDistrictNameID))){
+                           mCurrentDistrictNamePosition=k;  //记录初始化postion
+                           LogUtils.log(String.valueOf(tmp3));
+                       }
                    }
                    mDistrictDatasMap.put(cityData.get(j).get("id").toString(),districtNames);
 
@@ -415,17 +459,17 @@ public class SelectAddressDialog implements OnClickListener,
 
 
             //初始化默认选中的省、市、区
-            if (wheelData != null ) {
+//            if (wheelData != null ) {
 //                mCurrentProviceName = wheelData.getProvince().get(0).getName();
-                cityList = wheelData.getCity();
-                if (cityList != null && !cityList.isEmpty()) {
-//                    mCurrentCityName = cityList.get(0).getName();
-                    districtList = wheelData.getDistrict();
-
-//                    mCurrentDistrictName = districtList.get(0).getName();
-//                    mCurrentZipCode = districtList.get(0).getZipcode();
-                }
-            }
+//                cityList = wheelData.getCity();
+//                if (cityList != null && !cityList.isEmpty()) {
+////                    mCurrentCityName = cityList.get(0).getName();
+//                    districtList = wheelData.getDistrict();
+//
+////                    mCurrentDistrictName = districtList.get(0).getName();
+////                    mCurrentZipCode = districtList.get(0).getZipcode();
+//                }
+//            }
 
         } catch (Throwable e) {
             e.printStackTrace();

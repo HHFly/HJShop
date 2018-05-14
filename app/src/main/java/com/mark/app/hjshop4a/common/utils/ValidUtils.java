@@ -18,6 +18,7 @@ public class ValidUtils {
     private static final String PHONE = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147,145))\\d{8}$";
     //密码
     private static final String PWD = "^.{6,20}$";
+
     //联系人
     private static final String CONTACTS = "^.{1,}$";
     //地址

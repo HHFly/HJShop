@@ -250,7 +250,7 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab5: {
-//                switchFragment(mServiceFragment);
+                switchFragment(mServiceFragment);
                 agant();
                 break;
             }
@@ -266,7 +266,7 @@ public class HomePagerActivity extends BaseActivity {
                 .setRightBtnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        CallPhoneUtil.call(getAppCompatActivity(), strPhone.replace(" ",""));
+                        CallPhoneUtil.call(getActivity(), strPhone.replace(" ",""));
                     }
                 }).show(getActivity().getFragmentManager());
     }

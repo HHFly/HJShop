@@ -131,7 +131,7 @@
 
                 <TextView
                     style="@style/user_item_tv"
-                    android:text="* 服务费"
+                    android:text="服务费"
                     android:id="@+id/textView7" />
 
                 <TextView

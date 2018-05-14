@@ -5,12 +5,14 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Switch;
 
 import com.google.gson.JsonElement;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
+import com.mark.app.hjshop4a.common.androidenum.pay.PayType;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
@@ -83,56 +85,70 @@ public class OnlineRechargeActivity extends BaseActivity {
                     }
                 });
     }
-
     /**
-     * 获取支付宝支付信息
+     * 获取支付信息
      */
-//    private void requestIpnInfo(String orderSn) {
-//        showLoadingDialog();
-//        App.getService().getPayService().getIpnInfo(orderSn, new DefaultServiceListener() {
-//            @Override
-//            public void onSuccess(int code, JsonElement o) {
-//                super.onSuccess(code, o);
-//                if (isDestroyed()) {
-//                    return;
-//                }
-//                hideLoadingDialog();
-//                String payInfo = o.getAsString();
-//                App.getService().getMkPay().pay(getActivity(), payInfo, MkPay.PAY_TYPE_IPAYNOW, new MkPayCallback() {
-//                    @Override
-//                    public void onPayResult(MkPayResult result) {
-//                        Log.e("onPayResult>>>", result.getResult());
-//                        switch (result.getResultStatus()) {
-//                            case MkPayResult.PAY_STATE_SUCCESS: {
-//                                ActivityJumpUtils.actPaySuccess(getActivity(), mOrderSn);
-//                                setResult(ActResultCode.RESULT_OK);
-//                                finish();
-//                                break;
-//                            }
-//                            case MkPayResult.PAY_STATE_CANCEL: {
-//                                ToastUtils.show("支付取消");
-//                                break;
-//                            }
-//                            case MkPayResult.PAY_STATE_FAIL: {
-//                                ToastUtils.show("支付失败");
-//                                break;
-//                            }
-//                            case MkPayResult.PAY_STATE_ERROR: {
-//                                ToastUtils.show("支付错误");
-//                                break;
-//                            }
-//                        }
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                super.onFinish();
-//                hideLoadingDialog();
-//            }
-//        });
-//    }
+    private void requestPayInfo(String topUpMoney, final int payWayCode) {
+        showLoadingDialog();
+        App.getServiceManager().getPdmService().onLine(topUpMoney,payWayCode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver() {
+
+                    @Override
+                    public void onSuccess(BaseResultEntity obj) {
+                        String payInfo = obj.getResult().toString();
+                        App.getServiceManager().getMkPay().pay(getActivity(), payInfo, SwitchPay(payWayCode), new MkPayCallback() {
+                            @Override
+                            public void onPayResult(MkPayResult result) {
+                                Log.e("onPayResult>>>", result.getResult());
+                                switch (result.getResultStatus()) {
+                                    case MkPayResult.PAY_STATE_SUCCESS: {
+//                                        ActivityJumpUtils.actPaySuccess(getActivity(), mOrderSn);
+                                        setResult(ActResultCode.RESULT_OK);
+                                        finish();
+                                        break;
+                                    }
+                                    case MkPayResult.PAY_STATE_CANCEL: {
+                                        ToastUtils.show("支付取消");
+                                        break;
+                                    }
+                                    case MkPayResult.PAY_STATE_FAIL: {
+                                        ToastUtils.show("支付失败");
+                                        break;
+                                    }
+                                    case MkPayResult.PAY_STATE_ERROR: {
+                                        ToastUtils.show("支付错误");
+                                        break;
+                                    }
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+    }
+
+    private int SwitchPay(int payWayCode) {
+        switch (payWayCode){
+            case PayType.ALIPAY: {
+              return MkPay.PAY_TYPE_ALIPAY;
+
+            }
+            case PayType.WECHAT: {
+                return MkPay.PAY_TYPE_WXPAY;
+
+            }
+            default: return 0;
+        }
+
+    }
+
     /*
     *提交
     * */
@@ -143,24 +159,8 @@ public class OnlineRechargeActivity extends BaseActivity {
             return;
         }
 
-        showLoadingDialog();
-        App.getServiceManager().getPdmService()
-                .onLine(count,data.getPayWayCode())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
+        requestPayInfo(count,data.getPayWayCode());
 
-                    @Override
-                    public void onSuccess(BaseResultEntity obj) {
-
-                    }
-
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
     }
     /**
      * 初始化列表

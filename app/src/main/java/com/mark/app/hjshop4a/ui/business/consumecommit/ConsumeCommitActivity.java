@@ -84,6 +84,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
         setClickListener(R.id.button);
         setClickListener(R.id.audit);
         setClickListener(R.id.member_bill_id);
+
     }
 
 
@@ -139,6 +140,7 @@ public class ConsumeCommitActivity  extends BaseActivity{
             case R.id.audit:
                 requestImgCode();
                 break;
+
         }
     }
     private  void showDialogAllConsume(){
@@ -262,13 +264,13 @@ public class ConsumeCommitActivity  extends BaseActivity{
 
     private void bindData(Custom data) {
         if (data != null) {
-            discounts = NumParseUtils.parseDouble(data.getDiscounts());
+            discounts = NumParseUtils.parseDouble(data.getModelList().get(0).getDiscounts());
             String captcha = data.getCaptcha();
-            List<Model> modelList = data.getModelList();
+            final List<Model> modelList = data.getModelList();
 
 
             //设置分类下拉框
-
+            spinner = findViewById(R.id.spinner);
             BaseSpinnerAdapter adapter = new BaseSpinnerAdapter<Model>(modelList) {
                 @Override
                 public SpinnerModel getSpinnerModelItem(Model data) {
@@ -279,8 +281,21 @@ public class ConsumeCommitActivity  extends BaseActivity{
 
                 }
             };
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    discounts=NumParseUtils.parseDouble(modelList.get(position).getDiscounts());
+                    Double count = NumParseUtils.parseDouble(getTvText(R.id.tv_consmue_count));
+                    Double service = discounts * count;
+                    setTvText(R.id.tv_service_charge,doubleToString(service));
+                }
 
-            spinner = findViewById(R.id.spinner);
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
             spinner.setAdapter(adapter);
 
             setSdvInside(R.id.audit,data.getCaptcha());

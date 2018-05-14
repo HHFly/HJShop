@@ -203,7 +203,7 @@
     <string name="login_省代理账号">省代理账号</string>
     <string name="login_代理账号">代理账号</string>
     <string name="login_商家账号">商家账号</string>
-    <string name="me_金豆消费">金豆消费</string>
+    <string name="me_金豆消费">金豆换购</string>
     <string name="me_资产明细">资产明细</string>
     <string name="me_会员账单">会员账单</string>
     <string name="me_银行卡">银行卡</string>
@@ -239,7 +239,7 @@
     <string name="me_辖区报单审核">辖区报单审核</string>
     <string name="busniess_兑换金豆">1.金豆满200个可以申请换购，且必须是100的倍数\n2. 商家金豆换购收取10%的手续费\n3. 商家金豆换购，最多需要2个工作日的审核时间\n4. 商家金豆换购，每天只能换购一次</string>
     <string name="order_commit_tip">如您要购买单据，您需要上传单\n据谢谢配合！</string>
-    <string name="consume_commit_rule">1.请先保证账户有足够的余额\n2.消费金额需要满100元才可以提交\n3.每个会员每天累计最高可提交消费金额10000元\n4.只有商户可以报单，且只能给会员报\n5.以上所有信息为必填项：</string>
+    <string name="consume_commit_rule">1.请先保证账户有足够的余额\n2.消费金额需要满100元才可以提交\n3.每个会员每天累计最高可提交消费金额10000元\n4.只有商户可以报单，且只能给会员报单\n5.以上所有信息为必填项：</string>
     <string name="withdraw_tip">1.满200可以申请提现,且必须是100的倍数\n2.提现不收手续费\n3.提现申请提交后，3个工作日到账</string>
     <string name="split_start">%1$s 跳过</string>
     <string name="me_前往">前往</string>
@@ -247,5 +247,7 @@
     <string name="_1_s">尾号%1$s</string>
     <string name="me_会员金豆换购">金豆换购</string>
     <string name="呼叫">呼叫</string>
+    <string name="商户ID">&#160;&#160;&#160;&#160;店铺ID:</string>
+
 
 </resources>

@@ -30,7 +30,7 @@ public class MemberGoldBeanTradeInAdapter  extends BaseListRvAdapter<MemberGoldB
             holder.text(R.id.userCellphone, data.getUserCellphone());
             holder.text(R.id.tradeInBean, data.getTradeInBean());
             holder.text(R.id.tradeInPrice, data.getTradeInPrice());
-
+            holder.text(R.id.consumeType,data.getConsumeType());
 
     }
 }

@@ -3,6 +3,7 @@ package com.mark.app.hjshop4a.app;
 import android.content.Context;
 
 import com.mark.app.hjshop4a.data.net.PdMService;
+import com.mark.app.mkpay.core.MkPay;
 
 /**
  * Created by zhuwh on 2018/4/11.
@@ -12,7 +13,7 @@ public class AppService {
     //网络服务
 //    @Inject
   private   PdMService mPdMService;
-
+    private MkPay mkPay;
     private Context mContext;
     private String mBaseUrl;
     public AppService(Context context) {
@@ -39,6 +40,18 @@ public class AppService {
     * */
     public void setBaseUrl() {
         mPdMService=null;
+    }
+    /**
+     * 获取支付服务
+     *
+     * @return
+     */
+    public MkPay getMkPay() {
+        if (mkPay == null) {
+            mkPay = MkPay.getInstance(mContext);
+            mkPay.init(new int[]{MkPay.PAY_TYPE_IPAYNOW});
+        }
+        return mkPay;
     }
 
 }

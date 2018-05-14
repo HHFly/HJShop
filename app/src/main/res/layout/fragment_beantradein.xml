@@ -116,7 +116,7 @@
         android:layout_marginLeft="40px"
         android:layout_marginRight="@dimen/textsize_20px"/>
     <RelativeLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="100px"
         android:paddingRight="28px"

@@ -95,6 +95,7 @@
         <RelativeLayout
             android:id="@+id/money_count"
             style="@style/user_item_layout"
+            android:background="@color/white"
            >
 
             <TextView
@@ -122,7 +123,7 @@
             android:layout_marginTop="43px"
             android:textColor="#666666"
             android:textSize="26px"
-            android:text="金豆消费说明:"/>
+            android:text="金豆换购说明:"/>
         <TextView
             android:id="@+id/tv_tip"
             android:layout_width="wrap_content"

@@ -8,10 +8,21 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
 
 public class AddressInfo  extends BaseModel{
     private long addressId;//地址ID
-    private String province;//省
-    private String city;//市
-    private String county;//区县
+    private long cityId;
+    private long countyId;
+    private long provinceId;
+    private String provinceName;//省
+    private String cityName;//市
+    private String countyName;//区县
     private String completeAddress;//详细地址
+
+    public long getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(long provinceId) {
+        this.provinceId = provinceId;
+    }
 
     public long getAddressId() {
         return addressId;
@@ -21,28 +32,44 @@ public class AddressInfo  extends BaseModel{
         this.addressId = addressId;
     }
 
-    public String getProvince() {
-        return province;
+    public long getCityId() {
+        return cityId;
     }
 
-    public void setProvince(String province) {
-        this.province = province;
+    public void setCityId(long cityId) {
+        this.cityId = cityId;
     }
 
-    public String getCity() {
-        return city;
+    public long getCountyId() {
+        return countyId;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setCountyId(long countyId) {
+        this.countyId = countyId;
     }
 
-    public String getCounty() {
-        return county;
+    public String getProvinceName() {
+        return provinceName;
     }
 
-    public void setCounty(String county) {
-        this.county = county;
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getCountyName() {
+        return countyName;
+    }
+
+    public void setCountyName(String countyName) {
+        this.countyName = countyName;
     }
 
     public String getCompleteAddress() {

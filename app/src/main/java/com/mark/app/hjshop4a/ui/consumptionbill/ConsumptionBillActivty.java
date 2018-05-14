@@ -82,7 +82,7 @@ public class ConsumptionBillActivty extends BaseActivity {
 
                     break;
                 case RoleType.BUSINESS:
-                   mType=4;
+                   mType=5;
             }
             selectTab(mType);
         } else {

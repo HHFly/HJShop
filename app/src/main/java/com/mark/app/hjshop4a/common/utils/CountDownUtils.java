@@ -202,7 +202,7 @@ public class CountDownUtils {
     private void countDownOver() {
         isCountDown = false;
         if (btn != null) {
-            btn.setEnabled(true);
+            btn.setEnabled(false);
             btn.setText(strOver);
         }
         if (listener != null) {

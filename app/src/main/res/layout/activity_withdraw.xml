@@ -6,6 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <include layout="@layout/include_titlebar"/>
+
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="30px" />
+
     <RelativeLayout
         android:id="@+id/item_bank_card"
         style="@style/user_item_layout"
@@ -14,33 +19,40 @@
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_bnak_card"
-           android:layout_height="68px"
             android:layout_width="68px"
+            android:layout_height="68px"
             android:layout_centerVertical="true"
 
             />
+
         <TextView
             android:id="@+id/item_tv_bank_name"
-           android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/iv_bnak_card"
-            android:layout_marginLeft="24px"
-            android:layout_centerVertical="true"
-            android:text="" />
-
-        <ImageView
-            android:id="@+id/iv_bnak_card_slsect"
-            android:padding="@dimen/textsize_30px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/ic_right_gray"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24px"
+            android:layout_toRightOf="@+id/iv_bnak_card"
+            android:text="" />
+        <TextView
+            android:id="@+id/item_tv_bank_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            style="@style/user_item_tv_content"
+            android:layout_toLeftOf="@+id/iv_bnak_card_slsect"
+            android:layout_toRightOf="@+id/item_tv_bank_name"
+            android:layout_marginLeft="60px"
+            android:gravity="right"
+            android:text="" />
+        <ImageView
+            android:id="@+id/iv_bnak_card_slsect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            />
+            android:padding="@dimen/textsize_30px"
+            android:src="@mipmap/ic_right_gray" />
     </RelativeLayout>
-    <View
-        style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
 
     <RelativeLayout
         android:id="@+id/item_cash"

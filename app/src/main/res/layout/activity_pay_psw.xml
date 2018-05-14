@@ -21,7 +21,7 @@
             android:paddingLeft="30px"
             android:hint="请输入新密码"
             android:inputType="textPassword"
-            android:maxLength="20" />
+            android:maxLength="6" />
 
         <ImageView
             android:id="@+id/iv_old_eye"
@@ -33,7 +33,7 @@
             />
     </LinearLayout>
     <LinearLayout style="@style/input_layout"
-        android:visibility="gone"
+        android:visibility="visible"
         >
         <TextView
             style="@style/login_input_tv"
@@ -46,9 +46,9 @@
             style="@style/login_input_et"
             android:layout_weight="1"
             android:paddingLeft="30px"
-            android:hint="请输入新密码"
+            android:hint="请确认密码"
             android:inputType="textPassword"
-            android:maxLength="20" />
+            android:maxLength="6" />
 
         <ImageView
             android:id="@+id/iv_new_eye"
@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:paddingLeft="30px"
         android:paddingTop="20px"
-        android:text="密码长度6-20个字符"
+        android:text="密码长度为6位数字"
         android:textSize="22px"/>
     <Button
         android:id="@+id/btn"

@@ -147,7 +147,7 @@ public class FrescoUtils {
      * @param resizeHeightDp 图片缩放高度dp
      */
     public static void showAutoSizeOfCallback(final SimpleDraweeView draweeView, final Uri uri, final int resizeWidthDp, final int resizeHeightDp) {
-        showAutoSize(draweeView, uri, resizeWidthDp, resizeHeightDp, true);
+        showAutoSize(draweeView, uri, resizeWidthDp, resizeHeightDp, false);
     }
 
     /**

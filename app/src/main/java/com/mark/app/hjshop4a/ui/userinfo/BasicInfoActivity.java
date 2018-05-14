@@ -161,7 +161,7 @@ public class BasicInfoActivity extends BaseActivity implements SelectInterface {
      */
     public void showDateDiaglog() {
         wheelDialog = new SelectAddressDialog(this,
-                this, SelectAddressDialog.STYLE_THREE, null);
+                this, SelectAddressDialog.STYLE_THREE, mData.getProvinceId(),mData.getCityId(),mData.getCountyId());
         wheelDialog.showDialog();
     }
 
@@ -171,7 +171,7 @@ public class BasicInfoActivity extends BaseActivity implements SelectInterface {
         CommitUserInfo userInfo =new CommitUserInfo();
         userInfo.setProvinceId(NumParseUtils.parseLong(result1.getId()));
         userInfo.setCityId(NumParseUtils.parseLong(result2.getId()));
-        userInfo.setCountyId(NumParseUtils.parseLong(result2.getId()));
+        userInfo.setCountyId(NumParseUtils.parseLong(result3.getId()));
         requestData(R.id.certification_tv_user_city,userInfo,result1.getName() + "-" + result2.getName() + "-" + result3.getName());
     }
 

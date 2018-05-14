@@ -29,6 +29,6 @@ public class BeanTradeInAdapter extends BaseListRvAdapter<BeanTradeIn> {
             holder.text(R.id.tradeInMoney,data.getTradeInMoney());
             holder.text(R.id.discountsSn,data.getTradeInSn());
             holder.text(R.id.toAccountMoney,data.getToAccountMoney());
-//            holder.text(R.id.auditStatus, BillUtil.swichAuditStatus(data.getAuditStatus()));
+            holder.text(R.id.auditStatus, BillUtil.swichAuditStatus(data.getAuditStatus()));
     }
 }

@@ -82,6 +82,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
     }
     @Override
     public void initView() {
+        isAgree= true;
         setTvText(R.id.titlebar_tv_title, R.string.login_msg_register);
         initCountDown();
         setTvText(R.id.register_et_username, mPhone);

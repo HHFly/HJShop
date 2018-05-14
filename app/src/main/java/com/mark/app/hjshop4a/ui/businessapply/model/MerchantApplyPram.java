@@ -1,5 +1,7 @@
 package com.mark.app.hjshop4a.ui.businessapply.model;
 
+import android.text.TextUtils;
+
 import com.mark.app.hjshop4a.base.model.ParamBaseModel;
 
 /**
@@ -152,5 +154,54 @@ public class MerchantApplyPram extends ParamBaseModel {
 
     public void setIsReadProtocol(String isReadProtocol) {
         this.isReadProtocol = isReadProtocol;
+    }
+    
+    public void  setData(BusinessApply data){
+        setShopName(data.getCompanyInfo().getShopName());//店铺名称
+        setProvinceId(data.getCompanyInfo().getAddressInfo().getProvinceId());//省ID
+        setCityId(data.getCompanyInfo().getAddressInfo().getCityId());//市ID
+        setCountyId(data.getCompanyInfo().getAddressInfo().getCountyId());//区ID
+        setCompleteAddress(data.getCompanyInfo().getAddressInfo().getCompleteAddress());//详细地址
+        setShopCateogryId(data.getCompanyInfo().getShopCategoryId());//类目ID
+        setCompanyName(data.getCompanyInfo().getCompanyName());//公司名称
+        setShopLicence(data.getCompanyInfo().getLicencePic());//营业执照
+        setShopImg(data.getCompanyInfo().getShopImg());//店铺形象照片
+        setShopInImg1(data.getCompanyInfo().getShopInImg1());
+        setShopInImg2(data.getCompanyInfo().getShopInImg2());
+        setShopInImg3(data.getCompanyInfo().getShopInImg3());
+        setShopInImg4(data.getCompanyInfo().getShopInImg4());
+        setIsReadProtocol("1");
+        setLatitude("0");//纬度
+        setLongitude("0");//精度
+    }
+    public boolean ishasEmptyMsg(){
+       if(TextUtils.isEmpty(getShopName())){
+           return true;
+       }
+        if(TextUtils.isEmpty(getCompleteAddress())){
+            return true;
+        }
+        if(TextUtils.isEmpty(getCompanyName())){
+            return true;
+        }
+        if(TextUtils.isEmpty(getShopLicence())){
+            return true;
+        }
+        if(TextUtils.isEmpty(getShopImg())){
+            return true;
+        }
+        if(TextUtils.isEmpty(getShopInImg1())){
+            return true;
+        }
+        if(TextUtils.isEmpty(getShopInImg2())){
+            return true;
+        }
+        if(TextUtils.isEmpty(getShopInImg3())){
+            return true;
+        }
+        if(TextUtils.isEmpty(getShopInImg4())){
+            return true;
+        }
+        return false;
     }
 }

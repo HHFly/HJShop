@@ -140,7 +140,7 @@ public class LoginActivity extends BaseActivity {
             return;
         }
         if(TextUtils.isEmpty(password)){
-            ToastUtils.show("密码不能为空");
+            ToastUtils.show("请输入密码");
             return;
         }
         if (!ValidUtils.get().password(password)) {

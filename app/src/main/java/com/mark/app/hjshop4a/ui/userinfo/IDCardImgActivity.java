@@ -54,9 +54,13 @@ public class IDCardImgActivity extends BaseActivity {
 //        setViewVisibility(R.id.titlebar_tv_right,false);
         if(userIdCardFront!=""){
             setSdvBig(R.id.imagebtn1,userIdCardFront);
+            setViewVisibility(R.id.img_1,false);
+            setViewVisibility(R.id.iv_card_zhengmian,false);
         }
         if(userIdCardSide!=""){
             setSdvBig(R.id.imagebtn2,userIdCardSide);
+            setViewVisibility(R.id.img_2,false);
+            setViewVisibility(R.id.iv_card_fan,false);
         }
     }
 
@@ -197,7 +201,18 @@ public class IDCardImgActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
+                        switch (type){
+                            case R.id.imagebtn1:
+                                setViewVisibility(R.id.img_1,false);
+                                setViewVisibility(R.id.iv_card_zhengmian,false);
+                                break;
+                            case R.id.imagebtn2:
+                                setViewVisibility(R.id.img_2,false);
+                                setViewVisibility(R.id.iv_card_fan,false);
+                                break;
+                        }
                         setSdvBig(type,url);
+//                        setSdvNormal(type,url,getView(type).getWidth(),getView(type).getHeight());
                         ToastUtils.show("上传图片成功");
                     }
 

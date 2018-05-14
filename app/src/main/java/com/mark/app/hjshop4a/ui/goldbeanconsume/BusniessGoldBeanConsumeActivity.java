@@ -105,6 +105,7 @@ public class BusniessGoldBeanConsumeActivity extends BaseActivity {
                         requestData();
                         setTvText(R.id.certification_tv_user_name,"");
                         setTvText(R.id.et_audit,"");
+                        setTvText(R.id.tv_bean_change_count,"");
                         requestImgCode();
                         ToastUtils.show("金豆兑换成功");
                     }

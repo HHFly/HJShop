@@ -83,6 +83,7 @@
         </RelativeLayout>
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/textsize_10px"
@@ -168,7 +169,7 @@
             style="@style/Bill_right"/>
         <TextView
             android:layout_centerVertical="true"
-            android:text="状态"
+            android:text="报单状态"
             style="@style/Bill_left" />
     </RelativeLayout>
 </LinearLayout>

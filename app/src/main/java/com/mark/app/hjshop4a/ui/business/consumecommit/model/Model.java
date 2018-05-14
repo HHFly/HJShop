@@ -9,6 +9,15 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
 public class Model extends BaseModel {
     private  String modelName;
     private  long modelId;
+    private  String discounts;
+
+    public String getDiscounts() {
+        return discounts;
+    }
+
+    public void setDiscounts(String discounts) {
+        this.discounts = discounts;
+    }
 
     public String getModelName() {
         return modelName;

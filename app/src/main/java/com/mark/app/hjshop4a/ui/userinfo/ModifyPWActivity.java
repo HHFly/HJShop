@@ -81,11 +81,11 @@ public class ModifyPWActivity extends BaseActivity {
             return;
         }
         if(!ValidUtils.pwd(old)){
-            ToastUtils.show(R.string.login_密码格式错误);
+            ToastUtils.show("旧密码错误，请重试");
             return;
         }
         if(!ValidUtils.pwd(news)){
-            ToastUtils.show(R.string.login_密码格式错误);
+            ToastUtils.show(R.string.login_密码由6到20位字符组成);
             return;
         }
         CommitUserInfo commitUserInf=new CommitUserInfo();

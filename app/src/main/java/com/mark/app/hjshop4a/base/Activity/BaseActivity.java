@@ -457,7 +457,18 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
             FrescoUtils.sdvBig(sdv, url);
         }
     }
-
+    /**
+     * 设置大图
+     *
+     * @param id
+     * @param url
+     */
+    public void setSdvNormal(@IdRes int id, String url,int W,int H) {
+        SimpleDraweeView sdv = getView(id);
+        if (sdv != null) {
+            FrescoUtils.showAutoSizeOfCallback(sdv, url,W,H);
+        }
+    }
     /**
      * 设置是否显示
      *

@@ -8,6 +8,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
+import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.StringUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -72,7 +73,7 @@ public class BusinessApplicationActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==RESULT_OK){
+        if(resultCode== ActResultCode.RESULT_OK){
             requestData();
         }
     }
@@ -98,7 +99,8 @@ public class BusinessApplicationActivity extends BaseActivity {
 
             case R.id.layout_company_info:
                 if(mData!=null&&!mData.getUserInfo().getUserIdCard().equals("")&&!mData.getUserInfo().getUserIdCardFront().equals("")&&!mData.getUserInfo().getUserIdCardSide().equals("")) {
-                        if(mData.getUserAuditStatus()==1) {
+
+                        if(mData.getUserAuditStatus()==2) {
                             Intent intent = new Intent(this, BusniessCompanyActivity.class);
                             BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
                             this.startActivityForResult(intent,1);
@@ -195,33 +197,39 @@ public class BusinessApplicationActivity extends BaseActivity {
 
 
     }
-    // 0 审核中 1 审核通过 2 审核不通过 3未提交
+    // 审核状态 0 待审核 1审核中 2审核通过 3 审核不通过
     private void SwitchUserAduit(int userAuditStatus) {
         switch (userAuditStatus){
             case 0:
-                setTvText(R.id.tv_certificates,"审核中");
+                setTvText(R.id.tv_certificates,"");
                 break;
             case 1:
-                setTvText(R.id.tv_certificates,"审核通过");break;
+                setTvText(R.id.tv_certificates,"审核中");break;
             case 2:
-                setTvText(R.id.tv_certificates,"审核不通过");break;
+                setTvText(R.id.tv_certificates,"审核通过");break;
             case 3:
-                setTvText(R.id.tv_certificates,"未提交");break;
+                setTvText(R.id.tv_certificates,"审核不通过");break;
         }
     }
-    // 0 审核中 1 审核通过 2 审核不通过 3未提交
+    //审核状态 0 待审核 1审核中 2审核通过 3 审核不通过
 
     private void  SwitchAduit(int auditStatus){
         switch (auditStatus){
-            case 0: setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_in_review);
+            case 1: setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_in_review);
                     setViewVisibility(R.id.aduit_logo_apply,true);
                 setTvText(R.id.tv_company_info,"审核中");
                      break;
-            case 1:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_review_pass);
+            case 2:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_review_pass);
                     setTvText(R.id.tv_company_info,"审核通过");break;
-            case 2:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_uppass); setTvText(R.id.tv_company_info,"审核不通过");break;
-            case 3:setViewVisibility(R.id.aduit_logo_apply,false);
-                    setTvText(R.id.tv_company_info,"未提交");break;
+            case 3:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_uppass); setTvText(R.id.tv_company_info,"审核不通过");break;
+            case 0:setViewVisibility(R.id.aduit_logo_apply,false);
+                    if(mData.getCompanyInfo()==null||mData.getCompanyInfo().getCompanyName().equals("")) {
+                        setTvText(R.id.tv_company_info, "");
+                    }else {
+                        setTvText(R.id.tv_company_info, "待审核");
+                    }
+                        break;
+
         }
     }
 }

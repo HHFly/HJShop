@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.ui.userinfo;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 
@@ -72,17 +73,23 @@ public class PayPWDActivity extends BaseActivity {
     private  void commit(){
         String old =getTvText(R.id.et_old_pwd);
         String news =getTvText(R.id.et_new_pwd);
-        if(!ValidUtils.pwd(old)){
-            ToastUtils.show(R.string.login_密码格式错误);
+        if(TextUtils.isEmpty(old)){
+            ToastUtils.show("请输入新密码");
             return;
         }
-//        if(!ValidUtils.pwd(news)){
-//            ToastUtils.show(R.string.login_密码格式错误);
-//            return;
-//        }
-//        if(!old.equals(news)){
-//            ToastUtils.show("两次密码不同");
-//        }
+        if(TextUtils.isEmpty(news)){
+            ToastUtils.show("请确认密码");
+            return;
+        }
+        if(!ValidUtils.verifyCode(old)){
+            ToastUtils.show("支付密码只允许6位数字");
+            return;
+        }
+
+        if(!old.equals(news)){
+            ToastUtils.show("两次密码输入不一致");
+            return;
+        }
         CommitUserInfo commitUserInf=new CommitUserInfo();
        commitUserInf.setPayPassword(MD5Utils.md5(old));
         requestData(3,commitUserInf);

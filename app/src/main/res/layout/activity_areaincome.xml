@@ -208,11 +208,10 @@
             android:textColor="#FF0089F8"
             android:textSize="40px" />
         <lecho.lib.hellocharts.view.LineChartView
-
+            android:visibility="gone"
             android:id="@+id/income_line_month"
             android:layout_width="match_parent"
             android:layout_height="480px"
-
             android:layout_marginLeft="40px"
             android:layout_marginRight="40px" />
     </LinearLayout>

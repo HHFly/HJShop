@@ -9,17 +9,11 @@ import java.util.List;
  */
 
 public class Custom extends BaseModel {
-    private  String discounts;
+
     private String captcha;
     private List<Model> modelList;
 
-    public String getDiscounts() {
-        return discounts;
-    }
 
-    public void setDiscounts(String discounts) {
-        this.discounts = discounts;
-    }
 
     public String getCaptcha() {
         return captcha;

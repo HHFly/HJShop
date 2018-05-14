@@ -44,7 +44,7 @@
                 android:padding="13px"
                 android:background="@drawable/shape_slide_1px_blue"
                 android:textColor="#FF289BF8"
-                android:text="受理申请"/>
+                android:text="查看"/>
         </RelativeLayout>
 
         <View

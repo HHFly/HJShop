@@ -52,7 +52,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
     private List<ShopCategory> shopCategorys;
     MerchantApplyPram merchantApplyPram;
     //是否同意
-    private boolean isAgree;
+    private boolean isAgree =true;
     //选择dialog
     private SelectAddressDialog wheelDialog;
     Spinner spinner;
@@ -74,10 +74,13 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
 
     @Override
     public void initView() {
+        changedAgree(isAgree);
         setTvText(R.id.titlebar_tv_title,"公司信息");
         merchantApplyPram =new MerchantApplyPram();
+
+        merchantApplyPram.setData(mData);
         bindData(mData);
-        if(mData.getAuditStatus()!= 3||mData.getAuditStatus()!=2){
+        if(mData.getAuditStatus()!= 3&&mData.getAuditStatus()!=0){
             setViewEnable(R.id.companyinfo_all,false);
             setViewEnable(R.id.company_layout_name,false);
             setViewEnable(R.id.company_layout_loacl,false);
@@ -133,7 +136,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
                 spinner.setSelection(adapter.getPositionById(companyInfo.getShopCategoryId()));
                 addressInfo = companyInfo.getAddressInfo();
                 setTvText(R.id.company_tv_name, companyInfo.getCompanyName());
-                setTvText(R.id.company_tv_loacl, addressInfo.getProvince() +"-"+ addressInfo.getCity() +"-"+ addressInfo.getCounty());
+                setTvText(R.id.company_tv_loacl, addressInfo.getProvinceName() +"-"+ addressInfo.getCityName() +"-"+ addressInfo.getCountyName());
                 setTvText(R.id.company_tv_address, addressInfo.getCompleteAddress());
 //            setTvText(R.id.shop_tv_type,shopCategory.getShopCategoryName());
                 setTvText(R.id.store_tv_name, companyInfo.getShopName());
@@ -141,17 +144,18 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
                 setSdvBig(R.id.imagebtn_shop, companyInfo.getShopImg());
 
                 setSdvBig(R.id.item_sdv_1, companyInfo.getShopInImg1());
-
+                setViewVisibility(R.id.item_iv_delete_1,false);
                 setSdvBig(R.id.item_sdv_2, companyInfo.getShopInImg2());
                 setViewVisibility(R.id.item_rl_2, true);
-
+                setViewVisibility(R.id.item_iv_delete_2,false);
 
                 setSdvBig(R.id.item_sdv_3, companyInfo.getShopInImg3());
                 setViewVisibility(R.id.item_rl_3, true);
-
+                setViewVisibility(R.id.item_iv_delete_3,false);
 
                 setSdvBig(R.id.item_sdv_4, companyInfo.getShopInImg4());
                 setViewVisibility(R.id.item_rl_4, true);
+                setViewVisibility(R.id.item_iv_delete_4,false);
               
             }
 
@@ -370,8 +374,8 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
        String localAddress= getTvText(R.id.company_tv_loacl);
         String shopName = getTvText(R.id.store_tv_name);
         long shopCategoryId = spinner.getSelectedItemId();
-
         String licenceImage =pic.get(R.id.imagebtn_licence);
+
         String shopImages =pic.get(R.id.imagebtn_shop);
         String shopImagesIn1= pic.get(R.id.item_sdv_1);
         String shopImagesIn2= pic.get(R.id.item_sdv_2);
@@ -401,33 +405,51 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
         }
         if(TextUtils.isEmpty(licenceImage))
         {
-            ToastUtils.show("请上传营业执照");
-            return;
+            licenceImage=mData.getCompanyInfo().getLicencePic();
+            if(TextUtils.isEmpty(licenceImage)) {
+                ToastUtils.show("请上传营业执照");
+                return;
+            }
         }
         if(TextUtils.isEmpty(shopImages))
         {
-            ToastUtils.show("请上传店铺形象照片");
-            return;
+            shopImages=mData.getCompanyInfo().getShopImg();
+            if(TextUtils.isEmpty(shopImages)) {
+                ToastUtils.show("请上传店铺形象照片");
+                return;
+            }
         }
         if(TextUtils.isEmpty(shopImagesIn1))
         {
+            shopImagesIn1=mData.getCompanyInfo().getShopInImg1();
+            if(TextUtils.isEmpty(shopImagesIn1)){
             ToastUtils.show("请上传店铺照片1");
             return;
+            }
         }
         if(TextUtils.isEmpty(shopImagesIn2))
         {
-            ToastUtils.show("请上传店铺照片2");
-            return;
+            shopImagesIn2=mData.getCompanyInfo().getShopInImg2();
+            if(TextUtils.isEmpty(shopImagesIn2)) {
+                ToastUtils.show("请上传店铺照片2");
+                return;
+            }
         }
         if(TextUtils.isEmpty(shopImagesIn3))
         {
-            ToastUtils.show("请上传店铺照片3");
-            return;
+            shopImagesIn3=mData.getCompanyInfo().getShopInImg3();
+            if(TextUtils.isEmpty(shopImagesIn3)) {
+                ToastUtils.show("请上传店铺照片3");
+                return;
+            }
         }
         if(TextUtils.isEmpty(shopImagesIn4))
         {
-            ToastUtils.show("请上传店铺照片4");
-            return;
+            shopImagesIn4=mData.getCompanyInfo().getShopInImg4();
+            if(TextUtils.isEmpty(shopImagesIn4)) {
+                ToastUtils.show("请上传店铺照片4");
+                return;
+            }
         }
         if (!isAgree) {
             ToastUtils.show(R.string.login_注册需要同意协议);
@@ -450,6 +472,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
         merchantApplyPram.setIsReadProtocol("1");
         merchantApplyPram.setLatitude("0");//纬度
         merchantApplyPram.setLongitude("0");//精度
+
         App.getServiceManager().getPdmService()
                 .merchantApply(merchantApplyPram.getMap())
                 .subscribeOn(Schedulers.io())
@@ -493,7 +516,7 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
      */
     public void showDateDiaglog() {
         wheelDialog = new SelectAddressDialog(this,
-                this, SelectAddressDialog.STYLE_THREE, null);
+                this, SelectAddressDialog.STYLE_THREE, mData.getCompanyInfo().getAddressInfo().getProvinceId(), mData.getCompanyInfo().getAddressInfo().getCityId(), mData.getCompanyInfo().getAddressInfo().getCountyId());
         wheelDialog.showDialog();
     }
 

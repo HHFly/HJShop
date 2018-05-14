@@ -34,7 +34,7 @@ public @interface UserInfoType {
      */
     int HEADIMG = 4;
     /**
-     * 用户基本信息
+     * z支付密码
      */
     int PAYPSW = 5;
 

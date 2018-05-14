@@ -606,7 +606,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 //              holder.text(R.id.hm_tv_user_shopname,"商户ID:"+String.valueOf(mData.getShopId()));
               holder.text(R.id.hm_tv_user_shopname,mData.getCellPhone());
               if(mData.getShopId()!=0){
-                  holder.text(R.id.hm_tv_user_phone,"商户ID:"+String.valueOf(mData.getShopId()));
+                  holder.text(R.id.hm_tv_user_phone,"店铺ID:"+String.valueOf(mData.getShopId()));
               }
               holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
 
