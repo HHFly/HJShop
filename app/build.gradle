@@ -95,7 +95,7 @@ dependencies {
     compile 'com.umeng.sdk:share-sina:latest.integration'
     compile 'com.umeng.sdk:common:latest.integration'
     compile 'com.umeng.sdk:shareboard-widget:latest.integration'
-    implementation files('lib/umeng-share-QQ-simplify-6.9.1.jar')
+//    implementation files('lib/umeng-share-QQ-simplify-6.9.1.jar')
     // 支付
     compile 'com.mark.app:mkpay-core:1.0.+'
     compile 'com.mark.app:mkpay-alipay:1.0.+'

@@ -212,12 +212,12 @@ public abstract class BaseDialogFragment extends DialogFragment implements View.
     }
 
     /**
-     * 设置文案
-     *
-     * @param rootView
-     * @param id
-     * @param data
-     */
+         * 设置文案
+         *
+         * @param rootView
+         * @param id
+         * @param data
+         */
     public void setTvHint(View rootView, @IdRes int id, String data) {
         if (rootView != null) {
             View view = getView(rootView, id);

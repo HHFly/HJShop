@@ -43,11 +43,13 @@ App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         s_app = this;
         //初始化服务
         s_service = new AppService(this);
         mAppContext =new AppContext(this);
         ToastUtils.init(this);
+        registerActivityLifecycleCallbacks(new PDLifecycleHandle());
         //初始化Fresco
         FrescoUtils.initialize(this);
 //        初始化二维码

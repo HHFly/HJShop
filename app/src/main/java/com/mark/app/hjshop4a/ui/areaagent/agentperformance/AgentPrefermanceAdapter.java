@@ -52,7 +52,7 @@ public class AgentPrefermanceAdapter extends BaseHasTopListRvAdapter<AgentPrefor
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPosition, PerformanceCitys performanceCitys) {
         if(performanceCitys!=null){
-            if(performanceCitys!=null) {
+            if(performanceCitys!=null) {  //筛选后的数据
                 holder.text(R.id.store_name, performanceCitys.getShopName());
                 holder.text(R.id.userName, performanceCitys.getUserName());
                 holder.text(R.id.newUserDay, performanceCitys.getNewUserDay());
