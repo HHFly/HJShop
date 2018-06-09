@@ -165,6 +165,11 @@
         <item name="android:layout_height">187px</item>
         <item name="android:layout_width">184px</item>
     </style>
+    <style name="hm_item_layout_lab_gone" parent="BaseItem.Layout">
+        <item name="android:layout_height">187px</item>
+        <item name="android:layout_width">184px</item>
+        <item name="android:visibility">gone</item>
+    </style>
     <style name="hm_item_layout" parent="BaseItem.Layout">
         <item name="android:layout_height">100px</item>
         <item name="android:paddingLeft">20px</item>

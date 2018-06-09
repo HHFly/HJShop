@@ -2,6 +2,10 @@ package com.mark.app.hjshop4a.ui.userinfo.model;
 
 import com.mark.app.hjshop4a.base.model.ParamBaseModel;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by pc on 2018/4/26.
  */
@@ -13,7 +17,7 @@ public class CommitUserInfo extends ParamBaseModel {
     private  long countyId;
     private  String completeAddress;
     private  String userRealName;
-    private  String birthday;
+    private  long birthday;
     private  String gender;
     private  String userIdCard;
     private  String userIdCardFront;
@@ -71,14 +75,25 @@ public class CommitUserInfo extends ParamBaseModel {
         this.userRealName = userRealName;
     }
 
-    public String getBirthday() {
+    public long getBirthday() {
         return birthday;
     }
 
     public void setBirthday(String birthday) {
-        this.birthday = birthday;
+        this.birthday = getStringToDate(birthday);
     }
-
+    public static long getStringToDate(String dateString) {
+        String pattern = "yyyy年MM月dd日";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
+        Date date = new Date();
+        try{
+            date = dateFormat.parse(dateString);
+        } catch(ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return date.getTime();
+    }
 
     public String getGender() {
         return gender;

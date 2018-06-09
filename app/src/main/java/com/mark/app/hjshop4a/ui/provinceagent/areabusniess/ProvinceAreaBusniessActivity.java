@@ -142,7 +142,7 @@ public class ProvinceAreaBusniessActivity extends BaseActivity implements OnRefr
             mAdapter.notifyData(data,data.getProxyDataList(), isRefresh);
         }
 
-        boolean isShowEmpty = isRefresh && (data == null || data.getProxyDataList() != null);
+        boolean isShowEmpty = isRefresh && (data == null && data.getProxyDataList() == null&&data.getProxyDataList().size()==0);
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override

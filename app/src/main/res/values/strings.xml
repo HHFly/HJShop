@@ -248,6 +248,10 @@
     <string name="me_会员金豆换购">金豆换购</string>
     <string name="呼叫">呼叫</string>
     <string name="商户ID">&#160;&#160;&#160;&#160;店铺ID:</string>
+    <string name="资产详情">资产详情</string>
+    <string name="申请记录">申请记录</string>
+    <string name="银行卡">银行卡</string>
+    <string name="我的推荐">我的推荐</string>
 
 
 </resources>

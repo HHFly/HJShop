@@ -90,7 +90,20 @@ public class SelectDateDialog implements OnWheelChangedListener {
              int dateyear =   year.getCurrentItem() + START_YEAR;//1900
               int datemonth = month.getCurrentItem() + 1;
               int dateday = day.getCurrentItem() + 1;
-                String time  =String.valueOf(dateyear)+"年"+String.valueOf(datemonth)+"月"+String.valueOf(dateday)+"日";
+              String month ;
+                if(datemonth<10){
+                    month ="0"+datemonth;
+                }else {
+                    month= String.valueOf(datemonth);
+                }
+               String day;
+                if(dateday<10){
+                    day="0"+dateday;
+                }else {
+                    day=String.valueOf(dateday);
+                }
+
+              String time  =String.valueOf(dateyear)+"年"+month+"月"+day+"日";
                 if(onDialogClickListener!=null){
                     onDialogClickListener.onClickDate(time);
                     dialog.cancel();

@@ -48,6 +48,7 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"代理业绩");
         setTvText(R.id.titlebar_tv_right,"筛选");
+        setViewVisibility(R.id.titlebar_tv_right,false);
     }
     @Override
     public void findView() {

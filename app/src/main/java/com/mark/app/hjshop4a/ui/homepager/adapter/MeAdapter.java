@@ -24,7 +24,9 @@ import com.mark.app.hjshop4a.ui.goldbeanconsume.BusniessGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
+import com.mark.app.hjshop4a.ui.homepager.model.CenterDataModel;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
+import com.mark.app.hjshop4a.ui.homepager.model.RoleData;
 import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.provinceagent.agentperFormance.PAgentPerformanceActivity;
 import com.mark.app.hjshop4a.ui.provinceagent.areabusniess.ProvinceAreaBusniessActivity;
@@ -32,6 +34,10 @@ import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.withdraw.WithDrawActivity;
 import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailActivity;
 import com.white.lib.utils.CallPhoneUtil;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by pc on 2018/4/13.
@@ -41,6 +47,11 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
     private int mRole ;
     Activity activity;
     private MeCenterInfo mData;
+    private Map<String ,CenterDataModel> modelMap= new HashMap<>();
+    final List<CenterDataModel> memberData=new RoleData().memberData();
+    final List<CenterDataModel> merchatData=new RoleData().merchantData();
+    final List<CenterDataModel> areaagentData=new RoleData().areaData();
+    final List<CenterDataModel> provinceData=new RoleData().provinceData();
     @Override
     public int getSectionsCount() {
         switch (mRole){
@@ -210,85 +221,162 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.text( R.id.hm_tv_other,R.string.me_查看全部);
                 break;
             case 2:
-                holder.image(R.id.me_iv_lab1,R.mipmap.store);
-                holder.image(R.id.me_iv_lab2,R.mipmap.busniess_audit);
-                holder.image(R.id.me_iv_lab3,R.mipmap.achievement);
-                holder.image(R.id.me_iv_lab4,R.mipmap.withdrawcash);
-                holder.text(R.id.me_tv_lab1, R.string.me_区域商户 );
-                holder.text(R.id.me_tv_lab2, R.string.me_商户申请);
-                holder.text(R.id.me_tv_lab3, R.string.me_代理业绩);
-                holder.text(R.id.me_tv_lab4, R.string.me_余额提现);
+                if(areaagentData.size()<=0){holder.setVisibility(false);break;}
+                modelMap.put("3-1-1",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab1,true);
+                holder.image(R.id.me_iv_lab1,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab1, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, AreaBusniessActivity.class);
+                        onClickItem(modelMap.get("3-1-1").getOnclick());
                     }
                 });
+
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-1-2",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab2,true);
+                holder.image(R.id.me_iv_lab2,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab2, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, BusinessReviewActivity.class);
+                        onClickItem(modelMap.get("3-1-2").getOnclick());
                     }
                 });
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-1-3",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab3,true);
+                holder.image(R.id.me_iv_lab3,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab3, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, AgentPerformanceActivity.class);
+                        onClickItem(modelMap.get("3-1-3").getOnclick());
+
                     }
                 });
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-1-4",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab4,true);
+                holder.image(R.id.me_iv_lab4,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab4, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);
+                        onClickItem(modelMap.get("3-1-4").getOnclick());
+
                     }
                 });
                 break;
             case 3:
-                holder.image(R.id.me_iv_lab1,R.mipmap.cashdetial);
-                holder.image(R.id.me_iv_lab2,R.mipmap.profit);
-                holder.image(R.id.me_iv_lab3,R.mipmap.order_audit);
-                holder.image(R.id.me_iv_lab4,R.mipmap.bankcard);
-                holder.text(R.id.me_tv_lab1, R.string.me_提现记录);
-                holder.text(R.id.me_tv_lab2, R.string.me_区域收益);
-                holder.text(R.id.me_tv_lab3, R.string.me_辖区报单审核);
-                holder.text(R.id.me_tv_lab4,R.string.me_银行卡);
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){holder.setVisibility(false);break;}
+                modelMap.put("3-2-1",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab1,true);
+                holder.image(R.id.me_iv_lab1,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab1, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, WithDrawDetailActivity.class);
+                        onClickItem(modelMap.get("3-2-1").getOnclick());
                     }
                 });
+
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-2-2",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab2,true);
+                holder.image(R.id.me_iv_lab2,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab2, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, AreaIncomeActivity.class);
+                        onClickItem(modelMap.get("3-2-2").getOnclick());
                     }
                 });
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-2-3",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab3,true);
+                holder.image(R.id.me_iv_lab3,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab3, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, AreaBillReviewActivity.class);
+                        onClickItem(modelMap.get("3-2-3").getOnclick());
+
                     }
                 });
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-2-4",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab4,true);
+                holder.image(R.id.me_iv_lab4,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab4, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, BankCardActivity.class);
+                        onClickItem(modelMap.get("3-2-4").getOnclick());
+
                     }
                 });
                 break;
             case 4:
-                holder.image(R.id.me_iv_lab1,R.mipmap.recommend);
-                holder.text(R.id.me_tv_lab1,R.string.me_我的推荐);
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){holder.setVisibility(false);break;}
+                modelMap.put("3-3-1",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab1,true);
+                holder.image(R.id.me_iv_lab1,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab1, areaagentData.get(0).getText());
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, RecommendActivity.class);
+                        onClickItem(modelMap.get("3-3-1").getOnclick());
                     }
                 });
-                holder.visibility(R.id.hm_lab2,false);
-                holder.visibility(R.id.hm_lab3,false);
-                holder.visibility(R.id.hm_lab4,false);
+
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-3-2",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab2,true);
+                holder.image(R.id.me_iv_lab2,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab2, areaagentData.get(0).getText());
+                holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClickItem(modelMap.get("3-3-2").getOnclick());
+                    }
+                });
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-3-3",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab3,true);
+                holder.image(R.id.me_iv_lab3,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab3, areaagentData.get(0).getText());
+                holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClickItem(modelMap.get("3-3-3").getOnclick());
+
+                    }
+                });
+                areaagentData.remove(0);
+                if(areaagentData.size()<=0){break;}
+                modelMap.put("3-3-4",areaagentData.get(0));
+                holder.visibility(R.id.hm_lab4,true);
+                holder.image(R.id.me_iv_lab4,areaagentData.get(0).getImg());
+                holder.text(R.id.me_tv_lab4, areaagentData.get(0).getText());
+                holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClickItem(modelMap.get("3-3-4").getOnclick());
+
+                    }
+                });
                 break;
             case 5:
                 holder.image(R.id.hm_iv_logo,R.mipmap.about);
@@ -342,64 +430,107 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.text( R.id.hm_tv_other,R.string.me_查看全部);
                 break;
             case 2:
-                holder.image(R.id.me_iv_lab1,R.mipmap.city);
-                holder.image(R.id.me_iv_lab2,R.mipmap.profit);
-                holder.image(R.id.me_iv_lab3,R.mipmap.withdrawcash);
-                holder.image(R.id.me_iv_lab4,R.mipmap.cashdetial);
-                holder.text(R.id.me_tv_lab1, R.string.me_区域城市);
-                holder.text(R.id.me_tv_lab2, R.string.me_区域收益);
-                holder.text(R.id.me_tv_lab3, R.string.me_余额提现);
-                holder.text(R.id.me_tv_lab4, R.string.me_提现记录);
+                if(provinceData.size()<=0){holder.setVisibility(false);break;}
+                modelMap.put("4-1-1",provinceData.get(0));
+                holder.visibility(R.id.hm_lab1,true);
+                holder.image(R.id.me_iv_lab1,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab1, provinceData.get(0).getText());
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, ProvinceAreaBusniessActivity.class);
+                        onClickItem(modelMap.get("4-1-1").getOnclick());
                     }
                 });
+
+                provinceData.remove(0);
+                if(provinceData.size()<=0){break;}
+                modelMap.put("4-1-2",provinceData.get(0));
+                holder.visibility(R.id.hm_lab2,true);
+                holder.image(R.id.me_iv_lab2,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab2, provinceData.get(0).getText());
                 holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, AreaIncomeActivity.class);
+                        onClickItem(modelMap.get("4-1-2").getOnclick());
                     }
                 });
+                provinceData.remove(0);
+                if(provinceData.size()<=0){break;}
+                modelMap.put("4-1-3",provinceData.get(0));
+                holder.visibility(R.id.hm_lab3,true);
+                holder.image(R.id.me_iv_lab3,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab3, provinceData.get(0).getText());
                 holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);
+                        onClickItem(modelMap.get("4-1-3").getOnclick());
+
                     }
                 });
+                provinceData.remove(0);
+                if(provinceData.size()<=0){break;}
+                modelMap.put("4-1-4",provinceData.get(0));
+                holder.visibility(R.id.hm_lab4,true);
+                holder.image(R.id.me_iv_lab4,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab4, provinceData.get(0).getText());
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, WithDrawDetailActivity.class);
+                        onClickItem(modelMap.get("4-1-4").getOnclick());
+
                     }
                 });
                 break;
             case 3:
-                holder.image(R.id.me_iv_lab1,R.mipmap.bankcard);
-                holder.image(R.id.me_iv_lab2,R.mipmap.recommend);
-                holder.image(R.id.me_iv_lab3,R.mipmap.achievement);
-                holder.text(R.id.me_tv_lab1,R.string.me_银行卡);
-                holder.text(R.id.me_tv_lab2,R.string.me_我的推荐);
-                holder.text(R.id.me_tv_lab3, R.string.me_代理业绩);
-//                holder.visibility(R.id.hm_lab3,false);
-                holder.visibility(R.id.hm_lab4,false);
+                provinceData.remove(0);
+                if(provinceData.size()<=0){holder.setVisibility(false);break;}
+                modelMap.put("4-2-1",provinceData.get(0));
+                holder.visibility(R.id.hm_lab1,true);
+                holder.image(R.id.me_iv_lab1,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab1, provinceData.get(0).getText());
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, BankCardActivity.class);
+                        onClickItem(modelMap.get("4-2-1").getOnclick());
                     }
                 });
+
+                provinceData.remove(0);
+                if(provinceData.size()<=0){break;}
+                modelMap.put("4-2-2",provinceData.get(0));
+                holder.visibility(R.id.hm_lab2,true);
+                holder.image(R.id.me_iv_lab2,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab2, provinceData.get(0).getText());
                 holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, RecommendActivity.class);
+                        onClickItem(modelMap.get("4-2-2").getOnclick());
                     }
                 });
+                provinceData.remove(0);
+                if(provinceData.size()<=0){break;}
+                modelMap.put("4-2-3",provinceData.get(0));
+                holder.visibility(R.id.hm_lab3,true);
+                holder.image(R.id.me_iv_lab3,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab3, provinceData.get(0).getText());
                 holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, PAgentPerformanceActivity.class);
+                        onClickItem(modelMap.get("4-2-3").getOnclick());
+
+                    }
+                });
+                provinceData.remove(0);
+                if(provinceData.size()<=0){break;}
+                modelMap.put("4-2-4",provinceData.get(0));
+                holder.visibility(R.id.hm_lab4,true);
+                holder.image(R.id.me_iv_lab4,provinceData.get(0).getImg());
+                holder.text(R.id.me_tv_lab4, provinceData.get(0).getText());
+                holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        onClickItem(modelMap.get("4-2-4").getOnclick());
+
                     }
                 });
                 break;
@@ -419,6 +550,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
     /*
     * 绑定会员数据*/
     private void bindMember(AutoViewHolder holder, IndexPath indexPath){
+
         switch (indexPath.getSection())
         {
             case 0:   //顶部数据
@@ -472,82 +604,109 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 break;
             case 4:
 //                    功能内容
-//                        holder.text(R.id.me_iv_lab1, R.string.me_银行卡);
-//                        holder.text(R.id.me_iv_lab2, R.string.me_我的推荐);
-//                        holder.text(R.id.me_iv_lab3, R.string.me_申请代理);
-//                        holder.text(R.id.me_iv_lab4, R.string.me_申请商户);
-                holder.image(R.id.me_iv_lab1,R.mipmap.gold_bean);
-                holder.image(R.id.me_iv_lab2,R.mipmap.onlinerecharge);
-                holder.image(R.id.me_iv_lab3,R.mipmap.assets);
-                holder.image(R.id.me_iv_lab4,R.mipmap.bill);
-                holder.text(R.id.me_tv_lab1, R.string.me_金豆消费);
-                //           金豆消费
+                if(memberData.size()<=0){holder.setVisibility(false);break;}
+                modelMap.put("1-1-1",memberData.get(0));
+                holder.visibility(R.id.hm_lab1,true);
+                holder.image(R.id.me_iv_lab1,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab1, memberData.get(0).getText());
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actActivity(activity, MemberGoldBeanConsumeActivity.class);
+                        onClickItem(modelMap.get("1-1-1").getOnclick());
                     }
                 });
-                holder.text(R.id.me_tv_lab2, R.string.me_在线充值);
+
+                memberData.remove(0);
+                if(memberData.size()<=0){break;}
+                modelMap.put("1-1-2",memberData.get(0));
+                holder.visibility(R.id.hm_lab2,true);
+                holder.image(R.id.me_iv_lab2,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab2, memberData.get(0).getText());
                 holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actOnlineRecharge(activity,RoleType.MEMBER);
+                        onClickItem(modelMap.get("1-1-2").getOnclick());
                     }
                 });
-                holder.text(R.id.me_tv_lab3, R.string.me_资产明细);
-                //             资产明细
+                memberData.remove(0);
+                if(memberData.size()<=0){break;}
+                modelMap.put("1-1-3",memberData.get(0));
+                holder.visibility(R.id.hm_lab3,true);
+                holder.image(R.id.me_iv_lab3,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab3, memberData.get(0).getText());
                 holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actAssetDetail(activity,RoleType.MEMBER);
+                        onClickItem(modelMap.get("1-1-3").getOnclick());
+
                     }
                 });
-                holder.text(R.id.me_tv_lab4, R.string.me_会员账单);
-                //             资产明细
+                memberData.remove(0);
+                if(memberData.size()<=0){break;}
+                modelMap.put("1-1-4",memberData.get(0));
+                holder.visibility(R.id.hm_lab4,true);
+                holder.image(R.id.me_iv_lab4,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab4, memberData.get(0).getText());
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actConsumption(activity,RoleType.MEMBER);
+                        onClickItem(modelMap.get("1-1-4").getOnclick());
+
                     }
                 });
+
                 break;
             case 5:
 //                        功能内容
-                holder.image(R.id.me_iv_lab1,R.mipmap.bankcard);
-                holder.image(R.id.me_iv_lab2,R.mipmap.recommend);
-                holder.image(R.id.me_iv_lab3,R.mipmap.agent);
-                holder.image(R.id.me_iv_lab4,R.mipmap.busniess);
-                holder.text(R.id.me_tv_lab1, R.string.me_银行卡);
-                holder.text(R.id.me_tv_lab2, R.string.me_我的推荐);
-                holder.text(R.id.me_tv_lab3,R.string.me_申请代理);
-                holder.text(R.id.me_tv_lab4,  R.string.me_申请商户);
-//                        银行卡
+                memberData.remove(0);
+                if(memberData.size()<=0){holder.setVisibility(false);break;}
+                modelMap.put("1-2-1",memberData.get(0));
+                holder.visibility(R.id.hm_lab1,true);
+                holder.image(R.id.me_iv_lab1,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab1, memberData.get(0).getText());
                 holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actBankCard(activity);
+                        onClickItem(modelMap.get("1-2-1").getOnclick());
                     }
                 });
-                //   我的推荐
+
+                memberData.remove(0);
+                if(memberData.size()<=0){break;}
+                modelMap.put("1-2-2",memberData.get(0));
+                holder.visibility(R.id.hm_lab2,true);
+                holder.image(R.id.me_iv_lab2,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab2, memberData.get(0).getText());
                 holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actRecommend(activity,RoleType.MEMBER);
+                        onClickItem(modelMap.get("1-2-2").getOnclick());
                     }
                 });
-//                     申请代理
+                memberData.remove(0);
+                if(memberData.size()<=0){break;}
+                modelMap.put("1-2-3",memberData.get(0));
+                holder.visibility(R.id.hm_lab3,true);
+                holder.image(R.id.me_iv_lab3,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab3, memberData.get(0).getText());
                 holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        agant();
+                        onClickItem(modelMap.get("1-2-3").getOnclick());
+
                     }
                 });
-//                        申请商户
+                memberData.remove(0);
+                if(memberData.size()<=0){break;}
+                modelMap.put("1-2-4",memberData.get(0));
+                holder.visibility(R.id.hm_lab4,true);
+                holder.image(R.id.me_iv_lab4,memberData.get(0).getImg());
+                holder.text(R.id.me_tv_lab4, memberData.get(0).getText());
                 holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        ActivityJumpUtils.actBusinesApply(activity);
+                        onClickItem(modelMap.get("1-2-4").getOnclick());
+
                     }
                 });
                 break;
@@ -619,111 +778,163 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               break;
           case 2:
 //                       功能内容
-              holder.image(R.id.me_iv_lab1, R.mipmap.store);
-              holder.image(R.id.me_iv_lab2, R.mipmap.order);
-              holder.image(R.id.me_iv_lab3, R.mipmap.gold_bean);
-              holder.image(R.id.me_iv_lab4, R.mipmap.busniessbill);
-              holder.text(R.id.me_tv_lab1, R.string.me_线下报单);
-              holder.text(R.id.me_tv_lab2, R.string.me_报单账单);
-              holder.text(R.id.me_tv_lab3, R.string.me_金豆兑换);
-              holder.text(R.id.me_tv_lab4, R.string.me_账单);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-1-1",merchatData.get(0));
+              holder.visibility(R.id.hm_lab1,true);
+              holder.image(R.id.me_iv_lab1,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab1, merchatData.get(0).getText());
               holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actActivity(activity, ConsumeCommitActivity.class);
+                      onClickItem(modelMap.get("2-1-1").getOnclick());
                   }
               });
+
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-1-2",merchatData.get(0));
+              holder.visibility(R.id.hm_lab2,true);
+              holder.image(R.id.me_iv_lab2,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab2, merchatData.get(0).getText());
               holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actActivity(activity, BusniessBillRecordActivity.class);
+                      onClickItem(modelMap.get("2-1-2").getOnclick());
                   }
               });
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-1-3",merchatData.get(0));
+              holder.visibility(R.id.hm_lab3,true);
+              holder.image(R.id.me_iv_lab3,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab3, merchatData.get(0).getText());
               holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actActivity(activity, BusniessGoldBeanConsumeActivity.class);
+                      onClickItem(modelMap.get("2-1-3").getOnclick());
+
                   }
               });
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-1-4",merchatData.get(0));
+              holder.visibility(R.id.hm_lab4,true);
+              holder.image(R.id.me_iv_lab4,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab4, merchatData.get(0).getText());
               holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actConsumption(activity,RoleType.BUSINESS);
+                      onClickItem(modelMap.get("2-1-4").getOnclick());
+
                   }
               });
               break;
           case 3:
               //                       功能内容
-              holder.image(R.id.me_iv_lab1, R.mipmap.busniessinfo);
-              holder.image(R.id.me_iv_lab2, R.mipmap.onlinerecharge);
-              holder.image(R.id.me_iv_lab3, R.mipmap.withdrawals);
-              holder.image(R.id.me_iv_lab4, R.mipmap.zxing);
-              holder.text(R.id.me_tv_lab1, R.string.me_商户信息);
-              holder.text(R.id.me_tv_lab2, R.string.me_在线充值);
-              holder.text(R.id.me_tv_lab3, R.string.me_余额提现);
-              holder.text(R.id.me_tv_lab4, R.string.me_收豆二维码);
+              merchatData.remove(0);
+              if(merchatData.size()<=0){holder.setVisibility(false);break;}
+              modelMap.put("2-2-1",merchatData.get(0));
+              holder.visibility(R.id.hm_lab1,true);
+              holder.image(R.id.me_iv_lab1,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab1, merchatData.get(0).getText());
               holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-//                      ActivityJumpUtils.actActivity(activity, BusniessInfoActivity.class);
-                      ActivityJumpUtils.actActivity(activity, BusinessApplicationActivity.class);
+                      onClickItem(modelMap.get("2-2-1").getOnclick());
                   }
               });
+
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-2-2",merchatData.get(0));
+              holder.visibility(R.id.hm_lab2,true);
+              holder.image(R.id.me_iv_lab2,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab2, merchatData.get(0).getText());
               holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actActivity(activity, OnlineRechargeActivity.class);
+                      onClickItem(modelMap.get("2-2-2").getOnclick());
                   }
               });
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-2-3",merchatData.get(0));
+              holder.visibility(R.id.hm_lab3,true);
+              holder.image(R.id.me_iv_lab3,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab3, merchatData.get(0).getText());
               holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);
+                      onClickItem(modelMap.get("2-2-3").getOnclick());
+
                   }
               });
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-2-4",merchatData.get(0));
+              holder.visibility(R.id.hm_lab4,true);
+              holder.image(R.id.me_iv_lab4,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab4, merchatData.get(0).getText());
               holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actActivity(activity, BusniessZxingActivity.class);
+                      onClickItem(modelMap.get("2-2-4").getOnclick());
+
                   }
               });
               break;
           case 4:
 //                    功能内容
               //                       功能内容
-              holder.image(R.id.me_iv_lab1, R.mipmap.assetdetail);
-              holder.image(R.id.me_iv_lab2, R.mipmap.applicationrecord);
-              holder.image(R.id.me_iv_lab3, R.mipmap.bankcard);
-              holder.image(R.id.me_iv_lab4, R.mipmap.recommend);
-              holder.visibility(R.id.hm_lab2,false);
-              holder.text(R.id.me_tv_lab1, "资产详情");
-              holder.text(R.id.me_tv_lab2, "申请记录");
-              holder.text(R.id.me_tv_lab3, "银行卡");
-              holder.text(R.id.me_tv_lab4, "我的推荐");
-
+              merchatData.remove(0);
+              if(merchatData.size()<=0){holder.setVisibility(false);break;}
+              modelMap.put("2-3-1",merchatData.get(0));
+              holder.visibility(R.id.hm_lab1,true);
+              holder.image(R.id.me_iv_lab1,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab1, merchatData.get(0).getText());
               holder.get(R.id.hm_lab1).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actAssetDetail(activity,RoleType.BUSINESS);
+                      onClickItem(modelMap.get("2-3-1").getOnclick());
                   }
               });
+
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-3-2",merchatData.get(0));
+              holder.visibility(R.id.hm_lab2,true);
+              holder.image(R.id.me_iv_lab2,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab2, merchatData.get(0).getText());
               holder.get(R.id.hm_lab2).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actConsumption(activity,RoleType.BUSINESS);
+                      onClickItem(modelMap.get("2-3-2").getOnclick());
                   }
               });
-//
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-3-3",merchatData.get(0));
+              holder.visibility(R.id.hm_lab3,true);
+              holder.image(R.id.me_iv_lab3,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab3, merchatData.get(0).getText());
               holder.get(R.id.hm_lab3).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actBankCard(activity);
+                      onClickItem(modelMap.get("2-3-3").getOnclick());
+
                   }
               });
+              merchatData.remove(0);
+              if(merchatData.size()<=0){break;}
+              modelMap.put("2-3-4",merchatData.get(0));
+              holder.visibility(R.id.hm_lab4,true);
+              holder.image(R.id.me_iv_lab4,merchatData.get(0).getImg());
+              holder.text(R.id.me_tv_lab4, merchatData.get(0).getText());
               holder.get(R.id.hm_lab4).setOnClickListener(new View.OnClickListener() {
                   @Override
                   public void onClick(View v) {
-                      ActivityJumpUtils.actRecommend(activity,RoleType.BUSINESS);
+                      onClickItem(modelMap.get("2-3-4").getOnclick());
+
                   }
               });
               break;
@@ -751,6 +962,47 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               break;
       }
   }
+  private void onClickItem(String click){
+      switch (click){
+          case "1-1-1": ActivityJumpUtils.actActivity(activity, MemberGoldBeanConsumeActivity.class);break;
+          case "1-1-2": ActivityJumpUtils.actOnlineRecharge(activity,RoleType.MEMBER);break;
+          case "1-1-3": ActivityJumpUtils.actAssetDetail(activity,RoleType.MEMBER);break;
+          case "1-1-4": ActivityJumpUtils.actConsumption(activity,RoleType.MEMBER);break;
+          case "1-2-1": ActivityJumpUtils.actBankCard(activity);break;
+          case  "1-2-2":  ActivityJumpUtils.actRecommend(activity,RoleType.MEMBER);break;
+          case  "1-2-3": agant();break;
+          case  "1-2-4":ActivityJumpUtils.actBusinesApply(activity);break;
+          case  "2-1-1": ActivityJumpUtils.actActivity(activity, ConsumeCommitActivity.class);break;
+          case  "2-1-2":  ActivityJumpUtils.actActivity(activity, BusniessBillRecordActivity.class);break;
+          case "2-1-3":  ActivityJumpUtils.actActivity(activity, BusniessGoldBeanConsumeActivity.class);break;
+          case  "2-1-4":  ActivityJumpUtils.actConsumption(activity,RoleType.BUSINESS);break;
+          case  "2-2-1":  ActivityJumpUtils.actActivity(activity, BusinessApplicationActivity.class);break;
+          case "2-2-2":ActivityJumpUtils.actActivity(activity, OnlineRechargeActivity.class);break;
+          case "2-2-3": ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);break;
+          case "2-2-4": ActivityJumpUtils.actActivity(activity, BusniessZxingActivity.class);break;
+          case "2-3-1":    ActivityJumpUtils.actAssetDetail(activity,RoleType.BUSINESS);break;
+          case "2-3-2": ActivityJumpUtils.actConsumption(activity,RoleType.BUSINESS);break;
+          case "2-3-3":   ActivityJumpUtils.actBankCard(activity);break;
+          case "2-3-4":  ActivityJumpUtils.actRecommend(activity,RoleType.BUSINESS);break;
+          case  "3-1-1":ActivityJumpUtils.actActivity(activity, AreaBusniessActivity.class);break;
+          case  "3-1-2": ActivityJumpUtils.actActivity(activity, BusinessReviewActivity.class);break;
+          case  "3-1-3": ActivityJumpUtils.actActivity(activity, AreaBillReviewActivity.class);break;
+          case "3-1-4": ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);break;
+          case "3-2-1": ActivityJumpUtils.actActivity(activity, WithDrawDetailActivity.class);break;
+          case "3-2-2": ActivityJumpUtils.actActivity(activity, AreaIncomeActivity.class);break;
+          case "3-2-3": ActivityJumpUtils.actActivity(activity, AreaBillReviewActivity.class);break;
+          case "3-2-4":  ActivityJumpUtils.actActivity(activity, BankCardActivity.class);break;
+          case "3-3-1":  ActivityJumpUtils.actActivity(activity, RecommendActivity.class);break;
+          case "4-1-1":  ActivityJumpUtils.actActivity(activity, ProvinceAreaBusniessActivity.class);break;
+          case "4-1-2": ActivityJumpUtils.actActivity(activity, AreaIncomeActivity.class);break;
+          case "4-1-3": ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);break;
+          case "4-1-4": ActivityJumpUtils.actActivity(activity, WithDrawDetailActivity.class);break;
+          case "4-2-1":ActivityJumpUtils.actActivity(activity, BankCardActivity.class);break;
+          case "4-2-2": ActivityJumpUtils.actActivity(activity, RecommendActivity.class);break;
+          case "4-2-3":  ActivityJumpUtils.actActivity(activity, PAgentPerformanceActivity.class);break;
+      }
+  }
+
 //  申请代理
   private void agant(){
       final String strPhone = "400 101 7979";

@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:gravity="left">
         <RelativeLayout
-            style="@style/hm_item_layout_lab"
+            style="@style/hm_item_layout_lab_gone"
             android:id="@+id/hm_lab1"
+            
             >
         <ImageView
             android:id="@+id/me_iv_lab1"
@@ -51,7 +52,7 @@
         </RelativeLayout>
 
         <RelativeLayout
-        style="@style/hm_item_layout_lab"
+        style="@style/hm_item_layout_lab_gone"
         android:id="@+id/hm_lab2"
 
         >
@@ -89,7 +90,7 @@
     </RelativeLayout>
 
         <RelativeLayout
-            style="@style/hm_item_layout_lab"
+            style="@style/hm_item_layout_lab_gone"
             android:id="@+id/hm_lab3"
             >
         <ImageView
@@ -123,7 +124,7 @@
              />
         </RelativeLayout>
         <RelativeLayout
-            style="@style/hm_item_layout_lab"
+            style="@style/hm_item_layout_lab_gone"
             android:id="@+id/hm_lab4"
             >
         <ImageView
