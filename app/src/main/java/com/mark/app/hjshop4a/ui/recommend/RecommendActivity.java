@@ -79,6 +79,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"我的推荐");
         setTvText(R.id.titlebar_tv_right,"分享");
+        setViewVisibility(R.id.titlebar_tv_right,false);
 //        api = WXAPIFactory.createWXAPI(this, BuildConfig.WX_APPID,true);
 //        api.registerApp(BuildConfig.WX_APPID);
         PlatformConfig.setWeixin("你的微信APPID", "你的微信AppSecret");//微信APPID和AppSecret

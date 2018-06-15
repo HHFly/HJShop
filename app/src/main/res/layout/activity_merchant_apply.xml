@@ -90,6 +90,7 @@
                     android:textSize="@dimen/textsize_22px" />
             </RelativeLayout>
             <RelativeLayout
+                android:id="@+id/rl_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             <TextView
@@ -114,6 +115,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rl_2"
                 android:layout_marginTop="10px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

@@ -14,11 +14,11 @@ public class RoleData {
    
     public List<CenterDataModel>  memberData(){
          List<CenterDataModel> dataModels =new ArrayList<>();
-        CenterDataModel data1 =new CenterDataModel();
-        data1.setImg(R.mipmap.gold_bean);
-        data1.setText(R.string.me_金豆消费);
-        data1.setOnclick("1-1-1");
-        dataModels.add(data1);
+//        CenterDataModel data1 =new CenterDataModel();
+//        data1.setImg(R.mipmap.gold_bean);
+//        data1.setText(R.string.me_金豆消费);
+//        data1.setOnclick("1-1-1");
+//        dataModels.add(data1);
 //        CenterDataModel data2 =new CenterDataModel();
 //        data2.setImg(R.mipmap.onlinerecharge);
 //        data2.setText(R.string.me_在线充值);
