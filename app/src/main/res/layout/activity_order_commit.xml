@@ -74,7 +74,7 @@
 
                 <TextView
                     style="@style/user_item_tv"
-                    android:text="* 账户类别"
+                    android:text="* 报单模式"
                     android:id="@+id/textView6" />
 
                 <Spinner

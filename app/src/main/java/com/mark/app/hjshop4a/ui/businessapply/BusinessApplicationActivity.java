@@ -100,7 +100,7 @@ public class BusinessApplicationActivity extends BaseActivity {
             case R.id.layout_company_info:
                 if(mData!=null&&!mData.getUserInfo().getUserIdCard().equals("")&&!mData.getUserInfo().getUserIdCardFront().equals("")&&!mData.getUserInfo().getUserIdCardSide().equals("")) {
 
-                        if(mData.getUserAuditStatus()==2) {
+                        if(Apply.PASS==mData.getUserAuditStatus()) {
                             Intent intent = new Intent(this, BusniessCompanyActivity.class);
                             BundleUtils.getInstance().putSerializable("BusinessApply", mData).addIntent(intent);
                             this.startActivityForResult(intent,1);
@@ -200,14 +200,14 @@ public class BusinessApplicationActivity extends BaseActivity {
     // 审核状态 0 待审核 1审核中 2审核通过 3 审核不通过
     private void SwitchUserAduit(int userAuditStatus) {
         switch (userAuditStatus){
-            case 0:
-                setTvText(R.id.tv_certificates,"");
+            case Apply.ToBeAudited:
+                setTvText(R.id.tv_certificates,"待审核");
                 break;
-            case 1:
+            case Apply.Audit:
                 setTvText(R.id.tv_certificates,"审核中");break;
-            case 2:
+            case Apply.PASS:
                 setTvText(R.id.tv_certificates,"审核通过");break;
-            case 3:
+            case Apply.UNPASS:
                 setTvText(R.id.tv_certificates,"审核不通过");break;
         }
     }
@@ -215,14 +215,14 @@ public class BusinessApplicationActivity extends BaseActivity {
 
     private void  SwitchAduit(int auditStatus){
         switch (auditStatus){
-            case 1: setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_in_review);
+            case Apply.Audit: setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_in_review);
                     setViewVisibility(R.id.aduit_logo_apply,true);
                 setTvText(R.id.tv_company_info,"审核中");
                      break;
-            case 2:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_review_pass);
+            case Apply.PASS:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_review_pass);
                     setTvText(R.id.tv_company_info,"审核通过");break;
-            case 3:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_uppass); setTvText(R.id.tv_company_info,"审核不通过");break;
-            case 0:setViewVisibility(R.id.aduit_logo_apply,false);
+            case Apply.UNPASS:setViewVisibility(R.id.aduit_logo_apply,true);setIvImage(R.id.aduit_logo_apply,R.mipmap.ic_uppass); setTvText(R.id.tv_company_info,"审核不通过");break;
+            case Apply.ToBeAudited:setViewVisibility(R.id.aduit_logo_apply,false);
                     if(mData.getCompanyInfo()==null||mData.getCompanyInfo().getCompanyName().equals("")) {
                         setTvText(R.id.tv_company_info, "");
                     }else {

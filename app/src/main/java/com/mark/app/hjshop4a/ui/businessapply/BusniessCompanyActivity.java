@@ -77,10 +77,11 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
         changedAgree(isAgree);
         setTvText(R.id.titlebar_tv_title,"公司信息");
         merchantApplyPram =new MerchantApplyPram();
-
-        merchantApplyPram.setData(mData);
+        if(mData.getCompanyInfo()!=null) {
+            merchantApplyPram.setData(mData);
+        }
         bindData(mData);
-        if(mData.getAuditStatus()!= 3&&mData.getAuditStatus()!=0){
+        if(mData.getAuditStatus()!= Apply.UNPASS&&mData.getAuditStatus()!=Apply.ToBeAudited){
             setViewEnable(R.id.companyinfo_all,false);
             setViewEnable(R.id.company_layout_name,false);
             setViewEnable(R.id.company_layout_loacl,false);
@@ -515,9 +516,15 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
      *
      */
     public void showDateDiaglog() {
-        wheelDialog = new SelectAddressDialog(this,
-                this, SelectAddressDialog.STYLE_THREE, mData.getCompanyInfo().getAddressInfo().getProvinceId(), mData.getCompanyInfo().getAddressInfo().getCityId(), mData.getCompanyInfo().getAddressInfo().getCountyId());
-        wheelDialog.showDialog();
+        if(mData.getCompanyInfo()!=null&&mData.getCompanyInfo().getAddressInfo()!=null) {
+            wheelDialog = new SelectAddressDialog(this,
+                    this, SelectAddressDialog.STYLE_THREE, mData.getCompanyInfo().getAddressInfo().getProvinceId(), mData.getCompanyInfo().getAddressInfo().getCityId(), mData.getCompanyInfo().getAddressInfo().getCountyId());
+            wheelDialog.showDialog();
+        }else {
+            wheelDialog = new SelectAddressDialog(this,
+                    this, SelectAddressDialog.STYLE_THREE,0,0,0);
+            wheelDialog.showDialog();
+        }
     }
 
 

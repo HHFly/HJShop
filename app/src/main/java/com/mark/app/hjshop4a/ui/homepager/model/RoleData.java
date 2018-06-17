@@ -103,11 +103,11 @@ public class RoleData {
         data9.setText(R.string.资产详情);
         data9.setOnclick("2-3-1");
         dataModels.add(data9);
-        CenterDataModel data10 =new CenterDataModel();
-        data10.setImg(R.mipmap.applicationrecord);
-        data10.setText(R.string.申请记录);
-        data10.setOnclick("2-3-2");
-        dataModels.add(data10);
+//        CenterDataModel data10 =new CenterDataModel();
+//        data10.setImg(R.mipmap.applicationrecord);
+//        data10.setText(R.string.申请记录);
+//        data10.setOnclick("2-3-2");
+//        dataModels.add(data10);
         CenterDataModel data11 =new CenterDataModel();
         data11.setImg(R.mipmap.bankcard);
         data11.setText(R.string.银行卡);

@@ -613,7 +613,7 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
                     @Override
                     public void onUnSuccessFinish() {
                         super.onUnSuccessFinish();
-                        ToastUtils.show("图片上传失败");
+//                        ToastUtils.show("图片上传失败");
                         if (listenr != null) {
                             listenr.onLoadPicUnSuccessFinish();
                         }

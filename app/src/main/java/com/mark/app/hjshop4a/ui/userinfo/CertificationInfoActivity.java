@@ -153,7 +153,7 @@ public class CertificationInfoActivity extends BaseActivity {
 
     //    填写信息dialog
     private  void  ShowDialog(final int type,Boolean isNumber){
-        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(isNumber);
+        AddOneEtParamDialog mAddOneEtParamDialog = AddOneEtParamDialog.getInstance(isNumber,mData.getIdcard());
 
         mAddOneEtParamDialog.setOnDialogClickListener(new AddOneEtParamDialog.DefOnDialogClickListener() {
             @Override

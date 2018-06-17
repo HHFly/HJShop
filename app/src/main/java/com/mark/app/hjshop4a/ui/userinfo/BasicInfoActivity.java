@@ -9,6 +9,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.androidenum.userinfo.UserInfoType;
 import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -37,7 +38,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class BasicInfoActivity extends BaseActivity implements SelectInterface {
     private AddOneEtParamDialog mAddOneEtParamDialog;
-
+    private int role ;
     private UserInfo mData;
     //选择dialog
     private SelectAddressDialog wheelDialog;
@@ -56,13 +57,15 @@ public class BasicInfoActivity extends BaseActivity implements SelectInterface {
 
     @Override
     public void initView() {
-
+        role =App.getAppContext().getRoleType();
         setTvText(R.id.titlebar_tv_title,"基本信息");
         if(mData!=null){
             setTvText(R.id.certification_tv_user_name,mData.getUserName());
             setTvText(R.id.certification_tv_user_city,mData.getProvinceName()+mData.getCityName()+mData.getCountyName());
             setTvText(R.id.certification_tv_user_address,mData.getCompleteAddress());
         }
+        setViewEnable(R.id.certification_layout_user_city, !(RoleType.AREAAGENT==role||RoleType.PROVINCIALAGENT==role));
+        setViewEnable(R.id.certification_layout_user_address, !(RoleType.AREAAGENT==role||RoleType.PROVINCIALAGENT==role));
     }
 
     @Override

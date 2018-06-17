@@ -886,7 +886,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
           case 4:
 //                    功能内容
               //                       功能内容
-              merchatData.remove(0);
+//              merchatData.remove(0);
               if(merchatData.size()<=0){holder.setVisibility(false);break;}
               modelMap.put("2-3-1",merchatData.get(0));
               holder.visibility(R.id.hm_lab1,true);

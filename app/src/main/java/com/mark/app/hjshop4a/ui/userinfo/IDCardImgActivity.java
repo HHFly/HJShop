@@ -52,12 +52,12 @@ public class IDCardImgActivity extends BaseActivity {
         setTvText(R.id.titlebar_tv_title,"身份验证");
         setTvText(R.id.titlebar_tv_right,"完成");
 //        setViewVisibility(R.id.titlebar_tv_right,false);
-        if(userIdCardFront!=""){
+        if(!"".equals(userIdCardFront)){
             setSdvBig(R.id.imagebtn1,userIdCardFront);
             setViewVisibility(R.id.img_1,false);
             setViewVisibility(R.id.iv_card_zhengmian,false);
         }
-        if(userIdCardSide!=""){
+        if(!"".equals(userIdCardSide)){
             setSdvBig(R.id.imagebtn2,userIdCardSide);
             setViewVisibility(R.id.img_2,false);
             setViewVisibility(R.id.iv_card_fan,false);
