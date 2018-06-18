@@ -658,6 +658,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 break;
             case 5:
 //                        功能内容
+                if(memberData.size()<=0){holder.setVisibility(false);break;}
                 memberData.remove(0);
                 if(memberData.size()<=0){holder.setVisibility(false);break;}
                 modelMap.put("1-2-1",memberData.get(0));
@@ -778,7 +779,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               break;
           case 2:
 //                       功能内容
-              if(merchatData.size()<=0){break;}
+              if(merchatData.size()<=0){holder.setVisibility(false);break;}
               modelMap.put("2-1-1",merchatData.get(0));
               holder.visibility(R.id.hm_lab1,true);
               holder.image(R.id.me_iv_lab1,merchatData.get(0).getImg());
@@ -831,6 +832,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
               break;
           case 3:
               //                       功能内容
+              if(merchatData.size()<=0){holder.setVisibility(false);break;}
               merchatData.remove(0);
               if(merchatData.size()<=0){holder.setVisibility(false);break;}
               modelMap.put("2-2-1",merchatData.get(0));
@@ -886,7 +888,8 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
           case 4:
 //                    功能内容
               //                       功能内容
-//              merchatData.remove(0);
+              if(merchatData.size()<=0){holder.setVisibility(false);break;}
+              merchatData.remove(0);
               if(merchatData.size()<=0){holder.setVisibility(false);break;}
               modelMap.put("2-3-1",merchatData.get(0));
               holder.visibility(R.id.hm_lab1,true);
