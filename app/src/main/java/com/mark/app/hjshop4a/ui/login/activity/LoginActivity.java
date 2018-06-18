@@ -134,11 +134,11 @@ public class LoginActivity extends BaseActivity {
     private void login() {
         account = getTvText(R.id.login_et_username);
         String password = getTvText(R.id.login_et_pwd);
-        if (!ValidUtils.get().phone(account)) {
-
-            ToastUtils.show(R.string.login_手机号格式错误);
-            return;
-        }
+//        if (!ValidUtils.get().phone(account)) {
+//
+//            ToastUtils.show(R.string.login_手机号格式错误);
+//            return;
+//        }
         if(TextUtils.isEmpty(password)){
             ToastUtils.show("请输入密码");
             return;
