@@ -35,7 +35,7 @@ public class PhoneEditText extends android.support.v7.widget.AppCompatEditText {
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        setMaxLength(11);
+        setMaxLength(13);
 //        if (textWatcher == null) {
 //            textWatcher = new AutoSpacePhoneTextWatcher(this);
 //            addTextChangedListener(textWatcher);
@@ -108,6 +108,7 @@ public class PhoneEditText extends android.support.v7.widget.AppCompatEditText {
      * @return
      */
     public String getTextTrim(String data) {
-        return data.replaceAll("^[0]+", "");
+//        return data.replaceAll("^[0]+", "");
+        return data;
     }
 }
