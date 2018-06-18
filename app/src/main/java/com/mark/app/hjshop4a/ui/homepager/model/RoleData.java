@@ -24,11 +24,11 @@ public class RoleData {
 //        data2.setText(R.string.me_在线充值);
 //        data2.setOnclick("1-1-2");
 //        dataModels.add(data2);
-//        CenterDataModel data3 =new CenterDataModel();
-//        data3.setImg(R.mipmap.assets);
-//        data3.setText( R.string.me_资产明细);
-//        data3.setOnclick("1-1-3");
-//        dataModels.add(data3);
+        CenterDataModel data3 =new CenterDataModel();
+        data3.setImg(R.mipmap.assets);
+        data3.setText( R.string.me_资产明细);
+        data3.setOnclick("1-1-3");
+        dataModels.add(data3);
 //        CenterDataModel data4 =new CenterDataModel();
 //        data4.setImg(R.mipmap.bill);
 //        data4.setText(R.string.me_会员账单);
