@@ -273,6 +273,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 3:
+                if(areaagentData.size()<=0){holder.setVisibility(false);break;}
                 areaagentData.remove(0);
                 if(areaagentData.size()<=0){holder.setVisibility(false);break;}
                 modelMap.put("3-2-1",areaagentData.get(0));
@@ -326,6 +327,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 4:
+                if(areaagentData.size()<=0){holder.setVisibility(false);break;}
                 areaagentData.remove(0);
                 if(areaagentData.size()<=0){holder.setVisibility(false);break;}
                 modelMap.put("3-3-1",areaagentData.get(0));
@@ -482,6 +484,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 3:
+                if(provinceData.size()<=0){holder.setVisibility(false);break;}
                 provinceData.remove(0);
                 if(provinceData.size()<=0){holder.setVisibility(false);break;}
                 modelMap.put("4-2-1",provinceData.get(0));
