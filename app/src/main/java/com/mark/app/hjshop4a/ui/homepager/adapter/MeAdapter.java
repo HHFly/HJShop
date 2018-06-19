@@ -992,7 +992,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
           case "2-3-4":  ActivityJumpUtils.actRecommend(activity,RoleType.BUSINESS);break;
           case  "3-1-1":ActivityJumpUtils.actActivity(activity, AreaBusniessActivity.class);break;
           case  "3-1-2": ActivityJumpUtils.actActivity(activity, BusinessReviewActivity.class);break;
-          case  "3-1-3": ActivityJumpUtils.actActivity(activity, AreaBillReviewActivity.class);break;
+          case  "3-1-3": ActivityJumpUtils.actActivity(activity, AgentPerformanceActivity.class);break;
           case "3-1-4": ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);break;
           case "3-2-1": ActivityJumpUtils.actActivity(activity, WithDrawDetailActivity.class);break;
           case "3-2-2": ActivityJumpUtils.actActivity(activity, AreaIncomeActivity.class);break;

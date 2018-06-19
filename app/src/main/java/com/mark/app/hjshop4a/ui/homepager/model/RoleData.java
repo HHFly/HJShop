@@ -98,11 +98,11 @@ public class RoleData {
 //        data8.setText(R.string.me_收豆二维码);
 //        data8.setOnclick("2-2-4");
 //        dataModels.add(data8);
-//        CenterDataModel data9 =new CenterDataModel();
-//        data9.setImg(R.mipmap.assetdetail);
-//        data9.setText(R.string.资产详情);
-//        data9.setOnclick("2-3-1");
-//        dataModels.add(data9);
+        CenterDataModel data9 =new CenterDataModel();
+        data9.setImg(R.mipmap.assetdetail);
+        data9.setText(R.string.资产详情);
+        data9.setOnclick("2-3-1");
+        dataModels.add(data9);
 //        CenterDataModel data10 =new CenterDataModel();
 //        data10.setImg(R.mipmap.applicationrecord);
 //        data10.setText(R.string.申请记录);
