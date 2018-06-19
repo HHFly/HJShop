@@ -4,7 +4,7 @@ android {
     
     compileSdkVersion 26
     defaultConfig {
-        applicationId "com.mark.app.hjshop4a"
+        applicationId "com.hjshsc.app.HJShop"
         minSdkVersion 19
         targetSdkVersion 26
         versionCode 1
