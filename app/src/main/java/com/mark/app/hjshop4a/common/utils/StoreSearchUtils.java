@@ -3,8 +3,6 @@ package com.mark.app.hjshop4a.common.utils;
 import android.content.Context;
 import android.text.TextUtils;
 
-import com.white.lib.utils.SPUtil;
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mark.app.base.recylerview.IndexPath;
+
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
@@ -33,7 +33,7 @@ import com.mark.app.hjshop4a.ui.provinceagent.areabusniess.ProvinceAreaBusniessA
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.withdraw.WithDrawActivity;
 import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailActivity;
-import com.white.lib.utils.CallPhoneUtil;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -1011,16 +1011,16 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 
 //  申请代理
   private void agant(){
-      final String strPhone = "400 101 7979";
-      NormalDialogFactory.getNormalDialogTwoBtn()
-              .setContentText( strPhone)
-              .setRightBtnText(R.string.呼叫)
-              .setRightBtnClickListener(new View.OnClickListener() {
-                  @Override
-                  public void onClick(View v) {
-                      CallPhoneUtil.call(activity, strPhone.replace(" ",""));
-                  }
-              }).show(activity.getFragmentManager());
+//      final String strPhone = "400 101 7979";
+//      NormalDialogFactory.getNormalDialogTwoBtn()
+//              .setContentText( strPhone)
+//              .setRightBtnText(R.string.呼叫)
+//              .setRightBtnClickListener(new View.OnClickListener() {
+//                  @Override
+//                  public void onClick(View v) {
+//                      CallPhoneUtil.call(activity, strPhone.replace(" ",""));
+//                  }
+//              }).show(activity.getFragmentManager());
   }
     private OnItemClickListener onItemClickListener;
 

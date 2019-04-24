@@ -17,6 +17,7 @@ import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
+import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
@@ -29,7 +30,7 @@ import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
-import com.white.lib.utils.TakePhoneUtil;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;

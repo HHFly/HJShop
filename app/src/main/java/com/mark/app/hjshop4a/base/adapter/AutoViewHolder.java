@@ -14,7 +14,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
-import com.mark.app.base.recylerview.MkViewHolder;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.zhy.autolayout.utils.AutoUtils;
 

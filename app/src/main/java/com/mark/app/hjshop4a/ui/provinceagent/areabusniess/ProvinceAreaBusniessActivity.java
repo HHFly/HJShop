@@ -19,7 +19,8 @@ import com.mark.app.hjshop4a.ui.areaagent.areabusniess.AreaBusniessActivity;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -28,7 +29,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/21.
  */
 
-public class ProvinceAreaBusniessActivity extends BaseActivity implements OnRefreshLoadmoreListener{
+public class ProvinceAreaBusniessActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     SmartRefreshLayout mRefreshLayout;//刷新框架
     ProvinceAreaBusniessAdapter mAdapter;
     private long  startTime;
@@ -56,7 +57,7 @@ public class ProvinceAreaBusniessActivity extends BaseActivity implements OnRefr
         endTime=0;
         cityId= App.getAppContext().getUserInfo().getCityId();
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
     }
     @Override
@@ -146,7 +147,7 @@ public class ProvinceAreaBusniessActivity extends BaseActivity implements OnRefr
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
             public void onLoadMore(int nextPage, long timestamp) {

@@ -9,13 +9,14 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.common.androidenum.other.UpdateType;
+import com.mark.app.hjshop4a.common.utils.download.DownloadUtil;
+import com.mark.app.hjshop4a.common.utils.download.DownloadUtilHelper;
 import com.mark.app.hjshop4a.ui.homepager.model.Lookup;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialogOneBtn;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialogTwoBtn;
 
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
-import com.white.lib.utils.download.DownloadUtil;
-import com.white.lib.utils.download.DownloadUtilHelper;
+
 
 import java.text.DecimalFormat;
 

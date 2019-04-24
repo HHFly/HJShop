@@ -28,7 +28,7 @@ import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.login.androidenum.LoginSource;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
-import com.white.lib.utils.ToastUtil;
+
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

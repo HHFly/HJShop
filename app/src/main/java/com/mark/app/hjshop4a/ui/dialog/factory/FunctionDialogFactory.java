@@ -18,12 +18,13 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.PhotoType;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 
+import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.BankCardDialog;
 import com.mark.app.hjshop4a.ui.dialog.ListDialog;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
-import com.white.lib.utils.TakePhoneUtil;
+
 
 import java.io.IOException;
 import java.io.InputStream;

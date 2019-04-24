@@ -5,7 +5,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
-import com.white.lib.utils.CallPhoneUtil;
+
 
 /**
  * Created by pc on 2018/4/22.

@@ -18,10 +18,7 @@ import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWay;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
-import com.mark.app.mkpay.core.MkPay;
-import com.mark.app.mkpay.core.MkPayCallback;
-import com.mark.app.mkpay.core.MkPayResult;
-import com.white.lib.utils.ToastUtil;
+
 
 import java.util.ArrayList;
 
@@ -88,66 +85,66 @@ public class OnlineRechargeActivity extends BaseActivity {
     /**
      * 获取支付信息
      */
-    private void requestPayInfo(String topUpMoney, final int payWayCode) {
-        showLoadingDialog();
-        App.getServiceManager().getPdmService().onLine(topUpMoney,payWayCode)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
+//    private void requestPayInfo(String topUpMoney, final int payWayCode) {
+//        showLoadingDialog();
+//        App.getServiceManager().getPdmService().onLine(topUpMoney,payWayCode)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new DefaultObserver() {
+//
+//                    @Override
+//                    public void onSuccess(BaseResultEntity obj) {
+//                        String payInfo = obj.getResult().toString();
+//                        App.getServiceManager().getMkPay().pay(getActivity(), payInfo, SwitchPay(payWayCode), new MkPayCallback() {
+//                            @Override
+//                            public void onPayResult(MkPayResult result) {
+//                                Log.e("onPayResult>>>", result.getResult());
+//                                switch (result.getResultStatus()) {
+//                                    case MkPayResult.PAY_STATE_SUCCESS: {
+////                                        ActivityJumpUtils.actPaySuccess(getActivity(), mOrderSn);
+//                                        setResult(ActResultCode.RESULT_OK);
+//                                        finish();
+//                                        break;
+//                                    }
+//                                    case MkPayResult.PAY_STATE_CANCEL: {
+//                                        ToastUtils.show("支付取消");
+//                                        break;
+//                                    }
+//                                    case MkPayResult.PAY_STATE_FAIL: {
+//                                        ToastUtils.show("支付失败");
+//                                        break;
+//                                    }
+//                                    case MkPayResult.PAY_STATE_ERROR: {
+//                                        ToastUtils.show("支付错误");
+//                                        break;
+//                                    }
+//                                }
+//                            }
+//                        });
+//                    }
+//
+//                    @Override
+//                    public void onAllFinish() {
+//                        super.onAllFinish();
+//                        hideLoadingDialog();
+//                    }
+//                });
+//    }
 
-                    @Override
-                    public void onSuccess(BaseResultEntity obj) {
-                        String payInfo = obj.getResult().toString();
-                        App.getServiceManager().getMkPay().pay(getActivity(), payInfo, SwitchPay(payWayCode), new MkPayCallback() {
-                            @Override
-                            public void onPayResult(MkPayResult result) {
-                                Log.e("onPayResult>>>", result.getResult());
-                                switch (result.getResultStatus()) {
-                                    case MkPayResult.PAY_STATE_SUCCESS: {
-//                                        ActivityJumpUtils.actPaySuccess(getActivity(), mOrderSn);
-                                        setResult(ActResultCode.RESULT_OK);
-                                        finish();
-                                        break;
-                                    }
-                                    case MkPayResult.PAY_STATE_CANCEL: {
-                                        ToastUtils.show("支付取消");
-                                        break;
-                                    }
-                                    case MkPayResult.PAY_STATE_FAIL: {
-                                        ToastUtils.show("支付失败");
-                                        break;
-                                    }
-                                    case MkPayResult.PAY_STATE_ERROR: {
-                                        ToastUtils.show("支付错误");
-                                        break;
-                                    }
-                                }
-                            }
-                        });
-                    }
-
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
-    }
-
-    private int SwitchPay(int payWayCode) {
-        switch (payWayCode){
-            case PayType.ALIPAY: {
-              return MkPay.PAY_TYPE_ALIPAY;
-
-            }
-            case PayType.WECHAT: {
-                return MkPay.PAY_TYPE_WXPAY;
-
-            }
-            default: return 0;
-        }
-
-    }
+//    private int SwitchPay(int payWayCode) {
+//        switch (payWayCode){
+//            case PayType.ALIPAY: {
+//              return MkPay.PAY_TYPE_ALIPAY;
+//
+//            }
+//            case PayType.WECHAT: {
+//                return MkPay.PAY_TYPE_WXPAY;
+//
+//            }
+//            default: return 0;
+//        }
+//
+//    }
 
     /*
     *提交
@@ -159,7 +156,7 @@ public class OnlineRechargeActivity extends BaseActivity {
             return;
         }
 
-        requestPayInfo(count,data.getPayWayCode());
+//        requestPayInfo(count,data.getPayWayCode());
 
     }
     /**

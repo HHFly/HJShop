@@ -7,13 +7,14 @@ import android.text.TextUtils;
 import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.common.utils.SPUtil;
 import com.mark.app.hjshop4a.model.login.AreaAgentInfo;
 import com.mark.app.hjshop4a.model.login.BusniessInfo;
 import com.mark.app.hjshop4a.model.login.MemberInfo;
 import com.mark.app.hjshop4a.model.login.ProvenceAgentInfo;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
-import com.white.lib.utils.SPUtil;
+
 
 /**
  * 配置文件变量

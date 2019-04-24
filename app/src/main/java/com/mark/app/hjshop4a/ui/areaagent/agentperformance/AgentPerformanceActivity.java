@@ -2,6 +2,7 @@ package com.mark.app.hjshop4a.ui.areaagent.agentperformance;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -19,7 +20,8 @@ import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformanc
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+
 
 import java.util.ArrayList;
 
@@ -30,7 +32,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/21.
  */
 
-public class AgentPerformanceActivity extends BaseActivity implements OnRefreshLoadmoreListener {
+public class AgentPerformanceActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     SmartRefreshLayout mRefreshLayout;//刷新框架
     AgentPrefermanceAdapter mAdapter;
     private long  startTime;
@@ -67,7 +69,7 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
             cityId = App.getAppContext().getUserInfo().getCityId();
         }
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
     }
     @Override
@@ -172,7 +174,7 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
             public void onLoadMore(int nextPage, long timestamp) {
@@ -187,4 +189,6 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
     public void onRefresh(RefreshLayout refreshLayout) {
         requestData(1,mPagingData.getTimestamp());
     }
+
+
 }

@@ -29,7 +29,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
-import com.mark.app.hjshop4a.R;
+
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
@@ -37,13 +37,14 @@ import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
+import com.mark.app.hjshop4a.common.utils.location.LocationManagerUtil;
+import com.mark.app.hjshop4a.common.utils.luban.LubanUtil;
+import com.mark.app.hjshop4a.common.utils.luban.model.LubanResultData;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
-import com.white.lib.utils.location.LocationManagerUtil;
-import com.white.lib.utils.luban.LubanUtil;
-import com.white.lib.utils.luban.model.LubanResultData;
+
 import com.zhy.autolayout.AutoLayoutActivity;
 
 import java.io.File;

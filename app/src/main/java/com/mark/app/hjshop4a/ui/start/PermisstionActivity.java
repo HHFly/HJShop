@@ -10,13 +10,14 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.ActRequestCode;
+import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionCheckCallBack;
+import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionRequestSuccessCallBack;
+import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionUtil;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
-import com.white.lib.utils.permisstion.PermissionCheckCallBack;
-import com.white.lib.utils.permisstion.PermissionRequestSuccessCallBack;
-import com.white.lib.utils.permisstion.PermissionUtil;
+
 
 /**
  * 权限申请界面

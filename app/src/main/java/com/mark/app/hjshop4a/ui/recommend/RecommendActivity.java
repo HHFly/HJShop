@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,9 +30,9 @@ import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
 import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+
+
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
@@ -54,14 +55,14 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/16.
  */
 
-public class RecommendActivity extends BaseActivity implements OnRefreshLoadmoreListener {
+public class RecommendActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     private  RecommendAdapter recommendAdapter;
     SmartRefreshLayout mRefreshLayout;//刷新框架
     PagingBaseModel mPagingData;
     private UMShareListener mShareListener;
     private ShareAction mShareAction;
     private ShareDialog shareDialog;
-    private IWXAPI api;
+
     private String inviteUrl="https://www.baidu.com";
     private  String inviteTitle= "惠家商城";
     private  String   inviteContent ="快来下载惠家商城App吧！";
@@ -72,7 +73,7 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
     @Override
     public void findView() {
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
     }
     @Override
@@ -206,17 +207,6 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
                 });
     }
 
-    @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
-        RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(int nextPage, long timestamp) {
-                requestData(nextPage,timestamp);
-            }
-
-
-        });
-    }
 
     @Override
     public void onRefresh(RefreshLayout refreshLayout) {
@@ -254,6 +244,19 @@ public class RecommendActivity extends BaseActivity implements OnRefreshLoadmore
         ShareBoardConfig config = new ShareBoardConfig();
         config.setMenuItemBackgroundShape(ShareBoardConfig.BG_SHAPE_NONE);
         mShareAction.open(config);
+    }
+
+    @Override
+    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+        RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(int nextPage, long timestamp) {
+                requestData(nextPage,timestamp);
+            }
+
+
+        });
+
     }
 
     private static class CustomShareListener implements UMShareListener {

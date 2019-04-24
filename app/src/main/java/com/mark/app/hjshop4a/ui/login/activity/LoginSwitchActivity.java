@@ -18,7 +18,7 @@ import com.mark.app.hjshop4a.model.login.AreaAgentInfo;
 import com.mark.app.hjshop4a.model.login.model.LoginType;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.login.adapter.LoginSwitchAdapter;
-import com.white.lib.utils.intent.BundleUtil;
+
 
 import java.util.ArrayList;
 

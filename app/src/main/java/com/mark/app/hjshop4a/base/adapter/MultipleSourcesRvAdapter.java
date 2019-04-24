@@ -4,7 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.mark.app.base.recylerview.IndexPath;
+
 
 /**
  * Created by hui on 2018/4/14.
@@ -84,5 +84,21 @@ public abstract class MultipleSourcesRvAdapter extends BaseMkRvAdapter {
 
         return null;
     }
+    public class IndexPath {
+        public int section;
+        public int row;
 
+        public IndexPath(int section, int row) {
+            this.section = section;
+            this.row = row;
+        }
+
+        public int getSection() {
+            return this.section;
+        }
+
+        public int getRow() {
+            return this.row;
+        }
+    }
 }

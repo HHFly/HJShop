@@ -20,7 +20,7 @@ import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/16.
  */
 
-public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreListener{
+public class BankCardActivity extends BaseActivity implements OnRefreshLoadMoreListener{
     private BankCardAdapter bankCardAdapter;
     private BankCards bankCards ;
     SmartRefreshLayout mRefreshLayout;//刷新框架
@@ -46,7 +46,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
             mPagingData = new PagingBaseModel();
         }
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
 
     }
@@ -153,7 +153,7 @@ public class BankCardActivity extends BaseActivity implements OnRefreshLoadmoreL
     }
 
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
 
             @Override

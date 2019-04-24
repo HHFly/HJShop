@@ -18,7 +18,7 @@ import com.mark.app.hjshop4a.ui.areaagent.billreview.model.AreaBillReview;
 import com.mark.app.hjshop4a.ui.areaagent.businessreview.eumn.IsPass;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -27,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/21.
  */
 
-public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoadmoreListener {
+public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     SmartRefreshLayout mRefreshLayout;
     PagingBaseModel mPagingData;
     AreaBillReviewAdapter mAdapter;
@@ -55,7 +55,7 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
         startTime=0;
         endTime=0;
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
     }
     @Override
@@ -175,7 +175,7 @@ public class AreaBillReviewActivity extends BaseActivity implements OnRefreshLoa
     }
 
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
             public void onLoadMore(int nextPage, long timestamp) {

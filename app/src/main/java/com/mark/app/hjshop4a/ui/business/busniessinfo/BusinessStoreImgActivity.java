@@ -20,10 +20,9 @@ import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.common.utils.MapUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 
+import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
 import com.mark.app.hjshop4a.ui.businessapply.model.CompanyInfo;
-import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.white.lib.utils.TakePhoneUtil;
-import com.zhy.autolayout.utils.AutoUtils;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;

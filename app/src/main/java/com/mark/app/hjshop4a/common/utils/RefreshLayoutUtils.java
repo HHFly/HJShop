@@ -2,6 +2,7 @@ package com.mark.app.hjshop4a.common.utils;
 
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.constant.RefreshState;
 
 /**
  * 下拉加载工具类
@@ -65,13 +66,14 @@ public class RefreshLayoutUtils {
      */
     private static void finish(RefreshLayout view, boolean hasMore) {
         if (view != null) {
-            view.setLoadmoreFinished(false);
-            if (view.isRefreshing()) {
+//            view.setLoadmoreFinished(false);
+            view.setNoMoreData(false);
+            if (view.getState() == RefreshState.Refreshing) {
                 finishRefresh(view);
                 if (hasMore) {
-                    view.setLoadmoreFinished(false);
+                    view.setNoMoreData(false);
                 }
-            } else if (view.isLoading()) {
+            } else if (view.getState() == RefreshState.Loading) {
                 finishLoadmore(view, hasMore);
             }
         }
@@ -83,7 +85,7 @@ public class RefreshLayoutUtils {
      * @param view
      */
     private static void finishRefresh(RefreshLayout view) {
-        if (view != null && view.isRefreshing()) {
+        if (view != null && view.getState() == RefreshState.Refreshing) {
             view.finishRefresh();
         }
     }
@@ -95,9 +97,11 @@ public class RefreshLayoutUtils {
      * @param hasMore
      */
     private static void finishLoadmore(RefreshLayout view, boolean hasMore) {
-        if (view != null && view.isLoading()) {
-            view.finishLoadmore(true);
-            view.setLoadmoreFinished(!hasMore);
+        if (view != null && view.getState() == RefreshState.Loading) {
+//            view.finishLoadmore(true);
+//            view.setLoadmoreFinished(!hasMore);
+            view.finishLoadMore();
+            view.setNoMoreData(!hasMore);//1.0.5 以上
         }
     }
 

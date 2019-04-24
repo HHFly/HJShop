@@ -19,15 +19,15 @@ import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.common.utils.SPUtil;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.MeFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
-import com.white.lib.utils.CallPhoneUtil;
-import com.white.lib.utils.SPUtil;
-import com.white.lib.utils.ToastUtil;
+
 
 /**
  * 首页
@@ -174,7 +174,7 @@ public class HomePagerActivity extends BaseActivity {
                 finish();
             } else {
                 String info = getString(R.string.home_再按一次退出);
-                ToastUtil.show(info);
+                ToastUtils.show(info);
                 isSecondBack = true;
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -259,16 +259,16 @@ public class HomePagerActivity extends BaseActivity {
     }
     //  申请代理
     private void agant(){
-        final String strPhone = "400 101 7979";
-        NormalDialogFactory.getNormalDialogTwoBtn()
-                .setContentText( strPhone)
-                .setRightBtnText(R.string.呼叫)
-                .setRightBtnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        CallPhoneUtil.call(getActivity(), strPhone.replace(" ",""));
-                    }
-                }).show(getActivity().getFragmentManager());
+//        final String strPhone = "400 101 7979";
+//        NormalDialogFactory.getNormalDialogTwoBtn()
+//                .setContentText( strPhone)
+//                .setRightBtnText(R.string.呼叫)
+//                .setRightBtnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        CallPhoneUtil.call(getActivity(), strPhone.replace(" ",""));
+//                    }
+//                }).show(getActivity().getFragmentManager());
     }
     /**
      * 选择Fragment

@@ -7,15 +7,7 @@ import android.util.Log;
 
 
 import com.mark.app.hjshop4a.BuildConfig;
-import com.mark.app.mkpay.alipay.MkAlipay;
-import com.mark.app.mkpay.core.MkPay;
-import com.mark.app.mkpay.wechat.MkWechatPayActivity;
-import com.tencent.mm.opensdk.constants.ConstantsAPI;
-import com.tencent.mm.opensdk.modelbase.BaseReq;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mm.opensdk.openapi.IWXAPI;
-import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
-import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
 
 
 
@@ -24,7 +16,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
  * @author
  * @create time 2017-09-15
  */
-public class WXPayEntryActivity extends MkWechatPayActivity implements IWXAPIEventHandler {
+public class WXPayEntryActivity {
 //	private IWXAPI wxAPI;
 //
 //    @Override

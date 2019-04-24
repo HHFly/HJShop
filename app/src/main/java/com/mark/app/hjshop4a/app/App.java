@@ -11,11 +11,10 @@ import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
-import com.mark.app.mkpay.wechat.MkWechatPay;
-import com.umeng.commonsdk.BuildConfig;
+
 import com.umeng.commonsdk.UMConfigure;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
-import com.umeng.socialize.Config;
+
 /**
  * Created by zhuwh on 2018/4/10.
  */

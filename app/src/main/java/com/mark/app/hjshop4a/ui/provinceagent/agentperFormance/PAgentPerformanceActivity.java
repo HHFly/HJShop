@@ -20,7 +20,7 @@ import com.mark.app.hjshop4a.ui.areaagent.agentperformance.AgentPrefermanceAdapt
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -29,7 +29,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/5/1.
  */
 
-public class PAgentPerformanceActivity extends BaseActivity implements OnRefreshLoadmoreListener {
+public class PAgentPerformanceActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     SmartRefreshLayout mRefreshLayout;//刷新框架
     PAgentPrefermanceAdapter mAdapter;
     private long  startTime;
@@ -59,7 +59,7 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
         endTime=0;
         cityId= App.getAppContext().getUserInfo().getCityId();
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
     }
     @Override
@@ -149,7 +149,7 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
             public void onLoadMore(int nextPage, long timestamp) {

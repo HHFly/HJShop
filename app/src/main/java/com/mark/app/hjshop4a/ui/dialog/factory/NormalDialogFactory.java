@@ -6,10 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialog;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialogOneBtn;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialogTwoBtn;
-import com.white.lib.utils.ToastUtil;
+
 
 /**
  * 对话框工厂
@@ -81,7 +82,7 @@ public class NormalDialogFactory {
                     public void onDismiss() {
                         super.onDismiss();
                         if (mFinishActivity) {
-                            ToastUtil.show(finishMsg);
+                            ToastUtils.show(finishMsg);
                             activity.finish();
                         }
                     }
@@ -100,7 +101,7 @@ public class NormalDialogFactory {
                     @Override
                     public void onDismiss() {
                         if (finishActivity) {
-                            ToastUtil.show(finishMessage);
+                            ToastUtils.show(finishMessage);
                             activity.finish();
                         }
                     }

@@ -16,7 +16,7 @@ import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.business.busniessinfo.BusinessStoreImgActivity;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
-import com.white.lib.utils.ToastUtil;
+
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

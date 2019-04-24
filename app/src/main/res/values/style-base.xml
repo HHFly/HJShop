@@ -209,20 +209,21 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/background</item>
         <item name="srlEnableHeaderTranslationContent">false</item>
+
     </style>
 
     <style name="BaseRefreshLayout.RefreshLoadMore">
-        <item name="srlEnableLoadmoreWhenContentNotFull">true</item>
+        <!--<item name="srlEnableLoadmoreWhenContentNotFull">true</item>-->
     </style>
 
     <style name="BaseRefreshLayout.UnLoadMore">
-        <item name="srlEnableLoadmore">false</item>
+        <!--<item name="srlEnableLoadmore">false</item>-->
     </style>
 
     <style name="BaseRefreshLayout.UnRefresh">
-        <item name="srlEnableAutoLoadmore">true</item>
-        <item name="srlEnableLoadmoreWhenContentNotFull">true</item>
-        <item name="srlEnableRefresh">false</item>
+        <!--<item name="srlEnableAutoLoadmore">true</item>-->
+        <!--<item name="srlEnableLoadmoreWhenContentNotFull">true</item>-->
+        <!--<item name="srlEnableRefresh">false</item>-->
     </style>
 
 

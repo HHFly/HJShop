@@ -21,7 +21,8 @@ import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberTradeInList;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/5/7.
  */
 
-public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRefreshLoadmoreListener {
+public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRefreshLoadMoreListener {
     //下拉刷新View
     SmartRefreshLayout mRefreshLayout;
     private MemberGoldBeanTradeInAdapter memberGoldBeanTradeInAdapter;
@@ -63,7 +64,7 @@ public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRef
      */
     private void initRefresh() {
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
     }
     /**
      * 初始化空布局
@@ -155,7 +156,7 @@ public class MemberGoldBeanTradeInFragment extends BaseFragment implements OnRef
 
     }
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
 
             @Override

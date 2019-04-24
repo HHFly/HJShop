@@ -14,11 +14,11 @@ import android.support.v4.content.FileProvider;
 
 
 import com.mark.app.hjshop4a.R;
-import com.white.lib.utils.ToastUtil;
-import com.white.lib.utils.UtilsConfig;
-import com.white.lib.utils.permisstion.PermissionCheckCallBack;
-import com.white.lib.utils.permisstion.PermissionRequestSuccessCallBack;
-import com.white.lib.utils.permisstion.PermissionUtil;
+import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionCheckCallBack;
+import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionRequestSuccessCallBack;
+import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionUtil;
+import com.mark.app.hjshop4a.common.utils.download.UtilsConfig;
+
 import java.io.File;
 
 import static android.content.Intent.FLAG_GRANT_READ_URI_PERMISSION;
@@ -128,7 +128,7 @@ public class TakeImgUtil {
                     }
 
                     public void onUserHasAlreadyTurnedDown(String... permission) {
-                        ToastUtil.show(com.white.lib.R.string.mcs_1);
+                        ToastUtils.show("该功能需要权限");
                     }
 
                     public void onUserHasAlreadyTurnedDownAndDontAsk(String... permission) {
@@ -142,7 +142,8 @@ public class TakeImgUtil {
                     }
 
                     public void onUserHasAlreadyTurnedDown(String... permission) {
-                        ToastUtil.show(com.white.lib.R.string.mcs_1);
+                        ToastUtils.show("该功能需要权限");
+
                     }
 
                     public void onUserHasAlreadyTurnedDownAndDontAsk(String... permission) {

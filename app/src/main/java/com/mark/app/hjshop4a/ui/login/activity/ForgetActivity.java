@@ -17,7 +17,7 @@ import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.white.lib.utils.ToastUtil;
+
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -119,7 +119,7 @@ public class ForgetActivity extends BaseActivity {
     private void requestCode() {
         String strPhone = getTvText(R.id.et_username);
         if (!ValidShowBtnUtils.phone(strPhone)) {
-            ToastUtil.show(R.string.login_手机号格式不正确);
+            ToastUtils.show(R.string.login_手机号格式不正确);
             return;
         }
 
@@ -164,7 +164,7 @@ public class ForgetActivity extends BaseActivity {
         String code = getTvText(R.id.et_code);
         String pwd = getTvText(R.id.et_pwd);
         if (!ValidShowBtnUtils.phone(phone)) {
-            ToastUtil.show(R.string.login_手机号格式不正确);
+            ToastUtils.show(R.string.login_手机号格式不正确);
             return;
         }
         if (!ValidUtils.verifyCode(code)) {
@@ -234,11 +234,11 @@ public class ForgetActivity extends BaseActivity {
         } else {
             boolean result = false;
             if (!ValidUtils.phone(strPhone)) {
-                ToastUtil.show(R.string.login_手机号格式不正确);
+                ToastUtils.show(R.string.login_手机号格式不正确);
             } else if (!ValidUtils.verifyCode(strCoee)) {
-                ToastUtil.show(R.string.login_验证码格式不正确);
+                ToastUtils.show(R.string.login_验证码格式不正确);
             } else if (!ValidUtils.pwd(strPwd)) {
-                ToastUtil.show(R.string.login_密码格式错误);
+                ToastUtils.show(R.string.login_密码格式错误);
             }  else {
                 result = true;
             }

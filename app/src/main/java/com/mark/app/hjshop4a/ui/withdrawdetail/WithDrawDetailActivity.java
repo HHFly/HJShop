@@ -19,8 +19,8 @@ import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDrawList;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
-import com.white.lib.utils.ToastUtil;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/21.
  */
 
-public class WithDrawDetailActivity extends BaseActivity implements OnRefreshLoadmoreListener {
+public class WithDrawDetailActivity extends BaseActivity implements OnRefreshLoadMoreListener {
     SmartRefreshLayout mRefreshLayout;//刷新框架
     WithDrawDetailAdapter mAdapter;
     PagingBaseModel mPagingData;
@@ -44,7 +44,7 @@ public class WithDrawDetailActivity extends BaseActivity implements OnRefreshLoa
             mPagingData = new PagingBaseModel();
         }
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
     }
     @Override
@@ -138,7 +138,7 @@ public class WithDrawDetailActivity extends BaseActivity implements OnRefreshLoa
         setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
             public void onLoadMore(int nextPage, long timestamp) {

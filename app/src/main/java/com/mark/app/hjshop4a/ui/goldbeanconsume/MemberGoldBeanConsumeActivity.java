@@ -22,8 +22,6 @@ import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.Shop;
-import com.white.lib.utils.ToastUtil;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 

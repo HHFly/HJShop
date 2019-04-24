@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    
-    compileSdkVersion 26
+
+    compileSdkVersion 28
     defaultConfig {
         applicationId "com.hjshsc.app.HJShop"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -22,8 +22,9 @@ android {
                     qqappid: "tencent100424468",
 //                wechat_app_id: "wxfc06ea4375a4ecd4"
         ]
+        multiDexEnabled true
         buildConfigField("String", "PLATFORM", "\"ANDROID\"")
-        buildConfigField("String", "WEB_USER_AGENT", "\"haya-hjshop-android-user\"")
+        buildConfigField("String", "WEB_USER_AGENT", "\"hjshop-android-user\"")
         buildConfigField("String", "WEB_INTERFACE", "\"androidInterface\"")
         buildConfigField("String", "WX_APPID", "\"wxfc06ea4375a4ecd4\"")
 //        buildConfigField("String", "wechat_app_id", "\"wxfc06ea4375a4ecd4\"")
@@ -59,47 +60,42 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    compile 'com.mark.app:mkbasetools:1.0.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //自动适配框架
-    compile 'com.zhy:autolayout:1.4.5'
+    implementation 'com.zhy:autolayout:1.4.5'
     //网络请求框架
-    compile 'com.squareup.retrofit2:retrofit:2.3.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.2'
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
+    implementation group: 'io.reactivex', name: 'rxandroid', version: '0.22.0'
     //图片加载框架
-    compile 'com.facebook.fresco:fresco:1.4.0'
-    compile 'jp.wasabeef:fresco-processors:2.1.0'
-    compile 'com.github.florent37:viewanimator:1.0.5'
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
-    //工具类封装
-    compile 'com.white.app:mkcommon-core:1.1.20'
-    compile 'com.white.app:mkcommon-refresh-header:1.0.1'
-    compile 'com.white.app:mkcommon-refresh-footer:1.0.1'
-    compile 'com.white.app:mkcommon-refresh-layout:1.0.1'
+    implementation 'com.facebook.fresco:fresco:1.4.0'
+    implementation 'jp.wasabeef:fresco-processors:2.1.0'
+    implementation 'com.github.florent37:viewanimator:1.0.5'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-22'
     //banner
-    compile 'cn.bingoogolapple:bga-banner:2.1.4@aar'
+    implementation 'cn.bingoogolapple:bga-banner:2.1.4@aar'
     //    二维码
-    compile 'cn.yipianfengye.android:zxing-library:2.2'
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
     // 图表
-    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
     //侧滑
-    compile 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
+    implementation 'com.github.mcxtzhang:SwipeDelMenuLayout:V1.3.0'
     //友盟
-    compile 'com.umeng.sdk:share-core:6.9.1'
-    compile 'com.umeng.sdk:share-qq:6.9.1.1'
-    compile 'com.umeng.sdk:share-sina:6.9.1'
-    compile 'com.umeng.sdk:common:1.5.1'
-    compile 'com.umeng.sdk:shareboard-widget:6.9.1'
+    implementation 'com.umeng.sdk:share-core:6.9.1'
+    implementation 'com.umeng.sdk:share-qq:6.9.1.1'
+    implementation 'com.umeng.sdk:share-sina:6.9.1'
+    implementation 'com.umeng.sdk:common:1.5.1'
+    implementation 'com.umeng.sdk:shareboard-widget:6.9.1'
 //    implementation files('lib/umeng-share-QQ-simplify-6.9.1.jar')
-    // 支付
-    compile 'com.mark.app:mkpay-core:1.0.+'
-    compile 'com.mark.app:mkpay-alipay:1.0.+'
-    compile 'com.mark.app:mkpay-wechat:1.0.+'
+
     implementation files('lib/umeng-share-wechat-full-6.9.1.jar')
 }

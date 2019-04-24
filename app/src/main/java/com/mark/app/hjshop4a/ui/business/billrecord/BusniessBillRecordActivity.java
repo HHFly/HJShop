@@ -18,7 +18,7 @@ import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshLoadmoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ import io.reactivex.schedulers.Schedulers;
  * Created by pc on 2018/4/20.
  */
 
-public class BusniessBillRecordActivity extends BaseActivity implements OnRefreshLoadmoreListener {
+public class BusniessBillRecordActivity extends BaseActivity implements OnRefreshLoadMoreListener {
 
     SmartRefreshLayout mRefreshLayout;//刷新框架
     BusniessBillRecordAdapter mAdapter;
@@ -51,7 +51,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
         startTime=0;
         endTime=0;
         mRefreshLayout = getView(R.id.refreshLayout);
-        mRefreshLayout.setOnRefreshLoadmoreListener(this);
+        mRefreshLayout.setOnRefreshLoadMoreListener(this);
         mRefreshLayout.autoRefresh();
     }
 
@@ -156,7 +156,7 @@ public class BusniessBillRecordActivity extends BaseActivity implements OnRefres
     }
 
     @Override
-    public void onLoadmore(RefreshLayout refreshLayout) {
+    public void onLoadMore(RefreshLayout refreshLayout) {
         RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
             @Override
             public void onLoadMore(int nextPage, long timestamp) {
