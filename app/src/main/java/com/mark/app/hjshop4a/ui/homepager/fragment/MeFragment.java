@@ -1,11 +1,7 @@
 package com.mark.app.hjshop4a.ui.homepager.fragment;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -22,20 +18,13 @@ import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.model.login.model.LoginType;
-import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
-import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 import com.mark.app.hjshop4a.ui.homepager.adapter.MeAdapter;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
-import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
-
-import java.util.ArrayList;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.annotations.NonNull;
 import io.reactivex.schedulers.Schedulers;
 
 /**

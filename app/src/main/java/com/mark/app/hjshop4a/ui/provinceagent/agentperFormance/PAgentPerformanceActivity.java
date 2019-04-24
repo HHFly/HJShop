@@ -16,7 +16,6 @@ import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.AgentPerformanceActivity;
-import com.mark.app.hjshop4a.ui.areaagent.agentperformance.AgentPrefermanceAdapter;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;

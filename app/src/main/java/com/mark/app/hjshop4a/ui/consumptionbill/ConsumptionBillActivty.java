@@ -3,16 +3,13 @@ package com.mark.app.hjshop4a.ui.consumptionbill;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
-import android.widget.Switch;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
-import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.androidenum.consumptionbill.BillTabType;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
-import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BalanceWithDrawFragment;
@@ -20,7 +17,6 @@ import com.mark.app.hjshop4a.ui.consumptionbill.fragment.BeanTradeInFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.GoldBeanFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.MemberGoldBeanTradeInFragment;
 import com.mark.app.hjshop4a.ui.consumptionbill.fragment.RechargeFragment;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
 
 /**
  * Created by pc on 2018/4/17.

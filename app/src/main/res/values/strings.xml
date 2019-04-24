@@ -252,6 +252,9 @@
     <string name="申请记录">申请记录</string>
     <string name="银行卡">银行卡</string>
     <string name="我的推荐">我的推荐</string>
+    <string name="login_msg_usernum">手机号:</string>
+    <string name="login_请确认密码">请确认密码</string>
+    <string name="login_两次输入密码不一致">两次输入密码不一致</string>
 
 
 </resources>

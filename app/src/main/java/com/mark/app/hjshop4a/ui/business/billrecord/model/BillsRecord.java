@@ -2,7 +2,6 @@ package com.mark.app.hjshop4a.ui.business.billrecord.model;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

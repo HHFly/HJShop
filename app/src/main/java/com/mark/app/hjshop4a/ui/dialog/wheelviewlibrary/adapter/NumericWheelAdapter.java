@@ -1,12 +1,9 @@
 package com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.mark.app.hjshop4a.R;
 
 
 /**

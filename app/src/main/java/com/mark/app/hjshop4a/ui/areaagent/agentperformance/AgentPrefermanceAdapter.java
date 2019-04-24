@@ -6,7 +6,6 @@ import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.AgentPreformance;
 import com.mark.app.hjshop4a.ui.areaagent.agentperformance.model.PerformanceCitys;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

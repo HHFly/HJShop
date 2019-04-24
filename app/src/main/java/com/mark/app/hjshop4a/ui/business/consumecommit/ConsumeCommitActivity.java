@@ -3,12 +3,9 @@ package com.mark.app.hjshop4a.ui.business.consumecommit;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
@@ -26,13 +23,10 @@ import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.CustomPram;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Model;
-import com.mark.app.hjshop4a.ui.businessapply.model.ShopCategory;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

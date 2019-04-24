@@ -1,12 +1,9 @@
 package com.mark.app.hjshop4a.ui.login.adapter;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
-import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
 

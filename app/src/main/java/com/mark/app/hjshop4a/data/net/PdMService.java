@@ -26,7 +26,6 @@ import com.mark.app.hjshop4a.ui.bankcard.model.BankCategory;
 import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
 import com.mark.app.hjshop4a.ui.business.billrecord.model.BillsRecord;
 import com.mark.app.hjshop4a.ui.business.consumecommit.model.Custom;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberTradeInList;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BusniessGoldBeanCS;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;

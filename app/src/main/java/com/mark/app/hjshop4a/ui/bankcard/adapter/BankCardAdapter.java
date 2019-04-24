@@ -8,9 +8,7 @@ import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by pc on 2018/4/16.

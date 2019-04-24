@@ -10,9 +10,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
-import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
-import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.PdUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -24,9 +22,6 @@ import com.mark.app.hjshop4a.model.login.BusniessInfo;
 import com.mark.app.hjshop4a.model.login.MemberInfo;
 import com.mark.app.hjshop4a.model.login.ProvenceAgentInfo;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
-import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
-import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
-import com.mark.app.hjshop4a.ui.login.androidenum.LoginSource;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 
 

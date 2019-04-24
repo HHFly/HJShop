@@ -2,7 +2,6 @@ package com.mark.app.hjshop4a.ui.areaagent.areaincome.model;
 
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
-import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 
 /**
  * 收入统计-数据报表Item

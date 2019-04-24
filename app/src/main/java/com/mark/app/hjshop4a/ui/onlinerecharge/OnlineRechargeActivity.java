@@ -3,16 +3,11 @@ package com.mark.app.hjshop4a.ui.onlinerecharge;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.Switch;
 
-import com.google.gson.JsonElement;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
-import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
-import com.mark.app.hjshop4a.common.androidenum.pay.PayType;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;

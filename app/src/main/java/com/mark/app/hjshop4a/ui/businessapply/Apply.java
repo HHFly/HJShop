@@ -2,8 +2,6 @@ package com.mark.app.hjshop4a.ui.businessapply;
 
 import android.support.annotation.IntDef;
 
-import com.mark.app.hjshop4a.common.androidenum.withdraw.WithDrawRole;
-
 /**
  * Created by hui on 2018/6/17.
  */

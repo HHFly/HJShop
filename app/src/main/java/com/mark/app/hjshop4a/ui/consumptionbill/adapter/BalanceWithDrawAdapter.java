@@ -3,7 +3,6 @@ package com.mark.app.hjshop4a.ui.consumptionbill.adapter;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
-import com.mark.app.hjshop4a.base.adapter.BaseRvAdapter;
 import com.mark.app.hjshop4a.common.utils.BillUtil;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
 

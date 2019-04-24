@@ -2,12 +2,10 @@ package com.mark.app.hjshop4a.ui.calendarview;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
-import com.mark.app.hjshop4a.common.utils.NumberUtils;
 import com.mark.app.hjshop4a.widget.calendarview.bean.DateBean;
 import com.mark.app.hjshop4a.widget.calendarview.listener.OnMultiChooseListener;
 import com.mark.app.hjshop4a.widget.calendarview.listener.OnPagerChangeListener;
@@ -19,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Set;
 
 
 /**

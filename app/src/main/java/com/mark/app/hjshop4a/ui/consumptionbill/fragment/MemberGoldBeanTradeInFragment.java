@@ -12,20 +12,12 @@ import com.mark.app.hjshop4a.base.model.PagingParam;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.consumptionbill.adapter.GoldBeanAdapter;
 import com.mark.app.hjshop4a.ui.consumptionbill.adapter.MemberGoldBeanTradeInAdapter;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.BalanceWithDraw;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.Bean;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanList;
-import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberGoldBeanTradeIn;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.MemberTradeInList;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

@@ -16,12 +16,7 @@ import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.adapter.NumericWheelAdapter;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.OnWheelChangedListener;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-
 
 
 public class SelectDateDialog implements OnWheelChangedListener {

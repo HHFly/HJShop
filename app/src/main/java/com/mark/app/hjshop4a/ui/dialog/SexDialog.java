@@ -8,11 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseDialogFragment;
-import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 
 /**
  * Created by pc on 2018/4/16.

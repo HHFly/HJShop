@@ -13,7 +13,7 @@
         <TextView
             android:id="@+id/tv_phone_code"
             style="@style/login_input_tv"
-            android:text="@string/login_msg_username" />
+            android:text="@string/login_msg_usernum" />
 
         <com.mark.app.hjshop4a.widget.PhoneEditText
             android:id="@+id/register_et_username"
@@ -23,15 +23,7 @@
             android:inputType="number"
             android:maxLength="15" />
 
-        <Button
-            android:id="@+id/register_btn_code"
-            style="@style/BaseBtn.Normal.Commonly"
-            android:layout_width="wrap_content"
-            android:layout_height="60px"
-            android:layout_marginRight="20px"
-            android:minWidth="170px"
-            android:text="@string/btn_msg_getcode"
-            android:textSize="24px" />
+
     </LinearLayout>
 
     <View
@@ -49,8 +41,18 @@
             android:id="@+id/register_et_code"
             style="@style/login_input_et"
             android:hint="@string/hint_请输入验证码"
+            android:layout_weight="1"
             android:inputType="number"
             android:maxLength="6" />
+        <Button
+            android:id="@+id/register_btn_code"
+            style="@style/BaseBtn.Normal.Commonly"
+            android:layout_width="wrap_content"
+            android:layout_height="60px"
+            android:layout_marginRight="20px"
+            android:minWidth="170px"
+            android:text="@string/btn_msg_getcode"
+            android:textSize="24px" />
     </LinearLayout>
 
     <View
@@ -74,6 +76,7 @@
 
         <ImageView
             android:id="@+id/register_iv_eye"
+            android:visibility="gone"
             android:layout_width="100px"
             android:layout_height="60px"
             android:paddingLeft="30px"
@@ -86,7 +89,7 @@
         android:layout_marginLeft="30px" />
 
     <LinearLayout style="@style/input_layout"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <TextView
             android:id="@+id/login_tv_pwd_again"
@@ -103,6 +106,7 @@
 
         <ImageView
             android:id="@+id/register_iv_eye_again"
+            android:visibility="gone"
             android:layout_width="100px"
             android:layout_height="60px"
             android:paddingLeft="30px"
@@ -111,7 +115,8 @@
     </LinearLayout>
 
     <LinearLayout style="@style/input_layout"
-        android:id="@+id/register_rl_region">
+        android:id="@+id/register_rl_region"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/login_tv_region"
@@ -151,7 +156,7 @@
             android:id="@+id/register_et_invitation"
             style="@style/login_input_et"
             android:layout_weight="1"
-            android:hint="@string/hint_请输入邀请人手机号"
+            android:hint="@string/hint_请输入邀请码"
             android:inputType="number"
             android:maxLength="15" />
 

@@ -4,7 +4,6 @@ import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
-import com.mark.app.hjshop4a.ui.business.consumecommit.model.Model;
 
 /**
  * Created by pc on 2018/6/8.

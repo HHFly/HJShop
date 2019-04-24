@@ -1,8 +1,6 @@
 package com.mark.app.hjshop4a.ui.login.activity;
 
 import android.content.Intent;
-import android.content.res.AssetManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.Editable;
@@ -20,7 +18,6 @@ import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
 import com.mark.app.hjshop4a.common.utils.EditTextUtils;
 import com.mark.app.hjshop4a.common.utils.MD5Utils;
-import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
@@ -28,17 +25,10 @@ import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.model.login.LoginParam;
-import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
-import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
-import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
 import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
-import com.mark.app.hjshop4a.widget.PickerScrollView;
 
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -116,6 +106,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
         setEtTextWatcher(R.id.register_et_username, textWatcher);
         setEtTextWatcher(R.id.register_et_code, textWatcher);
         setEtTextWatcher(R.id.register_et_pwd, textWatcher);
+        setEtTextWatcher(R.id.login_tv_pwd_again, textWatcher);
         setEtTextWatcher(R.id.register_et_invitation, textWatcher);
         setEtTextWatcher(R.id.register_et_region, textWatcher);
 
@@ -301,16 +292,16 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
         String strPhone = getTvText(R.id.register_et_username);
         String strCode = getTvText(R.id.register_et_code);
         String strPwd = getTvText(R.id.register_et_pwd);
+        String  strRePwd = getTvText(R.id.register_et_pwd_again);
         String strInvitation = getTvText(R.id.register_et_invitation);
-        String strRegion = getTvText(R.id.register_et_region);
+//        String strRegion = getTvText(R.id.register_et_region);
 
         if (isValidShowBtn) {
             return ValidShowBtnUtils.phone(strPhone)
                     && ValidShowBtnUtils.verifyCode(strCode)
                     && ValidShowBtnUtils.pwd(strPwd)
-                    && !TextUtils.isEmpty(strRegion)
-                    && isAgree
-                    &&(TextUtils.isEmpty(strInvitation)||!ValidUtils.Isphone(strInvitation));
+                    && !TextUtils.isEmpty(strRePwd)
+                    && isAgree;
         } else {
             boolean result = false;
             if (!ValidUtils.phone(strPhone)) {
@@ -320,9 +311,11 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
             } else if (!ValidUtils.pwd(strPwd)) {
                 ToastUtils.show(R.string.login_密码格式错误);
             }
-
-            else if (TextUtils.isEmpty(strRegion)) {
-                ToastUtils.show(R.string.login_请选择区域);
+            else if (TextUtils.isEmpty(strRePwd)) {
+                ToastUtils.show(R.string.login_请确认密码);
+            }
+            else if(!TextUtils.equals(strPwd,strRePwd)){
+                ToastUtils.show(R.string.login_两次输入密码不一致);
             }
             else if (!isAgree) {
                 ToastUtils.show(R.string.login_注册需要同意协议);

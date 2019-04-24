@@ -10,11 +10,9 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
-import com.mark.app.hjshop4a.common.utils.StringUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.business.busniessinfo.BusinessStoreImgActivity;
 import com.mark.app.hjshop4a.ui.businessapply.model.BusinessApply;
 
 

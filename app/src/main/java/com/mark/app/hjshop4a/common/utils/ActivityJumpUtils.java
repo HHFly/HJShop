@@ -18,7 +18,6 @@ import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.ui.start.GuideActivity;
 import com.mark.app.hjshop4a.ui.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.ui.login.activity.LoginActivity;
-import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.ui.login.activity.RegisterActivity;
 import com.mark.app.hjshop4a.ui.about.AboutActivity;
 import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;

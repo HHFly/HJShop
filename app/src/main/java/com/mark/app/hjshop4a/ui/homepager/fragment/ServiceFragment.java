@@ -4,7 +4,6 @@ import android.view.View;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
-import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 
 
 /**

@@ -1,7 +1,6 @@
 package com.mark.app.hjshop4a.ui.homepager.model;
 
 import com.mark.app.hjshop4a.R;
-import com.mark.app.hjshop4a.ui.business.consumecommit.model.Model;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -13,7 +13,6 @@ import com.mark.app.hjshop4a.common.androidenum.pay.PayType;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWay;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

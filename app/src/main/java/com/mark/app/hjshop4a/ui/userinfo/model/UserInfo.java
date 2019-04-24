@@ -1,7 +1,6 @@
 package com.mark.app.hjshop4a.ui.userinfo.model;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
-import com.mark.app.hjshop4a.base.model.ParamBaseModel;
 
 /**
  * Created by pc on 2018/4/26.

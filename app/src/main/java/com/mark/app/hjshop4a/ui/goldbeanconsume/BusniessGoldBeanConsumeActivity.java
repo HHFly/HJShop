@@ -1,10 +1,7 @@
 package com.mark.app.hjshop4a.ui.goldbeanconsume;
 
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;

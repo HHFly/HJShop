@@ -1,7 +1,6 @@
 package com.mark.app.hjshop4a.ui.userinfo;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
@@ -9,13 +8,9 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.BundleUtils;
-import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
-import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
-import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

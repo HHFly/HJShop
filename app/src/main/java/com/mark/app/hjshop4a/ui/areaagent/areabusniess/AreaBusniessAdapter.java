@@ -6,7 +6,6 @@ import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.MerchantData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

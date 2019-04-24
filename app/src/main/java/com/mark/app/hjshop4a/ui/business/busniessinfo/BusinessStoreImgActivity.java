@@ -4,20 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
-import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ListUtils;
-import com.mark.app.hjshop4a.common.utils.LogUtils;
-import com.mark.app.hjshop4a.common.utils.MapUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 
 import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
@@ -25,7 +19,6 @@ import com.mark.app.hjshop4a.ui.businessapply.model.CompanyInfo;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

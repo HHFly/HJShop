@@ -6,10 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import android.widget.LinearLayout.LayoutParams;
-import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 
 import com.mark.app.hjshop4a.R;
@@ -20,7 +18,6 @@ import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.model.launch.GuidePage;
 import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.ui.start.adapter.GuideVpAdapter;
-import com.zhy.autolayout.AutoLinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;

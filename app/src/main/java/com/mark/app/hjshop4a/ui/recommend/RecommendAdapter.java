@@ -7,8 +7,6 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
-import com.mark.app.hjshop4a.common.utils.NumParseUtils;
-import com.mark.app.hjshop4a.common.utils.NumberUtils;
 import com.mark.app.hjshop4a.ui.recommend.model.Recommend;
 import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
 import com.uuzuche.lib_zxing.activity.CodeUtils;

@@ -1,9 +1,6 @@
 package com.mark.app.hjshop4a.ui.userinfo;
 
-import android.content.res.AssetManager;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.StringRes;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
@@ -17,17 +14,10 @@ import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
-import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
-import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.mark.app.hjshop4a.ui.dialog.factory.WheelDialogFactory;
 import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
 import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
-import com.mark.app.hjshop4a.widget.PickerScrollView;
-
-import java.io.IOException;
-import java.io.InputStream;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;

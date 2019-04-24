@@ -7,10 +7,7 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.AreaBusniess;
 import com.mark.app.hjshop4a.ui.areaagent.areabusniess.model.ProxyData;
-import com.mark.app.hjshop4a.ui.areaagent.businessreview.BusinessReviewAdapter;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 /**

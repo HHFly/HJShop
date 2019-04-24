@@ -1,6 +1,5 @@
 package com.mark.app.hjshop4a.ui.bankcard.activity;
 
-import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -15,8 +14,6 @@ import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCategory;
-import com.mark.app.hjshop4a.ui.bankcard.model.InfoBank;
-import com.mark.app.hjshop4a.ui.bankcard.model.InfoBankItem;
 
 import java.util.List;
 
