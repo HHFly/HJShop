@@ -255,6 +255,9 @@
     <string name="login_msg_usernum">手机号:</string>
     <string name="login_请确认密码">请确认密码</string>
     <string name="login_两次输入密码不一致">两次输入密码不一致</string>
+    <string name="home_首页">首页</string>
+    <string name="home_任务">已接任务</string>
+    <string name="home_任务大厅">任务大厅</string>
 
 
 </resources>

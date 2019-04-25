@@ -17,7 +17,7 @@
     <LinearLayout
         android:id="@+id/hp_layout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="90px"
+        android:layout_height="98px"
         android:layout_alignParentBottom="true"
         android:background="#ffffff"
         android:orientation="horizontal">
@@ -29,31 +29,44 @@
 
             <ImageView
                 style="@style/home_pager_tab_iv"
-                android:src="@drawable/select_hp_tab_homepage" />
+                android:src="@drawable/select_hp_tab_home" />
 
             <TextView
                 style="@style/home_pager_tab_tv"
-                android:text="@string/home_惠家" />
+                android:text="@string/home_首页" />
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/hp_layout_tab3"
+            style="@style/home_pager_tab_layout">
 
+            <ImageView
+                style="@style/home_pager_tab_iv"
+                android:src="@drawable/select_hp_tab_order" />
+
+            <TextView
+                style="@style/home_pager_tab_tv"
+                android:text="@string/home_任务" />
+
+        </LinearLayout>
         <LinearLayout
             android:id="@+id/hp_layout_tab2"
             style="@style/home_pager_tab_layout">
 
             <ImageView
                 style="@style/home_pager_tab_iv"
-                android:src="@drawable/select_hp_tab_sort" />
+                android:src="@drawable/select_hp_tab_task" />
 
             <TextView
                 style="@style/home_pager_tab_tv"
-                android:text="@string/home_分类" />
+                android:text="@string/home_任务大厅" />
 
         </LinearLayout>
         <LinearLayout
             android:id="@+id/hp_layout_tab5"
-            style="@style/home_pager_tab_layout">
+            style="@style/home_pager_tab_layout"
+            android:visibility="gone">
 
             <ImageView
                 style="@style/home_pager_tab_iv"
@@ -65,19 +78,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/hp_layout_tab3"
-            style="@style/home_pager_tab_layout">
 
-            <ImageView
-                style="@style/home_pager_tab_iv"
-                android:src="@drawable/select_hp_tab_shopcar" />
-
-            <TextView
-                style="@style/home_pager_tab_tv"
-                android:text="@string/home_购物车" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/hp_layout_tab4"
@@ -85,7 +86,7 @@
 
             <ImageView
                 style="@style/home_pager_tab_iv"
-                android:src="@drawable/select_hp_tab_me" />
+                android:src="@drawable/select_hp_tab_user" />
 
             <TextView
                 style="@style/home_pager_tab_tv"

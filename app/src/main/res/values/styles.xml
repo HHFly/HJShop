@@ -26,12 +26,12 @@
     <style name="home_pager_tab_layout" parent="BaseTab.Layout"></style>
 
     <style name="home_pager_tab_iv" parent="BaseTab.Iv">
-        <item name="android:layout_width">50px</item>
-        <item name="android:layout_height">50px</item>
+        <item name="android:layout_width">60px</item>
+        <item name="android:layout_height">60px</item>
     </style>
 
     <style name="home_pager_tab_tv" parent="BaseTab.Tv">
-        <item name="android:textSize">18px</item>
+        <item name="android:textSize">22px</item>
         <item name="android:layout_marginTop">7px</item>
         <item name="android:textColor">@drawable/select_hp_tab_textcolor</item>
     </style>
