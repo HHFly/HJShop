@@ -262,6 +262,17 @@
     <string name="setting_退出登录">退出登录</string>
     <string name="setting_设置">设置</string>
     <string name="setting_清除缓存">清除缓存</string>
+    <string name="当前版本">当前版本：%s</string>
+    <string name="检测新版本">检测新版本</string>
+    <string name="版本信息">版本信息</string>
+    <string name="资金钱袋">资金钱袋</string>
+    <string name="贷款余额">贷款余额</string>
+    <string name="金币余额">金币余额</string>
+    <string name="账号绑定">账号绑定</string>
+    <string name="消息">消息</string>
+    <string name="推广赚金">推广赚金</string>
+    <string name="设置">设置</string>
+    <string name="版本信息">版本信息</string>
 
 
 </resources>

@@ -28,6 +28,7 @@ import com.mark.app.hjshop4a.ui.userinfo.ModifyPWActivity;
 import com.mark.app.hjshop4a.ui.userinfo.UserInfoActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
 import com.mark.app.hjshop4a.uinew.SettingActivity;
+import com.mark.app.hjshop4a.uinew.VersionActivity;
 
 
 /**
@@ -161,6 +162,17 @@ public class ActivityJumpUtils {
      */
     public static void actAbout(Activity activity) {
         Intent intent = new Intent(activity, AboutActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到关于
+     *
+     * @param activity
+
+     */
+    public static void actVersion(Activity activity) {
+        Intent intent = new Intent(activity, VersionActivity.class);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }

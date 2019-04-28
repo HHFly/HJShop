@@ -36,6 +36,7 @@ import com.mark.app.hjshop4a.ui.consumptionbill.model.BeanTradeInList;
 import com.mark.app.hjshop4a.ui.consumptionbill.model.TopUpList;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.BeanConsume;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.model.Shop;
+import com.mark.app.hjshop4a.ui.homepager.model.Lookup;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
 import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
@@ -65,6 +66,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -218,14 +220,12 @@ public interface PdMService {
 //    @GET("/api/startPage")
 //    Observable<BaseResultEntity> getRibots();
 //
-//    /**
-//     * 强制更新
-//     **/
-//    @GET("/api/page/forceUpdate")
-//    Observable<BaseResultEntity<Lookup>> forceUpdate(@Header("version") int version,
-//                                                     @Header("role") int role,
-//                                                     @Header("type") int type);
-//
+    /**
+     * 强制更新
+     **/
+    @GET("/api/page/forceUpdate")
+    Observable<BaseResultEntity<Lookup>> forceUpdate(@Header("version") int version);
+
 //图片上传
 @POST("/api/img/upload")
 Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
@@ -302,6 +302,10 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     * 我的*/
     @GET("/api/app/center")
     Observable<BaseResultEntity<MeCenterInfo>>center(@Query("userType") int userType);
+    /*
+     * 我的*/
+    @GET("/api/app/center")
+    Observable<BaseResultEntity<com.mark.app.hjshop4a.uinew.homepager.MeCenterInfo>>center();
 /*
 *  资产明细 */
     @GET("/api/app/property/detail")

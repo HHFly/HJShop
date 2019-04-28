@@ -22,9 +22,10 @@ import com.mark.app.hjshop4a.common.utils.SPUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
-import com.mark.app.hjshop4a.ui.homepager.fragment.MeFragment;
+
 import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
+import com.mark.app.hjshop4a.uinew.homepager.MeFragment;
 
 
 /**

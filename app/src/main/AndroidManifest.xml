@@ -110,5 +110,6 @@
         <activity android:name=".ui.provinceagent.agentperFormance.PAgentPerformanceActivity" android:screenOrientation="portrait"/>
         <!--个人中心-->
         <activity android:name=".uinew.SettingActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.VersionActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

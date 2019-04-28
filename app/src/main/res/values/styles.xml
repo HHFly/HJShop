@@ -181,7 +181,11 @@
         <item name="android:layout_height">40px</item>
         <item name="android:layout_centerVertical">true</item>
     </style>
-
+    <style name="hm_item_iv_2" parent="BaseItem.Iv">
+        <item name="android:layout_width">60px</item>
+        <item name="android:layout_height">60px</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
     <style name="hm_item_tv" parent="BaseItem.Tv">
         <item name="android:layout_marginLeft">60px</item>
         <item name="android:textSize">26px</item>

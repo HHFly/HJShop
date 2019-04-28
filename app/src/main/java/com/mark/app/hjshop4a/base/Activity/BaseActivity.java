@@ -43,6 +43,7 @@ import com.mark.app.hjshop4a.common.utils.luban.model.LubanResultData;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
+import com.mark.app.hjshop4a.ui.homepager.model.Lookup;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
 
 import com.zhy.autolayout.AutoLayoutActivity;
@@ -642,22 +643,22 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
     private void requestUpdate() {
         int versionCode = AppContext.versionCode();
 
-//        App.getServiceManager().forceUpdate(versionCode, 2, type)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new DefaultObserver<Lookup>(false, false) {
-//                    @Override
-//                    public void onSuccess(BaseResultEntity<Lookup> obj) {
-//                        Lookup data = obj.getResult();
-//                        DownloadDialogUtils.updateVersion(getAppCompatActivity(), data);
-//                    }
-//
-//                    @Override
-//                    public void onAllFinish() {
-//                        super.onAllFinish();
-//                        hideLoadingDialog();
-//                    }
-//                });
+        App.getServiceManager().getPdmService().forceUpdate(versionCode)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<Lookup>(false, false) {
+                    @Override
+                    public void onSuccess(BaseResultEntity<Lookup> obj) {
+                        Lookup data = obj.getResult();
+                        DownloadDialogUtils.updateVersion(getAppCompatActivity(), data);
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 
     @Override
