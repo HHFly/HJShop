@@ -258,6 +258,10 @@
     <string name="home_首页">首页</string>
     <string name="home_任务">已接任务</string>
     <string name="home_任务大厅">任务大厅</string>
+    <string name="setting_密码修改">密码修改</string>
+    <string name="setting_退出登录">退出登录</string>
+    <string name="setting_设置">设置</string>
+    <string name="setting_清除缓存">清除缓存</string>
 
 
 </resources>

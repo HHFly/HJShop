@@ -72,6 +72,7 @@ public class ModifyPWActivity extends BaseActivity {
     private  void commit(){
         String old =getTvText(R.id.et_old_pwd);
         String news =getTvText(R.id.et_new_pwd);
+        String newsAgain =getTvText(R.id.modify_et_pwd_again);
         if(TextUtils.isEmpty(old)){
             ToastUtils.show("请输入旧密码");
             return;
@@ -80,12 +81,20 @@ public class ModifyPWActivity extends BaseActivity {
             ToastUtils.show("请输入新密码");
             return;
         }
+        if(TextUtils.isEmpty(newsAgain)){
+            ToastUtils.show("请确认密码");
+            return;
+        }
         if(!ValidUtils.pwd(old)){
             ToastUtils.show("旧密码错误，请重试");
             return;
         }
         if(!ValidUtils.pwd(news)){
             ToastUtils.show(R.string.login_密码由6到20位字符组成);
+            return;
+        }
+        if(!TextUtils.equals(news,newsAgain)){
+            ToastUtils.show("两次输入密码不一致");
             return;
         }
         CommitUserInfo commitUserInf=new CommitUserInfo();

@@ -27,6 +27,7 @@ import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
 import com.mark.app.hjshop4a.ui.userinfo.ModifyPWActivity;
 import com.mark.app.hjshop4a.ui.userinfo.UserInfoActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
+import com.mark.app.hjshop4a.uinew.SettingActivity;
 
 
 /**
@@ -218,6 +219,17 @@ public class ActivityJumpUtils {
      */
     public static void actModifyPW(Activity activity) {
         Intent intent = new Intent(activity, ModifyPWActivity.class);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /**
+     * 跳转到设置密码
+     *
+     * @param activity
+
+     */
+    public static void actSetting(Activity activity) {
+        Intent intent = new Intent(activity, SettingActivity.class);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }
