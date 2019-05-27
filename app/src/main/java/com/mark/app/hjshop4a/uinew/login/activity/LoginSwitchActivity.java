@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.login.activity;
+package com.mark.app.hjshop4a.uinew.login.activity;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,7 +13,7 @@ import com.mark.app.hjshop4a.common.utils.BundleUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.model.login.model.LoginType;
-import com.mark.app.hjshop4a.ui.login.adapter.LoginSwitchAdapter;
+import com.mark.app.hjshop4a.uinew.login.adapter.LoginSwitchAdapter;
 
 
 import java.util.ArrayList;

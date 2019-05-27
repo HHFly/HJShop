@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.login.androidenum;
+package com.mark.app.hjshop4a.uinew.login.androidenum;
 
 import android.support.annotation.IntDef;
 

@@ -16,7 +16,7 @@ import com.mark.app.hjshop4a.common.utils.ActAnimationUtils;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.model.launch.GuidePage;
-import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
+import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.ui.start.adapter.GuideVpAdapter;
 
 import java.util.ArrayList;

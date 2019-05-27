@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.login.activity;
+package com.mark.app.hjshop4a.uinew.login.activity;
 
 import android.os.Bundle;
 import android.text.Editable;

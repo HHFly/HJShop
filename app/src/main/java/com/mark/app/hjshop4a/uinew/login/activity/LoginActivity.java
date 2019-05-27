@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.login.activity;
+package com.mark.app.hjshop4a.uinew.login.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -154,7 +154,7 @@ public class LoginActivity extends BaseActivity {
                         //                        是否自动登录
                         App.getAppContext().setIsAutoLogin(isautologin);
 //                        保存登陆信息
-                        App.get().setLogin(repo);
+//                        App.get().setLogin(repo);
 
                         requestData();
 
@@ -174,24 +174,7 @@ public class LoginActivity extends BaseActivity {
                 memberInfo.setHeadImg(data.getUserHeadImg());
                 App.getAppContext().setMemberInfo(memberInfo);
                 break;
-            case RoleType.BUSINESS:
-                BusniessInfo busniessInfo =new BusniessInfo();
-                busniessInfo.setNumber(account);
-                busniessInfo.setHeadImg(data.getUserHeadImg());
-                App.getAppContext().setBusniessInfo(busniessInfo);
-                break;
-            case RoleType.AREAAGENT:
-                AreaAgentInfo areaAgentInfo =new AreaAgentInfo();
-                areaAgentInfo.setNumber(account);
-                areaAgentInfo.setHeadImg(data.getUserHeadImg());
-                App.getAppContext().setAreaAgentInfo(areaAgentInfo);
-                break;
-            case RoleType.PROVINCIALAGENT:
-                ProvenceAgentInfo provenceAgentInfo =new ProvenceAgentInfo();
-                provenceAgentInfo.setNumber(account);
-                provenceAgentInfo.setHeadImg(data.getUserHeadImg());
-                App.getAppContext().setProvenceAgentInfo(provenceAgentInfo);
-                break;
+
         }
     }
     /**

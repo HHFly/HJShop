@@ -16,7 +16,7 @@ import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionUtil;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
-import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
+import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 
 
 /**

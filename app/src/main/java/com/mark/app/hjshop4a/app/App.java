@@ -10,8 +10,8 @@ import android.text.TextUtils;
 import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
-import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 
+import com.mark.app.hjshop4a.uinew.login.model.Token;
 import com.umeng.commonsdk.UMConfigure;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
@@ -142,13 +142,13 @@ App extends Application {
     }
 
     public String getAccToken() {
-        LoginRepo data = getAppContext().getLoginRepo();
+        Token data = getAppContext().getLoginRepo();
         return data == null ? "" : data.getAccessToken();
     }
-    public void setLogin(LoginRepo login) {
+    public void setLogin(Token login) {
         setLogin(login, true);
     }
-    public void setLogin(LoginRepo login, boolean isStartService) {
+    public void setLogin(Token login, boolean isStartService) {
         if (login != null) {
             getAppContext().setLoginRepo(login);
             //JPushUtils.setAlias(login.getUserPushToken());

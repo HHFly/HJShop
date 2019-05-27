@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.login.activity;
+package com.mark.app.hjshop4a.uinew.login.activity;
 
 import android.content.Intent;
 import android.os.Bundle;

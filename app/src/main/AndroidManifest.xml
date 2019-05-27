@@ -60,56 +60,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.login.activity.LoginActivity" android:screenOrientation="portrait"></activity>
-       <activity android:name=".ui.login.activity.ForgetActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".uinew.login.activity.LoginActivity" android:screenOrientation="portrait"></activity>
+       <activity android:name=".uinew.login.activity.ForgetActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.start.GuideActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.start.PermisstionActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.homepager.activity.HomePagerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.homepager.activity.HomePagerActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.start.StartActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.login.activity.RegisterActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.calendarview.CalendarViewActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.web.WebActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.login.activity.LoginSwitchActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.about.AboutActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.userinfo.IDCardImgActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.recommend.RecommendActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.userinfo.UserInfoActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.userinfo.BasicInfoActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.userinfo.CertificationInfoActivity" android:screenOrientation="portrait" />
-        <activity android:name=".ui.userinfo.ModifyPWActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.bankcard.activity.BankCardActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.bankcard.activity.BankCardAddActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.assedetail.AssetDetailActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.goldbeanconsume.MemberGoldBeanConsumeActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.userinfo.PayPWDActivity" android:screenOrientation="portrait"/>
-        <!--会员-->
-        <activity android:name=".ui.onlinerecharge.OnlineRechargeActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.consumptionbill.ConsumptionBillActivty" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.businessapply.BusinessApplicationActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.businessapply.IdCardCheckActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.businessapply.BusniessCompanyActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.busniessinfo.BusinessStoreImgActivity" android:screenOrientation="portrait"/>
-        <!--商户-->
-        <activity android:name=".ui.business.busniessinfo.BusniessInfoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.busniessinfo.CompanyInfoActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.zxing.BusniessZxingActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.goldbeanconsume.BusniessGoldBeanConsumeActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.consumecommit.CommitRuleActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.consumecommit.ConsumeCommitActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.business.billrecord.BusniessBillRecordActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.withdraw.WithDrawActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.withdrawdetail.WithDrawDetailActivity" android:screenOrientation="portrait"/>
-        <!--区代理-->
-        <activity android:name=".ui.areaagent.areabusniess.AreaBusniessActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.areaagent.businessreview.BusinessReviewActivity" android:screenOrientation="portrait" />
-        <activity android:name=".ui.areaagent.agentperformance.AgentPerformanceActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.areaagent.areaincome.AreaIncomeActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.areaagent.billreview.AreaBillReviewActivity" android:screenOrientation="portrait"/>
-        <!--省代理-->
-        <activity android:name=".ui.provinceagent.areabusniess.ProvinceAreaBusniessActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".ui.provinceagent.agentperFormance.PAgentPerformanceActivity" android:screenOrientation="portrait"/>
-        <!--个人中心-->
-        <activity android:name=".uinew.SettingActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".uinew.VersionActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.login.activity.RegisterActivity" android:screenOrientation="portrait"></activity>
+
     </application>
 </manifest>

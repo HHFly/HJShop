@@ -5,7 +5,6 @@ import android.app.FragmentManager;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
 
-
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
@@ -13,20 +12,15 @@ import com.mark.app.hjshop4a.common.androidenum.service.ServiceResultCode;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
-import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 
-/**
- * 默认Observer
- * Created by lenovo on 2017/10/6.
- */
-
-public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>>, ServiceListener<T> {
-
+public abstract class RainbowObserver <T> implements Observer<RainbowResultEntity<T>>, RainbowServiceListener<T> {
     /**
      * 返回值1012：数据为空是否认为是成功
      */
@@ -36,15 +30,15 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
      */
     boolean isNeedShowSystemMsg;
 
-    public DefaultObserver() {
+    public RainbowObserver() {
         this(false);
     }
 
-    public DefaultObserver(boolean isNeed1012IsSuccess) {
+    public RainbowObserver(boolean isNeed1012IsSuccess) {
         this(isNeed1012IsSuccess, true);
     }
 
-    public DefaultObserver(boolean isNeed1012IsSuccess, boolean isNeedShowSystemMsg) {
+    public RainbowObserver(boolean isNeed1012IsSuccess, boolean isNeedShowSystemMsg) {
         this.isNeed1012IsSuccess = isNeed1012IsSuccess;
         this.isNeedShowSystemMsg = isNeedShowSystemMsg;
     }
@@ -55,7 +49,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
     }
 
     @Override
-    public void onNext(@NonNull BaseResultEntity<T> obj) {
+    public void onNext(@NonNull RainbowResultEntity<T> obj) {
         if (AppContext.isDebudEnv()) {
             next(obj);
         } else {
@@ -67,12 +61,12 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
         }
     }
 
-    private void next(@NonNull BaseResultEntity<T> obj) {
+    private void next(@NonNull RainbowResultEntity<T> obj) {
         if (AppContext.isDebudEnv()) {
             LogUtils.logFormat(this, "接口请求回调", JsonUtils.toJson(obj));
         }
 
-        int resultCode = obj.getResultCode();
+        int resultCode = obj.getCode();
         if (resultCode == ServiceResultCode.SUCCESS
                 || (resultCode == ServiceResultCode.SUCCESS_NODATA && isNeed1012IsSuccess)) {
 
@@ -146,7 +140,7 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
     }
 
     @Override
-    public boolean onOther(@NonNull BaseResultEntity<T> obj) {
+    public boolean onOther(@NonNull RainbowResultEntity<T> obj) {
         return false;
     }
 
@@ -197,4 +191,5 @@ public abstract class DefaultObserver<T> implements Observer<BaseResultEntity<T>
             ToastUtils.show(data);
         }
     }
+    
 }

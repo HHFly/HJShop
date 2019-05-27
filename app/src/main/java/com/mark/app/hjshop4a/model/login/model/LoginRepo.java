@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
 
 public class LoginRepo extends BaseModel {
     private String username;//用户名
+    private String bindPhone;//登陆账户
     private String accessToken;//token
     private int expiresIn;//有效时长（毫秒）
     private long nowTime;//系统时间
@@ -45,6 +46,14 @@ public class LoginRepo extends BaseModel {
     public LoginRepo setNowTime(long nowTime) {
         this.nowTime = nowTime;
         return this;
+    }
+
+    public String getBindPhone() {
+        return bindPhone;
+    }
+
+    public void setBindPhone(String bindPhone) {
+        this.bindPhone = bindPhone;
     }
 
     public String getUserPushToken() {

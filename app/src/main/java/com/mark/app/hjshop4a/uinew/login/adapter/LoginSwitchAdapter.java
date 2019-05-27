@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.login.adapter;
+package com.mark.app.hjshop4a.uinew.login.adapter;
 
 import android.app.Activity;
 import android.view.View;

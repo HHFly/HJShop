@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.homepager.activity;
+package com.mark.app.hjshop4a.uinew.homepager.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +25,7 @@ import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
 
 import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
-import com.mark.app.hjshop4a.uinew.homepager.MeFragment;
+import com.mark.app.hjshop4a.uinew.homepager.fragment.MeFragment;
 
 
 /**

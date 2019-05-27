@@ -21,7 +21,7 @@ import com.mark.app.hjshop4a.model.login.model.LoginType;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.homepager.adapter.MeAdapter;
 import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
-import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
+import com.mark.app.hjshop4a.uinew.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

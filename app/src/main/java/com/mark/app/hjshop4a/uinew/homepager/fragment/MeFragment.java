@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.uinew.homepager;
+package com.mark.app.hjshop4a.uinew.homepager.fragment;
 
 import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,14 +8,14 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
-import com.mark.app.hjshop4a.common.androidenum.homepager.RoleType;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 
 
-import com.mark.app.hjshop4a.ui.login.activity.LoginSwitchActivity;
+import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
+import com.mark.app.hjshop4a.uinew.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.uinew.homepager.adapter.MeAdapter;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;

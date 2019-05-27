@@ -137,18 +137,18 @@ public interface PdMService {
 
 
                 public String refreshToken() {
-                    LoginRepo repo = App.get().getAppContext().getLoginRepo();
-                    if (repo == null) return "";
-
-
-                    String refreshToken = repo.getRefreshToken();
-                    long nowTime = repo.getNowTime();
-                    long expTime = repo.getExpiresIn();
-                    long currentTime = System.currentTimeMillis();
-                    long parseTime = (currentTime - nowTime) * 3 / 1000;
-                    if (parseTime > expTime && expTime > 0 && nowTime > 0) {
-                        return refreshToken;
-                    }
+//                    LoginRepo repo = App.get().getAppContext().getLoginRepo();
+//                    if (repo == null) return "";
+//
+//
+//                    String refreshToken = repo.getRefreshToken();
+//                    long nowTime = repo.getNowTime();
+//                    long expTime = repo.getExpiresIn();
+//                    long currentTime = System.currentTimeMillis();
+//                    long parseTime = (currentTime - nowTime) * 3 / 1000;
+//                    if (parseTime > expTime && expTime > 0 && nowTime > 0) {
+//                        return refreshToken;
+//                    }
                     return "";
                 }
                 /**
@@ -190,7 +190,7 @@ public interface PdMService {
                                 long nowTime = allJson.get("nowTime").getAsLong();
                                 //获取新的token信息
                                 LoginRepo repo = new LoginRepo().setAccessToken(token).setExpiresIn(expiresIn).setRefreshToken(refresh_token).setNowTime(nowTime);
-                                App.get().setLogin(repo);
+//                                App.get().setLogin(repo);
                             }
                         }
                     }
@@ -227,8 +227,8 @@ public interface PdMService {
     Observable<BaseResultEntity<Lookup>> forceUpdate(@Header("version") int version);
 
 //图片上传
-@POST("/api/img/upload")
-Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
+    @POST("/api/img/upload")
+    Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /**
      * 登录
      *
@@ -305,7 +305,7 @@ Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /*
      * 我的*/
     @GET("/api/app/center")
-    Observable<BaseResultEntity<com.mark.app.hjshop4a.uinew.homepager.MeCenterInfo>>center();
+    Observable<BaseResultEntity<com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo>>center();
 /*
 *  资产明细 */
     @GET("/api/app/property/detail")

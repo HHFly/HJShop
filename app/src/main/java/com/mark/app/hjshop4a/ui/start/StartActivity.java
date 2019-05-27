@@ -14,7 +14,7 @@ import com.mark.app.hjshop4a.common.utils.CountDownUtils;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.common.utils.StringUtils;
-import com.mark.app.hjshop4a.ui.homepager.activity.HomePagerActivity;
+import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 
 
 /**

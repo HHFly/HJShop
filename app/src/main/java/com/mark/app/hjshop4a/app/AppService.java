@@ -3,6 +3,7 @@ package com.mark.app.hjshop4a.app;
 import android.content.Context;
 
 import com.mark.app.hjshop4a.data.net.PdMService;
+import com.mark.app.hjshop4a.data.net.RainbowService;
 
 /**
  * Created by zhuwh on 2018/4/11.
@@ -12,6 +13,7 @@ public class AppService {
     //网络服务
 //    @Inject
   private   PdMService mPdMService;
+  private RainbowService mService;
     private Context mContext;
     private String mBaseUrl;
     public AppService(Context context) {
@@ -21,6 +23,14 @@ public class AppService {
     public Context getContext() {
         return mContext;
     }
+
+    public RainbowService getmService() {
+        if (mService == null) {
+            mService = RainbowService.Creator.newService(mBaseUrl,mContext);
+        }
+        return mService;
+    }
+
     /**
      * 获取服务
      *
@@ -37,7 +47,7 @@ public class AppService {
     * 设置服务mBaseUrl
     * */
     public void setBaseUrl() {
-        mPdMService=null;
+        mService=null;
     }
 
 

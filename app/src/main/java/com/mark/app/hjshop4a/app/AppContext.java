@@ -12,8 +12,8 @@ import com.mark.app.hjshop4a.model.login.AreaAgentInfo;
 import com.mark.app.hjshop4a.model.login.BusniessInfo;
 import com.mark.app.hjshop4a.model.login.MemberInfo;
 import com.mark.app.hjshop4a.model.login.ProvenceAgentInfo;
-import com.mark.app.hjshop4a.model.login.model.LoginRepo;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
+import com.mark.app.hjshop4a.uinew.login.model.Token;
 
 
 /**
@@ -33,7 +33,7 @@ public class AppContext {
     final  String KEY_PROVENCEAGENTINFO ="provenceagentinfo";//省信息
     Context mContext;//getApplicationContext
 
-    LoginRepo mLoginRepo;//登录数据
+    Token mLoginRepo;//登录数据
     Boolean isAutoLogin ;//是否自动登录
     UserInfo mUserInfo;//角色数据
     MemberInfo memberInfo;//会员角色信息
@@ -52,7 +52,7 @@ public class AppContext {
 
 
         //初始化登录数据
-        LoginRepo loginRepo = getLoginRepo();
+        Token loginRepo = getLoginRepo();
         UserInfo userInfo = getUserInfo();
 
         LogUtils.logFormat(this, "init", "初始化登录数据" + JsonUtils.toJson(loginRepo));
@@ -141,98 +141,20 @@ public class AppContext {
      *
      * @return
      */
-    public LoginRepo getLoginRepo() {
+    public Token getLoginRepo() {
         if (mLoginRepo == null) {
             String json = SPUtil.getInstance(mContext).getString(KEY_TOKEN, "");
             if (TextUtils.isEmpty(json)) {
-                mLoginRepo = new LoginRepo();
+                mLoginRepo = new Token();
             } else {
-                mLoginRepo = JsonUtils.fromJson(json, LoginRepo.class);
+                mLoginRepo = JsonUtils.fromJson(json, Token.class);
             }
         }
         return mLoginRepo;
     }
 
-    public BusniessInfo getBusniessInfo() {
-        if (busniessInfo == null) {
-            String json = SPUtil.getInstance(mContext).getString(KEY_BUSNIESSINFO, "");
-            if (TextUtils.isEmpty(json)) {
-                busniessInfo = new BusniessInfo();
-            } else {
-                busniessInfo = JsonUtils.fromJson(json, BusniessInfo.class);
-            }
-        }
-        return busniessInfo;
-    }
 
-    public void setBusniessInfo(BusniessInfo data) {
-        busniessInfo =data;
 
-        if (data != null) {
-
-            SPUtil.getInstance(mContext).putString(KEY_BUSNIESSINFO, data.toJson());
-        } else {
-            SPUtil.getInstance(mContext).putString(KEY_BUSNIESSINFO, new BusniessInfo().toJson());
-        }
-        LogUtils.logFormat(this, "setBusniessInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
-    }
-
-    public AreaAgentInfo getAreaAgentInfo() {
-        if (areaAgentInfo == null) {
-            String json = SPUtil.getInstance(mContext).getString(KEY_AREAAGENTINFO, "");
-            if (TextUtils.isEmpty(json)) {
-                areaAgentInfo = new AreaAgentInfo();
-            } else {
-                areaAgentInfo = JsonUtils.fromJson(json, AreaAgentInfo.class);
-            }
-        }
-        return areaAgentInfo;
-    }
-
-    public void setAreaAgentInfo(AreaAgentInfo data) {
-        areaAgentInfo =data;
-
-        if (data != null) {
-
-            SPUtil.getInstance(mContext).putString(KEY_AREAAGENTINFO, data.toJson());
-        } else {
-            SPUtil.getInstance(mContext).putString(KEY_AREAAGENTINFO, new AreaAgentInfo().toJson());
-        }
-        LogUtils.logFormat(this, "setAreaAgentInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
-    }
-    /**
-     * 获取省信息
-     *
-     * @return
-     */
-    public ProvenceAgentInfo getProvenceAgentInfo() {
-        if (provenceAgentInfo == null) {
-            String json = SPUtil.getInstance(mContext).getString(KEY_PROVENCEAGENTINFO, "");
-            if (TextUtils.isEmpty(json)) {
-                provenceAgentInfo = new ProvenceAgentInfo();
-            } else {
-                provenceAgentInfo = JsonUtils.fromJson(json, ProvenceAgentInfo.class);
-            }
-        }
-
-        return provenceAgentInfo;
-    }
-    /**
-     * 获取省信息
-     *
-     * @return
-     */
-    public void setProvenceAgentInfo(ProvenceAgentInfo data) {
-        provenceAgentInfo =data;
-
-        if (data != null) {
-
-            SPUtil.getInstance(mContext).putString(KEY_PROVENCEAGENTINFO, data.toJson());
-        } else {
-            SPUtil.getInstance(mContext).putString(KEY_PROVENCEAGENTINFO, new ProvenceAgentInfo().toJson());
-        }
-        LogUtils.logFormat(this, "setProvenceAgentInfo", "更新UserInfo信息" + JsonUtils.toJson(data));
-    }
 
     /**
      * 获取会员信息
@@ -303,20 +225,11 @@ public class AppContext {
      *
      * @param data
      */
-    public void setLoginRepo(LoginRepo data) {
+    public void setLoginRepo(Token data) {
         mLoginRepo = data;
-        if (data != null&&getIsAutoLogin()) {
-            //当前时间
-            long curTime = System.currentTimeMillis();
-            //超时时间秒
-            int expiresIn = data.getExpiresIn();
-            long endTime = curTime + expiresIn * 1000l;
-            data.setEndTime(endTime);
 
-            SPUtil.getInstance(mContext).putString(KEY_TOKEN, data.toJson());
-        } else {
-            SPUtil.getInstance(mContext).putString(KEY_TOKEN, new LoginRepo().toJson());
-        }
+        SPUtil.getInstance(mContext).putString(KEY_TOKEN, new Token().toJson());
+
         LogUtils.logFormat(this, "setLoginRepo", "更新token信息" + JsonUtils.toJson(data));
     }
 

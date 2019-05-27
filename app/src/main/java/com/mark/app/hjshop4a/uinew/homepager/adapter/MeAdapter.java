@@ -8,7 +8,7 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
-import com.mark.app.hjshop4a.uinew.homepager.MeCenterInfo;
+import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
 
 
 public class MeAdapter extends MultipleSourcesRvAdapter {
