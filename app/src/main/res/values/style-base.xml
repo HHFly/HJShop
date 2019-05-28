@@ -179,6 +179,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/normal_ceshi</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="BaseItem"></style>
@@ -200,6 +201,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:text">@string/normal_ceshi</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="BaseRefreshLayout">
@@ -208,7 +210,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/background</item>
-        <item name="srlEnableHeaderTranslationContent">false</item>
+        <item name="srlEnableHeaderTranslationContent">true</item>
 
     </style>
 

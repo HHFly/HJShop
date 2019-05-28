@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@color/background"
+    android:background="@drawable/shape_hm_bg"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/hm_sdv_logo"
         style="@style/BaseSDV"
@@ -20,10 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:includeFontPadding="false"
+        android:text="-----------"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/textsize_30px"
         android:textColor="#333333"
         android:textSize="36px"/>
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,10 +35,11 @@
         android:layout_marginTop="53px"
         >
         <ImageView
-            android:layout_width="40px"
-            android:layout_height="38px"
-            android:layout_marginLeft="30px"
+            android:layout_width="32px"
+            android:layout_height="40px"
+            android:layout_marginLeft="51px"
             android:layout_gravity="center_vertical"
+            android:src="@mipmap/ic_money"
             />
         <TextView
            style="@style/BaseItem.Tv"
@@ -52,10 +57,10 @@
     <LinearLayout
         android:id="@+id/item_mesage"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="29px"
-        android:background="@drawable/shape_hm_bg"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="30px">
 
         <LinearLayout
             android:id="@+id/hm_layout_red"
@@ -67,23 +72,49 @@
                 android:text="@string/金币余额" />
 
             <TextView
-                android:id="@+id/hm_tv_red"
+                android:id="@+id/hm_tv_goldcoin"
                 style="@style/home_me_tab_tv_top"
                 android:layout_marginTop="25px"
-                android:text=""
+                android:text="0.0"
                 android:textColor="#000000" />
 
             <RelativeLayout
                 android:layout_width="314px"
                 android:layout_height="89px"
                 android:layout_marginTop="39px"
+                android:layout_marginLeft="16px"
                 android:background="@drawable/shape_me_1">
+
                 <ImageView
+                    android:id="@+id/iv_top_1"
                     android:layout_width="58px"
                     android:layout_height="58px"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="16px"
+                    android:src="@mipmap/ic_me_top_1" />
+
+                <TextView
+                    style="@style/BaseItem.Tv"
+                    android:layout_alignTop="@id/iv_top_1"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/iv_top_1"
+                    android:text="@string/账单"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26px"
+
                     />
+
+                <TextView
+                    style="@style/BaseItem.Tv"
+                   android:layout_alignBottom="@+id/iv_top_1"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/iv_top_1"
+                    android:text="@string/点击查看"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20px"
+
+                    />
+
             </RelativeLayout>
 
         </LinearLayout>
@@ -92,7 +123,8 @@
             android:id="@+id/hm_layout_balance"
             style="@style/home_me_tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+           >
 
 
             <TextView
@@ -103,29 +135,48 @@
                 android:id="@+id/hm_tv_balance"
                 style="@style/home_me_tab_tv_top"
                 android:layout_marginTop="25px"
-                android:text=""
+                android:text="0.0"
                 android:textColor="#000000" />
 
             <RelativeLayout
                 android:layout_width="314px"
                 android:layout_height="89px"
                 android:layout_marginTop="39px"
+                android:layout_marginRight="16px"
                 android:background="@drawable/shape_me_2">
 
                 <ImageView
+                    android:id="@+id/iv_top_2"
                     android:layout_width="58px"
                     android:layout_height="58px"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="16px" />
+                    android:layout_marginLeft="16px"
+                    android:src="@mipmap/ic_me_top_2" />
 
+                <TextView
+                    style="@style/BaseItem.Tv"
+                    android:layout_alignTop="@+id/iv_top_2"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/iv_top_2"
+                    android:text="@string/提现"
+                    android:textColor="#FFFFFF"
+                    android:textSize="26px"
+
+                    />
+
+                <TextView
+                    style="@style/BaseItem.Tv"
+                    android:layout_alignBottom="@id/iv_top_2"
+                    android:layout_marginLeft="25px"
+                    android:layout_toRightOf="@+id/iv_top_2"
+                    android:text="@string/点击提现"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20px"
+
+                    />
             </RelativeLayout>
 
         </LinearLayout>
-
-        <View
-            style="@style/BaseLine.Vertical"
-            android:layout_marginBottom="33px"
-            android:layout_marginTop="33px" />
 
 
     </LinearLayout>

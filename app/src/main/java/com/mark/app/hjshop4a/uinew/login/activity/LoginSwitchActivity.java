@@ -38,15 +38,7 @@ public class LoginSwitchActivity extends BaseActivity {
     public void initView() {
         setTvText(R.id.titlebar_tv_title, R.string.login_账号管理);
          LoginType loginType1=new LoginType(App.getAppContext().getMemberInfo());
-        LoginType loginType2=new LoginType(App.getAppContext().getBusniessInfo());
-        LoginType loginType3=new LoginType(App.getAppContext().getAreaAgentInfo());
-        LoginType loginType4=new LoginType(App.getAppContext().getProvenceAgentInfo());
 
-
-
-        loginTypes.add(loginType4);
-        loginTypes.add(loginType3);
-        loginTypes.add(loginType2);
         loginTypes.add(loginType1);
         setViewVisibility(R.id.titlebar_iv_add,false);
         initRvAdapter();

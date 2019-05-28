@@ -440,7 +440,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 .addFormDataPart("uploadType", "上传图片")
                 .addFormDataPart("imageUrl", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
                 .build();
-        App.getServiceManager().getmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+        App.getServiceManager().getPdmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver<String>() {
                     @Override
                     public void onSuccess(@io.reactivex.annotations.NonNull BaseResultEntity<String> obj) {

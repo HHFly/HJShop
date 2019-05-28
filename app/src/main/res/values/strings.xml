@@ -272,7 +272,10 @@
     <string name="消息">消息</string>
     <string name="推广赚金">推广赚金</string>
     <string name="设置">设置</string>
-
+    <string name="账单">账单</string>
+    <string name="点击查看">点击查看</string>
+    <string name="提现">提现</string>
+    <string name="点击提现">点击提现</string>
 
 
 </resources>

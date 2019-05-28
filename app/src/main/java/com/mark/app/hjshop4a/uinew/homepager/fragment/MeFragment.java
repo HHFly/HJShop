@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.uinew.homepager.fragment;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,14 +10,21 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 
 
+import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.uinew.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.uinew.homepager.adapter.MeAdapter;
+import com.mark.app.hjshop4a.uinew.userinfo.UserInfo;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -24,6 +32,8 @@ import io.reactivex.schedulers.Schedulers;
 public class MeFragment extends BaseFragment{
     private final static int REQUESTCODE = 1; // 返回的结果码
     private MeAdapter mAdapter;
+    RefreshLayout refreshLayout;
+     UserCenter mData =new UserCenter();
     @Override
     public int getContentResId() {
         return R.layout.fragment_me;
@@ -31,7 +41,15 @@ public class MeFragment extends BaseFragment{
 
     @Override
     public void findView() {
-
+        refreshLayout =getView(R.id.refreshLayout);
+        refreshLayout.setEnableLoadMore(false);
+        refreshLayout.setEnableFooterTranslationContent(true);//是否上拉Footer的时候向上平移列表或者内容
+        refreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                    requestData();
+            }
+        });
     }
 
     @Override
@@ -44,8 +62,8 @@ public class MeFragment extends BaseFragment{
     public void initView() {
         setTvText(R.id.titlebar_tv_right,"退出");
 
-        initRvAdapter(new MeCenterInfo());
-        requestData();
+        initRvAdapter();
+//        requestData();
     }
 
     @Override
@@ -69,23 +87,24 @@ public class MeFragment extends BaseFragment{
      */
     private void requestData( ) {
 //        showLoadingDialog();
-        App.getServiceManager().getPdmService()
-                .center()
+        App.getServiceManager().getmService()
+                .getCenter()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<MeCenterInfo>() {
+                .subscribe(new RainbowObserver<UserCenter>() {
 
 
                     @Override
-                    public void onSuccess(BaseResultEntity<MeCenterInfo> obj) {
-                        MeCenterInfo data = obj.getResult();
-                        initRvAdapter(data);
+                    public void onSuccess(RainbowResultEntity<UserCenter> obj) {
+                        mData =obj.getObj();
+                        initRvAdapter();
                     }
 
                     @Override
                     public void onAllFinish() {
                         super.onAllFinish();
-                        hideLoadingDialog();
+//                        hideLoadingDialog();
+                        RefreshLayoutUtils.finish(refreshLayout);
                     }
                 });
     }
@@ -95,11 +114,12 @@ public class MeFragment extends BaseFragment{
      *
      *
      */
-    private void initRvAdapter( MeCenterInfo data) {
+    private void initRvAdapter( ) {
 
         RecyclerView rv = getView(R.id.recyclerView);
        if(mAdapter==null) {
            if (rv != null) {
+               mAdapter =new MeAdapter();
                rv.setLayoutManager(new LinearLayoutManager(getContext()));
                rv.setAdapter(mAdapter);
            }
@@ -117,7 +137,7 @@ public class MeFragment extends BaseFragment{
 
            });
        }else {
-           mAdapter.setmData(data);
+           mAdapter.setmData(mData);
            mAdapter.notifyDataSetChanged();
        }
     }

@@ -8,16 +8,16 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
 
 
 public class MeAdapter extends MultipleSourcesRvAdapter {
-    private MeCenterInfo mData;
-    public MeAdapter( MeCenterInfo centerInfo) {
-        mData =centerInfo;
+    private UserCenter mData;
+    public MeAdapter() {
     }
 
-    public void setmData(MeCenterInfo mData) {
+    public void setmData(UserCenter mData) {
         this.mData = mData;
     }
 
@@ -58,15 +58,16 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 if(mData!=null) {
 //                        用户名
-                    holder.text(R.id.hm_tv_user_name,mData.getUserName());
+                    holder.text(R.id.hm_tv_user_name,mData.getUserPhone());
                     //c会员账号
 
-                    holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
-
+//                    holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
+                    holder.text(R.id.hm_tv_goldcoin,String.valueOf(mData.getUsableGold()));
+                    holder.text(R.id.hm_tv_balance,String.valueOf(mData.getUsableMoney()));
                 }
                 break;//顶部数据
             case 1:
-                holder.image(R.id.hm_iv_logo,R.mipmap.about);
+                holder.image(R.id.hm_iv_logo,R.mipmap.ic_phone);
                 holder.text(R.id.hm_tv_item_name, R.string.账号绑定);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -76,7 +77,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 2:
-                holder.image(R.id.hm_iv_logo,R.mipmap.about);
+                holder.image(R.id.hm_iv_logo,R.mipmap.ic_msg);
                 holder.text(R.id.hm_tv_item_name, R.string.消息);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -86,7 +87,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 3:
-                holder.image(R.id.hm_iv_logo,R.mipmap.about);
+                holder.image(R.id.hm_iv_logo,R.mipmap.ic_ext);
                 holder.text(R.id.hm_tv_item_name, R.string.推广赚金);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -96,7 +97,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 4:
-                holder.image(R.id.hm_iv_logo,R.mipmap.about);
+                holder.image(R.id.hm_iv_logo,R.mipmap.ic_set);
                 holder.text(R.id.hm_tv_item_name, R.string.设置);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -106,7 +107,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 5:
-                holder.image(R.id.hm_iv_logo,R.mipmap.about);
+                holder.image(R.id.hm_iv_logo,R.mipmap.ic_up);
                 holder.text(R.id.hm_tv_item_name, R.string.版本信息);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

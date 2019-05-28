@@ -6,12 +6,5 @@
     android:layout_height="match_parent"
     android:background="@color/background">
     <include layout="@layout/include_titlebar_mine" />]
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:scrollbars="none"
-        android:overScrollMode="never"
-        app:fastScrollEnabled="false"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ></android.support.v7.widget.RecyclerView>
+    <include layout="@layout/common_list_has_empty_refresh_loadmore" />
 </LinearLayout>

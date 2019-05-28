@@ -41,6 +41,7 @@
 
     <style name="home_me_tab_tv_top" parent="BaseTab.Tv">
         <item name="android:textSize">28px</item>
+        <item name="android:singleLine">true</item>
     </style>
 
     <style name="home_me_tab_tv_bottom" parent="BaseTab.Tv">
@@ -176,6 +177,13 @@
         <item name="android:paddingRight">20px</item>
         <item name="android:background">@drawable/select_normal_bg</item>
     </style>
+    <style name="rb_item_layout" parent="BaseItem.Layout">
+        <item name="android:layout_height">86px</item>
+        <item name="android:paddingLeft">30px</item>
+        <item name="android:paddingRight">30px</item>
+        <item name="android:background">@drawable/select_normal_bg</item>
+    </style>
+
     <style name="hm_item_iv" parent="BaseItem.Iv">
         <item name="android:layout_width">40px</item>
         <item name="android:layout_height">40px</item>
