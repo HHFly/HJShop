@@ -87,7 +87,7 @@ public interface RainbowService {
                     //刷新token
 //                    token = refreshTOken(chain, oldRequest, token,context);
 
-                    builder.addHeader("Authorization", token);
+                    builder.addHeader("accessToken", token);
 //                            .addHeader("platform", platform)
 //                            .addHeader("version",version);
 

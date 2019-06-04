@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.model.login.AreaAgentInfo;
 import com.mark.app.hjshop4a.model.login.BusniessInfo;
 import com.mark.app.hjshop4a.model.login.MemberInfo;
 import com.mark.app.hjshop4a.model.login.ProvenceAgentInfo;
+import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
 
@@ -35,7 +36,7 @@ public class AppContext {
 
     Token mLoginRepo;//登录数据
     Boolean isAutoLogin ;//是否自动登录
-    UserInfo mUserInfo;//角色数据
+    UserCenter mUserInfo;//角色数据
     MemberInfo memberInfo;//会员角色信息
     BusniessInfo busniessInfo;
     AreaAgentInfo areaAgentInfo;
@@ -53,7 +54,7 @@ public class AppContext {
 
         //初始化登录数据
         Token loginRepo = getLoginRepo();
-        UserInfo userInfo = getUserInfo();
+        UserCenter userInfo = getUserInfo();
 
         LogUtils.logFormat(this, "init", "初始化登录数据" + JsonUtils.toJson(loginRepo));
     }
@@ -193,13 +194,13 @@ public class AppContext {
      *
      * @return
      */
-    public UserInfo getUserInfo() {
+    public UserCenter getUserInfo() {
         if (mUserInfo == null) {
             String json = SPUtil.getInstance(mContext).getString(KEY_USERINFO, "");
             if (TextUtils.isEmpty(json)) {
-                mUserInfo = new UserInfo();
+                mUserInfo = new UserCenter();
             } else {
-                mUserInfo = JsonUtils.fromJson(json, UserInfo.class);
+                mUserInfo = JsonUtils.fromJson(json, UserCenter.class);
             }
         }
         return mUserInfo;
@@ -210,7 +211,7 @@ public class AppContext {
      *
      * @param data
      */
-    public void setUserInfo(UserInfo data) {
+    public void setUserInfo(UserCenter data) {
         mUserInfo = data;
         if (data != null) {
 
@@ -247,9 +248,8 @@ public class AppContext {
 //        SPUtil.getInstance(mContext).putBoolean(KEY_AUTOLOGIN,isAutoLogin);
     }
     public int getRoleType(){
-        UserInfo userInfo =getUserInfo();
 
-        return Integer.parseInt(userInfo.getUserTypeId());
+        return Integer.parseInt("1");
     }
 
 //

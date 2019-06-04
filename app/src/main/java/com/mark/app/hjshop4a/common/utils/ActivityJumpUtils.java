@@ -73,6 +73,18 @@ public class ActivityJumpUtils {
         act.overridePendingTransition(0,0);
     }
     /**
+     * 跳转到手机登录
+     *
+     * @param act
+     */
+    public static void actPhoneLogin(Activity act) {
+        Intent intent = new Intent(act, RegisterActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+
+        act.startActivity(intent);
+        act.overridePendingTransition(0,0);
+    }
+    /**
      * 跳转到注册
      *
      * @param act

@@ -23,11 +23,14 @@ import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.model.login.LoginParam;
 import com.mark.app.hjshop4a.ui.dialog.SelectAddressDialog;
 import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
+import com.mark.app.hjshop4a.uinew.login.model.SMSParam;
 
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -50,6 +53,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
     //选择dialog
     private SelectAddressDialog wheelDialog;
     LoginParam param;
+    private SMSParam smsParam =new SMSParam();
     @Override
     public int getContentViewResId() {
         return R.layout.activity_register;
@@ -182,13 +186,14 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
         if (countDownUtils != null) {
             countDownUtils.pre();
         }
-
-        App.getServiceManager().getPdmService().getCode(strPhone,macId,"1")
+        smsParam.setUserPhone(strPhone);
+        smsParam.setType(1);
+        App.getServiceManager().getmService().sendSMS(smsParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
+                .subscribe(new RainbowObserver() {
                     @Override
-                    public void onSuccess(BaseResultEntity obj) {
+                    public void onSuccess(RainbowResultEntity obj) {
                         if(isDestroyed()){
                             return;
                         }

@@ -53,6 +53,13 @@ public class MeFragment extends BaseFragment{
     }
 
     @Override
+    public void onUnFirstResume() {
+        if(App.getAppContext().getUserInfo()==null){
+            requestData();
+        }
+    }
+
+    @Override
     public void setListener() {
         setClickListener(R.id.titlebar_tv_right);
         setClickListener(R.id.titlebar_tv_title);
@@ -62,8 +69,8 @@ public class MeFragment extends BaseFragment{
     public void initView() {
         setTvText(R.id.titlebar_tv_right,"退出");
 
-        initRvAdapter();
-//        requestData();
+//        initRvAdapter();
+        requestData();
     }
 
     @Override
@@ -96,8 +103,8 @@ public class MeFragment extends BaseFragment{
 
                     @Override
                     public void onSuccess(RainbowResultEntity<UserCenter> obj) {
-                        mData =obj.getObj();
-                        initRvAdapter();
+                       UserCenter mData =obj.getObj();
+                        initRvAdapter(mData);
                     }
 
                     @Override
@@ -114,7 +121,7 @@ public class MeFragment extends BaseFragment{
      *
      *
      */
-    private void initRvAdapter( ) {
+    private void initRvAdapter(UserCenter data) {
 
         RecyclerView rv = getView(R.id.recyclerView);
        if(mAdapter==null) {
@@ -137,7 +144,7 @@ public class MeFragment extends BaseFragment{
 
            });
        }else {
-           mAdapter.setmData(mData);
+           mAdapter.setmData(data);
            mAdapter.notifyDataSetChanged();
        }
     }

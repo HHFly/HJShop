@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
@@ -44,7 +45,7 @@ public class HomePagerActivity extends BaseActivity {
    private ShopCarFragment shopCarFragment;
     private MeFragment meFragment;
     private ServiceFragment mServiceFragment;
-    private Fragment mCurFragment;
+    private BaseFragment mCurFragment;
 
     //tab类型
     private int mType = HPTabType.HOME;
@@ -250,7 +251,7 @@ public class HomePagerActivity extends BaseActivity {
             }
             case R.id.hp_layout_tab5: {
                 switchFragment(mServiceFragment);
-                agant();
+
                 break;
             }
         }
@@ -276,6 +277,7 @@ public class HomePagerActivity extends BaseActivity {
      */
     private void switchFragment(Fragment fragment) {
         mCurFragment = FragmentUtils.selectFragment(this, mCurFragment, fragment, R.id.hp_layout_content);
+        mCurFragment.onUnFirstResume();
     }
 
     /**

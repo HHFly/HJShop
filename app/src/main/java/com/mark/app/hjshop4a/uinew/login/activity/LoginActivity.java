@@ -16,13 +16,18 @@ import com.mark.app.hjshop4a.common.utils.PdUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.valid.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.model.login.AreaAgentInfo;
 import com.mark.app.hjshop4a.model.login.BusniessInfo;
 import com.mark.app.hjshop4a.model.login.MemberInfo;
 import com.mark.app.hjshop4a.model.login.ProvenceAgentInfo;
 import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
+import com.mark.app.hjshop4a.uinew.login.model.LoginParam;
+import com.mark.app.hjshop4a.uinew.login.model.Token;
 
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -41,6 +46,7 @@ public class LoginActivity extends BaseActivity {
     //是否自动登录
     boolean isautologin =true;
     String account;//账号
+    LoginParam loginParam =new LoginParam();
     @Override
     public int getContentViewResId() {
       return R.layout.activity_login;
@@ -75,15 +81,22 @@ public class LoginActivity extends BaseActivity {
        setClickListener(R.id.titlebar_iv_return);
        setClickListener(R.id.login_iv_eye);
        setClickListener(R.id.login_btn);
-
+        setClickListener(R.id.login_btn_phone);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode==2){
-            setTvText(R.id.login_et_username,data.getStringExtra("Num"));
+        switch (requestCode){
+            case RESULT_OK:
+                setResult(RESULT_OK);
+                finish();
+                break;
+            case 2:
+                setTvText(R.id.login_et_username,data.getStringExtra("Num"));
+                break;
         }
+
     }
 
     @Override
@@ -123,12 +136,18 @@ public class LoginActivity extends BaseActivity {
                 login();
                 break;
             }
+            case R.id.login_btn_phone:
+                ActivityJumpUtils.actPhoneLogin(getActivity());
+                break;
         }
     }
 //d登录
     private void login() {
         account = getTvText(R.id.login_et_username);
         String password = getTvText(R.id.login_et_pwd);
+        loginParam.setAccount(account);
+        loginParam.setPassword(password);
+        loginParam.setType(1);
 //        if (!ValidUtils.get().phone(account)) {
 //
 //            ToastUtils.show(R.string.login_手机号格式错误);
@@ -143,22 +162,20 @@ public class LoginActivity extends BaseActivity {
             return;
         }
         showLoadingDialog();
-        App.getServiceManager().getPdmService().login( account, PdUtils.getMD5(password),Role)
+        App.getServiceManager().getmService().login( loginParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<LoginRepo>() {
+                .subscribe(new RainbowObserver<Token>() {
+
+
                     @Override
-                    public void onSuccess(BaseResultEntity<LoginRepo> obj) {
-                        LoginRepo repo = obj.getResult();
-                        repo.setNowTime(obj.getNowTime());
-                        //                        是否自动登录
-                        App.getAppContext().setIsAutoLogin(isautologin);
-//                        保存登陆信息
-//                        App.get().setLogin(repo);
-
+                    public void onSuccess(RainbowResultEntity<Token> obj) {
+                        Token token =obj.getObj();
+                        //                        保存登陆信息
+                        App.get().setLogin(token);
                         requestData();
-
                     }
+
                     @Override
                     public void onAllFinish() {
                         super.onAllFinish();
@@ -166,17 +183,7 @@ public class LoginActivity extends BaseActivity {
                     }
                 });
     }
-    private void  setRoleInfo(UserInfo data){
-        switch (Integer.parseInt(data.getUserTypeId())){
-            case RoleType.MEMBER:
-                MemberInfo memberInfo =new MemberInfo();
-                memberInfo.setNumber(account);
-                memberInfo.setHeadImg(data.getUserHeadImg());
-                App.getAppContext().setMemberInfo(memberInfo);
-                break;
 
-        }
-    }
     /**
      * 密码输入框是否可见
      *
@@ -192,21 +199,19 @@ public class LoginActivity extends BaseActivity {
      */
     private void requestData() {
 //        showLoadingDialog();
-        App.getServiceManager().getPdmService()
-                .getUserInfo(1)
+        App.getServiceManager().getmService()
+                .getCenter()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<UserInfo>() {
+                .subscribe(new RainbowObserver<UserCenter>() {
+
 
 
                     @Override
-                    public void onSuccess(BaseResultEntity<UserInfo> obj) {
-                        UserInfo data = obj.getResult();
-
+                    public void onSuccess(RainbowResultEntity<UserCenter> obj) {
+                        UserCenter data  =obj.getObj();
                         //设置信息
                         App.getAppContext().setUserInfo(data);
-                        //角色信息
-                        setRoleInfo( data);
                         setResult(RESULT_OK);
                         finish();
                     }

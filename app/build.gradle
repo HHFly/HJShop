@@ -99,4 +99,5 @@ dependencies {
     //    implementation files('lib/umeng-share-QQ-simplify-6.9.1.jar')
     implementation files('lib/umeng-share-wechat-full-6.9.1.jar')
     implementation 'org.apache.shiro:shiro-crypto:1.4.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

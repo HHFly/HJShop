@@ -3,6 +3,7 @@ package com.mark.app.hjshop4a.base.model;
 
 
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
+import com.mark.app.hjshop4a.common.utils.PasswordUtil;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -19,6 +20,9 @@ public class BaseModel implements Serializable {
 
     public String toJson() {
         return JsonUtils.toJson(this);
+    }
+    public  String toPswJson(){
+        return PasswordUtil.encryption(JsonUtils.toJson(this));
     }
 
     /**

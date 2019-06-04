@@ -1,7 +1,7 @@
 package com.mark.app.hjshop4a.uinew.login.activity;
 
-import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
@@ -9,66 +9,58 @@ import android.widget.Button;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
-import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
-import com.mark.app.hjshop4a.common.utils.MD5Utils;
+import com.mark.app.hjshop4a.common.utils.PdUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.data.help.RainbowObserver;
-import com.mark.app.hjshop4a.uinew.login.model.SMSParam;
-import com.mark.app.hjshop4a.uinew.login.model.UpdateLoginPSWParam;
 
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
+import com.mark.app.hjshop4a.model.login.model.LoginRepo;
+import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
+import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
+import com.mark.app.hjshop4a.uinew.login.model.LoginParam;
+import com.mark.app.hjshop4a.uinew.login.model.Token;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by pc on 2018/4/13.
- */
-
-public class ForgetActivity extends BaseActivity {
+public class PhoneActivity extends BaseActivity {
     //倒计时工具类
     private CountDownUtils countDownUtils;
-    //从上个界面传递过来的手机号
-    private String mPhone;
-    private SMSParam smsParam =new SMSParam();
-    private UpdateLoginPSWParam pswParam =new UpdateLoginPSWParam();
+    private LoginParam loginParam =new LoginParam();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (countDownUtils != null) {
+            countDownUtils.onDestroy();
+            countDownUtils = null;
+        }
+    }
+
     @Override
     public int getContentViewResId() {
-        return R.layout.activity_forget_pwd;
-    }
-    @Override
-    public void getIntentParam(Bundle bundle) {
-        mPhone = bundle.getString(BundleKey.PHONE);
+        return R.layout.activity_login_phone;
     }
 
     @Override
     public void initView() {
-        setTvText(R.id.titlebar_tv_title, R.string.login_忘记密码);
-        setTvText(R.id.et_username, mPhone);
+        //设置标题栏
+        setTvText(R.id.titlebar_tv_title, R.string.快捷登录);
         initCountDown();
-        textWatcher.onTextChanged("", 0, 0, 0);
     }
 
     @Override
     public void setListener() {
-        super.setListener();
-        setClickListener(R.id.titlebar_iv_return);
-        setClickListener(R.id.btn);
-        setClickListener(R.id.btn_code);
         setEtTextWatcher(R.id.et_username, textWatcher);
         setEtTextWatcher(R.id.et_code, textWatcher);
-        setEtTextWatcher(R.id.et_pwd, textWatcher);
-        setEtTextWatcher(R.id.et_pwd_again, textWatcher);
     }
 
     @Override
     public void onClick(View v) {
-        super.onClick(v);
         switch (v.getId()){
             case R.id.titlebar_iv_return: {
                 finish();
@@ -79,15 +71,14 @@ public class ForgetActivity extends BaseActivity {
                 requestCode();
                 break;
             }
-            case R.id.btn: {
+            case R.id.login_btn: {
                 //确认修改
-                if (isValidPass(false)) {
-                    commit();
-                }
+
                 break;
             }
         }
     }
+
     /**
      * 文本监听
      */
@@ -134,17 +125,14 @@ public class ForgetActivity extends BaseActivity {
             countDownUtils.pre();
         }
         if (countDownUtils != null) {
-                    countDownUtils.start();
-                }
-        smsParam.setUserPhone(strPhone);
-        smsParam.setType(3);
-        App.getServiceManager().getmService().sendSMS(smsParam.toPswJson())
+            countDownUtils.start();
+        }
+        App.getServiceManager().getPdmService().getCode(strPhone,"","2")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new RainbowObserver() {
-
+                .subscribe(new DefaultObserver() {
                     @Override
-                    public void onSuccess(RainbowResultEntity obj) {
+                    public void onSuccess(BaseResultEntity obj) {
                         if(isDestroyed()){
                             return;
                         }
@@ -165,77 +153,15 @@ public class ForgetActivity extends BaseActivity {
                 });
 
     }
-    /**
-     * 确认修改
-     */
-    private void commit() {
-        showLoadingDialog();
-        String phone = getTvText(R.id.et_username);
-        String code = getTvText(R.id.et_code);
-        String pwd = getTvText(R.id.et_pwd);
-        String pwdAgain =getTvText(R.id.et_pwd_again);
-        if (!ValidShowBtnUtils.phone(phone)) {
-            ToastUtils.show(R.string.login_手机号格式不正确);
-            return;
-        }
-        if (!ValidUtils.verifyCode(code)) {
-            ToastUtils.show(R.string.login_验证码格式不正确);
-            return;
-        }
-        if (!ValidUtils.pwd(pwd)) {
-            ToastUtils.show(R.string.login_密码格式错误);
-            return;
-        }
-        if (!pwdAgain.equals(pwd)) {
-            ToastUtils.show(R.string.login_两次输入密码不一致);
-            return;
-        }
-        pswParam.setType(2);
-        pswParam.setNewPassword(pwd);
-        pswParam.setVerificationCode(code);
-        App.getServiceManager().getmService().updateLoginPassword(pswParam.toPswJson())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new RainbowObserver() {
 
-
-                    @Override
-                    public void onSuccess(RainbowResultEntity obj) {
-
-                        ToastUtils.show("密码修改成功");
-                        finish();
-                    }
-
-                    @Override
-                    public void onUnSuccessFinish() {
-                        super.onUnSuccessFinish();
-
-                    }
-
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
-
-
-    }
     /**
      * 初始化倒计时
      */
     private void initCountDown() {
+
         //初始化倒计时工具类
-        Button btnCode = getView(R.id.btn_code);
+        Button btnCode = getView(R.id.register_btn_code);
         countDownUtils = CountDownUtils.getInstance(this, btnCode);
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (countDownUtils != null) {
-            countDownUtils.onDestroy();
-            countDownUtils = null;
-        }
     }
     /**
      * 验证是否通过
@@ -247,12 +173,10 @@ public class ForgetActivity extends BaseActivity {
         String strPhone = getTvText(R.id.et_username);
         String strCoee = getTvText(R.id.et_code);
         String strPwd = getTvText(R.id.et_pwd);
-        String strPwdAgain= getTvText(R.id.et_pwd_again);
         if (isValidShowBtn) {
             return ValidShowBtnUtils.phone(strPhone)
-                    && ValidShowBtnUtils.verifyCode(strCoee)
-                    && ValidShowBtnUtils.pwd(strPwd)
-                     && ValidShowBtnUtils.pwd(strPwdAgain);
+                    && ValidShowBtnUtils.verifyCode(strCoee);
+
 
         } else {
             boolean result = false;
@@ -260,14 +184,75 @@ public class ForgetActivity extends BaseActivity {
                 ToastUtils.show(R.string.login_手机号格式不正确);
             } else if (!ValidUtils.verifyCode(strCoee)) {
                 ToastUtils.show(R.string.login_验证码格式不正确);
-            } else if (!ValidUtils.pwd(strPwd)) {
-                ToastUtils.show(R.string.login_密码格式错误);
-            }  else if (!strPwdAgain.equals(strPwd)) {
-                ToastUtils.show(R.string.login_两次输入密码不一致);
-            } else {
+            }  else {
                 result = true;
             }
             return result;
         }
+    }
+    private void login() {
+        String   account = getTvText(R.id.login_et_username);
+        String Verification = getTvText(R.id.et_code);
+        loginParam.setUserPhone(account);
+        loginParam.setVerification(Verification);
+        loginParam.setType(2);
+        if (!ValidUtils.phone(account)) {
+
+            ToastUtils.show(R.string.login_手机号格式错误);
+            return;
+        }
+        if (!ValidUtils.verifyCode(Verification)) {
+            ToastUtils.show(R.string.login_验证码格式不正确);
+            return;
+        }
+        showLoadingDialog();
+        App.getServiceManager().getmService().login( loginParam.toPswJson())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RainbowObserver<Token>() {
+
+
+                    @Override
+                    public void onSuccess(RainbowResultEntity<Token> obj) {
+                         Token token = obj.getObj();
+
+//                        保存登陆信息
+                        App.get().setLogin(token);
+                        requestData();
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+    }
+
+    /**
+     * 请求数据
+     */
+    private void requestData() {
+//        showLoadingDialog();
+        App.getServiceManager().getmService()
+                .getCenter()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RainbowObserver<UserCenter>() {
+
+
+                    @Override
+                    public void onSuccess(RainbowResultEntity<UserCenter> obj) {
+                        UserCenter data = obj.getObj();
+                        setResult(RESULT_OK);
+                        finish();
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }
