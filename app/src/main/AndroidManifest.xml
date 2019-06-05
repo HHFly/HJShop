@@ -71,5 +71,7 @@
         <activity android:name=".uinew.userinfo.SettingActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.login.activity.PhoneActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.userinfo.ModifyPWActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.bindinfo.BindInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.bindinfo.BindIDActivity"  android:screenOrientation="portrait"/>
     </application>
 </manifest>

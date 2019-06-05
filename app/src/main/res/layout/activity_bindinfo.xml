@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <include layout="@layout/include_titlebar"/>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        style="@style/BaseItem.Tv"
+        android:textColor="#999999"
+        android:textSize="26px"
+        android:text="身份信息（必填，身份信息与银行卡信息必须一致）"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="23px"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="17px"
+        >
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+            android:id="@+id/Bind_id"
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+            app:img="@mipmap/ic_id"
+            app:msg="@string/身份证信息"
+            app:status="待上传"
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+            android:id="@+id/Bind_bank"
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+            app:img="@mipmap/ic_card"
+            app:msg="@string/银行卡"
+            app:status="@string/未绑定"
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+            android:id="@+id/Bind_qq"
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+            app:img="@mipmap/ic_qq"
+            app:msg="@string/QQ号"
+            app:status="@string/未绑定"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        >
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+            android:id="@+id/Bind_wechat"
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+            app:img="@mipmap/ic_webchat"
+            app:msg="@string/微信号"
+            app:status="@string/未绑定"
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+
+            />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/BaseItem.Tv"
+        android:textColor="#999999"
+        android:textSize="26px"
+        android:text="账号信息（绑定一个账号审核通过后就可以接单啦）"
+        android:layout_marginLeft="30px"
+        android:layout_marginTop="30px"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginTop="25px"
+        >
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+            android:id="@+id/Bind_taobao"
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+            app:img="@mipmap/ic_taobao"
+            app:msg="@string/淘宝"
+            app:status="@string/未绑定"
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/white"
+
+        >
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+
+            />
+        <com.mark.app.hjshop4a.widget.BandInfoItemView
+
+            android:layout_width="0px"
+            android:layout_height="250px"
+            android:layout_weight="1"
+
+            />
+
+    </LinearLayout>
+</LinearLayout>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+
+</LinearLayout>

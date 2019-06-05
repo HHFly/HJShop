@@ -38,6 +38,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface RainbowService {
     String baseUrl = BuildConfig.TEST_URL;
@@ -116,8 +117,8 @@ public interface RainbowService {
     /*1.获取短信验证码
      * 1注册 2登陆 3重置密码 4绑定银行卡
      * */
-    @POST("/api/user/getCaptcha")
-    Observable<RainbowResultEntity>sendSMS(@Field("data") String  data);
+    @POST("api/app/user/sendSMS")
+    Observable<RainbowResultEntity>sendSMS(@Query("data") String  data);
 
 
     //修改登陆密码
@@ -127,7 +128,7 @@ public interface RainbowService {
     //验证码	是
 
     @POST("/api/app/user/updateLoginPassword")
-    Observable<RainbowResultEntity> updateLoginPassword(@Field("data") String  data);
+    Observable<RainbowResultEntity> updateLoginPassword(@Query("data") String  data);
     /*获取首页信息*/
     @GET("/api/app/user/index")
     Observable<RainbowResultEntity<Index>> getIndex();
@@ -147,32 +148,32 @@ public interface RainbowService {
         身份证反面	是
         */
     @POST("/api/app/user/uploadIdcard")
-    Observable<RainbowResultEntity> uploadIdcard(@Field("data") String  data);
+    Observable<RainbowResultEntity> uploadIdcard(@Query("data") String  data);
     //    9.上传图片
 
     @POST("/api/app/user/common/uploadFile")
     Observable<RainbowResultEntity<String>> uploadImage(@Body RequestBody body);
     //10.修改联系方式
     @POST("/api/app/user/updateUserInfo")
-    Observable<RainbowResultEntity>updateUserInfo(@Field("data") String  data);
+    Observable<RainbowResultEntity>updateUserInfo(@Query("data") String  data);
     //11.获取qqwechat信息
     @GET("/api/app/user/getUserInfo")
     Observable<RainbowResultEntity<UserInfo>> getUserInfo();
     //12.绑定银行卡
     @POST("/api/app/user/bindBank")
-    Observable<RainbowResultEntity> bindBank(@Field("data") String  data);
+    Observable<RainbowResultEntity> bindBank(@Query("data") String  data);
     //13.修改绑定银行卡
     @POST("/api/app/user/updateBank")
-    Observable<RainbowResultEntity> updateBank(@Field("data") String  data);
+    Observable<RainbowResultEntity> updateBank(@Query("data") String  data);
     //14.获取绑定银行卡信息
     @GET("/api/shop/user/getUserBank")
     Observable<RainbowResultEntity<String>> getUserBank();
     //15.绑定买手账号
     @POST("/api/shop/user/addBuyerAccount")
-    Observable<RainbowResultEntity> addBuyerAccount(@Field("data") String  data);
+    Observable<RainbowResultEntity> addBuyerAccount(@Query("data") String  data);
     //16.修改买手账号
     @POST("/api/shop/user/updateBuyerAccount")
-    Observable<RainbowResultEntity> updateBuyerAccount(@Field("data") String  data);
+    Observable<RainbowResultEntity> updateBuyerAccount(@Query("data") String  data);
 //    17.获取买手账号列表
     @GET("/api/shop/user/getAcccountInfo")
     Observable<RainbowResultEntity<List<AccountInfo>>> getAcccountInfo();
@@ -187,8 +188,8 @@ public interface RainbowService {
     Observable<RainbowResultEntity> updateBuyerAccount();
     //21.获取待接订单
     @POST("/api/app/user/order/getWaitReciveOrder")
-    Observable<RainbowResultEntity<List<OrderInfo>>> getWaitReciveOrder(@Field("data") String  data);
+    Observable<RainbowResultEntity<List<OrderInfo>>> getWaitReciveOrder(@Query("data") String  data);
     //22.确认接单
     @POST("/api/app/user/order/sureReciveOrder")
-    Observable<RainbowResultEntity> sureReciveOrder(@Field("data") String  data);
+    Observable<RainbowResultEntity> sureReciveOrder(@Query("data") String  data);
 }

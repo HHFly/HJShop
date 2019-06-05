@@ -145,7 +145,7 @@ public class LoginActivity extends BaseActivity {
     private void login() {
         account = getTvText(R.id.login_et_username);
         String password = getTvText(R.id.login_et_pwd);
-        loginParam.setAccount(account);
+        loginParam.setUserPhone(account);
         loginParam.setPassword(password);
         loginParam.setType(1);
 //        if (!ValidUtils.get().phone(account)) {

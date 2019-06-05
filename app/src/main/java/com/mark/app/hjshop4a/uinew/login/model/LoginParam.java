@@ -4,20 +4,12 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
 import com.mark.app.hjshop4a.base.model.ParamBaseModel;
 
 public class LoginParam extends BaseModel {
-    String account;//
     String userPhone;//电话
     int type;//类型1密码登陆 2短信登陆
 
     String verification;
     String password;
 
-    public String getAccount() {
-        return account;
-    }
-
-    public void setAccount(String account) {
-        this.account = account;
-    }
 
     public String getUserPhone() {
         return userPhone;

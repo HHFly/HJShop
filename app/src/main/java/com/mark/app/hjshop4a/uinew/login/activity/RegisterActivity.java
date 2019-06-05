@@ -176,7 +176,7 @@ public class RegisterActivity extends BaseActivity  implements SelectInterface {
      * 获取验证码
      */
     private void getCode() {
-       String macId= MD5Utils.md5(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)+android.os.Build.SERIAL);
+//       String macId= MD5Utils.md5(Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID)+android.os.Build.SERIAL);
         String strPhone = getTvText(R.id.register_et_username);
         if (!ValidShowBtnUtils.phone(strPhone)) {
             ToastUtils.show(R.string.login_手机号格式不正确);

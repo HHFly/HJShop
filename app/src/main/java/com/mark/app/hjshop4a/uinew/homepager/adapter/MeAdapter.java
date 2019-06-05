@@ -72,7 +72,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        ActivityJumpUtils.actAbout(App.get().getCurActivity());
+                        ActivityJumpUtils.actBind(App.get().getCurActivity());
                     }
                 });
                 break;

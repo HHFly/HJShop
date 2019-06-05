@@ -117,12 +117,12 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab4: {
-                selectTab(tab4);
-//                if (App.hasToken()) {
-//                    selectTab(tab4);
-//                } else {
-//                    ActivityJumpUtils.actLogin(getActivity());
-//                }
+//                selectTab(tab4);
+                if (App.hasToken()) {
+                    selectTab(tab4);
+                } else {
+                    ActivityJumpUtils.actLogin(getActivity());
+                }
                 break;
 
             }

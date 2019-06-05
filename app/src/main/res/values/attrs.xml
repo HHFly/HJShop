@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="BindInfoLayout">
+        <attr name="img" format="reference"/>
+        <attr name="msg" format="string"/>
+        <attr name="status" format="string"/>
 
+    </declare-styleable>
     <declare-styleable name="WarpLinearLayout">
         <!-- 内容的对齐方式 -->
         <attr name="grivate" format="enum">

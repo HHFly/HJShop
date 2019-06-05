@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HJShop4A</string>
+    <string name="app_name">_(:з」∠)_</string>
     <string name="strip_mkpay_btn_finish">完成</string>
     <!-- 标题 -->
     <string name="titlebar_确认收货地址">确认收货地址</string>
@@ -284,6 +284,15 @@
     <string name="活动赏金">活动赏金：</string>
     <string name="抢此任务">抢此任务</string>
     <string name="活动要求">活动要求：</string>
-
-
+    <string name="身份证信息">身份证信息</string>
+    <string name="未绑定">未绑定</string>
+    <string name="已綁定">已綁定</string>
+    <string name="QQ号">QQ号</string>
+    <string name="微信号">微信号</string>
+    <string name="淘宝">淘宝</string>
+    <string name="待上传">待上传</string>
+    <string name="待审核">待审核</string>
+    <string name="审核通过">审核通过</string>
+    <string name="审核失败">审核失败</string>
+    <string name="真实姓名">真实姓名：</string>
 </resources>
