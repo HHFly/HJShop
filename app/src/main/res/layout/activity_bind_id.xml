@@ -4,18 +4,99 @@
     android:layout_height="match_parent"
     android:background="@color/background">
     <include layout="@layout/include_titlebar"/>
-    <RelativeLayout
+    <View
+        style="@style/BaseLine.Horizontal"/>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="98px"
+        android:layout_height="wrap_content"
         android:background="@color/white"
+        android:orientation="vertical"
         android:paddingLeft="30px">
         <EditText
+            android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:textColorHint="#333333"
+            android:layout_height="98px"
+            android:textColorHint="#999999"
+            android:textColor="#333333"
             android:textSize="28px"
             android:hint="@string/真实姓名"
             android:background="@null"
             />
-    </RelativeLayout>
+
+        <View
+
+            style="@style/BaseLine.Horizontal"/>
+        <EditText
+            android:id="@+id/et_num"
+            android:layout_width="match_parent"
+            android:layout_height="98px"
+            android:textColorHint="#999999"
+            android:textColor="#333333"
+            android:textSize="28px"
+            android:hint="@string/身份证号码"
+            android:background="@null"
+            />
+    </LinearLayout>
+    <TextView style="@style/BaseTab.Iv"
+        android:text="@string/身份证件照"
+        android:layout_marginTop="28px"
+        android:layout_marginLeft="30px"
+        android:textColor="#333333"
+        android:textSize="28px"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="46px"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/ll_front"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="34px"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="299px"
+                android:layout_height="192px"
+                android:src="@mipmap/ic_card_zhengmian"/>
+            <TextView style="@style/BaseTab.Iv"
+                android:textSize="22px"
+                android:textColor="#999999"
+                android:text="@string/正面"
+                android:layout_marginTop="23px"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_after"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="299px"
+                android:layout_height="192px"
+                android:src="@mipmap/ic_card_fanmian"/>
+            <TextView style="@style/BaseTab.Iv"
+                android:textSize="22px"
+                android:textColor="#999999"
+                android:text="@string/反面"
+                android:layout_marginTop="23px"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_width="match_parent"
+        android:text="@string/提交"
+        android:layout_marginTop="80px"
+
+        android:textSize="28px"/>
+        <!--android:background="@drawable/select_btn_normal_important2"-->
+        <!--android:textColor="@drawable/select_color_blue_white"-->
+        <!--/>-->
 </LinearLayout>

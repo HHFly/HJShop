@@ -96,4 +96,14 @@ public class ValidShowBtnUtils {
     public static boolean pwd(String data) {
         return Pattern.matches(PWD, data);
     }
+    /**
+     * 校验密码
+     *
+     * @param data
+     * @return
+     */
+    public static boolean idCard(String data) {
+//         IdCardUtil idCardUtil =new IdCardUtil.toNewIdCard(data);
+//        return IdCardUtil.(PWD, data);
+    }
 }

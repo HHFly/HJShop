@@ -3,6 +3,9 @@ package com.mark.app.hjshop4a.data.entity;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.PasswordUtil;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
 public class RainbowResultEntity<T> {
     /**
      * 错误码
@@ -24,8 +27,12 @@ public class RainbowResultEntity<T> {
     private T obj;
 
     public T getObj() {
-
-        return (T) JsonUtils.fromJson(getResult(), obj.getClass());
+        ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
+        if (type != null) {
+            Type[] actualTypeArguments = type.getActualTypeArguments();
+            return  JsonUtils.fromJson(getResult(), (Class<T>) actualTypeArguments[0]);
+        }
+        return  null;
     }
 
     public void setObj(T obj) {

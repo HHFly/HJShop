@@ -295,4 +295,10 @@
     <string name="审核通过">审核通过</string>
     <string name="审核失败">审核失败</string>
     <string name="真实姓名">真实姓名：</string>
+    <string name="身份证号码">身份证号码：</string>
+    <string name="身份证件照">身份证件照：</string>
+    <string name="正面">正面</string>
+    <string name="反面">反面</string>
+    <string name="提交">提交</string>
+    <string name="绑定身份信息">绑定身份信息</string>
 </resources>
