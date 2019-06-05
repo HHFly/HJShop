@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.userinfo;
+package com.mark.app.hjshop4a.uinew.userinfo;
 
 import android.text.TextUtils;
 import android.view.View;
@@ -14,8 +14,11 @@ import com.mark.app.hjshop4a.common.utils.MD5Utils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
+import com.mark.app.hjshop4a.uinew.login.model.UpdateLoginPSWParam;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -27,6 +30,7 @@ import io.reactivex.schedulers.Schedulers;
 public class ModifyPWActivity extends BaseActivity {
     private  boolean newflag =false;
     private  boolean oldflag =false;
+    UpdateLoginPSWParam pswParam =new UpdateLoginPSWParam();
     @Override
     public int getContentViewResId() {
         return R.layout.activity_user_modify_pwd;
@@ -97,26 +101,26 @@ public class ModifyPWActivity extends BaseActivity {
             ToastUtils.show("两次输入密码不一致");
             return;
         }
-        CommitUserInfo commitUserInf=new CommitUserInfo();
-        commitUserInf.setOldPassword(MD5Utils.md5(old));
-        commitUserInf.setNewPassword(MD5Utils.md5(news));
-        requestData(2,commitUserInf);
+        pswParam.setType(1);
+        pswParam.setNewPassword(news);
+        pswParam.setOldPassword(old);
+        requestData();
     }
     /**
      * 请求数据
      */
-    private void requestData(int type,CommitUserInfo userInfo) {
+    private void requestData() {
         showLoadingDialog();
 
-        App.getServiceManager().getPdmService()
-                .setUserInfo(UserInfoType.CHANGEPSW,userInfo.getMap())
+        App.getServiceManager().getmService()
+                .updateLoginPassword(pswParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
+                .subscribe(new RainbowObserver() {
 
 
                     @Override
-                    public void onSuccess(BaseResultEntity obj) {
+                    public void onSuccess(RainbowResultEntity obj) {
                         ToastUtils.show("修改成功");
                         App.get().setLogin(null);
                         loginout();

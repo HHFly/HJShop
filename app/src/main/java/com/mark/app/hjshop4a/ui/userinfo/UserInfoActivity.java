@@ -30,7 +30,7 @@ public class UserInfoActivity extends BaseActivity {
     @Override
     public void initView() {
        setTvText(R.id.titlebar_tv_title,"个人信息设置");
-        mdata= App.getAppContext().getUserInfo();
+//        mdata= App.getAppContext().getUserInfo();
     }
 
 

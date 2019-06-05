@@ -14,10 +14,11 @@ import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.uinew.homepager.model.Index;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
-import com.mark.app.hjshop4a.uinew.userinfo.AccountInfo;
-import com.mark.app.hjshop4a.uinew.userinfo.BindStatus;
-import com.mark.app.hjshop4a.uinew.userinfo.UserCardInfo;
-import com.mark.app.hjshop4a.uinew.userinfo.UserInfo;
+import com.mark.app.hjshop4a.uinew.order.OrderInfo;
+import com.mark.app.hjshop4a.uinew.userinfo.model.AccountInfo;
+import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
+import com.mark.app.hjshop4a.uinew.userinfo.model.UserCardInfo;
+import com.mark.app.hjshop4a.uinew.userinfo.model.UserInfo;
 
 import java.io.IOException;
 import java.util.List;
@@ -184,4 +185,10 @@ public interface RainbowService {
     //20.获取买手账号信息
     @POST("/api/shop/user/updateBuyerAccount")
     Observable<RainbowResultEntity> updateBuyerAccount();
+    //21.获取待接订单
+    @POST("/api/app/user/order/getWaitReciveOrder")
+    Observable<RainbowResultEntity<List<OrderInfo>>> getWaitReciveOrder(@Field("data") String  data);
+    //22.确认接单
+    @POST("/api/app/user/order/sureReciveOrder")
+    Observable<RainbowResultEntity> sureReciveOrder(@Field("data") String  data);
 }

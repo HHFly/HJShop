@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.uinew;
+package com.mark.app.hjshop4a.uinew.userinfo;
 
 import android.view.View;
 

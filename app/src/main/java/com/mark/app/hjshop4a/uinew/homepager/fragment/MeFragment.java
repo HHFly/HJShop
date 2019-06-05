@@ -11,18 +11,14 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
-import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
-import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 
 
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
-import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.uinew.login.activity.LoginSwitchActivity;
 import com.mark.app.hjshop4a.uinew.homepager.adapter.MeAdapter;
-import com.mark.app.hjshop4a.uinew.userinfo.UserInfo;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
@@ -61,13 +57,13 @@ public class MeFragment extends BaseFragment{
 
     @Override
     public void setListener() {
-        setClickListener(R.id.titlebar_tv_right);
+
         setClickListener(R.id.titlebar_tv_title);
     }
 
     @Override
     public void initView() {
-        setTvText(R.id.titlebar_tv_right,"退出");
+        setTvText(R.id.titlebar_tv_title,R.string.home_我的);
 
 //        initRvAdapter();
         requestData();
@@ -76,13 +72,7 @@ public class MeFragment extends BaseFragment{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.titlebar_tv_right:
-//            ActivityJumpUtils.actLoginSwicth(getActivity() );
-//                退出
-                Intent intent = new Intent(getActivity(), LoginSwitchActivity.class);
 
-                this.startActivityForResult(intent,REQUESTCODE);
-                break;
             case R.id.titlebar_tv_title:
                 ActivityJumpUtils.actLogin(getActivity());
                 break;

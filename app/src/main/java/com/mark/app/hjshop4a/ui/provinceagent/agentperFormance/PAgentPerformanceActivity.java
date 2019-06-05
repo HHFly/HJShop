@@ -56,7 +56,7 @@ public class PAgentPerformanceActivity extends BaseActivity implements OnRefresh
         }
         startTime=0;
         endTime=0;
-        cityId= App.getAppContext().getUserInfo().getCityId();
+//        cityId= App.getAppContext().getUserInfo().getCityId();
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnRefreshLoadMoreListener(this);
         mRefreshLayout.autoRefresh();

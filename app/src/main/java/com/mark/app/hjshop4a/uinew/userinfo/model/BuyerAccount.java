@@ -1,23 +1,32 @@
-package com.mark.app.hjshop4a.uinew.userinfo;
+package com.mark.app.hjshop4a.uinew.userinfo.model;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
-import com.mark.app.hjshop4a.base.model.ParamBaseModel;
 
-public class BuyerAccountParam extends BaseModel {
+public class BuyerAccount extends BaseModel {
+    long buyerAccountId;//账号Id
+
     String accountName;//账号名称
-    String receiverName;//收货人
+    String receiverName; //收货人
     String receiverPhone;//收货电话
     int addressId;//收货地址Id
     String addresDetail;//收货详细地址
     int sex;//性别
     int age;//年龄
-    int level; //等级
+    int level;//等级
     String shoppingType;//购买类型（"1/2/3"）
     String levelPic;//等级图片
     String huabeiPic;//花呗图片
     int isHuabei;//是否花呗
-
     String realAuthenticatePic;//认证图片
+    int status;//状态
+
+    public long getBuyerAccountId() {
+        return buyerAccountId;
+    }
+
+    public void setBuyerAccountId(long buyerAccountId) {
+        this.buyerAccountId = buyerAccountId;
+    }
 
     public String getAccountName() {
         return accountName;
@@ -121,5 +130,13 @@ public class BuyerAccountParam extends BaseModel {
 
     public void setRealAuthenticatePic(String realAuthenticatePic) {
         this.realAuthenticatePic = realAuthenticatePic;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 }

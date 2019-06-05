@@ -123,4 +123,11 @@ public class StringUtils {
         String newPhone = phone.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
         return newPhone;
     }
+    public static String DoubletoString(double num) {
+        try {
+          return   String.valueOf(num);
+        }catch (Exception e){
+            return "";
+        }
+    }
 }

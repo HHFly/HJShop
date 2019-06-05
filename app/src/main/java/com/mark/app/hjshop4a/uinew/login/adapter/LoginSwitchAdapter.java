@@ -48,17 +48,17 @@ public class LoginSwitchAdapter extends BaseListRvAdapter<LoginType> {
     }
     private OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        onItemClickListener = listener;
-    }
+        public void setOnItemClickListener(OnItemClickListener listener) {
+            onItemClickListener = listener;
+        }
 
-    public interface OnItemClickListener {
-        /**
-         * 点击个人信息
-         *
-         *
-         */
-        void onClickUserInfo(LoginType data);
+        public interface OnItemClickListener {
+            /**
+             * 点击个人信息
+             *
+             *
+             */
+            void onClickUserInfo(LoginType data);
 
 
     }

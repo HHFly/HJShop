@@ -24,11 +24,11 @@ import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.userinfo.BasicInfoActivity;
 import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
-import com.mark.app.hjshop4a.ui.userinfo.ModifyPWActivity;
+import com.mark.app.hjshop4a.uinew.userinfo.ModifyPWActivity;
 import com.mark.app.hjshop4a.ui.userinfo.UserInfoActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
-import com.mark.app.hjshop4a.uinew.SettingActivity;
-import com.mark.app.hjshop4a.uinew.VersionActivity;
+import com.mark.app.hjshop4a.uinew.userinfo.SettingActivity;
+import com.mark.app.hjshop4a.uinew.userinfo.VersionActivity;
 
 
 /**

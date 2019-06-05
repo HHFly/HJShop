@@ -62,7 +62,7 @@ public class AgentPerformanceActivity extends BaseActivity implements OnRefreshL
         startTime=0;
         endTime=0;
         if(cityId==0) {
-            cityId = App.getAppContext().getUserInfo().getCityId();
+//            cityId = App.getAppContext().getUserInfo().getCityId();
         }
         mRefreshLayout = getView(R.id.refreshLayout);
         mRefreshLayout.setOnLoadMoreListener(this);

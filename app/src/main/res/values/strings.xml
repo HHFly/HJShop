@@ -278,6 +278,12 @@
     <string name="点击提现">点击提现</string>
     <string name="手机快捷登录">手机快捷登录</string>
     <string name="快捷登录">快捷登录</string>
+    <string name="任务大厅">任务大厅</string>
+    <string name="活动类型">活动类型：</string>
+    <string name="垫付贷款">垫付贷款：</string>
+    <string name="活动赏金">活动赏金：</string>
+    <string name="抢此任务">抢此任务</string>
+    <string name="活动要求">活动要求：</string>
 
 
 </resources>

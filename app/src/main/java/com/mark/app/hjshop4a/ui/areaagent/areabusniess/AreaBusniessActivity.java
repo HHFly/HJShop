@@ -62,7 +62,7 @@ public class AreaBusniessActivity extends BaseActivity  implements OnRefreshLoad
         startTime=0;
         endTime=0;
         if(cityId==0) {
-            cityId = App.getAppContext().getUserInfo().getCityId();
+//            cityId = App.getAppContext().getUserInfo().getCityId();
         }
         role= App.getAppContext().getRoleType();
         mRefreshLayout = getView(R.id.refreshLayout);
