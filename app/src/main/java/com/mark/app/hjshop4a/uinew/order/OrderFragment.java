@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -70,7 +71,8 @@ public class OrderFragment extends BaseFragment  {
                 .subscribe(new RainbowObserver<List<OrderInfo>>() {
                     @Override
                     public void onSuccess(RainbowResultEntity<List<OrderInfo>> obj) {
-                        initRvAdapter(obj.getObj(),true);
+                        List<OrderInfo> data = JsonUtils.getList(obj.getResult(),OrderInfo.class);
+                        initRvAdapter(data,true);
                     }
 
                 });

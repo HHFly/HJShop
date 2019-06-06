@@ -41,7 +41,9 @@ import com.mark.app.hjshop4a.common.utils.location.LocationManagerUtil;
 import com.mark.app.hjshop4a.common.utils.luban.LubanUtil;
 import com.mark.app.hjshop4a.common.utils.luban.model.LubanResultData;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
 import com.mark.app.hjshop4a.ui.homepager.model.Lookup;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
@@ -521,9 +523,9 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
             TextView tv = (TextView) view;
             if (tv instanceof PhoneEditText) {
                 PhoneEditText et = (PhoneEditText) tv;
-                return et.getTextString();
+                return et.getTextString().trim();
             } else {
-                return tv.getText().toString();
+                return tv.getText().toString().trim();
             }
         }
         return "";
@@ -597,10 +599,10 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
                 .addFormDataPart("uploadType", "上传图片")
                 .addFormDataPart("imageUrl", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
                 .build();
-        App.getServiceManager().getPdmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<String>() {
+        App.getServiceManager().getmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RainbowObserver<String>() {
                     @Override
-                    public void onSuccess(@io.reactivex.annotations.NonNull BaseResultEntity<String> obj) {
+                    public void onSuccess(@io.reactivex.annotations.NonNull RainbowResultEntity<String> obj) {
                         String data = obj.getResult();
                         if (listenr != null) {
                             if (TextUtils.isEmpty(data)) {

@@ -24,16 +24,9 @@ public class RainbowResultEntity<T> {
      */
     private long dateTime;
 
-    private T obj;
+    private T obj ;
 
-    public T getObj() {
-        ParameterizedType type = (ParameterizedType) getClass().getGenericSuperclass();
-        if (type != null) {
-            Type[] actualTypeArguments = type.getActualTypeArguments();
-            return  JsonUtils.fromJson(getResult(), (Class<T>) actualTypeArguments[0]);
-        }
-        return  null;
-    }
+
 
     public void setObj(T obj) {
         this.obj = obj;
@@ -56,6 +49,9 @@ public class RainbowResultEntity<T> {
     }
 
     public String getResult() {
+        if(result==null){
+            return null;
+        }
         return PasswordUtil.decode(result);
     }
 

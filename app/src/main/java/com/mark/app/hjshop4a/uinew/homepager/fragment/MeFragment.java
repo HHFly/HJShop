@@ -10,6 +10,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
@@ -66,6 +67,9 @@ public class MeFragment extends BaseFragment{
         setTvText(R.id.titlebar_tv_title,R.string.home_我的);
 
 //        initRvAdapter();
+        if(App.getAppContext().getUserInfo()!=null){
+            initRvAdapter(App.getAppContext().getUserInfo());
+        }
         requestData();
     }
 
@@ -93,7 +97,7 @@ public class MeFragment extends BaseFragment{
 
                     @Override
                     public void onSuccess(RainbowResultEntity<UserCenter> obj) {
-                       UserCenter mData =obj.getObj();
+                       UserCenter mData = JsonUtils.fromJson(obj.getResult(),UserCenter.class);
                         initRvAdapter(mData);
                     }
 

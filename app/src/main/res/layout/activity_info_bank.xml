@@ -23,15 +23,7 @@
             android:paddingRight="30px"
             tools:ignore="PxUsage">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="30px"
-                android:paddingTop="30px"
-                android:text="开户人姓名"
-                android:textColor="@color/colorText"
-                android:textSize="@dimen/textsize_26px"
-                tools:ignore="HardcodedText" />
+
 
             <EditText
                 android:id="@+id/account_name"
@@ -40,8 +32,8 @@
                 android:layout_marginLeft="10px"
                 android:layout_weight="1.0"
                 android:background="@null"
-                android:gravity="right|center_vertical"
-                android:hint="请输入开户人姓名"
+                android:gravity="center_vertical"
+                android:hint="开户人"
                 android:maxLength="10"
                 android:paddingBottom="30px"
                 android:paddingTop="30px"

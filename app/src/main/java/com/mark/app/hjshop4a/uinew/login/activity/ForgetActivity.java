@@ -5,6 +5,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
@@ -50,6 +51,11 @@ public class ForgetActivity extends BaseActivity {
     public void initView() {
         setTvText(R.id.titlebar_tv_title, R.string.login_忘记密码);
         setTvText(R.id.et_username, mPhone);
+        setProhibitEmoji((EditText) getView(R.id.et_username));
+        setProhibitEmoji((EditText) getView(R.id.et_code));
+        setProhibitEmoji((EditText) getView(R.id.et_pwd));
+        setProhibitEmoji((EditText) getView(R.id.et_pwd_again));
+
         initCountDown();
         textWatcher.onTextChanged("", 0, 0, 0);
     }

@@ -10,6 +10,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.utils.CountDownUtils;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.PdUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
@@ -214,7 +215,7 @@ public class PhoneActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity<Token> obj) {
-                         Token token = obj.getObj();
+                         Token token =JsonUtils.fromJson(obj.getResult(),Token.class);
 
 //                        保存登陆信息
                         App.get().setLogin(token);
@@ -243,7 +244,7 @@ public class PhoneActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity<UserCenter> obj) {
-                        UserCenter data = obj.getObj();
+                        UserCenter data = JsonUtils.fromJson(obj.getResult(),UserCenter.class);
                         setResult(RESULT_OK);
                         finish();
                     }

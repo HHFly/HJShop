@@ -14,6 +14,8 @@ import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.calendarview.CalendarViewActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 
+import com.mark.app.hjshop4a.uinew.bindinfo.BankCardAddActivity;
+import com.mark.app.hjshop4a.uinew.bindinfo.BindIDActivity;
 import com.mark.app.hjshop4a.uinew.bindinfo.BindInfoActivity;
 import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.ui.start.GuideActivity;
@@ -265,7 +267,9 @@ public class ActivityJumpUtils {
 
      */
     public static void actBankCard(Activity activity) {
-        Intent intent = new Intent(activity, BankCardActivity.class);
+        Intent intent = new Intent(activity, BankCardAddActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }
@@ -359,6 +363,14 @@ public class ActivityJumpUtils {
     //跳转绑定
     public static void actBind(Activity activity) {
         Intent intent = new Intent(activity, BindInfoActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    //跳转绑定
+    public static void actID(Activity activity) {
+        Intent intent = new Intent(activity, BindIDActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         activity.startActivity(intent);

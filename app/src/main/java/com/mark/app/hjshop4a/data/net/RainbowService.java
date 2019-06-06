@@ -17,6 +17,7 @@ import com.mark.app.hjshop4a.uinew.login.model.Token;
 import com.mark.app.hjshop4a.uinew.order.OrderInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.AccountInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
+import com.mark.app.hjshop4a.uinew.userinfo.model.UserBank;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserCardInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserInfo;
 
@@ -89,7 +90,7 @@ public interface RainbowService {
                     //刷新token
 //                    token = refreshTOken(chain, oldRequest, token,context);
 
-                    builder.addHeader("accessToken", token);
+                    builder.addHeader("token", token);
 //                            .addHeader("platform", platform)
 //                            .addHeader("version",version);
 
@@ -167,7 +168,7 @@ public interface RainbowService {
     Observable<RainbowResultEntity> updateBank(@Query("data") String  data);
     //14.获取绑定银行卡信息
     @GET("/api/shop/user/getUserBank")
-    Observable<RainbowResultEntity<String>> getUserBank();
+    Observable<RainbowResultEntity<UserBank>> getUserBank();
     //15.绑定买手账号
     @POST("/api/shop/user/addBuyerAccount")
     Observable<RainbowResultEntity> addBuyerAccount(@Query("data") String  data);

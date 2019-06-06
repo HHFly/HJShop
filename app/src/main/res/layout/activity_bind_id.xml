@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background">
     <include layout="@layout/include_titlebar"/>
@@ -19,6 +21,7 @@
             android:textColorHint="#999999"
             android:textColor="#333333"
             android:textSize="28px"
+            android:maxLength="10"
             android:hint="@string/真实姓名"
             android:background="@null"
             />
@@ -33,6 +36,7 @@
             android:textColorHint="#999999"
             android:textColor="#333333"
             android:textSize="28px"
+            android:maxLength="25"
             android:hint="@string/身份证号码"
             android:background="@null"
             />
@@ -58,10 +62,14 @@
             android:orientation="vertical"
             android:layout_marginRight="34px"
             android:gravity="center">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imagebtn1"
+                style="@style/BaseSDV"
                 android:layout_width="299px"
                 android:layout_height="192px"
-                android:src="@mipmap/ic_card_zhengmian"/>
+                android:background="@mipmap/ic_card_zhengmian"
+                app:roundedCornerRadius="10px" />
+
             <TextView style="@style/BaseTab.Iv"
                 android:textSize="22px"
                 android:textColor="#999999"
@@ -75,10 +83,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center">
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/imagebtn2"
+                style="@style/BaseSDV"
                 android:layout_width="299px"
                 android:layout_height="192px"
-                android:src="@mipmap/ic_card_fanmian"/>
+                android:background="@mipmap/ic_card_fanmian"
+                app:roundedCornerRadius="10px" />
             <TextView style="@style/BaseTab.Iv"
                 android:textSize="22px"
                 android:textColor="#999999"

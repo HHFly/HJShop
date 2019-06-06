@@ -301,4 +301,11 @@
     <string name="反面">反面</string>
     <string name="提交">提交</string>
     <string name="绑定身份信息">绑定身份信息</string>
+    <string name="请输入姓名">请输入姓名</string>
+    <string name="身份证号不正确">身份证号不正确</string>
+    <string name="开户人">开 户 人：</string>
+    <string name="开户账号">开户账号：</string>
+    <string name="预留手机号">预留手机号：</string>
+    <string name="绑定银行卡">绑定银行卡</string>
+    <string name="保存">保存</string>
 </resources>

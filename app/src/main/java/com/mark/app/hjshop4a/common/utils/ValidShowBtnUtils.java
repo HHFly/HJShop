@@ -103,7 +103,8 @@ public class ValidShowBtnUtils {
      * @return
      */
     public static boolean idCard(String data) {
-//         IdCardUtil idCardUtil =new IdCardUtil.toNewIdCard(data);
-//        return IdCardUtil.(PWD, data);
+         IdCardUtil idCardUtil =new IdCardUtil(data);
+         return  0==idCardUtil.isCorrect();
+
     }
 }

@@ -1,13 +1,17 @@
 package com.mark.app.hjshop4a.uinew.bindinfo;
 
+import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
+import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.uinew.order.OrderInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
 import com.mark.app.hjshop4a.widget.BandInfoItemView;
@@ -60,10 +64,14 @@ public class BindInfoActivity extends BaseActivity {
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.Bind_id:
+                ActivityJumpUtils.actID(this);
+
                 break;
             case R.id.Bind_bank:
+                ActivityJumpUtils.actBankCard(this);
                 break;
             case R.id.Bind_qq:
+//                FunctionDialogFactory.showAddOneParamDialog();
                 break;
             case R.id.Bind_wechat:
                 break;
@@ -90,7 +98,7 @@ public class BindInfoActivity extends BaseActivity {
                 .subscribe(new RainbowObserver<BindStatus>() {
                     @Override
                     public void onSuccess(RainbowResultEntity<BindStatus> obj) {
-                            BindStatus data =obj.getObj();
+                            BindStatus data = JsonUtils.fromJson(obj.getResult(),BindStatus.class);
                             switch (data.getIdCardStatus()){
                                 case BindIDType.unupload:
                                         Bind_id.setStatus(getString(R.string.待上传));

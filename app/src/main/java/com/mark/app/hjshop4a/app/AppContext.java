@@ -229,7 +229,7 @@ public class AppContext {
     public void setLoginRepo(Token data) {
         mLoginRepo = data;
 
-        SPUtil.getInstance(mContext).putString(KEY_TOKEN, new Token().toJson());
+        SPUtil.getInstance(mContext).putString(KEY_TOKEN, mLoginRepo.toJson());
 
         LogUtils.logFormat(this, "setLoginRepo", "更新token信息" + JsonUtils.toJson(data));
     }

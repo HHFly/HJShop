@@ -79,6 +79,10 @@ public class AddOneEtParamDialog extends BaseDialogFragment {
             case 2:
                 rootView = inflater.inflate(R.layout.dialog_add_one_param_input_num_numc, container, false);
                 break;
+            case 3:
+                rootView = inflater.inflate(R.layout.dialog_add_two_param_input_num, container, false);
+                break;
+
             default:  rootView = inflater.inflate(R.layout.dialog_add_one_param, container, false);
         }
 

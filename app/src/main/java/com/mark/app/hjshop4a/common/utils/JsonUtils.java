@@ -48,7 +48,22 @@ public class JsonUtils {
         }
         return list;
     }
-
+    /**
+     * 获取列表
+     *
+     * @param je
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> getList(String je, Class<T> cls) {
+        Gson gson = new Gson();
+        List<T> list = new ArrayList<T>();
+        JsonArray array = getJsonElement(je).getAsJsonArray();
+        for (final JsonElement elem : array) {
+            list.add(gson.fromJson(elem, cls));
+        }
+        return list;
+    }
     /**
      * 转换为Json
      *
@@ -69,6 +84,9 @@ public class JsonUtils {
      * @return
      */
     public static <T> T fromJson(String json, Class<T> c) {
+        if(json==null){
+            return null;
+        }
         Gson gson = new GsonBuilder().create();
         return gson.fromJson(new JsonParser().parse(json), c);
     }

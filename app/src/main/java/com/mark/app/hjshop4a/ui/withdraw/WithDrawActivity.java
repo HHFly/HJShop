@@ -18,7 +18,7 @@ import com.mark.app.hjshop4a.common.utils.NumParseUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
-import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardAddActivity;
+import com.mark.app.hjshop4a.uinew.bindinfo.BankCardAddActivity;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.dialog.BankCardDialog;
 import com.mark.app.hjshop4a.ui.withdraw.model.WithDraw;

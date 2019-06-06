@@ -16,9 +16,12 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
+
+
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -46,7 +49,7 @@ public class Luban  {
     private static File getPhotoCacheDir(Context context, String cacheName) {
         File cacheDir = context.getCacheDir();
         if (cacheDir == null) {
-            if (Log.isLoggable("Luban", 6)) {
+            if (Log.isLoggable("Luban", Log.ERROR)) {
                 Log.e("Luban", "default disk cache dir is null");
             }
 
@@ -112,9 +115,10 @@ public class Luban  {
                     }
 
                 }
-            }).onErrorResumeNext((Func1<Throwable, ? extends Observable<? extends File>>) Observable.empty()).filter(new Func1<File, Boolean>() {
-                public Boolean call(File file) {
-                    return file != null;
+            }).onErrorResumeNext(new Func1<Throwable, Observable<? extends File>>() {
+                @Override
+                public Observable<? extends File> call(Throwable throwable) {
+                    return Observable.empty();
                 }
             }).subscribe(new Action1<File>() {
                 public void call(File file) {

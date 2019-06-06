@@ -18,6 +18,7 @@ import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.ui.bankcard.adapter.BankCardAdapter;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCard;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCards;
+import com.mark.app.hjshop4a.uinew.bindinfo.BankCardAddActivity;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
