@@ -1,9 +1,12 @@
 package com.mark.app.hjshop4a.ui.dialog.factory;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.res.AssetManager;
 import android.support.annotation.IdRes;
 import android.support.annotation.StringRes;
+
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
@@ -15,6 +18,8 @@ import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
 import com.mark.app.hjshop4a.ui.dialog.AddOneEtParamDialog;
 import com.mark.app.hjshop4a.ui.dialog.ListDialog;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
+import com.mark.app.hjshop4a.uinew.dialog.BigSdvDialog;
+import com.mark.app.hjshop4a.uinew.dialog.OneEtParamDialog;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
 
 
@@ -123,7 +128,6 @@ public class FunctionDialogFactory {
     }
 
 
-
     /**
      * 显示一个参数的对话框
      */
@@ -209,5 +213,24 @@ public class FunctionDialogFactory {
             }
         }).show(activity.getFragmentManager());
     }
-
+    /**
+     * 显示大图
+     *
+     * @param activity
+     * @param imageUrl
+     */
+    public static void showBigSdvDialog(FragmentManager activity, String imageUrl) {
+        BigSdvDialog dialog = BigSdvDialog.getInstance(imageUrl);
+        dialog.show(activity);
+    }
+    /**
+     * 显示大图
+     *
+     * @param activity
+     * @param imageUrl
+     */
+    public static void showBigSdvDialog(FragmentManager activity, int imageUrl) {
+        BigSdvDialog dialog = BigSdvDialog.getInstance(imageUrl,1);
+        dialog.show(activity);
+    }
 }

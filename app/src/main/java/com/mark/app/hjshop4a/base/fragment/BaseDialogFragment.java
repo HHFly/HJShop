@@ -177,7 +177,22 @@ public abstract class BaseDialogFragment extends DialogFragment implements View.
     public String getStringApp(@StringRes int resId) {
         return App.get().getString(resId);
     }
-
+    /**
+     * 设置文案
+     *
+     * @param rootView
+     * @param id
+     * @param data
+     */
+    public void setTvText(View rootView, @IdRes int id,  @StringRes int data) {
+        if (rootView != null) {
+            View view = getView(rootView, id);
+            if (view != null && view instanceof TextView) {
+                TextView tv = (TextView) view;
+                tv.setText(data);
+            }
+        }
+    }
     /**
      * 设置文案
      *

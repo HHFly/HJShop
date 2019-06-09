@@ -14,27 +14,27 @@
         />
     <EditText
         android:id="@+id/et_value"
-        android:layout_marginTop="30px"
-        android:layout_marginBottom="30px"
+        android:layout_marginTop="58px"
+        android:layout_marginBottom="73px"
         android:layout_marginRight="38px"
         android:layout_marginLeft="38px"
         android:layout_width="match_parent"
-        android:layout_height="60px"
+        android:layout_height="78px"
         android:textColorHint="#999999"
-        android:hint=""
-        android:background="#EFEFEF"
+        android:hint="请输入您的QQ账号"
+        android:paddingLeft="28px"
+        android:background="@drawable/shape_efefef_10px"
         android:maxLength="20"
         android:maxEms="20"
         android:ellipsize="end"
         android:singleLine="true"
-        android:inputType="number|numberDecimal"
-        android:gravity="center"
+
         android:textSize="@dimen/textsize_28px" />
     <View style="@style/BaseLine.Horizontal" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70px">
+        android:layout_height="91px">
 
         <Button
             android:id="@+id/normal_btn_left"

@@ -126,7 +126,7 @@
     <string name="user_msg_certification">实名认证</string>
     <string name="user_msg_sex">性别</string>
     <string name="user_msg_birthday">出生日期</string>
-    <string name="user_msg_性别">性别</string>
+    <string name="user_msg_性别">性别：</string>
     <string name="user_msg_实名认证">实名认证</string>
     <string name="user_msg_出生日期">出生日期</string>
     <!--实名认证-->
@@ -308,4 +308,10 @@
     <string name="预留手机号">预留手机号：</string>
     <string name="绑定银行卡">绑定银行卡</string>
     <string name="保存">保存</string>
+    <string name="请输入您的QQ账号">请输入您的QQ账号</string>
+    <string name="绑定您的QQ账号">绑定您的QQ账号</string>
+    <string name="请输入您的微信号">请输入您的微信号</string>
+    <string name="绑定您的微信号">绑定您的微信号</string>
+    <string name="修改成功">修改成功</string>
+    <string name="绑定淘宝账号">绑定淘宝账号</string>
 </resources>
