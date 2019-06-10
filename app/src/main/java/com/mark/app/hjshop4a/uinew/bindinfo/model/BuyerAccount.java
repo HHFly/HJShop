@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.uinew.userinfo.model;
+package com.mark.app.hjshop4a.uinew.bindinfo.model;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
 

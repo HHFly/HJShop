@@ -14,6 +14,7 @@ import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
 import com.mark.app.hjshop4a.ui.calendarview.CalendarViewActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 
+import com.mark.app.hjshop4a.uinew.bindinfo.AddTaobaoActivity;
 import com.mark.app.hjshop4a.uinew.bindinfo.BankCardAddActivity;
 import com.mark.app.hjshop4a.uinew.bindinfo.BindIDActivity;
 import com.mark.app.hjshop4a.uinew.bindinfo.BindInfoActivity;
@@ -309,6 +310,8 @@ public class ActivityJumpUtils {
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }
+
+
     /*
   * 跳转商户申请
   * */
@@ -373,6 +376,18 @@ public class ActivityJumpUtils {
         Intent intent = new Intent(activity, BindIDActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+     * 跳转消费账单
+     * */
+    public static void actAddTaobao(Activity activity,int role,long id) {
+        Intent intent = new Intent(activity, AddTaobaoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(BundleKey.SHOWTYPE,role);
+        bundle.putLong(BundleKey.ID,id);
+        intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }

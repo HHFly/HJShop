@@ -103,10 +103,10 @@ public class BindInfoActivity extends BaseActivity {
                 ActivityJumpUtils.actBankCard(this);
                 break;
             case R.id.Bind_qq:
-            dialogQQ.show(getFragmentManager());
+              dialogQQ.show(getFragmentManager());
                 break;
             case R.id.Bind_wechat:
-            dialogWeixin.show(getFragmentManager());
+                dialogWeixin.show(getFragmentManager());
                 break;
             case R.id.Bind_taobao:
                 break;
@@ -182,6 +182,7 @@ public class BindInfoActivity extends BaseActivity {
                               dialogWeixin.dismiss();
                                 break;
                         }
+                        requestData();
                     }
                 });
     }

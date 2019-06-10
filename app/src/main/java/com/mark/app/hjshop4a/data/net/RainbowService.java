@@ -12,10 +12,11 @@ import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.data.cookie.CookieManger;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.homepager.model.Index;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
 import com.mark.app.hjshop4a.uinew.order.OrderInfo;
-import com.mark.app.hjshop4a.uinew.userinfo.model.AccountInfo;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserBank;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserCardInfo;
@@ -176,11 +177,11 @@ public interface RainbowService {
     @POST("/api/shop/user/updateBuyerAccount")
     Observable<RainbowResultEntity> updateBuyerAccount(@Query("data") String  data);
 //    17.获取买手账号列表
-    @GET("/api/shop/user/getAcccountInfo")
-    Observable<RainbowResultEntity<List<AccountInfo>>> getAcccountInfo();
+    @POST("/api/shop/user/getAcccountInfo")
+    Observable<RainbowResultEntity<BuyerAccount>> getAcccountInfo1(@Query("data") String  data);
     //18.获取买手审核账号
     @GET("/api/shop/user/getAcccountInfo")
-    Observable<RainbowResultEntity<List<AccountInfo>>> getAcccountInfo1();
+    Observable<RainbowResultEntity<List<AccountInfo>>> getAcccountInfo();
 //19.获取买手审核通过账号
     @GET("/api/shop/user/getSuccessAcccounts")
     Observable<RainbowResultEntity<List<AccountInfo>>> getSuccessAcccounts();

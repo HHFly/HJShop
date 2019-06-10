@@ -27,7 +27,8 @@ import java.lang.annotation.RetentionPolicy;
         BundleKey.PARAM_OBJ,
         BundleKey.PARAM_STRING,
         BundleKey.SOURCE,
-        BundleKey.ROLE
+        BundleKey.ROLE,
+        BundleKey.SHOWTYPE
 })
 @Retention(RetentionPolicy.SOURCE)
 public @interface BundleKey {
@@ -103,4 +104,9 @@ public @interface BundleKey {
      * json字符串
      */
     String JSON = "json";
+    /*
+    *
+    * 看类型
+    * */
+    String SHOWTYPE ="showtype";
 }

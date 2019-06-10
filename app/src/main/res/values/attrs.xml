@@ -5,10 +5,10 @@
         <attr name="img" />
         <attr name="title" format="string"/>
         <attr name="tipimg" format="reference"/>
-
     </declare-styleable>
+
     <declare-styleable name="BindInfoLayout">
-        <attr name="img" />
+        <attr name="img"/>
         <attr name="msg" format="string"/>
         <attr name="status" format="string"/>
 

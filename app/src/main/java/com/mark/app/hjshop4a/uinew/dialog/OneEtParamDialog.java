@@ -73,10 +73,7 @@ public class OneEtParamDialog extends BaseDialogFragment{
         setListener(viewCommit, this);
     }
 
-    @Override
-    public void show(FragmentManager manager) {
-       getDialog().show();
-    }
+
 
     @Override
     public void onClick(View v) {

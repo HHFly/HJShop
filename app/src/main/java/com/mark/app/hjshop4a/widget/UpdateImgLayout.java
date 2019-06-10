@@ -101,7 +101,10 @@ public class UpdateImgLayout extends LinearLayout {
         mType.img = img;
         invalidate();
     }
+    public void setImg(String url) {
+       FrescoUtils.sdvBig(img,url);
 
+    }
     public String getTitle() {
         return mType.title;
     }

@@ -74,5 +74,6 @@
         <activity android:name=".uinew.bindinfo.BindInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.bindinfo.BindIDActivity"  android:screenOrientation="portrait"/>
         <activity android:name=".uinew.bindinfo.BankCardAddActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.bindinfo.BindTaobaoActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

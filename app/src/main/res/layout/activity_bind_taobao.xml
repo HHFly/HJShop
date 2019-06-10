@@ -7,18 +7,17 @@
   >
 <include layout="@layout/include_titlebar"/>
 
-    <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/refreshLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-        <com.scwang.smartrefresh.layout.header.ClassicsHeader
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/background"
             android:orientation="vertical"
 
@@ -122,12 +121,14 @@
 
                     <TextView
                         style="@style/user_item_tv"
-                        android:text="@string/user_msg_性别"
-                        android:textColor="#999999"
+                        android:id="@+id/user_tv_user_sex"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:hint="@string/user_msg_性别"
                         android:textSize="26px" />
 
                     <TextView
-                        android:id="@+id/user_tv_user_sex"
+
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="63px"
@@ -151,13 +152,15 @@
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
+                        android:id="@+id/user_tv_user_level"
                         style="@style/user_item_tv"
-                        android:text="账号等级："
-                        android:textColor="#999999"
+                        android:hint="账号等级："
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
                         android:textSize="26px" />
 
                     <TextView
-                        android:id="@+id/user_tv_user_level"
+
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="63px"
@@ -181,13 +184,15 @@
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
+                        android:id="@+id/user_tv_user_shoptype"
                         style="@style/user_item_tv"
-                        android:text="购物类型："
-                        android:textColor="#999999"
+                        android:hint="购物类型："
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
                         android:textSize="26px" />
 
                     <TextView
-                        android:id="@+id/user_tv_user_shoptype"
+
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="63px"
@@ -211,13 +216,15 @@
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
+                        android:id="@+id/user_tv_user_ishuabei"
                         style="@style/user_item_tv"
-                        android:text="是否开通花呗："
-                        android:textColor="#999999"
+                        android:hint="是否开通花呗："
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
                         android:textSize="26px" />
 
                     <TextView
-                        android:id="@+id/user_tv_user_ishuabei"
+
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="63px"
@@ -234,28 +241,31 @@
             </LinearLayout>
 
             <com.mark.app.hjshop4a.widget.UpdateImgLayout
+                android:id="@+id/up_levelPic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="43px"
-                app:img ="@mipmap/about"
+                app:img ="@mipmap/ic_img"
                 app:tipimg="@mipmap/home"
                 app:title="账号等级图片：">
 
             </com.mark.app.hjshop4a.widget.UpdateImgLayout>
             <com.mark.app.hjshop4a.widget.UpdateImgLayout
+                android:id="@+id/up_huabei"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="43px"
-                app:img ="@mipmap/about"
+                app:img ="@mipmap/ic_img"
                 app:tipimg="@mipmap/home"
                 app:title="花呗图片：">
 
             </com.mark.app.hjshop4a.widget.UpdateImgLayout>
             <com.mark.app.hjshop4a.widget.UpdateImgLayout
+                android:id="@+id/up_realAuthenticate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="43px"
-                app:img ="@mipmap/about"
+                app:img ="@mipmap/ic_img"
                 app:tipimg="@mipmap/home"
                 app:title="账号认证图片：">
 
@@ -270,5 +280,14 @@
 
                 android:textSize="28px"/>
         </LinearLayout>
-    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+           <RelativeLayout
+               android:id="@+id/mask"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:background="@color/transparent"
+               android:visibility="gone"
+               android:clickable="true"
+               ></RelativeLayout>
+       </RelativeLayout>
+    </ScrollView>
 </LinearLayout>

@@ -314,4 +314,11 @@
     <string name="绑定您的微信号">绑定您的微信号</string>
     <string name="修改成功">修改成功</string>
     <string name="绑定淘宝账号">绑定淘宝账号</string>
+    <string name="男">男</string>
+    <string name="女">女</string>
+    <string name="成功">成功</string>
+    <string name="失败">失败</string>
+    <string name="账号列表">账号列表</string>
+    <string name="不是">不是</string>
+    <string name="是">是</string>
 </resources>
