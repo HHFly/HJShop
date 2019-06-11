@@ -13,6 +13,8 @@ import com.mark.app.hjshop4a.data.cookie.CookieManger;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
 import com.mark.app.hjshop4a.uinew.homepager.model.Index;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
 import com.mark.app.hjshop4a.uinew.order.OrderInfo;
@@ -194,4 +196,10 @@ public interface RainbowService {
     //22.确认接单
     @POST("/api/app/user/order/sureReciveOrder")
     Observable<RainbowResultEntity> sureReciveOrder(@Query("data") String  data);
+    //23获取省份地址列表
+    @GET("/api/app/user/getProvinceList")
+    Observable<RainbowResultEntity<List<PAddress>>> getProvinceList();
+    //24.获取城市地址列表
+    @POST("/api/app/user/getCityList")
+    Observable<RainbowResultEntity<List<CAddress>>> getCityList(@Query("data") String  data);
 }

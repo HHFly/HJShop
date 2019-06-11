@@ -12,21 +12,31 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.model.AddressData;
 import com.mark.app.hjshop4a.ui.dialog.model.WheelData;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.adapter.ArrayWheelAdapter;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.OnWheelChangedListener;
 import com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.listener.SelectInterface;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 public class SelectAddressDialog implements OnClickListener,
@@ -273,7 +283,7 @@ public class SelectAddressDialog implements OnClickListener,
         switch (v.getId()) {
             case R.id.btn_confirm:
                 if (type == STYLE_TWO) {
-                    selectAdd.selectedResult(mCurrentProviceName + "-" + mCurrentCityName);
+                    selectAdd.selectedResult(mCurrentProviceName,mCurrentCityName);
                 } else if (type == STYLE_ONE) {
                     selectAdd.selectedResult(mCurrentProviceName,mCurrentCityName,mCurrentDistrictName);
                 } else {

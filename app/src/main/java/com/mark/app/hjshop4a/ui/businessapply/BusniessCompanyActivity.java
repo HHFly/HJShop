@@ -538,6 +538,11 @@ public class BusniessCompanyActivity extends BaseActivity implements SelectInter
     }
 
     @Override
+    public void selectedResult(AddressData result1, AddressData result2) {
+
+    }
+
+    @Override
     public void selectedResult(String result) {
 
     }

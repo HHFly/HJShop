@@ -3,15 +3,5 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 <include layout="@layout/include_titlebar"/>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
-        <ImageView
-            android:id="@+id/bg_img"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            />
-    </ScrollView>
+   <include layout="@layout/common_refreshlayout_refresh_loadmore_unbg"/>
 </com.zhy.autolayout.AutoLinearLayout>

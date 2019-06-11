@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
@@ -45,6 +46,7 @@ public class BindTaobaoActivity extends BaseActivity {
                 requestData();
             }
         });
+        requestData();
     }
 
     @Override
@@ -67,6 +69,7 @@ public class BindTaobaoActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.titlebar_iv_add:
+                ActivityJumpUtils.actAddTaobao(this,2,-1);
                 break;
         }
     }
@@ -86,11 +89,11 @@ public class BindTaobaoActivity extends BaseActivity {
 
                     @Override
                     public void onAllFinish() {
-                        RefreshLayoutUtils.finish(mRefreshLayout);
+                        mRefreshLayout.finishRefresh();
                     }
                 });
     }
-    private void initRvAdapter(List<AccountInfo> data, boolean isRefresh){
+    private void initRvAdapter(final List<AccountInfo> data, boolean isRefresh){
 
         if(mAdapter==null){
             RecyclerView rv = getView(R.id.recyclerView);
@@ -99,13 +102,13 @@ public class BindTaobaoActivity extends BaseActivity {
             rv.setAdapter(mAdapter);
             mAdapter.setOnItemClickListener(new TaobaoAdapter.OnItemClickListener() {
                 @Override
-                public void onClickShow() {
-
+                public void onClickShow(AccountInfo data) {
+                    ActivityJumpUtils.actAddTaobao(getActivity(),1,data.getBuyerAccountId());
                 }
 
                 @Override
-                public void onClickUpdate() {
-
+                public void onClickUpdate(AccountInfo data) {
+                    ActivityJumpUtils.actAddTaobao(getActivity(),0,data.getBuyerAccountId());
                 }
 
             });

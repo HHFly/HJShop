@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.ui.dialog;
+package com.mark.app.hjshop4a.uinew.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -11,16 +11,13 @@ import android.view.Window;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.fragment.BaseDialogFragment;
+import com.mark.app.hjshop4a.ui.dialog.SexDialog;
 
-/**
- * Created by pc on 2018/4/16.
- */
-
-public class SexDialog extends BaseDialogFragment {
+public class YesNoDialog extends BaseDialogFragment {
     //根布局
     View mRootView;
-    Context content ;
-    int Sex;
+    Context content;
+    int YesNo ;
     public void setContent(Context content) {
         this.content = content;
     }
@@ -31,12 +28,11 @@ public class SexDialog extends BaseDialogFragment {
     }
 
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.dialog_select_sex, container, false);
-        final AlertDialog dialog = new AlertDialog.Builder(content, R.style.dialog_lhp )
+        View rootView = inflater.inflate(R.layout.dialog_select_yes_no, container, false);
+        final AlertDialog dialog = new AlertDialog.Builder(content, R.style.dialog_lhp)
                 .create();
 
         Window window = dialog.getWindow();
@@ -44,6 +40,7 @@ public class SexDialog extends BaseDialogFragment {
         initView(rootView);
         return rootView;
     }
+
     /**
      * 初始化
      *
@@ -51,42 +48,37 @@ public class SexDialog extends BaseDialogFragment {
      */
     private void initView(View rootView) {
         mRootView = rootView;
-        View viewno  =getView(rootView,R.id.sex_no);
-        View viewman = getView(rootView, R.id.sex_man);
-        View viewwoman = getView(rootView, R.id.sex_woman);
+        View viewno = getView(rootView, R.id.no);
+        View viewman = getView(rootView, R.id.yes);
+
         setListener(viewno, this);
         setListener(viewman, this);
-        setListener(viewwoman,this);
+
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.sex_no:
+        switch (v.getId()) {
+            case R.id.no:
                 if (onDialogClickListener != null) {
-                    onDialogClickListener.onClickNo(this);
+                    onDialogClickListener.onClickNo();
+                    YesNo=0;
                     dismiss();
                 }
                 break;
-            case R.id.sex_man:
+            case R.id.yes:
                 if (onDialogClickListener != null) {
-                    onDialogClickListener.onClickMan(this);
+                    onDialogClickListener.onClickYes();
+                    YesNo=1;
                     dismiss();
-                    Sex=0;
                 }
                 break;
-            case R.id.sex_woman:
-                if (onDialogClickListener != null) {
-                    onDialogClickListener.onClickWoman(this);
-                    dismiss();
-                    Sex=1;
-                }
-                break;
+
         }
     }
 
-    public int getSex() {
-        return Sex;
+    public int getYesNo() {
+        return YesNo;
     }
 
     private OnDialogClickListener onDialogClickListener;
@@ -96,8 +88,8 @@ public class SexDialog extends BaseDialogFragment {
     }
 
     public interface OnDialogClickListener {
-        void onClickNo(SexDialog dialog);
-        void onClickMan(SexDialog dialog);
-        void onClickWoman(SexDialog dialog);
+        void onClickNo();
+
+        void onClickYes();
     }
 }

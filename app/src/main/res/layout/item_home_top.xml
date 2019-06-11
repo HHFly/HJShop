@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/background">
+    <cn.bingoogolapple.bgabanner.BGABanner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="300px"></cn.bingoogolapple.bgabanner.BGABanner>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200px"
+        android:orientation="horizontal"
+        android:padding="30px"
+        android:paddingTop="20px"
+        android:gravity="center"
+        android:background="@color/background"
+        >
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:layout_marginRight="27px">
+            <View  style="@style/BaseLine.Vertical"
+                android:background="#289BF8"
+                android:layout_width="6px"
+                android:layout_height="24px"
+                android:layout_marginLeft="15px"
+                android:layout_marginTop="28px"/>
+            <TextView
+              style="@style/BaseItem.Tv"
+                android:textColor="#333333"
+                android:textSize="26px"
+                android:text="新手教学"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="27px"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white">
+            <View  style="@style/BaseLine.Vertical"
+                android:background="#289BF8"
+                android:layout_width="6px"
+                android:layout_height="24px"
+                android:layout_marginLeft="15px"
+                android:layout_marginTop="28px"/>
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:textColor="#333333"
+                android:textSize="26px"
+                android:text="客服反馈"
+                android:layout_marginLeft="32px"
+                android:layout_marginTop="27px"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <View  style="@style/BaseLine.Horizontal"
+            android:layout_width="80px"/>
+        <TextView style="@style/BaseItem.Tv"
+            android:textColor="#333333"
+            android:textSize="26px"
+            android:text="为您推荐"
+            android:layout_marginLeft="18px"
+            android:layout_marginRight="18px"/>
+        <View  style="@style/BaseLine.Horizontal"
+            android:layout_width="80px"/>
+    </LinearLayout>
+</LinearLayout>

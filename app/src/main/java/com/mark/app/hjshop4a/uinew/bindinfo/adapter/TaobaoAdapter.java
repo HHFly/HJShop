@@ -23,7 +23,7 @@ public class TaobaoAdapter extends BaseListRvAdapter<AccountInfo> {
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPos, AccountInfo data) {
+    public void bindBodyData(AutoViewHolder holder, int bodyPos, final AccountInfo data) {
             holder.text(R.id.tv_wwname,data.getAccountName());
         holder.text(R.id.tv_phone,data.getReceiverPhone());
         holder.text(R.id.tv_name,data.getReceiverName());
@@ -35,7 +35,7 @@ public class TaobaoAdapter extends BaseListRvAdapter<AccountInfo> {
             @Override
             public void onClick(View v) {
                 if(onItemClickListener!=null){
-                    onItemClickListener.onClickShow();
+                    onItemClickListener.onClickShow(data);
                 }
             }
         });
@@ -43,7 +43,7 @@ public class TaobaoAdapter extends BaseListRvAdapter<AccountInfo> {
             @Override
             public void onClick(View v) {
                 if(onItemClickListener!=null){
-                    onItemClickListener.onClickUpdate();
+                    onItemClickListener.onClickUpdate(data);
                 }
             }
         });
@@ -72,7 +72,7 @@ public class TaobaoAdapter extends BaseListRvAdapter<AccountInfo> {
          *
          * @param data
          */
-        void onClickShow();
-        void onClickUpdate();
+        void onClickShow(AccountInfo data);
+        void onClickUpdate(AccountInfo data);
     }
 }

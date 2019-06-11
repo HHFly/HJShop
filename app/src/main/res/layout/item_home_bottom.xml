@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/background"
+    android:paddingLeft="30px"
+    android:paddingRight="10px"
+    android:paddingTop="10px"
+    android:paddingBottom="10px">
+<com.facebook.drawee.view.SimpleDraweeView
+    android:id="@+id/sdv_img"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv_price"
+            style="@style/BaseTab.Tv"
+            android:textSize="26px"
+            android:textColor="#333333"
+            />
+        <TextView
+            android:id="@+id/tv_num"
+            style="@style/BaseTab.Tv"
+            android:textSize="22px"
+            android:textColor="#999999"
+            android:text="@string/人付款"
+            android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+
+</LinearLayout>

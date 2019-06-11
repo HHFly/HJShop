@@ -109,6 +109,7 @@ public class BindInfoActivity extends BaseActivity {
                 dialogWeixin.show(getFragmentManager());
                 break;
             case R.id.Bind_taobao:
+                ActivityJumpUtils.actTaoBao(this);
                 break;
             case R.id.titlebar_iv_return:
                 finish();

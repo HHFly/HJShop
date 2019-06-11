@@ -321,4 +321,7 @@
     <string name="账号列表">账号列表</string>
     <string name="不是">不是</string>
     <string name="是">是</string>
+    <string name="否">否</string>
+    <string name="首页">首页</string>
+    <string name="人付款">%s人付款</string>
 </resources>

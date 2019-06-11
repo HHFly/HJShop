@@ -10,5 +10,6 @@ public interface SelectInterface {
      * @param result
      */
     void selectedResult(AddressData result1 ,AddressData result2 ,AddressData result3 );
+    void selectedResult(AddressData result1 ,AddressData result2 );
     void selectedResult(String result);
 }

@@ -3,11 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <com.facebook.drawee.view.SimpleDraweeView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/dialog_sdv"
-        style="@style/BaseSDV"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:placeholderImageScaleType="fitCenter" />
+        android:scrollbars="none">
+        <com.facebook.drawee.view.SimpleDraweeView xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/dialog_sdv"
+            style="@style/BaseSDV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:placeholderImageScaleType="fitCenter" />
+
+    </ScrollView>
+
 </LinearLayout>

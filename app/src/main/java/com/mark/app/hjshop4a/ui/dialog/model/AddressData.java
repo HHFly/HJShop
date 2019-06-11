@@ -1,5 +1,8 @@
 package com.mark.app.hjshop4a.ui.dialog.model;
 
+import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
+
 /**
  * Created by pc on 2018/5/9.
  */
@@ -28,5 +31,17 @@ public class AddressData {
     public String toString() {
 
         return name;
+    }
+
+    public AddressData() {
+    }
+
+    public AddressData(PAddress data) {
+        this.id = String.valueOf(data.getProvinceId());
+        this.name = data.getProvinceName();
+    }
+    public AddressData(CAddress data) {
+        this.id = String.valueOf(data.getAddressId());
+        this.name = data.getCityName();
     }
 }

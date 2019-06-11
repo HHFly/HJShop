@@ -77,13 +77,15 @@
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
+                        android:id="@+id/tv_user_city"
                         style="@style/user_item_tv"
-                        android:text="收货地址："
-                        android:textColor="#999999"
+                        android:hint="收货地址："
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
                         android:textSize="26px" />
 
                     <TextView
-                        android:id="@+id/certification_tv_user_city"
+
                         style="@style/user_item_tv_content"
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="63px"
@@ -277,7 +279,7 @@
                 android:layout_width="match_parent"
                 android:text="@string/提交"
                 android:layout_marginTop="89px"
-
+                android:layout_marginBottom="90px"
                 android:textSize="28px"/>
         </LinearLayout>
            <RelativeLayout

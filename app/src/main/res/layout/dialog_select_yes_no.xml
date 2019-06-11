@@ -4,35 +4,24 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     >
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/sex_no"
-        android:layout_width="match_parent"
-        android:layout_height="120px"
-        android:background="@drawable/shape_hm_bg"
-        android:gravity="center"
-        android:text="保密"
-        android:textColor="#8c8c8c"
-        android:textSize="@dimen/textsize_28px" />
 
-    <View style="@style/BaseLine.Horizontal" />
     <TextView
-        android:id="@+id/sex_man"
+        android:id="@+id/yes"
         android:layout_width="match_parent"
         android:layout_height="120px"
         android:background="@drawable/shape_hm_bg"
         android:gravity="center"
-        android:text="男"
+        android:text="@string/是"
         android:textColor="#8c8c8c"
         android:textSize="@dimen/textsize_28px" />
     <View style="@style/BaseLine.Horizontal" />
     <TextView
-        android:id="@+id/sex_woman"
+        android:id="@+id/no"
         android:layout_width="match_parent"
         android:layout_height="120px"
         android:background="@drawable/shape_hm_bg"
         android:gravity="center"
-        android:text="女"
+        android:text="@string/否"
         android:textColor="#8c8c8c"
         android:textSize="@dimen/textsize_28px" />
     <View style="@style/BaseLine.Horizontal" />
