@@ -18,15 +18,31 @@ import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.common.utils.SPUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
+import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
+import com.mark.app.hjshop4a.data.help.RainbowObserver;
+import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
 
 import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
+import com.mark.app.hjshop4a.uinew.bindinfo.dialog.ChooseAccountDialog;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoPass;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.homepager.fragment.MeFragment;
+import com.mark.app.hjshop4a.uinew.homepager.fragment.OrderFrament;
+import com.mark.app.hjshop4a.uinew.order.OrderInfo;
+import com.mark.app.hjshop4a.widget.PickerScrollView;
+
+import java.util.List;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -42,11 +58,11 @@ public class HomePagerActivity extends BaseActivity {
     private View tab5;      //客服
    private HomeFragment homeFragment;
    private ClassifyFragment classifyFragment;
-   private ShopCarFragment shopCarFragment;
+   private OrderFrament orderFrament;
     private MeFragment meFragment;
     private ServiceFragment mServiceFragment;
     private BaseFragment mCurFragment;
-
+    private ChooseAccountDialog chooseAccountDialog;
     //tab类型
     private int mType = HPTabType.HOME;
     private boolean isSecondBack;//双击退出
@@ -112,7 +128,8 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab3: {
-                selectTab(tab3);
+                showLevelDiaglog();
+//                selectTab(tab3);
 
                 break;
             }
@@ -137,7 +154,21 @@ public class HomePagerActivity extends BaseActivity {
         super.onDestroy();
         DownloadDialogUtils.onDestroy();
     }
+    public void showLevelDiaglog() {
+        if(chooseAccountDialog==null){
+            chooseAccountDialog = new ChooseAccountDialog(this, R.style.dialog_lhp);
+            chooseAccountDialog.setOnItemClickListener(new ChooseAccountDialog.OnItemClickListener() {
+                @Override
+                public void onClick(AccountInfoPass data) {
+                    orderFrament.setId(data.getBuyerAccountId());
+                    selectTab(tab3);
+                }
+            });
 
+        }
+        chooseAccountDialog.show();
+
+    }
     /**
      * 初始化fragment
      */
@@ -145,7 +176,7 @@ public class HomePagerActivity extends BaseActivity {
         homeFragment =new HomeFragment();
         meFragment = new MeFragment();
         classifyFragment =new ClassifyFragment();
-        shopCarFragment = new ShopCarFragment();
+        orderFrament = new OrderFrament();
         mServiceFragment =new ServiceFragment();
     }
 
@@ -242,7 +273,7 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab3: {
-                switchFragment(shopCarFragment);
+                switchFragment(orderFrament);
                 break;
             }
             case R.id.hp_layout_tab4: {
@@ -257,19 +288,8 @@ public class HomePagerActivity extends BaseActivity {
         }
 
     }
-    //  申请代理
-    private void agant(){
-//        final String strPhone = "400 101 7979";
-//        NormalDialogFactory.getNormalDialogTwoBtn()
-//                .setContentText( strPhone)
-//                .setRightBtnText(R.string.呼叫)
-//                .setRightBtnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        CallPhoneUtil.call(getActivity(), strPhone.replace(" ",""));
-//                    }
-//                }).show(getActivity().getFragmentManager());
-    }
+
+    
     /**
      * 选择Fragment
      *

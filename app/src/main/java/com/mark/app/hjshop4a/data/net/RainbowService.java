@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.data.cookie.CookieManger;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoPass;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
@@ -186,7 +187,7 @@ public interface RainbowService {
     Observable<RainbowResultEntity<List<AccountInfo>>> getAcccountInfo();
 //19.获取买手审核通过账号
     @GET("/api/shop/user/getSuccessAcccounts")
-    Observable<RainbowResultEntity<List<AccountInfo>>> getSuccessAcccounts();
+    Observable<RainbowResultEntity<List<AccountInfoPass>>> getSuccessAcccounts();
     //20.获取买手账号信息
     @POST("/api/shop/user/updateBuyerAccount")
     Observable<RainbowResultEntity> updateBuyerAccount();

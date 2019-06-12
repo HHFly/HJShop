@@ -84,6 +84,7 @@
         android:layout_toRightOf="@+id/tv_3"
         android:textSize="24px"
         android:textColor="#333333"
+        android:text="@string/元"
         />
     <com.mark.app.hjshop4a.widget.OrderLinearLayout
         android:id="@+id/warp_label"

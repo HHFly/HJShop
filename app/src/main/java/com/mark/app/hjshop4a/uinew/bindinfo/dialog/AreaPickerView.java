@@ -25,6 +25,8 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
+import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.CityAdapter;
+import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.ProvinceAdapter;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;

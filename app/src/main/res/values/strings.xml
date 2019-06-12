@@ -324,4 +324,6 @@
     <string name="否">否</string>
     <string name="首页">首页</string>
     <string name="人付款">%s人付款</string>
+    <string name="剩余接单量">剩余接单量：%1$d</string>
+    <string name="元">%1$d 元</string>
 </resources>

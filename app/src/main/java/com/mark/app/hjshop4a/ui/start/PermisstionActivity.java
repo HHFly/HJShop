@@ -8,6 +8,7 @@ import android.view.View;
 
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.ActRequestCode;
 import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionCheckCallBack;
@@ -112,11 +113,12 @@ public class PermisstionActivity extends BaseActivity {
      * 前往下个Activity
      */
     private void goNext() {
-//        if (AppContext.isDebudEnv()) {
-//            ActivityJumpUtils.actTest(this.getActivity());
-//        } else {
+        if (App.hasToken()) {
             ActivityJumpUtils.actActivity(getActivity(), HomePagerActivity.class);
-//        }
+        } else {
+
+            ActivityJumpUtils.actLogin(getActivity());
+        }
         finish();
     }
 }

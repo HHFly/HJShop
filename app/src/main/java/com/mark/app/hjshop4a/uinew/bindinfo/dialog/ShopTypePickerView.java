@@ -11,9 +11,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.mark.app.hjshop4a.R;
+import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.ShopTypeAdapter;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.ShopType;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.uinew.bindinfo.dialog;
+package com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter;
 
 
 import android.view.View;

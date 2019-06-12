@@ -76,6 +76,8 @@
     </style>
 
     <style name="BaseBtn.Normal.Commonly">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70px</item>
         <item name="android:textColor">@drawable/select_btn_normal_commonly_textcolor</item>
         <item name="android:textSize">28px</item>
         <item name="android:background">@drawable/select_btn_normal_commonly</item>
