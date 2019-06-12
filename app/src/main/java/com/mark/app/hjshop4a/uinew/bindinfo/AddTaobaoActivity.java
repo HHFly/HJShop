@@ -19,16 +19,21 @@ import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.SexDialog;
+import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.AreaPickerView;
+import com.mark.app.hjshop4a.uinew.bindinfo.dialog.ShopTypePickerView;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccountParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.ShopType;
 import com.mark.app.hjshop4a.uinew.dialog.YesNoDialog;
+import com.mark.app.hjshop4a.widget.PickerScrollView;
 import com.mark.app.hjshop4a.widget.UpdateImgLayout;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,8 +45,11 @@ public class AddTaobaoActivity extends BaseActivity  {
     UpdateImgLayout huabeiPic ,levelPic,realAuthenticatePic;
     private SexDialog sexDialog;
     private YesNoDialog yesNoDialog;
+    private ShopTypePickerView shopTypeDialog;
     //选择dialog
-    private AreaPickerView wheelDialog;
+    private AreaPickerView addressDialog;
+    //
+    WheelDialog Leveldialog ;
     List<PAddress> PAddressdata;
     private Map<Integer,String> pic =new HashMap<>();
 
@@ -120,6 +128,8 @@ public class AddTaobaoActivity extends BaseActivity  {
         setClickListener(R.id.user_layout_user_sex);
         setClickListener(R.id.certification_layout_user_city);
         setClickListener(R.id.user_layout_user_ishuabei);
+        setClickListener(R.id.user_layout_user_shoptype);
+        setClickListener(R.id.user_layout_user_level);
         setClickListener(R.id.btn);
     }
 
@@ -138,26 +148,109 @@ public class AddTaobaoActivity extends BaseActivity  {
             case R.id.user_layout_user_ishuabei:
                 showYesNoDialog(R.id.user_tv_user_ishuabei);
                 break;
+            case R.id.user_layout_user_shoptype:
+                showShoptypeDiaglog();
+                break;
+            case R.id.user_layout_user_level:
+                showLevelDiaglog();
+                break;
             case R.id.btn:
                 commit();
                 break;
         }
     }
+    /**
+     *
+     *
+     *
+     */
+    public void showLevelDiaglog() {
+        if(Leveldialog==null){
+            Leveldialog = WheelDialog.getInstance(getData());
+           Leveldialog.setOnDialogClickListener(new WheelDialog.OnDialogClickListener() {
+               @Override
+               public void onCancel() {
 
+               }
 
+               @Override
+               public void onOk(PickerScrollView.ItemModel data) {
+                    setTvText(R.id.user_tv_user_level,data.getName());
+               }
+           });
+        }
+            Leveldialog.show(getFragmentManager());
 
+    }
+    private List<PickerScrollView.ItemModel> getData(){
+        List<PickerScrollView.ItemModel> data =new ArrayList<>();
+        PickerScrollView.ItemModel a1 =new  PickerScrollView.ItemModel();
+        a1.setId(1);
+        a1.setName( "三星");
+        data.add(a1);
+        PickerScrollView.ItemModel a2 =new  PickerScrollView.ItemModel();
+        a2.setId(2);
+        a2.setName( "四星");
+        data.add(a2);
+        PickerScrollView.ItemModel a3 =new  PickerScrollView.ItemModel();
+        a3.setId(3);
+        a3.setName( "五星");
+        data.add(a3);
+        PickerScrollView.ItemModel a4 =new  PickerScrollView.ItemModel();
+        a4.setId(4);
+        a4.setName( "一钻");
+        data.add(a4);
+        PickerScrollView.ItemModel a5 =new  PickerScrollView.ItemModel();
+        a5.setId(5);
+        a5.setName( "二钻");
+        data.add(a5);
+        PickerScrollView.ItemModel a6 =new  PickerScrollView.ItemModel();
+        a6.setId(6);
+        a6.setName( "三钻");
+        data.add(a6);
+        PickerScrollView.ItemModel a7 =new  PickerScrollView.ItemModel();
+        a7.setId(7);
+        a7.setName( "四钻");
+        data.add(a7);
+        PickerScrollView.ItemModel a8 =new  PickerScrollView.ItemModel();
+        a8.setId(8);
+        a8.setName( "五钻");
+        data.add(a8);
+        
+        return data;
+    }
 
     /**
-     * 弹出地址对话框--三级联动的效果
+     *
+     *
+     *
+     */
+    public void showShoptypeDiaglog() {
+        if(shopTypeDialog==null){
+          shopTypeDialog =new ShopTypePickerView(this,R.style.dialog_lhp);
+          shopTypeDialog.setOnItemClickListener(new ShopTypePickerView.OnItemClickListener() {
+              @Override
+              public void onClick(String data) {
+                  setTvText(R.id.user_tv_user_shoptype,data);
+              }
+          });
+
+        }
+        shopTypeDialog.show();
+
+    }
+
+    /**
+     * 弹出地址对话框--级联动的效果
      *
      *
      */
     public void showAddressDiaglog() {
-        if(wheelDialog==null){
+        if(addressDialog==null){
             requestAddressData();
-        }else {
-            wheelDialog.show();
         }
+
+        addressDialog.show();
     }
     /*
      * 显示性别选择*/
@@ -300,10 +393,10 @@ public class AddTaobaoActivity extends BaseActivity  {
                     @Override
                     public void onSuccess(RainbowResultEntity<List<PAddress>> obj) {
                         PAddressdata = JsonUtils.getList(obj.getResult(),PAddress.class);
-                        if(wheelDialog==null) {
-                            wheelDialog = new AreaPickerView(getActivity(),
+                        if(addressDialog==null) {
+                            addressDialog = new AreaPickerView(getActivity(),
                                     R.style.dialog_lhp, PAddressdata);
-                            wheelDialog.setAreaPickerViewCallback(new AreaPickerView.AreaPickerViewCallback() {
+                            addressDialog.setAreaPickerViewCallback(new AreaPickerView.AreaPickerViewCallback() {
                                 @Override
                                 public void callback(PAddress pAddress, CAddress cAddress) {
                                     setTvText(R.id.tv_user_city,pAddress.getProvinceName()+"-"+cAddress.getCityName());
@@ -390,13 +483,13 @@ public class AddTaobaoActivity extends BaseActivity  {
         buyerAccountParam.setReceiverName(et_recivename);
         buyerAccountParam.setReceiverPhone(et_recivephone);
 
-        buyerAccountParam.setAddressId(wheelDialog.getVolumeControlStream());
+        buyerAccountParam.setAddressId((int) addressDialog.getCitySelect().getAddressId());
 
         buyerAccountParam.setAddresDetail(et_reciveaddress);
         buyerAccountParam.setSex(sexDialog.getSex());
         buyerAccountParam.setAge(18);
-        buyerAccountParam.setLevel(3);
-        buyerAccountParam.setShoppingType("1");
+        buyerAccountParam.setLevel((int) Leveldialog.getmSelectItem().getId());
+        buyerAccountParam.setShoppingType(shopTypeDialog.getUpData());
         buyerAccountParam.setLevelPic(img1);
         buyerAccountParam.setHuabeiPic(img2);
         buyerAccountParam.setRealAuthenticatePic(img3);

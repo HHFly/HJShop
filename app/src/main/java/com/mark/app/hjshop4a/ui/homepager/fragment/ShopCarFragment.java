@@ -28,7 +28,7 @@ public class ShopCarFragment extends BaseFragment {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"购物车");
-        setIvImage(R.id.bg_img,R.mipmap.shopcar);
+//        setIvImage(R.id.bg_img,R.mipmap.shopcar);
     }
 
     @Override

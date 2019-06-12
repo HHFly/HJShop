@@ -59,6 +59,7 @@ public class AreaPickerView extends Dialog {
      * 市
      */
     private List<CAddress> cityBeans;
+    private CAddress citySelect;
     /**
      * 区
      */
@@ -95,6 +96,10 @@ public class AreaPickerView extends Dialog {
         Log.d("AreaPickerView", "AreaPickerView: "+context.getTheme().toString());
         this.addressBeans = addressBeans;
         this.context = context;
+    }
+
+    public CAddress getCitySelect() {
+        return citySelect;
     }
 
     @Override
@@ -225,6 +230,7 @@ public class AreaPickerView extends Dialog {
 //                    oldAreaSelected = -1;
                     cityAdapter.notifyDataSetChanged();
 //                    areaAdapter.notifyDataSetChanged();
+                  citySelect=data;
                     strings.set(1, cityBeans.get(bodyPos).getCityName());
                     tabLayout.setupWithViewPager(viewPager);
                     viewPagerAdapter.notifyDataSetChanged();

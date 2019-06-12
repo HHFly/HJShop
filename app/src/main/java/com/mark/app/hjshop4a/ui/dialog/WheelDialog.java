@@ -32,6 +32,10 @@ public class WheelDialog extends BaseDialogFragment implements PickerScrollView.
     //按钮监听
     private OnDialogClickListener onDialogClickListener;
 
+    public PickerScrollView.ItemModel getmSelectItem() {
+        return mSelectItem;
+    }
+
     /**
      * 获取实例
      *

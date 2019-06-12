@@ -28,7 +28,7 @@ public class ClassifyFragment extends BaseFragment {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"分类");
-        setIvImage(R.id.bg_img,R.mipmap.classify);
+//        setIvImage(R.id.bg_img,R.mipmap.classify);
     }
 
     @Override

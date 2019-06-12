@@ -53,11 +53,16 @@ public class BigSdvDialog extends BaseDialogFragment {
                 default:FrescoUtils.sdvBig(sdv, mImageUrl);
                 break;
         }
-
+        sdv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismissAllowingStateLoss();
+                dismiss();
             }
         });
         return view;

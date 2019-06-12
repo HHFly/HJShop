@@ -59,8 +59,9 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"首页");
-        setIvImage(R.id.bg_img,R.mipmap.home);
+//        setIvImage(R.id.bg_img,R.mipmap.home);
         setViewVisibilityGone(R.id.titlebar_iv_return,false);
+        requestData();
     }
 
     @Override

@@ -59,10 +59,10 @@
     <style name="BaseBtn.Normal.Important">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80px</item>
-        <item name="android:layout_marginLeft">30px</item>
-        <item name="android:layout_marginRight">30px</item>
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textSize">34px</item>
+        <!--<item name="android:layout_marginLeft">30px</item>-->
+        <!--<item name="android:layout_marginRight">30px</item>-->
+        <item name="android:textColor">#333333</item>
+        <item name="android:textSize">30px</item>
         <item name="android:background">@drawable/select_btn_normal_important</item>
     </style>
 
