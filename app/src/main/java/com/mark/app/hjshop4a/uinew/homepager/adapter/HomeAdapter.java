@@ -2,14 +2,18 @@ package com.mark.app.hjshop4a.uinew.homepager.adapter;
 
 import android.view.View;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopListRvAdapter;
+import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.uinew.homepager.model.Banner;
 import com.mark.app.hjshop4a.uinew.homepager.model.IndexModel;
 import com.mark.app.hjshop4a.uinew.homepager.model.ShowProduct;
 
 import java.util.List;
+
+import cn.bingoogolapple.bgabanner.BGABanner;
 
 public class HomeAdapter extends BaseHasTopListRvAdapter<List<Banner>,IndexModel> {
     public HomeAdapter(List<Banner> banners, List<IndexModel> showProducts) {
@@ -62,6 +66,38 @@ public class HomeAdapter extends BaseHasTopListRvAdapter<List<Banner>,IndexModel
             }
         });
     }
+    /**
+     * 初始化顶部Banner
+     *
+     * @param holder
+     */
+    private void initTopBanner(AutoViewHolder holder, final int position, List<Banner> data) {
+        BGABanner banner = holder.get(R.id.banner);
+        //数据是否为空
+        boolean isDataNull = data == null || data.size() == 0;
+        if (isDataNull) {
+            //如果为空隐藏
+            banner.setVisibility(View.GONE);
+        } else {
+            banner.setData(R.layout.banner_sdv_radius, data, null);
+            banner.setAdapter(new BGABanner.Adapter<SimpleDraweeView, Banner>() {
+                @Override
+                public void fillBannerItem(BGABanner banner, SimpleDraweeView itemView, Banner model, int position) {
+                    FrescoUtils.sdvBig(itemView, model.getBannerUrl());
+                }
+            });
+            banner.setDelegate(new BGABanner.Delegate<SimpleDraweeView, Banner>() {
+                @Override
+                public void onBannerItemClick(BGABanner banner, SimpleDraweeView itemView, Banner model, int position) {
+                    if (onItemClickListener != null) {
+                        onItemClickListener.onClickBanner(model);
+                    }
+                }
+            });
+            banner.setVisibility(View.VISIBLE);
+            banner.setAutoPlayAble(data.size() > 1);
+        }
+    }
     private OnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -76,7 +112,7 @@ public class HomeAdapter extends BaseHasTopListRvAdapter<List<Banner>,IndexModel
          */
         void onClickProduct(ShowProduct data);
         //
-
+        void onClickBanner(Banner data);
     }
 
 }
