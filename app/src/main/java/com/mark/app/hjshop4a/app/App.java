@@ -11,6 +11,7 @@ import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 
+import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
 import com.umeng.commonsdk.UMConfigure;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
@@ -36,7 +37,7 @@ App extends Application {
     private static AppContext mAppContext;
     public static AppContext getAppContext(){return mAppContext;}
     private Activity mCurActivity;
-
+    private HomePagerActivity homePagerActivity;
 
 
     @Override
@@ -58,7 +59,13 @@ App extends Application {
 //        UMConfigure.init(this,"5a12384aa40fa3551f0001d1","umeng", UMConfigure.DEVICE_TYPE_PHONE,"");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
     }
 
+    public HomePagerActivity getHomePagerActivity() {
+        return homePagerActivity;
+    }
 
+    public void setHomePagerActivity(HomePagerActivity homePagerActivity) {
+        this.homePagerActivity = homePagerActivity;
+    }
 
     private void registerActivityListener() {
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {

@@ -35,7 +35,7 @@ public class ChooseAccountDialog extends Dialog {
     private Button ivBtn;
     private RecyclerView recyclerView;
     List<AccountInfoPass> mData;
-    AccountInfoPass chooseData;
+    AccountInfoPass chooseData =new AccountInfoPass();
     public ChooseAccountDialog(@NonNull Context context, int themeResId) {
         super(context, themeResId);
         this.context =context;
@@ -44,7 +44,7 @@ public class ChooseAccountDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_shoptype);
+        setContentView(R.layout.dialog_choose_account);
         Window window = this.getWindow();
 
         isCreate = true;
@@ -54,13 +54,13 @@ public class ChooseAccountDialog extends Dialog {
          */
         window.setGravity(Gravity.CENTER);
         WindowManager.LayoutParams params = window.getAttributes();
-        params.width = WindowManager.LayoutParams.MATCH_PARENT;
+
         window.setAttributes(params);
         /**
          * 设置弹出动画
          */
         window.setWindowAnimations(R.style.mystyle);
-        ivBtn = findViewById(R.id.btn_cancel);
+        ivBtn = findViewById(R.id.btn);
         ivBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -9,6 +9,7 @@ import java.util.List;
 public class Index extends BaseModel {
     List<Banner>  banners ;//banner列表
     List<ShowProduct> products;//展示图片列表
+    List<IndexModel> listData =new ArrayList<>();
 
     public List<Banner> getBanners() {
         return banners;
@@ -25,4 +26,25 @@ public class Index extends BaseModel {
     public void setProducts(List<ShowProduct> products) {
         this.products = products;
     }
+
+    public List<IndexModel> getListData() {
+        return listData;
+    }
+
+  private void getlsit(){
+      IndexModel model=new IndexModel();
+        if(products!=null){
+            for(int i =0;i<products.size();i++){
+                if(model.isNull()){
+                    model.setData(products.get(i));
+                }else {
+                    listData.add(model);
+                    model=new IndexModel();
+                }
+
+//                    model.setProduct1();
+            }
+        }
+
+  }
 }

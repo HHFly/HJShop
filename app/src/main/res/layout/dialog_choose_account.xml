@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="610px"
     android:layout_height="wrap_content"
+    android:background="@color/white"
     android:paddingLeft="50px"
     android:paddingTop="30px"
     android:paddingBottom="30px"
@@ -20,6 +21,7 @@
 
     </android.support.v7.widget.RecyclerView>
     <Button
+        android:id="@+id/btn"
         style="@style/BaseBtn.Normal.Commonly"
         android:layout_marginTop="30px"
         android:text="确认"/>

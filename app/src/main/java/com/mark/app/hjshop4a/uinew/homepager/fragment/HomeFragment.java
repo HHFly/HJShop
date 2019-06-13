@@ -104,16 +104,19 @@ public class HomeFragment extends BaseFragment {
         RecyclerView rv = getView(R.id.recyclerView);
         if(mAdapter==null) {
             if (rv != null) {
-                mAdapter =new HomeAdapter(data.getBanners(),data.getProducts());
-                GridLayoutManager layoutManage = new GridLayoutManager(getContext(), 2);
-                layoutManage.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
-                    @Override
-                    public int getSpanSize(int position) {
-                        return position==0? 1:2;
-                    }
-                });
+                mAdapter =new HomeAdapter(data.getBanners(),data.getListData());
+//                GridLayoutManager layoutManage = new GridLayoutManager(getContext(), 2);
+//                layoutManage.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+//                    @Override
+//                    public int getSpanSize(int position) {
+//                        return position==0? 1:2;
+//                    }
+//                });
+                LinearLayoutManager layoutManage = new LinearLayoutManager(getContext());
                 rv.setLayoutManager(layoutManage);
                 rv.setAdapter(mAdapter);
+
+
             }
             mAdapter.setOnItemClickListener(new HomeAdapter.OnItemClickListener() {
                 @Override
@@ -125,7 +128,7 @@ public class HomeFragment extends BaseFragment {
 
             });
         }else {
-          mAdapter.notifyData(data.getBanners(),data.getProducts(),isfresh);
+          mAdapter.notifyData(data.getBanners(),data.getListData(),isfresh);
         }
     }
 

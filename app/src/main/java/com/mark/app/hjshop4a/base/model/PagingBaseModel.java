@@ -61,6 +61,22 @@ public class PagingBaseModel<T extends BaseModel> extends BaseModel {
             setPages(currentPage + 1);
         }
     }
+    /**
+     * 设置分页数据
+     *
+     * @param currentPage
+     * @param data
+     */
+    public void setPagingInfo(int currentPage, List data) {
+        setCurrentPage(currentPage);
+        int size = data == null ? 0 : data.size();
+        if (size == 0) {
+            //达到最后一页
+            setPages(currentPage);
+        } else {
+            setPages(currentPage + 1);
+        }
+    }
 
     public long getTimestamp() {
         return timestamp;

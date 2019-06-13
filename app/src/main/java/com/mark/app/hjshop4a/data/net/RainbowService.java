@@ -17,6 +17,7 @@ import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
 import com.mark.app.hjshop4a.uinew.homepager.model.Index;
+import com.mark.app.hjshop4a.uinew.homepager.orderList.OrderPage;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
 import com.mark.app.hjshop4a.uinew.order.OrderInfo;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfo;
@@ -203,4 +204,8 @@ public interface RainbowService {
     //24.获取城市地址列表
     @POST("/api/app/user/getCityList")
     Observable<RainbowResultEntity<List<CAddress>>> getCityList(@Query("data") String  data);
+
+    //32.获取已接订单列表
+    @POST("/api/app/user/order/orderList")
+    Observable<RainbowResultEntity<OrderPage>> getOrderList(@Query("data") String  data);
 }

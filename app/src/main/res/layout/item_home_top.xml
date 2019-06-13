@@ -75,6 +75,7 @@
         android:orientation="horizontal"
         android:gravity="center">
         <View  style="@style/BaseLine.Horizontal"
+            android:background="#333333"
             android:layout_width="80px"/>
         <TextView style="@style/BaseItem.Tv"
             android:textColor="#333333"
@@ -83,6 +84,7 @@
             android:layout_marginLeft="18px"
             android:layout_marginRight="18px"/>
         <View  style="@style/BaseLine.Horizontal"
+            android:background="#333333"
             android:layout_width="80px"/>
     </LinearLayout>
 </LinearLayout>

@@ -326,4 +326,17 @@
     <string name="人付款">%s人付款</string>
     <string name="剩余接单量">剩余接单量：%1$d</string>
     <string name="元">%1$d 元</string>
+    <string name="复制">复制</string>
+    <string name="买号">买号</string>
+    <string name="当前步骤">当前步骤</string>
+    <string name="继续活动">继续活动</string>
+    <string name="关闭活动">关闭活动</string>
+    <string name="全部">全部(%1$d)</string>
+    <string name="进行中">进行中(%1$d)</string>
+    <string name="待发货">待发货(%1$d)</string>
+    <string name="待评价">待评价(%1$d)</string>
+    <string name="待返款">待返款(%1$d)</string>
+    <string name="已完成">已完成(%1$d)</string>
+    <string name="失败订单">失败(%1$d)</string>
+
 </resources>

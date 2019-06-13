@@ -26,7 +26,7 @@ import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
-import com.mark.app.hjshop4a.ui.homepager.fragment.HomeFragment;
+
 
 import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
@@ -34,8 +34,10 @@ import com.mark.app.hjshop4a.uinew.bindinfo.dialog.ChooseAccountDialog;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoPass;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
+import com.mark.app.hjshop4a.uinew.homepager.fragment.HomeFragment;
 import com.mark.app.hjshop4a.uinew.homepager.fragment.MeFragment;
 import com.mark.app.hjshop4a.uinew.homepager.fragment.OrderFrament;
+import com.mark.app.hjshop4a.uinew.homepager.fragment.StatusFragment;
 import com.mark.app.hjshop4a.uinew.order.OrderInfo;
 import com.mark.app.hjshop4a.widget.PickerScrollView;
 
@@ -60,7 +62,7 @@ public class HomePagerActivity extends BaseActivity {
    private ClassifyFragment classifyFragment;
    private OrderFrament orderFrament;
     private MeFragment meFragment;
-    private ServiceFragment mServiceFragment;
+    private StatusFragment statusFragment;
     private BaseFragment mCurFragment;
     private ChooseAccountDialog chooseAccountDialog;
     //tab类型
@@ -111,7 +113,7 @@ public class HomePagerActivity extends BaseActivity {
         createFragment();
         selectTab(mType);
         validUpdate();
-
+        App.get().setHomePagerActivity(this);
     }
 
 
@@ -124,12 +126,13 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab2: {
-                selectTab(tab2);
+                showLevelDiaglog();
+//                selectTab(tab2);
                 break;
             }
             case R.id.hp_layout_tab3: {
-                showLevelDiaglog();
-//                selectTab(tab3);
+
+                selectTab(tab3);
 
                 break;
             }
@@ -161,7 +164,7 @@ public class HomePagerActivity extends BaseActivity {
                 @Override
                 public void onClick(AccountInfoPass data) {
                     orderFrament.setId(data.getBuyerAccountId());
-                    selectTab(tab3);
+                    selectTab(tab2);
                 }
             });
 
@@ -177,7 +180,7 @@ public class HomePagerActivity extends BaseActivity {
         meFragment = new MeFragment();
         classifyFragment =new ClassifyFragment();
         orderFrament = new OrderFrament();
-        mServiceFragment =new ServiceFragment();
+        statusFragment =new StatusFragment();
     }
 
     /**
@@ -269,11 +272,11 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab2: {
-                switchFragment(classifyFragment);
+                switchFragment(orderFrament);
                 break;
             }
             case R.id.hp_layout_tab3: {
-                switchFragment(orderFrament);
+                switchFragment(statusFragment);
                 break;
             }
             case R.id.hp_layout_tab4: {
@@ -281,7 +284,7 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab5: {
-                switchFragment(mServiceFragment);
+                switchFragment(classifyFragment);
 
                 break;
             }
@@ -320,5 +323,12 @@ public class HomePagerActivity extends BaseActivity {
         } else {
             return false;
         }
+    }
+
+    public StatusFragment getStatusFragment() {
+        if(statusFragment==null){
+            statusFragment=new StatusFragment();
+        }
+        return statusFragment;
     }
 }
