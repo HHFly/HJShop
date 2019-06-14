@@ -18,6 +18,7 @@ import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.uinew.homepager.adapter.HomeAdapter;
 import com.mark.app.hjshop4a.uinew.homepager.adapter.MeAdapter;
+import com.mark.app.hjshop4a.uinew.homepager.model.Banner;
 import com.mark.app.hjshop4a.uinew.homepager.model.Index;
 import com.mark.app.hjshop4a.uinew.homepager.model.ShowProduct;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -124,6 +125,10 @@ public class HomeFragment extends BaseFragment {
 
                 }
 
+                @Override
+                public void onClickBanner(Banner data) {
+                    
+                }
 
 
             });
