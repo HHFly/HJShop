@@ -12,7 +12,7 @@
         android:layout_height="@dimen/titlebar_height"
         android:layout_centerVertical="true"
         android:padding="24px"
-        android:src="@mipmap/ic_left_white"
+        android:src="@mipmap/ic_left_gray"
         app:layout_auto_basewidth="height" />
 
     <TextView

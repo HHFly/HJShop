@@ -28,10 +28,10 @@ public class Index extends BaseModel {
     }
 
     public List<IndexModel> getListData() {
-        return listData;
+        return getlsit();
     }
 
-  private void getlsit(){
+  private List<IndexModel> getlsit(){
       IndexModel model=new IndexModel();
         if(products!=null){
             for(int i =0;i<products.size();i++){
@@ -41,10 +41,12 @@ public class Index extends BaseModel {
                     listData.add(model);
                     model=new IndexModel();
                 }
-
-//                    model.setProduct1();
             }
-        }
+            if(model.isNull()){
+                listData.add(model);
+            }
 
+        }
+        return  listData;
   }
 }

@@ -23,6 +23,7 @@ import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.ui.start.GuideActivity;
 import com.mark.app.hjshop4a.uinew.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.uinew.login.activity.LoginActivity;
+import com.mark.app.hjshop4a.uinew.login.activity.PhoneActivity;
 import com.mark.app.hjshop4a.uinew.login.activity.RegisterActivity;
 import com.mark.app.hjshop4a.ui.about.AboutActivity;
 import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
@@ -83,7 +84,7 @@ public class ActivityJumpUtils {
      * @param act
      */
     public static void actPhoneLogin(Activity act) {
-        Intent intent = new Intent(act, RegisterActivity.class);
+        Intent intent = new Intent(act, PhoneActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 
         act.startActivity(intent);

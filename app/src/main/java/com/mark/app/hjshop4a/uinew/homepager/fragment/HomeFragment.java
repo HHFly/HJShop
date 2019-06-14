@@ -127,7 +127,7 @@ public class HomeFragment extends BaseFragment {
 
                 @Override
                 public void onClickBanner(Banner data) {
-                    
+
                 }
 
 

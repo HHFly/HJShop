@@ -2,5 +2,5 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@drawable/shape_btn_commonly_unclick" android:state_enabled="false" />
     <item android:drawable="@drawable/shape_btn_commonly_click" android:state_pressed="true" />
-    <item android:drawable="@drawable/shape_btn_commonly_normal" />
+    <item android:drawable="@drawable/shape_blue_24px" />
 </selector>

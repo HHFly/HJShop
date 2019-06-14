@@ -58,6 +58,7 @@ public class PhoneActivity extends BaseActivity {
     public void setListener() {
         setEtTextWatcher(R.id.et_username, textWatcher);
         setEtTextWatcher(R.id.et_code, textWatcher);
+        setClickListener(R.id.titlebar_iv_return);
     }
 
     @Override

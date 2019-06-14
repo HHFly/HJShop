@@ -120,6 +120,8 @@
         android:layout_width="match_parent"
         android:text="@string/手机快捷登录"
         android:layout_marginTop="29px"
+        android:layout_marginRight="30px"
+        android:layout_marginLeft="30px"
         android:textColor="@drawable/select_color_blue_white"
         android:textSize="28px"
         android:background="@drawable/select_btn_normal_important2"

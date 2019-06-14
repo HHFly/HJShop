@@ -114,6 +114,9 @@ public class HomePagerActivity extends BaseActivity {
         selectTab(mType);
         validUpdate();
         App.get().setHomePagerActivity(this);
+        if (!App.hasToken()) {
+            ActivityJumpUtils.actLogin(getActivity());
+        }
     }
 
 
@@ -126,13 +129,23 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab2: {
-                showLevelDiaglog();
+                if (App.hasToken()) {
+                  showLevelDiaglog();
+                } else {
+                    ActivityJumpUtils.actLogin(getActivity());
+                }
+
 //                selectTab(tab2);
                 break;
             }
             case R.id.hp_layout_tab3: {
 
-                selectTab(tab3);
+                if (App.hasToken()) {
+                    selectTab(tab3);
+                } else {
+                    ActivityJumpUtils.actLogin(getActivity());
+                }
+
 
                 break;
             }

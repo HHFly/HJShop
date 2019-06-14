@@ -113,12 +113,8 @@ public class PermisstionActivity extends BaseActivity {
      * 前往下个Activity
      */
     private void goNext() {
-        if (App.hasToken()) {
-            ActivityJumpUtils.actActivity(getActivity(), HomePagerActivity.class);
-        } else {
+        ActivityJumpUtils.actActivity(getActivity(), HomePagerActivity.class);
 
-            ActivityJumpUtils.actLogin(getActivity());
-        }
         finish();
     }
 }

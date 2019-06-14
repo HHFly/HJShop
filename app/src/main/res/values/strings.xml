@@ -326,6 +326,7 @@
     <string name="人付款">%s人付款</string>
     <string name="剩余接单量">剩余接单量：%1$d</string>
     <string name="元">%1$d 元</string>
+    <string name="S元">%1$s 元</string>
     <string name="复制">复制</string>
     <string name="买号">买号</string>
     <string name="当前步骤">当前步骤</string>
