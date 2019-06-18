@@ -16,6 +16,10 @@ import android.os.Handler;
 public class OneDetailAdapter extends MultipleSourcesRvAdapter {
     StepOne data;
 
+    public OneDetailAdapter(StepOne data) {
+        this.data = data;
+    }
+
     public void setData(StepOne data) {
         this.data = data;
     }

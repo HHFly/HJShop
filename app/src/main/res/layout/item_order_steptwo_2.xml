@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<TextView style="@style/BaseItem.Tv"
+    android:id="@+id/tv_1"
+    android:text="第一步：验证是否找对店铺"
+    android:textColor="#333333"
+    android:textSize="22px"/>
+    <EditText
+        android:id="@+id/et_shopname"
+        android:layout_width="match_parent"
+        android:layout_height="72px"
+        android:background="@drawable/shape_green_stroke_1px"
+        android:layout_below="@+id/tv_1"
+        android:layout_marginTop="23px"/>
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/circularButton"
+        android:layout_width="114px"
+        android:layout_height="56px"
+        android:layout_below="@+id/et_shopname"
+        android:layout_marginTop="20px"
+        android:textColor="#289BF8"
+        android:textSize="24px"
+        android:layout_centerHorizontal="true"
+        app:cpb_cornerRadius="10px"
+        app:cpb_selectorComplete="@drawable/complete_state_selector"
+        app:cpb_selectorError="@drawable/error_state_selector"
+        app:cpb_selectorIdle="@drawable/idle_state_selector"
+        app:cpb_textIdle="验证" />
+    <com.mark.app.hjshop4a.widget.UpdateStepLayout
+        android:id="@+id/up_"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:img ="@mipmap/ic_img"
+        app:tipimg="@mipmap/home"
+        app:title="第二步：请根据商家要求上传任务截图"
+        android:layout_below="@+id/circularButton"
+        android:layout_marginTop="57px"/>
+
+
+</RelativeLayout>
