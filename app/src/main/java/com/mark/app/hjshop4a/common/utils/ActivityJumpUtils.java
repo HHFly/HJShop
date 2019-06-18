@@ -30,6 +30,7 @@ import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.userinfo.BasicInfoActivity;
 import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
+import com.mark.app.hjshop4a.uinew.performorder.PerformOrderActivity;
 import com.mark.app.hjshop4a.uinew.userinfo.ModifyPWActivity;
 import com.mark.app.hjshop4a.ui.userinfo.UserInfoActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
@@ -398,6 +399,19 @@ public class ActivityJumpUtils {
         Bundle bundle = new Bundle();
         bundle.putInt(BundleKey.SHOWTYPE,role);
         bundle.putLong(BundleKey.ID,id);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+
+    /*
+     * 跳转添加淘宝绑定
+     * */
+    public static void actPerform(Activity activity,String subOrderSn,int  step) {
+        Intent intent = new Intent(activity, PerformOrderActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKey.ORDER_SN,subOrderSn);
+        bundle.putInt(BundleKey.ID,step);
         intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);

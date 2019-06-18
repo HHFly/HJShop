@@ -2,9 +2,12 @@ package com.mark.app.hjshop4a.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import com.mark.app.hjshop4a.R;
@@ -18,7 +21,7 @@ import java.util.List;
 public class WarpLinearLayout extends ViewGroup {
     //没有行数限制
     public static final int VALUE_NO_MAX = -1;
-
+    private Context context;
     private Type mType;
     private List<WarpLine> mWarpLineGroup;
 
@@ -29,8 +32,17 @@ public class WarpLinearLayout extends ViewGroup {
     public WarpLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         mType = new Type(context, attrs);
+        this.context =context;
     }
-
+    public void addChild(String str){
+      TextView  text =new TextView(context);
+        text.setTextColor(Color.parseColor("#289af8"));
+        text.setTextSize(TypedValue.COMPLEX_UNIT_PX,20);
+        text.setPadding(11,4,11,4);
+        text.setBackground(context.getResources().getDrawable(R.drawable.shape_blue_6px));
+        text.setText(str);
+        addView(text);
+    }
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int withMode = MeasureSpec.getMode(widthMeasureSpec);

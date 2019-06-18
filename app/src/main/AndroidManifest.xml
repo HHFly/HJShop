@@ -69,5 +69,6 @@
         <activity android:name=".uinew.bindinfo.BankCardAddActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.bindinfo.BindTaobaoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.bindinfo.AddTaobaoActivity" android:screenOrientation="portrait" />
+        <activity android:name=".uinew.performorder.PerformOrderActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

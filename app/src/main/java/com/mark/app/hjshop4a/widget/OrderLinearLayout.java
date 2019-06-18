@@ -31,10 +31,10 @@ public class OrderLinearLayout extends WarpLinearLayout {
 
     public void addChild(String str){
         text =new TextView(context);
-        text.setTextColor(Color.parseColor("#999999"));
+        text.setTextColor(Color.parseColor("#289af8"));
         text.setTextSize(TypedValue.COMPLEX_UNIT_PX,20);
         text.setPadding(11,4,11,4);
-        text.setBackground(context.getResources().getDrawable(R.drawable.shape_gray_6px));
+        text.setBackground(context.getResources().getDrawable(R.drawable.shape_blue_6px));
         text.setText(str);
         addView(text);
     }

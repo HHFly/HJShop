@@ -339,5 +339,7 @@
     <string name="待返款">待返款(%1$d)</string>
     <string name="已完成">已完成(%1$d)</string>
     <string name="失败订单">失败(%1$d)</string>
-
+    <string name="小时">小时</string>
+    <string name="分钟">分钟</string>
+    <string name="秒">秒</string>
 </resources>

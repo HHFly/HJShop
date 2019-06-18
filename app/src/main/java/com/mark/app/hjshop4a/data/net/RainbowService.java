@@ -204,6 +204,10 @@ public interface RainbowService {
     //24.获取城市地址列表
     @POST("/api/app/user/getCityList")
     Observable<RainbowResultEntity<List<CAddress>>> getCityList(@Query("data") String  data);
+    //25.获取订单信息
+    @POST("/api/app/user/order/getOrderInfo")
+    Observable<RainbowResultEntity> getOrderInfo(@Query("data") String  data);
+
 
     //32.获取已接订单列表
     @POST("/api/app/user/order/orderList")
