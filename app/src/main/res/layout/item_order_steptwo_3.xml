@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<TextView style="@style/BaseItem.Tv"
+    android:id="@+id/tv_1"
+    android:textSize="28px"
+    android:textColor="#FF333333"
+    android:text="副宝贝"/>
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/deputy_sdv_productPic"
+        style="@style/BaseSDV"
+        android:layout_width="162px"
+        android:layout_height="162px"
+        app:layout_auto_basewidth="height"
+        app:placeholderImage="@mipmap/ic_logo"
+        app:roundAsCircle="false"
+        android:layout_below="@+id/tv_1"
+        android:layout_marginTop="34px"/>
+    <TextView
+        android:id="@+id/tv_2"
+        style="@style/BaseItem.Tv"
+        android:textSize="22px"
+        android:textColor="#999999"
+        android:text="店铺价格"
+        android:layout_alignTop="@+id/deputy_sdv_productPic"
+        android:layout_toRightOf="@+id/deputy_sdv_productPic"
+        android:layout_marginLeft="20px"/>
+    <TextView
+        android:id="@+id/tv_3"
+        style="@style/BaseItem.Tv"
+        android:textSize="22px"
+        android:textColor="#999999"
+        android:text="认证提示"
+       android:layout_below="@+id/tv_2"
+        android:layout_toRightOf="@+id/deputy_sdv_productPic"
+        android:layout_marginLeft="20px"
+        android:layout_marginTop="20px"/>
+
+    <TextView
+    android:id="@+id/tv_productPrice"
+    style="@style/BaseItem.Tv"
+    android:layout_alignTop="@+id/tv_2"
+    android:textColor="#333333"
+    android:textSize="22px"
+    android:layout_alignParentRight="true"
+    />
+    <TextView
+        android:id="@+id/tv_auditKeyWord"
+        style="@style/BaseItem.Tv"
+        android:layout_alignTop="@+id/tv_3"
+        android:textColor="#333333"
+        android:textSize="22px"
+        android:layout_alignParentRight="true"
+        />
+    <TextView style="@style/BaseItem.Tv"
+        android:id="@+id/tv_4"
+        android:text="第一步是：是否找对商品"
+        android:textColor="#333333"
+        android:textSize="22px"
+        android:layout_below="@+id/deputy_sdv_productPic"
+        android:layout_marginTop="26px"/>
+    <EditText
+        android:id="@+id/et_name_deputy"
+        android:layout_width="match_parent"
+        android:layout_height="72px"
+        android:background="@drawable/shape_green_stroke_1px"
+        android:layout_below="@+id/tv_4"
+        android:layout_marginTop="23px"/>
+    <com.dd.CircularProgressButton
+        android:id="@+id/circularButton_deputy"
+        android:layout_width="200px"
+        android:layout_height="80px"
+        android:layout_below="@+id/et_name_deputy"
+        android:layout_marginTop="20px"
+        android:textColor="@color/white"
+        android:textSize="24px"
+        android:layout_centerHorizontal="true"
+        app:cpb_cornerRadius="10px"
+        app:cpb_selectorComplete="@drawable/complete_state_selector"
+        app:cpb_selectorError="@drawable/error_state_selector"
+        app:cpb_selectorIdle="@drawable/idle_state_selector"
+        app:cpb_textIdle="验证" />
+    <com.mark.app.hjshop4a.widget.UpdateStepLayout
+        android:id="@+id/up_step_two_deputy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:img ="@mipmap/ic_img"
+        app:tipimg="@mipmap/home"
+        app:title="第二步:上传宝贝浏览截图"
+        android:layout_below="@+id/circularButton_deputy"
+        android:layout_marginTop="37px"/>
+    
+    <View style="@style/BaseLine.Horizontal"
+        android:layout_below="@+id/up_step_two_deputy"
+        android:layout_marginTop="30px"
+        android:layout_marginBottom="20px"/>
+
+</RelativeLayout>

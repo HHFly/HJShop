@@ -15,21 +15,21 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 
-public class UpdateStepLayout extends LinearLayout {
+public class UpdateStepTipLayout extends LinearLayout {
     private Type mType;
     TextView title,tipimg;
     SimpleDraweeView img;
-    public UpdateStepLayout(Context context) {
+    public UpdateStepTipLayout(Context context) {
         super(context);
     }
 
-    public UpdateStepLayout(final Context context, @Nullable AttributeSet attrs) {
+    public UpdateStepTipLayout(final Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mType = new Type(context, attrs);
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.item_update_img_2, this);
-        title  =findViewById(R.id.tv_title);
-        title.setText(mType.title);
+        inflater.inflate(R.layout.item_update_img_3, this);
+//        title  =findViewById(R.id.tv_title);
+//        title.setText(mType.title);
         tipimg =findViewById(R.id.tv_tip);
         tipimg.setOnClickListener(new OnClickListener() {
             @Override
@@ -74,7 +74,7 @@ public class UpdateStepLayout extends LinearLayout {
          */
         private int img =R.mipmap.ic_img;
         private String title="";
-        private int tipimg ;
+        private int tipimg;
 
         Type(Context context, AttributeSet attrs) {
             if (attrs == null) {

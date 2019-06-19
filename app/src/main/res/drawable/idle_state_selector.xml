@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/shape_blue_6px"
+    <item android:state_pressed="true"
         android:color="#289BF8"/>
-    <item android:state_focused="true" android:drawable="@drawable/shape_blue_6px"
+    <item android:state_focused="true"
         android:color="#289BF8"/>
     <item android:state_enabled="false"
         android:color="@color/cpb_grey"/>
-    <item android:state_enabled="true"  android:drawable="@drawable/shape_blue_6px"
+    <item android:state_enabled="true"
         android:color="#289BF8"/>
 </selector>
