@@ -18,6 +18,7 @@ import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 public class UpdateStepTipLayout extends LinearLayout {
     private Type mType;
     TextView title,tipimg;
+    String url;
     SimpleDraweeView img;
     public UpdateStepTipLayout(Context context) {
         super(context);
@@ -34,7 +35,12 @@ public class UpdateStepTipLayout extends LinearLayout {
         tipimg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                FunctionDialogFactory.showBigSdvDialog(App.get().getFragmentManager(),mType.tipimg);
+                if(url!=null){
+                    FunctionDialogFactory.showBigSdvDialog(App.get().getFragmentManager(),url);
+                }else {
+                    FunctionDialogFactory.showBigSdvDialog(App.get().getFragmentManager(),mType.tipimg);
+                }
+
             }
         });
         img =findViewById(R.id.sdv_img);
@@ -51,6 +57,9 @@ public class UpdateStepTipLayout extends LinearLayout {
     }
 
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     private UpdateImgLayout.OnItemClickListener onItemClickListener;
 

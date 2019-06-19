@@ -15,7 +15,7 @@ public class StepTwo extends BaseModel {
     double mainProductPrice;//商品
     String require;//主商品需要上传图片信息
     TaskPic taskPic;//截图信息
-    List<AddProduct> addProductList;//附加商品列表
+    AddProduct addProductList;//附加商品列表
 
 
     public int getIsAddProductFlage() {
@@ -90,11 +90,11 @@ public class StepTwo extends BaseModel {
         this.taskPic = taskPic;
     }
 
-    public List<AddProduct> getAddProductList() {
+    public AddProduct getAddProductList() {
         return addProductList;
     }
 
-    public void setAddProductList(List<AddProduct> addProductList) {
+    public void setAddProductList(AddProduct addProductList) {
         this.addProductList = addProductList;
     }
 }
