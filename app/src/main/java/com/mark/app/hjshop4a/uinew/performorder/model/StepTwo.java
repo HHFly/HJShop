@@ -15,8 +15,36 @@ public class StepTwo extends BaseModel {
     double mainProductPrice;//商品
     String require;//主商品需要上传图片信息
     TaskPic taskPic;//截图信息
-    AddProduct addProductList;//附加商品列表
+    List<AddProduct> addProductList;//附加商品列表
+    long compltetTime;//完成时间
+    long stepTime ;//本步骤时间
+    public void countAllTime() {
+        if(compltetTime>0)
+         compltetTime=compltetTime-1000;
+        if(stepTime>0)
+            stepTime=stepTime-1000;
 
+    }
+    public void countCompleteTime() {
+        if(compltetTime>0)
+            compltetTime=compltetTime-1000;
+
+    }
+    public long getCompltetTime() {
+        return compltetTime;
+    }
+
+    public void setCompltetTime(long compltetTime) {
+        this.compltetTime = compltetTime;
+    }
+
+    public long getStepTime() {
+        return stepTime;
+    }
+
+    public void setStepTime(long stepTime) {
+        this.stepTime = stepTime;
+    }
 
     public int getIsAddProductFlage() {
         return isAddProductFlage;
@@ -90,11 +118,11 @@ public class StepTwo extends BaseModel {
         this.taskPic = taskPic;
     }
 
-    public AddProduct getAddProductList() {
+    public List<AddProduct> getAddProductList() {
         return addProductList;
     }
 
-    public void setAddProductList(AddProduct addProductList) {
+    public void setAddProductList(List<AddProduct> addProductList) {
         this.addProductList = addProductList;
     }
 }

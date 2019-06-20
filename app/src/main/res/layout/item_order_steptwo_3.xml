@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="30px"
+    android:background="@drawable/shape_white_16px"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <TextView style="@style/BaseItem.Tv"
     android:id="@+id/tv_1"
@@ -40,7 +42,7 @@
         android:layout_marginTop="20px"/>
 
     <TextView
-    android:id="@+id/tv_productPrice"
+    android:id="@+id/tv_deputy_productPrice"
     style="@style/BaseItem.Tv"
     android:layout_alignTop="@+id/tv_2"
     android:textColor="#333333"
@@ -48,7 +50,7 @@
     android:layout_alignParentRight="true"
     />
     <TextView
-        android:id="@+id/tv_auditKeyWord"
+        android:id="@+id/tv_deputy_auditKeyWord"
         style="@style/BaseItem.Tv"
         android:layout_alignTop="@+id/tv_3"
         android:textColor="#333333"

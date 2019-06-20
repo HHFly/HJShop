@@ -208,10 +208,17 @@ public interface RainbowService {
     @POST("/api/app/user/order/getOrderInfo")
     Observable<RainbowResultEntity> getOrderInfo(@Query("data") String  data);
 
-    //25.获取订单信息
+//    27.下一步
     @POST("/api/app/user/order/nextStep")
     Observable<RainbowResultEntity> nextStep(@Query("data") String  data);
+
+
+
     //32.获取已接订单列表
     @POST("/api/app/user/order/orderList")
     Observable<RainbowResultEntity<OrderPage>> getOrderList(@Query("data") String  data);
+
+    //验证
+    @POST("/api/app/user/order/orderList")
+    Observable<RainbowResultEntity> verify(@Query("data") String  data);
 }

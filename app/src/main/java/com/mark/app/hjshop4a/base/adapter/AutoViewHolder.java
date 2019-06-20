@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.widget.PhoneEditText;
 import com.zhy.autolayout.utils.AutoUtils;
 
 /**
@@ -262,7 +263,25 @@ public class AutoViewHolder extends MkViewHolder {
         }
         itemView.setLayoutParams(param);
     }
-
+    /**
+     * 获取TextView文本
+     *
+     * @param id
+     * @return
+     */
+    public String getTvText(@IdRes int id) {
+        View view = get(id);
+        if (view != null && view instanceof TextView) {
+            TextView tv = (TextView) view;
+            if (tv instanceof PhoneEditText) {
+                PhoneEditText et = (PhoneEditText) tv;
+                return et.getTextString().trim();
+            } else {
+                return tv.getText().toString().trim();
+            }
+        }
+        return "";
+    }
 
 
 }

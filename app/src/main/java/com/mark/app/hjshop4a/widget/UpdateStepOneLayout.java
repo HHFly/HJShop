@@ -15,22 +15,22 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 
-public class UpdateStepTipLayout extends LinearLayout {
+public class UpdateStepOneLayout extends LinearLayout {
     private Type mType;
     TextView title,tipimg;
     String url;
     SimpleDraweeView img;
-    public UpdateStepTipLayout(Context context) {
+    public UpdateStepOneLayout(Context context) {
         super(context);
     }
 
-    public UpdateStepTipLayout(final Context context, @Nullable AttributeSet attrs) {
+    public UpdateStepOneLayout(final Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mType = new Type(context, attrs);
         LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.item_update_img_3, this);
-//        title  =findViewById(R.id.tv_title);
-//        title.setText(mType.title);
+        title  =findViewById(R.id.tv_title);
+        title.setText(mType.title);
         tipimg =findViewById(R.id.tv_tip);
         tipimg.setOnClickListener(new OnClickListener() {
             @Override
@@ -61,9 +61,9 @@ public class UpdateStepTipLayout extends LinearLayout {
         this.url = url;
     }
 
-    private UpdateImgLayout.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
 
-    public void setOnItemClickListener(UpdateImgLayout.OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         onItemClickListener = listener;
     }
 

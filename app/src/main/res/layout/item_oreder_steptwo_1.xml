@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/sdv_productImg"
+        android:id="@+id/hm_sdv_productPic"
         style="@style/BaseSDV"
         android:layout_width="162px"
         android:layout_height="162px"

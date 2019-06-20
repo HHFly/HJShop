@@ -30,18 +30,40 @@
         app:cpb_selectorError="@drawable/error_state_selector"
         app:cpb_selectorIdle="@drawable/idle_state_selector"
         app:cpb_textIdle="验证" />
-    <com.mark.app.hjshop4a.widget.UpdateStepLayout
-        android:id="@+id/up_step_two"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:img ="@mipmap/ic_img"
-        app:tipimg="@mipmap/home"
-        app:title="第二步：请根据商家要求上传任务截图"
+    <TextView style="@style/BaseItem.Tv"
+        android:id="@+id/tv_3_1"
+        android:text="第二步：请根据商家要求上传任务截图"
+        android:textColor="#333333"
+        android:textSize="22px"
         android:layout_below="@+id/circularButton"
         android:layout_marginTop="57px"/>
 
+    <LinearLayout
+        android:id="@+id/up_step_two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_3_1"
+        android:layout_marginTop="35px"
+        android:orientation="horizontal">
+        <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
+            android:id="@+id/up_img_searchPic"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:title="搜索关键词"
+            />
+        <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
+            android:id="@+id/up_img_mainProductBrowsePic"
+
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:title="主宝贝浏览"
+            />
+
+    </LinearLayout>
     <TextView style="@style/BaseItem.Tv"
-        android:id="@+id/tv_2"
+        android:id="@+id/tv_2_1"
         android:text="第三步：货比三家，每个一分钟，提供三个竞品详情页顶部截图"
         android:textColor="#333333"
         android:textSize="22px"
@@ -51,24 +73,28 @@
         android:id="@+id/ll_up_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_2"
+        android:layout_below="@+id/tv_2_1"
         android:layout_marginTop="35px"
         android:orientation="horizontal">
-        <com.mark.app.hjshop4a.widget.UpdateStepTipLayout
+        <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_1"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <com.mark.app.hjshop4a.widget.UpdateStepTipLayout
+            android:layout_weight="1"
+            app:title="货比三家1"
+            />
+        <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_2"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <com.mark.app.hjshop4a.widget.UpdateStepTipLayout
+            android:layout_weight="1"
+            app:title="货比三家2"/>
+        <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_3"
             android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            app:title="货比三家3"/>
     </LinearLayout>
 
     <View style="@style/BaseLine.Horizontal"
