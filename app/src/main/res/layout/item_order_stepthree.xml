@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_white_16px"
+    android:padding="30px">
+    <include layout="@layout/item_order_stepthree_1"/>
+    <include layout="@layout/item_order_stepthree_2"/>
+</LinearLayout>

@@ -45,7 +45,7 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
         holder.text(R.id.tv_priceRange, stepTwo.getPriceRange());
         holder.text(R.id.tv_mainProductPrice, String.format(App.get().getString(R.string.元), stepTwo.getMainProductPrice()));
         holder.text(R.id.tv_require, stepTwo.getRequire());
-        holder.sdvBig(R.id.sdv_productImg, stepTwo.getProductImg());
+        holder.sdvBig(R.id.hm_sdv_productPic, stepTwo.getProductImg());
         //第一步：验证是否找对店铺
        CircularProgressButton circularPropagation =holder.get(R.id.circularButton);
         circularPropagation.setIndeterminateProgressMode(true);
