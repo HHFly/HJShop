@@ -30,9 +30,11 @@ import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.userinfo.BasicInfoActivity;
 import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
+import com.mark.app.hjshop4a.uinew.performorder.FourAddShopActivity;
 import com.mark.app.hjshop4a.uinew.performorder.OneDetailActivity;
 import com.mark.app.hjshop4a.uinew.performorder.PerformOrderActivity;
 import com.mark.app.hjshop4a.uinew.performorder.TwoSearchActivity;
+import com.mark.app.hjshop4a.uinew.performorder.adapter.ThreeBrowseAdapter;
 import com.mark.app.hjshop4a.uinew.userinfo.ModifyPWActivity;
 import com.mark.app.hjshop4a.ui.userinfo.UserInfoActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
@@ -434,6 +436,28 @@ public class ActivityJumpUtils {
      * */
     public static void actStepTwo(Activity activity,String subOrderSn) {
         Intent intent = new Intent(activity, TwoSearchActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKey.ORDER_SN,subOrderSn);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+     * 跳转step2
+     * */
+    public static void actStepThree(Activity activity,String subOrderSn) {
+        Intent intent = new Intent(activity, ThreeBrowseAdapter.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKey.ORDER_SN,subOrderSn);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+     * 跳转step2
+     * */
+    public static void actStepFour(Activity activity,String subOrderSn) {
+        Intent intent = new Intent(activity, FourAddShopActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(BundleKey.ORDER_SN,subOrderSn);
         intent.putExtras(bundle);

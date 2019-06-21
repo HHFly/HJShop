@@ -2,7 +2,7 @@ package com.mark.app.hjshop4a.uinew.performorder.model;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
 
-public class StepThree extends BaseModel {
+public class StepFour extends BaseModel {
     String productImg;
     String searchKeyWord;
     String shopName;

@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
-import com.dd.CircularProgressButton;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
@@ -23,40 +22,34 @@ import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.uinew.dialog.CloseOrderDialog;
-import com.mark.app.hjshop4a.uinew.dialog.YesNoDialog;
+import com.mark.app.hjshop4a.uinew.performorder.adapter.FourAddShopAdapter;
 import com.mark.app.hjshop4a.uinew.performorder.adapter.ThreeBrowseAdapter;
-import com.mark.app.hjshop4a.uinew.performorder.adapter.TwoSearchAdapter;
-import com.mark.app.hjshop4a.uinew.performorder.model.AddProduct;
-import com.mark.app.hjshop4a.uinew.performorder.model.AddProductPic;
 import com.mark.app.hjshop4a.uinew.performorder.model.CloseOrderParam;
 import com.mark.app.hjshop4a.uinew.performorder.model.NextStepParam;
 import com.mark.app.hjshop4a.uinew.performorder.model.PerformParam;
+import com.mark.app.hjshop4a.uinew.performorder.model.StepFour;
+import com.mark.app.hjshop4a.uinew.performorder.model.StepFourParam;
 import com.mark.app.hjshop4a.uinew.performorder.model.StepThree;
 import com.mark.app.hjshop4a.uinew.performorder.model.StepThreeParam;
-import com.mark.app.hjshop4a.uinew.performorder.model.StepTwo;
-import com.mark.app.hjshop4a.uinew.performorder.model.StepTwoParam;
-import com.mark.app.hjshop4a.widget.UpdateStepLayout;
 import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class ThreeBrowseActivity extends BaseActivity {
+public class FourAddShopActivity extends BaseActivity {
     String subOrderSn;
     SmartRefreshLayout mRefreshLayout;//刷新框架
-    StepThree data;
-    ThreeBrowseAdapter threeBrowseAdapter;
+    StepFour data;
+    FourAddShopAdapter fourAddShopAdapter;
     UpdateStepOneLayout updateStepTip;//
     private Map<Integer,String> pic =new HashMap<>();
-    private int mapId;//0 主 4 搜索 1  2 3货比   5.。。。副宝贝
+    private int mapId;//1 23 4
     private CloseOrderDialog closeOrderDialog;
     @Override
     public int getContentViewResId() {
@@ -65,7 +58,7 @@ public class ThreeBrowseActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        setTvText(R.id.titlebar_tv_title,"浏览评价");
+        setTvText(R.id.titlebar_tv_title,"加购收藏");
     }
     @Override
     public void getIntentParam(Bundle bundle) {
@@ -102,7 +95,7 @@ public class ThreeBrowseActivity extends BaseActivity {
     private void requestData() {
 //        showLoadingDialog();
         PerformParam performParam =new PerformParam();
-        performParam.setStep(3);
+        performParam.setStep(4);
         performParam.setSubOrderSn(subOrderSn);
         App.getServiceManager().getmService()
                 .getOrderInfo(performParam.toPswJson())
@@ -114,10 +107,10 @@ public class ThreeBrowseActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                        data = JsonUtils.fromJson(obj.getResult(),StepThree.class);
+                        data = JsonUtils.fromJson(obj.getResult(),StepFour.class);
                         //设置信息
                         initRvAdapter(data);
-//                        twoSearchAdapter.startTime();
+                        fourAddShopAdapter.startTime();
                     }
 
                     @Override
@@ -127,14 +120,15 @@ public class ThreeBrowseActivity extends BaseActivity {
                     }
                 });
     }
-    private void initRvAdapter(final StepThree data){
 
-        if(threeBrowseAdapter==null){
+    private void initRvAdapter(final StepFour data){
+
+        if(fourAddShopAdapter==null){
             RecyclerView rv = getView(R.id.recyclerView);
-            threeBrowseAdapter = new ThreeBrowseAdapter(data);
+            fourAddShopAdapter = new FourAddShopAdapter(data);
             rv.setLayoutManager(new LinearLayoutManager(this));
-            rv.setAdapter(threeBrowseAdapter);
-            threeBrowseAdapter.setOnItemClickListener(new ThreeBrowseAdapter.OnItemClickListener() {
+            rv.setAdapter(fourAddShopAdapter);
+            fourAddShopAdapter.setOnItemClickListener(new FourAddShopAdapter.OnItemClickListener() {
                 @Override
                 public void onClickNext() {
                     nextStep();
@@ -144,8 +138,6 @@ public class ThreeBrowseActivity extends BaseActivity {
                 public void onClickClose() {
                     showCloseOrderDialog();
                 }
-
-
 
                 @Override
                 public void onClickHuobisanjiaPic1(UpdateStepOneLayout updateStepOneLayout) {
@@ -171,19 +163,24 @@ public class ThreeBrowseActivity extends BaseActivity {
                     FunctionDialogFactory.showTakePhoneDialog(getActivity());
                 }
 
+                @Override
+                public void onClickHuobisanjiaPic4(UpdateStepOneLayout updateStepOneLayout) {
+                    mapId=4;
 
+                    updateStepTip= updateStepOneLayout;
+                    FunctionDialogFactory.showTakePhoneDialog(getActivity());
+                }
 
 
             });
         }
         else {
-            threeBrowseAdapter.setData(data);
-            threeBrowseAdapter.notifyDataSetChanged();
+            fourAddShopAdapter.setData(data);
+            fourAddShopAdapter.notifyDataSetChanged();
         }
 //        boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
 //        setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -198,7 +195,6 @@ public class ThreeBrowseActivity extends BaseActivity {
         });
 
     }
-
     /**
      * 请求上传图片
      *
@@ -239,14 +235,14 @@ public class ThreeBrowseActivity extends BaseActivity {
 
         showLoadingDialog();
         NextStepParam nextStepParam =new NextStepParam();
-        nextStepParam.setStep(3);
+        nextStepParam.setStep(4);
         nextStepParam.setSubOrderSn(subOrderSn);
-        StepThreeParam stepThreeParam =new StepThreeParam();
+        StepFourParam stepThreeParam =new StepFourParam();
 
-        stepThreeParam.setEvaluationBrowsePic(pic.get(1));
-        stepThreeParam.setWwChat(pic.get(2));
-        stepThreeParam.setAskEveryone(pic.get(3));
-
+        stepThreeParam.setAddShoppingCart(pic.get(1));
+        stepThreeParam.setCollectProduct(pic.get(2));
+        stepThreeParam.setCollectShop(pic.get(3));
+        stepThreeParam.setNotPay(pic.get(4));
         nextStepParam.setJsonData(stepThreeParam.toJson());
         App.getServiceManager().getmService()
                 .nextStep(nextStepParam.toPswJson())
@@ -260,7 +256,7 @@ public class ThreeBrowseActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
                         Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
                         if(Sccess){
-                            ActivityJumpUtils.actStepFour(getActivity(),subOrderSn);
+//                            ActivityJumpUtils.actStepFour(getActivity(),subOrderSn);.
 
                         }else {
                             ToastUtils.show("失败！："+obj.getReason());
@@ -278,18 +274,21 @@ public class ThreeBrowseActivity extends BaseActivity {
     private boolean check(){
 
         if(TextUtils.isEmpty(pic.get(1))){
-            ToastUtils.show("请上传评价浏览");
+            ToastUtils.show("请上传加入购物车");
             return false;
         }
         if(TextUtils.isEmpty(pic.get(2))){
-            ToastUtils.show("请上传旺旺聊天");
+            ToastUtils.show("请上传收藏宝贝");
             return false;
         }
         if(TextUtils.isEmpty(pic.get(3))){
-            ToastUtils.show("请上传问大家浏览");
+            ToastUtils.show("请上传收藏店铺");
             return false;
         }
-
+        if(TextUtils.isEmpty(pic.get(4))){
+            ToastUtils.show("请上传下单不付款");
+            return false;
+        }
         return true;
     }
     /*

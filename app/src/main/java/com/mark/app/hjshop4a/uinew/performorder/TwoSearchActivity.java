@@ -15,6 +15,7 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -267,7 +268,7 @@ public class TwoSearchActivity extends BaseActivity {
     }
 
     /**
-     * 请求数据
+     * 验证店铺
      */
     private void verify(String et, final CircularProgressButton btn) {
 //        showLoadingDialog();
@@ -302,7 +303,7 @@ public class TwoSearchActivity extends BaseActivity {
                 });
     }
     /**
-     * 请求数据
+     * 下一步
      */
     private void nextStep() {
         if(!check()){return;}
@@ -340,7 +341,7 @@ public class TwoSearchActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
                         Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
                         if(Sccess){
-
+                            ActivityJumpUtils.actStepThree(getActivity(),subOrderSn);
 
                         }else {
                             ToastUtils.show("失败！："+obj.getReason());

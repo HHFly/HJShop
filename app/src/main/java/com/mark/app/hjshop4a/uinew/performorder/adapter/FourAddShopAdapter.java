@@ -7,24 +7,22 @@ import android.view.ViewGroup;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
-import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
-import com.mark.app.hjshop4a.base.adapter.BaseRvAdapter;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
-import com.mark.app.hjshop4a.uinew.performorder.model.StepThree;
-import com.mark.app.hjshop4a.widget.UpdateImgLayout;
-import com.mark.app.hjshop4a.widget.UpdateStepLayout;
+import com.mark.app.hjshop4a.uinew.performorder.model.StepFour;
 import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 
-import java.util.List;
+public class FourAddShopAdapter extends MultipleSourcesRvAdapter {
+    StepFour data;
 
-public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
-    StepThree data;
-
-    public ThreeBrowseAdapter(StepThree data) {
+    public FourAddShopAdapter(StepFour data) {
         this.data = data;
     }
 
-    public void setData(StepThree data) {
+    public StepFour getData() {
+        return data;
+    }
+
+    public void setData(StepFour data) {
         this.data = data;
     }
 
@@ -42,7 +40,7 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
     public View onCreateView(ViewGroup var1, int var2) {
         switch (var2){
             case 0:
-                return inflater(var1, R.layout.item_order_stepthree) ;
+                return inflater(var1, R.layout.item_order_stepfour) ;
             default:
                 return inflater(var1, R.layout.item_order_steptwo_bottom);
         }
@@ -70,8 +68,8 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
                 });
                 //任务截图
                 final UpdateStepOneLayout updateStepLayout1 =holder.get(R.id.up_img_1);
-                if(data.getTaskPic()!=null&&data.getTaskPic().getEvaluationBrowsePic()!=null){
-                    updateStepLayout1.setImg(data.getTaskPic().getEvaluationBrowsePic());
+                if(data.getTaskPic()!=null&&data.getTaskPic().getAddShoppingCartPic()!=null){
+                    updateStepLayout1.setImg(data.getTaskPic().getAddShoppingCartPic());
                 }
                 updateStepLayout1.setOnItemClickListener(new UpdateStepOneLayout.OnItemClickListener() {
                     @Override
@@ -82,8 +80,8 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
                     }
                 });
                 final UpdateStepOneLayout updateStepLayout2 =holder.get(R.id.up_img_2);
-                if(data.getTaskPic()!=null&&data.getTaskPic().getWwChatPic()!=null){
-                    updateStepLayout2.setImg(data.getTaskPic().getWwChatPic());
+                if(data.getTaskPic()!=null&&data.getTaskPic().getCollectionProductPic()!=null){
+                    updateStepLayout2.setImg(data.getTaskPic().getCollectionProductPic());
                 }
                 updateStepLayout2.setOnItemClickListener(new UpdateStepOneLayout.OnItemClickListener() {
                     @Override
@@ -94,14 +92,26 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
                     }
                 });
                 final UpdateStepOneLayout updateStepLayout3 =holder.get(R.id.up_img_3);
-                if(data.getTaskPic()!=null&&data.getTaskPic().getAskEveryonePic()!=null){
-                    updateStepLayout3.setImg(data.getTaskPic().getAskEveryonePic());
+                if(data.getTaskPic()!=null&&data.getTaskPic().getCollectionShopPic()!=null){
+                    updateStepLayout3.setImg(data.getTaskPic().getCollectionShopPic());
                 }
                 updateStepLayout3.setOnItemClickListener(new UpdateStepOneLayout.OnItemClickListener() {
                     @Override
                     public void onClickImg() {
                         if(onItemClickListener!=null){
                             onItemClickListener.onClickHuobisanjiaPic3(updateStepLayout3);
+                        }
+                    }
+                });
+                final UpdateStepOneLayout updateStepLayout4 =holder.get(R.id.up_img_4);
+                if(data.getTaskPic()!=null&&data.getTaskPic().getNotPayPic()!=null){
+                    updateStepLayout4.setImg(data.getTaskPic().getNotPayPic());
+                }
+                updateStepLayout4.setOnItemClickListener(new UpdateStepOneLayout.OnItemClickListener() {
+                    @Override
+                    public void onClickImg() {
+                        if(onItemClickListener!=null){
+                            onItemClickListener.onClickHuobisanjiaPic4(updateStepLayout4);
                         }
                     }
                 });
@@ -121,6 +131,7 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
                 break;
         }
     }
+
     private String  getTimeString(long time){
         String Ctime ="";
         time /= 1000;
@@ -178,6 +189,6 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
         void onClickHuobisanjiaPic1(UpdateStepOneLayout updateStepOneLayout);
         void onClickHuobisanjiaPic2(UpdateStepOneLayout updateStepOneLayout);
         void onClickHuobisanjiaPic3(UpdateStepOneLayout updateStepOneLayout);
+        void onClickHuobisanjiaPic4(UpdateStepOneLayout updateStepOneLayout);
     }
-
 }

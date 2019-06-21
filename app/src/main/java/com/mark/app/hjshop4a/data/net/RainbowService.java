@@ -211,7 +211,9 @@ public interface RainbowService {
 //    27.下一步
     @POST("/api/app/user/order/nextStep")
     Observable<RainbowResultEntity> nextStep(@Query("data") String  data);
-
+    //  29.关闭订单
+    @POST("/api/app/user/order/closeOrder")
+    Observable<RainbowResultEntity> closeOrder(@Query("data") String  data);
 
 
     //32.获取已接订单列表
