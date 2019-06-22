@@ -258,4 +258,6 @@ public abstract class BaseDialogFragment extends DialogFragment implements View.
             }
         }
     }
+
+
 }

@@ -30,8 +30,10 @@ import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.userinfo.BasicInfoActivity;
 import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
+import com.mark.app.hjshop4a.uinew.performorder.EvaluationInfoActivity;
 import com.mark.app.hjshop4a.uinew.performorder.FourAddShopActivity;
 import com.mark.app.hjshop4a.uinew.performorder.OneDetailActivity;
+import com.mark.app.hjshop4a.uinew.performorder.PayInfoActivity;
 import com.mark.app.hjshop4a.uinew.performorder.PerformOrderActivity;
 import com.mark.app.hjshop4a.uinew.performorder.TwoSearchActivity;
 import com.mark.app.hjshop4a.uinew.performorder.adapter.ThreeBrowseAdapter;
@@ -443,7 +445,7 @@ public class ActivityJumpUtils {
         activity.overridePendingTransition(0,0);
     }
     /*
-     * 跳转step2
+     * 跳转step3
      * */
     public static void actStepThree(Activity activity,String subOrderSn) {
         Intent intent = new Intent(activity, ThreeBrowseAdapter.class);
@@ -454,7 +456,7 @@ public class ActivityJumpUtils {
         activity.overridePendingTransition(0,0);
     }
     /*
-     * 跳转step2
+     * 跳转step4
      * */
     public static void actStepFour(Activity activity,String subOrderSn) {
         Intent intent = new Intent(activity, FourAddShopActivity.class);
@@ -463,5 +465,50 @@ public class ActivityJumpUtils {
         intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
+    }
+    /*
+     * 跳转
+     * */
+    public static void actPayInfo(Activity activity,String subOrderSn) {
+        Intent intent = new Intent(activity, PayInfoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKey.ORDER_SN,subOrderSn);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+     * 跳转
+     * */
+    public static void actEvaluationInfo(Activity activity,String subOrderSn) {
+        Intent intent = new Intent(activity, EvaluationInfoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString(BundleKey.ORDER_SN,subOrderSn);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    public static void actStep(Activity activity,String subOrderSn,int Step) {
+        switch (Step){
+            case 1:
+                actStepOne(activity,subOrderSn);
+                break;
+            case 2:
+                actStepTwo(activity,subOrderSn);
+                break;
+            case 3:
+                actStepThree(activity,subOrderSn);
+                break;
+            case 4:
+                actStepFour(activity,subOrderSn);
+                break;
+            case 5:
+                actPayInfo(activity,subOrderSn);
+                break;
+            case 6:
+                actEvaluationInfo(activity,subOrderSn);
+                break;
+        }
+
     }
 }

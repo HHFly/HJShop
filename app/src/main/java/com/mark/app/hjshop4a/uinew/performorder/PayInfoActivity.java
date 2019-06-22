@@ -14,43 +14,41 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
-import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.mark.app.hjshop4a.uinew.dialog.CloseOrderDialog;
 import com.mark.app.hjshop4a.uinew.performorder.adapter.FourAddShopAdapter;
-import com.mark.app.hjshop4a.uinew.performorder.adapter.ThreeBrowseAdapter;
-import com.mark.app.hjshop4a.uinew.performorder.model.CloseOrderParam;
+import com.mark.app.hjshop4a.uinew.performorder.adapter.PayInfoAdapter;
 import com.mark.app.hjshop4a.uinew.performorder.model.NextStepParam;
+import com.mark.app.hjshop4a.uinew.performorder.model.OrderPayParam;
+import com.mark.app.hjshop4a.uinew.performorder.model.PayInfo;
+import com.mark.app.hjshop4a.uinew.performorder.model.PayInfoParam;
 import com.mark.app.hjshop4a.uinew.performorder.model.PerformParam;
 import com.mark.app.hjshop4a.uinew.performorder.model.StepFour;
 import com.mark.app.hjshop4a.uinew.performorder.model.StepFourParam;
-import com.mark.app.hjshop4a.uinew.performorder.model.StepThree;
-import com.mark.app.hjshop4a.uinew.performorder.model.StepThreeParam;
 import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class FourAddShopActivity extends BaseActivity {
+public class PayInfoActivity extends BaseActivity {
     String subOrderSn;
     SmartRefreshLayout mRefreshLayout;//刷新框架
-    StepFour data;
-    FourAddShopAdapter fourAddShopAdapter;
+    PayInfo data;
+    PayInfoAdapter payInfoAdapter;
     UpdateStepOneLayout updateStepTip;//
-    private Map<Integer,String> pic =new HashMap<>();
     private int mapId;//1 23 4
-    private CloseOrderDialog closeOrderDialog;
+    private Map<Integer,String> pic =new HashMap<>();
     @Override
     public int getContentViewResId() {
         return R.layout.activity_perform;
@@ -89,16 +87,16 @@ public class FourAddShopActivity extends BaseActivity {
             }
         });
     }
+
     /**
      * 请求数据
      */
     private void requestData() {
 //        showLoadingDialog();
-        PerformParam performParam =new PerformParam();
-        performParam.setStep(4);
-        performParam.setSubOrderSn(subOrderSn);
+        PayInfoParam payInfoParam =new PayInfoParam();
+        payInfoParam.setSubOrderSn(subOrderSn);
         App.getServiceManager().getmService()
-                .getOrderInfo(performParam.toPswJson())
+                .getPayInfo(payInfoParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver() {
@@ -107,10 +105,10 @@ public class FourAddShopActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                        data = JsonUtils.fromJson(obj.getResult(),StepFour.class);
+                        data = JsonUtils.fromJson(obj.getResult(),PayInfo.class);
                         //设置信息
                         initRvAdapter(data);
-                        fourAddShopAdapter.startTime();
+                        payInfoAdapter.startTime();
                     }
 
                     @Override
@@ -120,67 +118,39 @@ public class FourAddShopActivity extends BaseActivity {
                     }
                 });
     }
+    private void initRvAdapter(final PayInfo data){
 
-    private void initRvAdapter(final StepFour data){
-
-        if(fourAddShopAdapter==null){
+        if(payInfoAdapter==null){
             RecyclerView rv = getView(R.id.recyclerView);
-            fourAddShopAdapter = new FourAddShopAdapter(data);
+            payInfoAdapter = new PayInfoAdapter(data,data.getData());
             rv.setLayoutManager(new LinearLayoutManager(this));
-            rv.setAdapter(fourAddShopAdapter);
-            fourAddShopAdapter.setOnItemClickListener(new FourAddShopAdapter.OnItemClickListener() {
-                @Override
-                public void onClickNext() {
-                    nextStep();
-                }
+            rv.setAdapter(payInfoAdapter);
+            payInfoAdapter.setOnItemClickListener(new PayInfoAdapter.OnItemClickListener() {
+
 
                 @Override
-                public void onClickClose() {
-                    showCloseOrderDialog();
+                public void onClickNext(String tbOrderSn, String payPrice) {
+                    nextStep(tbOrderSn,payPrice);
                 }
 
                 @Override
                 public void onClickHuobisanjiaPic1(UpdateStepOneLayout updateStepOneLayout) {
                     mapId=1;
                     updateStepTip= updateStepOneLayout;
-
                     FunctionDialogFactory.showTakePhoneDialog(getActivity());
                 }
 
-                @Override
-                public void onClickHuobisanjiaPic2(UpdateStepOneLayout updateStepOneLayout) {
-                    mapId=2;
-
-                    updateStepTip= updateStepOneLayout;
-                    FunctionDialogFactory.showTakePhoneDialog(getActivity());
-                }
-
-                @Override
-                public void onClickHuobisanjiaPic3(UpdateStepOneLayout updateStepOneLayout) {
-                    mapId=3;
-
-                    updateStepTip= updateStepOneLayout;
-                    FunctionDialogFactory.showTakePhoneDialog(getActivity());
-                }
-
-                @Override
-                public void onClickHuobisanjiaPic4(UpdateStepOneLayout updateStepOneLayout) {
-                    mapId=4;
-
-                    updateStepTip= updateStepOneLayout;
-                    FunctionDialogFactory.showTakePhoneDialog(getActivity());
-                }
 
 
             });
         }
         else {
-            fourAddShopAdapter.setData(data);
-            fourAddShopAdapter.notifyDataSetChanged();
+           payInfoAdapter.notifyData(data);
         }
 //        boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
 //        setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -230,22 +200,17 @@ public class FourAddShopActivity extends BaseActivity {
     /**
      * 下一步
      */
-    private void nextStep() {
-        if(!check()){return;}
+    private void nextStep(String tbOrderSn, String payPrice) {
+        if(!check(tbOrderSn,payPrice)){return;}
 
         showLoadingDialog();
-        NextStepParam nextStepParam =new NextStepParam();
-        nextStepParam.setStep(4);
-        nextStepParam.setSubOrderSn(subOrderSn);
-        StepFourParam stepThreeParam =new StepFourParam();
-
-        stepThreeParam.setAddShoppingCart(pic.get(1));
-        stepThreeParam.setCollectProduct(pic.get(2));
-        stepThreeParam.setCollectShop(pic.get(3));
-        stepThreeParam.setNotPay(pic.get(4));
-        nextStepParam.setJsonData(stepThreeParam.toJson());
+        OrderPayParam orderPayParam =new OrderPayParam();
+        orderPayParam.setSubOrderSn(subOrderSn);
+        orderPayParam.setTbOrderSn(tbOrderSn);
+        orderPayParam.setPayPic(pic.get(1));
+        orderPayParam.setPayPrice(payPrice);
         App.getServiceManager().getmService()
-                .nextStep(nextStepParam.toPswJson())
+                .nextStep(orderPayParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver() {
@@ -271,77 +236,24 @@ public class FourAddShopActivity extends BaseActivity {
                 });
     }
 
-    private boolean check(){
-
+    private boolean check(String tbOrderSn, String payPrice){
+        if(!payInfoAdapter.getIsAllCheck()){
+            ToastUtils.show("请勾选所有确认信息");
+            return false;
+        }
+        if(TextUtils.isEmpty(tbOrderSn)){
+            ToastUtils.show("请输入淘宝订单号");
+            return false;
+        }
+        if(TextUtils.isEmpty(payPrice)){
+            ToastUtils.show("请输入付款金额");
+            return false;
+        }
         if(TextUtils.isEmpty(pic.get(1))){
             ToastUtils.show("请上传加入购物车");
             return false;
         }
-        if(TextUtils.isEmpty(pic.get(2))){
-            ToastUtils.show("请上传收藏宝贝");
-            return false;
-        }
-        if(TextUtils.isEmpty(pic.get(3))){
-            ToastUtils.show("请上传收藏店铺");
-            return false;
-        }
-        if(TextUtils.isEmpty(pic.get(4))){
-            ToastUtils.show("请上传下单不付款");
-            return false;
-        }
+
         return true;
-    }
-    /*
-     * 显示选择*/
-    private  void  showCloseOrderDialog(){
-        if(closeOrderDialog ==null){
-            closeOrderDialog =new CloseOrderDialog();
-        }
-        closeOrderDialog.setOnDialogClickListener(new CloseOrderDialog.OnDialogClickListener() {
-            @Override
-            public void onClickNo(CloseOrderDialog dialog) {
-
-            }
-
-            @Override
-            public void onClickYes(int data) {
-                closeOrder(data);
-            }
-
-
-
-        });
-        closeOrderDialog.setContent(this.getActivity());
-        closeOrderDialog.show(getFragmentManager());
-    }
-    private void closeOrder(int data){
-        CloseOrderParam closeOrderParam =new CloseOrderParam();
-        closeOrderParam.setSubOrderSn(subOrderSn);
-        closeOrderParam.setFailReasonId(data);
-        App.getServiceManager().getmService()
-                .closeOrder(closeOrderParam.toPswJson())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new RainbowObserver() {
-
-
-
-                    @Override
-                    public void onSuccess(RainbowResultEntity obj) {
-                        Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
-                        if(Sccess){
-                            ActivityJumpUtils.actHomePager(getActivity());
-
-                        }else {
-                            ToastUtils.show("失败！："+obj.getReason());
-                        }
-                    }
-
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
     }
 }

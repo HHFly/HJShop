@@ -17,10 +17,11 @@ import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
 import com.mark.app.hjshop4a.uinew.homepager.model.Index;
-import com.mark.app.hjshop4a.uinew.homepager.orderList.OrderPage;
+import com.mark.app.hjshop4a.uinew.orderList.OrderPage;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
 import com.mark.app.hjshop4a.uinew.order.OrderInfo;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfo;
+import com.mark.app.hjshop4a.uinew.performorder.model.PayInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserBank;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserCardInfo;
@@ -207,14 +208,26 @@ public interface RainbowService {
     //25.获取订单信息
     @POST("/api/app/user/order/getOrderInfo")
     Observable<RainbowResultEntity> getOrderInfo(@Query("data") String  data);
+    //26.获取支付信息
+    @POST("/api/app/user/order/getPayInfo")
+    Observable<RainbowResultEntity<PayInfo>> getPayInfo(@Query("data") String  data);
 
-//    27.下一步
+
+    //    27.下一步
     @POST("/api/app/user/order/nextStep")
     Observable<RainbowResultEntity> nextStep(@Query("data") String  data);
+    //    28.支付
+    @POST("/api/app/user/order/orderPay")
+    Observable<RainbowResultEntity> orderPay(@Query("data") String  data);
     //  29.关闭订单
     @POST("/api/app/user/order/closeOrder")
     Observable<RainbowResultEntity> closeOrder(@Query("data") String  data);
-
+    //30.获取评价信息
+    @POST("/api/app/user/order/getEvaluationInfo")
+    Observable<RainbowResultEntity> getEvaluationInfo(@Query("data") String  data);
+    //31.评价订单
+    @POST("/api/app/user/order/evaluationOrder")
+    Observable<RainbowResultEntity> evaluationOrder(@Query("data") String  data);
 
     //32.获取已接订单列表
     @POST("/api/app/user/order/orderList")

@@ -1,4 +1,4 @@
-package com.mark.app.hjshop4a.uinew.homepager.orderList;
+package com.mark.app.hjshop4a.uinew.orderList;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,12 +12,11 @@ import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
-import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
-import com.mark.app.hjshop4a.uinew.homepager.adapter.MeAdapter;
-import com.mark.app.hjshop4a.uinew.homepager.model.Index;
+import com.mark.app.hjshop4a.uinew.dialog.CloseOrderDialog;
+import com.mark.app.hjshop4a.uinew.performorder.model.CloseOrderParam;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 
@@ -32,8 +31,9 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
     //是否正在刷新数据
     boolean isRequestData;
     PagingBaseModel mPagingData;
+    String subOrderSn;
     int status=1;
-
+    private CloseOrderDialog closeOrderDialog;
 
 
 
@@ -129,12 +129,13 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
             mAdapter.setOnItemClickListener(new ShowOrderAdapter.OnItemClickListener() {
                 @Override
                 public void onClickClose(ShowOrder data) {
-
+                    subOrderSn=data.getSubOrderSn();
+                    showCloseOrderDialog();
                 }
 
                 @Override
                 public void onClickStart(ShowOrder data) {
-
+                    ActivityJumpUtils.actStep(getActivity(),data.getSubOrderSn(),data.getStep());
                 }
 
 
@@ -160,5 +161,59 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
         requestData(1,mPagingData.getTimestamp());
+    }
+
+    /*
+     * 显示选择*/
+    private  void  showCloseOrderDialog(){
+        if(closeOrderDialog ==null){
+            closeOrderDialog =new CloseOrderDialog();
+        }
+        closeOrderDialog.setOnDialogClickListener(new CloseOrderDialog.OnDialogClickListener() {
+            @Override
+            public void onClickNo(CloseOrderDialog dialog) {
+
+            }
+
+            @Override
+            public void onClickYes(int data) {
+                closeOrder(data);
+            }
+
+
+
+        });
+        closeOrderDialog.setContent(getActivity());
+        closeOrderDialog.show(getActivity().getFragmentManager());
+    }
+    private void closeOrder(int data){
+        CloseOrderParam closeOrderParam =new CloseOrderParam();
+        closeOrderParam.setSubOrderSn(subOrderSn);
+        closeOrderParam.setFailReasonId(data);
+        App.getServiceManager().getmService()
+                .closeOrder(closeOrderParam.toPswJson())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RainbowObserver() {
+
+
+
+                    @Override
+                    public void onSuccess(RainbowResultEntity obj) {
+                        Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
+                        if(Sccess){
+                            refreshLayout.autoRefresh();
+
+                        }else {
+                            ToastUtils.show("失败！："+obj.getReason());
+                        }
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
     }
 }

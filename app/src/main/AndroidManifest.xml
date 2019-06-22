@@ -70,5 +70,10 @@
         <activity android:name=".uinew.bindinfo.BindTaobaoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.bindinfo.AddTaobaoActivity" android:screenOrientation="portrait" />
         <activity android:name=".uinew.performorder.PerformOrderActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.performorder.OneDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.performorder.TwoSearchActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.performorder.ThreeBrowseActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.performorder.FourAddShopActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.performorder.PayInfoActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

@@ -1,7 +1,6 @@
-package com.mark.app.hjshop4a.uinew.homepager.orderList;
+package com.mark.app.hjshop4a.uinew.orderList;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
-import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 
 import java.util.List;
 

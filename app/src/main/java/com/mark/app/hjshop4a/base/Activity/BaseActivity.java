@@ -485,7 +485,18 @@ public abstract class BaseActivity extends AutoLayoutActivity implements View.On
             view.setVisibility(isVisibility ? View.VISIBLE : View.GONE);
         }
     }
-
+    /**
+     * 设置是否显示
+     *
+     * @param id
+     * @param isVisibility
+     */
+    public void setINVisibility(@IdRes int id, boolean isVisibility) {
+        View view = getView(id);
+        if (view != null) {
+            view.setVisibility(isVisibility ? View.VISIBLE : View.INVISIBLE);
+        }
+    }
     /**
      * 设置是否显示
      *
