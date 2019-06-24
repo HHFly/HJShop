@@ -68,7 +68,9 @@ public class StatusFragment extends BaseFragment {
                     @Override
                     public void onSuccess(RainbowResultEntity<OrderPage> obj) {
                         OrderPage mData = JsonUtils.fromJson(obj.getResult(), OrderPage.class);
-                        initTab(mData);
+                        if(mData!=null) {
+                            initTab(mData);
+                        }
                     }
 
                     @Override

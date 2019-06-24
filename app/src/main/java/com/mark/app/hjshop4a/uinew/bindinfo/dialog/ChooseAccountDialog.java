@@ -86,10 +86,13 @@ public class ChooseAccountDialog extends Dialog {
 
                     @Override
                     public void onSuccess(RainbowResultEntity<List<AccountInfoPass>> obj) {
-                        mData = JsonUtils.getList(obj.getResult(),AccountInfoPass.class);
-                        mData.get(0).setSelect(true);
-                        chooseData =mData.get(0);
-                       initAdapter(mData,true);
+
+                            mData = JsonUtils.getList(obj.getResult(), AccountInfoPass.class);
+                        if(mData!=null&&mData.size()!=0) {
+                            mData.get(0).setSelect(true);
+                            chooseData = mData.get(0);
+                            initAdapter(mData, true);
+                        }
                     }
 
                     @Override

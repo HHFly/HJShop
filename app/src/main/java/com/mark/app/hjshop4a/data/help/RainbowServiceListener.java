@@ -28,4 +28,6 @@ public interface RainbowServiceListener<T> {
     void onUnSuccessFinish();
 
     void onAllFinish();
+
+    void onNullResult();
 }

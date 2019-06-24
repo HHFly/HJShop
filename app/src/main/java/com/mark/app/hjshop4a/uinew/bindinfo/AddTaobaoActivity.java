@@ -10,6 +10,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
@@ -53,7 +54,7 @@ public class AddTaobaoActivity extends BaseActivity  {
     List<PAddress> PAddressdata;
     private Map<Integer,String> pic =new HashMap<>();
 
-    long id ;
+    long id,addressId ;
     int type;
     AccountInfoParam accountInfoParam =new AccountInfoParam();
    BuyerAccountParam buyerAccountParam =new BuyerAccountParam();
@@ -219,7 +220,70 @@ public class AddTaobaoActivity extends BaseActivity  {
         
         return data;
     }
+    private String getLevelStr(int id){
+        switch (id){
+            case 1:
+               return "三星";
+            case 2:
+                return "四星";
+            case 3:
+                return "五星";
+            case 4:
+                return "一钻";
+            case 5:
+                return "二钻";
+            case 6:
+                return "三钻";
+            case 7:
+                return "四钻";
+            case 8:
+                return "五钻";
+        }
+        return "三星";
+    }
+    private String getShopTypeStr(String data){
+        String shopType="";
+       try {
+        String[] str =   data.split("/");
+           for(int i =0;i<str.length;i++){
+             shopType +=  getStrbyType(str[i])+"/";
+           }
+       }
+       catch (Exception e){
+           e.printStackTrace();
+       }
+       return shopType;
+    }
+    private String getStrbyType(String data){
+        switch (data){
+            case "A":
+              return "服装鞋包";
+            case "B":
+                return "手机数码";
+            case "C":
+                return "家用电器";
+            case "D":
+                return "美妆饰品";
+            case "E":
+                return "母婴用品";
+            case "F":
+                return "家居建材";
+            case "G":
+                return "百货食品";
+            case "H":
+                return "运动户外";
+            case "I":
+                return "文化娱乐";
+            case "J":
+                return "生活服务";
+            case "K":
+                return "汽摩配件";
 
+
+
+        }
+        return "";
+    }
     /**
      *
      *
@@ -249,7 +313,7 @@ public class AddTaobaoActivity extends BaseActivity  {
         if(addressDialog==null){
             requestAddressData();
         }
-
+        addressDialog.setSelect(null);
         addressDialog.show();
     }
     /*
@@ -314,10 +378,11 @@ public class AddTaobaoActivity extends BaseActivity  {
         setTvText(R.id.et_wangwangname,data.getAccountName());
         setTvText(R.id.et_recivename,data.getReceiverName());
         setTvText(R.id.et_recivephone,data.getReceiverPhone());
+        setTvText(R.id.tv_user_city,data.getAddressStr());
         setTvText(R.id.et_reciveaddress,data.getAddresDetail());
-        setTvText(R.id.user_tv_user_sex,data.getSex());
-        setTvText(R.id.user_tv_user_level,data.getLevel());
-        setTvText(R.id.user_tv_user_shoptype,data.getShoppingType());
+        setTvText(R.id.user_tv_user_sex,data.getSex()==1?getString(R.string.男):getString(R.string.女));
+        setTvText(R.id.user_tv_user_level,getLevelStr(data.getLevel()));
+        setTvText(R.id.user_tv_user_shoptype,getShopTypeStr(data.getShoppingType()));
         setTvText(R.id.user_tv_user_ishuabei,data.getIsHuabei()==0?getString(R.string.不是):getString(R.string.是));
         levelPic.setImg(data.getLevelPic());
         huabeiPic.setImg(data.getHuabeiPic());
@@ -365,17 +430,19 @@ public class AddTaobaoActivity extends BaseActivity  {
 
     //请求数据
     private void requestData() {
-        accountInfoParam.setId(id);
+        accountInfoParam.setBuyerAccountId(id);
         App.getServiceManager().getmService()
-                .getAcccountInfo1(accountInfoParam.toPswJson())
+                .getBuyerAccount(accountInfoParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver<BuyerAccount>() {
                     @Override
                     public void onSuccess(RainbowResultEntity<BuyerAccount> obj) {
-                        BuyerAccount data = JsonUtils.fromJson(obj.getResult(),BuyerAccount.class);
-                        changeDataUI(data);
 
+                        BuyerAccount data = JsonUtils.fromJson(obj.getResult(),BuyerAccount.class);
+                        if(data!=null) {
+                            changeDataUI(data);
+                        }
                     }
 
                     @Override
@@ -399,7 +466,8 @@ public class AddTaobaoActivity extends BaseActivity  {
                             addressDialog.setAreaPickerViewCallback(new AreaPickerView.AreaPickerViewCallback() {
                                 @Override
                                 public void callback(PAddress pAddress, CAddress cAddress) {
-                                    setTvText(R.id.tv_user_city,pAddress.getProvinceName()+"-"+cAddress.getCityName());
+                                    setTvText(R.id.tv_user_city,pAddress.getProvinceName()+cAddress.getCityName());
+                                    addressId=cAddress.getAddressId();
                                 }
 
 
@@ -413,11 +481,17 @@ public class AddTaobaoActivity extends BaseActivity  {
                     }
                 });
     }
+    private void setpic(){
+        String url ="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560415409646&di=4b4d5a87786acb4902a92ae2f4d64d89&imgtype=0&src=http%3A%2F%2Fimg009.hc360.cn%2Fg8%2FM08%2FEE%2F89%2FwKhQt1N9cmGEHKQQAAAAAN7_jII892.jpg";
+        pic.put(R.id.up_levelPic,url);
+        pic.put(R.id.up_huabei,url);
+        pic.put(R.id.up_realAuthenticate,url);
+    }
     /**
      * 确认修改
      */
     private void commit() {
-
+        setpic();
         String et_wangwangname = getTvText(R.id.et_wangwangname);
         String et_recivename = getTvText(R.id.et_recivename);
         String et_recivephone = getTvText(R.id.et_recivephone);
@@ -466,15 +540,15 @@ public class AddTaobaoActivity extends BaseActivity  {
             ToastUtils.show("请选择是否使用花呗");
             return;
         }
-        if(!TextUtils.isEmpty(img1)){
+        if(TextUtils.isEmpty(img1)){
             ToastUtils.show("请上传账号等级图片");
             return;
         }
-        if(!TextUtils.isEmpty(img2)){
+        if(TextUtils.isEmpty(img2)){
             ToastUtils.show("请上传花呗图片");
             return;
         }
-        if(!TextUtils.isEmpty(img3)){
+        if(TextUtils.isEmpty(img3)){
             ToastUtils.show("请上传账号认证图片");
             return;
         }
@@ -483,7 +557,7 @@ public class AddTaobaoActivity extends BaseActivity  {
         buyerAccountParam.setReceiverName(et_recivename);
         buyerAccountParam.setReceiverPhone(et_recivephone);
 
-        buyerAccountParam.setAddressId((int) addressDialog.getCitySelect().getAddressId());
+        buyerAccountParam.setAddressId((int) addressId);
 
         buyerAccountParam.setAddresDetail(et_reciveaddress);
         buyerAccountParam.setSex(sexDialog.getSex());
@@ -505,7 +579,9 @@ public class AddTaobaoActivity extends BaseActivity  {
                     public void onSuccess(RainbowResultEntity obj) {
 
                         ToastUtils.show("修改成功");
+                        setResult(ActResultCode.RESULT_OK);
                         finish();
+
                     }
 
                     @Override

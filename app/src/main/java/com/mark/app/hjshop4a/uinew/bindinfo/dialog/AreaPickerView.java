@@ -29,6 +29,7 @@ import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.CityAdapter;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.ProvinceAdapter;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.CityParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
 
 import java.util.ArrayList;
@@ -138,17 +139,15 @@ public class AreaPickerView extends Dialog {
                 .inflate(R.layout.layout_recyclerview, null, false);
         View cityView = LayoutInflater.from(context)
                 .inflate(R.layout.layout_recyclerview, null, false);
-        View areaView = LayoutInflater.from(context)
-                .inflate(R.layout.layout_recyclerview, null, false);
 
         final RecyclerView provinceRecyclerView = provinceView.findViewById(R.id.recyclerview);
         cityRecyclerView = cityView.findViewById(R.id.recyclerview);
-        areaRecyclerView = areaView.findViewById(R.id.recyclerview);
+//        areaRecyclerView = areaView.findViewById(R.id.recyclerview);
 
         views = new ArrayList<>();
         views.add(provinceView);
         views.add(cityView);
-        views.add(areaView);
+//        views.add(areaView);
 
         /**
          * 配置adapter
@@ -410,8 +409,8 @@ public class AreaPickerView extends Dialog {
     }
     //请求数据
     private void requestData(long id, final int bodyPos) {
-        AccountInfoParam accountInfoParam =new AccountInfoParam();
-        accountInfoParam.setId(id);
+        CityParam accountInfoParam =new CityParam();
+        accountInfoParam.setProvinceId(id);
         App.getServiceManager().getmService()
                 .getCityList(accountInfoParam.toPswJson())
                 .subscribeOn(Schedulers.io())

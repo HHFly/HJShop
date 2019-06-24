@@ -5,7 +5,7 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
 public class PAddress extends BaseModel {
     long provinceId;
     String provinceName;
-    private boolean status;
+    private boolean status =false;
 
     public boolean isStatus() {
         return status;

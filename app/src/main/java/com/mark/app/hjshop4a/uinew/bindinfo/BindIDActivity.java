@@ -2,10 +2,7 @@ package com.mark.app.hjshop4a.uinew.bindinfo;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
@@ -13,17 +10,13 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
-import com.mark.app.hjshop4a.common.utils.StringUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
-import com.mark.app.hjshop4a.common.utils.ValidShowBtnUtils;
 import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
-import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
-import com.mark.app.hjshop4a.ui.userinfo.model.CommitUserInfo;
-import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.IDInfoParam;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserCardInfo;
 
 import java.util.HashMap;
@@ -33,7 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class BindIDActivity extends BaseActivity {
-    IDInfoParam  idInfoParam =new IDInfoParam();
+    IDInfoParam idInfoParam =new IDInfoParam();
     private Map<Integer,String> pic =new HashMap<>();
 
     @Override
@@ -159,11 +152,11 @@ public class BindIDActivity extends BaseActivity {
             ToastUtils.show(R.string.身份证号不正确);
             return;
         }
-        if(!TextUtils.isEmpty(pic.get(R.id.imagebtn1))){
+        if(TextUtils.isEmpty(pic.get(R.id.imagebtn1))){
             ToastUtils.show("请上传身份证正面照");
             return;
         }
-        if(!TextUtils.isEmpty(pic.get(R.id.imagebtn2))){
+        if(TextUtils.isEmpty(pic.get(R.id.imagebtn2))){
             ToastUtils.show("请上传身份证反面照");
             return;
         }

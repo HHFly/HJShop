@@ -72,14 +72,14 @@ public class SexDialog extends BaseDialogFragment {
                 if (onDialogClickListener != null) {
                     onDialogClickListener.onClickMan(this);
                     dismiss();
-                    Sex=0;
+                    Sex=1;
                 }
                 break;
             case R.id.sex_woman:
                 if (onDialogClickListener != null) {
                     onDialogClickListener.onClickWoman(this);
                     dismiss();
-                    Sex=1;
+                    Sex=2;
                 }
                 break;
         }

@@ -73,7 +73,7 @@ public class OrderFrament extends BaseFragment {
     //请求数据
     private void requestData(long id) {
         AccountInfoParam accountInfoParam =new AccountInfoParam();
-        accountInfoParam.setId(id);
+        accountInfoParam.setBuyerAccountId(id);
         App.getServiceManager().getmService()
                 .getWaitReciveOrder(accountInfoParam.toPswJson())
                 .subscribeOn(Schedulers.io())
@@ -81,13 +81,18 @@ public class OrderFrament extends BaseFragment {
                 .subscribe(new RainbowObserver<List<OrderInfo>>() {
                     @Override
                     public void onSuccess(RainbowResultEntity<List<OrderInfo>> obj) {
+                        if (obj.getResult()==null){
+                            return;
+                        }
                         List<OrderInfo> data = JsonUtils.getList(obj.getResult(),OrderInfo.class);
-                        initRvAdapter(data,true);
+                        if(data!=null) {
+                            initRvAdapter(data, true);
+                        }
                     }
 
                     @Override
                     public void onAllFinish() {
-//                        RefreshLayoutUtils.finish(mRefreshLayout);
+                        refreshLayout.finishRefresh();
                     }
                 });
     }

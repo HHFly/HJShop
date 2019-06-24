@@ -173,26 +173,26 @@ public interface RainbowService {
     @POST("/api/app/user/updateBank")
     Observable<RainbowResultEntity> updateBank(@Query("data") String  data);
     //14.获取绑定银行卡信息
-    @GET("/api/shop/user/getUserBank")
+    @GET("/api/app/user/getUserBank")
     Observable<RainbowResultEntity<UserBank>> getUserBank();
     //15.绑定买手账号
-    @POST("/api/shop/user/addBuyerAccount")
+    @POST("/api/app/user/addBuyerAccount")
     Observable<RainbowResultEntity> addBuyerAccount(@Query("data") String  data);
     //16.修改买手账号
-    @POST("/api/shop/user/updateBuyerAccount")
+    @POST("/api/app/user/updateBuyerAccount")
     Observable<RainbowResultEntity> updateBuyerAccount(@Query("data") String  data);
 //    17.获取买手账号列表
-    @POST("/api/shop/user/getAcccountInfo")
+    @POST("/api/app/user/getAcccountInfo")
     Observable<RainbowResultEntity<BuyerAccount>> getAcccountInfo1(@Query("data") String  data);
     //18.获取买手审核账号
-    @GET("/api/shop/user/getAcccountInfo")
+    @GET("/api/app/user/getAcccountInfo")
     Observable<RainbowResultEntity<List<AccountInfo>>> getAcccountInfo();
 //19.获取买手审核通过账号
-    @GET("/api/shop/user/getSuccessAcccounts")
+    @GET("/api/app/user/getSuccessAcccounts")
     Observable<RainbowResultEntity<List<AccountInfoPass>>> getSuccessAcccounts();
     //20.获取买手账号信息
-    @POST("/api/shop/user/updateBuyerAccount")
-    Observable<RainbowResultEntity> updateBuyerAccount();
+    @POST("/api/app/user/getBuyerAccount")
+    Observable<RainbowResultEntity<BuyerAccount>> getBuyerAccount(@Query("data") String  data);
     //21.获取待接订单
     @POST("/api/app/user/order/getWaitReciveOrder")
     Observable<RainbowResultEntity<List<OrderInfo>>> getWaitReciveOrder(@Query("data") String  data);

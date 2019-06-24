@@ -1,6 +1,5 @@
 package com.mark.app.hjshop4a.uinew.bindinfo;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -12,18 +11,14 @@ import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
-import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.BindIDType;
 import com.mark.app.hjshop4a.uinew.dialog.OneEtParamDialog;
-import com.mark.app.hjshop4a.uinew.order.OrderInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
-import com.mark.app.hjshop4a.uinew.userinfo.model.UserCardInfo;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserInfo;
 import com.mark.app.hjshop4a.widget.BandInfoItemView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
-import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -154,6 +149,10 @@ public class BindInfoActivity extends BaseActivity {
                         requestUserInfo();
                     }
 
+                    @Override
+                    public void onAllFinish() {
+                        mRefreshLayout.finishRefresh();
+                    }
                 });
     }
 //修改联系方式

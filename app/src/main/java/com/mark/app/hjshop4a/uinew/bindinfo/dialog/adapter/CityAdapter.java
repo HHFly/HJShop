@@ -49,7 +49,7 @@ public class CityAdapter extends BaseListRvAdapter<CAddress> {
     @Override
     public void bindBodyData(AutoViewHolder holder, final int bodyPos, final CAddress data) {
         holder.text(R.id.textview,data.getCityName());
-        holder.get(R.id.textView).setSelected(data.isStatus());
+        holder.get(R.id.textview).setSelected(data.isStatus());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

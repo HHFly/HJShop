@@ -69,7 +69,10 @@ public abstract class RainbowObserver <T> implements Observer<RainbowResultEntit
         int resultCode = obj.getCode();
         if (resultCode == ServiceResultCode.SUCCESS
                 || (resultCode == ServiceResultCode.SUCCESS_NODATA && isNeed1012IsSuccess)) {
-
+            if(obj.getResult()==null)
+            {
+                onNullResult();
+            }
             onSuccess(obj);
             onSuccessFinish();
         } else {
@@ -117,6 +120,11 @@ public abstract class RainbowObserver <T> implements Observer<RainbowResultEntit
         onUnSuccessFinish();
         onAllFinish();
         toast(R.string.系统繁忙请稍后再试);
+    }
+
+    @Override
+    public void onNullResult() {
+
     }
 
     @Override

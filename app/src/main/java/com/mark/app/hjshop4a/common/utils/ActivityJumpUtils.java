@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.login.LoginBackType;
+import com.mark.app.hjshop4a.common.androidenum.other.ActRequestCode;
+import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
@@ -406,7 +408,7 @@ public class ActivityJumpUtils {
         bundle.putInt(BundleKey.SHOWTYPE,role);
         bundle.putLong(BundleKey.ID,id);
         intent.putExtras(bundle);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent, ActResultCode.RESULT_OK);
         activity.overridePendingTransition(0,0);
     }
 

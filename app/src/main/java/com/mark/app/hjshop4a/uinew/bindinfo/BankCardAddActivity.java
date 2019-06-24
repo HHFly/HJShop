@@ -17,8 +17,8 @@ import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.bankcard.model.BankCategory;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.BankCardAddParam;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserBank;
-import com.mark.app.hjshop4a.uinew.userinfo.model.UserCardInfo;
 
 import java.util.List;
 

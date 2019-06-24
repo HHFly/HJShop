@@ -1,5 +1,6 @@
 package com.mark.app.hjshop4a.uinew.bindinfo;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 
+import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.RefreshLayoutUtils;
@@ -80,11 +82,18 @@ public class BindTaobaoActivity extends BaseActivity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver<List<AccountInfo>>() {
+
+                    @Override
+                    public void onNullResult() {
+                        setViewVisibility(R.id.empty_layout_empty, true);
+                    }
+
                     @Override
                     public void onSuccess(RainbowResultEntity<List<AccountInfo>> obj) {
-                        List<AccountInfo> data = JsonUtils.getList(obj.getResult(),AccountInfo.class);
-                        initRvAdapter(data,true);
-
+                        if(obj.getResult()!=null) {
+                            List<AccountInfo> data = JsonUtils.getList(obj.getResult(), AccountInfo.class);
+                            initRvAdapter(data, true);
+                        }
                     }
 
                     @Override
@@ -116,8 +125,14 @@ public class BindTaobaoActivity extends BaseActivity {
         else {
             mAdapter.notifyData(data,isRefresh);
         }
-//        boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
-//        setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
+        boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);
+        setViewVisibility(R.id.empty_layout_empty, isShowEmpty);
     }
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode== ActResultCode.RESULT_OK){
+            mRefreshLayout.autoRefresh();
+        }
+    }
 }

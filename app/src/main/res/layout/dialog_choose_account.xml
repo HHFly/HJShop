@@ -5,7 +5,7 @@
     android:background="@color/white"
     android:paddingLeft="50px"
     android:paddingTop="30px"
-    android:paddingBottom="30px"
+
     android:paddingRight="50px">
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#333333"
@@ -17,12 +17,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
+        android:overScrollMode="never"
         android:minHeight="250px">
 
     </android.support.v7.widget.RecyclerView>
     <Button
         android:id="@+id/btn"
         style="@style/BaseBtn.Normal.Commonly"
+        android:layout_height="90px"
         android:layout_marginTop="30px"
+        android:layout_marginBottom="30px"
+        android:textSize="24px"
         android:text="确认"/>
 </LinearLayout>
