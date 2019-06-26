@@ -24,6 +24,7 @@ import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.AreaPickerView;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.ShopTypePickerView;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccountParam;
@@ -53,12 +54,12 @@ public class AddTaobaoActivity extends BaseActivity  {
     WheelDialog Leveldialog ;
     List<PAddress> PAddressdata;
     private Map<Integer,String> pic =new HashMap<>();
-
-    long id,addressId ;
+String addressId="0";
+    long id ;
     int type;
     AccountInfoParam accountInfoParam =new AccountInfoParam();
    BuyerAccountParam buyerAccountParam =new BuyerAccountParam();
-
+    BuyerAccount data=new BuyerAccount();
     @Override
     public int getContentViewResId() {
         return R.layout.activity_bind_taobao;
@@ -165,6 +166,7 @@ public class AddTaobaoActivity extends BaseActivity  {
      *
      *
      */
+
     public void showLevelDiaglog() {
         if(Leveldialog==null){
             Leveldialog = WheelDialog.getInstance(getData());
@@ -378,7 +380,7 @@ public class AddTaobaoActivity extends BaseActivity  {
         setTvText(R.id.et_wangwangname,data.getAccountName());
         setTvText(R.id.et_recivename,data.getReceiverName());
         setTvText(R.id.et_recivephone,data.getReceiverPhone());
-        setTvText(R.id.tv_user_city,data.getAddressStr());
+        setTvText(R.id.tv_user_city,data.getAddress());
         setTvText(R.id.et_reciveaddress,data.getAddresDetail());
         setTvText(R.id.user_tv_user_sex,data.getSex()==1?getString(R.string.男):getString(R.string.女));
         setTvText(R.id.user_tv_user_level,getLevelStr(data.getLevel()));
@@ -464,10 +466,18 @@ public class AddTaobaoActivity extends BaseActivity  {
                             addressDialog = new AreaPickerView(getActivity(),
                                     R.style.dialog_lhp, PAddressdata);
                             addressDialog.setAreaPickerViewCallback(new AreaPickerView.AreaPickerViewCallback() {
+
+
+                                @Override
+                                public void callback(PAddress pAddress, CAddress cAddress,AAddress aAddress) {
+                                    setTvText(R.id.tv_user_city,pAddress.getCityName()+cAddress.getCityName()+aAddress.getCityName());
+                                    addressId=aAddress.getCityId();
+                                }
+
                                 @Override
                                 public void callback(PAddress pAddress, CAddress cAddress) {
-                                    setTvText(R.id.tv_user_city,pAddress.getProvinceName()+cAddress.getCityName());
-                                    addressId=cAddress.getAddressId();
+                                    setTvText(R.id.tv_user_city,pAddress.getCityName()+cAddress.getCityName());
+                                    addressId=cAddress.getCityId();
                                 }
 
 
@@ -557,10 +567,10 @@ public class AddTaobaoActivity extends BaseActivity  {
         buyerAccountParam.setReceiverName(et_recivename);
         buyerAccountParam.setReceiverPhone(et_recivephone);
 
-        buyerAccountParam.setAddressId((int) addressId);
+        buyerAccountParam.setAddressId((int) Integer.parseInt(addressId));
 
         buyerAccountParam.setAddresDetail(et_reciveaddress);
-        buyerAccountParam.setSex(sexDialog.getSex());
+        buyerAccountParam.setSex("男".equals(user_tv_user_sex)?1:2);
         buyerAccountParam.setAge(18);
         buyerAccountParam.setLevel((int) Leveldialog.getmSelectItem().getId());
         buyerAccountParam.setShoppingType(shopTypeDialog.getUpData());
@@ -599,4 +609,6 @@ public class AddTaobaoActivity extends BaseActivity  {
 
 
     }
+    
+
 }

@@ -2,7 +2,7 @@ package com.mark.app.hjshop4a.uinew.bindinfo.model;
 
 import com.mark.app.hjshop4a.base.model.BaseModel;
 
-public class PAddress extends BaseModel {
+public class AAddress extends BaseModel {
     String cityId;
     String cityName;
     private boolean status;

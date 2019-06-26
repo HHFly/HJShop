@@ -36,12 +36,9 @@ public class AddressData {
     public AddressData() {
     }
 
-    public AddressData(PAddress data) {
-        this.id = String.valueOf(data.getProvinceId());
-        this.name = data.getProvinceName();
-    }
+
     public AddressData(CAddress data) {
-        this.id = String.valueOf(data.getAddressId());
+        this.id = String.valueOf(data.getCityId());
         this.name = data.getCityName();
     }
 }

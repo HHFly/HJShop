@@ -9,7 +9,7 @@ public class BuyerAccount extends BaseModel {
     String receiverName; //收货人
     String receiverPhone;//收货电话
     int addressId;//收货地址Id
-    String addressStr;//收货地址Str
+    String address;//收货地址Str
     String addresDetail;//收货详细地址
     int sex;//性别
     int age;//年龄
@@ -21,12 +21,12 @@ public class BuyerAccount extends BaseModel {
     String realAuthenticatePic;//认证图片
     int status;//状态
 
-    public String getAddressStr() {
-        return addressStr;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAddressStr(String addressStr) {
-        this.addressStr = addressStr;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public long getBuyerAccountId() {

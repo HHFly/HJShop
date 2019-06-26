@@ -47,7 +47,7 @@ public class ProvinceAdapter extends BaseListRvAdapter<PAddress> {
 
     @Override
     public void bindBodyData(AutoViewHolder holder, final int bodyPos, final PAddress data) {
-        holder.text(R.id.textview,data.getProvinceName());
+        holder.text(R.id.textview,data.getCityName());
         holder.get(R.id.textview).setSelected(data.isStatus());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

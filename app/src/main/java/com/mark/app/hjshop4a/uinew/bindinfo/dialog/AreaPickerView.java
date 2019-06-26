@@ -25,9 +25,12 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
+import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.AreaAdapter;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.CityAdapter;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.adapter.ProvinceAdapter;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AreaParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CAddress;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.CityParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.PAddress;
@@ -66,28 +69,28 @@ public class AreaPickerView extends Dialog {
     /**
      * 区
      */
-//    private List<AA> areaBeans;
+    private List<AAddress> areaBeans;
 
     private Context context;
 
     private ViewPagerAdapter viewPagerAdapter;
     private ProvinceAdapter provinceAdapter;
     private CityAdapter cityAdapter;
-//    private AreaAdapter areaAdapter;
+    private AreaAdapter areaAdapter;
 
     /**
      * 选中的区域下标 默认-1
      */
     private int provinceSelected = -1;
     private int citySelected = -1;
-//    private int areaSelected = -1;
+    private int areaSelected = -1;
 
     /**
      * 历史选中的区域下标 默认-1
      */
     private int oldProvinceSelected = -1;
     private int oldCitySelected = -1;
-//    private int oldAreaSelected = -1;
+    private int oldAreaSelected = -1;
 
     private RecyclerView areaRecyclerView;
     private RecyclerView cityRecyclerView;
@@ -101,9 +104,7 @@ public class AreaPickerView extends Dialog {
         this.context = context;
     }
 
-    public CAddress getCitySelect() {
-        return citySelect;
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,15 +140,16 @@ public class AreaPickerView extends Dialog {
                 .inflate(R.layout.layout_recyclerview, null, false);
         View cityView = LayoutInflater.from(context)
                 .inflate(R.layout.layout_recyclerview, null, false);
-
+        View areaView = LayoutInflater.from(context)
+                .inflate(R.layout.layout_recyclerview, null, false);
         final RecyclerView provinceRecyclerView = provinceView.findViewById(R.id.recyclerview);
         cityRecyclerView = cityView.findViewById(R.id.recyclerview);
-//        areaRecyclerView = areaView.findViewById(R.id.recyclerview);
+        areaRecyclerView = areaView.findViewById(R.id.recyclerview);
 
         views = new ArrayList<>();
         views.add(provinceView);
         views.add(cityView);
-//        views.add(areaView);
+        views.add(areaView);
 
         /**
          * 配置adapter
@@ -168,25 +170,25 @@ public class AreaPickerView extends Dialog {
             @Override
             public void onClick(int bodyPos, PAddress data) {
                 cityBeans.clear();
-//                areaBeans.clear();
+                areaBeans.clear();
                 addressBeans.get(bodyPos).setStatus(true);
                 provinceSelected = bodyPos;
                 if (oldProvinceSelected != -1 && oldProvinceSelected != provinceSelected) {
                     addressBeans.get(oldProvinceSelected).setStatus(false);
                     Log.e("AreaPickerView", "清空");
                 }
-//                if (bodyPos != oldProvinceSelected) {
+                if (bodyPos != oldProvinceSelected) {
 //                    if (oldCitySelected != -1) {
-//                        addressBeans.get(oldProvinceSelected).getChildren().get(oldCitySelected).setStatus(false);
+//                       cityBeans.get(oldCitySelected).setStatus(false);
 //                    }
 //                    if (oldAreaSelected != -1) {
 //                        addressBeans.get(oldProvinceSelected).getChildren().get(oldCitySelected).getChildren().get(oldAreaSelected).setStatus(false);
 //                    }
-//                    oldCitySelected = -1;
-//                    oldAreaSelected = -1;
-//                }
+                    oldCitySelected = -1;
+                    oldAreaSelected = -1;
+                }
 //                cityBeans.addAll(addressBeans.get(bodyPos).getChildren());
-                requestData(data.getProvinceId(),bodyPos);
+                requestCityData(data.getCityId(),bodyPos);
              
             }
 
@@ -201,19 +203,20 @@ public class AreaPickerView extends Dialog {
         cityAdapter.setOnItemClickListener(new CityAdapter.OnItemClickListener() {
             @Override
             public void onClick(int bodyPos, CAddress data) {
-//                areaBeans.clear();
+                areaBeans.clear();
                 cityBeans.get(bodyPos).setStatus(true);
                 citySelected = bodyPos;
-//                if (oldCitySelected != -1 && oldCitySelected != citySelected) {
-//                    addressBeans.get(oldProvinceSelected).getChildren().get(oldCitySelected).setStatus(false);
-//                }
-//                if (bodyPos != oldCitySelected) {
+                if (oldCitySelected != -1 && oldCitySelected != citySelected) {
+                    cityBeans.get(oldCitySelected).setStatus(false);
+                }
+                if (bodyPos != oldCitySelected) {
 //                    if (oldAreaSelected != -1 && cityBeans.get(bodyPos).getChildren() != null) {
 //                        addressBeans.get(oldProvinceSelected).getChildren().get(oldCitySelected).getChildren().get(oldAreaSelected).setStatus(false);
 //                    }
-//                    oldAreaSelected = -1;
-//                }
+                    oldAreaSelected = -1;
+                }
                 oldCitySelected = citySelected;
+                requestAreaData(data.getCityId(),bodyPos);
 //                if (cityBeans.get(bodyPos).getChildren() != null) {
 //                    areaBeans.addAll(cityBeans.get(bodyPos).getChildren());
 //                    cityAdapter.notifyDataSetChanged();
@@ -235,36 +238,38 @@ public class AreaPickerView extends Dialog {
                     strings.set(1, cityBeans.get(bodyPos).getCityName());
                     tabLayout.setupWithViewPager(viewPager);
                     viewPagerAdapter.notifyDataSetChanged();
-                    dismiss();
-                    areaPickerViewCallback.callback(addressBeans.get(provinceSelected), data);
+
 //                }
             }
 
 
         });
 
-//        areaBeans = new ArrayList<>();
-//        areaAdapter = new AreaAdapter(R.layout.item_address, areaBeans);
-//        LinearLayoutManager areaListManager = new LinearLayoutManager(context);
-//        areaRecyclerView.setLayoutManager(areaListManager);
-//        areaRecyclerView.setAdapter(areaAdapter);
-//        areaAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-//                strings.set(2, areaBeans.get(position).getLabel());
-//                tabLayout.setupWithViewPager(viewPager);
-//                viewPagerAdapter.notifyDataSetChanged();
-//                areaBeans.get(position).setStatus(true);
-//                areaSelected = position;
-//                if (oldAreaSelected != -1 && oldAreaSelected != position) {
-//                    areaBeans.get(oldAreaSelected).setStatus(false);
-//                }
-//                oldAreaSelected = areaSelected;
-//                areaAdapter.notifyDataSetChanged();
-//                dismiss();
-//                areaPickerViewCallback.callback(provinceSelected, citySelected, areaSelected);
-//            }
-//        });
+        areaBeans = new ArrayList<>();
+        areaAdapter = new AreaAdapter( areaBeans);
+        LinearLayoutManager areaListManager = new LinearLayoutManager(context);
+        areaRecyclerView.setLayoutManager(areaListManager);
+        areaRecyclerView.setAdapter(areaAdapter);
+        areaAdapter.setOnItemClickListener(new AreaAdapter.OnItemClickListener() {
+            @Override
+            public void onClick(int bodyPos, AAddress data) {
+                strings.set(2, data.getCityName());
+                tabLayout.setupWithViewPager(viewPager);
+                viewPagerAdapter.notifyDataSetChanged();
+                areaBeans.get(bodyPos).setStatus(true);
+                areaSelected = bodyPos;
+                if (oldAreaSelected != -1 && oldAreaSelected != bodyPos) {
+                    areaBeans.get(oldAreaSelected).setStatus(false);
+                }
+                oldAreaSelected = areaSelected;
+                areaAdapter.notifyDataSetChanged();
+
+                areaPickerViewCallback.callback(addressBeans.get(provinceSelected),cityBeans.get(citySelected) ,data);
+                dismiss();
+            }
+
+
+        });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -281,9 +286,9 @@ public class AreaPickerView extends Dialog {
                     case 1:
                         cityRecyclerView.scrollToPosition(oldCitySelected == -1 ? 0 : oldCitySelected);
                         break;
-//                    case 2:
-//                        areaRecyclerView.scrollToPosition(oldAreaSelected == -1 ? 0 : oldAreaSelected);
-//                        break;
+                    case 2:
+                        areaRecyclerView.scrollToPosition(oldAreaSelected == -1 ? 0 : oldAreaSelected);
+                        break;
                 }
             }
 
@@ -330,7 +335,8 @@ public class AreaPickerView extends Dialog {
     }
 
     public interface AreaPickerViewCallback {
-        void callback(PAddress pAddress,CAddress cAddress);
+        void callback(PAddress pAddress, CAddress cAddress,AAddress aAddress);
+        void callback(PAddress pAddress, CAddress cAddress);
     }
 
     public void setAreaPickerViewCallback(AreaPickerViewCallback areaPickerViewCallback) {
@@ -347,15 +353,15 @@ public class AreaPickerView extends Dialog {
                 tabLayout.getTabAt(0).select();
                 if (provinceSelected != -1)
                     addressBeans.get(provinceSelected).setStatus(false);
-                if (citySelected != -1&&cityBeans!=null)
-                    cityBeans.get(citySelected).setStatus(false);
+//                if (citySelected != -1&&cityBeans!=null)
+//                    cityBeans.get(citySelected).setStatus(false);
 //                if (citySelected != -1)
 //                    addressBeans.get(provinceSelected).getChildren().get(citySelected).setStatus(false);
                 cityBeans.clear();
-//                areaBeans.clear();
+                areaBeans.clear();
                 provinceAdapter.notifyDataSetChanged();
                 cityAdapter.notifyDataSetChanged();
-//                areaAdapter.notifyDataSetChanged();
+                areaAdapter.notifyDataSetChanged();
             }
             return;
         }
@@ -387,7 +393,7 @@ public class AreaPickerView extends Dialog {
 //        }
 
         if (value.length == 2) {
-            strings.add(addressBeans.get(value[0]).getProvinceName());
+            strings.add(addressBeans.get(value[0]).getCityName());
 //            strings.add(addressBeans.get(value[0]).getChildren().get(value[1]).getLabel());
             tabLayout.setupWithViewPager(viewPager);
             viewPagerAdapter.notifyDataSetChanged();
@@ -407,8 +413,8 @@ public class AreaPickerView extends Dialog {
         }
 
     }
-    //请求数据
-    private void requestData(long id, final int bodyPos) {
+    //请求city数据
+    private void requestCityData(String id, final int bodyPos) {
         CityParam accountInfoParam =new CityParam();
         accountInfoParam.setProvinceId(id);
         App.getServiceManager().getmService()
@@ -421,9 +427,9 @@ public class AreaPickerView extends Dialog {
                         cityBeans = JsonUtils.getList(obj.getResult(),CAddress.class);
                         cityAdapter.notifyData(cityBeans,true);
                         provinceAdapter.notifyDataSetChanged();
-//                        cityAdapter.notifyDataSetChanged();
-//                areaAdapter.notifyDataSetChanged();
-                        strings.set(0, addressBeans.get(bodyPos).getProvinceName());
+                        cityAdapter.notifyDataSetChanged();
+                        areaAdapter.notifyDataSetChanged();
+                        strings.set(0, addressBeans.get(bodyPos).getCityName());
                         if (strings.size() == 1) {
                             strings.add("请选择");
                         } else if (strings.size() > 1) {
@@ -446,4 +452,49 @@ public class AreaPickerView extends Dialog {
                     }
                 });
     }
+
+    //请求area数据
+    private void requestAreaData(String id, final int bodyPos) {
+        AreaParam areaParam =new AreaParam();
+        areaParam.setCityId(id);
+        App.getServiceManager().getmService()
+                .getAreaList(areaParam.toPswJson())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RainbowObserver() {
+                    @Override
+                    public void onSuccess(RainbowResultEntity obj) {
+                        if (obj.getResult()!=null) {
+                            areaBeans = JsonUtils.getList(obj.getResult(), AAddress.class);
+                            areaAdapter.notifyData(areaBeans, true);
+                            cityAdapter.notifyDataSetChanged();
+                            areaAdapter.notifyDataSetChanged();
+                            strings.set(1, cityBeans.get(bodyPos).getCityName());
+                            if (strings.size() == 2) {
+                                strings.add("请选择");
+                            } else if (strings.size() == 3) {
+                                strings.set(2, "请选择");
+                            }
+                            tabLayout.setupWithViewPager(viewPager);
+                            viewPagerAdapter.notifyDataSetChanged();
+                            tabLayout.getTabAt(2).select();
+                        }else {
+                            oldAreaSelected = -1;
+                            cityAdapter.notifyDataSetChanged();
+                            areaAdapter.notifyDataSetChanged();
+                            strings.set(1, cityBeans.get(bodyPos).getCityName());
+                            tabLayout.setupWithViewPager(viewPager);
+                            viewPagerAdapter.notifyDataSetChanged();
+                            dismiss();
+                            areaPickerViewCallback.callback(addressBeans.get(provinceSelected), cityBeans.get(bodyPos));
+                        }
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+//                        RefreshLayoutUtils.finish(mRefreshLayout);
+                    }
+                });
+    }
+
 }

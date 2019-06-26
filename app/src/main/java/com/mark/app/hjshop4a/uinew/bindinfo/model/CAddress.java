@@ -1,7 +1,7 @@
 package com.mark.app.hjshop4a.uinew.bindinfo.model;
 
 public class CAddress {
-    long addressId;
+    String cityId;
     String cityName;
     private boolean status;
 
@@ -13,12 +13,13 @@ public class CAddress {
         this.status = status;
     }
 
-    public long getAddressId() {
-        return addressId;
+
+    public String getCityId() {
+        return cityId;
     }
 
-    public void setAddressId(long addressId) {
-        this.addressId = addressId;
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
     }
 
     public String getCityName() {
