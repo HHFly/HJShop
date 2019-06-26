@@ -22,6 +22,7 @@ import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.SexDialog;
 import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.dialog.factory.FunctionDialogFactory;
+import com.mark.app.hjshop4a.uinew.bindinfo.data.BindData;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.AreaPickerView;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.ShopTypePickerView;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AAddress;
@@ -54,7 +55,7 @@ public class AddTaobaoActivity extends BaseActivity  {
     WheelDialog Leveldialog ;
     List<PAddress> PAddressdata;
     private Map<Integer,String> pic =new HashMap<>();
-String addressId="0";
+String addressId="0" ,provinceId,cityId,areaId;
     long id ;
     int type;
     AccountInfoParam accountInfoParam =new AccountInfoParam();
@@ -157,6 +158,10 @@ String addressId="0";
                 showLevelDiaglog();
                 break;
             case R.id.btn:
+                if(type==0){
+                    update();
+                    return;
+                }
                 commit();
                 break;
         }
@@ -169,7 +174,7 @@ String addressId="0";
 
     public void showLevelDiaglog() {
         if(Leveldialog==null){
-            Leveldialog = WheelDialog.getInstance(getData());
+            Leveldialog = WheelDialog.getInstance(BindData.getData());
            Leveldialog.setOnDialogClickListener(new WheelDialog.OnDialogClickListener() {
                @Override
                public void onCancel() {
@@ -185,70 +190,25 @@ String addressId="0";
             Leveldialog.show(getFragmentManager());
 
     }
-    private List<PickerScrollView.ItemModel> getData(){
-        List<PickerScrollView.ItemModel> data =new ArrayList<>();
-        PickerScrollView.ItemModel a1 =new  PickerScrollView.ItemModel();
-        a1.setId(1);
-        a1.setName( "三星");
-        data.add(a1);
-        PickerScrollView.ItemModel a2 =new  PickerScrollView.ItemModel();
-        a2.setId(2);
-        a2.setName( "四星");
-        data.add(a2);
-        PickerScrollView.ItemModel a3 =new  PickerScrollView.ItemModel();
-        a3.setId(3);
-        a3.setName( "五星");
-        data.add(a3);
-        PickerScrollView.ItemModel a4 =new  PickerScrollView.ItemModel();
-        a4.setId(4);
-        a4.setName( "一钻");
-        data.add(a4);
-        PickerScrollView.ItemModel a5 =new  PickerScrollView.ItemModel();
-        a5.setId(5);
-        a5.setName( "二钻");
-        data.add(a5);
-        PickerScrollView.ItemModel a6 =new  PickerScrollView.ItemModel();
-        a6.setId(6);
-        a6.setName( "三钻");
-        data.add(a6);
-        PickerScrollView.ItemModel a7 =new  PickerScrollView.ItemModel();
-        a7.setId(7);
-        a7.setName( "四钻");
-        data.add(a7);
-        PickerScrollView.ItemModel a8 =new  PickerScrollView.ItemModel();
-        a8.setId(8);
-        a8.setName( "五钻");
-        data.add(a8);
-        
-        return data;
-    }
-    private String getLevelStr(int id){
-        switch (id){
-            case 1:
-               return "三星";
-            case 2:
-                return "四星";
-            case 3:
-                return "五星";
-            case 4:
-                return "一钻";
-            case 5:
-                return "二钻";
-            case 6:
-                return "三钻";
-            case 7:
-                return "四钻";
-            case 8:
-                return "五钻";
+    private String getTypeStr(String data) {
+        String shopType="";
+        try {
+            String[] str =   data.split("/");
+            for(int i =0;i<str.length;i++){
+                shopType += BindData.getTypebyStr(str[i])+"/";
+            }
         }
-        return "三星";
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return shopType;
     }
     private String getShopTypeStr(String data){
         String shopType="";
        try {
         String[] str =   data.split("/");
            for(int i =0;i<str.length;i++){
-             shopType +=  getStrbyType(str[i])+"/";
+             shopType += BindData.getStrbyType(str[i])+"/";
            }
        }
        catch (Exception e){
@@ -256,36 +216,7 @@ String addressId="0";
        }
        return shopType;
     }
-    private String getStrbyType(String data){
-        switch (data){
-            case "A":
-              return "服装鞋包";
-            case "B":
-                return "手机数码";
-            case "C":
-                return "家用电器";
-            case "D":
-                return "美妆饰品";
-            case "E":
-                return "母婴用品";
-            case "F":
-                return "家居建材";
-            case "G":
-                return "百货食品";
-            case "H":
-                return "运动户外";
-            case "I":
-                return "文化娱乐";
-            case "J":
-                return "生活服务";
-            case "K":
-                return "汽摩配件";
 
-
-
-        }
-        return "";
-    }
     /**
      *
      *
@@ -383,12 +314,19 @@ String addressId="0";
         setTvText(R.id.tv_user_city,data.getAddress());
         setTvText(R.id.et_reciveaddress,data.getAddresDetail());
         setTvText(R.id.user_tv_user_sex,data.getSex()==1?getString(R.string.男):getString(R.string.女));
-        setTvText(R.id.user_tv_user_level,getLevelStr(data.getLevel()));
+        setTvText(R.id.user_tv_user_level,BindData.getLevelStr(data.getLevel()));
         setTvText(R.id.user_tv_user_shoptype,getShopTypeStr(data.getShoppingType()));
         setTvText(R.id.user_tv_user_ishuabei,data.getIsHuabei()==0?getString(R.string.不是):getString(R.string.是));
         levelPic.setImg(data.getLevelPic());
         huabeiPic.setImg(data.getHuabeiPic());
         realAuthenticatePic.setImg(data.getRealAuthenticatePic());
+        addressId= String.valueOf(data.getAddressId());
+        provinceId =data.getProvinceId();
+        cityId= data.getCityId();
+        areaId =data.getAreaId();
+        pic.put(R.id.up_levelPic,data.getLevelPic());
+        pic.put(R.id.up_huabei,data.getHuabeiPic());
+        pic.put(R.id.up_realAuthenticate,data.getRealAuthenticatePic());
     }
 
     /**
@@ -472,12 +410,17 @@ String addressId="0";
                                 public void callback(PAddress pAddress, CAddress cAddress,AAddress aAddress) {
                                     setTvText(R.id.tv_user_city,pAddress.getCityName()+cAddress.getCityName()+aAddress.getCityName());
                                     addressId=aAddress.getCityId();
+                                    provinceId =pAddress.getCityId();
+                                    cityId =cAddress.getCityId();
+                                    areaId= aAddress.getCityId();
                                 }
 
                                 @Override
                                 public void callback(PAddress pAddress, CAddress cAddress) {
                                     setTvText(R.id.tv_user_city,pAddress.getCityName()+cAddress.getCityName());
                                     addressId=cAddress.getCityId();
+                                    provinceId =pAddress.getCityId();
+                                    cityId =cAddress.getCityId();
                                 }
 
 
@@ -497,8 +440,125 @@ String addressId="0";
         pic.put(R.id.up_huabei,url);
         pic.put(R.id.up_realAuthenticate,url);
     }
+
+    /*
+    * 修改
+    * */
+    private void update() {
+        String et_wangwangname = getTvText(R.id.et_wangwangname);
+        String et_recivename = getTvText(R.id.et_recivename);
+        String et_recivephone = getTvText(R.id.et_recivephone);
+        String tv_user_city = getTvText(R.id.tv_user_city);
+        String et_reciveaddress = getTvText(R.id.et_reciveaddress);
+        String user_tv_user_sex = getTvText(R.id.user_tv_user_sex);
+        String user_tv_user_level = getTvText(R.id.user_tv_user_level);
+        String user_tv_user_shoptype = getTvText(R.id.user_tv_user_shoptype);
+        String user_tv_user_ishuabei = getTvText(R.id.user_tv_user_ishuabei);
+        String img1 = pic.get(R.id.up_levelPic);
+        String img2 = pic.get(R.id.up_huabei);
+        String img3 = pic.get(R.id.up_realAuthenticate);
+        if (TextUtils.isEmpty(et_wangwangname)) {
+            ToastUtils.show("请输入旺旺名称");
+            return;
+        }
+        if (TextUtils.isEmpty(et_recivename)) {
+            ToastUtils.show("请输入收货人名称");
+            return;
+        }
+        if (!ValidUtils.phone(et_recivephone)) {
+            ToastUtils.show("请输入正确的手机");
+            return;
+        }
+        if (TextUtils.isEmpty(tv_user_city)) {
+            ToastUtils.show("请选择收货地区");
+            return;
+        }
+        if (TextUtils.isEmpty(et_reciveaddress)) {
+            ToastUtils.show("请输入收货地址");
+            return;
+        }
+        if (TextUtils.isEmpty(user_tv_user_sex)) {
+            ToastUtils.show("请选择性别");
+            return;
+        }
+        if (TextUtils.isEmpty(user_tv_user_level)) {
+            ToastUtils.show("请选择账号等级");
+            return;
+        }
+        if (TextUtils.isEmpty(user_tv_user_shoptype)) {
+            ToastUtils.show("请选择购物类别");
+            return;
+        }
+        if (TextUtils.isEmpty(user_tv_user_ishuabei)) {
+            ToastUtils.show("请选择是否使用花呗");
+            return;
+        }
+        if(TextUtils.isEmpty(img1)){
+            ToastUtils.show("请上传账号等级图片");
+            return;
+        }
+        if(TextUtils.isEmpty(img2)){
+            ToastUtils.show("请上传花呗图片");
+            return;
+        }
+        if(TextUtils.isEmpty(img3)){
+            ToastUtils.show("请上传账号认证图片");
+            return;
+        }
+        data.setAccountName(et_wangwangname);
+        data.setReceiverName(et_recivename);
+        data.setReceiverPhone(et_recivephone);
+        data.setAddressId((int) Integer.parseInt(addressId));
+        data.setBuyerAccountId(id);
+        data.setProvinceId(provinceId);
+        data.setCityId(cityId);
+        data.setAreaId(areaId);
+        data.setAddresDetail(et_reciveaddress);
+        data.setSex("男".equals(user_tv_user_sex) ? 1 : 2);
+        data.setAge(18);
+        data.setLevel(BindData.getLevelbyStr(user_tv_user_level));
+        data.setShoppingType(getTypeStr(user_tv_user_shoptype));
+        data.setLevelPic(img1);
+        data.setHuabeiPic(img2);
+        data.setRealAuthenticatePic(img3);
+        data.setIsHuabei("是".equals(user_tv_user_ishuabei)?1:0);
+
+        showLoadingDialog();
+        App.getServiceManager().getmService().updateBuyerAccount(data.toPswJson())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RainbowObserver() {
+
+
+                    @Override
+                    public void onSuccess(RainbowResultEntity obj) {
+
+                        ToastUtils.show("修改成功");
+                        setResult(ActResultCode.RESULT_OK);
+                        finish();
+
+                    }
+
+                    @Override
+                    public void onUnSuccessFinish() {
+                        super.onUnSuccessFinish();
+
+                    }
+
+                    @Override
+                    public void onAllFinish() {
+                        super.onAllFinish();
+                        hideLoadingDialog();
+                    }
+                });
+
+
+    }
+
+
+
     /**
-     * 确认修改
+     * 绑定
      */
     private void commit() {
         setpic();
@@ -563,21 +623,25 @@ String addressId="0";
             return;
         }
 
-        buyerAccountParam.setAccountName(et_wangwangname);
-        buyerAccountParam.setReceiverName(et_recivename);
-        buyerAccountParam.setReceiverPhone(et_recivephone);
+            buyerAccountParam.setAccountName(et_wangwangname);
+            buyerAccountParam.setReceiverName(et_recivename);
+            buyerAccountParam.setReceiverPhone(et_recivephone);
 
-        buyerAccountParam.setAddressId((int) Integer.parseInt(addressId));
+//            buyerAccountParam.setAddressId((int) Integer.parseInt(addressId));
+             buyerAccountParam.setProvinceId(provinceId);
+             buyerAccountParam.setCityId(cityId);
+             buyerAccountParam.setAreaId(areaId);
+            buyerAccountParam.setAddresDetail(et_reciveaddress);
+            buyerAccountParam.setSex("男".equals(user_tv_user_sex) ? 1 : 2);
+            buyerAccountParam.setAge(18);
+            buyerAccountParam.setLevel((int) Leveldialog.getmSelectItem().getId());
+            buyerAccountParam.setShoppingType(shopTypeDialog.getUpData());
+            buyerAccountParam.setLevelPic(img1);
+            buyerAccountParam.setHuabeiPic(img2);
+            buyerAccountParam.setRealAuthenticatePic(img3);
+            buyerAccountParam.setIsHuabei(yesNoDialog.getYesNo());
 
-        buyerAccountParam.setAddresDetail(et_reciveaddress);
-        buyerAccountParam.setSex("男".equals(user_tv_user_sex)?1:2);
-        buyerAccountParam.setAge(18);
-        buyerAccountParam.setLevel((int) Leveldialog.getmSelectItem().getId());
-        buyerAccountParam.setShoppingType(shopTypeDialog.getUpData());
-        buyerAccountParam.setLevelPic(img1);
-        buyerAccountParam.setHuabeiPic(img2);
-        buyerAccountParam.setRealAuthenticatePic(img3);
-        buyerAccountParam.setIsHuabei(yesNoDialog.getYesNo());
+
         showLoadingDialog();
         App.getServiceManager().getmService().addBuyerAccount(buyerAccountParam.toPswJson())
                 .subscribeOn(Schedulers.io())

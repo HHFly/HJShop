@@ -19,6 +19,11 @@ public class BuyerAccount extends BaseModel {
     String huabeiPic;//花呗图片
     int isHuabei;//是否花呗
     String realAuthenticatePic;//认证图片
+
+    String provinceId;
+    String cityId;
+    String areaId;
+
     int status;//状态
 
     public String getAddress() {
@@ -147,5 +152,29 @@ public class BuyerAccount extends BaseModel {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(String provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(String areaId) {
+        this.areaId = areaId;
     }
 }

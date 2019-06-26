@@ -18,7 +18,9 @@ public class BuyerAccountParam extends BaseModel {
     int isHuabei;//是否花呗
 
     String realAuthenticatePic;//认证图片
-
+    String provinceId;
+    String cityId;
+    String areaId;
     public String getAccountName() {
         return accountName;
     }
@@ -121,5 +123,29 @@ public class BuyerAccountParam extends BaseModel {
 
     public void setRealAuthenticatePic(String realAuthenticatePic) {
         this.realAuthenticatePic = realAuthenticatePic;
+    }
+
+    public String getProvinceId() {
+        return provinceId;
+    }
+
+    public void setProvinceId(String provinceId) {
+        this.provinceId = provinceId;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(String areaId) {
+        this.areaId = areaId;
     }
 }
