@@ -43,7 +43,7 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
         holder.text(R.id.tv_wwName, stepTwo.getWwName());
         holder.text(R.id.tv_searchKeyWord, stepTwo.getSearchKeyWord());
         holder.text(R.id.tv_priceRange, stepTwo.getPriceRange());
-        holder.text(R.id.tv_mainProductPrice, String.format(App.get().getString(R.string.元), stepTwo.getMainProductPrice()));
+        holder.text(R.id.tv_mainProductPrice, String.format(App.get().getString(R.string.S元), String.valueOf(stepTwo.getMainProductPrice())));
         holder.text(R.id.tv_require, stepTwo.getRequire());
         holder.sdvBig(R.id.hm_sdv_productPic, stepTwo.getProductImg());
         //第一步：验证是否找对店铺
@@ -183,8 +183,8 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
     public void bindBottomData(AutoViewHolder holder, int position, StepTwo stepTwo) {
         holder.text(R.id.tv_steptime,getTimeString(stepTwo.getStepTime()));
         holder.text(R.id.tv_compltetTime,getTimeString(stepTwo.getCompltetTime()));
-        holder.itemView.setEnabled(stepTwo.getStepTime()==0);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.get(R.id.btn).setEnabled(stepTwo.getStepTime()==0);
+        holder.get(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(onItemClickListener!=null){

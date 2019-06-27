@@ -7,6 +7,7 @@
 
 
     <Button
+        android:id="@+id/btn"
        style="@style/BaseBtn.Normal.Important"
         android:layout_height="100px"
         android:textSize="28px"

@@ -3,6 +3,9 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_white_16px"
+    android:layout_marginTop="30px"
+    android:layout_marginLeft="30px"
+    android:layout_marginRight="30px"
     android:padding="30px">
     <TextView style="@style/BaseItem.Tv"
         android:id="@+id/tv_subOrderSn"

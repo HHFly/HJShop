@@ -4,6 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background">
-<include layout="@layout/include_titlebar"/>
+   <include layout="@layout/include_titlebar"/>
     <include layout="@layout/common_refreshlayout_noloadmore"/>
 </LinearLayout>

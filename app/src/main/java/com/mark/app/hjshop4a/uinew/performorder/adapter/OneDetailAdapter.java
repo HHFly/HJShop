@@ -54,13 +54,15 @@ public class OneDetailAdapter extends MultipleSourcesRvAdapter {
                 holder.text(R.id.tv_remarks,data.getRemarks());
                 holder.text(R.id.tv_compltetTime,getTimeString(data.getCompltetTime()));
                 WarpLinearLayout warpLinearLayout =holder.get(R.id.ll_process);
-                String[] pro =data.getProcess().split("/");
-                for(int i=0;i<pro.length;i++){
-                    warpLinearLayout.addChild(pro[i]);
+                if (data.getProcess()!=null) {
+                    String[] pro = data.getProcess().split("/");
+                    for (int i = 0; i < pro.length; i++) {
+                        warpLinearLayout.addChild(pro[i]);
+                    }
                 }
                 break;
             case 1:
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.get(R.id.btn).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(onItemClickListener!=null){

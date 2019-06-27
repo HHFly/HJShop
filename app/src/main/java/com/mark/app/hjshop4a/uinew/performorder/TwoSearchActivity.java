@@ -63,6 +63,7 @@ public class TwoSearchActivity extends BaseActivity {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"搜索宝贝");
+        requestData();
     }
     @Override
     public void getIntentParam(Bundle bundle) {
@@ -114,8 +115,10 @@ public class TwoSearchActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
                         data = JsonUtils.fromJson(obj.getResult(),StepTwo.class);
                         //设置信息
-                        initRvAdapter(data);
-                        twoSearchAdapter.startTime();
+                        if(data!=null) {
+                            initRvAdapter(data);
+                            twoSearchAdapter.startTime();
+                        }
                     }
 
                     @Override
@@ -159,8 +162,6 @@ public class TwoSearchActivity extends BaseActivity {
                     updateStepTip=updateStepOneLayout;
                     FunctionDialogFactory.showTakePhoneDialog(getActivity());
                 }
-
-
 
 
                 @Override
@@ -357,12 +358,13 @@ public class TwoSearchActivity extends BaseActivity {
     }
 
     private boolean check(){
-        if(TextUtils.isEmpty(pic.get(0))){
-            ToastUtils.show("请上传主宝贝浏览图片");
-            return false;
-        }
+
         if(TextUtils.isEmpty(pic.get(4))){
             ToastUtils.show("请上传搜索关键词图片");
+            return false;
+        }
+        if(TextUtils.isEmpty(pic.get(0))){
+            ToastUtils.show("请上传主宝贝浏览图片");
             return false;
         }
         if(TextUtils.isEmpty(pic.get(1))){

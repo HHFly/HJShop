@@ -151,11 +151,7 @@ public class OneDetailActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
                         Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
                       if(Sccess){
-
-
-
-
-
+                        ActivityJumpUtils.actStepTwo(getActivity(),subOrderSn);
                       }else {
                           ToastUtils.show("失败！："+obj.getReason());
                       }
