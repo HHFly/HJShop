@@ -91,7 +91,9 @@ public class CloseOrderDialog extends BaseDialogFragment {
 
         }
         else {
-
+            RecyclerView rv = getView(mRootView,R.id.recyclerView);
+            rv.setLayoutManager(new LinearLayoutManager(content));
+            rv.setAdapter(closeOrderAdapter);
             closeOrderAdapter.notifyData(data,true);
         }
 //        boolean isShowEmpty = isRefresh && (data == null || data.size() == 0);

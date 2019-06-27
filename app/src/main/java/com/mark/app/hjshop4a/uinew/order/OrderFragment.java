@@ -12,6 +12,8 @@ import com.mark.app.hjshop4a.base.model.PagingBaseModel;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
+import com.mark.app.hjshop4a.uinew.homepager.model.ReciveOrderParam;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
@@ -26,8 +28,12 @@ import io.reactivex.schedulers.Schedulers;
 public class OrderFragment extends BaseFragment  {
     SmartRefreshLayout mRefreshLayout;//刷新框架
     OrderAdapter orderAdapter;
-    WaitReciveOrderParam waitReciveOrderParam=new WaitReciveOrderParam();
-    SureReciveOrderParam sureReciveOrderParam =new SureReciveOrderParam();
+
+    long id;
+
+    public void setId(long id) {
+        this.id = id;
+    }
     @Override
     public int getContentResId() {
         return R.layout.fragment_order;
@@ -41,7 +47,7 @@ public class OrderFragment extends BaseFragment  {
         mRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-                requestData();
+                requestData(id);
             }
         });
     }
@@ -55,6 +61,8 @@ public class OrderFragment extends BaseFragment  {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title, R.string.任务大厅);
+        setViewVisibilityGone(R.id.titlebar_iv_return,false);
+        requestData(id);
     }
 
     @Override
@@ -62,19 +70,28 @@ public class OrderFragment extends BaseFragment  {
 
     }
     //请求数据
-    private void requestData() {
-        waitReciveOrderParam.setBuyerAccountId(1);
+    private void requestData(long id) {
+        AccountInfoParam accountInfoParam =new AccountInfoParam();
+        accountInfoParam.setBuyerAccountId(id);
         App.getServiceManager().getmService()
-                .getWaitReciveOrder(waitReciveOrderParam.toPswJson())
+                .getWaitReciveOrder(accountInfoParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver<List<OrderInfo>>() {
                     @Override
                     public void onSuccess(RainbowResultEntity<List<OrderInfo>> obj) {
+                        if (obj.getResult()==null){
+                            return;
+                        }
                         List<OrderInfo> data = JsonUtils.getList(obj.getResult(),OrderInfo.class);
-                        initRvAdapter(data,true);
+                        if(data!=null) {
+                            initRvAdapter(data, true);
+                        }
                     }
-
+                    @Override
+                    public void onAllFinish() {
+                        mRefreshLayout.finishRefresh();
+                    }
                 });
     }
     private void initRvAdapter(List<OrderInfo> data, boolean isRefresh){
@@ -99,16 +116,17 @@ public class OrderFragment extends BaseFragment  {
     }
 // 确认订单
     private void sureReciveOrder(OrderInfo data) {
-        sureReciveOrderParam.setBuyerAccountId(1);
-        sureReciveOrderParam.setSubOrderSn(data.getSubOrderSn());
+        ReciveOrderParam reciveOrderParam =new ReciveOrderParam();
+        reciveOrderParam.setSubOrderSn(data.getSubOrderSn());
+        reciveOrderParam.setBuyerAccountId(id);
         App.getServiceManager().getmService()
-                .getWaitReciveOrder(sureReciveOrderParam.toPswJson())
+                .sureReciveOrder(reciveOrderParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new RainbowObserver<List<OrderInfo>>() {
+                .subscribe(new RainbowObserver() {
                     @Override
-                    public void onSuccess(RainbowResultEntity<List<OrderInfo>> obj) {
-                            requestData();
+                    public void onSuccess(RainbowResultEntity obj) {
+                        requestData(id);
                     }
 
                 });

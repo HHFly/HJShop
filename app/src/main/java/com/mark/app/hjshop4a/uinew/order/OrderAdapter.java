@@ -26,13 +26,15 @@ public class OrderAdapter extends BaseListRvAdapter<OrderInfo> {
     public void bindBodyData(AutoViewHolder holder, int bodyPos, final OrderInfo data) {
             holder.text(R.id.tv_subOrderSn,data.getSubOrderSn());
             holder.text(R.id.tv_orderType,data.getOrderType());
-            holder.text(R.id.tv_shopPayPrice, StringUtils.DoubletoString(data.getShopPayPric()));
-            holder.text(R.id.tv_gold,StringUtils.DoubletoString(data.gold));
+        holder.text(R.id.tv_shopPayPrice,String.format(getString(R.string.S元),String.valueOf(data.getShopPayPric())));
+        holder.text(R.id.tv_gold,String.format(getString(R.string.S元),String.valueOf(data.getGold())));
            OrderLinearLayout orderLinearLayout = holder.get(R.id.warp_label);
-          String[] requires= data.getRequire().split(",");
-          for(int i = 0;i<requires.length;i++){
-             orderLinearLayout.addChild(requires[i]);
-          }
+           if(data.getRequire()!=null) {
+               String[] requires = data.getRequire().split("/");
+               for (int i = 0; i < requires.length; i++) {
+                   orderLinearLayout.addChild(requires[i]);
+               }
+           }
             holder.get(R.id.order_btn_getOrder).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

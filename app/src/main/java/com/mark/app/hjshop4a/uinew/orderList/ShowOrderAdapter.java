@@ -47,9 +47,9 @@ public class ShowOrderAdapter extends BaseListRvAdapter<ShowOrder> {
             }
         });
         holder.text(R.id.tv_accountName,data.getAccountName());
-        holder.text(R.id.tv_payMent,String.format(getString(R.string.元),data.getPayMent()));
+        holder.text(R.id.tv_payMent,String.format(getString(R.string.S元),String.valueOf(data.getPayMent())));
         holder.text(R.id.tv_step,data.getStatusName());
-        holder.text(R.id.tv_bounty,String.format(getString(R.string.元),data.getBounty()));
+        holder.text(R.id.tv_bounty,String.format(getString(R.string.S元),String.valueOf(data.getBounty())));
         holder.get(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

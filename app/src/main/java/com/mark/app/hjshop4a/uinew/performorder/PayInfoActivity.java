@@ -210,7 +210,7 @@ public class PayInfoActivity extends BaseActivity {
         orderPayParam.setPayPic(pic.get(1));
         orderPayParam.setPayPrice(payPrice);
         App.getServiceManager().getmService()
-                .nextStep(orderPayParam.toPswJson())
+                .orderPay(orderPayParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver() {

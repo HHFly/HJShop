@@ -12,11 +12,16 @@ import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.uinew.orderList.OrderPage;
 import com.mark.app.hjshop4a.uinew.orderList.PageParam;
+import com.mark.app.hjshop4a.uinew.orderList.ShowOrder;
 import com.mark.app.hjshop4a.uinew.orderList.StatusOrderFragment;
 import com.mark.app.hjshop4a.uinew.orderList.TabAdapter;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItem;
+import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItemAdapter;
 import com.ogaclejapan.smarttablayout.utils.v4.FragmentPagerItems;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -25,8 +30,8 @@ public class StatusFragment extends BaseFragment {
     private SmartTabLayout viewpagertab;
     private ViewPager viewpager;
     StatusOrderFragment current;
-    FragmentPagerItems pages = new FragmentPagerItems(getContext());
-    TabAdapter adapter;
+    FragmentPagerItems pages;
+    FragmentPagerItemAdapter adapter;
     @Override
     public int getContentResId() {
         return R.layout.fragment_status;
@@ -48,6 +53,7 @@ public class StatusFragment extends BaseFragment {
         setTvText(R.id.titlebar_tv_title,"已接任务");
 //        setIvImage(R.id.bg_img,R.mipmap.home);
         setViewVisibilityGone(R.id.titlebar_iv_return,false);
+        pages = new FragmentPagerItems(App.get());
         requestData();
     }
     /**
@@ -56,7 +62,7 @@ public class StatusFragment extends BaseFragment {
     public void requestData( ) {
 
         PageParam pageParam = new PageParam();
-        pageParam.setOrderStatus(1);
+        pageParam.setOrderStatus(-1);
         pageParam.setPageNo(1);
         App.getServiceManager().getmService()
                 .getOrderList(pageParam.toPswJson())
@@ -69,6 +75,12 @@ public class StatusFragment extends BaseFragment {
                     public void onSuccess(RainbowResultEntity<OrderPage> obj) {
                         OrderPage mData = JsonUtils.fromJson(obj.getResult(), OrderPage.class);
                         if(mData!=null) {
+
+                            initTab(mData);
+                        }else {
+                            mData=new OrderPage();
+                            List<ShowOrder> showOrders=new ArrayList<>();
+                            mData.setOrders(showOrders);
                             initTab(mData);
                         }
                     }
@@ -96,7 +108,8 @@ public class StatusFragment extends BaseFragment {
 //            pages.add(FragmentPagerItem.of(str, ShopCarFragment.class));
 //        }
         initData(data);
-        adapter = new TabAdapter(getFragmentManager(), pages);
+         adapter = new FragmentPagerItemAdapter(App.get().getHomePagerActivity().getSupportFragmentManager(),pages);
+
         //关联viewpager&adapter&TabLayout
         viewpager.setAdapter(adapter);
         viewpagertab.setViewPager(viewpager);
@@ -111,9 +124,14 @@ public class StatusFragment extends BaseFragment {
 
             @Override
             public void onPageSelected(int position) {
-                Log.d("meee",getClass()+":\n"+"position:"+position);
-                current = (StatusOrderFragment) adapter.getItem(position);
-               current.setStatus(position+1);
+
+                current = (StatusOrderFragment) adapter.getPage(position);
+                if(position==0){
+                    current.setStatus(-1);
+                }else {
+                    current.setStatus(position+1);
+                }
+
             }
 
             @Override
@@ -121,10 +139,12 @@ public class StatusFragment extends BaseFragment {
 
             }
         });
-
+        current = (StatusOrderFragment) adapter.getPage(0);
+        current.setStatus(-1);
     }
 
     public void  initData(OrderPage data){
+        pages.clear();
         pages.add(FragmentPagerItem.of(String.format(getString(R.string.全部),data.getAll()), StatusOrderFragment.class));
         pages.add(FragmentPagerItem.of(String.format(getString(R.string.进行中),data.getProcessing()), StatusOrderFragment.class));
         pages.add(FragmentPagerItem.of(String.format(getString(R.string.待发货),data.getWaitDelivery()), StatusOrderFragment.class));
@@ -134,7 +154,7 @@ public class StatusFragment extends BaseFragment {
         pages.add(FragmentPagerItem.of(String.format(getString(R.string.失败订单),data.getClose()), StatusOrderFragment.class));
         if(null!=adapter){
             adapter.notifyDataSetChanged();
-            viewpagertab.setViewPager(viewpager);
+//            viewpagertab.setViewPager(viewpager);
         }
     }
     @Override

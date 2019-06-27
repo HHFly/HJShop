@@ -18,33 +18,18 @@ import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.FragmentUtils;
-import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.common.utils.SPUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
-import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
-import com.mark.app.hjshop4a.data.help.RainbowObserver;
-import com.mark.app.hjshop4a.ui.dialog.WheelDialog;
 import com.mark.app.hjshop4a.ui.homepager.fragment.ClassifyFragment;
 
 
-import com.mark.app.hjshop4a.ui.homepager.fragment.ServiceFragment;
-import com.mark.app.hjshop4a.ui.homepager.fragment.ShopCarFragment;
 import com.mark.app.hjshop4a.uinew.bindinfo.dialog.ChooseAccountDialog;
-import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoParam;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.AccountInfoPass;
-import com.mark.app.hjshop4a.uinew.bindinfo.model.BuyerAccount;
 import com.mark.app.hjshop4a.uinew.homepager.fragment.HomeFragment;
 import com.mark.app.hjshop4a.uinew.homepager.fragment.MeFragment;
-import com.mark.app.hjshop4a.uinew.homepager.fragment.OrderFrament;
 import com.mark.app.hjshop4a.uinew.homepager.fragment.StatusFragment;
-import com.mark.app.hjshop4a.uinew.order.OrderInfo;
-import com.mark.app.hjshop4a.widget.PickerScrollView;
-
-import java.util.List;
-
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import com.mark.app.hjshop4a.uinew.order.OrderFragment;
 
 
 /**
@@ -60,7 +45,7 @@ public class HomePagerActivity extends BaseActivity {
     private View tab5;      //客服
    private HomeFragment homeFragment;
    private ClassifyFragment classifyFragment;
-   private OrderFrament orderFrament;
+   private OrderFragment orderFrament;
     private MeFragment meFragment;
     private StatusFragment statusFragment;
     private BaseFragment mCurFragment;
@@ -130,7 +115,7 @@ public class HomePagerActivity extends BaseActivity {
             }
             case R.id.hp_layout_tab2: {
                 if (App.hasToken()) {
-                  showLevelDiaglog();
+                    showChooseAccountDiaglog();
                 } else {
                     ActivityJumpUtils.actLogin(getActivity());
                 }
@@ -170,7 +155,7 @@ public class HomePagerActivity extends BaseActivity {
         super.onDestroy();
         DownloadDialogUtils.onDestroy();
     }
-    public void showLevelDiaglog() {
+    public void showChooseAccountDiaglog() {
         if(chooseAccountDialog==null){
             chooseAccountDialog = new ChooseAccountDialog(this, R.style.dialog_lhp);
             chooseAccountDialog.setOnItemClickListener(new ChooseAccountDialog.OnItemClickListener() {
@@ -192,7 +177,7 @@ public class HomePagerActivity extends BaseActivity {
         homeFragment =new HomeFragment();
         meFragment = new MeFragment();
         classifyFragment =new ClassifyFragment();
-        orderFrament = new OrderFrament();
+        orderFrament = new OrderFragment();
         statusFragment =new StatusFragment();
     }
 

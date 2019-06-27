@@ -16,7 +16,9 @@
         android:background="@android:color/transparent"
         android:scrollbars="none"
         android:overScrollMode="never"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/textsize_30px"
+        />
 
     <com.scwang.smartrefresh.layout.footer.ClassicsFooter
         android:layout_width="match_parent"

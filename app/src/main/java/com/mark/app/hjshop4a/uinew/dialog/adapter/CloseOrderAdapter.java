@@ -28,19 +28,36 @@ public class CloseOrderAdapter extends BaseListRvAdapter<CloseData> {
     }
 
     @Override
-    public void bindBodyData(AutoViewHolder holder, int bodyPos, final CloseData data) {
+    public void bindBodyData(AutoViewHolder holder, final int bodyPos, final CloseData data) {
         RadioButton radioButton =holder.get(R.id.radioButton);
         radioButton.setText(data.getSeason());
-        radioButton.setChecked(bodyPos == mSelectedItem);
-        holder.itemView.setTag(bodyPos);
+        radioButton.setChecked(data.isCheck());
+        radioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setNoCheck();
+                mSelectedItem = bodyPos;
+                type=data.getType();
+                data.setCheck(true);
+                notifyDataSetChanged();
+
+            }
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mSelectedItem = (int) v.getTag();
+                setNoCheck();
+                mSelectedItem = bodyPos;
                 type=data.getType();
-                notifyItemRangeChanged(0, getData().size());
+                data.setCheck(true);
+                notifyDataSetChanged();
             }
         });
 
+    }
+    private void setNoCheck(){
+        for (int i =0;i<getData().size();i++){
+            getData().get(i).setCheck(false);
+        }
     }
 }

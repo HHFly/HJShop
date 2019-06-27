@@ -56,6 +56,7 @@ public class OneDetailActivity extends BaseActivity {
     @Override
     public void initView() {
     setTvText(R.id.titlebar_tv_title,"活动详情");
+        requestData();
     }
 
     @Override

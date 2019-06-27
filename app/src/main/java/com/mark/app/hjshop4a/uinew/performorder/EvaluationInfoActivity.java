@@ -145,7 +145,7 @@ public class EvaluationInfoActivity extends BaseActivity {
         PayInfoParam performParam =new PayInfoParam();
         performParam.setSubOrderSn(subOrderSn);
         App.getServiceManager().getmService()
-                .getOrderInfo(performParam.toPswJson())
+                .getEvaluationInfo(performParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver() {

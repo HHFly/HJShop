@@ -32,7 +32,7 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
     boolean isRequestData;
     PagingBaseModel mPagingData;
     String subOrderSn;
-    int status=1;
+    int status=-1;
     private CloseOrderDialog closeOrderDialog;
 
 
@@ -40,18 +40,26 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
     public void setStatus(int status) {
 
         this.status = status;
+        refreshLayout.autoRefresh();
+    }
+
+    public PagingBaseModel getmPagingData() {
+        if (mPagingData == null) {
+            mPagingData = new PagingBaseModel();
+        }
+        return mPagingData;
     }
 
     @Override
     public int getContentResId() {
-        return R.layout.fragment_order;
+        return R.layout.fragment_orderstatus;
     }
 
     @Override
     public void findView() {
         refreshLayout =getView(R.id.refreshLayout);
         refreshLayout.setOnRefreshLoadMoreListener(this);
-        refreshLayout.autoRefresh();
+
     }
 
     @Override
@@ -86,24 +94,29 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
 
                         @Override
                         public void onSuccess(RainbowResultEntity<OrderPage> obj) {
+
                             OrderPage mData = JsonUtils.fromJson(obj.getResult(), OrderPage.class);
-                            initRvAdapter(mData.getOrders(), curPage == 1);
-                            if (mPagingData == null) {
-                                mPagingData = new PagingBaseModel();
+                            if(mData!=null) {
+
+                                getmPagingData().setPagingInfo(curPage, mData.getOrders());
+
+                                RefreshLayoutUtils.finish(refreshLayout, getmPagingData());
+
+                                App.get().getHomePagerActivity().getStatusFragment().initData(mData);
+
+                                initRvAdapter(mData.getOrders(), curPage == 1);
                             }
-                            mPagingData.setPagingInfo(curPage, mData.getOrders());
-                            RefreshLayoutUtils.finish(refreshLayout, mPagingData);
-                            App.get().getHomePagerActivity().getStatusFragment().initData(mData);
                         }
                         @Override
                         public void onUnSuccessFinish() {
-//                            initRvAdapter(null, curPage == 1);
-                            RefreshLayoutUtils.finish(refreshLayout);
+                            initRvAdapter(null, curPage == 1);
+
                         }
                         @Override
                         public void onAllFinish() {
                             super.onAllFinish();
 //                        hideLoadingDialog();
+                            RefreshLayoutUtils.finish(refreshLayout);
                             isRequestData = false;
 
                         }
@@ -117,10 +130,9 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
      */
     private void initRvAdapter(List<ShowOrder> data,boolean isFresh) {
 
+        RecyclerView rv = getView(R.id.recyclerView);
 
         if(mAdapter==null) {
-            RecyclerView rv = getView(R.id.recyclerView);
-
             if (rv != null) {
                 mAdapter =new ShowOrderAdapter(data);
                 rv.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -141,13 +153,19 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
 
             });
         }else {
+            if (rv != null) {
+                rv.setLayoutManager(new LinearLayoutManager(getContext()));
+                rv.setAdapter(mAdapter);
+            }
           mAdapter.notifyData(data,isFresh);
         }
+        boolean isShowEmpty = isFresh && (data == null || data.size() == 0);
+        setVisibilityGone(R.id.empty_layout_empty, isShowEmpty);
     }
 
     @Override
     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-        RefreshLayoutUtils.loadMore(refreshLayout, mPagingData, new RefreshLayoutUtils.OnLoadMoreListener() {
+        RefreshLayoutUtils.loadMore(refreshLayout, getmPagingData(), new RefreshLayoutUtils.OnLoadMoreListener() {
 
             @Override
             public void onLoadMore(int nextPage, long timestamp) {
@@ -160,7 +178,7 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
 
     @Override
     public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-        requestData(1,mPagingData.getTimestamp());
+        requestData(1,getmPagingData().getTimestamp());
     }
 
     /*

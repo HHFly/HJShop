@@ -8,6 +8,15 @@ import java.util.List;
 public class CloseData extends BaseModel {
     String season;
     int type;
+    boolean Check;
+
+    public boolean isCheck() {
+        return Check;
+    }
+
+    public void setCheck(boolean check) {
+        Check = check;
+    }
 
     public String getSeason() {
         return season;
@@ -29,6 +38,7 @@ public class CloseData extends BaseModel {
         CloseData closeData1 =new CloseData();
         closeData1.setSeason("未找到商品");
         closeData1.setType(1);
+        closeData1.setCheck(true);
         data.add(closeData1);
         CloseData closeData2 =new CloseData();
         closeData2.setSeason("没时间做");
