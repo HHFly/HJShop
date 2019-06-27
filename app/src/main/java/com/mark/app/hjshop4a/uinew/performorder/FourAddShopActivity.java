@@ -59,6 +59,7 @@ public class FourAddShopActivity extends BaseActivity {
     @Override
     public void initView() {
         setTvText(R.id.titlebar_tv_title,"加购收藏");
+        requestData();
     }
     @Override
     public void getIntentParam(Bundle bundle) {
@@ -226,11 +227,19 @@ public class FourAddShopActivity extends BaseActivity {
         });
 
     }
-
+    private void setpic(){
+        String url ="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560415409646&di=4b4d5a87786acb4902a92ae2f4d64d89&imgtype=0&src=http%3A%2F%2Fimg009.hc360.cn%2Fg8%2FM08%2FEE%2F89%2FwKhQt1N9cmGEHKQQAAAAAN7_jII892.jpg";
+        pic.put(1,url);
+        pic.put(2,url);
+        pic.put(3,url);
+        pic.put(4,url);
+        pic.put(0,url);
+    }
     /**
      * 下一步
      */
     private void nextStep() {
+        setpic();
         if(!check()){return;}
 
         showLoadingDialog();
@@ -330,7 +339,7 @@ public class FourAddShopActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
                         Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
                         if(Sccess){
-                            ActivityJumpUtils.actHomePager(getActivity());
+                            ActivityJumpUtils.actEvaluationInfo(getActivity(),subOrderSn);
 
                         }else {
                             ToastUtils.show("失败！："+obj.getReason());

@@ -75,5 +75,6 @@
         <activity android:name=".uinew.performorder.ThreeBrowseActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.performorder.FourAddShopActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.performorder.PayInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.performorder.EvaluationInfoActivity" android:screenOrientation="portrait"/>
     </application>
 </manifest>

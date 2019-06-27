@@ -3,9 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/shape_white_16px_bottom"
-    android:padding="30px">
+    android:layout_height="wrap_content"
+
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/shape_white_16px_bottom"
+        android:layout_marginRight="30px"
+        android:layout_marginLeft="30px"
+        android:padding="30px">
     <TextView style="@style/BaseItem.Tv"
         android:id="@+id/tv_title"
         android:textColor="#333333"
@@ -17,6 +26,7 @@
         android:layout_height="72px"
         android:background="#EFEFEF"
         android:textSize="24px"
+        android:paddingLeft="20px"
         android:hint="请输入淘宝订单编号"
         android:textColorHint="#999999"
         android:layout_marginTop="20px"/>
@@ -26,6 +36,7 @@
         android:layout_height="72px"
         android:background="#EFEFEF"
         android:textSize="24px"
+        android:paddingLeft="20px"
         android:hint="请输入付款金额"
         android:inputType="number|numberDecimal"
         android:textColorHint="#999999"
@@ -61,6 +72,9 @@
             android:layout_alignTop="@id/tv_3"
             android:layout_toEndOf="@+id/tv_3"/>
     </RelativeLayout>
+
+    </LinearLayout>
+
     <TextView
         style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
@@ -69,12 +83,16 @@
         android:text="@string/注意事项2"
         android:lineSpacingExtra="10px"
         android:layout_marginTop="25px"
-       />
+        android:layout_marginLeft="60px"
+        android:layout_marginRight="60px"
+        />
     <Button
         style="@style/BaseBtn.Normal.Important"
+        android:id="@+id/btn"
         android:layout_height="100px"
         android:textSize="28px"
         android:text="确认提交"
         android:layout_marginTop="40px"
+        android:layout_marginBottom="80px"
         />
 </LinearLayout>

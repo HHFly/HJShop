@@ -54,17 +54,21 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
             public void onClick(View v) {
                 CircularProgressButton btn = (CircularProgressButton) v;
                 int progress = btn.getProgress();
-                String text =holder.getTvText(R.id.et_shopname);
-                if(onItemClickListener!=null){
-                    onItemClickListener.onCircularProgressButton(text,btn ,stepTwo);
-                }
                 if (progress == 0) { // 初始时progress = 0
                     btn.setProgress(50); // 点击后开始不精准进度，不精准进度的进度值一直为50
                 } else if (progress == 100) { // 如果当前进度为100，即完成状态，那么重新回到未完成的状态
                     btn.setProgress(0);
                 } else if (progress == 50) { // 如果当前进度为50，那么点击后就显示完成的状态
-                    btn.setProgress(100); // -1表示出错，显示出错的图片和背景，100表示完成，显示完成的图片和背景
+                    btn.setProgress(0); // -1表示出错，显示出错的图片和背景，100表示完成，显示完成的图片和背景
+                }else if (progress == -1) { // 如果当前进度为50，那么点击后就显示完成的状态
+                    btn.setProgress(0); // -1表示出错，显示出错的图片和背景，100表示完成，显示完成的图片和背景
                 }
+                String text =holder.getTvText(R.id.et_shopname);
+
+                if(onItemClickListener!=null){
+                    onItemClickListener.onCircularProgressButton(text,btn ,stepTwo);
+                }
+
 
             }
         });
@@ -149,16 +153,19 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
             public void onClick(View v) {
                 CircularProgressButton btn = (CircularProgressButton) v;
                 int progress = btn.getProgress();
-                if(onItemClickListener!=null){
-                    onItemClickListener.onCircularProgressButtonDeputy(holder.getTvText(R.id.et_name_deputy),btn ,addProduct);
-                }
                 if (progress == 0) { // 初始时progress = 0
                     btn.setProgress(50); // 点击后开始不精准进度，不精准进度的进度值一直为50
                 } else if (progress == 100) { // 如果当前进度为100，即完成状态，那么重新回到未完成的状态
                     btn.setProgress(0);
                 } else if (progress == 50) { // 如果当前进度为50，那么点击后就显示完成的状态
-                    btn.setProgress(100); // -1表示出错，显示出错的图片和背景，100表示完成，显示完成的图片和背景
+                    btn.setProgress(0); // -1表示出错，显示出错的图片和背景，100表示完成，显示完成的图片和背景
+                }else if (progress == -1) { // 如果当前进度为50，那么点击后就显示完成的状态
+                    btn.setProgress(0); // -1表示出错，显示出错的图片和背景，100表示完成，显示完成的图片和背景
                 }
+                if(onItemClickListener!=null){
+                    onItemClickListener.onCircularProgressButtonDeputy(holder.getTvText(R.id.et_name_deputy),btn ,addProduct);
+                }
+
 
             }
         });

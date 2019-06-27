@@ -62,10 +62,7 @@ public class PayInfoAdapter extends BaseHasTopBottomListRvAdapter<PayInfo,PayInf
         }
         return true;
         }
-    @Override
-    public void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads) {
 
-    }
 
     @Override
     public void bindBottomData(final AutoViewHolder holder, int position, PayInfo payInfo) {
@@ -82,7 +79,7 @@ public class PayInfoAdapter extends BaseHasTopBottomListRvAdapter<PayInfo,PayInf
                 }
             }
         });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.get(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(onItemClickListener!=null){

@@ -232,11 +232,11 @@ public interface RainbowService {
     //32.获取已接订单列表
     @POST("/api/app/user/order/orderList")
     Observable<RainbowResultEntity<OrderPage>> getOrderList(@Query("data") String  data);
-    //44.获取区域地址列表
+    //33.获取区域地址列表
     @POST("/api/app/user/getAreaList")
     Observable<RainbowResultEntity> getAreaList(@Query("data") String  data);
 
-    //验证
-    @POST("/api/app/user/order/orderList")
+    //34验证
+    @POST("/api/app/user/order/verificationShop")
     Observable<RainbowResultEntity> verify(@Query("data") String  data);
 }

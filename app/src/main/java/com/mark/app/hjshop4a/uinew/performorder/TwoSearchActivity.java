@@ -144,6 +144,10 @@ public class TwoSearchActivity extends BaseActivity {
 
                 @Override
                 public void onCircularProgressButton(String et, CircularProgressButton btn, StepTwo stepTwo) {
+                    if("".equals(et)){
+                        ToastUtils.show("请验证店铺:"+stepTwo.getShopName());
+                        return;
+                    }
                     verify(et,btn);
                 }
 
@@ -190,6 +194,10 @@ public class TwoSearchActivity extends BaseActivity {
 
                 @Override
                 public void onCircularProgressButtonDeputy(String et, CircularProgressButton btn, AddProduct addProduct) {
+                    if("".equals(et)){
+                        ToastUtils.show("请验证商品:"+addProduct.getAuditKeyWord());
+                        return;
+                    }
                     verify(et,btn);
                 }
 
@@ -275,7 +283,8 @@ public class TwoSearchActivity extends BaseActivity {
 //        showLoadingDialog();
         btn.setProgress(50);
         VerifyParam verifyParam =new VerifyParam();
-        verifyParam.setVerify(et);
+        verifyParam.setVerification(et);
+        verifyParam.setSubOrderSn(subOrderSn);
         App.getServiceManager().getmService()
                 .verify(verifyParam.toPswJson())
                 .subscribeOn(Schedulers.io())
@@ -285,28 +294,36 @@ public class TwoSearchActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                            ToastUtils.show(obj.getReason());
-                    }
-
-                    @Override
-                    public void onSuccessFinish() {
-                        super.onSuccessFinish();
-                        btn.setProgress(100);
+                            boolean succeed =JsonUtils.fromJson(obj.getResult(),Boolean.class);
+                            btn.setProgress(succeed?100:-1);
                     }
 
                     @Override
                     public void onUnSuccessFinish() {
+                        btn.setProgress(0);
                         super.onUnSuccessFinish();
-                        btn.setProgress(-1);
                     }
 
-
+                    @Override
+                    public void onError(Throwable e) {
+                        btn.setProgress(0);
+                        super.onError(e);
+                    }
                 });
+    }
+    private void setpic(){
+        String url ="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560415409646&di=4b4d5a87786acb4902a92ae2f4d64d89&imgtype=0&src=http%3A%2F%2Fimg009.hc360.cn%2Fg8%2FM08%2FEE%2F89%2FwKhQt1N9cmGEHKQQAAAAAN7_jII892.jpg";
+        pic.put(1,url);
+        pic.put(2,url);
+        pic.put(3,url);
+        pic.put(4,url);
+        pic.put(0,url);
     }
     /**
      * 下一步
      */
     private void nextStep() {
+        setpic();
         if(!check()){return;}
 
         showLoadingDialog();
@@ -319,7 +336,7 @@ public class TwoSearchActivity extends BaseActivity {
         stepTwoParam.setHuobisanjiaPic1(pic.get(1));
         stepTwoParam.setHuobisanjiaPic2(pic.get(2));
         stepTwoParam.setHuobisanjiaPic3(pic.get(3));
-        if(data.getAddProductList().size()>0){
+        if(data.getIsAddProductFlage()==1){
             List<AddProductPic> addProductPics =new ArrayList<>();
             for (int i=0;i<data.getAddProductList().size();i++){
                AddProductPic addProductPic =new AddProductPic();
@@ -379,7 +396,7 @@ public class TwoSearchActivity extends BaseActivity {
             ToastUtils.show("请上传货比三家图片3");
             return false;
         }
-        if(data.getAddProductList().size()>0){
+        if(data.getIsAddProductFlage()==1){
             for (int i=0;i<data.getAddProductList().size();i++){
                 if(TextUtils.isEmpty(pic.get(i+5))){
                     ToastUtils.show("请上传副宝贝图片");

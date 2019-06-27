@@ -54,7 +54,7 @@ public class FourAddShopAdapter extends MultipleSourcesRvAdapter {
 
                 holder.text(R.id.tv_shopName,data.getShopName());
                 holder.text(R.id.tv_wwName,data.getWwName());
-                holder.text(R.id.tv_mainProductPrice,String.format(App.get().getString(R.string.元),data.getMainProductPrice()));
+                holder.text(R.id.tv_mainProductPrice,String.format(App.get().getString(R.string.S元),String.valueOf(data.getMainProductPrice())));
                 holder.text(R.id.tv_priceRange, data.getPriceRange());
                 holder.text(R.id.tv_searchKeyWord, data.getSearchKeyWord());
                 holder.text(R.id.tv_require,data.getRequire());
@@ -119,8 +119,8 @@ public class FourAddShopAdapter extends MultipleSourcesRvAdapter {
             case 1:
                 holder.text(R.id.tv_steptime,getTimeString(data.getStepTime()));
                 holder.text(R.id.tv_compltetTime,getTimeString(data.getCompltetTime()));
-                holder.itemView.setEnabled(data.getStepTime()==0);
-                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                holder.get(R.id.btn).setEnabled(data.getStepTime()==0);
+                holder.get(R.id.btn).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         if(onItemClickListener!=null){

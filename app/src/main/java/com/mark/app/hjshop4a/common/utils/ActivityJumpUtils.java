@@ -37,6 +37,7 @@ import com.mark.app.hjshop4a.uinew.performorder.FourAddShopActivity;
 import com.mark.app.hjshop4a.uinew.performorder.OneDetailActivity;
 import com.mark.app.hjshop4a.uinew.performorder.PayInfoActivity;
 import com.mark.app.hjshop4a.uinew.performorder.PerformOrderActivity;
+import com.mark.app.hjshop4a.uinew.performorder.ThreeBrowseActivity;
 import com.mark.app.hjshop4a.uinew.performorder.TwoSearchActivity;
 import com.mark.app.hjshop4a.uinew.performorder.adapter.ThreeBrowseAdapter;
 import com.mark.app.hjshop4a.uinew.userinfo.ModifyPWActivity;
@@ -450,7 +451,7 @@ public class ActivityJumpUtils {
      * 跳转step3
      * */
     public static void actStepThree(Activity activity,String subOrderSn) {
-        Intent intent = new Intent(activity, ThreeBrowseAdapter.class);
+        Intent intent = new Intent(activity, ThreeBrowseActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(BundleKey.ORDER_SN,subOrderSn);
         intent.putExtras(bundle);

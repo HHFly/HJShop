@@ -38,26 +38,28 @@ public class PayInfo extends BaseModel {
         payInfoWithNames.add(data2);
         PayInfoWithName data3 =new PayInfoWithName();
         data3.setName("主宝贝价格：");
-        data3.setPayinfo(String.format(App.get().getString(R.string.元),getMainProductPrice()));
+        data3.setPayinfo(String.format(App.get().getString(R.string.S元),String.valueOf(getMainProductPrice())));
         payInfoWithNames.add(data3);
         PayInfoWithName data4 =new PayInfoWithName();
         data4.setName("拍下件数：");
         data4.setPayinfo(String.valueOf(getMainProductCount()));
         payInfoWithNames.add(data4);
-        for (int i=0;i<getAddProductPrices().size();i++){
-            PayInfoWithName data =new PayInfoWithName();
-            data.setName("副宝贝价格：");
-            data.setPayinfo(String.format(App.get().getString(R.string.元),getAddProductPrices().get(i).getProductPrice()));
-            payInfoWithNames.add(data);
-            PayInfoWithName payInfoWithName =new PayInfoWithName();
-            payInfoWithName.setName("拍下件数：");
-            payInfoWithName.setPayinfo(String.valueOf(getAddProductPrices().get(i).getProductCount()));
-            payInfoWithNames.add(payInfoWithName);
+        if(getIsAddProductFlage()==1) {
+            for (int i = 0; i < getAddProductPrices().size(); i++) {
+                PayInfoWithName data = new PayInfoWithName();
+                data.setName("副宝贝价格：");
+                data.setPayinfo(String.format(App.get().getString(R.string.S元), String.valueOf(getAddProductPrices().get(i).getProductPrice())));
+                payInfoWithNames.add(data);
+                PayInfoWithName payInfoWithName = new PayInfoWithName();
+                payInfoWithName.setName("拍下件数：");
+                payInfoWithName.setPayinfo(String.valueOf(getAddProductPrices().get(i).getProductCount()));
+                payInfoWithNames.add(payInfoWithName);
+            }
         }
         PayInfoWithName data5 =new PayInfoWithName();
-        data1.setName("实际总价：");
-        data1.setPayinfo(String.format(App.get().getString(R.string.元),getTotalPrice()));
-        payInfoWithNames.add(data1);
+        data5.setName("实际总价：");
+        data5.setPayinfo(String.format(App.get().getString(R.string.S元),String.valueOf(getTotalPrice())));
+        payInfoWithNames.add(data5);
 
         return payInfoWithNames;
     }
