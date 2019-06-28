@@ -146,6 +146,7 @@ public class TwoSearchActivity extends BaseActivity {
                 public void onCircularProgressButton(String et, CircularProgressButton btn, StepTwo stepTwo) {
                     if("".equals(et)){
                         ToastUtils.show("请验证店铺:"+stepTwo.getShopName());
+                        btn.setProgress(0);
                         return;
                     }
                     verify(et,btn);
@@ -196,9 +197,15 @@ public class TwoSearchActivity extends BaseActivity {
                 public void onCircularProgressButtonDeputy(String et, CircularProgressButton btn, AddProduct addProduct) {
                     if("".equals(et)){
                         ToastUtils.show("请验证商品:"+addProduct.getAuditKeyWord());
+                        btn.setProgress(0);
                         return;
                     }
-                    verify(et,btn);
+                    if(addProduct.getAuditKeyWord().equals(et)){
+                        btn.setProgress(100);
+                    }else {
+                        btn.setProgress(-1);
+                    }
+
                 }
 
                 @Override
@@ -304,6 +311,8 @@ public class TwoSearchActivity extends BaseActivity {
                         super.onUnSuccessFinish();
                     }
 
+
+
                     @Override
                     public void onError(Throwable e) {
                         btn.setProgress(0);
@@ -318,6 +327,8 @@ public class TwoSearchActivity extends BaseActivity {
         pic.put(3,url);
         pic.put(4,url);
         pic.put(0,url);
+        pic.put(5,url);
+        pic.put(6,url);
     }
     /**
      * 下一步
@@ -375,7 +386,13 @@ public class TwoSearchActivity extends BaseActivity {
     }
 
     private boolean check(){
-
+        if(twoSearchAdapter!=null){
+           if(!twoSearchAdapter.getVertify())
+           {
+               ToastUtils.show("请验证信息");
+               return false;
+           }
+        }
         if(TextUtils.isEmpty(pic.get(4))){
             ToastUtils.show("请上传搜索关键词图片");
             return false;
@@ -396,6 +413,7 @@ public class TwoSearchActivity extends BaseActivity {
             ToastUtils.show("请上传货比三家图片3");
             return false;
         }
+
         if(data.getIsAddProductFlage()==1){
             for (int i=0;i<data.getAddProductList().size();i++){
                 if(TextUtils.isEmpty(pic.get(i+5))){
@@ -404,6 +422,7 @@ public class TwoSearchActivity extends BaseActivity {
                 }
             }
         }
+
         return true;
     }
 }

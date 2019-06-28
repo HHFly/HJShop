@@ -7,22 +7,22 @@ import com.mark.app.hjshop4a.base.model.BaseModel;
  */
 
 public class BankCategory extends BaseModel {
-    private  long bankCategoryId;
-    private String bankCategoryName;
+    private  long bankId;
+    private String bankName;
 
-    public long getBankCategoryId() {
-        return bankCategoryId;
+    public long getBankId() {
+        return bankId;
     }
 
-    public void setBankCategoryId(long bankCategoryId) {
-        this.bankCategoryId = bankCategoryId;
+    public void setBankId(long bankId) {
+        this.bankId = bankId;
     }
 
-    public String getBankCategoryName() {
-        return bankCategoryName;
+    public String getBankName() {
+        return bankName;
     }
 
-    public void setBankCategoryName(String bankCategoryName) {
-        this.bankCategoryName = bankCategoryName;
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
     }
 }

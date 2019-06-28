@@ -40,7 +40,7 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
     public void setStatus(int status) {
 
         this.status = status;
-        refreshLayout.autoRefresh();
+        requestData(1,getmPagingData().getTimestamp());
     }
 
     public PagingBaseModel getmPagingData() {

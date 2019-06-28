@@ -10,7 +10,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:overScrollMode="never">
 
        <RelativeLayout
            android:layout_width="match_parent"
@@ -267,6 +268,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="43px"
+                android:layout_marginBottom="45px"
                 app:img ="@mipmap/ic_img"
                 app:tipimg="@mipmap/home"
                 app:title="账号认证图片：">
@@ -278,18 +280,12 @@
                 style="@style/BaseBtn.Normal.Important"
                 android:layout_width="match_parent"
                 android:text="@string/提交"
-                android:layout_marginTop="89px"
+                android:layout_marginTop="45px"
                 android:layout_marginBottom="90px"
                 android:textSize="28px"/>
         </LinearLayout>
-           <RelativeLayout
-               android:id="@+id/mask"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:background="@color/transparent"
-               android:visibility="gone"
-               android:clickable="true"
-               ></RelativeLayout>
+
+
        </RelativeLayout>
     </ScrollView>
 </LinearLayout>

@@ -14,10 +14,11 @@ import com.mark.app.hjshop4a.widget.UpdateImgLayout;
 import com.mark.app.hjshop4a.widget.UpdateStepLayout;
 import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddProduct> {
-
+    private List<CircularProgressButton> circularProgressButtonList =new ArrayList<>();
 
 //    boolean isVerity
     public TwoSearchAdapter(StepTwo stepTwo, List<AddProduct> addProducts) {
@@ -49,6 +50,7 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
         //第一步：验证是否找对店铺
        CircularProgressButton circularPropagation =holder.get(R.id.circularButton);
         circularPropagation.setIndeterminateProgressMode(true);
+        circularProgressButtonList.add(circularPropagation);
         circularPropagation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -148,6 +150,7 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
 //                    第一步是：是否找对商品
        CircularProgressButton circularPropagation1 =holder.get(R.id.circularButton_deputy);
         circularPropagation1.setIndeterminateProgressMode(true);
+        circularProgressButtonList.add(circularPropagation1);
         circularPropagation1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,7 +205,14 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
     }
 
 
-
+    public boolean getVertify(){
+        for (int i=0;i<circularProgressButtonList.size();i++){
+           if(100!= circularProgressButtonList.get(i).getProgress()){
+               return false;
+           }
+        }
+        return true;
+    }
 
     private String  getTimeString(long time){
         String Ctime ="";

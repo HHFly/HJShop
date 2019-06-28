@@ -12,6 +12,7 @@ import com.mark.app.hjshop4a.base.adapter.BaseSpinnerAdapter;
 import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
+import com.mark.app.hjshop4a.common.utils.ValidUtils;
 import com.mark.app.hjshop4a.data.entity.BaseResultEntity;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.DefaultObserver;
@@ -70,24 +71,27 @@ public class BankCardAddActivity extends BaseActivity {
      */
     private void requestbankData() {
         showLoadingDialog();
-        App.getServiceManager().getPdmService()
-                .bangkCategory()
+        App.getServiceManager().getmService()
+                .getBankList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<List<BankCategory>>() {
-                    @Override
-                    public void onSuccess(@NonNull BaseResultEntity<List<BankCategory>> obj) {
-                        List<BankCategory>data = obj.getResult();
-                        bindData(data);
-                        requestData();
-                    }
+                .subscribe(new RainbowObserver() {
 
-                    @Override
-                    public void onAllFinish() {
-                        super.onAllFinish();
-                        hideLoadingDialog();
-                    }
-                });
+                               @Override
+                               public void onSuccess(RainbowResultEntity obj) {
+                                   List<BankCategory>data = JsonUtils.getList(obj.getResult(),BankCategory.class);
+                                   if(data!=null) {
+                                       bindData(data);
+                                       requestData();
+                                   }
+                               }
+
+                               @Override
+                               public void onAllFinish() {
+                                   hideLoadingDialog();
+                               }
+                           }
+                );
     }
     //请求数据
     private void requestData() {
@@ -125,7 +129,7 @@ public class BankCardAddActivity extends BaseActivity {
         if (data != null) {
 
             List<BankCategory> list = data;
-            initSpinner(data.get(0).getBankCategoryId(), list);
+            initSpinner(data.get(0).getBankId(), list);
         }
     }
     /**
@@ -140,8 +144,8 @@ public class BankCardAddActivity extends BaseActivity {
             @Override
             public SpinnerModel getSpinnerModelItem(BankCategory data) {
                 SpinnerModel item = new SpinnerModel();
-                item.setId(data.getBankCategoryId());
-                item.setName(data.getBankCategoryName());
+                item.setId(data.getBankId());
+                item.setName(data.getBankName());
                 return item;
             }
         };
@@ -163,7 +167,7 @@ public class BankCardAddActivity extends BaseActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(phone)) {
+        if (!ValidUtils.phone(phone)) {
             ToastUtils.show("请输入预留手机号");
             return;
         }
@@ -176,9 +180,9 @@ public class BankCardAddActivity extends BaseActivity {
                 .bindBank(bankCardAddParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver() {
+                .subscribe(new RainbowObserver() {
                     @Override
-                    public void onSuccess(@NonNull BaseResultEntity obj) {
+                    public void onSuccess(@NonNull RainbowResultEntity obj) {
                         ToastUtils.show("保存成功");
 
                         setResult(ActResultCode.RESULT_OK);

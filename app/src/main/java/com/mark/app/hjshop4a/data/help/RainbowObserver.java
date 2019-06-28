@@ -89,7 +89,7 @@ public abstract class RainbowObserver <T> implements Observer<RainbowResultEntit
                 }
 
                 if (AppContext.isDebudEnv()) {
-                    Exception e = new Exception("返回值不是1000");
+                    Exception e = new Exception("返回值不是1000:    "+obj.getCode());
                     e.printStackTrace();
                 }
             }

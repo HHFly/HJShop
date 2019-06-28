@@ -6,15 +6,13 @@
     android:layout_marginTop="20px"
     android:layout_marginLeft="20px"
     android:layout_marginRight="20px"
-    android:paddingLeft="26px"
-    android:paddingRight="29px"
+    android:padding="30px"
     android:background="@drawable/shape_white_16px">
     <TextView
         android:id="@+id/tv_subOrderSn"
         style="@style/BaseItem.Tv"
         android:textColor="#999999"
         android:textSize="24px"
-        android:layout_marginTop="35px"
         android:minWidth="350px"
 
         />
@@ -149,7 +147,6 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+id/tv_bounty"
         android:layout_marginTop="30px"
-        android:layout_marginBottom="42px"
         />
 
     <TextView

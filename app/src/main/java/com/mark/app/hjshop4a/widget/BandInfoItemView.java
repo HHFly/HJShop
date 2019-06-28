@@ -13,7 +13,7 @@ import com.mark.app.hjshop4a.R;
 
 public class BandInfoItemView extends LinearLayout {
     private Type mType;
-    TextView msg,status;
+    TextView msg,tv_status;
     ImageView img;
     public BandInfoItemView(Context context) {
         super(context);
@@ -26,8 +26,8 @@ public class BandInfoItemView extends LinearLayout {
         inflater.inflate(R.layout.item_bindinfo, this);
          msg  =findViewById(R.id.msg);
         msg.setText(mType.msg);
-         status =findViewById(R.id.status);
-        status.setText(mType.status);
+        tv_status =findViewById(R.id.status);
+        tv_status.setText(mType.status);
          img =findViewById(R.id.img);
          img.setBackgroundResource(mType.img);
     }
@@ -78,7 +78,7 @@ public class BandInfoItemView extends LinearLayout {
     }
 
     public void setStatus(String status) {
-        mType.status = status;
+        tv_status.setText(status);
         invalidate();
     }
 

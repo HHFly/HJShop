@@ -37,7 +37,9 @@ public class UpdateImgLayout extends LinearLayout {
        tipimg.setOnClickListener(new OnClickListener() {
            @Override
            public void onClick(View v) {
-               FunctionDialogFactory.showBigSdvDialog(App.get().getFragmentManager(),mType.tipimg);
+               if(isEnabled()) {
+                   FunctionDialogFactory.showBigSdvDialog(App.get().getFragmentManager(), mType.tipimg);
+               }
            }
        });
         img =findViewById(R.id.sdv_img);
@@ -47,7 +49,9 @@ public class UpdateImgLayout extends LinearLayout {
             @Override
             public void onClick(View v) {
                 if(onItemClickListener!=null){
-                    onItemClickListener.onClickImg();
+                    if(isEnabled()) {
+                        onItemClickListener.onClickImg();
+                    }
                 }
             }
         });

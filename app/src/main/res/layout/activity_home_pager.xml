@@ -38,7 +38,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/hp_layout_tab3"
+            android:id="@+id/hp_layout_tab2"
             style="@style/home_pager_tab_layout">
 
             <ImageView
@@ -51,7 +51,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/hp_layout_tab2"
+            android:id="@+id/hp_layout_tab3"
             style="@style/home_pager_tab_layout">
 
             <ImageView

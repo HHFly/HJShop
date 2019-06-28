@@ -1,11 +1,13 @@
 package com.mark.app.hjshop4a.uinew.bindinfo;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -204,5 +206,12 @@ public class BindInfoActivity extends BaseActivity {
                         dialogWeixin.setEtValue(qqWechatParam.getWechat());
                     }
                 });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode== ActResultCode.RESULT_OK){
+            requestData();
+        }
     }
 }

@@ -21,7 +21,9 @@ import com.mark.app.hjshop4a.uinew.homepager.adapter.MeAdapter;
 import com.mark.app.hjshop4a.uinew.homepager.model.Banner;
 import com.mark.app.hjshop4a.uinew.homepager.model.Index;
 import com.mark.app.hjshop4a.uinew.homepager.model.ShowProduct;
+import com.mark.app.hjshop4a.widget.GifRefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -50,6 +52,8 @@ public class HomeFragment extends BaseFragment {
                 requestData();
             }
         });
+        //设置 Header 为样式
+        refreshLayout.setRefreshHeader(new GifRefreshHeader(getContext()));
     }
 
     @Override

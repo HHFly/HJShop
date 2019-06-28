@@ -96,7 +96,8 @@
                     android:id="@+id/ll_tv_evaluationContext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginTop="20px">
                     <TextView style="@style/BaseItem.Tv"
 
                         android:textSize="22px"
@@ -114,14 +115,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                   android:orientation="horizontal" >
+                   android:orientation="horizontal"
+                    android:layout_marginTop="40px">
                     <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
                         android:id="@+id/up_img_1"
                         android:layout_width="0px"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         app:title="5星好评（无需文字评论）"
-                        android:layout_marginTop="40px"
+
                         android:layout_gravity="center_horizontal"/>
                     <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
                         android:visibility="gone"
@@ -130,7 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         app:title="买家秀（选填）"
-                        android:layout_marginTop="40px"
+
                         android:layout_gravity="center_horizontal"/>
                 </LinearLayout>
 

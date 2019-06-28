@@ -265,7 +265,7 @@ public class FourAddShopActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
                         Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
                         if(Sccess){
-//                            ActivityJumpUtils.actStepFour(getActivity(),subOrderSn);.
+                            ActivityJumpUtils.actPayInfo(getActivity(),subOrderSn);
 
                         }else {
                             ToastUtils.show("失败！："+obj.getReason());

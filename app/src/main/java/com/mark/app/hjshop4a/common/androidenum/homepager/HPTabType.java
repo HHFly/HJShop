@@ -12,9 +12,9 @@ import java.lang.annotation.RetentionPolicy;
 
 @IntDef({
         HPTabType.HOME,
-        HPTabType.CLASSIFY,
+        HPTabType.ORDERLIST,
         HPTabType.ME,
-        HPTabType.SHOPCAR,
+        HPTabType.ORDER,
         HPTabType.SERVICE
 
 })
@@ -27,11 +27,11 @@ public @interface HPTabType {
     /**
      * 分类
      */
-    int CLASSIFY = 1;
+    int ORDERLIST = 1;
     /**
      * 购物车
      */
-    int SHOPCAR = 2;
+    int ORDER = 2;
     /**
      * 我的
      */

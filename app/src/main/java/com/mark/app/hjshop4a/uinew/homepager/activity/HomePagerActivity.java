@@ -39,8 +39,8 @@ public class HomePagerActivity extends BaseActivity {
 
     //View
     private View tab1;      //首页
-    private View tab2;      //分类
-    private View tab3;      //购物车
+    private View tab2;      //分
+    private View tab3;      //
     private View tab4;      //我的
     private View tab5;      //客服
    private HomeFragment homeFragment;
@@ -115,7 +115,7 @@ public class HomePagerActivity extends BaseActivity {
             }
             case R.id.hp_layout_tab2: {
                 if (App.hasToken()) {
-                    showChooseAccountDiaglog();
+                    selectTab(tab2);
                 } else {
                     ActivityJumpUtils.actLogin(getActivity());
                 }
@@ -124,12 +124,12 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab3: {
-
                 if (App.hasToken()) {
-                    selectTab(tab3);
+                    showChooseAccountDiaglog();
                 } else {
                     ActivityJumpUtils.actLogin(getActivity());
                 }
+
 
 
                 break;
@@ -162,7 +162,7 @@ public class HomePagerActivity extends BaseActivity {
                 @Override
                 public void onClick(AccountInfoPass data) {
                     orderFrament.setId(data.getBuyerAccountId());
-                    selectTab(tab2);
+                    selectTab(tab3);
                 }
             });
 
@@ -232,11 +232,11 @@ public class HomePagerActivity extends BaseActivity {
                 selectTab(tab1);
                 break;
             }
-            case HPTabType.CLASSIFY: {
+            case HPTabType.ORDERLIST: {
                 selectTab(tab2);
                 break;
             }
-            case HPTabType.SHOPCAR: {
+            case HPTabType.ORDER: {
                 selectTab(tab3);
                 break;
             }
@@ -270,11 +270,11 @@ public class HomePagerActivity extends BaseActivity {
                 break;
             }
             case R.id.hp_layout_tab2: {
-                switchFragment(orderFrament);
+                switchFragment(statusFragment);
                 break;
             }
             case R.id.hp_layout_tab3: {
-                switchFragment(statusFragment);
+                switchFragment(orderFrament);
                 break;
             }
             case R.id.hp_layout_tab4: {

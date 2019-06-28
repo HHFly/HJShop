@@ -115,8 +115,19 @@ String addressId="0" ,provinceId,cityId,areaId;
     public void initView() {
 
         setTvText(R.id.titlebar_tv_title,R.string.绑定淘宝账号);
-        setViewVisibility(R.id.mask,type==1);
-        setViewVisibility(R.id.btn,type!=1);
+        setViewEnable(R.id.btn,type!=1);
+        setViewEnable(R.id.et_wangwangname,type!=1);
+        setViewEnable(R.id.et_recivename,type!=1);
+        setViewEnable(R.id.et_recivephone,type!=1);
+        setViewEnable(R.id.certification_layout_user_city,type!=1);
+        setViewEnable(R.id.et_reciveaddress,type!=1);
+        setViewEnable(R.id.user_layout_user_sex,type!=1);
+        setViewEnable(R.id.user_layout_user_level,type!=1);
+        setViewEnable(R.id.user_layout_user_shoptype,type!=1);
+        setViewEnable(R.id.user_layout_user_ishuabei,type!=1);
+        setViewEnable(R.id.up_levelPic,type!=1);
+        setViewEnable(R.id.up_huabei,type!=1);
+        setViewEnable(R.id.up_realAuthenticate,type!=1);
         requestAddressData();
         if(type!=2){
             requestData();

@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
@@ -115,7 +116,7 @@ public class OrderFragment extends BaseFragment  {
         setVisibilityGone(R.id.empty_layout_empty, isShowEmpty);
     }
 // 确认订单
-    private void sureReciveOrder(OrderInfo data) {
+    private void sureReciveOrder(final OrderInfo data) {
         ReciveOrderParam reciveOrderParam =new ReciveOrderParam();
         reciveOrderParam.setSubOrderSn(data.getSubOrderSn());
         reciveOrderParam.setBuyerAccountId(id);
@@ -127,6 +128,7 @@ public class OrderFragment extends BaseFragment  {
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
                         requestData(id);
+                        ActivityJumpUtils.actStepOne(getActivity(),data.getSubOrderSn());
                     }
 
                 });

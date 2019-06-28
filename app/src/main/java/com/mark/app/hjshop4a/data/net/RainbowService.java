@@ -239,4 +239,7 @@ public interface RainbowService {
     //34验证
     @POST("/api/app/user/order/verificationShop")
     Observable<RainbowResultEntity> verify(@Query("data") String  data);
+    //35.获取银行卡列表
+    @GET("/api/app/user/getBankList")
+    Observable<RainbowResultEntity> getBankList();
 }

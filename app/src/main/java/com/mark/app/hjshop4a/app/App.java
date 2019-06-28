@@ -4,15 +4,25 @@ package com.mark.app.hjshop4a.app;
 import android.app.Activity;
 import android.app.Application;
 import android.app.FragmentManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 
 import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
+import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
+import com.scwang.smartrefresh.layout.api.RefreshFooter;
+import com.scwang.smartrefresh.layout.api.RefreshHeader;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.umeng.commonsdk.UMConfigure;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 

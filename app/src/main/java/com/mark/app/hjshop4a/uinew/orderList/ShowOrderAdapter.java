@@ -50,6 +50,8 @@ public class ShowOrderAdapter extends BaseListRvAdapter<ShowOrder> {
         holder.text(R.id.tv_payMent,String.format(getString(R.string.S元),String.valueOf(data.getPayMent())));
         holder.text(R.id.tv_step,data.getStatusName());
         holder.text(R.id.tv_bounty,String.format(getString(R.string.S元),String.valueOf(data.getBounty())));
+        holder.visibility(R.id.btn_close,statusShow(data.getStatus()));
+        holder.visibility(R.id.btn_start,statusShow(data.getStatus()));
         holder.get(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +69,16 @@ public class ShowOrderAdapter extends BaseListRvAdapter<ShowOrder> {
             }
         });
     }
-
+    private boolean statusShow(int status){
+        switch (status){
+            case 5:
+            case 6:
+            case 7:
+                return false;
+                default:
+                    return true;
+        }
+    }
     private OnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener listener) {

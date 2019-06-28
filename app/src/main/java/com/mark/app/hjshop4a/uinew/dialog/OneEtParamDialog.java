@@ -44,7 +44,7 @@ public class OneEtParamDialog extends BaseDialogFragment{
     }
 
     public void setEtValue(String data){
-        setTvText(mRootView, R.id.et_value, data);
+        mData =data;
     }
     /**
      * 初始化
@@ -56,7 +56,7 @@ public class OneEtParamDialog extends BaseDialogFragment{
 
         //设置参数名
         setTvText(rootView, R.id.tv_title, mParamName);
-//        setTvText(mRootView, R.id.et_value, mData);
+        setTvText(mRootView, R.id.et_value, mData);
         //设置输入框
         EditText etValue = getView(rootView, R.id.et_value);
 

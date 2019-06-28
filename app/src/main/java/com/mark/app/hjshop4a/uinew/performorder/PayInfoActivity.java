@@ -57,7 +57,7 @@ public class PayInfoActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        setTvText(R.id.titlebar_tv_title,"订单评价");
+        setTvText(R.id.titlebar_tv_title,"下单付款");
         requestData();
     }
     @Override
@@ -229,7 +229,7 @@ public class PayInfoActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                        ActivityJumpUtils.actHomePager(getActivity());
+                        ActivityJumpUtils.actEvaluationInfo(getActivity(),subOrderSn);
                     }
 
                     @Override

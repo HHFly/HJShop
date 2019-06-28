@@ -8,6 +8,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.TakeImgUtil;
@@ -136,11 +137,17 @@ public class BindIDActivity extends BaseActivity {
                     }
                 });
     }
+    private void setPic(){
+        String url ="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1560415409646&di=4b4d5a87786acb4902a92ae2f4d64d89&imgtype=0&src=http%3A%2F%2Fimg009.hc360.cn%2Fg8%2FM08%2FEE%2F89%2FwKhQt1N9cmGEHKQQAAAAAN7_jII892.jpg";
+        pic.put(R.id.imagebtn1,url);
+        pic.put(R.id.imagebtn2,url);
+
+    }
     /**
      * 确认修改
      */
     private void commit() {
-
+        setPic();
         String et_name = getTvText(R.id.et_name);
         String et_num = getTvText(R.id.et_num);
 
@@ -176,7 +183,8 @@ public class BindIDActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
 
                         ToastUtils.show("修改成功");
-
+                        setResult(ActResultCode.RESULT_OK);
+                        finish();
                     }
 
                     @Override
@@ -194,4 +202,5 @@ public class BindIDActivity extends BaseActivity {
 
 
     }
+
 }

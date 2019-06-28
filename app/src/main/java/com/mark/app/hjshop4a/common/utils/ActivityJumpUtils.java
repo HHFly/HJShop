@@ -283,7 +283,7 @@ public class ActivityJumpUtils {
         Intent intent = new Intent(activity, BankCardAddActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent,1);
         activity.overridePendingTransition(0,0);
     }
     /**
@@ -388,7 +388,7 @@ public class ActivityJumpUtils {
         Intent intent = new Intent(activity, BindIDActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent,1);
         activity.overridePendingTransition(0,0);
     }
     //跳转淘宝绑定
@@ -397,7 +397,7 @@ public class ActivityJumpUtils {
         Intent intent = new Intent(activity, BindTaobaoActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        activity.startActivity(intent);
+        activity.startActivityForResult(intent,1);
         activity.overridePendingTransition(0,0);
     }
     /*
