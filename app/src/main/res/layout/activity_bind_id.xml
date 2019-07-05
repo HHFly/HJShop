@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical"
-        android:paddingLeft="30px">
+        android:paddingLeft="15dp">
         <EditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="98px"
+            android:layout_height="49dp"
             android:textColorHint="#999999"
             android:textColor="#333333"
-            android:textSize="28px"
+            android:textSize="14dp"
             android:maxLength="10"
             android:hint="@string/真实姓名"
             android:background="@null"
@@ -32,10 +32,10 @@
         <EditText
             android:id="@+id/et_num"
             android:layout_width="match_parent"
-            android:layout_height="98px"
+            android:layout_height="49dp"
             android:textColorHint="#999999"
             android:textColor="#333333"
-            android:textSize="28px"
+            android:textSize="14dp"
             android:maxLength="25"
             android:hint="@string/身份证号码"
             android:background="@null"
@@ -43,16 +43,16 @@
     </LinearLayout>
     <TextView style="@style/BaseTab.Iv"
         android:text="@string/身份证件照"
-        android:layout_marginTop="28px"
-        android:layout_marginLeft="30px"
+        android:layout_marginTop="14dp"
+        android:layout_marginLeft="15dp"
         android:textColor="#333333"
-        android:textSize="28px"
+        android:textSize="14dp"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="46px"
+        android:layout_marginTop="23dp"
         android:gravity="center">
 
         <LinearLayout
@@ -60,21 +60,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginRight="34px"
+            android:layout_marginRight="34dp"
             android:gravity="center">
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imagebtn1"
                 style="@style/BaseSDV"
-                android:layout_width="299px"
-                android:layout_height="192px"
+                android:layout_width="150dp"
+                android:layout_height="96dp"
                 android:background="@mipmap/ic_card_zhengmian"
-                app:roundedCornerRadius="10px" />
+                app:roundedCornerRadius="5dp" />
 
             <TextView style="@style/BaseTab.Iv"
-                android:textSize="22px"
+                android:textSize="11dp"
                 android:textColor="#999999"
                 android:text="@string/正面"
-                android:layout_marginTop="23px"/>
+                android:layout_marginTop="12dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -86,15 +86,15 @@
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imagebtn2"
                 style="@style/BaseSDV"
-                android:layout_width="299px"
-                android:layout_height="192px"
+                android:layout_width="150dp"
+                android:layout_height="96dp"
                 android:background="@mipmap/ic_card_fanmian"
-                app:roundedCornerRadius="10px" />
+                app:roundedCornerRadius="5dp" />
             <TextView style="@style/BaseTab.Iv"
-                android:textSize="22px"
+                android:textSize="11dp"
                 android:textColor="#999999"
                 android:text="@string/反面"
-                android:layout_marginTop="23px"
+                android:layout_marginTop="12dp"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -104,9 +104,9 @@
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
         android:text="@string/提交"
-        android:layout_marginTop="80px"
+        android:layout_marginTop="40dp"
 
-        android:textSize="28px"/>
+        android:textSize="14dp"/>
         <!--android:background="@drawable/select_btn_normal_important2"-->
         <!--android:textColor="@drawable/select_color_blue_white"-->
         <!--/>-->

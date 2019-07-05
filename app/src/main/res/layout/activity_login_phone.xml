@@ -25,7 +25,7 @@
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout">
 
@@ -44,19 +44,19 @@
         <Button
             android:id="@+id/btn_code"
             style="@style/BaseBtn.Normal.Commonly"
-            android:layout_width="140px"
-            android:layout_height="60px"
-            android:layout_marginRight="35px"
-            android:minWidth="170px"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="18dp"
+            android:minWidth="85dp"
             android:text="@string/btn_msg_getcode"
-            android:textSize="24px" />
+            android:textSize="12dp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/login_btn"
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="@string/login_msg_login"
-        android:layout_marginTop="63px"/>
+        android:layout_marginTop="32dp"/>
 </LinearLayout>

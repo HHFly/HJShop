@@ -6,10 +6,10 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/hm_sdv_productPic"
         style="@style/BaseSDV"
-        android:layout_width="162px"
-        android:layout_height="162px"
+        android:layout_width="81dp"
+        android:layout_height="81dp"
 
-        app:layout_auto_basewidth="height"
+        
         app:placeholderImage="@mipmap/ic_logo"
         app:roundAsCircle="false" />
 
@@ -17,77 +17,77 @@
     <TextView
         android:id="@+id/tv_1"
         style="@style/BaseItem.Tv"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#999999"
         android:text="店铺名称"
         android:layout_toRightOf="@+id/hm_sdv_productPic"
-        android:layout_marginLeft="20px"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:id="@+id/tv_2"
         style="@style/BaseItem.Tv"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#999999"
         android:text="商家旺旺"
         android:layout_below="@+id/tv_1"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/hm_sdv_productPic"
-        android:layout_marginLeft="20px"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:id="@+id/tv_3"
         style="@style/BaseItem.Tv"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#999999"
         android:text="搜索关键词"
         android:layout_below="@+id/tv_2"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/hm_sdv_productPic"
-        android:layout_marginLeft="20px"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:id="@+id/tv_4"
         style="@style/BaseItem.Tv"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#999999"
         android:text="价格区间"
         android:layout_below="@+id/tv_3"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/hm_sdv_productPic"
-        android:layout_marginLeft="20px"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:id="@+id/tv_5"
         style="@style/BaseItem.Tv"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#999999"
         android:text="商品价格"
         android:layout_below="@+id/tv_4"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/hm_sdv_productPic"
-        android:layout_marginLeft="20px"
+        android:layout_marginLeft="10dp"
         />
     <TextView
         android:id="@+id/tv_6"
         style="@style/BaseItem.Tv"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#999999"
         android:text="商家备注"
         android:layout_below="@+id/tv_5"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/hm_sdv_productPic"
-        android:layout_marginLeft="20px"
+        android:layout_marginLeft="10dp"
         />
     <TextView style="@style/BaseItem.Tv"
         android:layout_width="match_parent"
         android:id="@+id/tv_require"
-        android:textSize="26px"
+        android:textSize="13dp"
         android:textColor="#FF333333"
         android:background="@drawable/shape_text_10px_gray"
-        android:padding="30px"
+        android:padding="15dp"
         android:layout_alignLeft="@+id/tv_6"
         android:layout_below="@+id/tv_6"
-        android:layout_marginTop="20px"/>
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/tv_shopName"
@@ -95,7 +95,7 @@
         android:layout_alignTop="@+id/tv_1"
 
         android:textColor="#333333"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:layout_alignParentRight="true"
         />
 
@@ -104,14 +104,14 @@
         style="@style/BaseItem.Tv"
         android:layout_alignTop="@+id/tv_2"
         android:layout_alignParentRight="true"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#333333"
         />
     <TextView
         android:id="@+id/tv_searchKeyWord"
         style="@style/BaseItem.Tv"
         android:layout_alignTop="@+id/tv_3"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:layout_alignParentRight="true"
         android:textColor="#333333"
 
@@ -121,7 +121,7 @@
         style="@style/BaseItem.Tv"
         android:layout_alignTop="@+id/tv_4"
         android:layout_alignParentRight="true"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#333333"
         android:text=""
         />
@@ -130,13 +130,13 @@
         style="@style/BaseItem.Tv"
         android:layout_alignTop="@+id/tv_5"
         android:layout_alignParentRight="true"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:textColor="#333333"
         android:text="@string/元"
         />
 
     <View style="@style/BaseLine.Horizontal"
         android:layout_below="@+id/tv_require"
-        android:layout_marginTop="20px"
-        android:layout_marginBottom="20px"/>
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
 </RelativeLayout>

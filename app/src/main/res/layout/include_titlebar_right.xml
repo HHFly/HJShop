@@ -10,9 +10,9 @@
         android:layout_width="@dimen/titlebar_height"
         android:layout_height="@dimen/titlebar_height"
         android:layout_centerVertical="true"
-        android:padding="24px"
+        android:padding="12dp"
         android:src="@mipmap/ic_left_gray"
-        app:layout_auto_basewidth="height"
+
         />
 
     <TextView
@@ -31,10 +31,10 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:gravity="center"
-        android:paddingLeft="50px"
-        android:paddingRight="50px"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
         android:text="@string/normal_ceshi"
         android:textColor="#289BF8"
-        android:textSize="24px" />
+        android:textSize="12dp" />
 
 </RelativeLayout>

@@ -7,7 +7,7 @@
     <RelativeLayout
         android:id="@+id/setting_change_psw"
         style="@style/user_item_layout"
-        android:layout_marginTop="12px"
+        android:layout_marginTop="6dp"
         android:background="@drawable/select_normal_bg">
 
         <TextView
@@ -15,17 +15,17 @@
             android:text="@string/setting_密码修改" />
 
 
-
         <ImageView
+            android:id="@+id/imageView4"
             style="@style/BaseImg.Right"
+            android:layout_width="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="30px"
-            android:id="@+id/imageView4" />
+            android:layout_marginRight="14dp" />
     </RelativeLayout>
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <RelativeLayout
         android:id="@+id/setting_clearsd"
@@ -41,21 +41,21 @@
         <TextView
             android:id="@+id/setting_tv_cache"
             style="@style/user_item_tv_content"
-            android:textSize="24px"
-            android:layout_marginRight="30px"
+            android:textSize="12dp"
+            android:layout_marginRight="15dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             />
     </RelativeLayout>
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <Button
         android:id="@+id/setting_login_out"
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
-        android:layout_marginTop="57px"
+        android:layout_marginTop="29dp"
         android:text="@string/setting_退出登录" />
 
 </LinearLayout>

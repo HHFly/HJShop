@@ -32,7 +32,7 @@ public @interface ServiceResultCode {
     /**
      * 未登陆
      */
-    int UN_LOGIN = 2015;
+    int UN_LOGIN =  1005;
     /**
      * 失败
      */

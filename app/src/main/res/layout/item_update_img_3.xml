@@ -9,23 +9,23 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/sdv_img"
-        android:layout_width="200px"
-        android:layout_height="180px"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
         app:placeholderImage="@mipmap/ic_img"
         />
     <TextView style="@style/BaseTab.Iv"
         android:id="@+id/tv_title"
-        android:textSize="26px"
+        android:textSize="13dp"
         android:textColor="#FF999999"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:text=""
         />
     <TextView style="@style/BaseTab.Iv"
         android:id="@+id/tv_tip"
-        android:textSize="26px"
+        android:textSize="13dp"
         android:textColor="#289BF8"
         android:background="@drawable/layer_stroke"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:text="示例图"
     />
 </LinearLayout>

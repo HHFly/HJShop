@@ -8,7 +8,7 @@
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:textColor="@drawable/select_normal_tab_textcolor_333333"
-    android:textSize="22px"
+    android:textSize="11dp"
     android:paddingTop="5dp"
     android:paddingBottom="5dp">
 

@@ -29,52 +29,52 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:orientation="vertical"
-                android:paddingLeft="30px">
+                android:paddingLeft="15dp">
 
                 <EditText
                     android:id="@+id/et_wangwangname"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@null"
                     android:hint="旺旺名称："
                     android:singleLine="true"
                     android:textColor="#333333"
                     android:textColorHint="#999999"
-                    android:textSize="26px" />
+                    android:textSize="13dp" />
 
                 <View style="@style/BaseLine.Horizontal" />
 
                 <EditText
                     android:id="@+id/et_recivename"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@null"
                     android:hint="收货人名称："
                     android:singleLine="true"
                     android:textColor="#333333"
                     android:textColorHint="#999999"
-                    android:textSize="26px" />
+                    android:textSize="13dp" />
 
                 <View style="@style/BaseLine.Horizontal" />`
 
                 <EditText
                     android:id="@+id/et_recivephone"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@null"
                     android:hint="收货人电话："
                     android:inputType="number"
                     android:singleLine="true"
                     android:textColor="#333333"
                     android:textColorHint="#999999"
-                    android:textSize="26px" />
+                    android:textSize="13dp" />
 
                 <View style="@style/BaseLine.Horizontal" />
 
                 <RelativeLayout
                     android:id="@+id/certification_layout_user_city"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
@@ -83,22 +83,22 @@
                         android:hint="收货地址："
                         android:textColor="#333333"
                         android:textColorHint="#999999"
-                        android:textSize="26px" />
+                        android:textSize="13dp" />
 
                     <TextView
 
                         style="@style/user_item_tv_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginRight="63px"
+                        android:layout_marginRight="32dp"
                         android:textColor="#333333"
 
-                        android:textSize="28px" />
+                        android:textSize="14dp" />
 
                     <ImageView
                         style="@style/BaseImg.Right"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="30px" />
+                        android:layout_marginRight="15dp" />
                 </RelativeLayout>
 
                 <View style="@style/BaseLine.Horizontal" />
@@ -106,20 +106,20 @@
                 <EditText
                     android:id="@+id/et_reciveaddress"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@null"
                     android:hint="详细地址： 如道路、门牌号、楼栋号、单元室等"
                     android:singleLine="true"
                     android:textColor="#333333"
                     android:textColorHint="#999999"
-                    android:textSize="26px" />
+                    android:textSize="13dp" />
 
                 <View style="@style/BaseLine.Horizontal" />`
 
                 <RelativeLayout
                     android:id="@+id/user_layout_user_sex"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
@@ -128,21 +128,21 @@
                         android:textColor="#333333"
                         android:textColorHint="#999999"
                         android:hint="@string/user_msg_性别"
-                        android:textSize="26px" />
+                        android:textSize="13dp" />
 
                     <TextView
 
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="63px"
+                        android:layout_marginRight="32dp"
                         android:textColor="#333333"
-                        android:textSize="28px" />
+                        android:textSize="14dp" />
 
                     <ImageView
                         style="@style/BaseImg.Right"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="30px" />
+                        android:layout_marginRight="15dp" />
 
                 </RelativeLayout>
 
@@ -151,7 +151,7 @@
                 <RelativeLayout
                     android:id="@+id/user_layout_user_level"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
@@ -160,21 +160,21 @@
                         android:hint="账号等级："
                         android:textColor="#333333"
                         android:textColorHint="#999999"
-                        android:textSize="26px" />
+                        android:textSize="13dp" />
 
                     <TextView
 
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="63px"
+                        android:layout_marginRight="32dp"
                         android:textColor="#333333"
-                        android:textSize="28px" />
+                        android:textSize="14dp" />
 
                     <ImageView
                         style="@style/BaseImg.Right"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="30px" />
+                        android:layout_marginRight="15dp" />
 
                 </RelativeLayout>
 
@@ -183,7 +183,7 @@
                 <RelativeLayout
                     android:id="@+id/user_layout_user_shoptype"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
@@ -192,21 +192,21 @@
                         android:hint="购物类型："
                         android:textColor="#333333"
                         android:textColorHint="#999999"
-                        android:textSize="26px" />
+                        android:textSize="13dp" />
 
                     <TextView
 
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="63px"
+                        android:layout_marginRight="32dp"
                         android:textColor="#333333"
-                        android:textSize="28px" />
+                        android:textSize="14dp" />
 
                     <ImageView
                         style="@style/BaseImg.Right"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="30px" />
+                        android:layout_marginRight="15dp" />
 
                 </RelativeLayout>
 
@@ -215,7 +215,7 @@
                 <RelativeLayout
                     android:id="@+id/user_layout_user_ishuabei"
                     android:layout_width="match_parent"
-                    android:layout_height="98px"
+                    android:layout_height="49dp"
                     android:background="@drawable/select_normal_bg">
 
                     <TextView
@@ -224,21 +224,21 @@
                         android:hint="是否开通花呗："
                         android:textColor="#333333"
                         android:textColorHint="#999999"
-                        android:textSize="26px" />
+                        android:textSize="13dp" />
 
                     <TextView
 
                         style="@style/user_item_tv_content"
                         android:layout_alignParentRight="true"
-                        android:layout_marginRight="63px"
+                        android:layout_marginRight="32dp"
                         android:textColor="#333333"
-                        android:textSize="28px" />
+                        android:textSize="14dp" />
 
                     <ImageView
                         style="@style/BaseImg.Right"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:layout_marginRight="30px" />
+                        android:layout_marginRight="15dp" />
 
                 </RelativeLayout>
             </LinearLayout>
@@ -247,7 +247,7 @@
                 android:id="@+id/up_levelPic"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="43px"
+                android:layout_marginTop="22dp"
                 app:img ="@mipmap/ic_img"
                 app:tipimg="@mipmap/home"
                 app:title="账号等级图片：">
@@ -257,7 +257,7 @@
                 android:id="@+id/up_huabei"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="43px"
+                android:layout_marginTop="22dp"
                 app:img ="@mipmap/ic_img"
                 app:tipimg="@mipmap/home"
                 app:title="花呗图片：">
@@ -267,8 +267,8 @@
                 android:id="@+id/up_realAuthenticate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="43px"
-                android:layout_marginBottom="45px"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="23dp"
                 app:img ="@mipmap/ic_img"
                 app:tipimg="@mipmap/home"
                 app:title="账号认证图片：">
@@ -280,9 +280,9 @@
                 style="@style/BaseBtn.Normal.Important"
                 android:layout_width="match_parent"
                 android:text="@string/提交"
-                android:layout_marginTop="45px"
-                android:layout_marginBottom="90px"
-                android:textSize="28px"/>
+                android:layout_marginTop="23dp"
+                android:layout_marginBottom="45dp"
+                android:textSize="14dp"/>
         </LinearLayout>
 
 

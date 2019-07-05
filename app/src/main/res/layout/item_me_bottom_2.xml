@@ -11,7 +11,7 @@
             android:id="@+id/hm_iv_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24px"
+            android:layout_marginLeft="12dp"
             android:layout_centerVertical="true"
             />
 
@@ -19,7 +19,7 @@
             style="@style/hm_item_tv"
             android:id="@+id/hm_tv_item_name"
             android:layout_toRightOf="@+id/hm_iv_logo"
-            android:layout_marginLeft="24px"
+            android:layout_marginLeft="12dp"
             />
 
         <TextView
@@ -28,14 +28,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="50px"
+            android:layout_marginRight="25dp"
             android:gravity="center"
             android:text=""
             android:textColor="#999999"
-            android:textSize="24px" />
+            android:textSize="12dp" />
 
-        <ImageView style="@style/hm_img_right"
-            android:id="@+id/search_go_btn"/>
+        <ImageView
+            android:id="@+id/search_go_btn"
+            style="@style/hm_img_right"
+            android:layout_height="wrap_content" />
 
         <View
             style="@style/BaseLine.Horizontal"

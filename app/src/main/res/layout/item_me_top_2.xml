@@ -8,11 +8,11 @@
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/hm_sdv_logo"
         style="@style/BaseSDV"
-        android:layout_width="90px"
-        android:layout_height="90px"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="43px"
-        app:layout_auto_basewidth="height"
+        android:layout_marginTop="22dp"
+        
         app:placeholderImage="@mipmap/ic_logo"
         app:roundAsCircle="true" />
     <TextView
@@ -24,7 +24,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/textsize_30px"
         android:textColor="#333333"
-        android:textSize="36px"/>
+        android:textSize="18dp"/>
 
 
 
@@ -32,12 +32,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="53px"
+        android:layout_marginTop="27dp"
         >
         <ImageView
-            android:layout_width="32px"
-            android:layout_height="40px"
-            android:layout_marginLeft="51px"
+            android:layout_width="16dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="25dp"
             android:layout_gravity="center_vertical"
             android:src="@mipmap/ic_money"
             />
@@ -45,8 +45,8 @@
            style="@style/BaseItem.Tv"
             android:layout_gravity="center_vertical"
             android:textColor="#333333"
-            android:textSize="28px"
-            android:layout_marginLeft="16px"
+            android:textSize="14dp"
+            android:layout_marginLeft="8dp"
             android:text="@string/资金钱袋"
             />
 
@@ -58,9 +58,9 @@
         android:id="@+id/item_mesage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="29px"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="30px">
+        android:layout_marginBottom="15dp">
 
         <LinearLayout
             android:id="@+id/hm_layout_red"
@@ -74,44 +74,44 @@
             <TextView
                 android:id="@+id/hm_tv_goldcoin"
                 style="@style/home_me_tab_tv_top"
-                android:layout_marginTop="25px"
+                android:layout_marginTop="13dp"
                 android:text="0.0"
                 android:textColor="#000000" />
 
             <RelativeLayout
-                android:layout_width="314px"
-                android:layout_height="89px"
-                android:layout_marginTop="39px"
-                android:layout_marginLeft="16px"
+                android:layout_width="157dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="8dp"
                 android:background="@drawable/shape_me_1">
 
                 <ImageView
                     android:id="@+id/iv_top_1"
-                    android:layout_width="58px"
-                    android:layout_height="58px"
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="16px"
+                    android:layout_marginStart="8dp"
                     android:src="@mipmap/ic_me_top_1" />
 
                 <TextView
                     style="@style/BaseItem.Tv"
                     android:layout_alignTop="@id/iv_top_1"
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/iv_top_1"
                     android:text="@string/账单"
                     android:textColor="#FFFFFF"
-                    android:textSize="26px"
+                    android:textSize="13dp"
 
                     />
 
                 <TextView
                     style="@style/BaseItem.Tv"
                    android:layout_alignBottom="@+id/iv_top_1"
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/iv_top_1"
                     android:text="@string/点击查看"
                     android:textColor="#FFFFFF"
-                    android:textSize="20px"
+                    android:textSize="10dp"
 
                     />
 
@@ -134,44 +134,44 @@
             <TextView
                 android:id="@+id/hm_tv_balance"
                 style="@style/home_me_tab_tv_top"
-                android:layout_marginTop="25px"
+                android:layout_marginTop="13dp"
                 android:text="0.0"
                 android:textColor="#000000" />
 
             <RelativeLayout
-                android:layout_width="314px"
-                android:layout_height="89px"
-                android:layout_marginTop="39px"
-                android:layout_marginRight="16px"
+                android:layout_width="157dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="8dp"
                 android:background="@drawable/shape_me_2">
 
                 <ImageView
                     android:id="@+id/iv_top_2"
-                    android:layout_width="58px"
-                    android:layout_height="58px"
+                    android:layout_width="29dp"
+                    android:layout_height="29dp"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="16px"
+                    android:layout_marginLeft="8dp"
                     android:src="@mipmap/ic_me_top_2" />
 
                 <TextView
                     style="@style/BaseItem.Tv"
                     android:layout_alignTop="@+id/iv_top_2"
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/iv_top_2"
                     android:text="@string/提现"
                     android:textColor="#FFFFFF"
-                    android:textSize="26px"
+                    android:textSize="13dp"
 
                     />
 
                 <TextView
                     style="@style/BaseItem.Tv"
                     android:layout_alignBottom="@id/iv_top_2"
-                    android:layout_marginLeft="25px"
+                    android:layout_marginLeft="13dp"
                     android:layout_toRightOf="@+id/iv_top_2"
                     android:text="@string/点击提现"
                     android:textColor="#FFFFFF"
-                    android:textSize="20px"
+                    android:textSize="10dp"
 
                     />
             </RelativeLayout>

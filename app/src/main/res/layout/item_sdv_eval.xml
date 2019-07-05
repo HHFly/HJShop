@@ -6,14 +6,14 @@
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/item_sdv"
-        style="@style/BaseSDV.AspectRatio"
+
         android:layout_width="200px"
         android:layout_height="180px"
         android:layout_marginRight="15px"
         android:layout_marginTop="15px"
         android:background="@mipmap/gird_storeimg_update"
         android:padding="1px"
-        app:layout_auto_basewidth="height" />
+         />
 
     <ImageView
         android:id="@+id/item_iv_delete"

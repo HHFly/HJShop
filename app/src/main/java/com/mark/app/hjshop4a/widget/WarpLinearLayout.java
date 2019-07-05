@@ -7,10 +7,12 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
 import com.mark.app.hjshop4a.R;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,7 @@ import java.util.List;
 /**
  * 自动换行的LineLayout
  */
-public class WarpLinearLayout extends ViewGroup {
+public class WarpLinearLayout extends LinearLayout {
     //没有行数限制
     public static final int VALUE_NO_MAX = -1;
     private Context context;
@@ -239,7 +241,11 @@ public class WarpLinearLayout extends ViewGroup {
          * 最大行数
          */
         private int maxLine;
-
+        /**
+         * ,单位px
+         */
+        private float  title;
+        private float  tipStr;
         Type(Context context, AttributeSet attrs) {
             if (attrs == null) {
                 return;
@@ -250,10 +256,29 @@ public class WarpLinearLayout extends ViewGroup {
             vertical_Space = typedArray.getDimension(R.styleable.WarpLinearLayout_vertical_Space, vertical_Space);
             isFull = typedArray.getBoolean(R.styleable.WarpLinearLayout_isFull, isFull);
             maxLine = typedArray.getInt(R.styleable.WarpLinearLayout_maxLine, VALUE_NO_MAX);
+            title = typedArray.getDimension(R.styleable.WarpLinearLayout_titleSize, title);
+            tipStr = typedArray.getDimension(R.styleable.WarpLinearLayout_tipSize, tipStr);
+
             typedArray.recycle();
         }
+
+
+    }
+    public float getTitle() {
+        return mType.title;
     }
 
+    public void setTitle(float title) {
+        mType.title = title;
+    }
+
+    public float getTipStr() {
+        return mType.tipStr;
+    }
+
+    public void setTipStr(float tipStr) {
+        mType.tipStr = tipStr;
+    }
     public int getGrivate() {
         return mType.grivate;
     }
@@ -294,4 +319,6 @@ public class WarpLinearLayout extends ViewGroup {
         public final static int LEFT = 1;
         public final static int CENTER = 2;
     }
+
+
 }

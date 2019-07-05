@@ -162,7 +162,7 @@ public class OnlineRechargeActivity extends BaseActivity {
     private void initRvAdapter(PayWayList payWayList, ArrayList<PayWay> data) {
 
         if (mAdapter == null) {
-            mAdapter = new OnlineRechargeRvAdapter(payWayList,payWayList.getPayWayList());
+//            mAdapter = new OnlineRechargeRvAdapter(payWayList,payWayList.getPayWayList());
             RecyclerView rv = getView(R.id.recyclerView);
             rv.setAdapter(mAdapter);
             rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

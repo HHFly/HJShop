@@ -27,7 +27,7 @@
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout">
 
@@ -46,17 +46,17 @@
         <Button
             android:id="@+id/btn_code"
             style="@style/BaseBtn.Normal.Commonly"
-            android:layout_width="140px"
-            android:layout_height="60px"
-            android:layout_marginRight="35px"
-            android:minWidth="170px"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="18dp"
+            android:minWidth="85dp"
             android:text="@string/btn_msg_getcode"
-            android:textSize="24px" />
+            android:textSize="12dp" />
     </LinearLayout>
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout">
 
@@ -75,17 +75,17 @@
 
         <ImageView
             android:id="@+id/iv_eye"
-            android:layout_width="100px"
-            android:layout_height="60px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:src="@drawable/select_password_eye"
             android:visibility="gone"/>
     </LinearLayout>
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout"
         android:visibility="visible">
@@ -106,10 +106,10 @@
         <ImageView
             android:visibility="visible"
             android:id="@+id/iv_eye_again"
-            android:layout_width="100px"
-            android:layout_height="60px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:src="@drawable/select_password_eye" />
     </LinearLayout>
 
@@ -117,7 +117,7 @@
         android:id="@+id/btn"
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
-        android:layout_marginTop="30px"
+        android:layout_marginTop="15dp"
         android:text="@string/btn_确认修改" />
 
 </LinearLayout>

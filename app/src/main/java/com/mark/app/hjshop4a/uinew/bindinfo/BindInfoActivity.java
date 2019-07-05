@@ -14,6 +14,7 @@ import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.uinew.bindinfo.model.BindIDType;
+import com.mark.app.hjshop4a.uinew.bindinfo.model.QqWechatParam;
 import com.mark.app.hjshop4a.uinew.dialog.OneEtParamDialog;
 import com.mark.app.hjshop4a.uinew.userinfo.model.BindStatus;
 import com.mark.app.hjshop4a.uinew.userinfo.model.UserInfo;

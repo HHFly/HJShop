@@ -122,7 +122,7 @@ public class BusinessReviewActivity extends BaseActivity implements OnRefreshLoa
 
                 @Override
                 public void onClickDetails(long shopID) {
-                    ActivityJumpUtils.actBusinesApply(getAppCompatActivity(),shopID);
+
                 }
 
 

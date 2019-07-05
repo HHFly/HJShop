@@ -28,7 +28,7 @@
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout">
 
@@ -48,16 +48,16 @@
             android:id="@+id/register_btn_code"
             style="@style/BaseBtn.Normal.Commonly"
             android:layout_width="wrap_content"
-            android:layout_height="60px"
-            android:layout_marginRight="20px"
-            android:minWidth="170px"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            android:minWidth="85dp"
             android:text="@string/btn_msg_getcode"
-            android:textSize="24px" />
+            android:textSize="12dp" />
     </LinearLayout>
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout">
 
@@ -77,16 +77,16 @@
         <ImageView
             android:id="@+id/register_iv_eye"
             android:visibility="gone"
-            android:layout_width="100px"
-            android:layout_height="60px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:src="@drawable/select_password_eye" />
     </LinearLayout>
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout"
         android:visibility="visible">
@@ -107,10 +107,10 @@
         <ImageView
             android:id="@+id/register_iv_eye_again"
             android:visibility="gone"
-            android:layout_width="100px"
-            android:layout_height="60px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:src="@drawable/select_password_eye" />
     </LinearLayout>
 
@@ -129,7 +129,7 @@
             android:layout_height="match_parent"
             android:id="@+id/register_et_region"
             style="@style/user_item_tv_content"
-            android:layout_marginRight="0px"
+            android:layout_marginRight="0dp"
             android:layout_weight="1"
             android:hint="@string/hint_请选择"
            android:gravity="center_vertical"
@@ -137,16 +137,16 @@
 
         <ImageView
             android:id="@+id/register_iv_region"
-            android:layout_width="100px"
-            android:layout_height="60px"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:src="@mipmap/ic_bottom" />
     </LinearLayout>
 
     <LinearLayout
         style="@style/input_layout"
-        android:layout_marginTop="20px">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/login_tv_in"
@@ -166,7 +166,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="90px"
+        android:layout_height="45dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -175,12 +175,12 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:paddingLeft="30px">
+            android:paddingLeft="15dp">
 
             <ImageView
-                android:layout_width="30px"
-                android:layout_height="30px"
-                android:layout_marginRight="13px"
+                android:layout_width="15dp"
+                android:layout_height="150dp"
+                android:layout_marginRight="7dp"
                 android:src="@drawable/select_radio" />
 
             <TextView
@@ -205,7 +205,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:paddingRight="30px"
+            android:paddingRight="15dp"
             android:text="@string/免责条款"
             android:textColor="#ff385c"
             android:textSize="@dimen/textsize_24px" />
@@ -216,7 +216,7 @@
         android:id="@+id/register_btn"
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
-        android:layout_marginTop="27px"
+        android:layout_marginTop="15dp"
         android:text="@string/btn_msg_register" />
 
 </LinearLayout>

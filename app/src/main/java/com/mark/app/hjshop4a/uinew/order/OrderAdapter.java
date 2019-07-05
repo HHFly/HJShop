@@ -27,8 +27,10 @@ public class OrderAdapter extends BaseListRvAdapter<OrderInfo> {
             holder.text(R.id.tv_subOrderSn,data.getSubOrderSn());
             holder.text(R.id.tv_orderType,data.getOrderType());
         holder.text(R.id.tv_shopPayPrice,String.format(getString(R.string.S元),String.valueOf(data.getShopPayPric())));
+        holder.sdvInside(R.id.hm_sdv_productPic,data.getProductPic());
         holder.text(R.id.tv_gold,String.format(getString(R.string.S元),String.valueOf(data.getGold())));
            OrderLinearLayout orderLinearLayout = holder.get(R.id.warp_label);
+           orderLinearLayout.clear();
            if(data.getRequire()!=null) {
                String[] requires = data.getRequire().split("/");
                for (int i = 0; i < requires.length; i++) {

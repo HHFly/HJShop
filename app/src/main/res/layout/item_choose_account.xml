@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="100px"
-    android:paddingRight="30px"
-    android:paddingLeft="30px"
-    android:layout_marginTop="20px"
+    android:layout_height="50dp"
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
+    android:layout_marginTop="10dp"
     android:background="@drawable/select_stroke_blue"
     android:gravity="center_vertical">
     <TextView style="@style/BaseItem.Tv"
-        android:textSize="30px"
+        android:textSize="15dp"
         android:textColor="@drawable/select_33333_9999"
         android:id="@+id/tv_num"/>
     <TextView style="@style/BaseItem.Tv"
         android:text="@string/剩余接单量"
-        android:textSize="24px"
+        android:textSize="12dp"
         android:textColor="@drawable/select_33333_9999"
         android:layout_alignParentRight="true"
         android:id="@+id/tv_count"/>

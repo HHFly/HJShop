@@ -4,13 +4,13 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="@color/background"
-    android:paddingLeft="30px"
-    android:paddingRight="30px"
-    android:paddingTop="10px"
-    android:paddingBottom="10px">
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
     <LinearLayout
         android:id="@+id/ll_1"
-        android:layout_width="0px"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -18,23 +18,23 @@
         >
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sdv_img1"
-            android:layout_width="334px"
-            android:layout_height="511px" />
+            android:layout_width="167dp"
+            android:layout_height="255dp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="30px"
-            android:paddingRight="30px">
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp">
             <TextView
                 android:id="@+id/tv_price1"
                 style="@style/BaseTab.Tv"
-                android:textSize="26px"
+                android:textSize="13dp"
                 android:textColor="#333333"
                 />
             <TextView
                 android:id="@+id/tv_num1"
                 style="@style/BaseTab.Tv"
-                android:textSize="22px"
+                android:textSize="11dp"
                 android:textColor="#999999"
                 android:text="@string/人付款"
                 android:layout_alignParentRight="true"/>
@@ -42,7 +42,7 @@
     </LinearLayout>
     <LinearLayout
         android:id="@+id/ll_2"
-        android:layout_width="0px"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="1"
@@ -50,22 +50,22 @@
         >
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sdv_img2"
-            android:layout_width="334px"
-            android:layout_height="511px" />
+            android:layout_width="167dp"
+            android:layout_height="255dp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="30px">
+            android:paddingRight="15dp">
             <TextView
                 android:id="@+id/tv_price2"
                 style="@style/BaseTab.Tv"
-                android:textSize="26px"
+                android:textSize="13dp"
                 android:textColor="#333333"
                 />
             <TextView
                 android:id="@+id/tv_num2"
                 style="@style/BaseTab.Tv"
-                android:textSize="22px"
+                android:textSize="11dp"
                 android:textColor="#999999"
                 android:text="@string/人付款"
                 android:layout_alignParentRight="true"/>

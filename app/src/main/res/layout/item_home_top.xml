@@ -8,15 +8,15 @@
     <cn.bingoogolapple.bgabanner.BGABanner
         android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="300px"
+        android:layout_height="150dp"
         app:banner_transitionEffect="defaultEffect" ></cn.bingoogolapple.bgabanner.BGABanner>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200px"
+        android:layout_height="100dp"
         android:orientation="horizontal"
-        android:padding="30px"
-        android:paddingTop="20px"
+        android:padding="15dp"
+        android:paddingTop="10dp"
         android:gravity="center"
         android:background="@color/background"
         >
@@ -25,20 +25,20 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/white"
-            android:layout_marginRight="27px">
+            android:layout_marginRight="14dp">
             <View  style="@style/BaseLine.Vertical"
                 android:background="#289BF8"
-                android:layout_width="6px"
-                android:layout_height="24px"
-                android:layout_marginLeft="15px"
-                android:layout_marginTop="28px"/>
+                android:layout_width="3dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="14dp"/>
             <TextView
               style="@style/BaseItem.Tv"
                 android:textColor="#333333"
-                android:textSize="26px"
+                android:textSize="13dp"
                 android:text="新手教学"
-                android:layout_marginLeft="32px"
-                android:layout_marginTop="27px"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="14dp"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -46,8 +46,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:src="@mipmap/ic_teach"
-                android:layout_marginRight="10px"
-                android:layout_marginBottom="10px"/>
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="0dp"
@@ -56,25 +56,25 @@
             android:background="@color/white">
             <View  style="@style/BaseLine.Vertical"
                 android:background="#289BF8"
-                android:layout_width="6px"
-                android:layout_height="24px"
-                android:layout_marginLeft="15px"
-                android:layout_marginTop="28px"/>
+                android:layout_width="3dp"
+                android:layout_height="12dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="14dp"/>
             <TextView
                 style="@style/BaseItem.Tv"
                 android:textColor="#333333"
-                android:textSize="26px"
+                android:textSize="13dp"
                 android:text="客服反馈"
-                android:layout_marginLeft="32px"
-                android:layout_marginTop="27px"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="14dp"/>
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:src="@mipmap/ic_cust"
-                android:layout_marginRight="10px"
-                android:layout_marginBottom="10px"/>
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"/>
         </RelativeLayout>
 
         
@@ -86,15 +86,15 @@
         android:gravity="center">
         <View  style="@style/BaseLine.Horizontal"
             android:background="#333333"
-            android:layout_width="80px"/>
+            android:layout_width="40dp"/>
         <TextView style="@style/BaseItem.Tv"
             android:textColor="#333333"
-            android:textSize="26px"
+            android:textSize="13dp"
             android:text="为您推荐"
-            android:layout_marginLeft="18px"
-            android:layout_marginRight="18px"/>
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"/>
         <View  style="@style/BaseLine.Horizontal"
             android:background="#333333"
-            android:layout_width="80px"/>
+            android:layout_width="40dp"/>
     </LinearLayout>
 </LinearLayout>

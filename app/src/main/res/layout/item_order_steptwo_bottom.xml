@@ -3,46 +3,46 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    android:layout_marginTop="25px"
-    android:layout_marginBottom="100px">
+    android:layout_marginTop="13dp"
+    android:layout_marginBottom="25dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_white_16px"
-        android:layout_marginLeft="20px"
-        android:layout_marginRight="20px"
-        android:padding="30px">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="15dp">
         <TextView
             android:id="@+id/tv_1"
             style="@style/BaseItem.Tv"
             android:text="本步骤总倒计时："
-            android:textSize="24px"
+            android:textSize="12dp"
             android:textColor="#FF333333"/>
         <TextView
             android:id="@+id/tv_steptime"
             style="@style/BaseItem.Tv"
             android:text=""
-            android:textSize="24px"
+            android:textSize="12dp"
             android:textColor="#FF289BF8"
             android:layout_toEndOf="@+id/tv_1"/>
         <View
             android:id="@+id/tv_2"
             android:layout_below="@+id/tv_1"
-            android:layout_marginTop="10px"
+            android:layout_marginTop="5dp"
             style="@style/BaseLine.Horizontal"/>
         <TextView
             android:id="@+id/tv_3"
             style="@style/BaseItem.Tv"
             android:text="活动剩余时间："
-            android:textSize="24px"
+            android:textSize="12dp"
             android:textColor="#FF333333"
             android:layout_below="@+id/tv_2"
-            android:layout_marginTop="10px"/>
+            android:layout_marginTop="5dp"/>
         <TextView
             android:id="@+id/tv_compltetTime"
             style="@style/BaseItem.Tv"
             android:text=""
-            android:textSize="24px"
+            android:textSize="12dp"
             android:textColor="#FF289BF8"
             android:layout_alignTop="@id/tv_3"
             android:layout_toEndOf="@+id/tv_3"/>
@@ -50,18 +50,18 @@
     <TextView
         style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
-        android:textSize="24px"
+        android:textSize="12dp"
         android:singleLine="false"
         android:text="@string/注意事项"
-        android:lineSpacingExtra="10px"
-        android:layout_marginTop="25px"
-        android:layout_marginLeft="40px"/>
+        android:lineSpacingExtra="5dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"/>
     <Button
         android:id="@+id/btn"
         style="@style/BaseBtn.Normal.Important"
-        android:layout_height="100px"
-        android:textSize="28px"
+        android:layout_height="50dp"
+        android:textSize="14dp"
         android:text="下一步"
-        android:layout_marginTop="40px"
+        android:layout_marginTop="20dp"
         />
 </LinearLayout>

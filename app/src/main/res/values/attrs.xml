@@ -20,6 +20,8 @@
             <enum name="left" value="1"></enum>
             <enum name="center" value="2"></enum>
         </attr>
+        <attr name="tipSize" format="dimension"></attr>
+        <attr name="titleSize" format="dimension"></attr>
         <!-- 左右间距 -->
         <attr name="horizontal_Space" format="dimension"></attr>
         <!-- 上下间距 -->

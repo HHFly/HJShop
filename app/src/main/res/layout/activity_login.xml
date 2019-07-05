@@ -31,7 +31,7 @@
 
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
 
     <LinearLayout style="@style/input_layout">
 
@@ -50,12 +50,12 @@
 
         <ImageView
             android:id="@+id/login_iv_eye"
-            android:layout_width="100px"
-            android:layout_height="60px"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:paddingLeft="30px"
-            android:paddingRight="30px"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:src="@drawable/select_password_eye" />
     </LinearLayout>
     <RelativeLayout
@@ -64,10 +64,10 @@
 
         <ImageView
             android:visibility="gone"
-            android:layout_width="30px"
-            android:layout_height="30px"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="40px"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/select_radio"
             android:id="@+id/login_tv_quick_login" />
 
@@ -78,23 +78,23 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="11dp"
             android:layout_toEndOf="@+id/login_tv_quick_login"
-            android:paddingBottom="29px"
-            android:paddingTop="29px"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
             android:text="@string/login_msg_auto"
             android:textColor="#999999"
-            android:textSize="24px" />
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/login_tv_forget_pwd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="30px"
-            android:paddingBottom="35px"
-            android:paddingTop="17px"
+            android:layout_marginRight="15dp"
+            android:paddingBottom="15dp"
+            android:paddingTop="9dp"
             android:text="@string/login_msg_forget_pwd"
             android:textColor="#999999"
-            android:textSize="24px"
+            android:textSize="11dp"
             />
 
     </RelativeLayout>
@@ -102,28 +102,28 @@
         android:id="@+id/login_btn"
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
-        android:textSize="28px"
+        android:textSize="15dp"
         android:text="@string/login_msg_login" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="28px"
+            android:textSize="14dp"
             android:textColor="#999999"
             android:text="或"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="29px"
+            android:layout_marginTop="13dp"
             />
     <Button
         android:id="@+id/login_btn_phone"
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
         android:text="@string/手机快捷登录"
-        android:layout_marginTop="29px"
-        android:layout_marginRight="30px"
-        android:layout_marginLeft="30px"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:textColor="@drawable/select_color_blue_white"
-        android:textSize="28px"
+        android:textSize="15dp"
         android:background="@drawable/select_btn_normal_important2"
         />
 

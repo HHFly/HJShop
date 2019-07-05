@@ -1,4 +1,4 @@
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E9E9E9"
@@ -33,7 +33,7 @@
         android:textColor="@color/btn_small_blue"  />
     </RelativeLayout>
 
-    <com.zhy.autolayout.AutoLinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10px"
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" >
         </com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView>
-    </com.zhy.autolayout.AutoLinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/view_none"
@@ -72,4 +72,4 @@
     </LinearLayout>
 
 
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

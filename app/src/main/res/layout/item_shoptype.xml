@@ -9,14 +9,14 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30px"
-        android:layout_marginLeft="30px"
-        android:layout_marginTop="30px"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
         android:textColor="@drawable/select_normal_tab_textcolor_333333"/>
 
     <com.mark.app.hjshop4a.widget.SmoothCheckBox
         android:id="@+id/scbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="30px"/>
+        android:layout_marginRight="15dp"/>
 </LinearLayout>

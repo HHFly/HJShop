@@ -17,7 +17,7 @@
     <LinearLayout
         android:id="@+id/hp_layout_bottom"
         android:layout_width="match_parent"
-        android:layout_height="98px"
+        android:layout_height="49dp"
         android:layout_alignParentBottom="true"
         android:background="#ffffff"
         android:orientation="horizontal">

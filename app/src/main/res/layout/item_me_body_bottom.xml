@@ -25,7 +25,7 @@
                 android:layout_marginTop="37px"
                 android:src="@mipmap/ic_left_white"
                
-                app:layout_auto_basewidth="height" />
+                 />
 
             <ImageView
                 android:id="@+id/titlebar_iv_payment_count"
@@ -35,7 +35,7 @@
                 android:layout_alignRight="@+id/me_iv_lab1"
                 android:visibility="gone"
                 android:background="@drawable/shape_btn_5px_red"
-                app:layout_auto_basewidth="height" />
+                 />
 
             <TextView
                 android:id="@+id/me_tv_lab1"
@@ -64,7 +64,7 @@
                 android:layout_marginTop="37px"
                
                 android:src="@mipmap/ic_left_white"
-                app:layout_auto_basewidth="height" />
+                 />
 
             <ImageView
                 android:id="@+id/titlebar_iv_Deliver_count"
@@ -74,7 +74,7 @@
                 android:layout_alignRight="@+id/me_iv_lab2"
                 android:background="@drawable/shape_btn_5px_red"
                 android:visibility="gone"
-                app:layout_auto_basewidth="height" />
+                 />
 
             <TextView
                 android:id="@+id/me_tv_lab2"
@@ -101,7 +101,7 @@
                 android:layout_marginTop="37px"
                
                 android:src="@mipmap/ic_left_white"
-                app:layout_auto_basewidth="height" />
+                 />
             <ImageView
                 android:id="@+id/titlebar_iv_Received_count"
                 android:layout_width="15px"
@@ -110,7 +110,7 @@
                 android:layout_alignRight="@+id/me_iv_lab3"
                 android:background="@drawable/shape_btn_5px_red"
                 android:visibility="gone"
-                app:layout_auto_basewidth="height" />
+                 />
             <TextView
                 android:id="@+id/me_tv_lab3"
                 android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                 android:layout_marginTop="37px"
                
                 android:src="@mipmap/ic_left_white"
-                app:layout_auto_basewidth="height" />
+                 />
             <ImageView
                 android:id="@+id/titlebar_iv_Finsh_count"
                 android:layout_width="15px"
@@ -144,7 +144,7 @@
                 android:layout_alignRight="@+id/me_iv_lab4"
                 android:background="@drawable/shape_btn_5px_red"
                 android:visibility="gone"
-                app:layout_auto_basewidth="height" />
+                 />
             <TextView
                 android:id="@+id/me_tv_lab4"
                 android:layout_height="wrap_content"

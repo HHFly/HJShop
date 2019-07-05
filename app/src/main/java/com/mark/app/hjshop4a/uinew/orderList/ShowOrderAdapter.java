@@ -29,6 +29,7 @@ public class ShowOrderAdapter extends BaseListRvAdapter<ShowOrder> {
 
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPos, final ShowOrder data) {
+        holder.sdvInside(R.id.hm_sdv_productPic,data.getProductImg());
         holder.text(R.id.tv_subOrderSn,data.getSubOrderSn());
         holder.get(R.id.tv_subOrderSn).setOnClickListener(new View.OnClickListener() {
             @Override

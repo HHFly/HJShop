@@ -44,6 +44,7 @@ import java.util.Map;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+
 public class AddTaobaoActivity extends BaseActivity  {
     UpdateImgLayout huabeiPic ,levelPic,realAuthenticatePic;
     private SexDialog sexDialog;

@@ -6,17 +6,17 @@
     <include layout="@layout/include_titlebar" />
 <ImageView
 
-    android:layout_width="172px"
-    android:layout_height="172px"
+    android:layout_width="86dp"
+    android:layout_height="86dp"
     android:layout_gravity="center_horizontal"
-    android:layout_marginTop="263px"
+    android:layout_marginTop="132dp"
     />
     <TextView
         android:id="@+id/version_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="44px"
+        android:layout_marginTop="22dp"
         android:textSize="@dimen/textsize_30px"
         android:textColor="#333333"
         android:text="@string/当前版本"
@@ -24,13 +24,14 @@
 
     <Button
         android:id="@+id/version_check"
-        android:layout_width="342px"
-        android:layout_height="80px"
-        android:layout_marginTop="214px"
+        style="@style/BaseBtn.Normal.Commonly"
+        android:layout_width="171dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="23dp"
         android:layout_gravity="center_horizontal"
         android:text="@string/检测新版本"
-        android:textSize="30px"
-        android:textColor="#FFFFFF"
-        android:background="@drawable/select_btn_normal_important"
+        android:textSize="15dp"
+
+
         />
 </LinearLayout>

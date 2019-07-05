@@ -9,6 +9,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.common.androidenum.service.ServiceResultCode;
+import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.LogUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -173,7 +174,7 @@ public abstract class RainbowObserver <T> implements Observer<RainbowResultEntit
             App.get().setLogin(null);
             Activity activity = App.get().getCurActivity();
             if (activity != null) {
-                //ActJumpUtils.actLogin(activity);
+                ActivityJumpUtils.actLogin(activity);
             }
         }
     }

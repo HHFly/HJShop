@@ -18,7 +18,7 @@ import com.mark.app.hjshop4a.ui.areaagent.businessreview.BusinessReviewActivity;
 import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardActivity;
 import com.mark.app.hjshop4a.ui.business.billrecord.BusniessBillRecordActivity;
 import com.mark.app.hjshop4a.ui.business.consumecommit.ConsumeCommitActivity;
-import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
+
 import com.mark.app.hjshop4a.ui.goldbeanconsume.BusniessGoldBeanConsumeActivity;
 import com.mark.app.hjshop4a.ui.business.zxing.BusniessZxingActivity;
 import com.mark.app.hjshop4a.ui.goldbeanconsume.MemberGoldBeanConsumeActivity;
@@ -975,12 +975,12 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
           case "1-2-1": ActivityJumpUtils.actBankCard(activity);break;
           case  "1-2-2":  ActivityJumpUtils.actRecommend(activity,RoleType.MEMBER);break;
           case  "1-2-3": agant();break;
-          case  "1-2-4":ActivityJumpUtils.actBusinesApply(activity);break;
+          case  "1-2-4":;break;
           case  "2-1-1": ActivityJumpUtils.actActivity(activity, ConsumeCommitActivity.class);break;
           case  "2-1-2":  ActivityJumpUtils.actActivity(activity, BusniessBillRecordActivity.class);break;
           case "2-1-3":  ActivityJumpUtils.actActivity(activity, BusniessGoldBeanConsumeActivity.class);break;
           case  "2-1-4":  ActivityJumpUtils.actConsumption(activity,RoleType.BUSINESS);break;
-          case  "2-2-1":  ActivityJumpUtils.actActivity(activity, BusinessApplicationActivity.class);break;
+          case  "2-2-1":  ;break;
           case "2-2-2":ActivityJumpUtils.actActivity(activity, OnlineRechargeActivity.class);break;
           case "2-2-3": ActivityJumpUtils.actActivity(activity, WithDrawActivity.class);break;
           case "2-2-4": ActivityJumpUtils.actActivity(activity, BusniessZxingActivity.class);break;

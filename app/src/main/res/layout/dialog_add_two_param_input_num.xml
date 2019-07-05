@@ -5,30 +5,30 @@
     android:gravity="center"
     android:layout_height="match_parent">
     <LinearLayout
-        android:layout_width="610px"
+        android:layout_width="305dp"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical">
     <TextView
         android:id="@+id/tv_title"
         style="@style/BaseItem.Tv"
-        android:textSize="32px"
+        android:textSize="16dp"
         android:textColor="#333333"
-        android:layout_marginLeft="36px"
-        android:layout_marginTop="49px"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="25dp"
 
         />
     <EditText
         android:id="@+id/et_value"
-        android:layout_marginTop="58px"
-        android:layout_marginBottom="73px"
-        android:layout_marginRight="38px"
-        android:layout_marginLeft="38px"
+        android:layout_marginTop="29dp"
+        android:layout_marginBottom="37dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginLeft="19dp"
         android:layout_width="match_parent"
-        android:layout_height="78px"
+        android:layout_height="39dp"
         android:textColorHint="#999999"
         android:hint="请输入您的QQ账号"
-        android:paddingLeft="28px"
+        android:paddingLeft="14dp"
         android:background="@drawable/shape_efefef_10px"
         android:maxLength="20"
         android:maxEms="20"
@@ -40,7 +40,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="91px">
+        android:layout_height="46dp">
 
         <Button
             android:id="@+id/normal_btn_left"
@@ -49,10 +49,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#EFEFEF"
-            android:padding="0px"
+            android:padding="0dp"
             android:text="@string/btn_msg_cancel"
             android:textColor="#999999"
-            android:textSize="32px" />
+            android:textSize="16dp" />
 
         <View style="@style/BaseLine.Vertical" />
 
@@ -63,10 +63,10 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#289BF8"
-            android:padding="0px"
+            android:padding="0dp"
             android:text="@string/保存"
             android:textColor="#FFFFFF"
-            android:textSize="32px" />
+            android:textSize="16dp" />
 
     </LinearLayout>
     </LinearLayout>

@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_white_16px"
-    android:padding="30px">
+    android:padding="15dp">
     <include layout="@layout/item_order_stepthree_1"/>
     <include layout="@layout/item_order_stepthree_2"/>
 </LinearLayout>

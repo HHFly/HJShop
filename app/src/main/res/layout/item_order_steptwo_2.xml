@@ -8,26 +8,26 @@
     android:id="@+id/tv_1"
     android:text="第一步：验证是否找对店铺"
     android:textColor="#333333"
-    android:textSize="22px"/>
+    android:textSize="11dp"/>
     <EditText
         android:id="@+id/et_shopname"
         android:layout_width="match_parent"
-        android:layout_height="72px"
+        android:layout_height="36dp"
         android:background="@drawable/shape_green_stroke_1px"
         android:layout_below="@+id/tv_1"
-        android:textSize="24px"
-        android:paddingLeft="30px"
-        android:layout_marginTop="23px"/>
+        android:textSize="12dp"
+        android:paddingLeft="15dp"
+        android:layout_marginTop="12dp"/>
     <com.dd.CircularProgressButton
         android:id="@+id/circularButton"
-        android:layout_width="200px"
-        android:layout_height="80px"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/et_shopname"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:textColor="@color/white"
-        android:textSize="24px"
+        android:textSize="12dp"
         android:layout_centerHorizontal="true"
-        app:cpb_cornerRadius="10px"
+        app:cpb_cornerRadius="5dp"
         app:cpb_selectorComplete="@drawable/complete_state_selector"
         app:cpb_selectorError="@drawable/error_state_selector"
         app:cpb_selectorIdle="@drawable/idle_state_selector"
@@ -39,20 +39,20 @@
         android:id="@+id/tv_3_1"
         android:text="第二步：请根据商家要求上传任务截图"
         android:textColor="#333333"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:layout_below="@+id/circularButton"
-        android:layout_marginTop="57px"/>
+        android:layout_marginTop="15dp"/>
 
     <LinearLayout
         android:id="@+id/up_step_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_3_1"
-        android:layout_marginTop="35px"
+        android:layout_marginTop="9dp"
         android:orientation="horizontal">
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_searchPic"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="搜索关键词"
@@ -60,7 +60,7 @@
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_mainProductBrowsePic"
 
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="主宝贝浏览"
@@ -71,32 +71,32 @@
         android:id="@+id/tv_2_1"
         android:text="第三步：货比三家，每个一分钟，提供三个竞品详情页顶部截图"
         android:textColor="#333333"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:layout_below="@+id/up_step_two"
-        android:layout_marginTop="49px"/>
+        android:layout_marginTop="13dp"/>
     <LinearLayout
         android:id="@+id/ll_up_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_2_1"
-        android:layout_marginTop="35px"
+        android:layout_marginTop="9dp"
         android:orientation="horizontal">
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_1"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="货比三家1"
             />
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_2"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="货比三家2"/>
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_3"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="货比三家3"/>
@@ -104,6 +104,6 @@
 
     <View style="@style/BaseLine.Horizontal"
         android:layout_below="@+id/ll_up_img"
-        android:layout_marginTop="30px"
-        android:layout_marginBottom="20px"/>
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"/>
 </RelativeLayout>

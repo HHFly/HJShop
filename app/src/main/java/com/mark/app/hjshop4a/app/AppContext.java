@@ -227,6 +227,9 @@ public class AppContext {
      * @param data
      */
     public void setLoginRepo(Token data) {
+        if(data==null){
+            data=new Token();
+        }
         mLoginRepo = data;
 
         SPUtil.getInstance(mContext).putString(KEY_TOKEN, mLoginRepo.toJson());

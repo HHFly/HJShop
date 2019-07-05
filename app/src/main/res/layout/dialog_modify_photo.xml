@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -24,4 +24,4 @@
         android:text="@string/取消"
         android:textColor="@color/color_main_blue"
         android:textSize="40px" />
-</com.zhy.autolayout.AutoLinearLayout>
+</LinearLayout>

@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_white_16px"
-    android:padding="30px">
+    android:padding="15dp">
     <include layout="@layout/item_order_stepthree_1"/>
     <TextView style="@style/BaseItem.Tv"
     android:id="@+id/tv_2_1"
     android:text="请根据商家要求上传任务截图"
     android:textColor="#333333"
-    android:textSize="22px"
+    android:textSize="11dp"
     android:layout_below="@+id/up_step_two"
     />
     <LinearLayout
@@ -19,24 +19,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_2_1"
-        android:layout_marginTop="35px"
+        android:layout_marginTop="18dp"
         android:orientation="horizontal">
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_1"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="加入购物车"
             />
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_2"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="加入购物车"/>
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_3"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="加入购物车"/>
@@ -49,20 +49,20 @@
         android:orientation="horizontal">
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_4"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="下单不付款"
             />
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
           android:visibility="invisible"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
           />
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
            android:visibility="invisible"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             />

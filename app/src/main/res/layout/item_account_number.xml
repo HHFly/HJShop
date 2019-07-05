@@ -13,7 +13,6 @@
         android:layout_height="85px"
         android:layout_centerVertical="true"
         android:layout_marginLeft="43px"
-        app:layout_auto_basewidth="height"
         app:roundAsCircle="true"
         app:placeholderImage="@mipmap/ic_load1"/>
 

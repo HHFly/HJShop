@@ -3,52 +3,52 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/shape_white_16px"
-    android:layout_marginTop="30px"
-    android:layout_marginLeft="30px"
-    android:layout_marginRight="30px"
-    android:padding="30px">
+    android:layout_marginTop="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:padding="15dp">
     <TextView style="@style/BaseItem.Tv"
         android:id="@+id/tv_subOrderSn"
         android:textColor="#FF333333"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:layout_alignParentRight="true"/>
     <TextView style="@style/BaseItem.Tv"
         android:id="@+id/tv_orderType"
         android:textColor="#FF333333"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:layout_below="@+id/tv_subOrderSn"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20px"/>
+        android:layout_marginTop="10dp"/>
     <TextView style="@style/BaseItem.Tv"
         android:id="@+id/tv_verificationMethod"
         android:textColor="#FF333333"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:layout_below="@+id/tv_orderType"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20px"/>
+        android:layout_marginTop="10dp"/>
 
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="活动编号"
         android:layout_alignTop="@id/tv_subOrderSn"/>
 
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="活动类型"
         android:layout_alignTop="@id/tv_orderType"/>
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="验证方式"
         android:layout_alignTop="@id/tv_verificationMethod"/>
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="任务流程"
         android:layout_below="@id/tv_verificationMethod"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:id="@+id/tv_1"/>
 
     <com.mark.app.hjshop4a.widget.WarpLinearLayout
@@ -56,15 +56,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/ll_process"
         android:layout_below="@+id/tv_1"
-        android:layout_marginTop="18px"
+        android:layout_marginTop="9dp"
         />
 
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="付款方式"
         android:layout_below="@id/ll_process"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:id="@+id/tv_2"/>
 
     <TextView style="@style/BaseItem.Tv"
@@ -72,38 +72,38 @@
         android:textColor="#FF333333"
         android:layout_alignTop="@+id/tv_2"
         android:layout_alignParentRight="true"
-        android:textSize="28px"/>
+        android:textSize="14dp"/>
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="剩余完成时间"
         android:layout_alignTop="@+id/tv_compltetTime"
        />
     <TextView style="@style/BaseItem.Tv"
         android:id="@+id/tv_compltetTime"
         android:textColor="#FF333333"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:layout_below="@id/tv_2"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         android:layout_alignParentRight="true"
         />
     <TextView style="@style/BaseItem.Tv"
         android:id="@+id/tv_3"
         android:textColor="#FF999999"
-        android:textSize="28px"
+        android:textSize="14dp"
         android:text="商家留言备忘录"
         android:layout_below="@+id/tv_compltetTime"
-        android:layout_marginTop="20px"
+        android:layout_marginTop="10dp"
         />
     <TextView style="@style/BaseItem.Tv"
         android:layout_width="match_parent"
         android:id="@+id/tv_remarks"
-        android:textSize="26px"
+        android:textSize="26dp"
         android:textColor="#FF333333"
         android:background="@drawable/shape_text_10px_gray"
-        android:padding="30px"
+        android:padding="15dp"
         android:layout_below="@+id/tv_3"
-        android:layout_marginTop="20px"/>
+        android:layout_marginTop="10dp"/>
    
 
 </RelativeLayout>

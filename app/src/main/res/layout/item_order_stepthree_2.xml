@@ -8,7 +8,7 @@
         android:id="@+id/tv_2_1"
         android:text="请根据商家要求上传任务截图"
         android:textColor="#333333"
-        android:textSize="22px"
+        android:textSize="11dp"
         android:layout_below="@+id/up_step_two"
        />
     <LinearLayout
@@ -16,24 +16,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_2_1"
-        android:layout_marginTop="35px"
+        android:layout_marginTop="9dp"
         android:orientation="horizontal">
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_1"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="评价浏览"
             />
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_2"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="旺旺聊天"/>
         <com.mark.app.hjshop4a.widget.UpdateStepOneLayout
             android:id="@+id/up_img_3"
-            android:layout_width="0px"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:title="问大家浏览"/>

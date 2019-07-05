@@ -11,8 +11,7 @@ import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
 import com.mark.app.hjshop4a.ui.assedetail.AssetDetailActivity;
-import com.mark.app.hjshop4a.ui.bankcard.activity.BankCardActivity;
-import com.mark.app.hjshop4a.ui.businessapply.BusinessApplicationActivity;
+
 import com.mark.app.hjshop4a.ui.calendarview.CalendarViewActivity;
 import com.mark.app.hjshop4a.ui.consumptionbill.ConsumptionBillActivty;
 
@@ -324,21 +323,7 @@ public class ActivityJumpUtils {
     }
 
 
-    /*
-  * 跳转商户申请
-  * */
 
-    public static void actBusinesApply(Activity activity) {
-        Intent intent = new Intent(activity, BusinessApplicationActivity.class);
-        activity.startActivity(intent);
-        activity.overridePendingTransition(0,0);
-    }
-    public static void actBusinesApply(Activity activity,long shopId) {
-        Intent intent = new Intent(activity, BusinessApplicationActivity.class);
-        BundleUtils.getInstance().putLong("shopID",shopId).addIntent(intent);
-        activity.startActivity(intent);
-        activity.overridePendingTransition(0,0);
-    }
     /*
   * 跳转时间筛选
   * */

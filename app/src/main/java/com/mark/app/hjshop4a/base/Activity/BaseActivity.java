@@ -48,7 +48,7 @@ import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
 import com.mark.app.hjshop4a.ui.homepager.model.Lookup;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
 
-import com.zhy.autolayout.AutoLayoutActivity;
+
 
 import java.io.File;
 import java.util.List;
@@ -63,7 +63,7 @@ import okhttp3.RequestBody;
  * activity基类
  */
 
-public abstract class BaseActivity extends AutoLayoutActivity implements View.OnClickListener, ShowLoadingDialogListener {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener, ShowLoadingDialogListener {
     private final String TAG = getClass().getSimpleName();
     /**
      * 存放View

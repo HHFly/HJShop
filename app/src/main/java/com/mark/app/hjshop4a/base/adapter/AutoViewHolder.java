@@ -16,7 +16,6 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
-import com.zhy.autolayout.utils.AutoUtils;
 
 /**
  * RecyclerView的ViewHolder
@@ -26,7 +25,7 @@ import com.zhy.autolayout.utils.AutoUtils;
 public class AutoViewHolder extends MkViewHolder {
     public AutoViewHolder(View view) {
         super(view);
-        AutoUtils.autoSize(view);
+
     }
     /**
      * 设置Edittext文本监听

@@ -69,7 +69,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //自动适配框架
-    implementation 'com.zhy:autolayout:1.4.5'
+    implementation 'me.jessyan:autosize:1.1.2'
     //网络请求框架
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'

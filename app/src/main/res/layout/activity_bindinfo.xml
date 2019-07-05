@@ -20,21 +20,21 @@
     <TextView
         style="@style/BaseItem.Tv"
         android:textColor="#999999"
-        android:textSize="26px"
+        android:textSize="13dp"
         android:text="身份信息（必填，身份信息与银行卡信息必须一致）"
-        android:layout_marginLeft="30px"
-        android:layout_marginTop="23px"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="12dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white"
-        android:layout_marginTop="17px"
+        android:layout_marginTop="9dp"
         >
         <com.mark.app.hjshop4a.widget.BandInfoItemView
             android:id="@+id/Bind_id"
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
             app:img="@mipmap/ic_id"
             app:msg="@string/身份证信息"
@@ -42,8 +42,8 @@
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
             android:id="@+id/Bind_bank"
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
             app:img="@mipmap/ic_card"
             app:msg="@string/银行卡"
@@ -51,8 +51,8 @@
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
             android:id="@+id/Bind_qq"
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
             app:img="@mipmap/ic_qq"
             app:msg="@string/QQ号"
@@ -69,8 +69,8 @@
         >
         <com.mark.app.hjshop4a.widget.BandInfoItemView
             android:id="@+id/Bind_wechat"
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
             app:img="@mipmap/ic_webchat"
             app:msg="@string/微信号"
@@ -78,15 +78,15 @@
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
 
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
 
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
 
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
 
             />
@@ -96,22 +96,22 @@
     <TextView
         style="@style/BaseItem.Tv"
         android:textColor="#999999"
-        android:textSize="26px"
+        android:textSize="13dp"
         android:text="账号信息（绑定一个账号审核通过后就可以接单啦）"
-        android:layout_marginLeft="30px"
-        android:layout_marginTop="30px"/>
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/white"
-        android:layout_marginTop="25px"
+        android:layout_marginTop="13dp"
         >
         <com.mark.app.hjshop4a.widget.BandInfoItemView
             android:id="@+id/Bind_taobao"
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
             app:img="@mipmap/ic_taobao"
             app:msg="@string/淘宝"
@@ -119,15 +119,15 @@
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
 
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
 
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
 
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
 
             />
@@ -143,22 +143,22 @@
         >
         <com.mark.app.hjshop4a.widget.BandInfoItemView
 
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
 
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
 
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
 
             />
         <com.mark.app.hjshop4a.widget.BandInfoItemView
 
-            android:layout_width="0px"
-            android:layout_height="250px"
+            android:layout_width="0dp"
+            android:layout_height="125dp"
             android:layout_weight="1"
 
             />
