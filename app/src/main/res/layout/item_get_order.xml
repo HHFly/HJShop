@@ -99,6 +99,7 @@
         app:grivate="left"
         app:titleSize="12dp"
         app:tipSize="10dp"
+
         ></com.mark.app.hjshop4a.widget.OrderLinearLayout>
     <Button
         android:id="@+id/order_btn_getOrder"

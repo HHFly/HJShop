@@ -14,12 +14,12 @@
         android:id="@+id/msg"
         style="@style/BaseItem.Tv"
         android:textColor="#333333"
-        android:textSize="26px"
-        android:layout_marginTop="23px"/>
+        android:textSize="13dp"
+        android:layout_marginTop="12dp"/>
     <TextView
         android:id="@+id/status"
         style="@style/BaseItem.Tv"
         android:textColor="#666666"
-        android:textSize="24px"
-        android:layout_marginTop="23px"/>
+        android:textSize="12dp"
+        android:layout_marginTop="12dp"/>
 </LinearLayout>

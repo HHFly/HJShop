@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="@android:color/transparent"
-    android:padding="20px">
+    android:padding="10dp">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/dialog_rv"
@@ -18,10 +18,10 @@
         android:id="@+id/dialog_btn_cancel"
         style="@style/BaseBtn"
         android:layout_width="match_parent"
-        android:layout_height="114px"
-        android:layout_marginTop="16px"
+        android:layout_height="57dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/shape_dialog_normal_bg"
         android:text="@string/取消"
         android:textColor="@color/color_main_blue"
-        android:textSize="40px" />
+        android:textSize="20dp" />
 </LinearLayout>

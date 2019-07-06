@@ -5,7 +5,7 @@
 <pl.droidsonroids.gif.GifImageView
     android:id="@+id/iv_refresh_center"
     android:layout_width="match_parent"
-    android:layout_height="300px"
+    android:layout_height="150dp"
     android:scaleType="centerCrop"
     android:src="@drawable/rianbow"/>
 </RelativeLayout>

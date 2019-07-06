@@ -4,8 +4,8 @@
         <shape>
             <solid android:color="@color/color_main_blue" />
             <corners
-                android:topLeftRadius="10px"
-                android:topRightRadius="10px" />
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp" />
         </shape>
     </item>
 </layer-list>

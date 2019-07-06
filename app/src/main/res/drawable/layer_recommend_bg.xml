@@ -3,12 +3,12 @@
     <item>
         <shape>
             <!--    边框颜色 -->
-                <corners android:radius="10px"></corners>
+                <corners android:radius="5dp"></corners>
             <solid android:color="@color/white"/>
         </shape>
     </item>
     <!-- 给View的上 左  右设置8dp的边框 -->
-    <item android:top="18px" android:left="18px" android:right="18px" android:bottom="18px">
+    <item android:top="9dp" android:left="9dp" android:right="9dp" android:bottom="9dp">
         <shape>
             <!--     View填充颜色 -->
             <solid android:color="#FFFFFF" />
