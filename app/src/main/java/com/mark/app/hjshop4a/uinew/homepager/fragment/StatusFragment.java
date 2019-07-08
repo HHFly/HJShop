@@ -154,7 +154,7 @@ public class StatusFragment extends BaseFragment {
         pages.add(FragmentPagerItem.of(String.format(getString(R.string.失败订单),data.getClose()), StatusOrderFragment.class));
         if(null!=adapter){
             adapter.notifyDataSetChanged();
-//            viewpagertab.setViewPager(viewpager);
+            viewpagertab.setViewPager(viewpager);
         }
     }
     @Override

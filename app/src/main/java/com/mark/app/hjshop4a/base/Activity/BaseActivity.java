@@ -30,12 +30,14 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 
+import com.gyf.immersionbar.ImmersionBar;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.app.AppContext;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.location.LocationManagerUtil;
 import com.mark.app.hjshop4a.common.utils.luban.LubanUtil;
@@ -98,6 +100,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (isOnCreate()) {
+//            ImmersionBar.with(this).init();
+            StatusBarUtil.darkMode(this);
             if (getContentViewResId() != 0) {
                 setContentView(getContentViewResId());
             }

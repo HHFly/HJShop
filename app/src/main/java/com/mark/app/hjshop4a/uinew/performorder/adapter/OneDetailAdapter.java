@@ -54,6 +54,7 @@ public class OneDetailAdapter extends MultipleSourcesRvAdapter {
                 holder.text(R.id.tv_remarks,data.getRemarks());
                 holder.text(R.id.tv_compltetTime,getTimeString(data.getCompltetTime()));
                 WarpLinearLayout warpLinearLayout =holder.get(R.id.ll_process);
+                warpLinearLayout.removeAllViews();
                 if (data.getProcess()!=null) {
                     String[] pro = data.getProcess().split("/");
                     for (int i = 0; i < pro.length; i++) {

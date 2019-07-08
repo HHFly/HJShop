@@ -39,12 +39,13 @@ public class WarpLinearLayout extends LinearLayout {
     public void addChild(String str){
       TextView  text =new TextView(context);
         text.setTextColor(Color.parseColor("#289af8"));
-        text.setTextSize(TypedValue.COMPLEX_UNIT_PX,20);
+        text.setTextSize(TypedValue.COMPLEX_UNIT_DIP,getTipStr());
         text.setPadding(11,4,11,4);
         text.setBackground(context.getResources().getDrawable(R.drawable.shape_blue_6px));
         text.setText(str);
         addView(text);
     }
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int withMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -242,7 +243,7 @@ public class WarpLinearLayout extends LinearLayout {
          */
         private int maxLine;
         /**
-         * ,单位px
+         * ,单位dp
          */
         private float  title;
         private float  tipStr;

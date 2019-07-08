@@ -12,6 +12,7 @@ import android.view.View;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
@@ -229,7 +230,11 @@ public class PayInfoActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                        ActivityJumpUtils.actEvaluationInfo(getActivity(),subOrderSn);
+//                        ActivityJumpUtils.actEvaluationInfo(getActivity(),subOrderSn);
+//                        ToastUtils.show("等待商家发货");
+                        ActivityJumpUtils.actHomePager(getActivity(), HPTabType.ORDERLIST);
+                        finish();
+
                     }
 
                     @Override

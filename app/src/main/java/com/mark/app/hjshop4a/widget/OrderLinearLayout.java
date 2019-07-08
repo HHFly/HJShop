@@ -33,7 +33,7 @@ public class OrderLinearLayout extends WarpLinearLayout {
     public void addChild(String str){
         text =new TextView(context);
         text.setTextColor(Color.parseColor("#289af8"));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,10);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,getTipStr());
         text.setPadding(11,4,11,4);
         text.setBackground(context.getResources().getDrawable(R.drawable.shape_blue_6px));
         text.setText(str);
@@ -45,7 +45,7 @@ public class OrderLinearLayout extends WarpLinearLayout {
         textView.setText(R.string.活动要求);
         textView.setPadding(0,0,0,0);
         textView.setTextColor(Color.parseColor("#333333"));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,12);
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,getTitle());
         addView(textView);
 
     }

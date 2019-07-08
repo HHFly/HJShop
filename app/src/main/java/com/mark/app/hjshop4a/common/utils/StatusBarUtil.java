@@ -101,20 +101,20 @@ public class StatusBarUtil {
     public static void darkMode(Window window, int color, @FloatRange(from = 0.0, to = 1.0) float alpha) {
         if (isFlyme4Later()) {
             darkModeForFlyme4(window, true);
-            immersive(window, color, alpha);
+//            immersive(window, color, alpha);
         } else if (isMIUI6Later()) {
             darkModeForMIUI6(window, true);
-            immersive(window, color, alpha);
+//            immersive(window, color, alpha);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             darkModeForM(window, true);
-            immersive(window, color, alpha);
+//            immersive(window, color, alpha);
         } else if (Build.VERSION.SDK_INT >= 19) {
             //这个版本没有夜间模式
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             setTranslucentView((ViewGroup) window.getDecorView(), UN_DARK_COLOR, 1);
         } else {
             //这个版本没有夜间模式
-            immersive(window, UN_DARK_COLOR, 1);
+//            immersive(window, UN_DARK_COLOR, 1);
         }
 //        if (Build.VERSION.SDK_INT >= 21) {
 //            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
