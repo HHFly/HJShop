@@ -29,6 +29,7 @@ import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
 import com.mark.app.hjshop4a.uinew.login.model.LoginParam;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
+import com.mark.app.hjshop4a.widget.OrderLinearLayout;
 
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -71,6 +72,7 @@ public class LoginActivity extends BaseActivity {
         setTvText(R.id.titlebar_tv_right,R.string.login_msg_register);
         setViewSelected(R.id.login_tv_quick_login, isautologin);
 //        setViewVisibility(R.id.titlebar_iv_return, false);
+
 
     }
 
