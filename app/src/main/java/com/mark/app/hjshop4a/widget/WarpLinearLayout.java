@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -37,13 +38,11 @@ public class WarpLinearLayout extends LinearLayout {
         this.context =context;
     }
     public void addChild(String str){
-      TextView  text =new TextView(context);
-        text.setTextColor(Color.parseColor("#289af8"));
-        text.setTextSize(TypedValue.COMPLEX_UNIT_DIP,getTipStr());
-        text.setPadding(11,4,11,4);
-        text.setBackground(context.getResources().getDrawable(R.drawable.shape_blue_6px));
-        text.setText(str);
-        addView(text);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View rootView = inflater.inflate(R.layout.item_remark_label,this , false);
+        TextView tv = (TextView) rootView.findViewById(R.id.item_tv);
+        tv.setText(str);
+        addView(rootView);
     }
 
     @Override

@@ -4,9 +4,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 
 import com.mark.app.hjshop4a.R;
+
+import me.jessyan.autosize.utils.AutoSizeUtils;
 
 public class OrderLinearLayout extends WarpLinearLayout {
     private TextView textView;
@@ -19,36 +23,26 @@ public class OrderLinearLayout extends WarpLinearLayout {
     public OrderLinearLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context =context;
-        textView =new TextView(context);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,12);
-        textView.setText(R.string.活动要求);
-        textView.setPadding(0,0,0,0);
-        textView.setTextColor(Color.parseColor("#333333"));
-
-        addView(textView);
+        initView();
 
 
     }
 
     public void addChild(String str){
-        text =new TextView(context);
-        text.setTextColor(Color.parseColor("#289af8"));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,getTipStr());
-        text.setPadding(11,4,11,4);
-        text.setBackground(context.getResources().getDrawable(R.drawable.shape_blue_6px));
-        text.setText(str);
-        addView(text);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View rootView = inflater.inflate(R.layout.item_remark_label,this , false);
+        TextView tv = (TextView) rootView.findViewById(R.id.item_tv);
+        tv.setText(str);
+        addView(rootView);
     }
     public void clear(){
        removeAllViews();
-        textView =new TextView(context);
-        textView.setText(R.string.活动要求);
-        textView.setPadding(0,0,0,0);
-        textView.setTextColor(Color.parseColor("#333333"));
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP,getTitle());
-        addView(textView);
-
+        initView();
     }
-
+    private void initView(){
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View rootView = inflater.inflate(R.layout.item_remark_title,this , false);
+        addView(rootView);
+    }
 
 }
