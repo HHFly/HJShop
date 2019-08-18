@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
 
 
+import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionCheckCallBack;
 import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionRequestSuccessCallBack;
@@ -85,7 +86,7 @@ public class TakeImgUtil {
         File file = getFile();
         Intent intentFromCapture = new Intent("android.media.action.IMAGE_CAPTURE");
         if(Build.VERSION.SDK_INT >= 24) {
-            String strFileProvider = UtilsConfig.getInstance(context.getActivity()).getFileProvider();
+            String strFileProvider = BuildConfig.APPLICATION_ID+".provider";
             intentFromCapture.addFlags(FLAG_GRANT_READ_URI_PERMISSION);
             intentFromCapture.addFlags(FLAG_GRANT_WRITE_URI_PERMISSION);
             mUri = FileProvider.getUriForFile(context.getActivity(), strFileProvider, file);
@@ -99,7 +100,7 @@ public class TakeImgUtil {
         File file = getFile();
         Intent intentFromCapture = new Intent("android.media.action.IMAGE_CAPTURE");
         if(Build.VERSION.SDK_INT >= 24) {
-            String strFileProvider = UtilsConfig.getInstance(context).getFileProvider();
+            String strFileProvider = BuildConfig.APPLICATION_ID+".provider";
             intentFromCapture.addFlags(FLAG_GRANT_READ_URI_PERMISSION);
             intentFromCapture.addFlags(FLAG_GRANT_WRITE_URI_PERMISSION);
             mUri = FileProvider.getUriForFile(context, strFileProvider, file);

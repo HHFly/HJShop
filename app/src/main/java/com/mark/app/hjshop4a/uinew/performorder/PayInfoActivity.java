@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
@@ -211,7 +212,9 @@ public class PayInfoActivity extends BaseActivity {
      * 下一步
      */
     private void nextStep(String tbOrderSn, String payPrice) {
-        setpic();
+        if(BuildConfig.DEBUG_ENV) {
+            setpic();
+        }
         if(!check(tbOrderSn,payPrice)){return;}
 
         showLoadingDialog();

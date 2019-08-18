@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 
 import com.dd.CircularProgressButton;
+import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
@@ -334,7 +335,9 @@ public class TwoSearchActivity extends BaseActivity {
      * 下一步
      */
     private void nextStep() {
-        setpic();
+        if(BuildConfig.DEBUG_ENV) {
+            setpic();
+        }
         if(!check()){return;}
 
         showLoadingDialog();

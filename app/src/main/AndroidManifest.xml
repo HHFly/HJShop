@@ -50,7 +50,7 @@
         <!--&lt;!&ndash; 7.0文件Uri &ndash;&gt;-->
         <provider
             android:name="android.support.v4.content.FileProvider"
-            android:authorities="${WHITE_FILEPROVIDER}"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

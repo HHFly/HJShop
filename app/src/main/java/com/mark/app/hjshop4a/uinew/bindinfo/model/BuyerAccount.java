@@ -23,8 +23,34 @@ public class BuyerAccount extends BaseModel {
     String provinceId;
     String cityId;
     String areaId;
-
+    String provinceName;
+    String cityName;
+    String areaName;
     int status;//状态
+
+    public String getProvinceName() {
+        return provinceName;
+    }
+
+    public void setProvinceName(String provinceName) {
+        this.provinceName = provinceName;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public String getAreaName() {
+        return areaName;
+    }
+
+    public void setAreaName(String areaName) {
+        this.areaName = areaName;
+    }
 
     public String getAddress() {
         return address;

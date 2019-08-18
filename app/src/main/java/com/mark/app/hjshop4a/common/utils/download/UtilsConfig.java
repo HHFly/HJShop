@@ -18,8 +18,8 @@ public class UtilsConfig {
         ToastUtils.init(context);
         AppResUtil.init(context);
         LogUtil.setOpen(false);
-        this.mPkgName = MetaDataUtil.getApplicationInfo(context, "WHITE_METADATA_PKGNAME");
-        this.mFileProvider = MetaDataUtil.getApplicationInfo(context, "WHITE_METADATA_FILEPROVIDER");
+        this.mPkgName = MetaDataUtil.getApplicationInfo(context, "WHITE_PKGNAME");
+        this.mFileProvider = MetaDataUtil.getApplicationInfo(context, "WHITE_FILEPROVIDER");
         LogUtil.libLog(this, "UtilsConfig", "获取gradle配置的manifestPlaceholders参数>>>[WHITE_METADATA_PKGNAME]" + this.mPkgName + "---[WHITE_METADATA_FILEPROVIDER]" + this.mFileProvider);
     }
 

@@ -109,11 +109,12 @@ public class FunctionDialogFactory {
             public void onItemClick(View view, ListDialog.ListDialogModel data, int position) {
                 switch (data.getId()) {
                     case PhotoType.ALBUM: {
-                        TakePhoneUtil.choosePhoto(activity);
+                        TakePhoneUtil.takePhoto(activity);
                         break;
                     }
                     case PhotoType.CAMERA: {
-                        TakePhoneUtil.takePhoto(activity);
+
+                        TakePhoneUtil.choosePhoto(activity);
                         break;
                     }
                 }

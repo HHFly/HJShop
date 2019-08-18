@@ -6,7 +6,7 @@ public class OrderInfo extends BaseModel {
     String orderType;//订单类型名称
     String subOrderSn; //子订单编号
     String productPic;//商品图片
-    double shopPayPric;//垫付货款
+    double shopPayPrice;//垫付货款
     double gold;//佣金
     String require;//需求
 
@@ -35,11 +35,11 @@ public class OrderInfo extends BaseModel {
     }
 
     public double getShopPayPric() {
-        return shopPayPric;
+        return shopPayPrice;
     }
 
     public void setShopPayPric(double shopPayPric) {
-        this.shopPayPric = shopPayPric;
+        this.shopPayPrice = shopPayPric;
     }
 
     public double getGold() {

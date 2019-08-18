@@ -227,7 +227,7 @@ public interface PdMService {
     Observable<BaseResultEntity<Lookup>> forceUpdate(@Header("version") int version);
 
 //图片上传
-    @POST("/api/img/upload")
+    @POST("/api/user/common/uploadFile")
     Observable<BaseResultEntity<String>> uploadImage(@Body RequestBody body);
     /**
      * 登录

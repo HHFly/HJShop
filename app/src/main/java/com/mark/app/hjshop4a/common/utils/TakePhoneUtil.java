@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.content.FileProvider;
+
+import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionCheckCallBack;
 import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionRequestSuccessCallBack;
@@ -52,9 +54,9 @@ public class TakePhoneUtil {
         File file = getFile();
         Intent intentFromCapture = new Intent("android.media.action.IMAGE_CAPTURE");
         if (Build.VERSION.SDK_INT >= 24) {
-            String strFileProvider = UtilsConfig.getInstance(context).getFileProvider();
+            String strFileProvider =BuildConfig.APPLICATION_ID+".provider";
             intentFromCapture.addFlags(3);
-            mUri = FileProvider.getUriForFile(context, strFileProvider, file);
+            mUri = FileProvider.getUriForFile(context, strFileProvider  , file);
         } else {
             mUri = Uri.fromFile(file);
         }

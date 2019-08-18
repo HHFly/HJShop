@@ -39,7 +39,7 @@ public class AppService {
 
     public PdMService getPdmService() {
         if (mPdMService == null) {
-            mPdMService = PdMService.Creator.newService(mBaseUrl,mContext);
+            mPdMService = PdMService.Creator.newService("http://49.234.194.161:8080/",mContext);
         }
         return mPdMService;
     }
