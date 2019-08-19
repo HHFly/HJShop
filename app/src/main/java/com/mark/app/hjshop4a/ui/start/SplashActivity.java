@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.utils.ActAnimationUtils;
 
@@ -16,7 +17,7 @@ import com.mark.app.hjshop4a.common.utils.ActAnimationUtils;
 public class SplashActivity extends BaseActivity {
     @Override
     public int getContentViewResId() {
-        return 0;
+        return R.layout.activity_permisstion;
     }
 
     @Override
@@ -36,6 +37,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     public void initView() {
+
         startActivity(new Intent(this, PermisstionActivity.class));
         finish();
         ActAnimationUtils.actNone(this);

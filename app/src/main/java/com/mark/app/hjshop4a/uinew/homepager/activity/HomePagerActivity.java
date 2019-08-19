@@ -190,7 +190,7 @@ public class HomePagerActivity extends BaseActivity {
             //是否第一次引导
             if (isFirstGuide()) {
                 LogUtils.logFormat(this, "switchActJump", "go to GuideActivity");
-                ActivityJumpUtils.actGuideNORMAL(getActivity());
+//                ActivityJumpUtils.actGuideNORMAL(getActivity());
             } else {
                 LogUtils.logFormat(this, "switchActJump", "go to StartActivity");
 //                ActivityJumpUtils.actStart(getActivity());

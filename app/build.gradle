@@ -37,7 +37,7 @@ android {
 //            buildConfigField("String", "TEST_URL", "\"http://app.hjshsc.com/\"")
 
 //            buildConfigField("String", "TEST_URL", "\"http://148.70.38.51:8080/\"")
-            buildConfigField("String", "TEST_URL", "\"http://192.168.0.162:8090/\"")
+            buildConfigField("String", "TEST_URL", "\"http://192.168.0.105:8090/\"")
 
             buildConfigField("boolean", "DEBUG_ENV", "true")
             buildConfigField("boolean", "IS_OPEN_LOG", "true")

@@ -69,7 +69,7 @@
        <activity android:name=".uinew.login.activity.ForgetActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".ui.start.GuideActivity" android:screenOrientation="portrait"/>
         <activity android:name=".ui.start.PermisstionActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".uinew.homepager.activity.HomePagerActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.homepager.activity.HomePagerActivity" android:screenOrientation="portrait" />
         <activity android:name=".ui.start.StartActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.login.activity.RegisterActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".uinew.userinfo.VersionActivity" android:screenOrientation="portrait"></activity>
