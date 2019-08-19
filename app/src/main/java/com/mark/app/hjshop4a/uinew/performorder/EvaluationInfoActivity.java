@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.CheckBox;
 
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
@@ -223,7 +224,9 @@ public class EvaluationInfoActivity extends BaseActivity {
      * 下一步
      */
     private void nextStep() {
-        setpic();
+        if(BuildConfig.DEBUG_ENV) {
+            setpic();
+        }
         if(!check()){return;}
 
         showLoadingDialog();

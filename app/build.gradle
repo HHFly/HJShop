@@ -4,7 +4,7 @@ android {
 
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.hjshsc.app.HJShop"
+        applicationId "com.mark.app.hjshop4a"
         minSdkVersion 19
         targetSdkVersion 22
         useLibrary'org.apache.http.legacy'
@@ -18,7 +18,7 @@ android {
 
             //自己弄的框架配置
             WHITE_PKGNAME     : applicationId,//包名
-            WHITE_FILEPROVIDER: "${applicationId}.fileprovider",//7.0文件Provider对应的authorities
+            WHITE_FILEPROVIDER: ".fileprovider",//7.0文件Provider对应的authorities
                 //qq分享
                     qqappid: "tencent100424468",
 //                wechat_app_id: "wxfc06ea4375a4ecd4"
@@ -37,7 +37,9 @@ android {
 //            buildConfigField("String", "TEST_URL", "\"http://app.hjshsc.com/\"")
 
 //            buildConfigField("String", "TEST_URL", "\"http://148.70.38.51:8080/\"")
+
             buildConfigField("String", "TEST_URL", "\"http://192.168.0.105:8090/\"")
+
 
             buildConfigField("boolean", "DEBUG_ENV", "true")
             buildConfigField("boolean", "IS_OPEN_LOG", "true")

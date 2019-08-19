@@ -147,7 +147,7 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
 
                 @Override
                 public void onClickStart(ShowOrder data) {
-                    ActivityJumpUtils.actStep(getActivity(),data.getSubOrderSn(),data.getStep());
+                    ActivityJumpUtils.actStep(getActivity(),data.getSubOrderSn(),data);
                 }
 
 

@@ -37,6 +37,8 @@ import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.update.DownloadDialogUtils;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
+import com.mark.app.hjshop4a.common.utils.PasswordUtil;
 import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.location.LocationManagerUtil;
@@ -614,11 +616,13 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                 .addFormDataPart("uploadType", "上传图片")
                 .addFormDataPart("imageUrl", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
                 .build();
-        App.getServiceManager().getmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new RainbowObserver<String>() {
+        App.getServiceManager().getPdmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new DefaultObserver<String>() {
+
+
                     @Override
-                    public void onSuccess(@io.reactivex.annotations.NonNull RainbowResultEntity<String> obj) {
-                        String data = obj.getResult();
+                    public void onSuccess(BaseResultEntity<String> obj) {
+                        String data = JsonUtils.fromJson(PasswordUtil.decode(obj.getResult()),String.class);
                         if (listenr != null) {
                             if (TextUtils.isEmpty(data)) {
                                 ToastUtils.show("图片上传成功");

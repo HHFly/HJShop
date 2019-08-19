@@ -140,7 +140,9 @@ public class StatusFragment extends BaseFragment {
             }
         });
         current = (StatusOrderFragment) adapter.getPage(0);
-        current.setStatus(-1);
+        if(current!=null) {
+            current.setStatus(-1);
+        }
     }
 
     public void  initData(OrderPage data){

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="351dp"
     android:orientation="horizontal"
     android:background="@color/background"
     android:paddingLeft="15dp"
@@ -18,13 +18,15 @@
         >
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sdv_img1"
-            android:layout_width="167dp"
+            android:layout_width="match_parent"
             android:layout_height="255dp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
+           android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:paddingLeft="10dp"
+            android:background="@color/white">
             <TextView
                 android:id="@+id/tv_price1"
                 style="@style/BaseTab.Tv"
@@ -50,7 +52,7 @@
         >
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/sdv_img2"
-            android:layout_width="167dp"
+            android:layout_width="match_parent"
             android:layout_height="255dp" />
         <RelativeLayout
             android:layout_width="match_parent"

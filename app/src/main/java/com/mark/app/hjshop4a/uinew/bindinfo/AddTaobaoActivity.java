@@ -56,7 +56,7 @@ public class AddTaobaoActivity extends BaseActivity  {
     WheelDialog Leveldialog ;
     List<PAddress> PAddressdata;
     private Map<Integer,String> pic =new HashMap<>();
-String addressId="0" ,provinceId,cityId,areaId;
+    String addressId="0" ,provinceId,cityId,areaId,provinceName,cityName,areaName;
     long id ;
     int type;
     AccountInfoParam accountInfoParam =new AccountInfoParam();
@@ -336,6 +336,9 @@ String addressId="0" ,provinceId,cityId,areaId;
         provinceId =data.getProvinceId();
         cityId= data.getCityId();
         areaId =data.getAreaId();
+        provinceName =data.getProvinceName();
+        cityName =data.getCityName();
+        areaName =data.getAreaName();
         pic.put(R.id.up_levelPic,data.getLevelPic());
         pic.put(R.id.up_huabei,data.getHuabeiPic());
         pic.put(R.id.up_realAuthenticate,data.getRealAuthenticatePic());
@@ -425,6 +428,9 @@ String addressId="0" ,provinceId,cityId,areaId;
                                     provinceId =pAddress.getCityId();
                                     cityId =cAddress.getCityId();
                                     areaId= aAddress.getCityId();
+                                    provinceName=pAddress.getCityName();
+                                    cityName =cAddress.getCityName();
+                                    areaName =aAddress.getCityName();
                                 }
 
                                 @Override
@@ -433,6 +439,8 @@ String addressId="0" ,provinceId,cityId,areaId;
                                     addressId=cAddress.getCityId();
                                     provinceId =pAddress.getCityId();
                                     cityId =cAddress.getCityId();
+                                    provinceName=pAddress.getCityName();
+                                    cityName =cAddress.getCityName();
                                 }
 
 
@@ -525,6 +533,9 @@ String addressId="0" ,provinceId,cityId,areaId;
         data.setProvinceId(provinceId);
         data.setCityId(cityId);
         data.setAreaId(areaId);
+        data.setProvinceName(provinceName);
+        data.setCityName(cityName);
+        data.setAreaName(areaName);
         data.setAddresDetail(et_reciveaddress);
         data.setSex("男".equals(user_tv_user_sex) ? 1 : 2);
         data.setAge(18);
@@ -643,6 +654,9 @@ String addressId="0" ,provinceId,cityId,areaId;
              buyerAccountParam.setProvinceId(provinceId);
              buyerAccountParam.setCityId(cityId);
              buyerAccountParam.setAreaId(areaId);
+        buyerAccountParam.setProvinceName(provinceName);
+        buyerAccountParam.setCityName(cityName);
+        buyerAccountParam.setAreaName(areaName);
             buyerAccountParam.setAddresDetail(et_reciveaddress);
             buyerAccountParam.setSex("男".equals(user_tv_user_sex) ? 1 : 2);
             buyerAccountParam.setAge(18);

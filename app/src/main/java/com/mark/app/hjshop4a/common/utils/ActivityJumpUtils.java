@@ -31,6 +31,7 @@ import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
 import com.mark.app.hjshop4a.ui.userinfo.BasicInfoActivity;
 import com.mark.app.hjshop4a.ui.userinfo.CertificationInfoActivity;
+import com.mark.app.hjshop4a.uinew.orderList.ShowOrder;
 import com.mark.app.hjshop4a.uinew.performorder.EvaluationInfoActivity;
 import com.mark.app.hjshop4a.uinew.performorder.FourAddShopActivity;
 import com.mark.app.hjshop4a.uinew.performorder.OneDetailActivity;
@@ -476,8 +477,12 @@ public class ActivityJumpUtils {
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);
     }
-    public static void actStep(Activity activity,String subOrderSn,int Step) {
-        switch (Step){
+    public static void actStep(Activity activity,String subOrderSn,ShowOrder Step) {
+        if (Step.getStatus() == 4) {
+            actEvaluationInfo(activity,subOrderSn);
+            return;
+        }
+        switch (Step.getStep()){
             case 1:
                 actStepOne(activity,subOrderSn);
                 break;
