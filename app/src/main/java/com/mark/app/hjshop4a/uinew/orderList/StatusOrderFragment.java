@@ -219,7 +219,7 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
                         Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
-                        if(Sccess){
+                        if(null!=Sccess&&Sccess){
                             refreshLayout.autoRefresh();
 
                         }else {

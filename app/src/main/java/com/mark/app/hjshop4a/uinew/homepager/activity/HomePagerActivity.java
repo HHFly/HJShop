@@ -161,6 +161,9 @@ public class HomePagerActivity extends BaseActivity {
             chooseAccountDialog.setOnItemClickListener(new ChooseAccountDialog.OnItemClickListener() {
                 @Override
                 public void onClick(AccountInfoPass data) {
+                    if(data.getBuyerAccountId()==0||data.getAccountName()==null){
+                        return;
+                    }
                     orderFrament.setId(data.getBuyerAccountId());
                     selectTab(tab3);
                 }

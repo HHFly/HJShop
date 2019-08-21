@@ -72,6 +72,14 @@ public class ChooseAccountDialog extends Dialog {
         });
         requestData();
     }
+
+    @Override
+    public void show() {
+
+        super.show();
+        requestData();
+    }
+
     /**
      * 请求数据
      */

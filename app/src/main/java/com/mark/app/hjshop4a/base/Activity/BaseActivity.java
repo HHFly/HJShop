@@ -613,8 +613,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      */
     private void requestUploadImage(File file, final DefOnUploadPicListener listenr) {
         RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
-                .addFormDataPart("uploadType", "上传图片")
-                .addFormDataPart("imageUrl", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
+//                .addFormDataPart("uploadType", "上传图片")
+                .addFormDataPart("img", file.getName(), RequestBody.create(MediaType.parse("image/*"), file))
                 .build();
         App.getServiceManager().getPdmService().uploadImage(body).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new DefaultObserver<String>() {

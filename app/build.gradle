@@ -36,9 +36,9 @@ android {
 //            buildConfigField("String", "TEST_URL", "\"https://24d152d8-5a2c-4beb-ba02-a23d190c66d8.mock.pstmn.io/\"")
 //            buildConfigField("String", "TEST_URL", "\"http://app.hjshsc.com/\"")
 
-//            buildConfigField("String", "TEST_URL", "\"http://148.70.38.51:8080/\"")
+            buildConfigField("String", "TEST_URL", "\"http://49.234.194.161:9010/\"")
 
-            buildConfigField("String", "TEST_URL", "\"http://192.168.0.105:8090/\"")
+//            buildConfigField("String", "TEST_URL", "\"http://192.168.0.105:8090/\"")
 
 
             buildConfigField("boolean", "DEBUG_ENV", "true")
@@ -48,7 +48,8 @@ android {
 
         }
         release {
-            buildConfigField("String", "TEST_URL", "\"http://app.hjshsc.com/\"")
+//            buildConfigField("String", "TEST_URL", "\"http://app.hjshsc.com/\"")
+            buildConfigField("String", "TEST_URL", "\"http://192.168.0.105:8090/\"")
             buildConfigField("boolean", "DEBUG_ENV", "false")
             buildConfigField("boolean", "IS_OPEN_LOG", "false")
             minifyEnabled false

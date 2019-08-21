@@ -124,11 +124,11 @@ public interface PdMService {
                     //获取版本号
                     String version =AppContext.versionName();
                     //刷新token
-                    token = refreshTOken(chain, oldRequest, token,context);
+//                    token = refreshTOken(chain, oldRequest, token,context);
 
-                    builder.addHeader("Authorization", token)
-                            .addHeader("platform", platform)
-                            .addHeader("version",version);
+                    builder.addHeader("Authorization", token);
+//                            .addHeader("platform", platform)
+//                            .addHeader("version",version);
 
                     Request newRequest = builder.build();
                     LogUtils.logFormat(this, "intecept", newRequest);

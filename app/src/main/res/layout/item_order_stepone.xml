@@ -52,22 +52,33 @@
         android:layout_below="@id/tv_verificationMethod"
         android:layout_marginTop="10dp"
         android:id="@+id/tv_1"/>
-
-    <com.mark.app.hjshop4a.widget.WarpLinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/ll_process"
-        android:layout_below="@+id/tv_1"
-        android:layout_marginTop="9dp"
-        app:titleSize="12dp"
-        app:tipSize="10dp"
-        />
+        android:layout_alignTop="@+id/tv_1"
+         android:layout_toEndOf="@id/tv_1"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/rl_1">
+        <com.mark.app.hjshop4a.widget.WarpLinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_process"
+            android:layout_alignParentRight="true"
+            app:titleSize="12dp"
+            app:tipSize="10dp"
+            app:horizontal_Space="5dp"
+            app:vertical_Space="5dp"
+
+            />
+    </RelativeLayout>
+
 
     <TextView style="@style/BaseItem.Tv"
         android:textColor="#FF999999"
         android:textSize="14dp"
         android:text="付款方式"
-        android:layout_below="@id/ll_process"
+        android:layout_below="@id/rl_1"
         android:layout_marginTop="10dp"
         android:id="@+id/tv_2"/>
 
@@ -102,7 +113,7 @@
     <TextView style="@style/BaseItem.Tv"
         android:layout_width="match_parent"
         android:id="@+id/tv_remarks"
-        android:textSize="26dp"
+        android:textSize="13dp"
         android:textColor="#FF333333"
         android:background="@drawable/shape_text_10px_gray"
         android:padding="15dp"
