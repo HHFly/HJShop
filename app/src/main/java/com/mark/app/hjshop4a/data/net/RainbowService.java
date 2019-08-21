@@ -242,4 +242,10 @@ public interface RainbowService {
     //35.获取银行卡列表
     @GET("/api/app/user/getBankList")
     Observable<RainbowResultEntity> getBankList();
+    //36    退出登陆
+    @GET("/api/app/user/logout")
+    Observable<RainbowResultEntity> logout();
+    //37获取版本升级信息
+    @POST("api/user/newUpdate")
+    Observable<RainbowResultEntity> newUpdate(@Query("version") String  data);
 }

@@ -37,6 +37,7 @@ public class StatusFragment extends BaseFragment {
         return R.layout.fragment_status;
     }
 
+
     @Override
     public void findView() {
         viewpagertab = getView(R.id.smart_tab);

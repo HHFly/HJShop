@@ -218,13 +218,7 @@ public class StatusOrderFragment extends BaseFragment implements OnRefreshLoadMo
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                        Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
-                        if(null!=Sccess&&Sccess){
-                            refreshLayout.autoRefresh();
-
-                        }else {
-                            ToastUtils.show("失败！："+obj.getReason());
-                        }
+                        refreshLayout.autoRefresh();
                     }
 
                     @Override

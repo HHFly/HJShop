@@ -9,7 +9,7 @@ public class BaseResultEntity<T> {
     /**
      * 错误码
      */
-    private int resultCode;
+    private int code;
     /**
      * 错误说明(文案)
      */
@@ -24,11 +24,11 @@ public class BaseResultEntity<T> {
     private long nowTime;
 
     public int getResultCode() {
-        return resultCode;
+        return code;
     }
 
     public void setResultCode(int resultCode) {
-        this.resultCode = resultCode;
+        this.code = resultCode;
     }
 
     public T getResult() {

@@ -20,13 +20,13 @@ public @interface UpdateType {
     /**
      * 必须更新
      */
-    int MUST_UPDATE = 1;
+    int MUST_UPDATE = 2;
     /**
      * 非必需更新
      */
-    int CAN_UPDATE = 2;
+    int CAN_UPDATE = 1;
     /**
      * 不更新
      */
-    int UN_UPDATE = 3;
+    int UN_UPDATE = 0;
 }

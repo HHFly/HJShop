@@ -70,6 +70,12 @@ public class OrderFragment extends BaseFragment  {
     public void onClick(View v) {
 
     }
+
+    @Override
+    public void onUnFirstResume() {
+        requestData(id);
+    }
+
     //请求数据
     private void requestData(long id) {
         AccountInfoParam accountInfoParam =new AccountInfoParam();

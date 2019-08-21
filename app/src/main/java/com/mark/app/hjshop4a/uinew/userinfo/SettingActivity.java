@@ -55,7 +55,7 @@ public class SettingActivity extends BaseActivity {
             case R.id.setting_login_out:
                 App.get().setLogin(null);
                 loginout();
-                ActivityJumpUtils.actHomePager(getAppCompatActivity());
+
                 break;
         }
     }
@@ -72,7 +72,7 @@ public class SettingActivity extends BaseActivity {
      * 请求数据登出
      */
     private void loginout() {
-        App.getServiceManager().getPdmService()
+        App.getServiceManager().getmService()
                 .logout()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -80,7 +80,7 @@ public class SettingActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
-
+                        ActivityJumpUtils.actHomePager(getAppCompatActivity());
                     }
 
                     @Override

@@ -50,6 +50,7 @@ import com.mark.app.hjshop4a.data.help.DefaultObserver;
 import com.mark.app.hjshop4a.data.help.RainbowObserver;
 import com.mark.app.hjshop4a.ui.dialog.LoadingDialog;
 import com.mark.app.hjshop4a.ui.homepager.model.Lookup;
+import com.mark.app.hjshop4a.uinew.homepager.model.UpgradeSetting;
 import com.mark.app.hjshop4a.widget.PhoneEditText;
 
 
@@ -625,9 +626,10 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                         String data = JsonUtils.fromJson(PasswordUtil.decode(obj.getResult()),String.class);
                         if (listenr != null) {
                             if (TextUtils.isEmpty(data)) {
-                                ToastUtils.show("图片上传成功");
+
                                 listenr.onLoadPicUnSuccessFinish();
                             } else {
+                                ToastUtils.show("图片上传成功");
                                 listenr.onLoadPicFinish(data);
                             }
                         }
@@ -662,15 +664,17 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
      * 请求更新数据
      */
     private void requestUpdate() {
-        int versionCode = AppContext.versionCode();
+        String versionCode = String.valueOf(AppContext.versionCode());
 
-        App.getServiceManager().getPdmService().forceUpdate(versionCode)
+        App.getServiceManager().getmService().newUpdate(versionCode)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new DefaultObserver<Lookup>(false, false) {
+                .subscribe(new RainbowObserver(false, false) {
+
                     @Override
-                    public void onSuccess(BaseResultEntity<Lookup> obj) {
-                        Lookup data = obj.getResult();
+                    public void onSuccess(RainbowResultEntity obj) {
+                        UpgradeSetting data = JsonUtils.fromJson(PasswordUtil.decode(obj.getResult()),UpgradeSetting.class);
+
                         DownloadDialogUtils.updateVersion(getAppCompatActivity(), data);
                     }
 

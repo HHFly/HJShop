@@ -243,14 +243,11 @@ public class EvaluationInfoActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                        Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
-                        if(Sccess){
-                            ActivityJumpUtils.actHomePager(getActivity(), HPTabType.ORDERLIST);
-
-                        }else {
-                            ToastUtils.show("失败！："+obj.getReason());
-                        }
+                        ActivityJumpUtils.actHomePager(getActivity(), HPTabType.ORDERLIST);
+                        finish();
                     }
+
+
 
                     @Override
                     public void onAllFinish() {

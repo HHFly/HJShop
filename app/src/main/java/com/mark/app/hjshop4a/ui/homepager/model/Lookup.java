@@ -62,4 +62,32 @@ public class Lookup extends BaseModel {
     public String getAppUpgradeDesc() {
         return appUpgradeDesc;
     }
+
+    public void setAppUpgradeId(int appUpgradeId) {
+        this.appUpgradeId = appUpgradeId;
+    }
+
+    public void setAppUpgradeVersion(int appUpgradeVersion) {
+        this.appUpgradeVersion = appUpgradeVersion;
+    }
+
+    public void setAppUpgradeUrl(String appUpgradeUrl) {
+        this.appUpgradeUrl = appUpgradeUrl;
+    }
+
+    public void setAppUpgradeType(int appUpgradeType) {
+        this.appUpgradeType = appUpgradeType;
+    }
+
+    public void setAppUpgradeStatus(int appUpgradeStatus) {
+        this.appUpgradeStatus = appUpgradeStatus;
+    }
+
+    public void setAppUpgradeRole(int appUpgradeRole) {
+        this.appUpgradeRole = appUpgradeRole;
+    }
+
+    public void setAppUpgradeDesc(String appUpgradeDesc) {
+        this.appUpgradeDesc = appUpgradeDesc;
+    }
 }

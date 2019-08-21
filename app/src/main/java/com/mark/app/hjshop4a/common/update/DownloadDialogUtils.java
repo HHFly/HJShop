@@ -16,6 +16,7 @@ import com.mark.app.hjshop4a.ui.dialog.NormalDialogOneBtn;
 import com.mark.app.hjshop4a.ui.dialog.NormalDialogTwoBtn;
 
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
+import com.mark.app.hjshop4a.uinew.homepager.model.UpgradeSetting;
 
 
 import java.text.DecimalFormat;
@@ -42,7 +43,59 @@ public class DownloadDialogUtils {
     private static boolean isDownDialogShow;
     //下载提示对话框移除时是否自动关闭activity
     private static boolean isDownTipDialogAutoFinish = true;
+    /**
+     * 版本更新
+     *
+     * @param data
+     */
+    public static void updateVersion(AppCompatActivity activity, UpgradeSetting data) {
+        LogUtils.logFormat(TAG, "updateVersion", "开始更新检测");
+        if (data == null) {
+            LogUtils.logFormat(TAG, "updateVersion", "更新接口返回数据为空");
+            return;
+        }
+        if (data.getAppUpgradeVersion() <= AppContext.versionCode()) {
+            //如果最新版本号小于等于当前版本号，不更新
+            LogUtils.logFormat(TAG, "updateVersion", "当前版本已是最新");
+            return;
+        }
 
+        String url = data.getAppUpgradeUrl();
+        if (TextUtils.isEmpty(url)) {
+            //更新地址为空
+            LogUtils.logFormat(TAG, "updateVersion", "更新接口返回appUrl为空");
+            return;
+        }
+        String desc = data.getAppUpgradeDesc();
+        if (TextUtils.isEmpty(desc)) {
+            desc = activity.getString(R.string.Upgrade_有新的版本);
+        }
+
+        //是否需要更新app
+        switch (data.getAppUpgradeStatus()) {
+            case UpdateType.MUST_UPDATE: {
+                //必须更新
+                LogUtils.logFormat(TAG, "updateVersion", "必须更新");
+                LogUtils.logFormat(TAG, "updateVersion", "更新地址：" + url);
+                showUpdateDialog(activity, desc, url, true);
+                break;
+            }
+            case UpdateType.CAN_UPDATE: {
+                //非必须更新
+                LogUtils.logFormat(TAG, "updateVersion", "非必须更新");
+                LogUtils.logFormat(TAG, "updateVersion", "更新地址：" + url);
+                showUpdateDialog(activity, desc, url, false);
+                break;
+            }
+            default:
+            case UpdateType.UN_UPDATE: {
+                //无更新
+                LogUtils.logFormat(TAG, "updateVersion", "无更新");
+                break;
+            }
+        }
+        LogUtils.logFormat(TAG, "updateVersion", "结束更新检测");
+    }
     /**
      * 版本更新
      *

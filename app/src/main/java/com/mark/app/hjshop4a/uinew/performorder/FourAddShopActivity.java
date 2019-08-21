@@ -13,6 +13,7 @@ import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
+import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
@@ -340,13 +341,8 @@ public class FourAddShopActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
-                        Boolean Sccess = JsonUtils.fromJson(obj.getResult(),Boolean.class);
-                        if(Sccess){
-                            ActivityJumpUtils.actEvaluationInfo(getActivity(),subOrderSn);
-
-                        }else {
-                            ToastUtils.show("失败！："+obj.getReason());
-                        }
+                    ActivityJumpUtils.actHomePager(getActivity(), HPTabType.ORDERLIST);
+                    finish();
                     }
 
                     @Override

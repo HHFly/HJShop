@@ -25,6 +25,8 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.base.ShowLoadingDialogListener;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
+import com.mark.app.hjshop4a.common.utils.JsonUtils;
+import com.mark.app.hjshop4a.common.utils.PasswordUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.common.utils.location.LocationManagerUtil;
 import com.mark.app.hjshop4a.common.utils.luban.LubanUtil;
@@ -444,12 +446,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
                 .subscribe(new DefaultObserver<String>() {
                     @Override
                     public void onSuccess(@io.reactivex.annotations.NonNull BaseResultEntity<String> obj) {
-                        String data = obj.getResult();
+                        String data = JsonUtils.fromJson(PasswordUtil.decode(obj.getResult()),String.class);
                         if (listenr != null) {
                             if (TextUtils.isEmpty(data)) {
-                                ToastUtils.show("图片上传成功");
+
                                 listenr.onLoadPicUnSuccessFinish();
                             } else {
+                                ToastUtils.show("图片上传成功");
                                 listenr.onLoadPicFinish(data);
                             }
                         }
