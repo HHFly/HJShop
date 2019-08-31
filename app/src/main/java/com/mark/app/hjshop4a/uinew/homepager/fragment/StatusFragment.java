@@ -37,6 +37,10 @@ public class StatusFragment extends BaseFragment {
         return R.layout.fragment_status;
     }
 
+    @Override
+    public void onUnFirstResume() {
+        requestData();
+    }
 
     @Override
     public void findView() {

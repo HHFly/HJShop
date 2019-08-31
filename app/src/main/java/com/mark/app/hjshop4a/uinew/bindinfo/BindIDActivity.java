@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.mark.app.hjshop4a.BuildConfig;
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
@@ -93,8 +94,8 @@ public class BindIDActivity extends BaseActivity {
 //                requestUpdateData(imgUrl);
 
                 pic.put(id,imgUrl);
-
-
+                setSdvBig(id,imgUrl);
+                hideLoadingDialog();
 
             }
 
@@ -147,7 +148,10 @@ public class BindIDActivity extends BaseActivity {
      * 确认修改
      */
     private void commit() {
-        setPic();
+        if(BuildConfig.DEBUG_ENV){
+            setPic();
+        }
+
         String et_name = getTvText(R.id.et_name);
         String et_num = getTvText(R.id.et_num);
 

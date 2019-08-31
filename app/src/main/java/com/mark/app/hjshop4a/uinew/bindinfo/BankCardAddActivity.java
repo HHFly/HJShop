@@ -80,7 +80,7 @@ public class BankCardAddActivity extends BaseActivity {
                                @Override
                                public void onSuccess(RainbowResultEntity obj) {
                                    List<BankCategory>data = JsonUtils.getList(obj.getResult(),BankCategory.class);
-                                   if(data!=null) {
+                                   if(data!=null&&data.size()!=0) {
                                        bindData(data);
                                        requestData();
                                    }
@@ -126,7 +126,7 @@ public class BankCardAddActivity extends BaseActivity {
      */
     private void bindData(List<BankCategory> data) {
 
-        if (data != null) {
+        if (data != null&&data.size()!=0) {
 
             List<BankCategory> list = data;
             initSpinner(data.get(0).getBankId(), list);

@@ -37,9 +37,13 @@ public class HomeAdapter extends BaseHasTopListRvAdapter<List<Banner>,IndexModel
 
     @Override
     public void bindBodyData(AutoViewHolder holder, int bodyPosition, final IndexModel showProduct) {
-            holder.sdvBig(R.id.sdv_img1,showProduct.getProduct1().getProductUrl());
-            holder.text(R.id.tv_price1,String.format(getString(R.string.S元),showProduct.getProduct1().getProductPrice()));
-            holder.text(R.id.tv_num1,String.format(getString(R.string.人付款),showProduct.getProduct1().getPayCount()));
+        if(showProduct.getProduct1()!=null) {
+            holder.sdvBig(R.id.sdv_img1, showProduct.getProduct1().getProductUrl());
+            holder.text(R.id.tv_price1, String.format(getString(R.string.S元), showProduct.getProduct1().getProductPrice()));
+            holder.text(R.id.tv_num1, String.format(getString(R.string.人付款), showProduct.getProduct1().getPayCount()));
+        }else {
+            holder.get(R.id.ll_1).setVisibility(View.INVISIBLE);
+        }
             if(showProduct.getProduct2()!=null){
                 holder.sdvBig(R.id.sdv_img2,showProduct.getProduct2().getProductUrl());
                 holder.text(R.id.tv_price2,String.format(getString(R.string.S元),showProduct.getProduct2().getProductPrice()));

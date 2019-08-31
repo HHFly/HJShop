@@ -77,15 +77,15 @@ public class AddTaobaoActivity extends BaseActivity  {
                 FunctionDialogFactory.showTakePhoneIDDialog(getActivity(),R.id.up_huabei);
             }
         });
-        levelPic  =getView(R.id.up_realAuthenticate);
-        levelPic.setOnItemClickListener(new UpdateImgLayout.OnItemClickListener() {
+        realAuthenticatePic  =getView(R.id.up_realAuthenticate);
+        realAuthenticatePic.setOnItemClickListener(new UpdateImgLayout.OnItemClickListener() {
             @Override
             public void onClickImg() {
                 FunctionDialogFactory.showTakePhoneIDDialog(getActivity(),R.id.up_realAuthenticate);
             }
         });
-        realAuthenticatePic  =getView(R.id.up_levelPic);
-        realAuthenticatePic.setOnItemClickListener(new UpdateImgLayout.OnItemClickListener() {
+        levelPic  =getView(R.id.up_levelPic);
+        levelPic.setOnItemClickListener(new UpdateImgLayout.OnItemClickListener() {
             @Override
             public void onClickImg() {
                 FunctionDialogFactory.showTakePhoneIDDialog(getActivity(),R.id.up_levelPic);
@@ -368,7 +368,7 @@ public class AddTaobaoActivity extends BaseActivity  {
                         realAuthenticatePic.setImg(imgUrl);
                         break;
                 }
-
+                hideLoadingDialog();
 
             }
 

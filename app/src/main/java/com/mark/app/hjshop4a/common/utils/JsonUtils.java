@@ -56,8 +56,12 @@ public class JsonUtils {
      * @return
      */
     public static <T> List<T> getList(String je, Class<T> cls) {
+
         Gson gson = new Gson();
         List<T> list = new ArrayList<T>();
+        if(null==je){
+            return list;
+        }
         JsonArray array = getJsonElement(je).getAsJsonArray();
         for (final JsonElement elem : array) {
             list.add(gson.fromJson(elem, cls));
