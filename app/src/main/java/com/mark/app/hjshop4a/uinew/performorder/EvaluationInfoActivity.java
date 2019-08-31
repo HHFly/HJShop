@@ -314,6 +314,9 @@ public class EvaluationInfoActivity extends BaseActivity {
         setINVisibility(R.id.sdv_img3,false);
         setINVisibility(R.id.sdv_img4,false);
         setINVisibility(R.id.sdv_img5,false);
+        if(evaluationPics==null){
+            return;
+        }
         if (0<evaluationPics.size()){
             FrescoUtils.sdvInside((SimpleDraweeView) getView(R.id.sdv_img1),evaluationPics.get(0));
             setINVisibility(R.id.sdv_img1,true);
