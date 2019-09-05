@@ -90,11 +90,6 @@ public class EvaluationInfoActivity extends BaseActivity {
                 nextStep();
                 break;
             case R.id.tv_evaluationContext:
-                //获取剪贴板管理器：
-                ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-// 创建普通字符型
-                ClipData  mClipData = ClipData.newPlainText("Label", getTvText(R.id.tv_evaluationContext));
-                cm.setPrimaryClip(mClipData);
 
                 break;
             case R.id.sdv_img1:
@@ -137,6 +132,18 @@ public class EvaluationInfoActivity extends BaseActivity {
             public void onClickImg() {
                 mapId=1;
                 FunctionDialogFactory.showTakePhoneDialog(getActivity());
+            }
+        });
+        getView(R.id.tv_evaluationContext).setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                //获取剪贴板管理器：
+                ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+// 创建普通字符型
+                ClipData  mClipData = ClipData.newPlainText("Label", getTvText(R.id.tv_evaluationContext));
+                cm.setPrimaryClip(mClipData);
+                ToastUtils.show("已复制到剪贴板");
+                return false;
             }
         });
     }

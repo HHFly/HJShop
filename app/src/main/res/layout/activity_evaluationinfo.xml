@@ -109,7 +109,8 @@
                         android:layout_width="match_parent"
                         android:singleLine="false"
                         android:layout_marginTop="5dp"
-                        android:textColor="#999999"
+                        android:padding="5dp"
+                        android:textColor="#333333"
                         android:background="@drawable/shape_blue_6px"/>
                 </LinearLayout>
                 <LinearLayout

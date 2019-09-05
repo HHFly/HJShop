@@ -2,12 +2,19 @@ package com.mark.app.hjshop4a.common.utils;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Animatable;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 
+import com.facebook.binaryresource.BinaryResource;
 import com.facebook.binaryresource.FileBinaryResource;
+import com.facebook.cache.common.CacheKey;
 import com.facebook.cache.common.SimpleCacheKey;
 import com.facebook.common.internal.Supplier;
 import com.facebook.common.util.ByteConstants;
@@ -15,12 +22,19 @@ import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.drawee.controller.BaseControllerListener;
 import com.facebook.drawee.interfaces.DraweeController;
 import com.facebook.drawee.view.SimpleDraweeView;
+import com.facebook.imagepipeline.cache.DefaultCacheKeyFactory;
 import com.facebook.imagepipeline.cache.MemoryCacheParams;
 import com.facebook.imagepipeline.common.ResizeOptions;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
+import com.facebook.imagepipeline.core.ImagePipelineFactory;
 import com.facebook.imagepipeline.image.ImageInfo;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import jp.wasabeef.fresco.processors.BlurPostprocessor;
 
@@ -427,4 +441,53 @@ public class FrescoUtils {
         }
         return true;
     }
+
+    private static Bitmap getBitmap(Uri uri) {
+
+        Bitmap bitmap = null;
+        FileBinaryResource resource = (FileBinaryResource) Fresco.getImagePipelineFactory().getMainFileCache().getResource(new SimpleCacheKey(uri.toString()));
+        if (resource == null) {
+            return null;
+        }
+        File file = resource.getFile();
+        bitmap = BitmapFactory.decodeFile(file.getPath());
+        return bitmap;
+
+    }
+
+    //保存文件到指定路径
+    public static boolean saveImageToGallery(Context context,  Uri uri) {
+        // 首先保存图片  dearxy是可以改的
+        String storePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "dearxy";
+        File appDir = new File(storePath);
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        String fileName = uri.getLastPathSegment()+".jpg";
+        File file = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            //通过io流的方式来压缩保存图片
+            boolean isSuccess = getBitmap(uri).compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+
+            //把文件插入到系统图库
+            //MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), fileName, null);
+
+            //保存图片后发送广播通知更新数据库
+            Uri path = Uri.fromFile(file);
+            context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, path));
+            if (isSuccess) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }
