@@ -55,6 +55,7 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minHeight="15dp"
         android:layout_alignTop="@+id/tv_1"
          android:layout_toEndOf="@id/tv_1"
         android:layout_alignParentRight="true"

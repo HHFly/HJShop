@@ -18,6 +18,25 @@ public class StepTwo extends BaseModel {
     List<AddProduct> addProductList;//附加商品列表
     long compltetTime;//完成时间
     long stepTime ;//本步骤时间
+    int     operationType;//1 认证详情 2认证店铺
+    String authKeyWord;//详情认证关键词
+
+    public int getOperationType() {
+        return operationType;
+    }
+
+    public void setOperationType(int operationType) {
+        this.operationType = operationType;
+    }
+
+    public String getAuthKeyWord() {
+        return authKeyWord;
+    }
+
+    public void setAuthKeyWord(String authKeyWord) {
+        this.authKeyWord = authKeyWord;
+    }
+
     public void countAllTime() {
         if(compltetTime>0)
          compltetTime=compltetTime-1000;

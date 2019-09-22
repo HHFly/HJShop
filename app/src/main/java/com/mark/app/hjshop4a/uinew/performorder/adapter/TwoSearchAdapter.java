@@ -8,6 +8,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopBottomListRvAdapter;
+import com.mark.app.hjshop4a.common.utils.StringUtils;
 import com.mark.app.hjshop4a.uinew.performorder.model.AddProduct;
 import com.mark.app.hjshop4a.uinew.performorder.model.StepTwo;
 import com.mark.app.hjshop4a.widget.UpdateImgLayout;
@@ -40,6 +41,15 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
     }
     @Override
     public void bindTopData(final AutoViewHolder holder, int topPos, final StepTwo stepTwo) {
+        switch (stepTwo.getOperationType()){
+            case 1:
+                holder.text(R.id.tv_1, "第一步:验证详情关键词--详情提示: "+ StringUtils.getStarString2(stepTwo.getAuthKeyWord(),1,1)+ String.format(App.get().getString(R.string.共n个字),stepTwo.getAuthKeyWord().length()));
+                break;
+            case 2:
+                holder.text(R.id.tv_1,R.string.第一步验证店铺名 );
+                default: holder.text(R.id.tv_1, "错误验证类型"+ stepTwo.getOperationType());
+                break;
+        }
         holder.text(R.id.tv_shopName, stepTwo.getShopName());
         holder.text(R.id.tv_wwName, stepTwo.getWwName());
         holder.text(R.id.tv_searchKeyWord, stepTwo.getSearchKeyWord());

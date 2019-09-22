@@ -327,6 +327,7 @@
     <string name="剩余接单量">剩余接单量：%1$d</string>
     <string name="元">%1$d 元</string>
     <string name="S元">%1$s 元</string>
+    <string name="共n个字">共%1$d个字</string>
     <string name="复制">复制</string>
     <string name="买号">买号</string>
     <string name="当前步骤">当前步骤</string>
@@ -345,4 +346,5 @@
     <string name="注意事项">注意事项：\n1.此步骤必须足时浏览，一旦商家举报，扣除试客赏金。 \n2.请保留收藏和加购3天以上。：</string>
     <string name="注意事项2">注意事项：\n1.必须使用真实地址下单顾客，使用假地址，一经发现立即封号。\n2.请确保在正确下单之后再提交订单编号，否找将限制申请试用30天。</string>
     <string name="保存到相册">保存到相册</string>
+    <string name="第一步验证店铺名">第一步：验证店铺名</string>
 </resources>

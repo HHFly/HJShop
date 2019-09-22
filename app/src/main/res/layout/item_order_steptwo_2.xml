@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 <TextView style="@style/BaseItem.Tv"
     android:id="@+id/tv_1"
-    android:text="第一步：验证是否找对店铺"
+    android:text="@string/第一步验证店铺名"
     android:textColor="#333333"
     android:textSize="11dp"/>
     <EditText
