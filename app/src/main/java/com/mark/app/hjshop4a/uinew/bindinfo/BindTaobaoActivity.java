@@ -58,6 +58,11 @@ public class BindTaobaoActivity extends BaseActivity {
     }
 
     @Override
+    public void onUnFirstResume() {
+        requestData();
+    }
+
+    @Override
     public void setListener() {
         setClickListener(R.id.titlebar_iv_return);
         setClickListener(R.id.titlebar_iv_add);

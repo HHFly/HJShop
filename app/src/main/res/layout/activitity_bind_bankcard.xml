@@ -9,14 +9,14 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical"
-        android:paddingLeft="30px">
+        android:paddingLeft="15dp">
         <EditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="98px"
+            android:layout_height="50dp"
             android:textColorHint="#999999"
             android:textColor="#333333"
-            android:textSize="28px"
+            android:textSize="14dp"
             android:maxLength="10"
             android:hint="@string/开户人"
             android:background="@null"
@@ -26,10 +26,10 @@
         <EditText
             android:id="@+id/et_num"
             android:layout_width="match_parent"
-            android:layout_height="98px"
+            android:layout_height="50dp"
             android:textColorHint="#999999"
             android:textColor="#333333"
-            android:textSize="28px"
+            android:textSize="14dp"
             android:maxLength="25"
             android:inputType="number"
             android:hint="@string/开户账号"
@@ -40,7 +40,7 @@
             style="@style/BaseLine.Horizontal"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="98px"
+            android:layout_height="50dp"
 
            >
 
@@ -48,11 +48,11 @@
                 android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="30px"
-                android:paddingTop="30px"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
                 android:text="开户银行"
                 android:textColor="#999999"
-                android:textSize="28px"
+                android:textSize="14dp"
                />
 
             <Spinner
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginLeft="10px"
+                android:layout_marginLeft="5dp"
                 android:layout_weight="1.0"
                 android:spinnerMode="dropdown"
                 android:textColor="@color/colorText"
@@ -72,10 +72,10 @@
         <EditText
             android:id="@+id/et_phone"
             android:layout_width="match_parent"
-            android:layout_height="98px"
+            android:layout_height="50dp"
             android:textColorHint="#999999"
             android:textColor="#333333"
-            android:textSize="28px"
+            android:textSize="14dp"
             android:maxLength="20"
             android:inputType="number"
             android:hint="@string/预留手机号"
@@ -89,7 +89,7 @@
         style="@style/BaseBtn.Normal.Important"
         android:layout_width="match_parent"
         android:text="@string/提交"
-        android:layout_marginTop="80px"
+        android:layout_marginTop="40dp"
 
-        android:textSize="28px"/>
+        android:textSize="14dp"/>
 </LinearLayout>
