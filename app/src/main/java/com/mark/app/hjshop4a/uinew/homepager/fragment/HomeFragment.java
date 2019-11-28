@@ -36,6 +36,7 @@ import io.reactivex.schedulers.Schedulers;
 public class HomeFragment extends BaseFragment {
     private HomeAdapter mAdapter;
     RefreshLayout refreshLayout;
+    Index mData;
     @Override
     public int getContentResId() {
         return R.layout.fragment_blank;
@@ -58,6 +59,13 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void setListener() {
+
+    }
+
+    @Override
+    public void onUnFirstResume() {
+        if(mData!=null)
+        initRvAdapter(mData,true);
 
     }
 
@@ -87,7 +95,7 @@ public class HomeFragment extends BaseFragment {
 
                     @Override
                     public void onSuccess(RainbowResultEntity<Index> obj) {
-                        Index mData = JsonUtils.fromJson(obj.getResult(),Index.class);
+                         mData = JsonUtils.fromJson(obj.getResult(),Index.class);
                         initRvAdapter(mData,true);
                     }
 

@@ -9,7 +9,11 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
+import com.mark.app.hjshop4a.uinew.bill.BillActivity;
 import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
+import com.mark.app.hjshop4a.uinew.withdraw.WithDrawActivity;
+
+import java.util.List;
 
 
 public class MeAdapter extends MultipleSourcesRvAdapter {
@@ -60,7 +64,18 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 //                        用户名
                     holder.text(R.id.hm_tv_user_name,mData.getUserPhone());
                     //c会员账号
-
+                    holder.get(R.id.withdraw).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ActivityJumpUtils.actActivity(App.get().getCurActivity(), WithDrawActivity.class);
+                        }
+                    });
+                    holder.get(R.id.bill).setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            ActivityJumpUtils.actActivity(App.get().getCurActivity(), BillActivity.class);
+                        }
+                    });
 //                    holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
                     holder.text(R.id.hm_tv_goldcoin,String.valueOf(mData.getUsableGold()));
                     holder.text(R.id.hm_tv_balance,String.valueOf(mData.getUsableMoney()));
@@ -118,6 +133,12 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 break;
         }
     }
+
+    @Override
+    public void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads) {
+
+    }
+
     private OnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener listener) {

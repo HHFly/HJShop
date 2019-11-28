@@ -23,6 +23,8 @@ import com.mark.app.hjshop4a.uinew.homepager.adapter.MeAdapter;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+import javax.xml.transform.Result;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -53,6 +55,15 @@ public class MeFragment extends BaseFragment{
     public void onUnFirstResume() {
         if(App.getAppContext().getUserInfo()==null){
             requestData();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case -1:
+                requestData();
+                break;
         }
     }
 

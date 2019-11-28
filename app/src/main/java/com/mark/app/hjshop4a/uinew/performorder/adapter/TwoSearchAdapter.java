@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.uinew.performorder.adapter;
 
 import android.os.Handler;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.dd.CircularProgressButton;
@@ -9,6 +10,7 @@ import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseHasTopBottomListRvAdapter;
 import com.mark.app.hjshop4a.common.utils.StringUtils;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.uinew.performorder.model.AddProduct;
 import com.mark.app.hjshop4a.uinew.performorder.model.StepTwo;
 import com.mark.app.hjshop4a.widget.UpdateImgLayout;
@@ -16,6 +18,7 @@ import com.mark.app.hjshop4a.widget.UpdateStepLayout;
 import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddProduct> {
@@ -200,19 +203,23 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
 
 
     @Override
-    public void bindBottomData(AutoViewHolder holder, int position, StepTwo stepTwo) {
-        holder.text(R.id.tv_steptime,getTimeString(stepTwo.getStepTime()));
+    public void bindBottomData(final AutoViewHolder holder, int position, StepTwo stepTwo) {
+        holder.text(R.id.tv_steptime,getStepTimeString(stepTwo.getStepTime()));
         holder.text(R.id.tv_compltetTime,getTimeString(stepTwo.getCompltetTime()));
-        holder.get(R.id.btn).setEnabled(stepTwo.getStepTime()==0);
         holder.get(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(getTopData().getStepTime()>0){
+                    ToastUtils.show("本步骤时间还剩:"+holder.getTvText(R.id.tv_steptime));
+                    return;
+                }
                 if(onItemClickListener!=null){
                     onItemClickListener.onClickNext();
                 }
             }
         });
     }
+
 
 
     public boolean getVertify(){
@@ -225,12 +232,23 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
     }
 
     private String  getTimeString(long time){
+        Calendar c = Calendar.getInstance();
+        time =time-c.getTimeInMillis();
+        if(time<0){
+            return  "00"+ App.get().getString(R.string.分钟) + "00" + App.get().getString(R.string.秒);
+        }
         String Ctime ="";
         time /= 1000;
         Ctime =getTime(time / 60) + App.get().getString(R.string.分钟) + getTime(time % 60) + App.get().getString(R.string.秒);
         return Ctime;
     }
+    private String  getStepTimeString(long time){
 
+        String Ctime ="";
+        time /= 1000;
+        Ctime =getTime(time / 60) + App.get().getString(R.string.分钟) + getTime(time % 60) + App.get().getString(R.string.秒);
+        return Ctime;
+    }
     // 时间格式化为00
     public static String getTime(long time) {
         if (time < 10) {
@@ -242,28 +260,26 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
     public void  startTime(){
         mHandler.sendEmptyMessage(1);
     }
+
     Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
             if (msg.what == 1) {
                 if(getTopData()!=null){
-                    if(getTopData().getStepTime()>0){
-                        getTopData().countAllTime();
-                        notifyDataSetChanged();
-                        //所以倒计时
-                    }else {
-                        if(getTopData().getCompltetTime()>0){
-                            getTopData().countCompleteTime();
-                            notifyDataSetChanged();
-                            //总时间倒计时
-                        }
-                    }
+                    getTopData().countAllTime();
+                    notifyItemChanged(getTopItemCount()+getBodyItemCount(),1);
 
                 }
                 mHandler.sendEmptyMessageDelayed(1, 1000);
             }
         };
     };
+    @Override
+    public void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads) {
 
+        holder.text(R.id.tv_steptime,getStepTimeString(getTopData().getStepTime()));
+        holder.text(R.id.tv_compltetTime,getTimeString(getTopData().getCompltetTime()));
+
+    }
     private OnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener listener) {

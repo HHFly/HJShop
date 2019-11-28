@@ -56,12 +56,13 @@
         android:lineSpacingExtra="5dp"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"/>
+
     <Button
         android:id="@+id/btn"
         style="@style/BaseBtn.Normal.Important"
-        android:layout_height="50dp"
-        android:textSize="14dp"
-        android:text="下一步"
+        android:layout_height="47dp"
         android:layout_marginTop="20dp"
-        />
+        android:layout_marginBottom="50dp"
+        android:text="下一步"
+        android:textSize="14dp" />
 </LinearLayout>

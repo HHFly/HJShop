@@ -118,7 +118,6 @@ public class TwoSearchActivity extends BaseActivity {
                         //设置信息
                         if(data!=null) {
                             initRvAdapter(data);
-                            twoSearchAdapter.startTime();
                         }
                     }
 
@@ -222,6 +221,7 @@ public class TwoSearchActivity extends BaseActivity {
 
 
             });
+            twoSearchAdapter.startTime();
         }
         else {
             twoSearchAdapter.notifyData(data,data.getAddProductList(),true);

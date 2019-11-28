@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+    <include layout="@layout/include_titlebar" />
+    <LinearLayout
+        android:visibility="gone"
+        style="@style/input_layout"
+        android:layout_marginTop="10dp">
+        <TextView
+            style="@style/login_input_tv"
+            android:text="旧密码："/>
+        <EditText
+            android:id="@+id/et_old_pwd"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+
+            android:hint="请输入旧密码"
+            android:inputType="numberPassword"
+            android:maxLength="6" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/iv_old_eye"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/select_password_eye"
+            />
+    </LinearLayout>
+    <View style="@style/BaseLine.Horizontal"/>
+
+
+
+    <LinearLayout style="@style/input_layout"
+
+        >
+        <TextView
+            style="@style/login_input_tv"
+            android:text="新密码："/>
+        <EditText
+            android:id="@+id/et_new_pwd"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+
+            android:hint="请输入新密码"
+            android:inputType="numberPassword"
+            android:maxLength="6" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/iv_new_eye"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/select_password_eye"
+            />
+
+    </LinearLayout>
+    <View style="@style/BaseLine.Horizontal"/>
+    <LinearLayout style="@style/input_layout">
+
+        <TextView
+            android:id="@+id/login_tv_code"
+            style="@style/login_input_tv"
+            android:text="@string/login_msg_code" />
+
+        <EditText
+            android:id="@+id/et_code"
+            style="@style/login_input_et"
+            android:hint="@string/hint_请输入验证码"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:maxLength="6" />
+        <Button
+            android:id="@+id/btn_code"
+            style="@style/BaseBtn.Normal.Commonly"
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="18dp"
+            android:minWidth="85dp"
+            android:text="@string/btn_msg_getcode"
+            android:textSize="12dp" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/input_layout"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/modify_tv_pwd_again"
+            style="@style/login_input_tv"
+            android:text="@string/login_msg_pwd_again" />
+
+        <EditText
+            android:id="@+id/modify_et_pwd_again"
+            style="@style/login_input_et"
+            android:layout_weight="1"
+            android:hint="@string/hint_请再次输入密码"
+            android:inputType="numberPassword"
+            android:maxLength="6" />
+
+        <ImageView
+            android:id="@+id/register_iv_eye_again"
+            android:visibility="gone"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/select_password_eye" />
+    </LinearLayout>
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="密码长度6位数字，初始密码为888888"
+        android:textSize="11dp"/>
+    <Button
+        android:id="@+id/btn"
+        style="@style/BaseBtn.Normal.Important"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:text="@string/btn_确认修改" />
+
+</LinearLayout>

@@ -29,7 +29,7 @@ import com.mark.app.hjshop4a.ui.onlinerecharge.OnlineRechargeActivity;
 import com.mark.app.hjshop4a.ui.provinceagent.agentperFormance.PAgentPerformanceActivity;
 import com.mark.app.hjshop4a.ui.provinceagent.areabusniess.ProvinceAreaBusniessActivity;
 import com.mark.app.hjshop4a.ui.recommend.RecommendActivity;
-import com.mark.app.hjshop4a.ui.withdraw.WithDrawActivity;
+import com.mark.app.hjshop4a.uinew.withdraw.WithDrawActivity;
 import com.mark.app.hjshop4a.ui.withdrawdetail.WithDrawDetailActivity;
 
 
@@ -70,6 +70,11 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
     @Override
     public int getItemCount() {
         return super.getItemCount();
+    }
+
+    @Override
+    public void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads) {
+
     }
 
     @Override

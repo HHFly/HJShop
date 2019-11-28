@@ -248,4 +248,17 @@ public interface RainbowService {
     //37获取版本升级信息
     @POST("api/user/newUpdate")
     Observable<RainbowResultEntity> newUpdate(@Query("version") String  data);
+    //37.获取提现界面
+    @GET("api/app/user/getWithdrawPage")
+    Observable<RainbowResultEntity> getWithdrawPage();
+    //38.获取账单
+    @POST("/api/app/account/record")
+    Observable<RainbowResultEntity> record(@Query("data") String data);
+    //39.提现
+    @POST("/api/app/user/withdraw")
+    Observable<RainbowResultEntity> withdraw(@Query("data") String data);
+
+    //40.修改支付密码
+    @POST("/api/app/user/updatePayPassword")
+    Observable<RainbowResultEntity> updatePayPassword(@Query("data") String data);
 }

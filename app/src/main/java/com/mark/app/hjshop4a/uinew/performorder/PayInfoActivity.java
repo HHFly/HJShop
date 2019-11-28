@@ -112,7 +112,7 @@ public class PayInfoActivity extends BaseActivity {
                         data = JsonUtils.fromJson(obj.getResult(),PayInfo.class);
                         //设置信息
                         initRvAdapter(data);
-                        payInfoAdapter.startTime();
+
                     }
 
                     @Override
@@ -147,6 +147,7 @@ public class PayInfoActivity extends BaseActivity {
 
 
             });
+            payInfoAdapter.startTime();
         }
         else {
            payInfoAdapter.notifyData(data);

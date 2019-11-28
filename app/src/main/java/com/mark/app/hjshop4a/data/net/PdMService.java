@@ -41,7 +41,7 @@ import com.mark.app.hjshop4a.ui.homepager.model.MeCenterInfo;
 import com.mark.app.hjshop4a.ui.onlinerecharge.model.PayWayList;
 import com.mark.app.hjshop4a.ui.recommend.model.ZXingCode;
 import com.mark.app.hjshop4a.ui.userinfo.model.UserInfo;
-import com.mark.app.hjshop4a.ui.withdraw.model.WithDraw;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -425,9 +425,7 @@ public interface PdMService {
     @POST("/api/app/customs")
     Observable<BaseResultEntity>customs(@FieldMap Map<String, String> map);
 
-    /*可以提现数据*/
-    @GET("/api/app/balance/withDraw/get")
-    Observable<BaseResultEntity<WithDraw>>withDrawget();
+
     /*提现*/
     @FormUrlEncoded
     @POST("/api/app/balance/withDraw")

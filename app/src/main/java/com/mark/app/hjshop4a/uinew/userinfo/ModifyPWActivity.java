@@ -146,7 +146,8 @@ public class ModifyPWActivity extends BaseActivity {
 
                     @Override
                     public void onSuccess(BaseResultEntity obj) {
-
+                        App.getAppContext().setUserInfo(null);
+                        ActivityJumpUtils.actHomePager(getAppCompatActivity());
                     }
 
                     @Override

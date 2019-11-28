@@ -38,8 +38,7 @@ public class StepTwo extends BaseModel {
     }
 
     public void countAllTime() {
-        if(compltetTime>0)
-         compltetTime=compltetTime-1000;
+
         if(stepTime>0)
             stepTime=stepTime-1000;
 

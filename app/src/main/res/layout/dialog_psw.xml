@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+
+    android:gravity="center"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="305dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_conr_5dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/BaseItem.Tv"
+            android:textSize="16dp"
+            android:textColor="#333333"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="25dp"
+            android:text="请输入密码"
+            />
+        <EditText
+            android:id="@+id/et_value"
+            android:layout_marginTop="29dp"
+            android:layout_marginBottom="37dp"
+            android:layout_marginRight="19dp"
+            android:layout_marginLeft="19dp"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:textColorHint="#999999"
+            android:hint="请输入6位支付密码"
+            android:paddingLeft="14dp"
+            android:background="@drawable/shape_efefef_10px"
+            android:maxLength="6"
+            android:singleLine="true"
+            android:inputType="numberPassword"
+            android:textSize="@dimen/textsize_28px" />
+        <View style="@style/BaseLine.Horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_white_conr_5dp"
+            android:layout_height="46dp">
+
+            <Button
+                android:id="@+id/normal_btn_left"
+                style="@style/BaseBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_gray_left_bottom_con_5dp"
+                android:padding="0dp"
+                android:text="@string/btn_msg_cancel"
+                android:textColor="#999999"
+                android:textSize="16dp"
+                />
+
+            <View style="@style/BaseLine.Vertical" />
+
+            <Button
+                android:id="@+id/normal_btn_right"
+                style="@style/BaseBtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_blue_right_bottom_con_5dp"
+                android:padding="0dp"
+                android:text="@string/btn_msg_ok"
+                android:textColor="#FFFFFF"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

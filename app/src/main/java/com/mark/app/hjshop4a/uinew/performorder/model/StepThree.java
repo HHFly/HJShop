@@ -14,8 +14,7 @@ public class StepThree extends BaseModel {
     long compltetTime;//完成时间
     long stepTime ;//本步骤时间
     public void countAllTime() {
-        if(compltetTime>0)
-            compltetTime=compltetTime-1000;
+
         if(stepTime>0)
             stepTime=stepTime-1000;
 

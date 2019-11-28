@@ -113,6 +113,7 @@ public class OneDetailActivity extends BaseActivity {
         if(oneDetailAdapter==null){
             RecyclerView rv = getView(R.id.recyclerView);
             oneDetailAdapter = new OneDetailAdapter(data);
+
             rv.setLayoutManager(new LinearLayoutManager(this));
             rv.setAdapter(oneDetailAdapter);
             oneDetailAdapter.setOnItemClickListener(new OneDetailAdapter.OnItemClickListener() {
@@ -123,6 +124,7 @@ public class OneDetailActivity extends BaseActivity {
 
 
             });
+            oneDetailAdapter.startTime();
         }
         else {
             oneDetailAdapter.setData(data);
@@ -164,4 +166,5 @@ public class OneDetailActivity extends BaseActivity {
                     }
                 });
     }
+
 }

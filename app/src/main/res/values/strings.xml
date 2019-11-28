@@ -240,7 +240,6 @@
     <string name="busniess_兑换金豆">1.金豆满200个可以申请换购，且必须是100的倍数\n2. 商家金豆换购收取10%的手续费\n3. 商家金豆换购，最多需要2个工作日的审核时间\n4. 商家金豆换购，每天只能换购一次</string>
     <string name="order_commit_tip">如您要购买单据，您需要上传单\n据谢谢配合！</string>
     <string name="consume_commit_rule">1.请先保证账户有足够的余额\n2.消费金额需要满100元才可以提交\n3.每个会员每天累计最高可提交消费金额10000元\n4.只有商户可以报单，且只能给会员报单\n5.以上所有信息为必填项：</string>
-    <string name="withdraw_tip">1.满200可以申请提现,且必须是100的倍数\n2.提现不收手续费\n3.提现申请提交后，3个工作日到账</string>
     <string name="split_start">%1$s 跳过</string>
     <string name="me_前往">前往</string>
     <string name="me_退出">退出</string>
@@ -266,7 +265,7 @@
     <string name="检测新版本">检测新版本</string>
     <string name="版本信息">版本信息</string>
     <string name="资金钱袋">资金钱袋</string>
-    <string name="贷款余额">贷款余额</string>
+    <string name="贷款余额">货款余额</string>
     <string name="金币余额">金币余额</string>
     <string name="账号绑定">账号绑定</string>
     <string name="消息">消息</string>
@@ -280,7 +279,7 @@
     <string name="快捷登录">快捷登录</string>
     <string name="任务大厅">任务大厅</string>
     <string name="活动类型">活动类型：</string>
-    <string name="垫付贷款">垫付贷款：</string>
+    <string name="垫付贷款">垫付货款：</string>
     <string name="活动赏金">活动赏金：</string>
     <string name="抢此任务">抢此任务</string>
     <string name="活动要求">活动要求：</string>
@@ -347,4 +346,16 @@
     <string name="注意事项2">注意事项：\n1.必须使用真实地址下单顾客，使用假地址，一经发现立即封号。\n2.请确保在正确下单之后再提交订单编号，否找将限制申请试用30天。</string>
     <string name="保存到相册">保存到相册</string>
     <string name="第一步验证店铺名">第一步：验证店铺名</string>
+    <string name="贷款提现">货款提现：</string>
+    <string name="全部提现">全部提现</string>
+    <string name="hint_最少一元">最少一元</string>
+    <string name="金币提现">金币提现：</string>
+    <string name="hint_手续费">%手续费</string>
+    <string name="支付密码">支付密码：</string>
+    <string name="hint_初始密码888888">初始密码888888</string>
+    <string name="忘记密码">忘记密码</string>
+    <string name="管理银行卡">管理银行卡</string>
+    <string name="withdraw_tip1">温馨提醒：货款和金币提现每日仅限一次，\n提现申请时间：00：00-12：00 提现处理时间：12：00-24：00 \n贷款提现不收取手续费，金币提现手续费为5%</string>
+    <string name="setting_支付密码修改">支付密码修改</string>
+    <string name="输入任务编号">输入任务编号</string>
 </resources>

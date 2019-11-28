@@ -1,0 +1,93 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingTop="6dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp" >
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="确定"
+            android:textSize="13dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:background="@null"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/btn_small_blue" />
+        <TextView
+            android:id="@+id/titlebar_tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="title"
+            android:textColor="#333333"
+            android:textSize="@dimen/titlebar_title_textsize" />
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:textSize="13dp"
+            android:background="@null"
+            android:text="取消"
+            android:textColor="@color/btn_small_blue"  />
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_time"
+       style="@style/BaseItem.Tv"
+        android:textSize="13dp"
+        android:text=""
+        android:textColor="@color/btn_small_blue"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"/>
+    <View
+        android:layout_marginTop="10dp"
+       style="@style/BaseLine.Horizontal"
+        android:background="@color/btn_small_blue"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="35dp"
+        android:background="@color/white"
+        android:orientation="horizontal" >
+
+        <com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView
+            android:id="@+id/id_province"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            >
+        </com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView>
+
+        <com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView
+            android:id="@+id/id_city"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white">
+        </com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView>
+
+        <com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView
+            android:id="@+id/id_district"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:visibility="gone">
+        </com.mark.app.hjshop4a.ui.dialog.wheelviewlibrary.WheelView>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

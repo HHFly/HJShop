@@ -88,5 +88,8 @@
         <activity android:name=".uinew.performorder.FourAddShopActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.performorder.PayInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.performorder.EvaluationInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.withdraw.WithDrawActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.userinfo.ModifyPayPwActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.bill.BillActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
     </application>
 </manifest>

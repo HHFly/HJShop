@@ -1,9 +1,11 @@
 package com.mark.app.hjshop4a.base.adapter;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
 
 
 /**
@@ -42,6 +44,15 @@ public abstract class MultipleSourcesRvAdapter extends BaseMkRvAdapter {
         }
 
         return 0;
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull AutoViewHolder holder, int position, @NonNull List<Object> payloads) {
+        if (payloads.isEmpty()) {
+            onBindViewHolder(holder, position);
+        } else {
+            customBindLocalRefresh((AutoViewHolder) holder, position, payloads);
+        }
     }
 
     public void onBindViewHolder(AutoViewHolder holder, int position) {
@@ -101,4 +112,11 @@ public abstract class MultipleSourcesRvAdapter extends BaseMkRvAdapter {
             return this.row;
         }
     }
+    /**
+     * 局部刷新
+     *
+     * @param holder
+     * @param position
+     */
+    public abstract void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads);
 }

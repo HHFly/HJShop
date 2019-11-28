@@ -177,6 +177,7 @@ public class ThreeBrowseActivity extends BaseActivity {
 
 
             });
+            threeBrowseAdapter.startTime();
         }
         else {
             threeBrowseAdapter.setData(data);

@@ -13,6 +13,9 @@ import com.mark.app.hjshop4a.widget.WarpLinearLayout;
 
 import android.os.Handler;
 
+import java.util.Calendar;
+import java.util.List;
+
 public class OneDetailAdapter extends MultipleSourcesRvAdapter {
     StepOne data;
 
@@ -75,7 +78,17 @@ public class OneDetailAdapter extends MultipleSourcesRvAdapter {
         }
     }
 
+    @Override
+    public void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads) {
+        holder.text(R.id.tv_compltetTime,getTimeString(data.getCompltetTime()));
+    }
+
     private String  getTimeString(long time){
+        Calendar c = Calendar.getInstance();
+        time =time-c.getTimeInMillis();
+        if(time<0){
+            return  "00"+ App.get().getString(R.string.分钟) + "00" + App.get().getString(R.string.秒);
+        }
         String Ctime ="";
         time /= 1000;
         Ctime =getTime(time / 60) + App.get().getString(R.string.分钟) + getTime(time % 60) + App.get().getString(R.string.秒);
@@ -96,11 +109,9 @@ public class OneDetailAdapter extends MultipleSourcesRvAdapter {
     Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
             if (msg.what == 1) {
-                if(data!=null&&data.getCompltetTime()>0){
-                    data.countTime();
-                    notifyDataSetChanged();
+                if(data!=null)
 
-                }
+                notifyItemChanged(getItemCount()-1,1);
                 mHandler.sendEmptyMessageDelayed(1, 1000);
             }
         };

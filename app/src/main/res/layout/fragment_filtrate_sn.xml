@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/titlebar_height"
+        android:background="@color/white"
+        android:orientation="horizontal"
+       android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/shape_gray_2"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+             android:layout_toStartOf="@+id/tv_cancel">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_search"
+                android:layout_marginLeft="20dp"/>
+            <EditText
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:layout_marginLeft="5dp"
+                android:hint="@string/输入任务编号"
+                android:textSize="13dp"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            style="@style/BaseItem.Tv"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/btn_small_blue"
+            android:textSize="18dp"
+            android:text="@string/取消"
+            android:padding="10dp"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -74,7 +74,8 @@
         android:layout_below="@+id/tv_4"
         android:layout_marginTop="12dp"
         android:textSize="12dp"
-        android:paddingLeft="15dp"/>
+        android:paddingLeft="15dp"
+        android:singleLine="true"/>
     <com.dd.CircularProgressButton
         android:id="@+id/circularButton_deputy"
         android:layout_width="100dp"

@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.uinew.performorder.adapter;
 
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -10,11 +11,13 @@ import com.mark.app.hjshop4a.base.adapter.AutoViewHolder;
 import com.mark.app.hjshop4a.base.adapter.BaseListRvAdapter;
 import com.mark.app.hjshop4a.base.adapter.BaseRvAdapter;
 import com.mark.app.hjshop4a.base.adapter.MultipleSourcesRvAdapter;
+import com.mark.app.hjshop4a.common.utils.ToastUtils;
 import com.mark.app.hjshop4a.uinew.performorder.model.StepThree;
 import com.mark.app.hjshop4a.widget.UpdateImgLayout;
 import com.mark.app.hjshop4a.widget.UpdateStepLayout;
 import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
@@ -49,7 +52,7 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
     }
 
     @Override
-    public void onBindViewHolder(AutoViewHolder holder, IndexPath indexPath) {
+    public void onBindViewHolder(final AutoViewHolder holder, IndexPath indexPath) {
         switch (indexPath.getSection()) {
             case 0:
                 holder.sdvInside(R.id.hm_sdv_productPic,data.getProductImg());
@@ -107,12 +110,16 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
                 });
                 break;
             case 1:
-                holder.text(R.id.tv_steptime,getTimeString(data.getStepTime()));
+                holder.text(R.id.tv_steptime,getStepTimeString(data.getStepTime()));
                 holder.text(R.id.tv_compltetTime,getTimeString(data.getCompltetTime()));
-                holder.get(R.id.btn).setEnabled(data.getStepTime()==0);
+//                holder.get(R.id.btn).setEnabled(data.getStepTime()==0);
                 holder.get(R.id.btn).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        if(data.getStepTime()>0){
+                            ToastUtils.show("本步骤时间还剩:"+holder.getTvText(R.id.tv_steptime));
+                            return;
+                        }
                         if(onItemClickListener!=null){
                             onItemClickListener.onClickNext();
                         }
@@ -122,12 +129,23 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
         }
     }
     private String  getTimeString(long time){
+        Calendar c = Calendar.getInstance();
+        time =time-c.getTimeInMillis();
+        if(time<0){
+            return  "00"+ App.get().getString(R.string.分钟) + "00" + App.get().getString(R.string.秒);
+        }
         String Ctime ="";
         time /= 1000;
         Ctime =getTime(time / 60) + App.get().getString(R.string.分钟) + getTime(time % 60) + App.get().getString(R.string.秒);
         return Ctime;
     }
+    private String  getStepTimeString(long time){
 
+        String Ctime ="";
+        time /= 1000;
+        Ctime =getTime(time / 60) + App.get().getString(R.string.分钟) + getTime(time % 60) + App.get().getString(R.string.秒);
+        return Ctime;
+    }
     // 时间格式化为00
     public static String getTime(long time) {
         if (time < 10) {
@@ -139,22 +157,21 @@ public class ThreeBrowseAdapter extends MultipleSourcesRvAdapter {
     public void  startTime(){
         mHandler.sendEmptyMessage(1);
     }
+
+
+
+    @Override
+    public void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads) {
+        holder.text(R.id.tv_steptime,getStepTimeString(data.getStepTime()));
+        holder.text(R.id.tv_compltetTime,getTimeString(data.getCompltetTime()));
+    }
+
     Handler mHandler = new Handler(){
         public void handleMessage(android.os.Message msg) {
             if (msg.what == 1) {
                 if(data!=null){
-                    if(data.getStepTime()>0){
-                        data.countAllTime();
-                        notifyDataSetChanged();
-                        //所以倒计时
-                    }else {
-                        if(data.getCompltetTime()>0){
-                            data.countCompleteTime();
-                            notifyDataSetChanged();
-                            //总时间倒计时
-                        }
-                    }
-
+                    data.countAllTime();
+                 notifyItemChanged(getItemCount()-1,1);
                 }
                 mHandler.sendEmptyMessageDelayed(1, 1000);
             }

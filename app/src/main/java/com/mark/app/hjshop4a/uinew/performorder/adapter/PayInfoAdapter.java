@@ -15,6 +15,7 @@ import com.mark.app.hjshop4a.uinew.performorder.model.PayInfoWithName;
 import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class PayInfoAdapter extends BaseHasTopBottomListRvAdapter<PayInfo,PayInfoWithName> {
@@ -90,6 +91,11 @@ public class PayInfoAdapter extends BaseHasTopBottomListRvAdapter<PayInfo,PayInf
     }
 
     private String  getTimeString(long time){
+        Calendar c = Calendar.getInstance();
+        time =time-c.getTimeInMillis();
+        if(time<0){
+            return  "00"+ App.get().getString(R.string.分钟) + "00" + App.get().getString(R.string.秒);
+        }
         String Ctime ="";
         time /= 1000;
         Ctime =getTime(time / 60) + App.get().getString(R.string.分钟) + getTime(time % 60) + App.get().getString(R.string.秒);
@@ -111,19 +117,20 @@ public class PayInfoAdapter extends BaseHasTopBottomListRvAdapter<PayInfo,PayInf
         public void handleMessage(android.os.Message msg) {
             if (msg.what == 1) {
                 if(getTopData()!=null){
-
-                        if(getTopData().getCompltetTime()>0){
-                            getTopData().countCompleteTime();
-                            notifyDataSetChanged();
-                            //总时间倒计时
-                        }
-
+                    notifyItemChanged(getTopItemCount()+getBodyItemCount(),1);
 
                 }
                 mHandler.sendEmptyMessageDelayed(1, 1000);
             }
         };
     };
+
+    @Override
+    public void customBindLocalRefresh(AutoViewHolder holder, int position, List payloads) {
+
+        holder.text(R.id.tv_compltetTime,getTimeString(getTopData().getCompltetTime()));
+
+    }
     private OnItemClickListener onItemClickListener;
 
     public void setOnItemClickListener(OnItemClickListener listener) {

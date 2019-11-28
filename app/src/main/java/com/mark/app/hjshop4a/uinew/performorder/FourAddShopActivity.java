@@ -113,7 +113,7 @@ public class FourAddShopActivity extends BaseActivity {
                         data = JsonUtils.fromJson(obj.getResult(),StepFour.class);
                         //设置信息
                         initRvAdapter(data);
-                        fourAddShopAdapter.startTime();
+
                     }
 
                     @Override
@@ -176,6 +176,7 @@ public class FourAddShopActivity extends BaseActivity {
 
 
             });
+            fourAddShopAdapter.startTime();
         }
         else {
             fourAddShopAdapter.setData(data);

@@ -1,175 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:overScrollMode="never"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
+ <LinearLayout
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
 <include layout="@layout/include_titlebar"/>
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_blue_8dp">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:src="@mipmap/ic_jinbi"
+                />
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:textColor="#FFFFFFFF"
+                android:textSize="14dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/金币余额"/>
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:id="@+id/gold_coin_balance"
+                android:textColor="#FFEEF6FC"
+                android:textSize="11dp"
+                android:layout_marginTop="14dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:src="@mipmap/ic_daikuan"
+                />
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:textColor="#FFFFFFFF"
+                android:textSize="14dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/贷款余额"/>
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:id="@+id/goods_balance"
+                android:textColor="#FFEEF6FC"
+                android:textSize="11dp"
+                android:layout_marginTop="14dp"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout style="@style/input_layout"
+        android:paddingRight="20dp">
+
+        <TextView
+
+            style="@style/login_input_tv"
+            android:textSize="13dp"
+            android:text="@string/金币提现" />
+
+        <EditText
+            android:id="@+id/et_gold"
+            style="@style/login_input_et"
+            android:paddingLeft="10dp"
+            android:layout_weight="1"
+            android:hint="@string/hint_手续费"
+            android:textSize="11dp"
+            android:inputType="numberDecimal"
+            android:maxLength="10" />
+
+        <TextView
+            android:id="@+id/tv_withdraw_gold_balance"
+            style="@style/BaseItem.Tv"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/全部提现"
+            android:textSize="12dp"
+            android:textColor="#4CAEFE"
+
+            />
+    </LinearLayout>
     <View
         style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
+        android:layout_marginLeft="15dp" />
+    <LinearLayout style="@style/input_layout"
+        android:paddingRight="20dp">
+
+        <TextView
+
+            style="@style/login_input_tv"
+            android:textSize="13dp"
+            android:text="@string/贷款提现" />
+
+        <EditText
+            android:id="@+id/et_goods"
+            style="@style/login_input_et"
+            android:paddingLeft="10dp"
+            android:layout_weight="1"
+            android:hint="@string/hint_最少一元"
+            android:textSize="11dp"
+            android:inputType="numberDecimal"
+            android:maxLength="10" />
+
+            <TextView
+                android:id="@+id/tv_withdraw_goods_balance"
+               style="@style/BaseItem.Tv"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/全部提现"
+                android:textSize="12dp"
+                android:textColor="#4CAEFE"
+
+                />
+    </LinearLayout>
+    <View
+        style="@style/BaseLine.Horizontal"
+        android:layout_marginLeft="15dp" />
+    <LinearLayout style="@style/input_layout"
+        android:paddingRight="20dp"
+        android:visibility="gone">
+
+        <TextView
+
+            style="@style/login_input_tv"
+            android:textSize="13dp"
+            android:text="@string/支付密码" />
+
+        <EditText
+            android:id="@+id/et_withdraw_password"
+            style="@style/login_input_et"
+            android:paddingLeft="10dp"
+            android:layout_weight="1"
+            android:hint="@string/hint_初始密码888888"
+            android:textSize="11dp"
+            android:inputType="numberPassword"
+            android:maxLength="10" />
+
+        <TextView
+            android:id="@+id/tv_withdraw_password_reset"
+            style="@style/BaseItem.Tv"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/忘记密码"
+            android:textSize="12dp"
+            android:textColor="#4CAEFE"
+
+            />
+    </LinearLayout>
+
 
     <RelativeLayout
-        android:id="@+id/item_bank_card"
+        android:id="@+id/withdraw_bankcard"
         style="@style/user_item_layout"
-        android:layout_height="110px"
+        android:layout_marginTop="10dp"
         android:background="@drawable/select_normal_bg">
 
-        <com.facebook.drawee.view.SimpleDraweeView
-            android:id="@+id/iv_bnak_card"
-            android:layout_width="68px"
-            android:layout_height="68px"
-            android:layout_centerVertical="true"
-
-            />
-
         <TextView
-            android:id="@+id/item_tv_bank_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="24px"
-            android:layout_toRightOf="@+id/iv_bnak_card"
-            android:text="" />
+            style="@style/user_item_tv"
+            android:textSize="13dp"
+            android:text="@string/管理银行卡" />
         <TextView
-            android:id="@+id/item_tv_bank_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/tv_bank_num"
+            style="@style/BaseItem.Tv"
+            android:textSize="13dp"
+            android:textColor="#FF333333"
             android:layout_centerVertical="true"
-            style="@style/user_item_tv_content"
-            android:layout_toLeftOf="@+id/iv_bnak_card_slsect"
-            android:layout_toRightOf="@+id/item_tv_bank_name"
-            android:layout_marginLeft="60px"
-            android:gravity="right"
-            android:text="" />
+            android:layout_toStartOf="@id/imageView4"
+            android:layout_marginRight="5dp"
+             />
+
         <ImageView
-            android:id="@+id/iv_bnak_card_slsect"
+            android:id="@+id/imageView4"
+            style="@style/BaseImg.Right"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:padding="@dimen/textsize_30px"
-            android:src="@mipmap/ic_right_gray" />
+         />
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/item_cash"
-        style="@style/user_item_layout"
-        android:layout_height="172px"
-        android:background="@color/white"
-        >
-
-        <TextView
-            android:id="@+id/iv_cash_symbol"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_centerVertical="true"
-           android:text="￥"
-            android:textColor="#333333"
-            android:textSize="70px"/>
-        <EditText
-            android:id="@+id/withDraw"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toEndOf="@+id/iv_cash_symbol"
-            android:layout_marginLeft="24px"
-            android:textColor="#333333"
-            android:inputType="number"
-            android:textSize="70px"
-            android:gravity="center_vertical|left"
-            android:layout_toStartOf="@+id/iv_withdraw"
-            android:background="@null" />
-
-        <TextView
-            android:id="@+id/iv_withdraw"
-           android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textColor="#289BF8"
-            android:textSize="30px"
-            android:gravity="center"
-            android:padding="@dimen/textsize_30px"
-            android:text="提现"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:visibility="gone"
-            />
-    </RelativeLayout>
-    <View
-        style="@style/BaseLine.Horizontal"
-        android:layout_marginLeft="30px" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="76px"
-        android:background="@color/white">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26px"
-            android:layout_marginLeft="@dimen/textsize_30px"
-            android:textColor="#666666"
-            android:textSize="22px"
-            android:text="当前可提现金额为"/>
-
-        <TextView
-            android:id="@+id/tv_cash_useful"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26px"
-            android:text=""
-            android:textColor="#666666"
-            android:textSize="22px" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_marginTop="20px">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:padding="27px"
-            android:textSize="26px"
-            android:layout_marginLeft="@dimen/textsize_30px"
-            android:textColor="#333333"
-            android:text="会员备注："/>
-        <EditText
-            android:id="@+id/remark"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:textColor="#333333"
-            android:textSize="26px"
-            />
-    </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="提现说明:"
-        android:layout_marginTop="38px"
-        android:layout_marginLeft="@dimen/textsize_30px"
-        android:textColor="#666666"
-        android:textSize="26px"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="22px"
-        android:layout_marginTop="21px"
-        android:layout_marginLeft="@dimen/textsize_30px"
-        android:textColor="#666666"
-        android:lineSpacingExtra="20px"
-        android:text="@string/withdraw_tip"/>
     <Button
-    android:id="@+id/button"
-    android:layout_marginTop="116px"
-    android:layout_gravity="center_horizontal"
-    android:layout_width="690px"
-    android:layout_height="80px"
-    android:text="提交申请"
-    android:textColor="@color/white"
-    android:textSize="30px"
-    style="@style/BaseBtn.Normal.Important"
-    />
-</LinearLayout>
+        android:id="@+id/button"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center_horizontal"
+        android:text="提交"
+        android:textSize="15dp"
+        style="@style/BaseBtn.Normal.Important"
+
+        />
+    <TextView
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#FF333333"
+        android:gravity="center"
+        android:text="@string/withdraw_tip1"/>
+ </LinearLayout>
+</ScrollView>

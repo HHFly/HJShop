@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="51dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/tv_bill_status"
+        style="@style/BaseItem.Tv"
+        android:textColor="#FF333333"
+        android:textSize="13dp"
+        android:text="完成任务"/>
+    <TextView
+        android:id="@+id/tv_bill_time"
+        style="@style/BaseItem.Tv"
+        android:textColor="#FF666666"
+        android:textSize="13dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bill_status"
+        android:layout_marginTop="5.5dp"
+        android:text="2019-10-27 10:25:10"/>
+    <TextView
+        android:id="@+id/text"
+        style="@style/BaseItem.Tv"
+        android:textColor="#FF666666"
+        android:textSize="13dp"
+        android:text="金币："
+       app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="68dp"/>
+    <TextView
+        style="@style/BaseItem.Tv"
+        android:textColor="#FF666666"
+        android:textSize="13dp"
+        android:text="货款："
+        app:layout_constraintTop_toTopOf="@+id/tv_bill_time"
+        app:layout_constraintLeft_toLeftOf="@+id/text"
+        android:layout_marginRight="68dp"/>
+
+    <TextView
+        android:id="@+id/tv_bill_gold"
+        style="@style/BaseItem.Tv"
+        app:layout_constraintLeft_toRightOf="@+id/text"
+        android:text="+33333"
+        android:textColor="#FFFE730D"
+        android:textSize="13dp" />
+    <TextView
+        android:id="@+id/tv_bill_money"
+        style="@style/BaseItem.Tv"
+        android:text="+33333"
+        android:textColor="#FFF93E3E"
+        android:textSize="13dp"
+        app:layout_constraintLeft_toLeftOf="@+id/tv_bill_gold"
+        app:layout_constraintTop_toTopOf="@+id/tv_bill_time"/>
+    <View style="@style/BaseLine.Horizontal"
+       app:layout_constraintBottom_toBottomOf="parent"/>.
+</android.support.constraint.ConstraintLayout>
