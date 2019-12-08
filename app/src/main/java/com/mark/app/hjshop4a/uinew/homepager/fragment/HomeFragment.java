@@ -64,11 +64,8 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onUnFirstResume() {
-        if(mData!=null)
-          initRvAdapter(mData,true);
-        else {
-            requestData();
-        }
+
+        requestData();
 
     }
 

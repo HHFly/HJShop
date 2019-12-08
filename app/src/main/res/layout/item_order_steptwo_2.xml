@@ -19,7 +19,8 @@
         android:textSize="12dp"
         android:paddingLeft="15dp"
         android:singleLine="true"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:imeOptions="actionNone"/>
     <com.dd.CircularProgressButton
         android:id="@+id/circularButton"
         android:layout_width="100dp"

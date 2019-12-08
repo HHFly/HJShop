@@ -37,19 +37,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/hp_layout_tab2"
-            style="@style/home_pager_tab_layout">
 
-            <ImageView
-                style="@style/home_pager_tab_iv"
-                android:src="@drawable/select_hp_tab_order" />
-
-            <TextView
-                style="@style/home_pager_tab_tv"
-                android:text="@string/home_任务" />
-
-        </LinearLayout>
         <LinearLayout
             android:id="@+id/hp_layout_tab3"
             style="@style/home_pager_tab_layout">
@@ -61,6 +49,21 @@
             <TextView
                 style="@style/home_pager_tab_tv"
                 android:text="@string/home_任务大厅" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/hp_layout_tab2"
+            style="@style/home_pager_tab_layout">
+
+            <ImageView
+                style="@style/home_pager_tab_iv"
+                android:src="@drawable/select_hp_tab_order" />
+
+            <TextView
+                style="@style/home_pager_tab_tv"
+                android:text="@string/home_任务" />
 
         </LinearLayout>
         <LinearLayout

@@ -2,6 +2,8 @@ package com.mark.app.hjshop4a.uinew.performorder.adapter;
 
 import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.view.KeyEvent;
 import android.view.View;
 
 import com.dd.CircularProgressButton;
@@ -20,6 +22,8 @@ import com.mark.app.hjshop4a.widget.UpdateStepOneLayout;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+
+import static com.umeng.commonsdk.internal.a.i;
 
 public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddProduct> {
     private List<CircularProgressButton> circularProgressButtonList =new ArrayList<>();
@@ -60,6 +64,19 @@ public class TwoSearchAdapter extends BaseHasTopBottomListRvAdapter<StepTwo,AddP
         holder.text(R.id.tv_mainProductPrice, String.format(App.get().getString(R.string.S元), String.valueOf(stepTwo.getMainProductPrice())));
         holder.text(R.id.tv_require, stepTwo.getRequire());
         holder.sdvBig(R.id.hm_sdv_productPic, stepTwo.getProductImg());
+
+        holder.get(R.id.et_shopname).setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (keyCode == KeyEvent.KEYCODE_ENTER ) {
+                    //点击软键盘搜索
+                return true;
+
+                }
+                return false;
+//                return true;
+            }
+        });
         //第一步：验证是否找对店铺
        CircularProgressButton circularPropagation =holder.get(R.id.circularButton);
         circularPropagation.setIndeterminateProgressMode(true);

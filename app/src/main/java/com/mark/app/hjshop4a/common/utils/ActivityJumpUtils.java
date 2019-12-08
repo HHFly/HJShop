@@ -353,8 +353,8 @@ public class ActivityJumpUtils {
     public static void actHomePager(Activity act, @HPTabType int type) {
         Intent intent = new Intent(act, HomePagerActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+    //        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         Bundle bundle = new Bundle();
         bundle.putInt(BundleKey.TYPE, type);
         intent.putExtras(bundle);
