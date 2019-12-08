@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.login.LoginBackType;
-import com.mark.app.hjshop4a.common.androidenum.other.ActRequestCode;
 import com.mark.app.hjshop4a.common.androidenum.other.ActResultCode;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.androidenum.web.WebType;
@@ -22,6 +21,7 @@ import com.mark.app.hjshop4a.uinew.bindinfo.BindInfoActivity;
 import com.mark.app.hjshop4a.uinew.bindinfo.BindTaobaoActivity;
 import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.ui.start.GuideActivity;
+import com.mark.app.hjshop4a.uinew.invitation.InviteBountyRecordActivity;
 import com.mark.app.hjshop4a.uinew.login.activity.ForgetActivity;
 import com.mark.app.hjshop4a.uinew.login.activity.LoginActivity;
 import com.mark.app.hjshop4a.uinew.login.activity.PhoneActivity;
@@ -36,10 +36,8 @@ import com.mark.app.hjshop4a.uinew.performorder.EvaluationInfoActivity;
 import com.mark.app.hjshop4a.uinew.performorder.FourAddShopActivity;
 import com.mark.app.hjshop4a.uinew.performorder.OneDetailActivity;
 import com.mark.app.hjshop4a.uinew.performorder.PayInfoActivity;
-import com.mark.app.hjshop4a.uinew.performorder.PerformOrderActivity;
 import com.mark.app.hjshop4a.uinew.performorder.ThreeBrowseActivity;
 import com.mark.app.hjshop4a.uinew.performorder.TwoSearchActivity;
-import com.mark.app.hjshop4a.uinew.performorder.adapter.ThreeBrowseAdapter;
 import com.mark.app.hjshop4a.uinew.userinfo.ModifyPWActivity;
 import com.mark.app.hjshop4a.ui.userinfo.UserInfoActivity;
 import com.mark.app.hjshop4a.ui.web.WebActivity;
@@ -401,18 +399,7 @@ public class ActivityJumpUtils {
         activity.overridePendingTransition(0,0);
     }
 
-    /*
-     * 跳转step1
-     * */
-    public static void actPerform(Activity activity,String subOrderSn,int  step) {
-        Intent intent = new Intent(activity, PerformOrderActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putString(BundleKey.ORDER_SN,subOrderSn);
-        bundle.putInt(BundleKey.ID,step);
-        intent.putExtras(bundle);
-        activity.startActivity(intent);
-        activity.overridePendingTransition(0,0);
-    }
+
     /*
      * 跳转step1
      * */
@@ -464,6 +451,17 @@ public class ActivityJumpUtils {
         Intent intent = new Intent(activity, PayInfoActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString(BundleKey.ORDER_SN,subOrderSn);
+        intent.putExtras(bundle);
+        activity.startActivity(intent);
+        activity.overridePendingTransition(0,0);
+    }
+    /*
+     * 跳转
+     * */
+    public static void actInviteBountyRecord(Activity activity,long id) {
+        Intent intent = new Intent(activity, InviteBountyRecordActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putLong(BundleKey.ID,id);
         intent.putExtras(bundle);
         activity.startActivity(intent);
         activity.overridePendingTransition(0,0);

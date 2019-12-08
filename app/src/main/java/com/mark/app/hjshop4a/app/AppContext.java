@@ -41,6 +41,7 @@ public class AppContext {
     BusniessInfo busniessInfo;
     AreaAgentInfo areaAgentInfo;
     ProvenceAgentInfo provenceAgentInfo;
+
     public AppContext(Context context) {
         mContext = context.getApplicationContext();
         init();

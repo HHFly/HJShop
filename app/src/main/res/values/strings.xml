@@ -358,4 +358,10 @@
     <string name="withdraw_tip1">温馨提醒：货款和金币提现每日仅限一次，\n提现申请时间：00：00-12：00 提现处理时间：12：00-24：00 \n贷款提现不收取手续费，金币提现手续费为5%</string>
     <string name="setting_支付密码修改">支付密码修改</string>
     <string name="输入任务编号">输入任务编号</string>
+    <string name="奖励明显">奖励明细</string>
+    <string name="邀请好友">邀请好友</string>
+    <string name="试客账号">好友账号:%s</string>
+    <string name="今日带来的赏金">今日带来的赏金：%s</string>
+    <string name="累计带来的赏金">累计带来的赏金：%s</string>
+    <string name="查看明细">查看明细</string>
 </resources>

@@ -12,8 +12,9 @@
         android:layout_height="45dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="22dp"
-        
-        app:placeholderImage="@mipmap/ic_logo"
+        android:visibility="visible"
+
+        app:placeholderImage="@mipmap/ic_launcher"
         app:roundAsCircle="true" />
     <TextView
         android:id="@+id/hm_tv_user_name"
@@ -60,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:orientation="horizontal"
-        android:layout_marginBottom="15dp">
+       >
 
         <LinearLayout
             android:id="@+id/hm_layout_red"
@@ -78,47 +79,12 @@
                 android:text="0.0"
                 android:textColor="#000000" />
 
-            <RelativeLayout
-               android:id="@+id/bill"
-                android:layout_width="157dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/shape_me_1">
 
-                <ImageView
-                    android:id="@+id/iv_top_1"
-                    android:layout_width="29dp"
-                    android:layout_height="29dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="8dp"
-                    android:src="@mipmap/ic_me_top_1" />
-
-                <TextView
-                    style="@style/BaseItem.Tv"
-                    android:layout_alignTop="@id/iv_top_1"
-                    android:layout_marginLeft="13dp"
-                    android:layout_toRightOf="@+id/iv_top_1"
-                    android:text="@string/账单"
-                    android:textColor="#FFFFFF"
-                    android:textSize="13dp"
-
-                    />
-
-                <TextView
-                    style="@style/BaseItem.Tv"
-                   android:layout_alignBottom="@+id/iv_top_1"
-                    android:layout_marginLeft="13dp"
-                    android:layout_toRightOf="@+id/iv_top_1"
-                    android:text="@string/点击查看"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp"
-
-                    />
-
-            </RelativeLayout>
 
         </LinearLayout>
+
+
+
 
         <LinearLayout
             android:id="@+id/hm_layout_balance"
@@ -139,47 +105,118 @@
                 android:text="0.0"
                 android:textColor="#000000" />
 
-            <RelativeLayout
-                android:id="@+id/withdraw"
-                android:layout_width="157dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/shape_me_2">
 
-                <ImageView
-                    android:id="@+id/iv_top_2"
-                    android:layout_width="29dp"
-                    android:layout_height="29dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:src="@mipmap/ic_me_top_2" />
-
-                <TextView
-                    style="@style/BaseItem.Tv"
-                    android:layout_alignTop="@+id/iv_top_2"
-                    android:layout_marginLeft="13dp"
-                    android:layout_toRightOf="@+id/iv_top_2"
-                    android:text="@string/提现"
-                    android:textColor="#FFFFFF"
-                    android:textSize="13dp"
-
-                    />
-
-                <TextView
-                    style="@style/BaseItem.Tv"
-                    android:layout_alignBottom="@id/iv_top_2"
-                    android:layout_marginLeft="13dp"
-                    android:layout_toRightOf="@+id/iv_top_2"
-                    android:text="@string/点击提现"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10dp"
-
-                    />
-            </RelativeLayout>
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/hm_layout_interal"
+            style="@style/home_me_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
 
+
+            <TextView
+                style="@style/home_me_tab_tv_bottom"
+                android:text="@string/me_积分" />
+
+            <TextView
+                android:id="@+id/hm_tv_interal"
+                style="@style/home_me_tab_tv_top"
+                android:layout_marginTop="13dp"
+                android:text="0.0"
+                android:textColor="#000000" />
+
+
+
+        </LinearLayout>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="15dp">
+        <RelativeLayout
+            android:id="@+id/bill"
+            android:layout_width="157dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/shape_me_1">
+
+            <ImageView
+                android:id="@+id/iv_top_1"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:src="@mipmap/ic_me_top_1" />
+
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:layout_alignTop="@id/iv_top_1"
+                android:layout_marginLeft="13dp"
+                android:layout_toRightOf="@+id/iv_top_1"
+                android:text="@string/账单"
+                android:textColor="#FFFFFF"
+                android:textSize="13dp"
+
+                />
+
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:layout_alignBottom="@+id/iv_top_1"
+                android:layout_marginLeft="13dp"
+                android:layout_toRightOf="@+id/iv_top_1"
+                android:text="@string/点击查看"
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"
+
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/withdraw"
+            android:layout_width="157dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/shape_me_2">
+
+            <ImageView
+                android:id="@+id/iv_top_2"
+                android:layout_width="29dp"
+                android:layout_height="29dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:src="@mipmap/ic_me_top_2" />
+
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:layout_alignTop="@+id/iv_top_2"
+                android:layout_marginLeft="13dp"
+                android:layout_toRightOf="@+id/iv_top_2"
+                android:text="@string/提现"
+                android:textColor="#FFFFFF"
+                android:textSize="13dp"
+
+                />
+
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:layout_alignBottom="@id/iv_top_2"
+                android:layout_marginLeft="13dp"
+                android:layout_toRightOf="@+id/iv_top_2"
+                android:text="@string/点击提现"
+                android:textColor="#FFFFFF"
+                android:textSize="10dp"
+
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
 </LinearLayout>

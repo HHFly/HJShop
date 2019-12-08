@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import android.view.View;
+
 
 import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
@@ -98,6 +100,7 @@ public class OneDetailActivity extends BaseActivity {
                     public void onSuccess(RainbowResultEntity obj) {
                         StepOne data = JsonUtils.fromJson(obj.getResult(),StepOne.class);
                         //设置信息
+
                         initRvAdapter(data);
                     }
 
@@ -119,6 +122,7 @@ public class OneDetailActivity extends BaseActivity {
             oneDetailAdapter.setOnItemClickListener(new OneDetailAdapter.OnItemClickListener() {
                 @Override
                 public void onClickNext() {
+
                     nextStep();
                 }
 

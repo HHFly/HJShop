@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/btn_small_blue"
+   >
+    <ImageView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@mipmap/banner"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_blue_gradient"
+        android:orientation="vertical"
+        android:padding="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_white_10dp"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp">
+                <TextView
+                    style="@style/BaseItem.Tv"
+                    android:textSize="13dp"
+                    android:textColor="#FF289BF8"
+                    android:text="·好友注册记录"
+                    />
+                <TextView
+                    android:id="@+id/tv_detail"
+                    style="@style/BaseItem.Tv"
+                    android:textSize="13dp"
+                    android:textColor="#FF333333"
+                    android:text="查看奖励明细"
+                    android:layout_alignParentRight="true"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    >
+                    <RelativeLayout
+                        android:id="@+id/ll_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+                        <TextView
+                            android:id="@+id/tv_invitation_count"
+                            style="@style/BaseItem.Tv"
+                            android:text="0"
+                            android:textColor="#FF0094FD"
+                            android:textSize="16dp"
+                            android:layout_marginTop="20dp"/>
+                        <TextView
+                            style="@style/BaseItem.Tv"
+                            android:text="名"
+                            android:textColor="#FF999999"
+                            android:textSize="12dp"
+                            android:layout_alignBaseline="@+id/tv_invitation_count"
+                            android:layout_toRightOf="@+id/tv_invitation_count"
+                            android:layout_marginLeft="3dp"/>
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/BaseItem.Tv"
+                        android:text="成功注册"
+                        android:textColor="#FF999999"
+                        android:textSize="12dp"
+                        android:layout_below="@+id/ll_1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="9dp"/>
+
+                </RelativeLayout>
+                <View style="@style/BaseLine.Vertical"
+                    android:background="#FFE5E5E5"
+                    android:layout_height="20dp"/>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+                    <RelativeLayout
+                        android:id="@+id/ll_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true">
+
+                        <TextView
+                            android:id="@+id/tv_invitation_complete"
+                            style="@style/BaseItem.Tv"
+                            android:layout_width="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="0"
+                            android:textColor="#FF0094FD"
+                            android:textSize="16dp" />
+                        <TextView
+                            style="@style/BaseItem.Tv"
+                            android:text="名"
+                            android:textColor="#FF999999"
+                            android:textSize="12dp"
+                            android:layout_alignBaseline="@+id/tv_invitation_complete"
+                            android:layout_toRightOf="@+id/tv_invitation_complete"
+                            android:layout_marginLeft="3dp"/>
+                    </RelativeLayout>
+
+                    <TextView
+                        style="@style/BaseItem.Tv"
+                        android:text="完成首单"
+                        android:textColor="#FF999999"
+                        android:textSize="12dp"
+                        android:layout_below="@+id/ll_2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="9dp"/>
+
+                </RelativeLayout>
+                <View style="@style/BaseLine.Vertical"
+                    android:background="#FFE5E5E5"
+                    android:layout_height="20dp"/>
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                        <RelativeLayout
+                            android:id="@+id/ll_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true">
+                            <TextView
+                                android:id="@+id/tv_invitation_gold"
+                                style="@style/BaseItem.Tv"
+                                android:text="0"
+                                android:textColor="#FF0094FD"
+                                android:textSize="16dp"
+                                android:layout_marginTop="20dp"
+                                android:maxLength="9"
+                                android:ellipsize="end"
+                                />
+                            <TextView
+                                style="@style/BaseItem.Tv"
+                                android:text="金币"
+                                android:textColor="#FF999999"
+                                android:textSize="12dp"
+                                android:layout_alignBaseline="@+id/tv_invitation_gold"
+                                android:layout_toRightOf="@+id/tv_invitation_gold"
+                               />
+                        </RelativeLayout>
+
+                        <TextView
+                            style="@style/BaseItem.Tv"
+                            android:text="累计获得赏金"
+                            android:textColor="#FF999999"
+                            android:textSize="12dp"
+                            android:layout_below="@+id/ll_3"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="9dp"/>
+
+                    </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp">
+                <TextView
+                    style="@style/BaseItem.Tv"
+                    android:textSize="13dp"
+                    android:textColor="#FF289BF8"
+                    android:text="·分享好友"
+                    />
+                <TextView
+
+                    style="@style/BaseItem.Tv"
+                    android:textSize="12dp"
+                    android:textColor="#FF999999"
+                    android:text="点击复制下方链接发送给好友"
+                    android:layout_marginLeft="3dp"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_url"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp"
+                android:background="@drawable/shpae_small_blue_8dp"/>
+
+            <TextView
+                android:id="@+id/btn_copy"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@drawable/shape_invition_btn"
+                android:gravity="center"
+                android:text="点击复制"
+                android:textSize="13dp"
+                android:textColor="#FFFFFFFF"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_white_10dp"
+            android:orientation="vertical"
+            android:layout_marginTop="15dp"
+            android:minHeight="200dp"
+            >
+            <TextView
+                style="@style/BaseItem.Tv"
+                android:text="奖励规则"
+                android:textColor="#FF289BF8"
+                android:textSize="13dp"
+               android:layout_gravity="center_horizontal"
+                android:layout_marginTop="14dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:textColor="#FF289BF8"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:lineSpacingExtra="5dp"
+                android:text="1 邀请新用户注册并成功完成首单使用，邀请人可获得5元红包\n2 被邀请人做单，邀请人将会获得提成金币\n3 本活动最终解释权归竹蜻蜓所有"/>
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

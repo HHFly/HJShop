@@ -1,24 +1,26 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mark.app.hjshop4a">
-    <uses-permission android:name="android.permission.VIBRATE" />  <!-- 震动权限 -->
+    <!--<uses-permission android:name="android.permission.VIBRATE" />  &lt;!&ndash; 震动权限 &ndash;&gt;-->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" />        <!-- 使用照相机权限 -->
     <uses-feature android:name="android.hardware.camera.autofocus" />   <!-- 自动聚焦权限 -->
     <!--友盟-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />-->
     <!-- 支付宝权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -81,7 +83,6 @@
         <activity android:name=".uinew.bindinfo.BankCardAddActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.bindinfo.BindTaobaoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.bindinfo.AddTaobaoActivity" android:screenOrientation="portrait" />
-        <activity android:name=".uinew.performorder.PerformOrderActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.performorder.OneDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.performorder.TwoSearchActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.performorder.ThreeBrowseActivity" android:screenOrientation="portrait"/>
@@ -90,6 +91,11 @@
         <activity android:name=".uinew.performorder.EvaluationInfoActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.withdraw.WithDrawActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.userinfo.ModifyPayPwActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".uinew.bill.BillActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".uinew.bill.BillActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.invitation.InvitationActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.invitation.InviteDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".uinew.invitation.InviteBountyRecordActivity" android:screenOrientation="portrait"/>
+
+        <service android:name=".common.service.FloatWindowsService" android:exported="true" />
     </application>
 </manifest>

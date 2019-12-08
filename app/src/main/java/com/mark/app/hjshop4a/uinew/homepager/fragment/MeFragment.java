@@ -143,7 +143,7 @@ public class MeFragment extends BaseFragment{
 
                @Override
                public void onClickUserPic(int id) {
-                   FunctionDialogFactory.showTakePhoneIDDialog(getActivity(), id);
+//                   FunctionDialogFactory.showTakePhoneIDDialog(getActivity(), id);
                }
 
 

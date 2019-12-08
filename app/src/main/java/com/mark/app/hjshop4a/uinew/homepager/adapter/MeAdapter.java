@@ -11,6 +11,7 @@ import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.uinew.bill.BillActivity;
 import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
+import com.mark.app.hjshop4a.uinew.invitation.InvitationActivity;
 import com.mark.app.hjshop4a.uinew.withdraw.WithDrawActivity;
 
 import java.util.List;
@@ -79,6 +80,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
 //                    holder.sdvInside(R.id.hm_sdv_logo,mData.getUserPic());
                     holder.text(R.id.hm_tv_goldcoin,String.valueOf(mData.getUsableGold()));
                     holder.text(R.id.hm_tv_balance,String.valueOf(mData.getUsableMoney()));
+                    holder.text(R.id.hm_tv_interal,String.valueOf(mData.getIntegral()));
                 }
                 break;//顶部数据
             case 1:
@@ -107,7 +109,7 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        ActivityJumpUtils.actAbout(App.get().getCurActivity());
+                        ActivityJumpUtils.actActivity(App.get().getCurActivity(), InvitationActivity.class);
                     }
                 });
                 break;

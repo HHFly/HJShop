@@ -16,7 +16,9 @@ import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.homepager.HPTabType;
 import com.mark.app.hjshop4a.common.androidenum.other.BundleKey;
 import com.mark.app.hjshop4a.common.listener.DefOnUploadPicListener;
+import com.mark.app.hjshop4a.common.service.FloatWindowsService;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
+import com.mark.app.hjshop4a.common.utils.ImageUtil;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.common.utils.TakePhoneUtil;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
@@ -175,6 +177,14 @@ public class PayInfoActivity extends BaseActivity {
      *
      */
     private void requestUpdateDataOfNewPic(Uri uri) {
+        String path = ImageUtil.getRealPathFromUri(getActivity(),uri);
+        int length=path.split("/").length;
+        String str =path.split("/")[length-1];
+        String name= str.split("_")[0];
+        if(!FloatWindowsService.getmData().equals(name)){
+            ToastUtils.show("请上传此次订单任务截图");
+            return;
+        }
         showLoadingDialog();
 
         luban(uri, new DefOnUploadPicListener() {

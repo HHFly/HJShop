@@ -1,6 +1,7 @@
 package com.mark.app.hjshop4a.ui.start;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -8,16 +9,21 @@ import android.view.View;
 
 
 import com.mark.app.hjshop4a.R;
-import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.Activity.BaseActivity;
 import com.mark.app.hjshop4a.common.androidenum.other.ActRequestCode;
 import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionCheckCallBack;
-import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionRequestSuccessCallBack;
 import com.mark.app.hjshop4a.common.permisstion.deflistener.PermissionUtil;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.StatusBarUtil;
+import com.mark.app.hjshop4a.common.utils.permission.FloatWindowManager;
 import com.mark.app.hjshop4a.ui.dialog.factory.NormalDialogFactory;
 import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
+
+import java.util.List;
+
+
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
 
 
 /**
@@ -25,7 +31,7 @@ import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
  * Created by lenovo on 2017/9/26.
  */
 
-public class PermisstionActivity extends BaseActivity {
+public class PermisstionActivity extends BaseActivity  implements EasyPermissions.PermissionCallbacks{
     private final String[] pers = new String[]{
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION};
@@ -56,14 +62,23 @@ public class PermisstionActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                PermissionUtil.checkAndRequestMorePermissions(getActivity(), pers, ActRequestCode.PERMISSION, new PermissionRequestSuccessCallBack() {
-                    @Override
-                    public void onHasPermission() {
+                FloatWindowManager.getInstance().applyOrShowFloatWindow(getActivity());
+                    String[] mPermissionList = new String[]{Manifest.permission.SYSTEM_ALERT_WINDOW};
+                    if (EasyPermissions.hasPermissions(getActivity(), mPermissionList)) {
+                        //已经同意过
                         goNext();
+                    } else {
+                        //未同意过,或者说是拒绝了，再次申请权限
+                        EasyPermissions.requestPermissions(
+                                getActivity(),  //上下文
+                                "保存图片需要读取sd卡的权限", //提示文言
+                                10, //请求码
+                                mPermissionList //权限列表
+                        );
                     }
-                });
+
             }
-        }, 100);
+        }, 2000);
     }
 
     @Override
@@ -73,6 +88,7 @@ public class PermisstionActivity extends BaseActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
         PermissionUtil.onRequestMorePermissionsResult(getActivity(), permissions, new PermissionCheckCallBack() {
             @Override
             public void onHasPermission() {
@@ -116,5 +132,26 @@ public class PermisstionActivity extends BaseActivity {
         ActivityJumpUtils.actActivity(getActivity(), HomePagerActivity.class);
 
         finish();
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        goNext();
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(getActivity(), perms)) {
+            //打开系统设置，手动授权
+            new AppSettingsDialog.Builder(getActivity()).build().show();
+        }
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AppSettingsDialog.DEFAULT_SETTINGS_REQ_CODE) {
+            //拒绝授权后，从系统设置了授权后，返回APP进行相应的操作
+           goNext();
+        }
     }
 }

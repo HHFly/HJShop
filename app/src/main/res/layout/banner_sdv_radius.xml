@@ -2,6 +2,4 @@
 <com.facebook.drawee.view.SimpleDraweeView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/BaseSDV.MatchMatch"
-    app:placeholderImage="@mipmap/ic_sdv_placeholderimage"
-    app:placeholderImageScaleType="centerCrop"
     app:roundedCornerRadius="20px" />

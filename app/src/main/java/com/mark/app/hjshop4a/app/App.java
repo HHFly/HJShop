@@ -8,22 +8,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.common.PDLifecycleHandle;
 import com.mark.app.hjshop4a.common.utils.FrescoUtils;
 import com.mark.app.hjshop4a.common.utils.ToastUtils;
 
 import com.mark.app.hjshop4a.uinew.homepager.activity.HomePagerActivity;
 import com.mark.app.hjshop4a.uinew.login.model.Token;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
-import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
-import com.scwang.smartrefresh.layout.api.RefreshFooter;
-import com.scwang.smartrefresh.layout.api.RefreshHeader;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
-import com.umeng.commonsdk.UMConfigure;
+
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
@@ -65,6 +56,8 @@ App extends Application {
 //        初始化二维码
         ZXingLibrary.initDisplayOpinion(this);
         registerActivityListener();
+
+
 //        友盟
 //        UMConfigure.init(this,"5a12384aa40fa3551f0001d1","umeng", UMConfigure.DEVICE_TYPE_PHONE,"");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
     }

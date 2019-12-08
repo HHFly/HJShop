@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
 import com.mark.app.hjshop4a.R;
@@ -94,6 +95,7 @@ public class BillActivity extends BaseActivity implements OnRefreshLoadMoreListe
 
             @Override
             public void onClickCancel() {
+
                 frameLayout.setVisibility(View.GONE);
                 Animation animBottomIN = AnimationUtils.loadAnimation(getActivity(),
                         R.anim.dialog_exit);
@@ -112,9 +114,20 @@ public class BillActivity extends BaseActivity implements OnRefreshLoadMoreListe
             @Override
             public void onClickCancel() {
                 frameLayout.setVisibility(View.GONE);
+                hideInput();
             }
         });
         requestByDate(1,0);
+    }
+    /**
+     * 隐藏键盘
+     */
+    protected void hideInput() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        View v = getWindow().peekDecorView();
+        if (null != v) {
+            imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+        }
     }
 
     @Override
@@ -194,7 +207,7 @@ public class BillActivity extends BaseActivity implements OnRefreshLoadMoreListe
             isRequestData = true;
 
             App.getServiceManager().getmService()
-                    .getOrderList(pageParam.toPswJson())
+                    .record(pageParam.toPswJson())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new RainbowObserver() {

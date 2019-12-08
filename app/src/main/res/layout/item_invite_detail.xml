@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
+    android:background="@drawable/shape_white_10dp"
+    android:padding="10dp">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            style="@style/BaseItem.Tv"
+            android:id="@+id/tv_num"
+            android:textColor="#FF333333"
+            android:textSize="14dp"
+            android:text="@string/试客账号"
+            />
+        <TextView
+            style="@style/BaseItem.Tv"
+            android:id="@+id/tv_today_gold"
+            android:textColor="#FF333333"
+            android:textSize="14dp"
+            android:text="@string/今日带来的赏金"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            style="@style/BaseItem.Tv"
+            android:id="@+id/tv_all_gold"
+            android:textColor="#FF333333"
+            android:textSize="14dp"
+            android:text="@string/累计带来的赏金"
+            android:layout_marginTop="5dp"
+            />
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="81dp"
+        android:layout_height="30dp"
+        android:id="@+id/btn_detail"
+        android:background="@drawable/shape_blue_15dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="查看明细"
+        android:textSize="14dp"
+        android:textColor="#FFFEFEFE"
+        />
+</RelativeLayout>

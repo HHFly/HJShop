@@ -1,5 +1,9 @@
 package com.mark.app.hjshop4a.uinew.order;
 
+import android.content.Context;
+import android.content.Intent;
+import android.media.projection.MediaProjectionManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +13,7 @@ import com.mark.app.hjshop4a.R;
 import com.mark.app.hjshop4a.app.App;
 import com.mark.app.hjshop4a.base.fragment.BaseFragment;
 import com.mark.app.hjshop4a.base.model.PagingBaseModel;
+import com.mark.app.hjshop4a.common.service.FloatWindowsService;
 import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.common.utils.JsonUtils;
 import com.mark.app.hjshop4a.data.entity.RainbowResultEntity;
@@ -26,10 +31,13 @@ import java.util.List;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
+import static android.app.Activity.RESULT_OK;
+
 public class OrderFragment extends BaseFragment  {
+    public static final int REQUEST_MEDIA_PROJECTION = 18;
     SmartRefreshLayout mRefreshLayout;//刷新框架
     OrderAdapter orderAdapter;
-
+    OrderInfo mData;
     long id;
 
     public void setId(long id) {
@@ -111,6 +119,7 @@ public class OrderFragment extends BaseFragment  {
             orderAdapter.setOnItemClickListener(new OrderAdapter.OnItemClickListener() {
                 @Override
                 public void onClickOrder(OrderInfo data) {
+                    mData=data;
                     sureReciveOrder(data);
                 }
             });
@@ -134,9 +143,42 @@ public class OrderFragment extends BaseFragment  {
                     @Override
                     public void onSuccess(RainbowResultEntity obj) {
                         requestData(id);
-                        ActivityJumpUtils.actStepOne(getActivity(),data.getSubOrderSn());
+                        requestCapturePermission();
+//                        ActivityJumpUtils.actStepOne(getActivity(),data.getSubOrderSn());
                     }
 
                 });
+    }
+
+    //请求屏幕截屏
+    public void requestCapturePermission() {
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            //5.0 之后才允许使用屏幕截图
+
+            return;
+        }
+
+        MediaProjectionManager mediaProjectionManager = (MediaProjectionManager)
+                getActivity().getSystemService(Context.MEDIA_PROJECTION_SERVICE);
+        startActivityForResult(
+                mediaProjectionManager.createScreenCaptureIntent(),
+                REQUEST_MEDIA_PROJECTION);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case REQUEST_MEDIA_PROJECTION:
+
+                if (resultCode == RESULT_OK && data != null) {
+                    FloatWindowsService.setResultData(data);
+                    FloatWindowsService.setmData(mData.getSubOrderSn());
+                    getActivity().startService(new Intent(App.get(), FloatWindowsService.class));
+                    ActivityJumpUtils.actStepOne(getActivity(),mData.getSubOrderSn());
+                }
+                break;
+        }
     }
 }

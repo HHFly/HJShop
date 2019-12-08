@@ -261,4 +261,12 @@ public interface RainbowService {
     //40.修改支付密码
     @POST("/api/app/user/updatePayPassword")
     Observable<RainbowResultEntity> updatePayPassword(@Query("data") String data);
+
+    //41.邀请界面
+    @GET("api/app/user/invitePage")
+    Observable<RainbowResultEntity> invitePage();
+    //42.获取邀请详情界面
+    @POST("api/app/user/inviteDetail")
+    Observable<RainbowResultEntity> inviteDetail(@Query("data") String data);
+
 }

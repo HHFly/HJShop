@@ -7,6 +7,15 @@ public class UserCenter extends BaseModel {
     double usableMoney;//货款余额
 
     double usableGold;//金币余额
+    int integral;//积分
+
+    public int getIntegral() {
+        return integral;
+    }
+
+    public void setIntegral(int integral) {
+        this.integral = integral;
+    }
 
     public String getUserPhone() {
         return userPhone;
