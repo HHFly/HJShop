@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    android:background="@color/white">
+    <TextView
+        android:id="@+id/tv_intetarl_reason"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toLeftOf="@+id/text"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="#FF333333"
+        android:textSize="13dp"
+        android:text=""
+       />
+    <TextView
+        android:id="@+id/tv_intetarl_time"
+        style="@style/BaseItem.Tv"
+        android:textColor="#FF666666"
+        android:textSize="13dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_intetarl_reason"
+        android:layout_marginTop="5.5dp"
+        android:text="2019-10-27 10:25:10"/>
+    <TextView
+        android:id="@+id/text"
+        style="@style/BaseItem.Tv"
+        android:textColor="#FF666666"
+        android:textSize="13dp"
+        android:text="积分："
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="68dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_intetarl"
+        style="@style/BaseItem.Tv"
+        app:layout_constraintLeft_toRightOf="@+id/text"
+        android:text=""
+        android:textColor="#FFFE730D"
+        android:textSize="13dp" />
+
+    <View style="@style/BaseLine.Horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"/>.
+</android.support.constraint.ConstraintLayout>

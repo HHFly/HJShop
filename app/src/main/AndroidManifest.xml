@@ -95,7 +95,7 @@
         <activity android:name=".uinew.invitation.InvitationActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.invitation.InviteDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".uinew.invitation.InviteBountyRecordActivity" android:screenOrientation="portrait"/>
-
+        <activity android:name=".uinew.integral.IntegralActivity" android:screenOrientation="portrait"/>
         <service android:name=".common.service.FloatWindowsService" android:exported="true" />
     </application>
 </manifest>

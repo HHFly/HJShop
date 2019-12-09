@@ -268,5 +268,10 @@ public interface RainbowService {
     //42.获取邀请详情界面
     @POST("api/app/user/inviteDetail")
     Observable<RainbowResultEntity> inviteDetail(@Query("data") String data);
-
+    //43.获取邀请赏金详情
+    @POST("api/app/user/inviteDetail/detail")
+    Observable<RainbowResultEntity> inviteDetaildetail(@Query("data") String data);
+    //44.获取积分详情
+    @POST("api/app/user/integralRecord")
+    Observable<RainbowResultEntity> integralRecord(@Query("data") String data);
 }

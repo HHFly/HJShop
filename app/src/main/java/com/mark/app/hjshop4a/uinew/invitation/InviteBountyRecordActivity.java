@@ -86,7 +86,7 @@ public class InviteBountyRecordActivity  extends BaseActivity implements OnRefre
         inviteParam.setPageNo(curPage);
         inviteParam.setUserId(id);
         App.getServiceManager().getmService()
-                .inviteDetail(inviteParam.toPswJson())
+                .inviteDetaildetail(inviteParam.toPswJson())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new RainbowObserver() {

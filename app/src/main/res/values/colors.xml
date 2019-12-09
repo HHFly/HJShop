@@ -37,7 +37,7 @@
     <color name="white">#ffffff</color>
     <color name="red_fo3a53">#F03A53</color>
     <color name="colorText">#333333</color>
-
+    <color name="color_add">#FFFE730D</color>
     <color name="color_line_border">#C7C7C7</color>
     <color name="colorBlack_Three">#333333</color>
 </resources>

@@ -364,4 +364,5 @@
     <string name="今日带来的赏金">今日带来的赏金：%s</string>
     <string name="累计带来的赏金">累计带来的赏金：%s</string>
     <string name="查看明细">查看明细</string>
+    <string name="积分详情">积分详情</string>
 </resources>

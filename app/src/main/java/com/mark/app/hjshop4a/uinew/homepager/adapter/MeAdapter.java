@@ -11,6 +11,7 @@ import com.mark.app.hjshop4a.common.utils.ActivityJumpUtils;
 import com.mark.app.hjshop4a.ui.homepager.model.UserCenter;
 import com.mark.app.hjshop4a.uinew.bill.BillActivity;
 import com.mark.app.hjshop4a.uinew.homepager.model.MeCenterInfo;
+import com.mark.app.hjshop4a.uinew.integral.IntegralActivity;
 import com.mark.app.hjshop4a.uinew.invitation.InvitationActivity;
 import com.mark.app.hjshop4a.uinew.withdraw.WithDrawActivity;
 
@@ -95,11 +96,11 @@ public class MeAdapter extends MultipleSourcesRvAdapter {
                 break;
             case 2:
                 holder.image(R.id.hm_iv_logo,R.mipmap.ic_msg);
-                holder.text(R.id.hm_tv_item_name, R.string.消息);
+                holder.text(R.id.hm_tv_item_name, R.string.积分详情);
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        ActivityJumpUtils.actAbout(App.get().getCurActivity());
+                        ActivityJumpUtils.actActivity(App.get().getCurActivity(), IntegralActivity.class);
                     }
                 });
                 break;
